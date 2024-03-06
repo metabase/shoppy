@@ -1,1 +1,0 @@
-# embedding-sdk-customer-zero
