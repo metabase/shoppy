@@ -34,16 +34,6 @@ import { useNavigate } from "react-router-dom";
         >
           Welcome back!
         </Title>
-        <Text color="dimmed" size="sm" align="center" mt={5}>
-          Do not have an account yet?{" "}
-          <Anchor<"a">
-            href="#"
-            size="sm"
-            onClick={(event) => event.preventDefault()}
-          >
-            Create account
-          </Anchor>
-        </Text>
   
         <Paper withBorder shadow="md" p={30} mt={30} radius="md">
           <TextInput label="Email" placeholder="you@mantine.dev" required />
@@ -53,16 +43,6 @@ import { useNavigate } from "react-router-dom";
             required
             mt="md"
           />
-          <Group position="apart" mt="lg">
-            <Checkbox label="Remember me" sx={{ lineHeight: 1 }} />
-            <Anchor<"a">
-              onClick={(event) => event.preventDefault()}
-              href="#"
-              size="sm"
-            >
-              Forgot password?
-            </Anchor>
-          </Group>
           <Button fullWidth mt="xl" onClick={handleOnClick}>
             Sign in
           </Button>
