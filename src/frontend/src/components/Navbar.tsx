@@ -5,7 +5,7 @@ type Props = {
     onAnalyticsClick: () => void;
 }
 
-function Navbar(props: Props) {
+export function Navbar(props: Props) {
   return (
     <>
       <NavLink
@@ -23,5 +23,3 @@ function Navbar(props: Props) {
     </>
   );
 }
-
-export default Navbar;

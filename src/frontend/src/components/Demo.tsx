@@ -1,13 +1,19 @@
 import { AppShell, Burger } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import Navbar from "./Navbar";
+import { Navbar } from "./Navbar";
+import { useContext } from "react";
+import { Navigate } from "react-router";
+import { AuthContext } from "../providers/AuthContext";
 
 function Demo() {
   const [opened, { toggle }] = useDisclosure();
 
   const handleOnAnalytics = () => {
     console.log("Analytics clicked");
-  }
+  };
+
+  const { authenticated } = useContext(AuthContext);
+  if (!authenticated) return <Navigate to="/login" replace />;
 
   return (
     <AppShell
