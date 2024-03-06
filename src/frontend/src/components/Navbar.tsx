@@ -1,0 +1,27 @@
+import { NavLink } from "@mantine/core";
+import { IconHome2, IconReportAnalytics } from "@tabler/icons-react";
+
+type Props = {    
+    onAnalyticsClick: () => void;
+}
+
+function Navbar(props: Props) {
+  return (
+    <>
+      <NavLink
+        href="#required-for-focus"
+        label="Home"
+        leftSection={<IconHome2 size="1rem" stroke={1.5} />}
+      />
+
+      <NavLink
+        href="#required-for-focus"
+        label="Analytics"
+        onClick={props.onAnalyticsClick}
+        leftSection={<IconReportAnalytics size="1rem" stroke={1.5} />}
+      />
+    </>
+  );
+}
+
+export default Navbar;
