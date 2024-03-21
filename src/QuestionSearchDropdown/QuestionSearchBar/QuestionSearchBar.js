@@ -1,4 +1,4 @@
-import "./QuestionSearchBar.css"
+import "./QuestionSearchBar.css";
 
 export function QuestionSearchBar({ onChange, onClick, onFocus, value }) {
   return (

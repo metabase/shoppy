@@ -6,16 +6,13 @@ import { LogoutButton } from "./Logout";
 import { FontSelector } from "./FontSelector";
 import { StyleLeakFlag } from "./StyleLeakFlag/StyleLeakFlag";
 import { ViewToggle } from "./ViewToggle/ViewToggle";
+import { METABASE_API_KEY, METABASE_INSTANCE_URL } from "./config";
 
 const config = {
-  metabaseInstanceUrl:
-    process.env.REACT_APP_METABASE_INSTANCE_URL || "http://localhost:3000",
+  metabaseInstanceUrl: METABASE_INSTANCE_URL,
   font: "Inter",
   authType: "apiKey",
-  // jwtProviderUri: "http://localhost:8081/sso/metabase",
-  apiKey:
-    process.env.REACT_APP_API_KEY ||
-    "mb_Zhns2vrYNTIAAc/GHBuIoUshpysJ2laLWsZ9MbJavj0=",
+  apiKey: METABASE_API_KEY,
 };
 
 const App = () => {

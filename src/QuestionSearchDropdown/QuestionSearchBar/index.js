@@ -1,1 +1,1 @@
-export * from "./QuestionSearchBar"
+export * from "./QuestionSearchBar";

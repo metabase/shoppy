@@ -1,4 +1,4 @@
-import "./UserDropdown.css"
+import "./UserDropdown.css";
 
 export function UserDropdown({ onClick }) {
   return (

@@ -5,8 +5,6 @@
 @tailwind utilities;
 
 body {
-    font-family: 'IBM Plex Sans', source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  font-family: "IBM Plex Sans", source-code-pro, Menlo, Monaco, Consolas,
+    "Courier New", monospace;
 }
-
-

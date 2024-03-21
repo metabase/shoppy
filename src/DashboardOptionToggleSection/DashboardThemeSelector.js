@@ -12,7 +12,7 @@ export const DashboardThemeSelector = ({ value, onChange, className }) => {
   return (
     <select
       value={value}
-      onChange={e => onChange(e.target.value)}
+      onChange={(e) => onChange(e.target.value)}
       className={className}
     >
       {THEME_OPTIONS.map(({ label, value: themeValue }) => (

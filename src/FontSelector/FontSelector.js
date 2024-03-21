@@ -10,13 +10,13 @@ export const FontSelector = () => {
       <label className="FontSelector--label">Select a font:</label>
       <select
         value={currentFont}
-        onChange={e => setFont(e.target.value)}
+        onChange={(e) => setFont(e.target.value)}
         className="FontSelector-button"
         style={{
           fontFamily: currentFont,
         }}
       >
-        {fonts?.map(font => (
+        {fonts?.map((font) => (
           <option value={font}>{font}</option>
         ))}
       </select>

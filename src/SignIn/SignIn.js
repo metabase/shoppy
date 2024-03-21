@@ -2,13 +2,13 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AUTH_API_HOST } from "../config";
 
-import "./SignIn.css"
+import "./SignIn.css";
 
 export const SignIn = () => {
   const [authError, setAuthError] = useState(null);
   const navigate = useNavigate();
 
-  const onSubmit = e => {
+  const onSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
 
@@ -23,7 +23,7 @@ export const SignIn = () => {
       }),
       credentials: "include",
     })
-      .then(response => {
+      .then((response) => {
         console.log(response);
         if (response.status === 200) {
           console.log(response.status);
@@ -32,7 +32,7 @@ export const SignIn = () => {
           setAuthError("invalid");
         }
       })
-      .catch(error => {
+      .catch((error) => {
         console.error("Error:", error);
       });
   };

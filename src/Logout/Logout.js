@@ -8,20 +8,20 @@ import "./Logout.css";
 export const LogoutButton = () => {
   const navigate = useNavigate();
 
-  const onLogout = e => {
+  const onLogout = (e) => {
     e.preventDefault();
 
     return fetch(`${AUTH_API_HOST}/logout`, {
       method: "GET",
     })
-      .then(response => {
+      .then((response) => {
         console.log(response);
         if (response.status === 200) {
           console.log(response.status);
           navigate("/");
         }
       })
-      .catch(error => {
+      .catch((error) => {
         console.error("Error:", error);
       });
   };

@@ -1,1 +1,1 @@
-export * from "./FontSelector"
+export * from "./FontSelector";

@@ -1,4 +1,4 @@
-import "./ResultsDropdown.css"
+import "./ResultsDropdown.css";
 
 export function ResultsDropdown({
   data,
@@ -8,7 +8,7 @@ export function ResultsDropdown({
   return (
     <div className="ResultsDropdown--container">
       <ul className="ResultsDropdown--result-list">
-        {data.map(q => (
+        {data.map((q) => (
           <li
             key={q.id}
             onClick={() => {

@@ -2,11 +2,7 @@ import { DashboardThemeSelector } from "./DashboardThemeSelector";
 import { DashboardBoolToggle } from "./DashboardBoolToggle";
 import { DashboardParameterSelector } from "./DashboardParameterSelector";
 
-const TEST_EMBED_OPTIONS = [
-  "titled",
-  "bordered",
-  "hide_download_button",
-];
+const TEST_EMBED_OPTIONS = ["titled", "bordered", "hide_download_button"];
 
 const BUTTON_CLASSES =
   "tw-font-bold tw-bg-gray-900 tw-text-white tw-text-center tw-rounded hover:tw-bg-gray-700 tw-px-2 tw-py-1 tw-gap-1";
@@ -23,22 +19,24 @@ export const DashboardOptionToggleSection = ({
     <DashboardThemeSelector
       className={BUTTON_CLASSES}
       value={currentOptions.theme}
-      onChange={value => setOptions({ theme: value })}
+      onChange={(value) => setOptions({ theme: value })}
     />
     <DashboardParameterSelector
       className={BUTTON_CLASSES}
       dashboardId={dashboardId}
       value={currentOptions.hide_parameters}
-      onChange={value => setOptions({ hide_parameters: value })}
+      onChange={(value) => setOptions({ hide_parameters: value })}
     />
 
-    {TEST_EMBED_OPTIONS.map(option => (
+    {TEST_EMBED_OPTIONS.map((option) => (
       <DashboardBoolToggle
         className={BUTTON_CLASSES}
         key={option}
-        label={option.replace(/_/g, " ").replace(/\b\w/g, l => l.toUpperCase())}
+        label={option
+          .replace(/_/g, " ")
+          .replace(/\b\w/g, (l) => l.toUpperCase())}
         value={currentOptions[option]}
-        onChange={value => setOptions({ [option]: value })}
+        onChange={(value) => setOptions({ [option]: value })}
       />
     ))}
   </div>

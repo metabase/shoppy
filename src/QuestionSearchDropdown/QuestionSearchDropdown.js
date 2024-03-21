@@ -3,7 +3,6 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { ResultsDropdown } from "./ResultsDropdown";
 import { QuestionSearchBar } from "./QuestionSearchBar";
 
-
 export const QuestionSearchDropdown = ({
   selectedQuestion,
   setSelectedQuestion,
@@ -25,7 +24,7 @@ export const QuestionSearchDropdown = ({
   };
 
   // Close dropdown when user clicks outside the component
-  const handleClickOutside = useCallback(event => {
+  const handleClickOutside = useCallback((event) => {
     if (ref.current && !ref.current.contains(event.target)) {
       hideDropdown();
     }
@@ -43,7 +42,7 @@ export const QuestionSearchDropdown = ({
     <div className="tw-relative" ref={ref}>
       <QuestionSearchBar
         value={inputValue}
-        onChange={e => setInputValue(e.target.value)}
+        onChange={(e) => setInputValue(e.target.value)}
         onFocus={showDropdown}
         onClick={() => {
           setSearchTerm(inputValue);

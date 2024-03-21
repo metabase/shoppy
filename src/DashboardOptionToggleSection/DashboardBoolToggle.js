@@ -27,7 +27,7 @@ export const DashboardBoolToggle = ({ label, value, onChange, className }) => (
         "
       type="checkbox"
       checked={value}
-      onChange={e => onChange(e.target.checked)}
+      onChange={(e) => onChange(e.target.checked)}
     />
     <span>{label}</span>
   </label>

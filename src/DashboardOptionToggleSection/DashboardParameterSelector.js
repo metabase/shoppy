@@ -12,7 +12,7 @@ export const DashboardParameterSelector = ({
   const [isOpen, setIsOpen] = useState(false);
 
   const parameterList = useMemo(() => {
-    return dashboardParameters.map(parameter => {
+    return dashboardParameters.map((parameter) => {
       return {
         name: parameter.name,
         value: parameter.slug,
@@ -28,7 +28,7 @@ export const DashboardParameterSelector = ({
       </button>
       {isOpen && (
         <div className="tw-absolute tw-flex tw-flex-col tw-shadow-2xl tw-px-2 tw-py-2 tw-bg-gray-800 tw-border tw-border-gray-400">
-          {parameterList.map(parameter => (
+          {parameterList.map((parameter) => (
             <button
               key={parameter.value}
               onClick={() => {

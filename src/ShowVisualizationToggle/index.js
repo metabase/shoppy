@@ -1,1 +1,1 @@
-export * from "./ShowVisualizationToggle"
+export * from "./ShowVisualizationToggle";
