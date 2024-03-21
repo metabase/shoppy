@@ -2,7 +2,7 @@
 
 ### Setup
 
-In the main metabase repo:
+#### In the main metabase repo
 
 Build Embedding SDK:
 
@@ -13,6 +13,10 @@ Build Embedding SDK:
 Run Metabase instance:
 
 `yarn dev-ee` 
+
+Navigate to [admin site](http://localhost:3000/admin/settings/embedding-in-other-applications), enable embedding and set `AUTHORIZED ORIGINS` value in Interactive embedding settings to `http://localhost:3004`
+
+#### In this repo
 
 Setup local env:
 
@@ -30,5 +34,5 @@ Run this app:
 `yarn start`  
 
 
-You can check https://www.notion.so/metabase/WIP-Embedding-SDK-8103306366be4f0786b489ad2324235c#7ea6f8f77d8448ff9d55af58f9e2d45e for the full guide.
+Check [this article](https://www.notion.so/metabase/WIP-Embedding-SDK-8103306366be4f0786b489ad2324235c#7ea6f8f77d8448ff9d55af58f9e2d45e) for the full Embedding SDK guide.
 
