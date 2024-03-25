@@ -2,21 +2,25 @@ import { useAvailableFonts } from "metabase-embedding-sdk";
 
 import "./FontSelector.css";
 
-export const FontSelector = () => {
-  const { availableFonts: fonts, currentFont, setFont } = useAvailableFonts();
+export const FontSelector = ({ value, setValue }) => {
+  const { availableFonts } = useAvailableFonts();
+
+  const handleFontChange = (e) => {
+    setValue(e.target.value);
+  };
 
   return (
     <div className="FontSelector--container">
       <label className="FontSelector--label">Select a font:</label>
       <select
-        value={currentFont}
-        onChange={(e) => setFont(e.target.value)}
+        value={value}
+        onChange={handleFontChange}
         className="FontSelector-button"
         style={{
-          fontFamily: currentFont,
+          fontFamily: value,
         }}
       >
-        {fonts?.map((font) => (
+        {availableFonts?.map((font) => (
           <option value={font}>{font}</option>
         ))}
       </select>

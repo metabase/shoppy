@@ -7,6 +7,7 @@ import { FontSelector } from "./FontSelector";
 import { StyleLeakFlag } from "./StyleLeakFlag/StyleLeakFlag";
 import { ViewToggle } from "./ViewToggle/ViewToggle";
 import { METABASE_API_KEY, METABASE_INSTANCE_URL } from "./config";
+import { useState } from "react";
 
 const config = {
   metabaseInstanceUrl: METABASE_INSTANCE_URL,
@@ -16,8 +17,15 @@ const config = {
 };
 
 const App = () => {
+  const [font, setFont] = useState(config.font);
+
   return (
-    <MetabaseProvider config={config}>
+    <MetabaseProvider
+      config={{
+        ...config,
+        font,
+      }}
+    >
       <div className="Page--container">
         <header className="Page--header">
           <Welcome />
@@ -30,7 +38,7 @@ const App = () => {
         </div>
 
         <footer className="Page--footer">
-          <FontSelector />
+          <FontSelector value={font} setValue={setFont} />
           <StyleLeakFlag />
         </footer>
       </div>

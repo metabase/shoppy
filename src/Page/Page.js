@@ -1,13 +1,9 @@
-import { Welcome } from "../Welcome";
 import { QuestionSearchDropdown } from "../QuestionSearchDropdown";
 import { useState } from "react";
 import { QueryVisualizationSdk } from "metabase-embedding-sdk";
-import { FontSelector } from "../FontSelector";
-import { LogoutButton } from "../Logout";
 import { ShowVisualizationToggle } from "../ShowVisualizationToggle";
 
 import "./Page.css";
-import { StyleLeakFlag } from "../StyleLeakFlag/StyleLeakFlag";
 
 export const Page = () => {
   const [question, setQuestion] = useState(null);
