@@ -1,4 +1,4 @@
-import { useQuestionSearch } from "metabase-embedding-sdk";
+import { useQuestionSearch } from "@metabase/embedding-sdk-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ResultsDropdown } from "./ResultsDropdown";
 import { QuestionSearchBar } from "./QuestionSearchBar";

@@ -1,4 +1,4 @@
-import { useCurrentUser } from "metabase-embedding-sdk";
+import { useCurrentUser } from "@metabase/embedding-sdk-react";
 
 import "./UserInfo.css";
 

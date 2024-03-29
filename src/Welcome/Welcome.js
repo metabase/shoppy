@@ -1,4 +1,4 @@
-import { useApplicationName } from "metabase-embedding-sdk";
+import { useApplicationName } from "@metabase/embedding-sdk-react";
 
 export const Welcome = () => {
   const appName = useApplicationName();

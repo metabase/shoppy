@@ -1,4 +1,4 @@
-import { useDashboardParameters } from "metabase-embedding-sdk";
+import { useDashboardParameters } from "@metabase/embedding-sdk-react";
 import { useMemo, useState } from "react";
 import { xor } from "lodash";
 

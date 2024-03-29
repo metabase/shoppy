@@ -1,6 +1,6 @@
 import { QuestionSearchDropdown } from "../QuestionSearchDropdown";
 import { useState } from "react";
-import { QueryVisualizationSdk } from "metabase-embedding-sdk";
+import { QueryVisualizationSdk } from "@metabase/embedding-sdk-react";
 import { ShowVisualizationToggle } from "../ShowVisualizationToggle";
 
 import "./Page.css";

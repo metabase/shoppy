@@ -1,38 +1,28 @@
 # embedding-sdk-customer-zero
+Check [this article](https://www.notion.so/metabase/WIP-Embedding-SDK-8103306366be4f0786b489ad2324235c#7ea6f8f77d8448ff9d55af58f9e2d45e) for more information about Embedding SDK.
+
 
 ### Setup
 
-#### In the main metabase repo
+#### In the [main metabase repo](https://github.com/metabase/metabase)
 
-Build Embedding SDK:
+1. Run Metabase instance from the main repo -
 
-`yarn build`
+    `yarn dev-ee` 
 
-`yarn build-embedding-sdk` or `yarn build-embedding-sdk:watch`
-
-Run Metabase instance:
-
-`yarn dev-ee` 
-
-Navigate to [admin site](http://localhost:3000/admin/settings/embedding-in-other-applications), enable embedding and set `AUTHORIZED ORIGINS` value in Interactive embedding settings to `http://localhost:3004`
+2. Navigate to the [admin site](http://localhost:3000/admin/settings/embedding-in-other-applications), enable embedding and set `AUTHORIZED ORIGINS` value in Interactive embedding settings to `http://localhost:3004`
+3. [Generate API key](http://localhost:3000/admin/settings/authentication/api-keys) to authorize API requests from the SDK.
 
 #### In this repo
 
-Setup local env:
+1. Setup local env:
 
-`cp .env.example .env`
+    `cp .env.example .env`
 
-add your API key as `REACT_APP_API_KEY=XXXXX`
+2. Add your API key to `.env` as `REACT_APP_API_KEY=XXXXX`
+3. Generate personal [Github access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic) with `read:packages` scope. It is needed to access privately hosted `@metabase/embedding-sdk-react` package.
+4. Install dependencies:
 
-Link embedding sdk package. Add 
-```
-"metabase-embedding-sdk": "file:../<PATH_TO_MAIN_METABASE_CODE>/resources/embedding-sdk",
-```
-
-Run this app:
-
-`yarn start`  
-
-
-Check [this article](https://www.notion.so/metabase/WIP-Embedding-SDK-8103306366be4f0786b489ad2324235c#7ea6f8f77d8448ff9d55af58f9e2d45e) for the full Embedding SDK guide.
-
+   `NPM_TOKEN=XXXX yarn install`
+where `XXXX` is your Github access token
+5. Run this app: `yarn start`

@@ -1,4 +1,4 @@
-import { useAvailableFonts } from "metabase-embedding-sdk";
+import { useAvailableFonts } from "@metabase/embedding-sdk-react";
 
 import "./FontSelector.css";
 

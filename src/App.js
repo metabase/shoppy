@@ -1,4 +1,4 @@
-import { MetabaseProvider } from "metabase-embedding-sdk";
+import { MetabaseProvider } from "@metabase/embedding-sdk-react";
 
 import { Outlet } from "react-router-dom";
 import { Welcome } from "./Welcome";

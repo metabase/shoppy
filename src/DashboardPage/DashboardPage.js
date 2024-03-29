@@ -1,4 +1,4 @@
-import { PublicDashboard } from "metabase-embedding-sdk";
+import { PublicDashboard } from "@metabase/embedding-sdk-react";
 import { ErrorBoundary } from "react-error-boundary";
 import { DashboardOptionToggleSection } from "../DashboardOptionToggleSection/DashboardOptionToggleSection";
 import { useState } from "react";
