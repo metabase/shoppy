@@ -15,14 +15,17 @@ Check [this article](https://www.notion.so/metabase/WIP-Embedding-SDK-8103306366
 
 #### In this repo
 
-1. Setup local env:
+1. Create a local env: 
 
-    `cp .env.example .env`
+   `cp .env.example .env`
 
 2. Add your API key to `.env` as `REACT_APP_API_KEY=XXXXX`
 3. Generate personal [Github access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic) with `read:packages` scope. It is needed to access privately hosted `@metabase/embedding-sdk-react` package.
-4. Install dependencies:
+4. Add Github token to the `.env` as `NPM_TOKEN=XXXXX`
+5. Install dependencies:
 
-   `NPM_TOKEN=XXXX yarn install`
-where `XXXX` is your Github access token
-5. Run this app: `yarn start`
+   `yarn install`
+
+6. Run this app:
+   
+   `yarn start`
