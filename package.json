@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@metabase/embedding-sdk-react": "0.0.1-20240329-e488762",
+    "@metabase/embedding-sdk-react": "0.0.1-20240329-99d391e",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -19,6 +19,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "install-deps": "yarn install",
     "start": "PORT=3004 BROWSER=none react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

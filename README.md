@@ -21,10 +21,10 @@ Check [this article](https://www.notion.so/metabase/WIP-Embedding-SDK-8103306366
 
 2. Add your API key to `.env` as `REACT_APP_API_KEY=XXXXX`
 3. Generate personal [Github access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic) with `read:packages` scope. It is needed to access privately hosted `@metabase/embedding-sdk-react` package.
-4. Add Github token to the `.env` as `NPM_TOKEN=XXXXX`
+4. Add Github token be available as `NPM_TOKEN` env var - e.g. your bash profile, or WebStorm run configuration 
 5. Install dependencies:
 
-   `yarn install`
+   `yarn install-deps`
 
 6. Run this app:
    
