@@ -3,10 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@metabase/embedding-sdk-react": "0.0.1-20240329-99d391e",
+    "@metabase/embedding-sdk-react": "0.0.3-20240412-8d17bb4",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.12.2",
+    "@types/react": "^18.2.73",
+    "@types/react-dom": "^18.2.23",
     "localforage": "^1.10.0",
     "lodash": "^4.17.21",
     "match-sorter": "^6.3.3",
@@ -16,11 +20,13 @@
     "react-router-dom": "^6.22.0",
     "react-scripts": "5.0.1",
     "sort-by": "^1.2.0",
+    "typescript": "^5.4.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "install-deps": "yarn install",
-    "start": "PORT=3004 BROWSER=none react-scripts start",
+    "install-deps": "yarn --force",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "start": "rimraf ./node_modules/.cache && PORT=3004 BROWSER=none react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

@@ -1,6 +1,6 @@
 import { QuestionSearchDropdown } from "../QuestionSearchDropdown";
 import { useState } from "react";
-import { QueryVisualizationSdk } from "@metabase/embedding-sdk-react";
+import { InteractiveQuestion } from "@metabase/embedding-sdk-react";
 import { ShowVisualizationToggle } from "../ShowVisualizationToggle";
 
 import "./Page.css";
@@ -28,10 +28,7 @@ export const Page = () => {
               showVisualizationSelector={showVisualizationSelector}
               question={question}
             />
-            <QueryVisualizationSdk
-              showVisualizationSelector={showVisualizationSelector}
-              questionId={question.id}
-            />
+            <InteractiveQuestion questionId={question.id} />
           </div>
         ) : (
           <div className="tw-grid tw-place-items-center tw-h-full tw-font-bold tw-text-gray-400 tw-text-3xl">
