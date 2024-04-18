@@ -10,6 +10,11 @@ export const Page = () => {
   const [showVisualizationSelector, setShowVisualizationSelector] =
     useState(false);
 
+  const handleClickActions = (clickActions) => {
+    console.log("handleClickActions", clickActions);
+    return clickActions.filter(({ name }) => name === "formatting-hide");
+  };
+
   return (
     <div className="tw-h-full tw-w-full tw-flex tw-flex-col">
       <div className="tw-p-5">
@@ -28,7 +33,13 @@ export const Page = () => {
               showVisualizationSelector={showVisualizationSelector}
               question={question}
             />
-            <InteractiveQuestion questionId={question.id} />
+            <InteractiveQuestion
+              questionId={question.id}
+              extensions={{
+                dataPointClickActions: handleClickActions,
+                headerColumnClickActions: handleClickActions,
+              }}
+            />
           </div>
         ) : (
           <div className="tw-grid tw-place-items-center tw-h-full tw-font-bold tw-text-gray-400 tw-text-3xl">
