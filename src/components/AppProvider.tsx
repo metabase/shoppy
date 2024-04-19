@@ -9,7 +9,7 @@ interface Props {
 
 const config = {
   metabaseInstanceUrl: METABASE_INSTANCE_URL,
-  font: "Inter",
+  font: "Lato",
   authType: "apiKey",
   apiKey: METABASE_API_KEY,
 }
