@@ -1,4 +1,4 @@
-import { Box, Grid } from "@mantine/core"
+import { Grid } from "@mantine/core"
 
 import { ProductCard } from "../components/cards/ProductCard"
 
