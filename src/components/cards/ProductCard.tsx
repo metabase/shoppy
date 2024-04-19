@@ -4,7 +4,7 @@ import { Stack, Box, Checkbox, Text, Image, Flex } from "@mantine/core"
 import { StaticQuestion } from "@metabase/embedding-sdk-react"
 import { Link } from "wouter"
 
-import "./ProductCard.css"
+import "../../styles/product-card.css"
 
 interface Props {
   id: number
@@ -13,7 +13,7 @@ interface Props {
 
 export const ProductCard = ({ id, className }: Props) => {
   return (
-    <Link href={`/admin/products/${id}`}>
+    <Link href={`/products/${id}`}>
       <Stack
         className={cx(
           "text-white border border-[#7173AD] rounded-md",

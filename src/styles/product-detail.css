@@ -1,0 +1,24 @@
+.pd-question-container svg g.tick text {
+  fill: white !important;
+  font-family: Lato, sans-serif;
+}
+
+.pd-question-container .CardVisualization {
+  padding: 0;
+}
+
+.pd-trend-question-container {
+  font-size: 12px;
+}
+
+.pd-trend-question-container [data-testid="scalar-value"] {
+  font-size: 20px;  
+}
+
+.pd-trend-question-container h1 {
+  font-size: 30px;
+}
+
+.pd-trend-question-container h4 {
+  color: white;
+}
