@@ -1,4 +1,5 @@
 import { Stack, Box, Select, Text, Image } from "@mantine/core"
+import { InteractiveQuestion } from "@metabase/embedding-sdk-react"
 
 export const ProductCard = () => (
   <Stack>
@@ -8,11 +9,15 @@ export const ProductCard = () => (
     </Box>
 
     <Box>
-      <Text>Keepwarm base layer</Text>
+      <Text>Category</Text>
     </Box>
 
     <Box>
       <Image src="" />
+    </Box>
+
+    <Box>
+      <InteractiveQuestion questionId={15} />
     </Box>
   </Stack>
 )

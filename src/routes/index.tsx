@@ -3,6 +3,7 @@ import { Route, Switch } from "wouter"
 import { SignIn } from "./SignIn"
 
 import { Shell } from "../components/Shell"
+import { ProductAnalyticsPage } from "./ProductAnalytics"
 
 export const Routes = () => (
   <Switch>
@@ -10,7 +11,7 @@ export const Routes = () => (
 
     <Shell>
       <Route path="/admin" nest>
-        <Route path="/products" component={() => null} />
+        <Route path="/products" component={ProductAnalyticsPage} />
         <Route path="/products/:id" component={() => null} />
         <Route path="/analytics" component={() => null} />
         <Route path="/analytics/new/from-template" component={() => null} />

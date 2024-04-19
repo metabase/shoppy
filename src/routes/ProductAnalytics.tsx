@@ -1,3 +1,11 @@
-export const ProductAnalytics = () => {
-  return <div>hello</div>
+import { Box } from "@mantine/core"
+
+import { ProductCard } from "../components/cards/ProductCard"
+
+export const ProductAnalyticsPage = () => {
+  return (
+    <Box>
+      <ProductCard />
+    </Box>
+  )
 }

@@ -7,7 +7,7 @@ interface Props {
 }
 
 export function Shell(props: Props) {
-  const [opened, { toggle }] = useDisclosure()
+  const [opened] = useDisclosure()
 
   return (
     <AppShell
