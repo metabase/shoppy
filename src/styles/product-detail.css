@@ -11,12 +11,9 @@
   font-size: 12px;
 }
 
-.pd-trend-question-container [data-testid="scalar-value"] {
-  font-size: 20px;  
-}
-
 .pd-trend-question-container h1 {
   font-size: 30px;
+  line-height: 21px;
 }
 
 .pd-trend-question-container h4 {

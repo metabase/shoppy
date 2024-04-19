@@ -72,11 +72,24 @@ export const ProductDetailPage = (props: Props) => {
 
         <Card
           maw={400}
-          h={100}
+          h={78}
           bg="none"
           className="text-white pd-trend-question-container border border-[#7173AD]"
         >
           <StaticQuestion questionId={91} showVisualizationSelector={false} />
+        </Card>
+
+        <Card
+          maw={400}
+          h={150}
+          bg="none"
+          className="text-white pd-question-container border border-[#7173AD]"
+        >
+          <Title size="h3" pb={10}>
+            Sales goal
+          </Title>
+
+          {/* <StaticQuestion questionId={92} showVisualizationSelector={false} /> */}
         </Card>
       </Grid.Col>
     </Grid>
