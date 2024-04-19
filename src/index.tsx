@@ -1,9 +1,11 @@
 import ReactDOM from "react-dom/client"
 
-import { Routes } from "./routes/Routes"
+import { Routes } from "./routes"
 import { AppProvider } from "./components/AppProvider"
 
-import "./index.css"
+import "@mantine/core/styles.css"
+
+import "./styles/index.css"
 
 const root = document.getElementById("root")!
 

@@ -1,0 +1,25 @@
+import { Route, Switch } from "wouter"
+
+import { SignIn } from "./SignIn"
+
+import { Shell } from "../components/Shell"
+
+export const Routes = () => (
+  <Switch>
+    <Route path="/" component={SignIn} />
+
+    <Shell>
+      <Route path="/admin" nest>
+        <Route path="/products" component={() => null} />
+        <Route path="/products/:id" component={() => null} />
+        <Route path="/analytics" component={() => null} />
+        <Route path="/analytics/new/from-template" component={() => null} />
+        <Route path="/analytics/new/from-scratch" component={() => null} />
+        <Route path="/analytics/product" component={() => null} />
+        <Route path="/analytics/custom" component={() => null} />
+      </Route>
+    </Shell>
+
+    <Route>404: No such page!</Route>
+  </Switch>
+)
