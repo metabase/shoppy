@@ -8,20 +8,20 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^29.5.12",
-    "@types/node": "^20.12.2",
-    "@types/react": "^18.2.73",
-    "@types/react-dom": "^18.2.23",
+    "@types/node": "^20.12.7",
+    "@types/react": "^18.2.79",
+    "@types/react-dom": "^18.2.25",
     "localforage": "^1.10.0",
     "lodash": "^4.17.21",
     "match-sorter": "^6.3.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-error-boundary": "^4.0.12",
-    "react-router-dom": "^6.22.0",
     "react-scripts": "5.0.1",
     "sort-by": "^1.2.0",
     "typescript": "^5.4.5",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "wouter": "^3.1.2"
   },
   "scripts": {
     "install-deps": "yarn --force",
@@ -29,7 +29,8 @@
     "start": "rimraf ./node_modules/.cache && PORT=3004 BROWSER=none react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "format": "prettier . --write"
   },
   "eslintConfig": {
     "extends": [
@@ -50,7 +51,7 @@
     ]
   },
   "devDependencies": {
-    "prettier": "^3.2.5",
+    "prettier": "3.2.5",
     "rimraf": "^5.0.5",
     "tailwindcss": "^3.4.1"
   }
