@@ -15,6 +15,7 @@
     "typescript": "^5.4.5"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.17",
     "@types/express-session": "^1.18.0",
     "@types/jsonwebtoken": "^9.0.6",
     "@types/node": "^20.12.7",
