@@ -11,3 +11,7 @@ body {
 
   background: #4C5773;
 }
+
+#metabase-sdk-root {
+  background: transparent;
+}

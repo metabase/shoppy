@@ -9,9 +9,11 @@
   "dependencies": {
     "argon2": "^0.40.1",
     "cors": "^2.8.5",
+    "drizzle-orm": "^0.30.9",
     "express": "^4.19.2",
     "express-session": "^1.18.0",
     "jsonwebtoken": "^9.0.2",
+    "postgres": "^3.4.4",
     "typescript": "^5.4.5"
   },
   "devDependencies": {
@@ -19,6 +21,7 @@
     "@types/express-session": "^1.18.0",
     "@types/jsonwebtoken": "^9.0.6",
     "@types/node": "^20.12.7",
+    "drizzle-kit": "^0.20.17",
     "esno": "^4.7.0"
   }
 }
