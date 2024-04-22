@@ -1,5 +1,8 @@
 import { Box, Grid, Image, Text, Flex, Card, Stack, Title } from "@mantine/core"
-import { StaticQuestion } from "@metabase/embedding-sdk-react"
+import {
+  InteractiveQuestion,
+  StaticQuestion,
+} from "@metabase/embedding-sdk-react"
 
 import "../styles/product-detail.css"
 
@@ -67,7 +70,7 @@ export const ProductDetailPage = (props: Props) => {
             Orders over time
           </Title>
 
-          <StaticQuestion questionId={90} showVisualizationSelector={false} />
+          <InteractiveQuestion questionId={90} />
         </Card>
 
         <Card
