@@ -14,7 +14,7 @@ export function Shell(props: Props) {
   return (
     <AppShell
       navbar={{
-        width: 300,
+        width: 200,
         breakpoint: "sm",
         collapsed: { mobile: !opened },
       }}

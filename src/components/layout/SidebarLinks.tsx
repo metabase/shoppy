@@ -15,14 +15,16 @@ const links: Link[] = [
 
 export function SidebarLinks() {
   return (
-    <Box className="text-white" py="xs">
+    <Box className="text-gray-400 space-y-2" py="lg" pl="lg">
       {links.map((link) => (
-        <Link
-          href={link.to}
-          className={(active) => (active ? "text-[#98D9D9]" : "")}
-        >
-          <Text lts={0.5}>{link.title}</Text>
-        </Link>
+        <Box key={link.to}>
+          <Link
+            href={link.to}
+            className={(active) => (active ? "text-[#98D9D9]" : "")}
+          >
+            <Text lts={0.5}>{link.title}</Text>
+          </Link>
+        </Box>
       ))}
     </Box>
   )

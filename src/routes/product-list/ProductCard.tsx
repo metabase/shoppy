@@ -1,26 +1,15 @@
-import cx from "classnames"
-
 import { Stack, Box, Checkbox, Text, Image, Flex } from "@mantine/core"
 import { StaticQuestion } from "@metabase/embedding-sdk-react"
 import { Link } from "wouter"
 
-import "../../styles/product-card.css"
-
 interface Props {
   id: number
-  className?: string
 }
 
-export const ProductCard = ({ id, className }: Props) => {
+export const ProductCard = ({ id }: Props) => {
   return (
     <Link href={`/products/${id}`}>
-      <Stack
-        className={cx(
-          "text-white border border-[#7173AD] rounded-md",
-          className,
-        )}
-        px="xs"
-      >
+      <Stack className="text-white border border-[#7173AD] rounded-md" px="xs">
         <Flex className="space-x-2 pt-2">
           <Checkbox
             size="xs"

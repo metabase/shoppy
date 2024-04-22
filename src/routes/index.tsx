@@ -2,9 +2,10 @@ import { Route, Switch } from "wouter"
 
 import { SignIn } from "./SignIn"
 
-import { Shell } from "../components/Shell"
-import { ProductAnalyticsPage } from "./ProductAnalytics"
-import { ProductDetailPage } from "./ProductDetailPage"
+import { ProductAnalyticsPage } from "./product-list"
+import { ProductDetailPage } from "./product-detail"
+
+import { Shell } from "../components/layout/Shell"
 import { AppProvider } from "../components/AppProvider"
 
 export const Routes = () => (

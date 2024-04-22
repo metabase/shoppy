@@ -11,7 +11,7 @@ interface FormValues {
 }
 
 export function SignIn() {
-  const [_, navigate] = useLocation()
+  const [, navigate] = useLocation()
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
   const form = useForm<FormValues>({
