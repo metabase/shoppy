@@ -4,7 +4,10 @@
   "main": "src/main.ts",
   "license": "MIT",
   "scripts": {
-    "dev": "esno src/main.ts"
+    "dev": "esno src/main.ts",
+    "drizzle:seed": "esno drizzle/seed/seed.ts",
+    "drizzle:migrate": "esno drizzle/migrate.ts",
+    "drizzle:generate": "drizzle-kit generate:pg"
   },
   "dependencies": {
     "argon2": "^0.40.1",
@@ -17,6 +20,7 @@
     "typescript": "^5.4.5"
   },
   "devDependencies": {
+    "@faker-js/faker": "^8.4.1",
     "@types/cors": "^2.8.17",
     "@types/express-session": "^1.18.0",
     "@types/jsonwebtoken": "^9.0.6",
