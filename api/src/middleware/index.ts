@@ -14,7 +14,7 @@ export function setupMiddleware(app: Express) {
     secret: SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: true },
+    cookie: { secure: false },
   })
 
   app.use(corsMiddleware)

@@ -1,3 +1,5 @@
+export const PORT = process.env.PORT ?? 3003
+
 export const METABASE_SITE_URL =
   process.env.METABASE_SITE_URL ?? "http://localhost:3000"
 

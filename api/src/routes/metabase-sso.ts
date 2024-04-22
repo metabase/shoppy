@@ -1,6 +1,7 @@
 import { Request, Response } from "express"
 import { signUserToken } from "../auth/sign"
 import { METABASE_SITE_URL } from "../constants/env"
+import { SSO_NOT_CONFIGURED_MESSAGE } from "../constants/errors"
 
 export async function metabaseAuthHandler(req: Request, res: Response) {
   const { user } = req.session
@@ -8,7 +9,7 @@ export async function metabaseAuthHandler(req: Request, res: Response) {
   if (!user) {
     return res.status(500).json({
       status: "error",
-      message: "Not authenticated",
+      message: "not authenticated",
     })
   }
 
@@ -22,14 +23,25 @@ export async function metabaseAuthHandler(req: Request, res: Response) {
       credentials: "include",
     })
 
-    const token = await response.json()
+    const text = await response.text()
+
+    if (text.includes(`SSO has not been enabled`)) {
+      return res.status(500).json({
+        status: "error",
+        message: SSO_NOT_CONFIGURED_MESSAGE,
+      })
+    }
+
+    const token = JSON.parse(text)
 
     return res.status(200).json(token)
   } catch (error) {
-    res.status(500).json({
-      status: "error",
-      message: "authentication failed",
-      error,
-    })
+    if (error instanceof Error) {
+      res.status(500).json({
+        status: "error",
+        message: "authentication failed",
+        error: error.message,
+      })
+    }
   }
 }
