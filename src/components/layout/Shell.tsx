@@ -18,7 +18,6 @@ export function Shell(props: Props) {
         breakpoint: "sm",
         collapsed: { mobile: !opened },
       }}
-      bg="#4C5773"
       padding="md"
     >
       <AppShell.Navbar p="md" bg="transparent" withBorder={false}>

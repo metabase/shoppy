@@ -37,7 +37,7 @@ export function SignIn() {
   }
 
   return (
-    <Box bg="#4C5773" className="text-white font-sans">
+    <Box className="text-white font-sans">
       <Flex
         maw={340}
         mx="auto"
