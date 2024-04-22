@@ -1,4 +1,3 @@
-import { MantineProvider } from "@mantine/core"
 import { MetabaseProvider } from "@metabase/embedding-sdk-react"
 
 import { METABASE_API_KEY, METABASE_INSTANCE_URL } from "../constants/env"
@@ -10,14 +9,10 @@ interface Props {
 const config = {
   metabaseInstanceUrl: METABASE_INSTANCE_URL,
   font: "Lato",
-  authType: "apiKey",
-  apiKey: METABASE_API_KEY,
+  authType: "jwt",
+  jwtProviderUri: "/metabase/sso",
 }
 
 export const AppProvider = ({ children }: Props) => {
-  return (
-    <MantineProvider>
-      <MetabaseProvider config={config}>{children}</MetabaseProvider>
-    </MantineProvider>
-  )
+  return <MetabaseProvider config={config}>{children}</MetabaseProvider>
 }
