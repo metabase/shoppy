@@ -1,4 +1,3 @@
-import dotenv from "dotenv"
 import express from "express"
 
 import { setupMiddleware } from "./middleware"
@@ -8,8 +7,6 @@ import { loginHandler } from "./routes/login"
 import { metabaseAuthHandler } from "./routes/metabase-sso"
 
 import { PORT } from "./constants/env"
-
-dotenv.config()
 
 const app = express()
 setupMiddleware(app)
