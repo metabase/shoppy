@@ -7,7 +7,7 @@ export async function loginHandler(req: Request, res: Response) {
   const user = await authenticate(req.body.email, req.body.password)
 
   if (!user) {
-    return res.status(500).json({
+    return res.status(401).json({
       status: "error",
       message: LOGIN_FAILED_MESSAGE,
     })

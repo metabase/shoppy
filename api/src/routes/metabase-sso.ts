@@ -7,7 +7,7 @@ export async function metabaseAuthHandler(req: Request, res: Response) {
   const { user } = req.session
 
   if (!user) {
-    return res.status(500).json({
+    return res.status(401).json({
       status: "error",
       message: "not authenticated",
     })
@@ -37,7 +37,7 @@ export async function metabaseAuthHandler(req: Request, res: Response) {
     return res.status(200).json(token)
   } catch (error) {
     if (error instanceof Error) {
-      res.status(500).json({
+      res.status(401).json({
         status: "error",
         message: "authentication failed",
         error: error.message,
