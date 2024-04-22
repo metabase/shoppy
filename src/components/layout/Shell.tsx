@@ -1,7 +1,6 @@
-import { AppShell, Box, Text } from "@mantine/core"
+import { AppShell, Text } from "@mantine/core"
 import { useDisclosure } from "@mantine/hooks"
 import { ReactNode } from "react"
-import { Link } from "wouter"
 import { SidebarLinks } from "./SidebarLinks"
 
 interface Props {

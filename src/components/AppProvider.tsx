@@ -2,6 +2,7 @@ import { MetabaseProvider } from "@metabase/embedding-sdk-react"
 
 import {
   AUTH_API_HOST,
+  JWT_PROVIDER_URI,
   METABASE_API_KEY,
   METABASE_INSTANCE_URL,
 } from "../constants/env"

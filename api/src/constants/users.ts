@@ -8,16 +8,14 @@ export const users: User[] = [
     firstName: "Rene",
     lastName: "Mueller",
     email: "rene@example.com",
-    accountId: 28,
-    accountName: "Customer-Acme",
+    group: "Charlie",
     hash: DEMO_PASSWORD_HASH,
   },
   {
     firstName: "Cecilia",
     lastName: "Stark",
     email: "cecilia@example.com",
-    accountId: 132,
-    accountName: "Customer-Fake",
+    group: "Delta",
     hash: DEMO_PASSWORD_HASH,
   },
 ]

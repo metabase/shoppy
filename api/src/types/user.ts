@@ -2,8 +2,7 @@ export interface User {
   email: string
   firstName: string
   lastName: string
-  accountId: number
-  accountName: string
+  group: string
   hash: string
 
   exp?: number

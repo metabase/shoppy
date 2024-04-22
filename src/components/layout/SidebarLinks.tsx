@@ -1,12 +1,12 @@
 import { Box, Text } from "@mantine/core"
 import { Link } from "wouter"
 
-interface Link {
+interface SidebarLink {
   to: string
   title: string
 }
 
-const links: Link[] = [
+const links: SidebarLink[] = [
   { to: "/admin/products", title: "PRODUCTS" },
   { to: "/admin/analytics", title: "ANALYTICS" },
   { to: "/admin/orders", title: "ORDERS" },
