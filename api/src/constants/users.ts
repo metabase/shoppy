@@ -1,0 +1,23 @@
+import { User } from "../types/user"
+
+/** Hash of the "password" password, used for the demo. */
+const DEMO_PASSWORD_HASH = `$argon2id$v=19$m=65536,t=3,p=4$SPxNs6dPuj0kL0HV/Q+EaQ$sxUyyap4NFEDweTLJZaoLbuVGZGTD297Dz+Hh3Jvahs`
+
+export const users: User[] = [
+  {
+    firstName: "Rene",
+    lastName: "Mueller",
+    email: "rene@example.com",
+    accountId: 28,
+    accountName: "Customer-Acme",
+    hash: DEMO_PASSWORD_HASH,
+  },
+  {
+    firstName: "Cecilia",
+    lastName: "Stark",
+    email: "cecilia@example.com",
+    accountId: 132,
+    accountName: "Customer-Fake",
+    hash: DEMO_PASSWORD_HASH,
+  },
+]
