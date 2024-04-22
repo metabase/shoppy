@@ -1,7 +1,7 @@
 import { TextInput, Button, Group, Box, Flex } from "@mantine/core"
-
 import { useForm, Form } from "@mantine/form"
-import { AUTH_API_HOST } from "../constants/env"
+
+import { login } from "../utils/login"
 
 interface FormValues {
   email: string
@@ -18,15 +18,7 @@ export function SignIn() {
   })
 
   async function handleSubmit({ email, password }: FormValues) {
-    const response = await fetch(`${AUTH_API_HOST}/login`, {
-      method: "POST",
-      body: JSON.stringify({ email, password }),
-      headers: { "Content-Type": "application/json" },
-    })
-
-    const data = await response.json()
-
-    console.log(data)
+    await login(email, password)
   }
 
   return (

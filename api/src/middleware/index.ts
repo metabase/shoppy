@@ -17,10 +17,10 @@ export function setupMiddleware(app: Express) {
     cookie: { secure: false },
   })
 
-  app.use(corsMiddleware)
   app.use(express.json())
   app.use(express.text())
   app.use(express.urlencoded({ extended: false }))
 
+  app.use(corsMiddleware)
   app.use(sessionMiddleware)
 }
