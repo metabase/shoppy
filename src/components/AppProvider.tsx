@@ -1,16 +1,24 @@
 import { MetabaseProvider } from "@metabase/embedding-sdk-react"
 
-import { METABASE_API_KEY, METABASE_INSTANCE_URL } from "../constants/env"
+import {
+  AUTH_API_HOST,
+  METABASE_API_KEY,
+  METABASE_INSTANCE_URL,
+} from "../constants/env"
 
 interface Props {
   children: React.ReactNode
 }
 
 const config = {
-  metabaseInstanceUrl: METABASE_INSTANCE_URL,
   font: "Lato",
-  authType: "jwt",
-  jwtProviderUri: "/metabase/sso",
+  metabaseInstanceUrl: METABASE_INSTANCE_URL,
+
+  authType: "apiKey",
+  apiKey: METABASE_API_KEY,
+
+  // authType: "jwt",
+  // jwtProviderUri: `${AUTH_API_HOST}${JWT_PROVIDER_URI}`,
 }
 
 export const AppProvider = ({ children }: Props) => {

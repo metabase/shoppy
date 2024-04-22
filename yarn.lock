@@ -6849,9 +6849,9 @@ identity-obj-proxy@^3.0.0:
     harmony-reflect "^1.4.6"
 
 iframe-resizer@^4.3.2:
-  version "4.3.10"
-  resolved "https://registry.yarnpkg.com/iframe-resizer/-/iframe-resizer-4.3.10.tgz#0bdf80f4f51c529f06c4db3c3716ab03b734288d"
-  integrity sha512-hv1E1twrVzxdbWcNU4iTnRp/vo/XB8S4s4FwiT0nYk7Q1oCbS5tWtTU/b/TjgEE0LSAX1VhaZGYCvz1jTP/mPA==
+  version "4.3.11"
+  resolved "https://registry.yarnpkg.com/iframe-resizer/-/iframe-resizer-4.3.11.tgz#6d13c23b19c528f3a43e301b4a0ea847cd034d90"
+  integrity sha512-5QtnsmfH11GDsuC7Gxd/eNzojudX3346Gb0E+Ku8ln8AtfSq+cWCZtnhCrthrtE7f1CI2/kwHkZ9G4sFYzHP7A==
 
 ignore@^5.2.0:
   version "5.3.1"

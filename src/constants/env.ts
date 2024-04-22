@@ -7,6 +7,9 @@
 export const AUTH_API_HOST =
   process.env.REACT_APP_AUTH_API_HOST ?? "http://localhost:3003"
 
+export const JWT_PROVIDER_URI =
+  process.env.REACT_APP_JWT_PROVIDER_URI ?? "/sso/metabase"
+
 /**
  * URL of the metabase instance.
  */
