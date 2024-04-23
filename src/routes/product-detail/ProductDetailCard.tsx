@@ -19,7 +19,11 @@ export const ProductDetailCard = ({ product }: Props) => {
       <Box className="space-y-2 p-3 border border-[#7173AD] rounded-md w-full">
         <Text>{product.category.name}</Text>
 
-        <Image src={image} maw={250} />
+        <Image
+          src={image}
+          maw={250}
+          className="object-cover object-center aspect-square"
+        />
       </Box>
 
       <Flex direction="column" className="space-y-4" p="md">

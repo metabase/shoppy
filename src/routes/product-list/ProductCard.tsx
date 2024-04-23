@@ -33,7 +33,10 @@ export const ProductCard = ({ product }: Props) => {
         </Box>
 
         <Box>
-          <Image src={image} className="w-full" />
+          <Image
+            src={image}
+            className="w-full object-cover object-center aspect-square"
+          />
         </Box>
 
         <Box className="text-white min-h-[70px] product-card-question-container">
