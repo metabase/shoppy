@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "esno src/main.ts",
-    "drizzle:seed": "esno drizzle/seed.ts",
+    "drizzle:seed:orders": "esno drizzle/seeder/generate-orders.ts",
     "drizzle:migrate": "esno drizzle/migrate.ts",
     "drizzle:generate": "drizzle-kit generate:pg",
     "drizzle:studio": "drizzle-kit studio"
