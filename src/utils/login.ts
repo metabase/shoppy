@@ -1,4 +1,4 @@
-import { AUTH_API_HOST } from "../constants/env"
+import { API_HOST } from "../constants/env"
 
 type LoginStatus = { ok: boolean; error?: string }
 
@@ -7,7 +7,7 @@ export async function login(
   password: string,
 ): Promise<LoginStatus> {
   try {
-    const response = await fetch(`${AUTH_API_HOST}/login`, {
+    const response = await fetch(`${API_HOST}/login`, {
       method: "POST",
       body: JSON.stringify({ email, password }),
       headers: { "Content-Type": "application/json" },

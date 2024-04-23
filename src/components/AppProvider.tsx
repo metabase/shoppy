@@ -1,7 +1,8 @@
 import { MetabaseProvider } from "@metabase/embedding-sdk-react"
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 
 import {
-  AUTH_API_HOST,
+  API_HOST,
   JWT_PROVIDER_URI,
   METABASE_INSTANCE_URL,
 } from "../constants/env"
@@ -21,9 +22,15 @@ const config = {
   metabaseInstanceUrl: METABASE_INSTANCE_URL,
 
   authType: "jwt",
-  jwtProviderUri: `${AUTH_API_HOST}${JWT_PROVIDER_URI}`,
+  jwtProviderUri: `${API_HOST}${JWT_PROVIDER_URI}`,
 }
 
+export const queryClient = new QueryClient()
+
 export const AppProvider = ({ children }: Props) => {
-  return <MetabaseProvider config={config}>{children}</MetabaseProvider>
+  return (
+    <QueryClientProvider client={queryClient}>
+      <MetabaseProvider config={config}>{children}</MetabaseProvider>
+    </QueryClientProvider>
+  )
 }
