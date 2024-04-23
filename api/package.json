@@ -5,9 +5,10 @@
   "license": "MIT",
   "scripts": {
     "dev": "esno src/main.ts",
-    "drizzle:seed": "esno drizzle/seed/seed.ts",
+    "drizzle:seed": "esno drizzle/seed.ts",
     "drizzle:migrate": "esno drizzle/migrate.ts",
-    "drizzle:generate": "drizzle-kit generate:pg"
+    "drizzle:generate": "drizzle-kit generate:pg",
+    "drizzle:studio": "drizzle-kit studio"
   },
   "dependencies": {
     "argon2": "^0.40.1",
@@ -16,6 +17,7 @@
     "express": "^4.19.2",
     "express-session": "^1.18.0",
     "jsonwebtoken": "^9.0.2",
+    "pg": "^8.11.5",
     "postgres": "^3.4.4",
     "typescript": "^5.4.5"
   },

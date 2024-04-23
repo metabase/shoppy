@@ -9,6 +9,7 @@ import {
 
 import { productCategories } from "./product-categories"
 import { shops } from "./shops"
+import { relations } from "drizzle-orm"
 
 export const products = pgTable("products", {
   id: bigint("id", { mode: "number" }).primaryKey().notNull(),
@@ -27,3 +28,10 @@ export const products = pgTable("products", {
     .notNull()
     .references(() => shops.id),
 })
+
+export const productsRelations = relations(products, ({ one, many }) => ({
+  category: one(productCategories, {
+    fields: [products.categoryId],
+    references: [productCategories.id],
+  }),
+}))
