@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query"
 
 import { ProductCard } from "./ProductCard"
 
-import { getProductList } from "../../utils/product-list"
+import { getProductList } from "../../utils/query-product"
 
 import "./product-list.css"
 

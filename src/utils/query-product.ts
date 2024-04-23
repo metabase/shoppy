@@ -10,3 +10,15 @@ export async function getProductList(): Promise<Product[]> {
 
   return products
 }
+
+export async function getProductById(id: number): Promise<Product | null> {
+  if (id === null) return null
+
+  const response = await fetch(`${API_HOST}/product/${id}`, {
+    method: "GET",
+  })
+
+  const { product } = (await response.json()) as { product: Product | null }
+
+  return product ?? null
+}
