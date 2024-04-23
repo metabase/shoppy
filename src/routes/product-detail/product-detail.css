@@ -7,6 +7,10 @@
   padding: 0;
 }
 
+.pd-question-container [data-testid="qb-filters-panel"] {
+  display: none;
+}
+
 .pd-trend-question-container {
   font-size: 12px;
 }
