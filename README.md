@@ -1,31 +1,27 @@
-# embedding-sdk-customer-zero
+# Customer Zero: Embedding SDK demo application
 
-Check [this article](https://www.notion.so/metabase/WIP-Embedding-SDK-8103306366be4f0786b489ad2324235c#7ea6f8f77d8448ff9d55af58f9e2d45e) for more information about Embedding SDK.
+## How to run the demo
 
-### Setup
+This demo uses the data from the hosted Metabase Cloud instance, therefore you do not need to run the Metabase server locally.
 
-#### In the [main metabase repo](https://github.com/metabase/metabase)
+- Create local environment files.
 
-1. Run Metabase instance from the main repo -
+  - `cp .env.example .env && cd api && cp .env.example .env`
 
-   `yarn dev-ee`
+- Update the API server's environment variables in `api/.env`.
 
-2. Navigate to the [admin site](http://localhost:3000/admin/settings/embedding-in-other-applications), enable embedding and set `AUTHORIZED ORIGINS` value in Interactive embedding settings to `http://localhost:3004`
-3. [Generate API key](http://localhost:3000/admin/settings/authentication/api-keys) to authorize API requests from the SDK.
+  - Update the `METABASE_JWT_SHARED_SECRET` to match the JWT signing key [configured in the Metabase Cloud instance](https://customer-zero.hosted.staging.metabase.com/admin/settings/authentication/jwt).
+  - Update the `SESSION_SECRET` to a random string.
 
-#### In this repo
+- Generate a [GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic) with the `read:packages` scope. This is needed to access the privately hosted `@metabase/embedding-sdk-react` package.
 
-1. Create a local env:
+- Add the generated GitHub access token to your `NPM_TOKEN` environment variable, e.g. via your bash profile, or WebStorm run configuration.
 
-   `cp .env.example .env`
+- Install the required dependencies.
 
-2. Add your API key to `.env` as `REACT_APP_API_KEY=XXXXX`
-3. Generate personal [Github access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic) with `read:packages` scope. It is needed to access privately hosted `@metabase/embedding-sdk-react` package.
-4. Add Github token be available as `NPM_TOKEN` env var - e.g. your bash profile, or WebStorm run configuration
-5. Install dependencies:
+  - `yarn install && cd api && yarn install`
 
-   `yarn install-deps`
+- Run the API server and the React frontend.
 
-6. Run this app:
-
-   `yarn start`
+  - `cd api && yarn dev`
+  - `yarn start`
