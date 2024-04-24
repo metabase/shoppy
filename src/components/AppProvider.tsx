@@ -4,7 +4,9 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import {
   API_HOST,
   JWT_PROVIDER_URI,
+  METABASE_AUTH_TYPE,
   METABASE_INSTANCE_URL,
+  METABASE_API_KEY,
 } from "../constants/env"
 
 interface Props {
@@ -20,9 +22,11 @@ interface Props {
 const config = {
   font: "Lato",
   metabaseInstanceUrl: METABASE_INSTANCE_URL,
+  authType: METABASE_AUTH_TYPE,
 
-  authType: "jwt",
-  jwtProviderUri: `${API_HOST}${JWT_PROVIDER_URI}`,
+  ...(METABASE_AUTH_TYPE === "jwt"
+    ? { jwtProviderUri: `${API_HOST}${JWT_PROVIDER_URI}` }
+    : { apiKey: METABASE_API_KEY }),
 }
 
 export const queryClient = new QueryClient()

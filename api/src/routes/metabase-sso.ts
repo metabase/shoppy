@@ -1,6 +1,8 @@
+import fetch from "node-fetch"
 import { Request, Response } from "express"
+
 import { signUserToken } from "../auth/sign"
-import { METABASE_SITE_URL } from "../constants/env"
+import { METABASE_INSTANCE_URL } from "../constants/env"
 import { SSO_NOT_CONFIGURED_MESSAGE } from "../constants/errors"
 
 export async function metabaseAuthHandler(req: Request, res: Response) {
@@ -13,15 +15,12 @@ export async function metabaseAuthHandler(req: Request, res: Response) {
     })
   }
 
-  const ssoUrl = new URL("/auth/sso", METABASE_SITE_URL)
+  const ssoUrl = new URL("/auth/sso", METABASE_INSTANCE_URL)
   ssoUrl.searchParams.set("jwt", signUserToken(user))
   ssoUrl.searchParams.set("token", "true")
 
   try {
-    const response = await fetch(ssoUrl, {
-      method: "GET",
-      credentials: "include",
-    })
+    const response = await fetch(ssoUrl, { method: "GET" })
 
     const text = await response.text()
 

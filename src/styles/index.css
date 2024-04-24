@@ -6,10 +6,8 @@
 @tailwind utilities;
 
 body {
-  font-family: "IBM Plex Sans", source-code-pro, Menlo, Monaco, Consolas,
-    "Courier New", monospace;
-
-  background: #4C5773;
+  font-family: "Lato", sans-serif;
+  background: #4c5773;
 }
 
 #metabase-sdk-root {

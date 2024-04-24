@@ -18,7 +18,7 @@ export const ProductCard = ({ product }: Props) => {
             size="xs"
             variant="outline"
             color="violet"
-            classNames={{ input: "bg-transparent" }}
+            classNames={{ input: "bg-transparent cursor-pointer" }}
           />
 
           <Text size="xs" truncate="end">
