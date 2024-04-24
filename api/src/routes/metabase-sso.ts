@@ -1,4 +1,6 @@
+import fetch from "node-fetch"
 import { Request, Response } from "express"
+
 import { signUserToken } from "../auth/sign"
 import { METABASE_INSTANCE_URL } from "../constants/env"
 import { SSO_NOT_CONFIGURED_MESSAGE } from "../constants/errors"
@@ -18,10 +20,7 @@ export async function metabaseAuthHandler(req: Request, res: Response) {
   ssoUrl.searchParams.set("token", "true")
 
   try {
-    const response = await fetch(ssoUrl, {
-      method: "GET",
-      credentials: "include",
-    })
+    const response = await fetch(ssoUrl, {method: "GET"})
 
     const text = await response.text()
 
