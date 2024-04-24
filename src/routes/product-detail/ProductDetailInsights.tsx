@@ -29,7 +29,7 @@ export const ProductDetailInsights = () => (
         Orders over time
       </Title>
 
-      <InteractiveQuestion questionId={90} />
+      <InteractiveQuestion questionId={95} />
     </Card>
 
     <Card

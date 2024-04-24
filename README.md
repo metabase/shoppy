@@ -12,6 +12,7 @@ This demo uses the data from the hosted Metabase Cloud instance, therefore you d
 
   - Update the `METABASE_JWT_SHARED_SECRET` to match the JWT signing key [configured in the Metabase Cloud instance](https://customer-zero.hosted.staging.metabase.com/admin/settings/authentication/jwt).
   - Update the `SESSION_SECRET` to a random string.
+  - Update the `DB_URL` to the PostgreSQL connection string of the hosted database.
 
 - Generate a [GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic) with the `read:packages` scope. This is needed to access the privately hosted `@metabase/embedding-sdk-react` package.
 
