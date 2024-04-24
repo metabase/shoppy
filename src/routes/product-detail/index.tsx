@@ -14,7 +14,7 @@ interface Props {
 export const ProductDetailPage = ({ id }: Props) => {
   const query = useQuery({
     queryKey: ["product", id ?? null],
-    queryFn: ({ queryKey: [_, id] }) => getProductById(parseInt(id)),
+    queryFn: ({ queryKey: [_, id] }) => getProductById(parseInt(id, 10)),
   })
 
   const product = query.data

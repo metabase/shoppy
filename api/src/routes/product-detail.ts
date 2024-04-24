@@ -11,7 +11,7 @@ export async function productDetailHandler(req: Request, res: Response) {
 
   try {
     const product = await db.query.products.findFirst({
-      where: (products, { eq }) => eq(products.id, parseInt(productId)),
+      where: (products, { eq }) => eq(products.id, parseInt(productId, 10)),
       columns: {
         id: true,
         title: true,
