@@ -15,7 +15,7 @@ export const ProductCard = ({ id }: Props) => {
             size="xs"
             variant="outline"
             color="violet"
-            classNames={{ input: "bg-transparent" }}
+            classNames={{ input: "bg-transparent cursor-pointer" }}
           />
 
           <Text size="xs">Keepwarm base layer</Text>
