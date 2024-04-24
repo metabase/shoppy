@@ -1,0 +1,15 @@
+@layer tailwind {
+  @tailwind base;
+}
+
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Lato", sans-serif;
+  background: #4c5773;
+}
+
+#metabase-sdk-root {
+  background: transparent;
+}
