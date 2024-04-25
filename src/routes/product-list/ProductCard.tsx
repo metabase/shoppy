@@ -1,14 +1,17 @@
 import { Stack, Box, Checkbox, Text, Image, Flex } from "@mantine/core"
 import { StaticQuestion } from "@metabase/embedding-sdk-react"
 import { Link } from "wouter"
+import { Product } from "../../types/product"
 
 interface Props {
-  id: number
+  product: Product
 }
 
-export const ProductCard = ({ id }: Props) => {
+export const ProductCard = ({ product }: Props) => {
+  const image = product.imageUrl ?? "/mock-t-shirt.webp"
+
   return (
-    <Link href={`/products/${id}`}>
+    <Link href={`/products/${product.id}`}>
       <Stack className="text-white border border-[#7173AD] rounded-md" px="xs">
         <Flex className="space-x-2 pt-2">
           <Checkbox
@@ -18,19 +21,26 @@ export const ProductCard = ({ id }: Props) => {
             classNames={{ input: "bg-transparent cursor-pointer" }}
           />
 
-          <Text size="xs">Keepwarm base layer</Text>
+          <Text size="xs" truncate="end">
+            {product.category.name}
+          </Text>
         </Flex>
 
         <Box>
-          <Text size="sm">Shirt</Text>
+          <Text size="sm" truncate="end">
+            {product.title}
+          </Text>
         </Box>
 
         <Box>
-          <Image src="/mock-t-shirt.webp" className="w-full" />
+          <Image
+            src={image}
+            className="w-full object-cover object-center aspect-square"
+          />
         </Box>
 
         <Box className="text-white min-h-[70px] product-card-question-container">
-          <StaticQuestion questionId={89} showVisualizationSelector={false} />
+          <StaticQuestion questionId={94} showVisualizationSelector={false} />
         </Box>
       </Stack>
     </Link>
