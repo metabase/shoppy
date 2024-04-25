@@ -15,18 +15,3 @@ export const JWT_PROVIDER_URI =
  */
 export const METABASE_INSTANCE_URL =
   process.env.REACT_APP_METABASE_INSTANCE_URL ?? "http://localhost:3000"
-
-/**
- * Method of authentication to use for Metabase.
- * Can be either "jwt" or "apiKey"
- */
-export const METABASE_AUTH_TYPE =
-  (process.env.REACT_APP_AUTH_TYPE as "jwt" | "apiKey") ?? "jwt"
-
-/**
- * Metabase's API key can be generated in the Metabase admin settings.
- * This is used only for the "API key" authentication type.
- *
- * Refer to https://www.metabase.com/docs/latest/people-and-groups/api-keys.
- */
-export const METABASE_API_KEY = process.env.REACT_APP_API_KEY
