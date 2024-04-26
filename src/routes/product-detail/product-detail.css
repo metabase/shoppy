@@ -1,4 +1,4 @@
-.pd-question-container svg g.tick text {
+/* .pd-question-container svg g.tick text {
   fill: white !important;
   font-family: Lato, sans-serif;
 }
@@ -7,7 +7,6 @@
   padding: 0;
 }
 
-/** TODO: replace this with theming API */
 .pd-question-container [data-testid="qb-filters-panel"] {
   display: none;
 }
@@ -23,4 +22,4 @@
 
 .pd-trend-question-container h4 {
   color: white;
-}
+} */

@@ -1,5 +1,5 @@
 import { createTheme } from "@mantine/core"
-import { MetabaseTheme } from "@metabase/embedding-sdk-react"
+import type { MetabaseTheme } from "@metabase/embedding-sdk-react"
 
 import { colorTuple } from "../utils/color-tuple"
 
@@ -18,8 +18,25 @@ export const metabaseTheme: MetabaseTheme = {
   },
   other: {
     smartScalar: {
-      value: { color: "yellow", fontSize: "2rem" },
-      title: { color: "lime" },
+      value: {
+        color: "#12CBC4",
+        fontSize: "1.8rem",
+        lineHeight: 1.1,
+      },
+      variationPercent: {
+        color: "#FDA7DF",
+        fontSize: "0.9rem",
+      },
+      previousValue: {
+        text: {
+          color: "white",
+          fontSize: "0.9rem",
+        },
+        number: {
+          color: "#12CBC4",
+          fontSize: "0.9rem",
+        },
+      },
     },
     headings: {
       sizes: {
