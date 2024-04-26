@@ -9,6 +9,8 @@ import {
   METABASE_API_KEY,
 } from "../constants/env"
 
+import { metabaseTheme } from "../constants/theme"
+
 interface Props {
   children: React.ReactNode
 }
@@ -34,7 +36,9 @@ export const queryClient = new QueryClient()
 export const AppProvider = ({ children }: Props) => {
   return (
     <QueryClientProvider client={queryClient}>
-      <MetabaseProvider config={config}>{children}</MetabaseProvider>
+      <MetabaseProvider config={config} theme={metabaseTheme}>
+        {children}
+      </MetabaseProvider>
     </QueryClientProvider>
   )
 }

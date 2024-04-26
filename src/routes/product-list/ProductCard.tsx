@@ -1,6 +1,7 @@
 import { Stack, Box, Checkbox, Text, Image, Flex } from "@mantine/core"
 import { StaticQuestion } from "@metabase/embedding-sdk-react"
 import { Link } from "wouter"
+
 import { Product } from "../../types/product"
 
 interface Props {
