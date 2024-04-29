@@ -1,13 +1,26 @@
 'use strict';
 
+console.log('------- !!! -----')
+
 // Do this as the first thing so that any code reading it knows the right env.
 process.env.BABEL_ENV = 'development';
 process.env.NODE_ENV = 'development';
+
+const logMemoryUsage = () => {
+  const usage = process.memoryUsage()
+  const used = usage.heapUsed / 1024 / 1024;
+  const total = usage.heapTotal / 1024 / 1024;
+
+  console.log(`heap memory: used ${Math.round(used)}MB, total ${Math.round(total)}MB`);
+};
+
+setInterval(logMemoryUsage, 500);
 
 // Makes the script crash on unhandled rejections instead of silently
 // ignoring them. In the future, promise rejections that are not handled will
 // terminate the Node.js process with a non-zero exit code.
 process.on('unhandledRejection', err => {
+  console.log('--- unhandled rejection ---')
   throw err;
 });
 
@@ -113,10 +126,15 @@ checkBrowsers(paths.appPath, isInteractive)
       port,
     };
     const devServer = new WebpackDevServer(serverConfig, compiler);
+
     // Launch WebpackDevServer.
     devServer.startCallback(() => {
+      console.log(require('v8').getHeapStatistics().heap_size_limit)
+
+      console.log('--- webpack dev-server launched ---')
+
       if (isInteractive) {
-        clearConsole();
+        // clearConsole();
       }
 
       if (env.raw.FAST_REFRESH && semver.lt(react.version, '16.10.0')) {
@@ -128,7 +146,7 @@ checkBrowsers(paths.appPath, isInteractive)
       }
 
       console.log(chalk.cyan('Starting the development server...\n'));
-      openBrowser(urls.localUrlForBrowser);
+      // openBrowser(urls.localUrlForBrowser);
     });
 
     ['SIGINT', 'SIGTERM'].forEach(function (sig) {
