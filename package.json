@@ -31,9 +31,9 @@
   "scripts": {
     "install-deps": "yarn --force",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "start": "rimraf ./node_modules/.cache && PORT=3004 BROWSER=none react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "rimraf ./node_modules/.cache && NODE_OPTIONS=--max_old_space_size=8192 PORT=3004 BROWSER=none react-scripts start",
+    "build": "NODE_OPTIONS=--max_old_space_size=8192 react-scripts build",
+    "test": "NODE_OPTIONS=--max_old_space_size=8192 react-scripts test",
     "eject": "react-scripts eject",
     "format": "prettier . --write"
   },
