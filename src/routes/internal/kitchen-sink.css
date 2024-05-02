@@ -3,11 +3,6 @@
   height: 100%;
 }
 
-/* TODO! Remove Chart Padding */
-.question-container [data-testid="visualization-root"] > div > div {
-  padding: 0;
-}
-
 /* TODO! Chart Labels */
 .question-container svg text {
   fill: #ddd;
