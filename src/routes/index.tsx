@@ -4,6 +4,7 @@ import { SignIn } from "./SignIn"
 
 import { ProductAnalyticsPage } from "./product-list"
 import { ProductDetailPage } from "./product-detail"
+import { KitchenSink } from "./internal/KitchenSink"
 
 import { Shell } from "../components/layout/Shell"
 import { AppProvider } from "../components/AppProvider"
@@ -27,6 +28,8 @@ export const Routes = () => (
           <Route path="/analytics/new/from-scratch" component={() => null} />
           <Route path="/analytics/product" component={() => null} />
           <Route path="/analytics/custom" component={() => null} />
+
+          <Route path="/internal/kitchen-sink" component={KitchenSink} />
         </Route>
       </Shell>
     </AppProvider>

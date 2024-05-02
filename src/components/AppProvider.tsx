@@ -33,6 +33,7 @@ const theme = {
     "text-dark": colorTuple("hotpink"),
     "text-light": colorTuple("hotpink"),
   },
+  other: {},
 }
 
 export const AppProvider = ({ children }: Props) => {
