@@ -7,6 +7,8 @@ import {
   METABASE_INSTANCE_URL,
 } from "../constants/env"
 
+import { colorTuple } from "../utils/color-tuple"
+
 interface Props {
   children: React.ReactNode
 }
@@ -22,29 +24,6 @@ const config = {
 }
 
 export const queryClient = new QueryClient()
-
-type _TupleOf<T, N extends number, R extends unknown[]> = R["length"] extends N
-  ? R
-  : _TupleOf<T, N, [T, ...R]>
-
-export type Tuple<T, N extends number> = N extends N
-  ? number extends N
-    ? T[]
-    : _TupleOf<T, N, []>
-  : never
-
-export const colorTuple = (v: string): Tuple<string, 10> => [
-  v,
-  v,
-  v,
-  v,
-  v,
-  v,
-  v,
-  v,
-  v,
-  v,
-]
 
 const theme = {
   fontFamily: "Lato, sans-serif",
