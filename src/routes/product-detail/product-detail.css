@@ -1,13 +1,4 @@
-.pd-question-container svg g.tick text {
-  fill: white !important;
-  font-family: Lato, sans-serif;
-}
-
-.pd-question-container .CardVisualization {
-  padding: 0;
-}
-
-/** TODO: replace this with theming API */
+/** TODO! replace this with theming API */
 .pd-question-container [data-testid="qb-filters-panel"] {
   display: none;
 }
