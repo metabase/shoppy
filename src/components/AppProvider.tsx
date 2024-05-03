@@ -1,4 +1,9 @@
-import { MetabaseProvider } from "@metabase/embedding-sdk-react"
+import {
+  MetabaseProvider,
+  type MetabaseTheme,
+  type SDKConfig,
+} from "@metabase/embedding-sdk-react"
+
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 
 import {
@@ -7,8 +12,6 @@ import {
   METABASE_INSTANCE_URL,
 } from "../constants/env"
 
-import { colorTuple } from "../utils/color-tuple"
-
 interface Props {
   children: React.ReactNode
 }
@@ -16,24 +19,22 @@ interface Props {
 /**
  * Configuration for the Metabase provider.
  */
-const config = {
-  font: "Lato",
+const config: SDKConfig = {
   metabaseInstanceUrl: METABASE_INSTANCE_URL,
-  authType: "jwt",
   jwtProviderUri: `${API_HOST}${JWT_PROVIDER_URI}`,
 }
 
 export const queryClient = new QueryClient()
 
-const theme = {
-  fontFamily: "Lato, sans-serif",
-  headings: { fontFamily: "Lato, sans-serif" },
+const theme: MetabaseTheme = {
+  fontFamily: "Lato",
+  fontSize: "1rem",
+  lineHeight: "1.1rem",
   colors: {
-    brand: colorTuple("hotpink"),
-    "text-dark": colorTuple("white"),
-    "text-light": colorTuple("#2d2d30"),
+    brand: "#98D9D9",
+    "text-dark": "white",
+    "text-light": "#373F53",
   },
-  other: {},
 }
 
 export const AppProvider = ({ children }: Props) => {
