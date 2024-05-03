@@ -1,4 +1,4 @@
-import { Box, Title, Grid } from "@mantine/core"
+import { Box, Title, Grid, Card, Stack, Flex } from "@mantine/core"
 import { StaticQuestion } from "@metabase/embedding-sdk-react"
 
 import "./kitchen-sink.css"
@@ -15,19 +15,49 @@ const questions: number[] = [
 ]
 
 export const KitchenSink = () => (
-  <Box>
-    <Title c="yellow" pb={8}>
+  <Stack>
+    <Title pb={8} size="h2">
       Kitchen Sink
     </Title>
 
-    <Grid>
+    <Grid pb={20}>
       {questions.map((q) => (
         <Grid.Col key={q} span={4}>
-          <div className="question-container w-full h-full min-h-[300px]">
+          <Box className="ks-question-container" w="100%" h={300}>
             <StaticQuestion questionId={q} showVisualizationSelector={false} />
-          </div>
+          </Box>
         </Grid.Col>
       ))}
     </Grid>
-  </Box>
+
+    <Title pb={8} size="h2">
+      Layout Test
+    </Title>
+
+    <Stack>
+      <Title pb={8} size="h4">
+        Flex (h: 300px)
+      </Title>
+
+      <Flex mih={300}>
+        <StaticQuestion questionId={95} showVisualizationSelector={false} />
+      </Flex>
+
+      <Title pb={8} size="h4">
+        Card (h: 300px)
+      </Title>
+
+      <Card w="100%" h={300}>
+        <StaticQuestion questionId={95} showVisualizationSelector={false} />
+      </Card>
+
+      <Title pb={8} size="h4">
+        Box (h: 300px)
+      </Title>
+
+      <Box w="100%" h={300}>
+        <StaticQuestion questionId={95} showVisualizationSelector={false} />
+      </Box>
+    </Stack>
+  </Stack>
 )
