@@ -32,20 +32,22 @@ export const ProductCard = ({ product }: Props) => {
           </Text>
         </Box>
 
-        <Box>
-          <Image
-            src={image}
-            className="w-full object-cover object-center aspect-square"
-          />
-        </Box>
+        <Stack gap={5}>
+          <Box>
+            <Image
+              src={image}
+              className="w-full object-cover object-center aspect-square"
+            />
+          </Box>
 
-        <Box className="text-white product-card-question-container">
-          <StaticQuestion
-            questionId={94}
-            showVisualizationSelector={false}
-            height={70}
-          />
-        </Box>
+          <Box className="text-white product-card-question-container">
+            <StaticQuestion
+              questionId={94}
+              showVisualizationSelector={false}
+              height={70}
+            />
+          </Box>
+        </Stack>
       </Stack>
     </Link>
   )
