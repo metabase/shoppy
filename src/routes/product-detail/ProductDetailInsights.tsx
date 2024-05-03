@@ -21,7 +21,6 @@ export const ProductDetailInsights = () => (
 
     <Card
       maw={MAX_W}
-      h={300}
       bg="none"
       className="text-white pd-question-container border border-[#7173AD] rounded-md"
     >
@@ -29,21 +28,23 @@ export const ProductDetailInsights = () => (
         Orders over time
       </Title>
 
-      <InteractiveQuestion questionId={95} />
+      <InteractiveQuestion questionId={95} height={250} />
     </Card>
 
     <Card
       maw={MAX_W}
-      h={78}
       bg="none"
       className="text-white pd-trend-question-container border border-[#7173AD]"
     >
-      <StaticQuestion questionId={91} showVisualizationSelector={false} />
+      <StaticQuestion
+        questionId={91}
+        showVisualizationSelector={false}
+        height={43}
+      />
     </Card>
 
     <Card
       maw={MAX_W}
-      h={280}
       bg="none"
       className="text-white pd-question-container border border-[#7173AD]"
     >
@@ -51,7 +52,11 @@ export const ProductDetailInsights = () => (
         Sales goal
       </Title>
 
-      <StaticQuestion questionId={85} showVisualizationSelector={false} />
+      <StaticQuestion
+        questionId={85}
+        showVisualizationSelector={false}
+        height={180}
+      />
     </Card>
   </Box>
 )

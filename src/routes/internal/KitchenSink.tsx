@@ -23,9 +23,11 @@ export const KitchenSink = () => (
     <Grid pb={20}>
       {questions.map((q) => (
         <Grid.Col key={q} span={4}>
-          <Box className="ks-question-container" w="100%" h={300}>
-            <StaticQuestion questionId={q} showVisualizationSelector={false} />
-          </Box>
+          <StaticQuestion
+            questionId={q}
+            showVisualizationSelector={false}
+            height={300}
+          />
         </Grid.Col>
       ))}
     </Grid>
@@ -36,27 +38,39 @@ export const KitchenSink = () => (
 
     <Stack>
       <Title pb={8} size="h4">
-        Flex (h: 300px)
+        Flex
       </Title>
 
-      <Flex mih={300}>
-        <StaticQuestion questionId={95} showVisualizationSelector={false} />
+      <Flex>
+        <StaticQuestion
+          questionId={95}
+          showVisualizationSelector={false}
+          height={250}
+        />
       </Flex>
 
       <Title pb={8} size="h4">
-        Card (h: 300px)
+        Card
       </Title>
 
-      <Card w="100%" h={300}>
-        <StaticQuestion questionId={95} showVisualizationSelector={false} />
+      <Card w="100%">
+        <StaticQuestion
+          questionId={95}
+          showVisualizationSelector={false}
+          height={250}
+        />
       </Card>
 
       <Title pb={8} size="h4">
-        Box (h: 300px)
+        Box
       </Title>
 
-      <Box w="100%" h={300}>
-        <StaticQuestion questionId={95} showVisualizationSelector={false} />
+      <Box w="100%">
+        <StaticQuestion
+          questionId={95}
+          showVisualizationSelector={false}
+          height={250}
+        />
       </Box>
     </Stack>
   </Stack>
