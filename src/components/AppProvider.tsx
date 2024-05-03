@@ -31,9 +31,9 @@ const theme: MetabaseTheme = {
   fontSize: "1rem",
   lineHeight: "1.1rem",
   colors: {
-    brand: "lime",
-    "text-dark": "yellow",
-    "text-light": "green",
+    brand: "#98D9D9",
+    "text-dark": "white",
+    "text-light": "#373F53",
   },
 }
 
