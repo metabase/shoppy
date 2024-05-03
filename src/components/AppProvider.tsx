@@ -30,8 +30,8 @@ const theme = {
   headings: { fontFamily: "Lato, sans-serif" },
   colors: {
     brand: colorTuple("hotpink"),
-    "text-dark": colorTuple("hotpink"),
-    "text-light": colorTuple("hotpink"),
+    "text-dark": colorTuple("#eee"),
+    "text-light": colorTuple("#2d2d30"),
   },
   other: {},
 }

@@ -2,8 +2,3 @@
 .question-container > div {
   height: 100%;
 }
-
-/* TODO! Chart Labels */
-.question-container svg text {
-  fill: #ddd;
-}
