@@ -56,6 +56,14 @@ export const KitchenSink = () => (
       <Box w="100%">
         <StaticQuestion questionId={95} showVisualizationSelector={false} />
       </Box>
+
+      <Title pb={8} size="h4">
+        Table
+      </Title>
+
+      <Box w="100%" bg="white">
+        <StaticQuestion questionId={76} showVisualizationSelector={false} />
+      </Box>
     </Stack>
   </Stack>
 )
