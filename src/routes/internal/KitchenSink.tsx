@@ -23,11 +23,7 @@ export const KitchenSink = () => (
     <Grid pb={20}>
       {questions.map((q) => (
         <Grid.Col key={q} span={4}>
-          <StaticQuestion
-            questionId={q}
-            showVisualizationSelector={false}
-            height={300}
-          />
+          <StaticQuestion questionId={q} showVisualizationSelector={false} />
         </Grid.Col>
       ))}
     </Grid>
@@ -42,11 +38,7 @@ export const KitchenSink = () => (
       </Title>
 
       <Flex>
-        <StaticQuestion
-          questionId={95}
-          showVisualizationSelector={false}
-          height={250}
-        />
+        <StaticQuestion questionId={95} showVisualizationSelector={false} />
       </Flex>
 
       <Title pb={8} size="h4">
@@ -54,11 +46,7 @@ export const KitchenSink = () => (
       </Title>
 
       <Card w="100%">
-        <StaticQuestion
-          questionId={95}
-          showVisualizationSelector={false}
-          height={250}
-        />
+        <StaticQuestion questionId={95} showVisualizationSelector={false} />
       </Card>
 
       <Title pb={8} size="h4">
@@ -66,11 +54,7 @@ export const KitchenSink = () => (
       </Title>
 
       <Box w="100%">
-        <StaticQuestion
-          questionId={95}
-          showVisualizationSelector={false}
-          height={250}
-        />
+        <StaticQuestion questionId={95} showVisualizationSelector={false} />
       </Box>
     </Stack>
   </Stack>
