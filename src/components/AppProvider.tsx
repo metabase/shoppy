@@ -33,7 +33,8 @@ const theme: MetabaseTheme = {
   colors: {
     brand: "#98D9D9",
     "text-dark": "white",
-    "text-light": "#373F53",
+    "text-light": "white",
+    "text-medium": "white",
   },
 }
 
