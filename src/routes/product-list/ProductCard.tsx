@@ -40,7 +40,7 @@ export const ProductCard = ({ product }: Props) => {
             />
           </Box>
 
-          <Box className="text-white product-card-question-container">
+          <Box className="text-white product-card-question-container" mih={70}>
             <StaticQuestion
               questionId={94}
               showVisualizationSelector={false}
