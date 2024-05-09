@@ -1,4 +1,4 @@
-/** TODO! replace this with theming API */
+/** TODO: replace this with theming API */
 .pd-question-container [data-testid="qb-filters-panel"] {
   display: none;
 }
