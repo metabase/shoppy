@@ -35,6 +35,13 @@ const theme: MetabaseTheme = {
     "text-dark": "white",
     "text-light": "#373F53",
   },
+  components: {
+    table: {
+      cell: {
+        background: "#eee",
+      },
+    },
+  },
 }
 
 export const AppProvider = ({ children }: Props) => {
