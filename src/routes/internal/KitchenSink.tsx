@@ -45,22 +45,6 @@ export const KitchenSink = () => (
       </Flex>
 
       <Title pb={8} size="h4">
-        Card
-      </Title>
-
-      <Card w="100%">
-        <StaticQuestion questionId={95} showVisualizationSelector={false} />
-      </Card>
-
-      <Title pb={8} size="h4">
-        Box
-      </Title>
-
-      <Box w="100%">
-        <StaticQuestion questionId={95} showVisualizationSelector={false} />
-      </Box>
-
-      <Title pb={8} size="h4">
         Table Static
       </Title>
 
@@ -75,6 +59,22 @@ export const KitchenSink = () => (
       <Box w="100%">
         <InteractiveQuestion questionId={76} />
       </Box>
+
+      <Title pb={8} size="h4">
+        Box
+      </Title>
+
+      <Box w="100%">
+        <StaticQuestion questionId={95} showVisualizationSelector={false} />
+      </Box>
+
+      <Title pb={8} size="h4">
+        Card
+      </Title>
+
+      <Card w="100%">
+        <StaticQuestion questionId={95} showVisualizationSelector={false} />
+      </Card>
     </Stack>
   </Stack>
 )

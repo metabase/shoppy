@@ -31,14 +31,22 @@ const theme: MetabaseTheme = {
   fontSize: "1rem",
   lineHeight: "1.1rem",
   colors: {
-    brand: "#98D9D9",
-    "text-dark": "white",
-    "text-light": "#373F53",
+    brand: "#ffbe76",
+    "text-dark": "#c7ecee",
+    "text-light": "#4834d4",
   },
   components: {
     table: {
       cell: {
-        background: "#eee",
+        textColor: "#c7ecee",
+        backgroundColor: "#22a6b3",
+      },
+      header: {
+        textColor: "#c7ecee",
+        backgroundColor: "#22a6b3",
+      },
+      idColumn: {
+        backgroundColor: "#c7ecee",
       },
     },
   },
