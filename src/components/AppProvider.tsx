@@ -41,10 +41,6 @@ const theme: MetabaseTheme = {
         textColor: "#c7ecee",
         backgroundColor: "#22a6b3",
       },
-      header: {
-        textColor: "#c7ecee",
-        backgroundColor: "#22a6b3",
-      },
       idColumn: {
         backgroundColor: "#c7ecee",
       },
