@@ -23,35 +23,40 @@ export const ProductDetailInsights = () => (
       maw={MAX_W}
       bg="none"
       className="text-white pd-question-container border border-[#7173AD] rounded-md"
-      mih={220}
     >
       <Title size="h3" pb={10}>
         Orders over time
       </Title>
 
-      <InteractiveQuestion questionId={95} />
+      <InteractiveQuestion questionId={95} height={220} />
     </Card>
 
     <Card
       maw={MAX_W}
       bg="none"
       className="text-white pd-trend-question-container border border-[#7173AD]"
-      mih={40}
     >
-      <StaticQuestion questionId={91} showVisualizationSelector={false} />
+      <StaticQuestion
+        questionId={91}
+        showVisualizationSelector={false}
+        height={40}
+      />
     </Card>
 
     <Card
       maw={MAX_W}
       bg="none"
       className="text-white pd-question-container border border-[#7173AD]"
-      mih={150}
     >
       <Title size="h3" pb={10}>
         Sales goal
       </Title>
 
-      <StaticQuestion questionId={85} showVisualizationSelector={false} />
+      <StaticQuestion
+        questionId={85}
+        showVisualizationSelector={false}
+        height={150}
+      />
     </Card>
   </Box>
 )
