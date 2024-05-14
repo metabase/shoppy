@@ -28,10 +28,13 @@ export const queryClient = new QueryClient()
 
 const theme: MetabaseTheme = {
   fontFamily: "Lato",
+  fontSize: "16px",
+  lineHeight: 1.5,
   colors: {
-    brand: "#ffbe76",
+    brand: "#e74c3c",
     "text-dark": "#c7ecee",
-    "text-light": "#4834d4",
+    "text-light": "#c7ecee",
+    "text-medium": "#c7ecee",
   },
   components: {
     table: {
