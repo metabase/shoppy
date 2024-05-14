@@ -28,8 +28,6 @@ export const queryClient = new QueryClient()
 
 const theme: MetabaseTheme = {
   fontFamily: "Lato",
-  fontSize: "1rem",
-  lineHeight: "1.1rem",
   colors: {
     brand: "#ffbe76",
     "text-dark": "#c7ecee",
@@ -38,11 +36,12 @@ const theme: MetabaseTheme = {
   components: {
     table: {
       cell: {
-        textColor: "#c7ecee",
-        backgroundColor: "#22a6b3",
+        textColor: "#ecf0f1",
+        backgroundColor: "#e74c3c",
       },
       idColumn: {
-        backgroundColor: "#c7ecee",
+        textColor: "#e74c3c",
+        backgroundColor: "#ecf0f1",
       },
     },
   },

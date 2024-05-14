@@ -1,7 +1,7 @@
 /** TODO: replace this with theming API */
-.pd-question-container [data-testid="qb-filters-panel"] {
+/* .pd-question-container [data-testid="qb-filters-panel"] {
   display: none;
-}
+} */
 
 .pd-trend-question-container {
   font-size: 12px;
@@ -10,8 +10,4 @@
 .pd-trend-question-container h1 {
   font-size: 30px;
   line-height: 21px;
-}
-
-.pd-trend-question-container h4 {
-  color: white;
 }
