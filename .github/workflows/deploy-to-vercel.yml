@@ -1,80 +1,82 @@
-# name: Deploy to Vercel
+name: Deploy Customer Zero to Vercel
 
-# on:
-#   pull_request:
-#   push:
-#     branches:
-#       - master
-#       - release
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+      - release
 
-# jobs:
-#   checks:
-#     name: checks
-#     runs-on: ubuntu-22.04
-#     timeout-minutes: 3
+jobs:
+  checks:
+    name: checks
+    runs-on: ubuntu-22.04
+    timeout-minutes: 3
 
-#     strategy:
-#       matrix:
-#         node-version: [21.x]
+    strategy:
+      matrix:
+        node-version: [21.x]
 
-#     steps:
-#       - uses: actions/checkout@v2
-#       - name: Prepare Node.js
-#         uses: actions/setup-node@v4
-#         with:
-#           node-version: ${{ matrix.node-version }}
-#       - name: Get yarn cache
-#         uses: actions/cache@v2
-#         with:
-#           path: ~/.cache/yarn
-#           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-#       - run: yarn install --frozen-lockfile --prefer-offline
-#       - run: yarn checks
+    steps:
+      - uses: actions/checkout@v2
+      - name: Prepare Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Get yarn cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/yarn
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+      - run: yarn install --frozen-lockfile --prefer-offline
+      - run: yarn checks
 
-#   deploy-preview:
-#     name: deploy to vercel preview
-#     if: github.ref != 'refs/heads/master' && github.ref != 'refs/heads/release'
-#     runs-on: ubuntu-22.04
-#     needs:
-#       - checks
-#     steps:
-#       - uses: actions/checkout@v2
-#       - uses: amondnet/vercel-action@master
-#         with:
-#           vercel-token: ${{ secrets.VERCEL_TOKEN }} # Required
-#           github-token: ${{ secrets.GITHUB_TOKEN }} # Optional
-#           vercel-org-id: ${{ secrets.VERCEL_METABOAT_ORG_ID }} # Required
-#           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}} # Required
-#           scope: ${{ secrets.VERCEL_METABOAT_ORG_ID }} # Required when deploying to team account
-#   deploy-staging:
-#     name: deploy to vercel staging
-#     if: github.ref == 'refs/heads/master'
-#     runs-on: ubuntu-22.04
-#     needs:
-#       - checks
-#     steps:
-#       - uses: actions/checkout@v2
-#       - uses: amondnet/vercel-action@master
-#         with:
-#           vercel-token: ${{ secrets.VERCEL_TOKEN }} # Required
-#           github-token: ${{ secrets.GITHUB_TOKEN }} # Optional
-#           vercel-org-id: ${{ secrets.VERCEL_METABOAT_ORG_ID }} # Required
-#           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}} # Required
-#           scope: ${{ secrets.VERCEL_METABOAT_ORG_ID }} # Required when deploying to team account
-#   deploy-production:
-#     name: deploy to vercel production
-#     if: github.ref == 'refs/heads/release'
-#     runs-on: ubuntu-22.04
-#     needs:
-#       - checks
-#     steps:
-#       - uses: actions/checkout@v2
-#       - uses: amondnet/vercel-action@master
-#         with:
-#           github-comment: false
-#           vercel-token: ${{ secrets.VERCEL_TOKEN }} # Required
-#           github-token: ${{ secrets.GITHUB_TOKEN }} # Optional
-#           vercel-args: "--prod"
-#           vercel-org-id: ${{ secrets.VERCEL_METABOAT_ORG_ID }} # Required
-#           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}} # Required
-#           scope: ${{ secrets.VERCEL_METABOAT_ORG_ID }} # Required when deploying to team account
+  deploy-preview:
+    name: deploy to vercel preview
+    if: github.ref != 'refs/heads/master' && github.ref != 'refs/heads/release'
+    runs-on: ubuntu-22.04
+    needs:
+      - checks
+    steps:
+      - uses: actions/checkout@v2
+      - uses: amondnet/vercel-action@master
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }} # Required
+          github-token: ${{ secrets.GITHUB_TOKEN }} # Optional
+          vercel-org-id: ${{ secrets.VERCEL_METABOAT_ORG_ID }} # Required
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}} # Required
+          scope: ${{ secrets.VERCEL_METABOAT_ORG_ID }} # Required when deploying to team account
+
+  deploy-staging:
+    name: deploy to vercel staging
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-22.04
+    needs:
+      - checks
+    steps:
+      - uses: actions/checkout@v2
+      - uses: amondnet/vercel-action@master
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }} # Required
+          github-token: ${{ secrets.GITHUB_TOKEN }} # Optional
+          vercel-org-id: ${{ secrets.VERCEL_METABOAT_ORG_ID }} # Required
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}} # Required
+          scope: ${{ secrets.VERCEL_METABOAT_ORG_ID }} # Required when deploying to team account
+
+  deploy-production:
+    name: deploy to vercel production
+    if: github.ref == 'refs/heads/release'
+    runs-on: ubuntu-22.04
+    needs:
+      - checks
+    steps:
+      - uses: actions/checkout@v2
+      - uses: amondnet/vercel-action@master
+        with:
+          github-comment: false
+          vercel-token: ${{ secrets.VERCEL_TOKEN }} # Required
+          github-token: ${{ secrets.GITHUB_TOKEN }} # Optional
+          vercel-args: "--prod"
+          vercel-org-id: ${{ secrets.VERCEL_METABOAT_ORG_ID }} # Required
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}} # Required
+          scope: ${{ secrets.VERCEL_METABOAT_ORG_ID }} # Required when deploying to team account
