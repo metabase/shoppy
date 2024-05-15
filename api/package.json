@@ -4,6 +4,7 @@
   "main": "dist/main.js",
   "license": "MIT",
   "scripts": {
+    "start": "node dist/main.js",
     "dev": "esno src/main.ts",
     "build": "tsc",
     "drizzle:seed:orders": "esno drizzle/seeder/generate-orders.ts",
