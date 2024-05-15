@@ -1,17 +1,9 @@
 {
   "version": 2,
-  "buildCommand": "NODE_OPTIONS=\"--max-old-space-size=6144\" react-scripts build && cd api && tsc",
-  "builds": [
+  "rewrites": [
     {
-      "src": "api/dist/main.js",
-      "use": "@vercel/node",
-      "config": { "includeFiles": ["api/dist/**"] }
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "api/dist/main.js"
+      "source": "/api/(.*)",
+      "destination": "api/dist/main.js"
     }
   ]
 }
