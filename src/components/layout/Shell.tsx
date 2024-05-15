@@ -19,6 +19,7 @@ export function Shell(props: Props) {
         collapsed: { mobile: !opened },
       }}
       padding="md"
+      bg="#4c5773"
     >
       <AppShell.Navbar p="md" bg="transparent" withBorder={false}>
         <Link to="/admin/products">
