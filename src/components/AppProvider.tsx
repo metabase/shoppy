@@ -34,11 +34,11 @@ const theme: MetabaseTheme = {
     brand: "#0d5353",
     border: "#093333",
     filter: "#1da61f",
-    "bg-white": "#7080aa",
-    "bg-light": "#5d6a8d",
-    "text-dark": "white",
-    "text-light": "#373F53",
-    "text-medium": "#9CA3AF",
+    background: "#7080aa",
+    "background-hover": "#5d6a8d",
+    "text-primary": "white",
+    "text-tertiary": "#373F53",
+    "text-secondary": "#9CA3AF",
   },
 }
 
