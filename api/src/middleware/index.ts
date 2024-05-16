@@ -2,11 +2,21 @@ import cors from "cors"
 import express, { Express } from "express"
 import session from "express-session"
 
-import { FRONTEND_URL, SESSION_SECRET } from "../constants/env"
+import { FRONTEND_URL, SESSION_SECRET, VERCEL_URL, VERCEL_PROJECT_PRODUCTION_URL, VERCEL_BRANCH_URL } from "../constants/env"
 
 export function setupMiddleware(app: Express) {
+  const origin = [
+    FRONTEND_URL,
+
+    // Add Vercel urls for each deployments.
+    // Remove if you are not using Vercel to host the demo.
+    VERCEL_URL,
+    VERCEL_BRANCH_URL,
+    VERCEL_PROJECT_PRODUCTION_URL,
+  ].filter(url => url) as string[]
+
   const corsMiddleware = cors({
-    origin: FRONTEND_URL,
+    origin,
     credentials: true,
   })
 

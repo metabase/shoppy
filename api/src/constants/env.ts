@@ -15,3 +15,9 @@ export const FRONTEND_URL = process.env.FRONTEND_URL ?? "http://localhost:3004"
 
 export const SESSION_SECRET =
   process.env.SESSION_SECRET ?? "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+
+export const {
+  VERCEL_URL,
+  VERCEL_BRANCH_URL,
+  VERCEL_PROJECT_PRODUCTION_URL,
+} = process.env
