@@ -8,6 +8,9 @@ export function setupMiddleware(app: Express) {
   const origin = [
     FRONTEND_URL,
 
+    // Temporary: for developing locally with the production api.
+    "http://localhost:*",
+
     // Add Vercel urls for each deployments.
     // Remove if you are not using Vercel to host the demo.
     VERCEL_URL,
