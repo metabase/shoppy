@@ -1,7 +1,7 @@
 {
   "name": "customer-zero-api",
   "version": "1.0.0",
-  "main": "dist/main.js",
+  "main": "src/main.ts",
   "license": "MIT",
   "scripts": {
     "start": "node dist/main.js",
