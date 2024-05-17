@@ -17,6 +17,7 @@ export const SESSION_SECRET =
   process.env.SESSION_SECRET ?? "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
 
 export const {
+  VERCEL_ENV,
   VERCEL_URL,
   VERCEL_BRANCH_URL,
   VERCEL_PROJECT_PRODUCTION_URL,
