@@ -6,7 +6,7 @@
     "@mantine/core": "^7.8.0",
     "@mantine/form": "^7.8.0",
     "@mantine/hooks": "^7.8.0",
-    "@metabase/embedding-sdk-react": "file:../../metabase/resources/embedding-sdk",
+    "@metabase/embedding-sdk-react": "^0.1.3",
     "@tanstack/react-query": "^5.32.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -32,10 +32,12 @@
     "install-deps": "yarn --force",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "start": "rimraf ./node_modules/.cache && NODE_OPTIONS=--max_old_space_size=8192 PORT=3004 BROWSER=none react-scripts start",
-    "build": "NODE_OPTIONS=--max_old_space_size=8192 react-scripts build",
+    "build": "react-scripts build",
+    "api:build": "cd api && yarn build",
     "test": "NODE_OPTIONS=--max_old_space_size=8192 react-scripts test",
     "eject": "react-scripts eject",
-    "format": "prettier . --write"
+    "format": "prettier . --write",
+    "dev:link": "rm -rf node_modules/@metabase && yarn add file:../metabase/resources/embedding-sdk"
   },
   "eslintConfig": {
     "extends": [
