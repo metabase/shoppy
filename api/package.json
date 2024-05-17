@@ -4,7 +4,9 @@
   "main": "src/main.ts",
   "license": "MIT",
   "scripts": {
+    "start": "node dist/main.js",
     "dev": "esno src/main.ts",
+    "build": "tsc",
     "drizzle:seed:orders": "esno drizzle/seeder/generate-orders.ts",
     "drizzle:migrate": "esno drizzle/migrate.ts",
     "drizzle:generate": "drizzle-kit generate:pg",
@@ -17,8 +19,8 @@
     "express": "^4.19.2",
     "express-session": "^1.18.0",
     "jsonwebtoken": "^9.0.2",
+    "node-fetch": "^2",
     "pg": "^8.11.5",
-    "node-fetch": "^3.3.2",
     "postgres": "^3.4.4",
     "typescript": "^5.4.5"
   },
@@ -28,6 +30,7 @@
     "@types/express-session": "^1.18.0",
     "@types/jsonwebtoken": "^9.0.6",
     "@types/node": "^20.12.7",
+    "@types/node-fetch": "^2",
     "drizzle-kit": "^0.20.17",
     "esno": "^4.7.0"
   }

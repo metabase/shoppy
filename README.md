@@ -2,27 +2,24 @@
 
 ## How to run the demo
 
-This demo uses the data from the hosted Metabase Cloud instance, therefore you do not need to run the Metabase server locally.
+This demo uses the data from the hosted Metabase Cloud instance and provides a hosted JWT server, therefore you do not need to run the Metabase server and JWT server locally.
 
 - Create local environment files.
 
-  - `cp .env.example .env && cd api && cp .env.example .env`
-
-- Update the API server's environment variables in `api/.env`.
-
-  - Update the `METABASE_JWT_SHARED_SECRET` to match the JWT signing key [configured in the Metabase Cloud instance](https://customer-zero.hosted.staging.metabase.com/admin/settings/authentication/jwt).
-  - Update the `SESSION_SECRET` to a random string.
-  - Update the `DB_URL` to the PostgreSQL connection string of the hosted database.
-
-- Generate a [GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic) with the `read:packages` scope. This is needed to access the privately hosted `@metabase/embedding-sdk-react` package.
-
-- Add the generated GitHub access token to your `NPM_TOKEN` environment variable, e.g. via your bash profile, or WebStorm run configuration.
+  - `cp .env.example .env`
 
 - Install the required dependencies.
 
-  - `yarn install && cd api && yarn install`
+  - `yarn`
 
-- Run the API server and the React frontend.
+- Run the React frontend.
 
-  - `cd api && yarn dev`
   - `yarn start`
+
+## What if I want to run the backend locally?
+
+Note that you don't usually need to run this locally, unless you are debugging the JWT auth server.
+
+- Update the API server's environment variables in `api/.env`. If you are a Metabase employee, refer to the "Customer Zero - Environment File" item on the 1Password vault.
+- Run the API server
+  `cd api && yarn && yarn dev`
