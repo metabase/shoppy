@@ -12,7 +12,7 @@ This demo uses the data from the hosted Metabase Cloud instance and provides a h
 
   - `yarn`
 
-- Run the React frontend.
+- Run the React frontend. This starts the demo application on HTTPS, which is required to connect to the hosted JWT server.
 
   - `yarn start:https`
 
@@ -28,9 +28,9 @@ The following sections are for Metabase employees who are working on the embeddi
 
   - `yarn dev:link && yarn start:https`
 
-## What if I want to run the backend locally?
+## How to run the demo against a local JWT auth server?
 
-Note that you don't usually need to run this locally, unless you are debugging the JWT auth server.
+If you cannot use the hosted JWT server, you can run the JWT server locally.
 
 - Update the API server's environment variables in `api/.env`. If you are a Metabase employee, refer to the "Customer Zero - Environment File" item on the 1Password vault.
 

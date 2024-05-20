@@ -32,6 +32,7 @@
     "install-deps": "yarn --force",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "start": "rimraf ./node_modules/.cache && NODE_OPTIONS=--max_old_space_size=8192 PORT=3004 BROWSER=none react-scripts start",
+    "start:https": "HTTPS=true yarn start",
     "build": "react-scripts build",
     "api:build": "cd api && yarn build",
     "test": "NODE_OPTIONS=--max_old_space_size=8192 react-scripts test",
