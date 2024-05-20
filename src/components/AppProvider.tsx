@@ -28,19 +28,17 @@ export const queryClient = new QueryClient()
 
 const theme: MetabaseTheme = {
   fontFamily: "Lato",
-  fontSize: "1rem",
-  lineHeight: "1.1rem",
   colors: {
     filter: "#eb4d4b",
     summarize: "#be2edd",
-    positive: "#686de0",
+    positive: "#f6e58d",
     negative: "#ff7979",
     "text-primary": "#ffffff",
     "text-secondary": "#ffffff",
     "text-tertiary": "#ffffff",
   },
   components: {
-    scalar: { value: { fontSize: "18px" } },
+    scalar: { value: { fontSize: "24px", lineHeight: "21px" } },
   },
 }
 
