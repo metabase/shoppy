@@ -31,12 +31,12 @@ const theme: MetabaseTheme = {
   fontSize: "1rem",
   lineHeight: "1.1rem",
   colors: {
-    brand: "#98D9D9",
-    "text-primary": "white",
-    "text-secondary": "white",
-    "text-tertiary": "white",
-    background: "#4c5773",
-    "background-hover": "#2d2d30",
+    // brand: "#98D9D9",
+    // "text-primary": "white",
+    // "text-secondary": "white",
+    // "text-tertiary": "white",
+    // background: "#4c5773",
+    // "background-hover": "#2d2d30",
   },
 }
 
