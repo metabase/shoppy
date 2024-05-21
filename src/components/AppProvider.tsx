@@ -27,13 +27,25 @@ const config: SDKConfig = {
 export const queryClient = new QueryClient()
 
 const theme: MetabaseTheme = {
-  fontFamily: "Lato",
-  fontSize: "1rem",
-  lineHeight: "1.1rem",
+  fontFamily: "Playfair Display",
+  // fontSize: "1rem",
+  // lineHeight: "1.1rem",
   colors: {
-    brand: "#98D9D9",
-    "text-primary": "white",
-    "text-secondary": "#373F53",
+    // brand: "#0d5353",
+    // border: "#093333",
+    // filter: "#e74c3c",
+    background: "#7080aa",
+    // "background-hover": "#fff",
+    "text-primary": "#fff",
+    "text-tertiary": "#fff",
+    "text-secondary": "#fff",
+    charts: [
+      "#e74c3c",
+      "#6ab04c",
+      { base: "#4834d4" },
+      { base: "#be2edd", lighter: "#e056fd" },
+      { base: "#30336b", darker: "#130f40" },
+    ],
   },
 }
 

@@ -61,8 +61,40 @@ export const KitchenSink = () => (
         Table
       </Title>
 
-      <Box w="100%" bg="white">
+      <Box w="100%">
         <StaticQuestion questionId={76} showVisualizationSelector={false} />
+      </Box>
+
+      <Title pb={8} size="h4">
+        Pie Chart
+      </Title>
+
+      <Box w="100%">
+        <StaticQuestion questionId={116} showVisualizationSelector={false} />
+      </Box>
+
+      <Title pb={8} size="h4">
+        Funnel
+      </Title>
+
+      <Box w="100%">
+        <StaticQuestion questionId={118} showVisualizationSelector={false} />
+      </Box>
+
+      <Title pb={8} size="h4">
+        Waterfall
+      </Title>
+
+      <Box w="100%">
+        <StaticQuestion questionId={119} showVisualizationSelector={false} />
+      </Box>
+
+      <Title pb={8} size="h4">
+        Row
+      </Title>
+
+      <Box w="100%">
+        <StaticQuestion questionId={120} showVisualizationSelector={false} />
       </Box>
     </Stack>
   </Stack>
