@@ -5,13 +5,13 @@ import "./kitchen-sink.css"
 
 const questions: number[] = [
   // bar
-  95,
+  122,
 
   // line
-  96,
+  123,
 
   // area
-  97,
+  124,
 ]
 
 export const KitchenSink = () => (
@@ -38,28 +38,8 @@ export const KitchenSink = () => (
       </Title>
 
       <Flex>
-        <StaticQuestion questionId={95} showVisualizationSelector={false} />
+        <StaticQuestion questionId={122} showVisualizationSelector={false} />
       </Flex>
-
-      <Title pb={8} size="h4">
-        Card
-      </Title>
-
-      <Card w="100%">
-        <StaticQuestion questionId={95} showVisualizationSelector={false} />
-      </Card>
-
-      <Title pb={8} size="h4">
-        Box
-      </Title>
-
-      <Box w="100%">
-        <StaticQuestion questionId={95} showVisualizationSelector={false} />
-      </Box>
-
-      <Title pb={8} size="h4">
-        Table
-      </Title>
 
       <Box w="100%">
         <StaticQuestion questionId={76} showVisualizationSelector={false} />
