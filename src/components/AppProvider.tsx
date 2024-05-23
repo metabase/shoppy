@@ -41,10 +41,13 @@ const theme: MetabaseTheme = {
     "text-secondary": "#fff",
     charts: [
       "#e74c3c",
-      "#6ab04c",
-      { base: "#4834d4" },
+      "#ff00ee",
+      { base: "#ffcc00" },
       { base: "#be2edd", lighter: "#e056fd" },
       { base: "#30336b", darker: "#130f40" },
+      "#be2edd",
+      "#8bb17b",
+      "#e74c3c",
     ],
   },
 }
