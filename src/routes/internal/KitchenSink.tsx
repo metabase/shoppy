@@ -16,7 +16,7 @@ const questions: number[] = [
 
 export const KitchenSink = () => (
   <Stack>
-    <Title pb={8} size="h2">
+    {/* <Title pb={8} size="h2">
       Kitchen Sink
     </Title>
 
@@ -26,7 +26,7 @@ export const KitchenSink = () => (
           <StaticQuestion questionId={q} showVisualizationSelector={false} />
         </Grid.Col>
       ))}
-    </Grid>
+    </Grid> */}
 
     <Title pb={8} size="h2">
       Layout Test
@@ -34,6 +34,30 @@ export const KitchenSink = () => (
 
     <Stack>
       <Title pb={8} size="h4">
+        Pivot Table
+      </Title>
+
+      <Box w="100%">
+        <StaticQuestion
+          questionId={111}
+          showVisualizationSelector={false}
+          height={200}
+        />
+      </Box>
+
+      <Title pb={8} size="h4">
+        P2
+      </Title>
+
+      <Box w="100%">
+        <StaticQuestion
+          questionId={117}
+          showVisualizationSelector={false}
+          height={200}
+        />
+      </Box>
+
+      {/* <Title pb={8} size="h4">
         Flex
       </Title>
 
@@ -42,28 +66,12 @@ export const KitchenSink = () => (
       </Flex>
 
       <Title pb={8} size="h4">
-        Card
-      </Title>
-
-      <Card w="100%">
-        <StaticQuestion questionId={95} showVisualizationSelector={false} />
-      </Card>
-
-      <Title pb={8} size="h4">
-        Box
-      </Title>
-
-      <Box w="100%">
-        <StaticQuestion questionId={95} showVisualizationSelector={false} />
-      </Box>
-
-      <Title pb={8} size="h4">
         Table
       </Title>
 
       <Box w="100%" bg="white">
         <StaticQuestion questionId={76} showVisualizationSelector={false} />
-      </Box>
+      </Box> */}
     </Stack>
   </Stack>
 )
