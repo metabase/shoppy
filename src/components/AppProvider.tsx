@@ -31,9 +31,21 @@ const theme: MetabaseTheme = {
   fontSize: "1rem",
   lineHeight: "1.1rem",
   colors: {
-    brand: "#98D9D9",
-    "text-primary": "white",
-    "text-secondary": "#373F53",
+    // brand: "#98D9D9",
+    // "text-primary": "#fff",
+    // "text-secondary": "#fff",
+    // "text-tertiary": "#fff",
+    // border: "#95a5a6",
+    // background: "#4c5773",
+    // "background-hover": "#22f",
+  },
+  components: {
+    table: {
+      cell: {
+        // textColor: "#4c5773",
+        // backgroundColor: "#fff",
+      },
+    },
   },
 }
 

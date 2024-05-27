@@ -1,5 +1,8 @@
 import { Box, Title, Grid, Card, Stack, Flex } from "@mantine/core"
-import { StaticQuestion } from "@metabase/embedding-sdk-react"
+import {
+  InteractiveQuestion,
+  StaticQuestion,
+} from "@metabase/embedding-sdk-react"
 
 import "./kitchen-sink.css"
 
@@ -34,27 +37,11 @@ export const KitchenSink = () => (
 
     <Stack>
       <Title pb={8} size="h4">
-        Pivot Table
-      </Title>
-
-      <Box w="100%">
-        <StaticQuestion
-          questionId={111}
-          showVisualizationSelector={false}
-          height={200}
-        />
-      </Box>
-
-      <Title pb={8} size="h4">
         P2
       </Title>
 
       <Box w="100%">
-        <StaticQuestion
-          questionId={117}
-          showVisualizationSelector={false}
-          height={200}
-        />
+        <InteractiveQuestion questionId={117} height={600} />
       </Box>
 
       {/* <Title pb={8} size="h4">
