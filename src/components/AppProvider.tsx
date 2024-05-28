@@ -35,15 +35,21 @@ const theme: MetabaseTheme = {
     // "text-primary": "#fff",
     // "text-secondary": "#fff",
     // "text-tertiary": "#fff",
-    // border: "#95a5a6",
-    // background: "#4c5773",
-    // "background-hover": "#22f",
+    border: "#95a5a6",
+    background: "#4c5773",
+    "background-hover": "#46464b",
   },
   components: {
     table: {
       cell: {
-        // textColor: "#4c5773",
-        // backgroundColor: "#fff",
+        textColor: "#fff",
+        backgroundColor: "#8e44ad",
+      },
+    },
+    pivotTable: {
+      rowToggle: {
+        textColor: "#fff",
+        backgroundColor: "#9b59b6",
       },
     },
   },
