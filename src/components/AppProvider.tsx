@@ -28,14 +28,11 @@ export const queryClient = new QueryClient()
 
 const theme: MetabaseTheme = {
   fontFamily: "Playfair Display",
-  // fontSize: "1rem",
-  // lineHeight: "1.1rem",
+  // CHANGE ME!
+  fontSize: "14px",
   colors: {
-    // brand: "#0d5353",
-    // border: "#093333",
-    // filter: "#e74c3c",
+    brand: "#98d9d9",
     background: "#7080aa",
-    // "background-hover": "#fff",
     "text-primary": "#fff",
     "text-tertiary": "#fff",
     "text-secondary": "#fff",
@@ -43,12 +40,26 @@ const theme: MetabaseTheme = {
       "#e74c3c",
       "#ff00ee",
       { base: "#ffcc00" },
-      { base: "#be2edd", lighter: "#e056fd" },
-      { base: "#30336b", darker: "#130f40" },
+      { base: "#be2edd", tint: "#e056fd" },
+      { base: "#30336b", shade: "#130f40" },
       "#be2edd",
       "#8bb17b",
       "#e74c3c",
     ],
+  },
+  components: {
+    table: {
+      cell: {
+        // CHANGE ME
+        // fontSize: "14px",
+      },
+    },
+    cartesian: {
+      label: {
+        // CHANGE ME
+        // fontSize: "20px",
+      },
+    },
   },
 }
 
