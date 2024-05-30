@@ -16,8 +16,6 @@ export async function loginHandler(req: Request, res: Response) {
   req.session.regenerate(() => {
     req.session.user = user
 
-    console.log(`[/login]: ${req.body.email} (${req.sessionID}):`, req.session)
-
     res.status(200).json({ status: "success" })
   })
 }

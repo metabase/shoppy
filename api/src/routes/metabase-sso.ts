@@ -40,21 +40,14 @@ export async function metabaseAuthHandler(req: Request, res: Response) {
 
     const token = JSON.parse(text)
 
-    console.log(`[/sso/metabase ok]: sess=${req.sessionID}, tok=${text}`)
-
     return res.status(200).json(token)
   } catch (error) {
     if (error instanceof Error) {
-      console.log(
-        `[/sso/metabase fail]: auth error, sess=${req.sessionID}`,
-        error.message,
-        req.session,
-      )
-
       res.status(401).json({
         status: "error",
         message: "authentication failed",
         error: error.message,
+        session: req.session,
       })
     }
   }
