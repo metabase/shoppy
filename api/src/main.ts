@@ -1,4 +1,4 @@
-import express, {Router} from "express"
+import express, { Router } from "express"
 
 import { setupMiddleware } from "./middleware"
 import { restrict } from "./middleware/restrict"
@@ -9,6 +9,7 @@ import { productListHandler } from "./routes/product-list"
 import { productDetailHandler } from "./routes/product-detail"
 
 import { PORT } from "./constants/env"
+import { pg } from "./utils/db"
 
 const app = express()
 setupMiddleware(app)
@@ -25,6 +26,10 @@ router.get("/user", restrict, (req: any, res: any) => {
 
 app.get("/", (_, res) => res.send({ status: "ok" }))
 app.use("/api", router)
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
   console.log(`[customer zero api] running at http://localhost:${PORT}`)
+
+  await pg.connect()
 })
+
+export default app
