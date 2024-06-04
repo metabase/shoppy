@@ -1,23 +1,25 @@
-import { Route, Switch } from "wouter"
+import { Redirect, Route, Switch } from "wouter"
 
-import { SignIn } from "./SignIn"
+import { DEFAULT_ADMIN_ROUTE, Login } from "./Login"
+import { Logout } from "./Logout"
 
 import { ProductAnalyticsPage } from "./product-list"
 import { ProductDetailPage } from "./product-detail"
 import { KitchenSink } from "./internal/KitchenSink"
 
-import { Shell } from "../components/layout/Shell"
 import { AppProvider } from "../components/AppProvider"
 import { AuthCheck } from "../components/AuthCheck"
-import { Logout } from "./Logout"
+import { Shell } from "../components/layout/Shell"
 
 export const Routes = () => (
   <Switch>
-    <Route path="/" component={SignIn} />
+    <Route path="/login" component={Login} />
 
-    <AppProvider>
-      <Shell>
-        <AuthCheck>
+    <AuthCheck>
+      <Route path="/" component={() => <Redirect to={DEFAULT_ADMIN_ROUTE} />} />
+
+      <AppProvider>
+        <Shell>
           <Route path="/admin" nest>
             <Route path="/products" component={ProductAnalyticsPage} />
 
@@ -35,10 +37,10 @@ export const Routes = () => (
 
           <Route path="/dev" component={KitchenSink} />
           <Route path="/logout" component={Logout} />
-        </AuthCheck>
-      </Shell>
-    </AppProvider>
+        </Shell>
+      </AppProvider>
 
-    <Route>404: No such page!</Route>
+      <Route>404: No such page!</Route>
+    </AuthCheck>
   </Switch>
 )

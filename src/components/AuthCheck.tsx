@@ -3,6 +3,7 @@ import { Redirect } from "wouter"
 import { Box, Loader } from "@mantine/core"
 
 import { getUser } from "../utils/query-user"
+import { FullPageLoader } from "./Loader"
 
 interface Props {
   children: React.ReactNode
@@ -11,16 +12,10 @@ interface Props {
 export const AuthCheck = (props: Props) => {
   const query = useQuery({ queryKey: ["auth"], queryFn: getUser })
 
-  if (query.isLoading) {
-    return (
-      <Box>
-        <Loader />
-      </Box>
-    )
-  }
+  if (query.isLoading) return <FullPageLoader />
 
   if (!query.data?.email) {
-    return <Redirect to="/" />
+    return <Redirect to="/login" />
   }
 
   return props.children

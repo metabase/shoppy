@@ -9,10 +9,7 @@ import { queryClient } from "../utils/query-client"
 export function Logout() {
   const logoutMutation = useMutation({
     mutationFn: logout,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["auth"] })
-    },
-    mutationKey: ["logout"],
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["auth"] }),
   })
 
   const { mutate } = logoutMutation
@@ -30,7 +27,7 @@ export function Logout() {
   }
 
   if (logoutMutation.isSuccess) {
-    return <Redirect to="/" />
+    return <Redirect to="/login" />
   }
 
   return (

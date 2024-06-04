@@ -1,25 +1,15 @@
-import { TextInput, Button, Group, Box, Flex, Text } from "@mantine/core"
+import { Redirect } from "wouter"
 import { useForm, Form } from "@mantine/form"
-import { Redirect, useLocation } from "wouter"
+import { useMutation } from "@tanstack/react-query"
+import { TextInput, Button, Group, Box, Flex, Text } from "@mantine/core"
 
-import { login } from "../utils/login"
-import { useState } from "react"
-import { useQuery } from "@tanstack/react-query"
-import { getUser } from "../utils/query-user"
+import { LoginValues, login } from "../utils/login"
+import { queryClient } from "../utils/query-client"
 
-interface FormValues {
-  email: string
-  password: string
-}
+export const DEFAULT_ADMIN_ROUTE = "/admin/products"
 
-const DEFAULT_ADMIN_ROUTE = "/admin/products"
-
-export function SignIn() {
-  const [, navigate] = useLocation()
-  const [errorMessage, setErrorMessage] = useState<string | null>(null)
-  const query = useQuery({ queryKey: ["auth"], queryFn: getUser })
-
-  const form = useForm<FormValues>({
+export function Login() {
+  const form = useForm<LoginValues>({
     mode: "uncontrolled",
     initialValues: { email: "", password: "" },
     validate: {
@@ -30,19 +20,14 @@ export function SignIn() {
     },
   })
 
-  async function handleSubmit({ email, password }: FormValues) {
-    const status = await login(email, password)
-    await query.refetch()
+  const loginMutation = useMutation({
+    async mutationFn(values: LoginValues) {
+      await login(values)
+      await queryClient.refetchQueries({ queryKey: ["auth"] })
+    },
+  })
 
-    setErrorMessage(status.error ?? null)
-
-    if (status.ok) {
-      navigate(DEFAULT_ADMIN_ROUTE)
-      return
-    }
-  }
-
-  if (query?.data?.email) {
+  if (loginMutation.isSuccess) {
     return <Redirect to={DEFAULT_ADMIN_ROUTE} />
   }
 
@@ -57,10 +42,10 @@ export function SignIn() {
         direction="column"
         className="space-y-4"
       >
-        {errorMessage && (
+        {loginMutation.isError && (
           <Box className="border border-red-500 p-3 rounded-lg w-full">
             <Text size="xs" c="red">
-              {errorMessage}
+              {loginMutation.error?.message}
             </Text>
           </Box>
         )}
@@ -68,7 +53,7 @@ export function SignIn() {
         <Box className="border border-gray-500 p-3 rounded-lg w-full">
           <Form
             form={form}
-            onSubmit={handleSubmit}
+            onSubmit={loginMutation.mutate}
             className="space-y-4 w-full"
           >
             <TextInput
@@ -86,7 +71,12 @@ export function SignIn() {
             />
 
             <Group justify="flex-end" mt="md">
-              <Button type="submit" color="#98D9D9" variant="outline">
+              <Button
+                type="submit"
+                color="#98D9D9"
+                variant="outline"
+                loading={loginMutation.isPending}
+              >
                 Login
               </Button>
             </Group>

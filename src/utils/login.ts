@@ -1,11 +1,11 @@
 import { API_HOST } from "../constants/env"
 
-type LoginStatus = { ok: boolean; error?: string }
+export type LoginValues = { email: string; password: string }
 
-export async function login(
-  email: string,
-  password: string,
-): Promise<LoginStatus> {
+export async function login({
+  email,
+  password,
+}: LoginValues): Promise<boolean> {
   try {
     const response = await fetch(`${API_HOST}/login`, {
       method: "POST",
@@ -14,12 +14,12 @@ export async function login(
       credentials: "include",
     })
 
-    if (response.status === 200) return { ok: true }
+    if (response.status === 200) return true
 
     const { message } = await response.json()
 
-    return { ok: false, error: message }
+    throw new Error(message)
   } catch (error) {
-    return { ok: false, error: "an unexpected error has occurred" }
+    throw new Error("an unexpected error has occurred")
   }
 }
