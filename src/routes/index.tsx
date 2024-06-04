@@ -28,9 +28,9 @@ export const Routes = () => (
           <Route path="/analytics/new/from-scratch" component={() => null} />
           <Route path="/analytics/product" component={() => null} />
           <Route path="/analytics/custom" component={() => null} />
-
-          <Route path="/internal/kitchen-sink" component={KitchenSink} />
         </Route>
+
+        <Route path="/dev" component={KitchenSink} />
       </Shell>
     </AppProvider>
 
