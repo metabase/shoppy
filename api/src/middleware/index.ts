@@ -1,6 +1,7 @@
 import cors from "cors"
 import express, { Express } from "express"
 import session from "express-session"
+import pgSessionStore from "connect-pg-simple"
 
 import {
   FRONTEND_URL,
@@ -10,9 +11,12 @@ import {
   VERCEL_BRANCH_URL,
   VERCEL_ENV,
 } from "../constants/env"
+import { pg } from "../utils/db"
 
 export function setupMiddleware(app: Express) {
   const isHosted = !!VERCEL_ENV
+
+  const SessionStore = pgSessionStore(session)
 
   const origin = [
     FRONTEND_URL,
@@ -34,10 +38,14 @@ export function setupMiddleware(app: Express) {
   })
 
   const sessionMiddleware = session({
+    name: "shoppy.session",
     secret: SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
     cookie: isHosted ? { secure: true, sameSite: "none" } : { secure: "auto" },
+
+    // Use PostgreSQL as a simple session store.
+    store: new SessionStore({ pool: pg, tableName: "session" }),
   })
 
   app.use(express.json())

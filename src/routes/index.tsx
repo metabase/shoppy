@@ -1,39 +1,46 @@
-import { Route, Switch } from "wouter"
+import { Redirect, Route, Switch } from "wouter"
 
-import { SignIn } from "./SignIn"
+import { DEFAULT_ADMIN_ROUTE, Login } from "./Login"
+import { Logout } from "./Logout"
 
 import { ProductAnalyticsPage } from "./product-list"
 import { ProductDetailPage } from "./product-detail"
 import { KitchenSink } from "./internal/KitchenSink"
 
-import { Shell } from "../components/layout/Shell"
 import { AppProvider } from "../components/AppProvider"
+import { AuthCheck } from "../components/AuthCheck"
+import { Shell } from "../components/layout/Shell"
 
 export const Routes = () => (
   <Switch>
-    <Route path="/" component={SignIn} />
+    <Route path="/login" component={Login} />
 
-    <AppProvider>
-      <Shell>
-        <Route path="/admin" nest>
-          <Route path="/products" component={ProductAnalyticsPage} />
+    <AuthCheck>
+      <Route path="/" component={() => <Redirect to={DEFAULT_ADMIN_ROUTE} />} />
 
-          <Route
-            path="/products/:id"
-            component={(props) => <ProductDetailPage id={props.params.id} />}
-          />
+      <AppProvider>
+        <Shell>
+          <Route path="/admin" nest>
+            <Route path="/products" component={ProductAnalyticsPage} />
 
-          <Route path="/analytics" component={() => null} />
-          <Route path="/analytics/new/from-template" component={() => null} />
-          <Route path="/analytics/new/from-scratch" component={() => null} />
-          <Route path="/analytics/product" component={() => null} />
-          <Route path="/analytics/custom" component={() => null} />
+            <Route
+              path="/products/:id"
+              component={(props) => <ProductDetailPage id={props.params.id} />}
+            />
 
-          <Route path="/internal/kitchen-sink" component={KitchenSink} />
-        </Route>
-      </Shell>
-    </AppProvider>
+            <Route path="/analytics" component={() => null} />
+            <Route path="/analytics/new/from-template" component={() => null} />
+            <Route path="/analytics/new/from-scratch" component={() => null} />
+            <Route path="/analytics/product" component={() => null} />
+            <Route path="/analytics/custom" component={() => null} />
+          </Route>
 
-    <Route>404: No such page!</Route>
+          <Route path="/dev" component={KitchenSink} />
+          <Route path="/logout" component={Logout} />
+        </Shell>
+      </AppProvider>
+
+      <Route>404: No such page!</Route>
+    </AuthCheck>
   </Switch>
 )

@@ -4,8 +4,6 @@ import {
   type SDKConfig,
 } from "@metabase/embedding-sdk-react"
 
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
-
 import {
   API_HOST,
   JWT_PROVIDER_URI,
@@ -23,8 +21,6 @@ const config: SDKConfig = {
   metabaseInstanceUrl: METABASE_INSTANCE_URL,
   jwtProviderUri: `${API_HOST}${JWT_PROVIDER_URI}`,
 }
-
-export const queryClient = new QueryClient()
 
 const theme: MetabaseTheme = {
   fontFamily: "Playfair Display",
@@ -63,12 +59,8 @@ const theme: MetabaseTheme = {
   },
 }
 
-export const AppProvider = ({ children }: Props) => {
-  return (
-    <QueryClientProvider client={queryClient}>
-      <MetabaseProvider config={config} theme={theme}>
-        {children}
-      </MetabaseProvider>
-    </QueryClientProvider>
-  )
-}
+export const AppProvider = ({ children }: Props) => (
+  <MetabaseProvider config={config} theme={theme}>
+    {children}
+  </MetabaseProvider>
+)

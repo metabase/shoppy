@@ -8,10 +8,17 @@ import { SSO_NOT_CONFIGURED_MESSAGE } from "../constants/errors"
 export async function metabaseAuthHandler(req: Request, res: Response) {
   const { user } = req.session
 
+  if (!req.sessionID) {
+    return res.status(401).json({
+      status: "error",
+      message: "unauthenticated - please login first",
+    })
+  }
+
   if (!user) {
     return res.status(401).json({
       status: "error",
-      message: "not authenticated",
+      message: "invalid login session - missing user data in session",
     })
   }
 
@@ -40,6 +47,7 @@ export async function metabaseAuthHandler(req: Request, res: Response) {
         status: "error",
         message: "authentication failed",
         error: error.message,
+        session: req.session,
       })
     }
   }
