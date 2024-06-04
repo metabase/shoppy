@@ -28,8 +28,10 @@ const theme: MetabaseTheme = {
   lineHeight: "1.1rem",
   colors: {
     brand: "#98D9D9",
-    "text-primary": "white",
+    "text-primary": "#373F53",
     "text-secondary": "#373F53",
+    background: "#373F53",
+    "background-hover": "#373F53",
   },
 }
 

@@ -1,5 +1,5 @@
 import { Box, Title, Grid, Card, Stack, Flex } from "@mantine/core"
-import { StaticQuestion } from "@metabase/embedding-sdk-react"
+import { StaticDashboard, StaticQuestion } from "@metabase/embedding-sdk-react"
 
 import "./kitchen-sink.css"
 
@@ -29,7 +29,11 @@ export const KitchenSink = () => (
     </Grid>
 
     <Title pb={8} size="h2">
-      Layout Test
+      Static Dashboard
+    </Title>
+
+    <Title pb={8} size="h2">
+      <StaticDashboard dashboardId={14} />
     </Title>
 
     <Stack>
