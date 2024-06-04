@@ -11,6 +11,7 @@ const links: SidebarLink[] = [
   { to: "/admin/analytics", title: "ANALYTICS" },
   { to: "/admin/orders", title: "ORDERS" },
   { to: "/admin/campaigns", title: "CAMPAIGNS" },
+  { to: "/logout", title: "LOGOUT" },
 ]
 
 export function SidebarLinks() {

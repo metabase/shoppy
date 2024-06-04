@@ -1,5 +1,5 @@
 {
-  "name": "customer-zero-api",
+  "name": "shoppy-api",
   "version": "1.0.0",
   "main": "src/main.ts",
   "license": "MIT",

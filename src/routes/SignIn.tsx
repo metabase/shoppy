@@ -1,18 +1,23 @@
 import { TextInput, Button, Group, Box, Flex, Text } from "@mantine/core"
 import { useForm, Form } from "@mantine/form"
-import { useLocation } from "wouter"
+import { Redirect, useLocation } from "wouter"
 
 import { login } from "../utils/login"
 import { useState } from "react"
+import { useQuery } from "@tanstack/react-query"
+import { getUser } from "../utils/query-user"
 
 interface FormValues {
   email: string
   password: string
 }
 
+const DEFAULT_ADMIN_ROUTE = "/admin/products"
+
 export function SignIn() {
   const [, navigate] = useLocation()
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
+  const query = useQuery({ queryKey: ["auth"], queryFn: getUser })
 
   const form = useForm<FormValues>({
     mode: "uncontrolled",
@@ -27,13 +32,18 @@ export function SignIn() {
 
   async function handleSubmit({ email, password }: FormValues) {
     const status = await login(email, password)
+    await query.refetch()
 
     setErrorMessage(status.error ?? null)
 
     if (status.ok) {
-      navigate("/admin/products")
+      navigate(DEFAULT_ADMIN_ROUTE)
       return
     }
+  }
+
+  if (query?.data?.email) {
+    return <Redirect to={DEFAULT_ADMIN_ROUTE} />
   }
 
   return (

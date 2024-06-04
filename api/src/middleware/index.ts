@@ -38,7 +38,7 @@ export function setupMiddleware(app: Express) {
   })
 
   const sessionMiddleware = session({
-    name: "customer-zero.session",
+    name: "shoppy.session",
     secret: SESSION_SECRET,
     resave: false,
     saveUninitialized: true,

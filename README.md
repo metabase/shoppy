@@ -1,4 +1,4 @@
-# Customer Zero: Embedding SDK demo application
+# Shoppy: Embedding SDK demo application
 
 ## How to run the demo
 
@@ -32,7 +32,7 @@ The following sections are for Metabase employees who are working on the embeddi
 
 If you cannot use the hosted JWT server, you can run the JWT server locally.
 
-- Update the API server's environment variables in `api/.env`. If you are a Metabase employee, refer to the "Customer Zero - Environment File" item on the 1Password vault.
+- Update the API server's environment variables in `api/.env`. If you are a Metabase employee, refer to the "Shoppy - Environment File" item on the 1Password vault.
 
 - Run the API server.
 
