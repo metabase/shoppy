@@ -3,7 +3,4 @@ export interface User {
   firstName: string
   lastName: string
   group: string
-
-  hash?: string
-  exp?: number
 }
