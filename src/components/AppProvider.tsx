@@ -24,7 +24,7 @@ const config: SDKConfig = {
 
 const theme: MetabaseTheme = {
   fontFamily: "Lato",
-  fontSize: "13px",
+  fontSize: "14px",
   lineHeight: "1.1rem",
   colors: {
     brand: "#98D9D9",

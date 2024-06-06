@@ -5,12 +5,12 @@ import { Logout } from "./Logout"
 
 import { ProductAnalyticsPage } from "./product-list"
 import { ProductDetailPage } from "./product-detail"
+import { AnalyticsPage } from "./analytics"
 import { KitchenSink } from "./internal/KitchenSink"
 
 import { AppProvider } from "../components/AppProvider"
 import { AuthCheck } from "../components/AuthCheck"
 import { Shell } from "../components/layout/Shell"
-import { AnalyticsPage } from "./analytics"
 
 export const Routes = () => (
   <Switch>

@@ -1401,7 +1401,7 @@
   resolved "https://registry.yarnpkg.com/@emotion/memoize/-/memoize-0.8.1.tgz#c1ddb040429c6d21d38cc945fe75c818cfb68e17"
   integrity sha512-W2P2c/VRW1/1tLox0mVUalvnWXxavmv/Oum2aPsRcoDJuob75FC3Y8FbpfLwUegRcxINtGUMPq0tFCvYNTBXNA==
 
-"@emotion/react@^11.10.5", "@emotion/react@^11.11.0":
+"@emotion/react@^11.10.5":
   version "11.11.4"
   resolved "https://registry.yarnpkg.com/@emotion/react/-/react-11.11.4.tgz#3a829cac25c1f00e126408fab7f891f00ecc3c1d"
   integrity sha512-t8AjMlF0gHpvvxk5mAtCqR4vmxiGHCeJBaQO6gncUSdklELOgtwjerNY2yuJNfwnc6vi16U/+uMF+afIawJ9iw==
@@ -1431,7 +1431,7 @@
   resolved "https://registry.yarnpkg.com/@emotion/sheet/-/sheet-1.2.2.tgz#d58e788ee27267a14342303e1abb3d508b6d0fec"
   integrity sha512-0QBtGvaqtWi+nx6doRwDdBIzhNdZrXUppvTM4dtZZWEGTXL/XE/yJxLMGlDT1Gt+UHH5IX1n+jkXyytE/av7OA==
 
-"@emotion/styled@^11.10.5", "@emotion/styled@^11.11.0":
+"@emotion/styled@^11.10.5":
   version "11.11.5"
   resolved "https://registry.yarnpkg.com/@emotion/styled/-/styled-11.11.5.tgz#0c5c8febef9d86e8a926e663b2e5488705545dfb"
   integrity sha512-/ZjjnaNKvuMPxcIiUkf/9SHoG4Q196DRl1w82hQ3WCsjo1IUR8uaGWrC6a87CrYAW0Kb/pK7hk8BnLgLRi9KoQ==
@@ -2030,118 +2030,6 @@
     react-grid-layout "^1.2.5"
     react-innertext "^1.1.5"
     react-is "^17.0.2"
-    react-markdown "^8.0.4"
-    react-motion "0.5.2"
-    react-redux "^8.0.5"
-    react-resizable "^3.0.5"
-    react-router "3"
-    react-router-redux "^4.0.8"
-    react-textarea-autosize "^5.2.1"
-    react-transition-group "^4.4.5"
-    react-use "^17.4.0"
-    react-virtualized "^9.22.3"
-    reduce-reducers "^1.0.4"
-    redux-actions "^2.0.1"
-    redux-auth-wrapper "^2.1.0"
-    redux-promise "^0.5.0"
-    regenerator-runtime "^0.14.1"
-    rehype-external-links "^2.0.1"
-    remark-gfm "1.0.0"
-    reselect "^5.1.0"
-    screenfull "^6.0.2"
-    scroll-into-view-if-needed "^3.1.0"
-    server-text-width "^1.0.2"
-    simple-statistics "^3.0.0"
-    slugg "^1.2.1"
-    sql-formatter "^15.1.2"
-    tether "^1.2.0"
-    tippy.js "^6.3.5"
-    ttag "1.7.21"
-    underscore "~1.13.3"
-    use-debounce "^10.0.0"
-    yup "^0.32.11"
-
-"@metabase/embedding-sdk-react@file:../metabase/resources/embedding-sdk":
-  version "0.1.6"
-  dependencies:
-    "@dnd-kit/core" "^6.0.8"
-    "@dnd-kit/modifiers" "^6.0.1"
-    "@dnd-kit/sortable" "^8.0.0"
-    "@emotion/cache" "^11.11.0"
-    "@emotion/is-prop-valid" "^1.1.1"
-    "@emotion/react" "^11.11.0"
-    "@emotion/styled" "^11.11.0"
-    "@mantine/core" "^6.0.13"
-    "@mantine/dates" "^6.0.13"
-    "@mantine/hooks" "^6.0.13"
-    "@react-oauth/google" "^0.11.1"
-    "@reduxjs/toolkit" "^1.9.3"
-    "@snowplow/browser-tracker" "^3.1.6"
-    "@tanstack/react-virtual" "^3.1.2"
-    "@tippyjs/react" "^4.2.6"
-    "@types/react-router" "3.0.27"
-    "@types/redux-auth-wrapper" "^2.0.16"
-    "@visx/axis" "1.8.0"
-    "@visx/clip-path" "^2.1.0"
-    "@visx/grid" "1.16.0"
-    "@visx/group" "1.7.0"
-    "@visx/scale" "1.7.0"
-    "@visx/shape" "2.12.2"
-    "@visx/text" "1.7.0"
-    ace-builds "^1.4.14"
-    classnames "^2.1.3"
-    color "^4.2.3"
-    crc-32 "^1.2.2"
-    cron-expression-validator "^1.0.20"
-    cronstrue "^2.11.0"
-    crossfilter "^1.3.12"
-    csv-parse "^5.5.6"
-    d3 "^3.5.17"
-    d3-array "^3.1.1"
-    d3-scale "^3.3.0"
-    d3-shape "^3.1.0"
-    dayjs "^1.10.4"
-    diff "^3.2.0"
-    echarts "^5.5.0"
-    fast-text-encoding "^1.0.6"
-    formik "^2.4.5"
-    hast-util-from-html "^2.0.1"
-    hast-util-to-html "^9.0.0"
-    history "3"
-    html2canvas "^1.4.1"
-    humanize-plus "^1.8.1"
-    icepick "2.4.0"
-    iframe-resizer "^4.3.2"
-    immer "^9.0.17"
-    inflection "^1.7.1"
-    js-cookie "^2.1.2"
-    jspdf "^2.5.1"
-    jsrsasign "^11.0.0"
-    kbar "^0.1.0-beta.45"
-    leaflet "^1.2.0"
-    leaflet-draw "^0.4.9"
-    leaflet.heat "^0.2.0"
-    lodash.debounce "^4.0.8"
-    lodash.orderby "^4.6.0"
-    moment-timezone "^0.5.38"
-    mustache "^2.3.2"
-    normalizr "^3.0.2"
-    password-generator "^2.0.1"
-    postcss-discard-comments "^6.0.1"
-    prop-types "^15.5.7"
-    re-reselect "^4.0.1"
-    react-ace "^10.1.0"
-    react-ansi-style "^1.0.0"
-    react-beautiful-dnd "^13.1.1"
-    react-color "^2.14.1"
-    react-copy-to-clipboard "^5.0.1"
-    react-dnd "4"
-    react-dnd-html5-backend "4"
-    react-draggable "^4.4.5"
-    react-dropzone "^14.2.3"
-    react-grid-layout "^1.2.5"
-    react-innertext "^1.1.5"
-    react-is "^18.2.0"
     react-markdown "^8.0.4"
     react-motion "0.5.2"
     react-redux "^8.0.5"
@@ -2849,11 +2737,6 @@
   dependencies:
     "@types/unist" "*"
 
-"@types/history@^3":
-  version "3.2.5"
-  resolved "https://registry.yarnpkg.com/@types/history/-/history-3.2.5.tgz#be614208f1a10a20c414b4d3762d1f2b65b53ae4"
-  integrity sha512-TqWYI0mlqS5qhH8MHgJJs0RcgvvZLxkn0bi2qK07liZqP7M9rl1kpJ6TCAUo5Cp4vP5DObIqHcky0MWyyQojVQ==
-
 "@types/history@^4.7.11":
   version "4.7.11"
   resolved "https://registry.yarnpkg.com/@types/history/-/history-4.7.11.tgz#56588b17ae8f50c53983a524fc3cc47437969d64"
@@ -3039,14 +2922,6 @@
     "@types/react" "*"
     hoist-non-react-statics "^3.3.0"
     redux "^4.0.0"
-
-"@types/react-router@3.0.27":
-  version "3.0.27"
-  resolved "https://registry.yarnpkg.com/@types/react-router/-/react-router-3.0.27.tgz#db78ffc4141e5b2d5b0e29bb5565094c05d864d3"
-  integrity sha512-Sq4bfTZ8TuHFTHXyzA3tu/BTGm/d4B8CwtOK4qOyJNoJMkY87qMOazkBizMHNpszVR1+kYOCNLjPdh/wAD7ESw==
-  dependencies:
-    "@types/history" "^3"
-    "@types/react" "*"
 
 "@types/react@*":
   version "18.3.2"
@@ -3611,11 +3486,6 @@ ace-builds@^1.4.13:
   version "1.33.2"
   resolved "https://registry.yarnpkg.com/ace-builds/-/ace-builds-1.33.2.tgz#4ce274f940491b4825f37881c633f7e0593e010b"
   integrity sha512-uDqCe+XDIdnADaDrA8o+x+qAfbM6uqyDQ43QcE6qC7zBPTvQSMOSPcXW+HvjZhEc2YbVYSaxXJX1qQKPgYqi5w==
-
-ace-builds@^1.4.14:
-  version "1.34.2"
-  resolved "https://registry.yarnpkg.com/ace-builds/-/ace-builds-1.34.2.tgz#c17c6fd7c661c7ba33f57533a42004a7b3f8dcbd"
-  integrity sha512-wiOZYuxyOSYfZzDasQTe+ZWmRlYxXSJM/kMKZ/bSqO1VgrBl+PaaTz/Sc+y7hXCKAUj3syUdpwxQyvwv9vQe6w==
 
 acorn-globals@^6.0.0:
   version "6.0.0"
@@ -5039,11 +4909,6 @@ csstype@^3.0.2, csstype@^3.1.2:
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.1.3.tgz#d80ff294d114fb0e6ac500fbf85b60137d7eff81"
   integrity sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw==
 
-csv-parse@^5.5.6:
-  version "5.5.6"
-  resolved "https://registry.yarnpkg.com/csv-parse/-/csv-parse-5.5.6.tgz#0d726d58a60416361358eec291a9f93abe0b6b1a"
-  integrity sha512-uNpm30m/AGSkLxxy7d9yRXpJQFrZzVWLFBkS+6ngPcZkw/5k3L/jjFuj7tVnEpRn+QgmiXr21nDlhCiUK4ij2A==
-
 d3-array@2, d3-array@^2.3.0:
   version "2.12.1"
   resolved "https://registry.yarnpkg.com/d3-array/-/d3-array-2.12.1.tgz#e20b41aafcdffdf5d50928004ececf815a465e81"
@@ -6233,11 +6098,6 @@ fast-shallow-equal@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/fast-shallow-equal/-/fast-shallow-equal-1.0.0.tgz#d4dcaf6472440dcefa6f88b98e3251e27f25628b"
   integrity sha512-HPtaa38cPgWvaCFmRNhlc6NG7pv6NUHqjPgVAkWGoB9mQMwYB27/K0CvOM5Czy+qpT3e8XJ6Q4aPAnzpNpzNaw==
-
-fast-text-encoding@^1.0.6:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/fast-text-encoding/-/fast-text-encoding-1.0.6.tgz#0aa25f7f638222e3396d72bf936afcf1d42d6867"
-  integrity sha512-VhXlQgj9ioXCqGstD37E/HBeqEGV/qOD/kmbVG8h5xKBYvM1L3lR1Zn4555cQ8GkYbJa8aJSipLPndE1k6zK2w==
 
 fastest-stable-stringify@^2.0.2:
   version "2.0.2"
@@ -10532,17 +10392,6 @@ re-reselect@^4.0.1:
   resolved "https://registry.yarnpkg.com/re-reselect/-/re-reselect-4.0.1.tgz#21a2306d11bbf377ac78687aa46e1a8848974194"
   integrity sha512-xVTNGQy/dAxOolunBLmVMGZ49VUUR1s8jZUiJQb+g1sI63GAv9+a5Jas9yHvdxeUgiZkU9r3gDExDorxHzOgRA==
 
-react-ace@^10.1.0:
-  version "10.1.0"
-  resolved "https://registry.yarnpkg.com/react-ace/-/react-ace-10.1.0.tgz#d348eac2b16475231779070b6cd16768deed565f"
-  integrity sha512-VkvUjZNhdYTuKOKQpMIZi7uzZZVgzCjM7cLYu6F64V0mejY8a2XTyPUIMszC6A4trbeMIHbK5fYFcT/wkP/8VA==
-  dependencies:
-    ace-builds "^1.4.14"
-    diff-match-patch "^1.0.5"
-    lodash.get "^4.4.2"
-    lodash.isequal "^4.5.0"
-    prop-types "^15.7.2"
-
 react-ace@^9.5.0:
   version "9.5.0"
   resolved "https://registry.yarnpkg.com/react-ace/-/react-ace-9.5.0.tgz#b6c32b70d404dd821a7e01accc2d76da667ff1f7"
@@ -10728,7 +10577,7 @@ react-is@^17.0.1, react-is@^17.0.2:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
-react-is@^18.0.0, react-is@^18.2.0:
+react-is@^18.0.0:
   version "18.3.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-18.3.1.tgz#e83557dc12eae63a99e003a46388b1dcbb44db7e"
   integrity sha512-/LLMVyas0ljjAtoYiPqYiL8VWXzUUdThrmU5+n20DZv+a+ClRoevUzw5JxU+Ieh5/c87ytoTBV9G1FiKfNJdmg==
