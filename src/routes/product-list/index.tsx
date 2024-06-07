@@ -5,8 +5,6 @@ import { ProductCard } from "./ProductCard"
 
 import { getProductList } from "../../utils/query-product"
 
-import "./product-list.css"
-
 export const ProductAnalyticsPage = () => {
   const query = useQuery({ queryKey: ["products"], queryFn: getProductList })
 

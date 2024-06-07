@@ -4,7 +4,6 @@ import { useQuery } from "@tanstack/react-query"
 import { ProductDetailCard } from "./ProductDetailCard"
 import { ProductDetailInsights } from "./ProductDetailInsights"
 
-import "./product-detail.css"
 import { getProductById } from "../../utils/query-product"
 
 interface Props {
