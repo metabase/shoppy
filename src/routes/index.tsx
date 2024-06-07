@@ -5,6 +5,7 @@ import { Logout } from "./Logout"
 
 import { ProductAnalyticsPage } from "./product-list"
 import { ProductDetailPage } from "./product-detail"
+import { AnalyticsPage } from "./analytics"
 import { KitchenSink } from "./internal/KitchenSink"
 
 import { AppProvider } from "../components/AppProvider"
@@ -28,7 +29,7 @@ export const Routes = () => (
               component={(props) => <ProductDetailPage id={props.params.id} />}
             />
 
-            <Route path="/analytics" component={() => null} />
+            <Route path="/analytics" component={AnalyticsPage} />
             <Route path="/analytics/new/from-template" component={() => null} />
             <Route path="/analytics/new/from-scratch" component={() => null} />
             <Route path="/analytics/product" component={() => null} />
