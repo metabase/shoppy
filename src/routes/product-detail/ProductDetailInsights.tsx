@@ -28,7 +28,7 @@ export const ProductDetailInsights = () => (
         Orders over time
       </Title>
 
-      <InteractiveQuestion questionId={95} height={220} />
+      <InteractiveQuestion questionId={95} height={250} />
     </Card>
 
     <Card
@@ -39,7 +39,7 @@ export const ProductDetailInsights = () => (
       <StaticQuestion
         questionId={91}
         showVisualizationSelector={false}
-        height={40}
+        height={55}
       />
     </Card>
 

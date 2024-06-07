@@ -24,12 +24,22 @@ const config: SDKConfig = {
 
 const theme: MetabaseTheme = {
   fontFamily: "Lato",
-  fontSize: "1rem",
-  lineHeight: "1.1rem",
+  fontSize: "14px",
   colors: {
     brand: "#98D9D9",
-    "text-primary": "white",
-    "text-secondary": "#373F53",
+    filter: "#98D9D9",
+    "text-primary": "#FFF",
+    "text-secondary": "#FFF",
+    background: "#4C5773",
+    charts: ["#98D9D9"],
+  },
+  components: {
+    scalar: {
+      value: {
+        fontSize: "25px",
+        lineHeight: "33px",
+      },
+    },
   },
 }
 
