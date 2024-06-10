@@ -24,6 +24,7 @@ export function Login() {
     async mutationFn(values: LoginValues) {
       await login(values)
       await queryClient.refetchQueries({ queryKey: ["auth"] })
+      await queryClient.refetchQueries({ queryKey: ["products"] })
     },
   })
 
