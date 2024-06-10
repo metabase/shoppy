@@ -10,6 +10,7 @@ export const users: User[] = [
     email: "rene@example.com",
     group: "Charlie",
     hash: DEMO_PASSWORD_HASH,
+    shopId: 1,
   },
   {
     firstName: "Cecilia",
@@ -17,5 +18,6 @@ export const users: User[] = [
     email: "cecilia@example.com",
     group: "Delta",
     hash: DEMO_PASSWORD_HASH,
+    shopId: 2,
   },
 ]
