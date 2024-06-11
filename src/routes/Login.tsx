@@ -16,7 +16,7 @@ export function Login() {
       email: (value) =>
         value.endsWith("@example.com")
           ? null
-          : "invalid email. use rene@example.com or cecilia@example.com",
+          : "invalid email. use rene@example.com, cecilia@example.com or emily@example.com",
     },
   })
 
@@ -86,8 +86,8 @@ export function Login() {
 
         <Box>
           <Text size="xs">
-            use "rene@example.com" or "cecilia@example.com" as the email, and
-            "password" as the password.
+            use "rene@example.com", "cecilia@example.com" or "emily@example.com"
+            as the email, and "password" as the password.
           </Text>
         </Box>
       </Flex>

@@ -22,4 +22,12 @@ export const users: User[] = [
     hash: DEMO_PASSWORD_HASH,
     shopId: 2,
   },
+  {
+    firstName: "Emily",
+    lastName: "Johnson",
+    email: "emily@example.com",
+    group: SHOP_ADMIN_GROUP,
+    hash: DEMO_PASSWORD_HASH,
+    shopId: 3,
+  },
 ]
