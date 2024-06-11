@@ -3,8 +3,12 @@ import jwt from "jsonwebtoken"
 import { User } from "../types/user"
 import { METABASE_JWT_SHARED_SECRET } from "../constants/env"
 
-export const signUserToken = (user: User): string =>
-  jwt.sign(
+export const signUserToken = (user: User): string => {
+  if (!METABASE_JWT_SHARED_SECRET) {
+    throw new Error("METABASE_JWT_SHARED_SECRET is not set in the environment!")
+  }
+
+  return jwt.sign(
     {
       email: user.email,
       first_name: user.firstName,
@@ -14,3 +18,4 @@ export const signUserToken = (user: User): string =>
     },
     METABASE_JWT_SHARED_SECRET,
   )
+}
