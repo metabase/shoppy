@@ -1,6 +1,10 @@
 # Shoppy: Embedding SDK demo application
 
-## How to run the demo
+Shoppy is a demo application that showcases the capabilities of Metabase's React Embedding SDK. It is a simple e-commerce dashboard that allows shop owers to view and analyze sales data.
+
+The demo is available at [https://metabase-shoppy.vercel.app](https://metabase-shoppy.vercel.app).
+
+## How to run the demo on your machine
 
 This demo uses the data from the hosted Metabase Cloud instance and provides a hosted JWT server, therefore you do not need to run the Metabase server and JWT server locally.
 
@@ -16,9 +20,13 @@ This demo uses the data from the hosted Metabase Cloud instance and provides a h
 
   - `yarn start:https`
 
+- Visit `https://localhost:3004` in your browser. You will get a warning about the HTTPS certificate being invalid, but you can ignore it and proceed to the demo. You can login with the credentials provided in the login page.
+
 ## How to develop the SDK locally?
 
-The following sections are for Metabase employees who are working on the embedding SDK.
+> [!IMPORTANT]  
+> The following sections are for Metabase employees who are working on the embedding SDK.
+> If you are not a Metabase employee, you can skip the following sections.
 
 - Place the metabase repository in `../metabase`
 
@@ -28,7 +36,7 @@ The following sections are for Metabase employees who are working on the embeddi
 
   - `yarn dev:link && yarn start:https`
 
-## How to run the demo against a local JWT auth server?
+### How to run the demo against a local JWT auth server?
 
 If you cannot use the hosted JWT server, you can run the JWT server locally.
 

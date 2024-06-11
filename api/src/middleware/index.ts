@@ -37,6 +37,10 @@ export function setupMiddleware(app: Express) {
     credentials: true,
   })
 
+  if (!SESSION_SECRET) {
+    throw new Error("SESSION_SECRET is not set in the environment!")
+  }
+
   const sessionMiddleware = session({
     name: "shoppy.session",
     secret: SESSION_SECRET,
