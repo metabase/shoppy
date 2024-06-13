@@ -14,6 +14,7 @@ export const signUserToken = (user: User): string => {
       first_name: user.firstName,
       last_name: user.lastName,
       groups: [user.group],
+      shop_id: user.shopId,
       exp: Math.round(Date.now() / 1000) + 60 * 0.25, // 1.1 minute expiration
     },
     METABASE_JWT_SHARED_SECRET,

@@ -3,6 +3,7 @@ export interface User {
   firstName: string
   lastName: string
   group: string
+  shopId: number
 
   hash?: string
   exp?: number

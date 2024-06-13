@@ -9,7 +9,12 @@ import { queryClient } from "../utils/query-client"
 export function Logout() {
   const logoutMutation = useMutation({
     mutationFn: logout,
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["auth"] }),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["auth"] })
+
+      // Workaround: force a full page reload to reset the MetabaseProvider state
+      window.location.href = "/"
+    },
   })
 
   const { mutate } = logoutMutation
@@ -24,10 +29,6 @@ export function Logout() {
         <Box>{logoutMutation.error.message}</Box>
       </Box>
     )
-  }
-
-  if (logoutMutation.isSuccess) {
-    return <Redirect to="/login" />
   }
 
   return (

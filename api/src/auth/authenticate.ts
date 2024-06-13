@@ -4,7 +4,8 @@ import { User } from "../types/user"
 import { users } from "../constants/users"
 import { omit } from "lodash"
 
-const findUserByEmail = (email: string) => users.find((u) => u.email === email)
+export const findUserByEmail = (email: string) =>
+  users.find((u) => u.email === email)
 
 export async function authenticate(
   email: string,
