@@ -24,7 +24,7 @@ const config: SDKConfig = {
 
 const theme: MetabaseTheme = {
   fontFamily: "Playfair Display",
-  // fontSize: "94px",
+  fontSize: "14px",
   colors: {
     brand: "#98D9D9",
     filter: "#98D9D9",
@@ -32,17 +32,7 @@ const theme: MetabaseTheme = {
     "text-primary": "#FFF",
     "text-secondary": "#FFF",
     background: "#4C5773",
-    // charts: [
-    //   "#ff0000",
-    //   "#ff0000",
-    //   "#ff0000",
-    //   "#ff0000",
-    //   "#ff0000",
-    //   "#ff0000",
-    //   "#ff0000",
-    //   "#ff0000",
-    //   "#ff0000",
-    // ],
+    charts: ["#98D9D9", "#98D9D9", "#98D9D9"],
   },
   components: {
     dashboard: {
