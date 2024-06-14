@@ -23,17 +23,33 @@ const config: SDKConfig = {
 }
 
 const theme: MetabaseTheme = {
-  fontFamily: "Lato",
-  fontSize: "14px",
+  fontFamily: "Playfair Display",
+  // fontSize: "94px",
   colors: {
     brand: "#98D9D9",
     filter: "#98D9D9",
+    border: "#7173AD",
     "text-primary": "#FFF",
     "text-secondary": "#FFF",
     background: "#4C5773",
-    charts: ["#98D9D9"],
+    // charts: [
+    //   "#ff0000",
+    //   "#ff0000",
+    //   "#ff0000",
+    //   "#ff0000",
+    //   "#ff0000",
+    //   "#ff0000",
+    //   "#ff0000",
+    //   "#ff0000",
+    //   "#ff0000",
+    // ],
   },
   components: {
+    dashboard: {
+      card: {
+        border: "1px solid #7173AD",
+      },
+    },
     scalar: {
       value: {
         fontSize: "25px",
