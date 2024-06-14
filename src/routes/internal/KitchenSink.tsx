@@ -20,6 +20,10 @@ export const KitchenSink = () => (
       Kitchen Sink
     </Title>
 
+    <Box mih="100vh">
+      <StaticDashboard dashboardId={17} withTitle withDownloads />
+    </Box>
+
     <Grid pb={20}>
       {questions.map((q) => (
         <Grid.Col key={q} span={4}>
