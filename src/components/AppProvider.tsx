@@ -33,14 +33,14 @@ const theme: MetabaseTheme = {
     background: "#4C5773",
     charts: ["#98D9D9"],
   },
-  components: {
-    scalar: {
-      value: {
-        fontSize: "25px",
-        lineHeight: "33px",
-      },
-    },
-  },
+  // components: {
+  //   scalar: {
+  //     value: {
+  //       fontSize: "25px",
+  //       lineHeight: "33px",
+  //     },
+  //   },
+  // },
 }
 
 export const AppProvider = ({ children }: Props) => (
