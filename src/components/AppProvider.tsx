@@ -32,16 +32,7 @@ const theme: MetabaseTheme = {
     "text-secondary": "#FFF",
     border: "#4C4A48",
     background: "#212121",
-    charts: [
-      "#00D9CC",
-      "#00D9CC",
-      "#00D9CC",
-      "#00D9CC",
-      "#00D9CC",
-      "#00D9CC",
-      "#00D9CC",
-      "#00D9CC",
-    ],
+    charts: ["#00D9CC"],
   },
   components: {
     dashboard: {
