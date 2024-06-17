@@ -36,12 +36,10 @@ const theme: MetabaseTheme = {
   },
   components: {
     cartesian: {
-      padding: "0.5rem 1rem",
+      padding: "6px 10px",
     },
     dashboard: {
-      // backgroundColor: ""
       card: {
-        // backgroundColor: "#2d2d30",
         border: "1px solid #7173AD",
       },
     },
