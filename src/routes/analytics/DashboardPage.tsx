@@ -10,7 +10,12 @@ export function DashboardPage(props: Props) {
 
   return (
     <Box mih="100vh">
-      <StaticDashboard dashboardId={dashboardId} withTitle withDownloads />
+      <StaticDashboard
+        dashboardId={dashboardId}
+        withTitle
+        withDownloads
+        withCardTitle={false}
+      />
     </Box>
   )
 }

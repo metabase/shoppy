@@ -26,18 +26,18 @@ const theme: MetabaseTheme = {
   fontFamily: "Lato",
   fontSize: "14px",
   colors: {
-    brand: "#98D9D9",
-    filter: "#98D9D9",
+    brand: "#FF8002",
+    filter: "#FF8002",
     "text-primary": "#FFF",
     "text-secondary": "#FFF",
-    border: "#7173AD",
-    background: "#4C5773",
-    charts: ["#98D9D9"],
+    border: "#4C4A48",
+    background: "#212121",
+    charts: ["#FF8002"],
   },
   components: {
     dashboard: {
       card: {
-        border: "1px solid #7173AD",
+        border: "1px solid #4C4A48",
       },
     },
     scalar: {

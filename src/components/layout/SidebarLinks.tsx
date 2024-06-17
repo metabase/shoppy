@@ -16,6 +16,7 @@ const links: SidebarLink[] = [
     children: [
       { to: "/admin/analytics", title: "Overview" },
       { to: "/admin/analytics/17", title: "Inventory Performance" },
+      { to: "/admin/analytics/custom", title: "Custom" },
     ],
   },
   { to: "/admin/orders", title: "ORDERS" },
@@ -46,7 +47,7 @@ const LinkRenderer = (link: SidebarLink, child?: boolean) => (
           cx(
             "hover:bg-transparent",
             props.className,
-            active ? "text-[#98D9D9]" : "hover:text-gray-300",
+            active ? "text-[#FF8002]" : "hover:text-gray-300",
           )
         }
       />

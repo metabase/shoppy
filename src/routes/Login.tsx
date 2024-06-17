@@ -33,7 +33,7 @@ export function Login() {
   }
 
   return (
-    <Box className="text-white font-sans" bg="#4c5773">
+    <Box className="text-white font-sans" bg="#212121">
       <Flex
         maw={340}
         mx="auto"
@@ -74,7 +74,7 @@ export function Login() {
             <Group justify="flex-end" mt="md">
               <Button
                 type="submit"
-                color="#98D9D9"
+                color="#FF8002"
                 variant="outline"
                 loading={loginMutation.isPending}
               >

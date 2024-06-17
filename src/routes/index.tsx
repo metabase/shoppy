@@ -15,6 +15,7 @@ import { KitchenSink } from "./internal/KitchenSink"
 import { AppProvider } from "../components/AppProvider"
 import { AuthCheck } from "../components/AuthCheck"
 import { Shell } from "../components/layout/Shell"
+import { AnalyticsCustomPage } from "./analytics/AnalyticsCustomPage"
 
 export const Routes = () => (
   <Switch>
@@ -26,30 +27,40 @@ export const Routes = () => (
       <AppProvider>
         <Shell>
           <Route path="/admin" nest>
-            <Route path="/products" component={ProductAnalyticsPage} />
+            <Switch>
+              <Route path="/products" component={ProductAnalyticsPage} />
 
-            <Route
-              path="/products/:id"
-              component={(props) => <ProductDetailPage id={props.params.id} />}
-            />
+              <Route
+                path="/products/:id"
+                component={(props) => (
+                  <ProductDetailPage id={props.params.id} />
+                )}
+              />
+            </Switch>
 
-            <Route path="/analytics" component={AnalyticsOverviewPage} />
+            <Switch>
+              <Route path="/analytics" component={AnalyticsOverviewPage} />
+              <Route path="/analytics/custom" component={AnalyticsCustomPage} />
 
-            <Route
-              path="/analytics/:id"
-              component={(props) => <DashboardPage id={props.params.id} />}
-            />
+              <Route
+                path="/analytics/:id"
+                component={(props) => <DashboardPage id={props.params.id} />}
+              />
+
+              <Route
+                path="/analytics/new/from-template"
+                component={() => null}
+              />
+              <Route
+                path="/analytics/new/from-scratch"
+                component={() => null}
+              />
+            </Switch>
 
             <Route
               path="/question/:id"
               component={(props) => <QuestionPage id={props.params.id} />}
             />
-
-            <Route path="/analytics/new/from-template" component={() => null} />
-            <Route path="/analytics/new/from-scratch" component={() => null} />
-
-            <Route path="/analytics/product" component={() => null} />
-            <Route path="/analytics/custom" component={() => null} />
           </Route>
 
           <Route path="/dev" component={KitchenSink} />
