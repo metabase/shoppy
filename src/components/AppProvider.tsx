@@ -36,7 +36,9 @@ const theme: MetabaseTheme = {
   },
   components: {
     dashboard: {
+      // backgroundColor: ""
       card: {
+        // backgroundColor: "#2d2d30",
         border: "1px solid #7173AD",
       },
     },
