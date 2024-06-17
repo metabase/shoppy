@@ -23,7 +23,7 @@ const config: SDKConfig = {
 }
 
 const theme: MetabaseTheme = {
-  fontFamily: "Lato",
+  fontFamily: "Roboto Slab",
   fontSize: "14px",
   colors: {
     brand: "#FF8002",
@@ -32,7 +32,16 @@ const theme: MetabaseTheme = {
     "text-secondary": "#FFF",
     border: "#4C4A48",
     background: "#212121",
-    charts: ["#FF8002"],
+    charts: [
+      "#00D9CC",
+      "#00D9CC",
+      "#00D9CC",
+      "#00D9CC",
+      "#00D9CC",
+      "#00D9CC",
+      "#00D9CC",
+      "#00D9CC",
+    ],
   },
   components: {
     dashboard: {

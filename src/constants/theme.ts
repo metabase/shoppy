@@ -1,8 +1,8 @@
 import { colorsTuple, createTheme } from "@mantine/core"
 
 export const theme = createTheme({
-  fontFamily: "Lato, sans-serif",
-  headings: { fontFamily: "Lato, sans-serif" },
+  fontFamily: "Roboto Slab, sans-serif",
+  headings: { fontFamily: "Roboto Slab, sans-serif" },
   colors: {
     blue: colorsTuple("#FF8002"),
     "text-dark": colorsTuple("white"),
