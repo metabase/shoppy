@@ -15,11 +15,11 @@ export function Shell(props: Props) {
   return (
     <AppShell
       navbar={{
-        width: 200,
+        width: 240,
         breakpoint: "sm",
         collapsed: { mobile: !opened },
       }}
-      padding="md"
+      padding="sm"
       bg="#4c5773"
     >
       <AppShell.Navbar p="md" bg="transparent" withBorder={false}>
