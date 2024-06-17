@@ -35,6 +35,9 @@ const theme: MetabaseTheme = {
     charts: ["#98D9D9", "#98D9D9", "#98D9D9"],
   },
   components: {
+    cartesian: {
+      padding: "0.5em 1em",
+    },
     dashboard: {
       // backgroundColor: ""
       card: {
