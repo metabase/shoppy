@@ -5,7 +5,7 @@ interface Props {
   id: string
 }
 
-export function AnalyticsPage(props: Props) {
+export function DashboardPage(props: Props) {
   const dashboardId = parseInt(props.id, 10)
 
   return (

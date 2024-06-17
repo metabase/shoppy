@@ -6,7 +6,8 @@ import { Logout } from "./Logout"
 import { ProductAnalyticsPage } from "./product-list"
 import { ProductDetailPage } from "./product-detail"
 
-import { AnalyticsPage } from "./analytics/AnalyticsPage"
+import { QuestionPage } from "./analytics/QuestionPage"
+import { DashboardPage } from "./analytics/DashboardPage"
 import { AnalyticsOverviewPage } from "./analytics/AnalyticsOverviewPage"
 
 import { KitchenSink } from "./internal/KitchenSink"
@@ -36,7 +37,12 @@ export const Routes = () => (
 
             <Route
               path="/analytics/:id"
-              component={(props) => <AnalyticsPage id={props.params.id} />}
+              component={(props) => <DashboardPage id={props.params.id} />}
+            />
+
+            <Route
+              path="/question/:id"
+              component={(props) => <QuestionPage id={props.params.id} />}
             />
 
             <Route path="/analytics/new/from-template" component={() => null} />

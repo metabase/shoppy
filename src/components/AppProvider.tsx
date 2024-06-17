@@ -30,10 +30,16 @@ const theme: MetabaseTheme = {
     filter: "#98D9D9",
     "text-primary": "#FFF",
     "text-secondary": "#FFF",
+    border: "#7173AD",
     background: "#4C5773",
     charts: ["#98D9D9"],
   },
   components: {
+    dashboard: {
+      card: {
+        border: "1px solid #7173AD",
+      },
+    },
     scalar: {
       value: {
         fontSize: "25px",
