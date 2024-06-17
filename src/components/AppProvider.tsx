@@ -36,7 +36,7 @@ const theme: MetabaseTheme = {
   },
   components: {
     cartesian: {
-      padding: "0.5em 1em",
+      padding: "0.5rem 1rem",
     },
     dashboard: {
       // backgroundColor: ""
