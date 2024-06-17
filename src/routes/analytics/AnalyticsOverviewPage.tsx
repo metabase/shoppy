@@ -1,5 +1,6 @@
 import { Box } from "@mantine/core"
+import { CollectionBrowser } from "@metabase/embedding-sdk-react"
 
 export function AnalyticsOverviewPage() {
-  return <Box>hello</Box>
+  return <CollectionBrowser collectionId={0} />
 }
