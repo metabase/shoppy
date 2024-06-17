@@ -12,7 +12,7 @@ export const ProductCard = ({ product }: Props) => {
 
   return (
     <Link href={`/products/${product.id}`}>
-      <Stack className="text-white border border-[#7173AD] rounded-md" px="xs">
+      <Stack className="text-white border border-[#4C4A48] rounded-md" px="xs">
         <Flex className="space-x-2 pt-2">
           <Checkbox
             size="xs"

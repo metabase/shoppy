@@ -16,7 +16,7 @@ export const ProductDetailCard = ({ product }: Props) => {
       className="space-y-8 text-white"
       pt={38}
     >
-      <Box className="space-y-2 p-3 border border-[#7173AD] rounded-md w-full">
+      <Box className="space-y-2 p-3 border border-[#4C4A48] rounded-md w-full">
         <Text>{product.category.name}</Text>
 
         <Image

@@ -22,7 +22,7 @@ export const ProductDetailInsights = () => (
     <Card
       maw={MAX_W}
       bg="none"
-      className="text-white pd-question-container border border-[#7173AD] rounded-md"
+      className="text-white pd-question-container border border-[#4C4A48] rounded-md"
     >
       <Title size="h3" pb={10}>
         Orders over time
@@ -34,7 +34,7 @@ export const ProductDetailInsights = () => (
     <Card
       maw={MAX_W}
       bg="none"
-      className="text-white pd-trend-question-container border border-[#7173AD]"
+      className="text-white pd-trend-question-container border border-[#4C4A48]"
     >
       <StaticQuestion
         questionId={91}
@@ -46,7 +46,7 @@ export const ProductDetailInsights = () => (
     <Card
       maw={MAX_W}
       bg="none"
-      className="text-white pd-question-container border border-[#7173AD]"
+      className="text-white pd-question-container border border-[#4C4A48]"
     >
       <Title size="h3" pb={10}>
         Sales goal
