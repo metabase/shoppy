@@ -24,8 +24,8 @@ export function Shell(props: Props) {
     >
       <AppShell.Navbar p="md" bg="transparent" withBorder={false}>
         <Link to="/admin/products">
-          <Text fw={900} size="lg" c="#FF8002" lh="xs" lts={2}>
-            SHOPPY
+          <Text fw={400} size="28px" c="#FFEDDB" lh="xs" lts={2}>
+            Shoppy
           </Text>
         </Link>
 

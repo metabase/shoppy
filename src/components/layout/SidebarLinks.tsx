@@ -9,24 +9,24 @@ interface SidebarLink {
 }
 
 const links: SidebarLink[] = [
-  { to: "/admin/products", title: "PRODUCTS" },
+  { to: "/admin/products", title: "Products" },
   {
     to: "#",
-    title: "ANALYTICS",
+    title: "Analytics",
     children: [
       { to: "/admin/analytics", title: "Overview" },
       { to: "/admin/analytics/17", title: "Inventory Performance" },
       { to: "/admin/analytics/custom", title: "Custom" },
     ],
   },
-  { to: "/admin/orders", title: "ORDERS" },
-  { to: "/admin/campaigns", title: "CAMPAIGNS" },
-  { to: "/logout", title: "LOGOUT" },
+  { to: "/admin/orders", title: "Orders" },
+  { to: "/admin/campaigns", title: "Campaigns" },
+  { to: "/logout", title: "Logout" },
 ]
 
 export function SidebarLinks() {
   return (
-    <Box className="text-gray-400 space-y-2" py="lg" pl="lg">
+    <Box className="text-[#fff] space-y-2" py="lg" pl="lg">
       {links.map((link) => LinkRenderer(link))}
     </Box>
   )
@@ -37,6 +37,8 @@ const LinkRenderer = (link: SidebarLink, child?: boolean) => (
     label={link.title}
     lts={0.5}
     p={3}
+    fw={600}
+    fz="14px"
     variant="subtle"
     key={link.to}
     href={link.to}
