@@ -27,7 +27,7 @@ const theme: MetabaseTheme = {
   fontSize: "14px",
   colors: {
     brand: "#FF8002",
-    filter: "#FF8002",
+    filter: "#00D9CC",
     "text-primary": "#FFF",
     "text-secondary": "#FFF",
     border: "#4C4A48",
