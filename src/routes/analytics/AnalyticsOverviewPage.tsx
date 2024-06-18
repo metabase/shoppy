@@ -1,5 +1,8 @@
-import { Box, Card, Flex, SimpleGrid, Stack, Text, Title } from "@mantine/core"
-import { Link } from "wouter"
+import { SimpleGrid, Stack, Title } from "@mantine/core"
+
+import { DashboardLinkCard } from "./DashboardLinkCard"
+
+import { overviewLinkCards } from "./link-cards"
 
 export function AnalyticsOverviewPage() {
   return (
@@ -12,41 +15,11 @@ export function AnalyticsOverviewPage() {
         </Title>
 
         <SimpleGrid cols={{ base: 2, sm: 3, lg: 4 }}>
-          <DashboardLinkCard />
-          <DashboardLinkCard />
-          <DashboardLinkCard />
-          <DashboardLinkCard />
+          {overviewLinkCards.map((card) => (
+            <DashboardLinkCard {...card} />
+          ))}
         </SimpleGrid>
       </Stack>
     </Stack>
-  )
-}
-
-const DashboardLinkCard = () => {
-  return (
-    <Link to="#!">
-      <Card
-        c="white"
-        className="border-[#4C4A48] rounded-none gap-y-5 bg-transparent hover:bg-[#572B00]"
-        withBorder
-        p={12}
-      >
-        <Box>
-          <Title size="h4">Inventory Performance</Title>
-
-          <Text c="#ADABA9" fz="14px">
-            No description.
-          </Text>
-        </Box>
-
-        <Flex>
-          <Text>
-            Poom
-            <span className="px-1"> • </span>
-            3mo.
-          </Text>
-        </Flex>
-      </Card>
-    </Link>
   )
 }
