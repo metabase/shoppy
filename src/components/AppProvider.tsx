@@ -23,7 +23,7 @@ const config: SDKConfig = {
 }
 
 const theme: MetabaseTheme = {
-  fontFamily: "Roboto Slab",
+  fontFamily: "Custom",
   fontSize: "14px",
   colors: {
     brand: "#FF8002",
