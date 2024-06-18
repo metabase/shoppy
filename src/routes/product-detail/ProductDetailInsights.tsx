@@ -14,7 +14,7 @@ export const ProductDetailInsights = () => (
         INSIGHTS
       </Text>
 
-      <Text c="#cee9e9" fw="bold" size="xs">
+      <Text c="#FF8002" fw="bold" size="xs">
         See more
       </Text>
     </Flex>
