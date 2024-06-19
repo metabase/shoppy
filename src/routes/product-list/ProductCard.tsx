@@ -15,31 +15,33 @@ export const ProductCard = ({ product }: Props) => {
   return (
     <Link href={`/products/${product.id}`}>
       <Stack className="text-white border border-[#4C4A48]" p="12px">
-        <Flex w="100%" justify="space-between" align="center">
-          <Flex className="space-x-2">
-            <Checkbox
-              size="xs"
-              variant="outline"
-              color="violet"
-              classNames={{
-                input: "bg-transparent cursor-pointer rounded-none",
-              }}
-            />
+        <Box>
+          <Flex w="100%" justify="space-between" align="center">
+            <Flex className="space-x-2">
+              <Checkbox
+                size="xs"
+                variant="outline"
+                color="violet"
+                classNames={{
+                  input: "bg-transparent cursor-pointer rounded-none",
+                }}
+              />
 
-            <Text size="14px" truncate="end" fw={600}>
+              <Text size="14px" truncate="end" fw={600} w="12vw">
+                {product.title}
+              </Text>
+            </Flex>
+
+            <Flex className="hidden lg:flex">
+              <IconDots stroke={2} fill="#F0F0F0" />
+            </Flex>
+          </Flex>
+
+          <Box>
+            <Text size="sm" truncate="end" fw={400} c="#ADABA9">
               {product.category.name}
             </Text>
-          </Flex>
-
-          <Flex>
-            <IconDots stroke={2} fill="#F0F0F0" />
-          </Flex>
-        </Flex>
-
-        <Box>
-          <Text size="sm" truncate="end">
-            {product.title}
-          </Text>
+          </Box>
         </Box>
 
         <Stack gap={0}>
