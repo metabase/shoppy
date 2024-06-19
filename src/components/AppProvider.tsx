@@ -10,6 +10,8 @@ import {
   METABASE_INSTANCE_URL,
 } from "../constants/env"
 
+import { MetabaseError, MetabaseLoader } from "./SdkStates"
+
 interface Props {
   children: React.ReactNode
 }
@@ -20,6 +22,8 @@ interface Props {
 const config: SDKConfig = {
   metabaseInstanceUrl: METABASE_INSTANCE_URL,
   jwtProviderUri: `${API_HOST}${JWT_PROVIDER_URI}`,
+  loaderComponent: MetabaseLoader,
+  errorComponent: MetabaseError,
 }
 
 const theme: MetabaseTheme = {

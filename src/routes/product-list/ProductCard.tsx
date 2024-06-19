@@ -45,13 +45,18 @@ export const ProductCard = ({ product }: Props) => {
 
           <Divider color="#4C4A48" mt="15px" />
 
-          <Box className="text-white product-card-question-container" mih={70}>
+          <Flex
+            align="center"
+            justify="center"
+            className="text-white product-card-question"
+            mih={70}
+          >
             <StaticQuestion
               questionId={94}
               showVisualizationSelector={false}
               height={80}
             />
-          </Box>
+          </Flex>
 
           <Divider color="#4C4A48" mb="10px" />
 
