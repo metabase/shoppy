@@ -1,0 +1,9 @@
+.dashboard-container [data-card-key] {
+  padding: 0px 10px;
+}
+
+[data-testid="legend-caption-title"] {
+  font-size: 17px;
+  line-height: 20px;
+  font-weight: 400;
+}

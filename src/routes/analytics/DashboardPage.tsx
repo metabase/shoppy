@@ -9,13 +9,8 @@ export function DashboardPage(props: Props) {
   const dashboardId = parseInt(props.id, 10)
 
   return (
-    <Box mih="100vh">
-      <StaticDashboard
-        dashboardId={dashboardId}
-        withTitle
-        withDownloads
-        withCardTitle={false}
-      />
+    <Box mih="100vh" className="dashboard-container smartscalar">
+      <StaticDashboard dashboardId={dashboardId} withTitle withDownloads />
     </Box>
   )
 }

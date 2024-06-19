@@ -9,7 +9,7 @@ export function QuestionPage(props: Props) {
   const questionId = parseInt(props.id, 10)
 
   return (
-    <Box mih="100vh">
+    <Box mih="100vh" className="smartscalar">
       <InteractiveQuestion questionId={questionId} />
     </Box>
   )
