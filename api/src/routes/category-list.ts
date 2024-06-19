@@ -3,7 +3,7 @@ import { Request, Response } from "express"
 import { db } from "../utils/db"
 import { findUserByEmail } from "../auth/authenticate"
 
-export async function productListHandler(req: Request, res: Response) {
+export async function categoryListHandler(req: Request, res: Response) {
   // user is guaranteed to be defined by the restrict middleware
   const user = findUserByEmail(req.session.user!.email)
 
@@ -12,23 +12,22 @@ export async function productListHandler(req: Request, res: Response) {
   }
 
   try {
-    const products = await db.query.products.findMany({
+    const categories = await db.query.productCategories.findMany({
       columns: {
         id: true,
-        title: true,
+        name: true,
+        description: true,
         createdAt: true,
-        imageUrl: true,
       },
-      with: { category: { columns: { id: true, name: true } } },
-      where: (products, { eq }) => eq(products.shopId, user.shopId),
+      where: (category, { eq }) => eq(category.shopId, user.shopId),
     })
 
-    res.status(200).json({ products })
+    res.status(200).json({ categories })
   } catch (error) {
     if (error instanceof Error) {
       res
         .status(500)
-        .json({ error: "failed to query products", reason: error.message })
+        .json({ error: "failed to query categories", reason: error.message })
     }
   }
 }

@@ -28,7 +28,17 @@ export const Routes = () => (
         <Shell>
           <Route path="/admin" nest>
             <Switch>
-              <Route path="/products" component={ProductAnalyticsPage} />
+              <Route
+                path="/products"
+                component={() => <ProductAnalyticsPage />}
+              />
+
+              <Route
+                path="/categories/:id"
+                component={(props) => (
+                  <ProductAnalyticsPage categoryId={props.params.id} />
+                )}
+              />
 
               <Route
                 path="/products/:id"

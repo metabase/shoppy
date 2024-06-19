@@ -1,30 +1,22 @@
-import { Box, NavLink } from "@mantine/core"
-import { Link } from "wouter"
 import cx from "classnames"
-
-interface SidebarLink {
-  to: string
-  title: string
-  children?: SidebarLink[]
-}
-
-const links: SidebarLink[] = [
-  { to: "/admin/products", title: "Products" },
-  {
-    to: "#",
-    title: "Analytics",
-    children: [
-      { to: "/admin/analytics", title: "Overview" },
-      { to: "/admin/analytics/17", title: "Inventory Performance" },
-      { to: "/admin/analytics/custom", title: "Custom" },
-    ],
-  },
-  { to: "/admin/orders", title: "Orders" },
-  { to: "/admin/campaigns", title: "Campaigns" },
-  { to: "/logout", title: "Logout" },
-]
+import { Link } from "wouter"
+import { useMemo } from "react"
+import { Box, NavLink } from "@mantine/core"
+import { useQuery } from "@tanstack/react-query"
+import { getCategoryList } from "../../utils/query-category"
+import { getSidebarLinks } from "../../utils/sidebar-links"
+import { SidebarLink } from "../../types/sidebar-link"
 
 export function SidebarLinks() {
+  const categoryQuery = useQuery({
+    queryKey: ["categories"],
+    queryFn: getCategoryList,
+  })
+
+  const links = useMemo(() => {
+    return getSidebarLinks({ categories: categoryQuery.data ?? [] })
+  }, [categoryQuery.data])
+
   return (
     <Box className="text-[#fff] space-y-2" py="lg" pl="lg">
       {links.map((link) => LinkRenderer(link))}
