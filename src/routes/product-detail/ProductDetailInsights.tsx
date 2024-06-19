@@ -6,16 +6,25 @@ import {
   InteractiveQuestion,
 } from "@metabase/embedding-sdk-react"
 
+import "./product-detail.css"
+
 const MAX_W = 600
 
 export const ProductDetailInsights = () => {
   const [isModalOpen, modal] = useDisclosure(false)
 
   return (
-    <Box className="space-y-5">
-      <Flex w="100%" justify="space-between" maw={MAX_W}>
-        <Text c="white" fw="bolder" lts={1.5} size="xs">
-          INSIGHTS
+    <Box className="space-y-4">
+      <Flex
+        w="100%"
+        align="center"
+        justify="space-between"
+        maw={MAX_W}
+        mb={36}
+        mt={10}
+      >
+        <Text c="white" fw={700} fz="17px">
+          Insights
         </Text>
 
         <Text c="#FF8002" fw="bold" size="xs">
@@ -26,9 +35,9 @@ export const ProductDetailInsights = () => {
       <Card
         maw={MAX_W}
         bg="none"
-        className="text-white pd-question-container border border-[#4C4A48] rounded-md"
+        className="text-white border border-[#4C4A48] rounded-md"
       >
-        <Title size="h3" pb={10}>
+        <Title size="h3" pb={10} fw={200}>
           Orders over time
         </Title>
 
@@ -40,26 +49,26 @@ export const ProductDetailInsights = () => {
       <Card
         maw={MAX_W}
         bg="none"
-        className="text-white pd-trend-question-container border border-[#4C4A48]"
+        className="text-white smartscalar border border-[#4C4A48]"
       >
         <StaticQuestion
           questionId={91}
           showVisualizationSelector={false}
-          height={55}
+          height={70}
         />
       </Card>
 
       <Card
         maw={MAX_W}
         bg="none"
-        className="text-white pd-question-container border border-[#4C4A48]"
+        className="text-white pd-question border border-[#4C4A48]"
       >
-        <Title size="h3" pb={10}>
+        <Title size="h3" pb={10} fw={200}>
           Sales goal
         </Title>
 
         <StaticQuestion
-          questionId={85}
+          questionId={154}
           showVisualizationSelector={false}
           height={150}
         />

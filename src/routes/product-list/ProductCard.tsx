@@ -4,8 +4,6 @@ import { Link } from "wouter"
 
 import { Product } from "../../types/product"
 
-import "./product-card.css"
-
 interface Props {
   product: Product
 }
@@ -48,7 +46,7 @@ export const ProductCard = ({ product }: Props) => {
           <Flex
             align="center"
             justify="center"
-            className="text-white product-card-question"
+            className="text-white smartscalar"
             mih={70}
           >
             <StaticQuestion

@@ -23,7 +23,7 @@ export const ProductDetailPage = ({ id }: Props) => {
 
   return (
     <Container>
-      <Grid gutter="xl">
+      <Grid gutter="xl" pt={30}>
         <Grid.Col span={4}>
           <ProductDetailCard product={product} />
         </Grid.Col>

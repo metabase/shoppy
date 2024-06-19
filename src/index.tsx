@@ -9,7 +9,10 @@ import { theme } from "./constants/theme"
 import { queryClient } from "./utils/query-client"
 
 import "./styles/index.css"
+
+// CSS style overrides used for workarounds.
 import "./styles/font-workaround.css"
+import "./styles/smartscalar-workaround.css"
 
 const root = document.getElementById("root")!
 
