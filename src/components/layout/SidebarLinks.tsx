@@ -42,8 +42,9 @@ const LinkRenderer = (link: SidebarLink, child?: boolean) => (
           cx(
             "hover:bg-transparent",
             props.className,
-            active ? "text-primary" : "hover:text-gray-300",
             child && "space-y-2",
+            child && !active && "text-light-grey",
+            active ? "text-primary" : "hover:text-gray-300",
           )
         }
       />
