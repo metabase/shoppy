@@ -1,6 +1,7 @@
-import { Stack, Box, Checkbox, Text, Image, Flex, Divider } from "@mantine/core"
-import { StaticQuestion } from "@metabase/embedding-sdk-react"
 import { Link } from "wouter"
+import { IconDots } from "@tabler/icons-react"
+import { StaticQuestion } from "@metabase/embedding-sdk-react"
+import { Stack, Box, Checkbox, Text, Image, Flex, Divider } from "@mantine/core"
 
 import { Product } from "../../types/product"
 
@@ -14,17 +15,25 @@ export const ProductCard = ({ product }: Props) => {
   return (
     <Link href={`/products/${product.id}`}>
       <Stack className="text-white border border-[#4C4A48]" p="12px">
-        <Flex className="space-x-2">
-          <Checkbox
-            size="xs"
-            variant="outline"
-            color="violet"
-            classNames={{ input: "bg-transparent cursor-pointer rounded-none" }}
-          />
+        <Flex w="100%" justify="space-between" align="center">
+          <Flex className="space-x-2">
+            <Checkbox
+              size="xs"
+              variant="outline"
+              color="violet"
+              classNames={{
+                input: "bg-transparent cursor-pointer rounded-none",
+              }}
+            />
 
-          <Text size="14px" truncate="end" fw={600}>
-            {product.category.name}
-          </Text>
+            <Text size="14px" truncate="end" fw={600}>
+              {product.category.name}
+            </Text>
+          </Flex>
+
+          <Flex>
+            <IconDots stroke={2} fill="#F0F0F0" />
+          </Flex>
         </Flex>
 
         <Box>
