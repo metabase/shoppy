@@ -30,6 +30,7 @@ const theme: MetabaseTheme = {
     filter: "#00D9CC",
     "text-primary": "#F8F7F7",
     "text-secondary": "#F8F7F7",
+    "text-tertiary": "#F8F7F7",
     border: "#4C4A48",
     background: "#212121",
     charts: ["#00D9CC"],
