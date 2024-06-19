@@ -14,7 +14,7 @@ export const DashboardLinkCard = (props: DashboardLinkCardProps) => {
     <Link to={`/analytics/${props.id}`}>
       <Card
         c="white"
-        className="border-dark-grey rounded-none gap-y-5 bg-transparent hover:bg-dark-orange justify-between"
+        className="border-dark-grey rounded-none gap-y-5 bg-transparent hover:bg-darker-orange justify-between"
         h="100%"
         withBorder
         p={12}
