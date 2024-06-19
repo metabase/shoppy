@@ -2,8 +2,27 @@
   padding: 0px 10px;
 }
 
-[data-testid="legend-caption-title"] {
+.dashboard-container [data-testid="legend-caption-title"] {
   font-size: 17px;
   line-height: 20px;
   font-weight: 400;
+}
+
+.dashboard-container svg text[font-weight="700"] {
+  fill: #ADABA9;
+  font-weight: 400;
+}
+
+.dashboard-container [data-testid="legend-item"] div {
+  color: #F8F7F7;
+  font-weight: 600;
+}
+
+.dashboard-container [data-testid="chart-container"] svg text {
+  fill: #ADABA9;
+  font-weight: 400 !important;
+}
+
+.dashboard-container [data-testid="embed-frame-header"] div:nth-child(2) {
+  margin-bottom: 15px;
 }
