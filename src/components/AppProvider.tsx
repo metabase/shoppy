@@ -37,6 +37,7 @@ const theme: MetabaseTheme = {
     "text-tertiary": "#F8F7F7",
     border: "#4C4A48",
     background: "#212121",
+    "background-hover": "#4C4A48",
     charts: ["#00D9CC"],
     positive: "#4AC40E",
     negative: "#FF0F00",
