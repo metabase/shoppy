@@ -14,7 +14,7 @@ export const DashboardLinkCard = (props: DashboardLinkCardProps) => {
     <Link to={`/analytics/${props.id}`}>
       <Card
         c="white"
-        className="border-[#4C4A48] rounded-none gap-y-5 bg-transparent hover:bg-[#572B00] justify-between"
+        className="border-dark-grey rounded-none gap-y-5 bg-transparent hover:bg-dark-orange justify-between"
         h="100%"
         withBorder
         p={12}
@@ -22,7 +22,7 @@ export const DashboardLinkCard = (props: DashboardLinkCardProps) => {
         <Box>
           <Title size="h4">{props.title}</Title>
 
-          <Text c="#ADABA9" fz="14px">
+          <Text c="light-grey" fz="14px">
             {props.description ?? "No description."}
           </Text>
         </Box>

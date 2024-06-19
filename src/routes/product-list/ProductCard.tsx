@@ -14,7 +14,7 @@ export const ProductCard = ({ product }: Props) => {
 
   return (
     <Link href={`/products/${product.id}`}>
-      <Stack className="text-white border border-[#4C4A48]" p="12px">
+      <Stack className="text-white border border-dark-grey" p="12px">
         <Box>
           <Flex w="100%" justify="space-between" align="center">
             <Flex className="space-x-2">
@@ -33,12 +33,12 @@ export const ProductCard = ({ product }: Props) => {
             </Flex>
 
             <Flex className="hidden lg:flex">
-              <IconDots stroke={2} fill="#F0F0F0" />
+              <IconDots stroke={2} fill="lighter-grey" />
             </Flex>
           </Flex>
 
           <Box>
-            <Text size="sm" truncate="end" fw={400} c="#ADABA9">
+            <Text size="sm" truncate="end" fw={400} c="light-grey">
               {product.category.name}
             </Text>
           </Box>
@@ -52,7 +52,7 @@ export const ProductCard = ({ product }: Props) => {
             />
           </Flex>
 
-          <Divider color="#4C4A48" mt="15px" />
+          <Divider color="dark-grey" mt="15px" />
 
           <Flex
             align="center"
@@ -67,10 +67,10 @@ export const ProductCard = ({ product }: Props) => {
             />
           </Flex>
 
-          <Divider color="#4C4A48" mb="10px" />
+          <Divider color="dark-grey" mb="10px" />
 
           <Flex w="100%" justify="center" align="center">
-            <Text fw="500" c="#FF8000" fz="14px">
+            <Text fw="500" c="primary" fz="14px">
               See more
             </Text>
           </Flex>

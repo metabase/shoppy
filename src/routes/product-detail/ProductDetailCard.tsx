@@ -16,13 +16,13 @@ export const ProductDetailCard = ({ product }: Props) => {
           {product.title}
         </Text>
 
-        <Text fw={700} fz="14px" c="#CBE2F7">
+        <Text fw={700} fz="14px" c="light-blue">
           {product.category.name}
         </Text>
       </Box>
 
       <Stack
-        className="border border-[#4C4A48] rounded-md w-full p-5 space-y-4"
+        className="border border-dark-grey rounded-md w-full p-5 space-y-4"
         gap={1}
       >
         <Flex align="center">
@@ -44,28 +44,28 @@ export const ProductDetailCard = ({ product }: Props) => {
 
           <Box maw={200}>
             <Flex>
-              <Text w="100%" c="#ADABA9">
+              <Text w="100%" c="light-grey">
                 material
               </Text>
               <Text>cotton</Text>
             </Flex>
 
             <Flex>
-              <Text w="100%" c="#ADABA9">
+              <Text w="100%" c="light-grey">
                 manufacturer
               </Text>
               <Text>hering</Text>
             </Flex>
 
             <Flex>
-              <Text w="100%" c="#ADABA9">
+              <Text w="100%" c="light-grey">
                 price
               </Text>
               <Text>$23.99</Text>
             </Flex>
 
             <Flex>
-              <Text w="100%" c="#ADABA9">
+              <Text w="100%" c="light-grey">
                 discount
               </Text>
               <Text>$4.00</Text>

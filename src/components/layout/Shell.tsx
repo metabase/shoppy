@@ -20,11 +20,11 @@ export function Shell(props: Props) {
         collapsed: { mobile: !opened },
       }}
       padding="sm"
-      bg="#212121"
+      bg="dark-background"
     >
       <AppShell.Navbar p="md" bg="transparent" withBorder={false}>
         <Link to="/admin/products">
-          <Text fw={400} size="30px" c="#FFEDDB" lh="xs">
+          <Text fw={400} size="30px" c="accent-lighter" lh="xs">
             Shoppy
           </Text>
         </Link>

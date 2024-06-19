@@ -18,7 +18,7 @@ export function SidebarLinks() {
   }, [categoryQuery.data])
 
   return (
-    <Box className="text-[#fff] space-y-2" py="lg" pl="lg">
+    <Box className="text-white space-y-2" py="lg" pl="lg">
       {links.map((link) => LinkRenderer(link))}
     </Box>
   )
@@ -42,7 +42,7 @@ const LinkRenderer = (link: SidebarLink, child?: boolean) => (
           cx(
             "hover:bg-transparent",
             props.className,
-            active ? "text-[#FF8002]" : "hover:text-gray-300",
+            active ? "text-primary" : "hover:text-gray-300",
             child && "space-y-2",
           )
         }

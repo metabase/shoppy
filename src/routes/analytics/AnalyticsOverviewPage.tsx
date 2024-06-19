@@ -10,7 +10,7 @@ export function AnalyticsOverviewPage() {
       <Title size="h2">Overview</Title>
 
       <Stack>
-        <Title c="#FFD3A7" size="17px">
+        <Title c="accent-light" size="17px">
           Fluffy Pearls dashboards
         </Title>
 

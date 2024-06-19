@@ -27,7 +27,7 @@ export const ProductDetailInsights = () => {
           Insights
         </Text>
 
-        <Text c="#FF8002" fw="bold" size="xs">
+        <Text c="primary" fw="bold" size="xs">
           See more
         </Text>
       </Flex>
@@ -35,7 +35,7 @@ export const ProductDetailInsights = () => {
       <Card
         maw={MAX_W}
         bg="none"
-        className="text-white border border-[#4C4A48] rounded-md"
+        className="text-white border border-dark-grey rounded-md"
       >
         <Title size="h3" pb={10} fw={200}>
           Orders over time
@@ -49,7 +49,7 @@ export const ProductDetailInsights = () => {
       <Card
         maw={MAX_W}
         bg="none"
-        className="text-white smartscalar border border-[#4C4A48]"
+        className="text-white smartscalar border border-dark-grey"
       >
         <StaticQuestion
           questionId={91}
@@ -61,7 +61,7 @@ export const ProductDetailInsights = () => {
       <Card
         maw={MAX_W}
         bg="none"
-        className="text-white pd-question border border-[#4C4A48]"
+        className="text-white pd-question border border-dark-grey"
       >
         <Title size="h3" pb={10} fw={200}>
           Sales goal
@@ -75,7 +75,7 @@ export const ProductDetailInsights = () => {
       </Card>
 
       <Modal
-        classNames={{ content: "bg-[#4C4A48] py-3" }}
+        classNames={{ content: "bg-dark-grey py-3" }}
         opened={isModalOpen}
         onClose={modal.close}
         withCloseButton={false}
@@ -86,7 +86,7 @@ export const ProductDetailInsights = () => {
           height={500}
           withTitle
           customTitle={
-            <Title c="#fff" fw={400} size="h2">
+            <Title c="white" fw={400} size="h2">
               Orders over time
             </Title>
           }
