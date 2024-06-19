@@ -7,16 +7,18 @@
   margin-left: -2px;
 }
 
-/** WORKAROUND. To be removed after fine-grained theming is available. */
 [data-testid="scalar-period"] {
   display: none !important;
 }
 
-/** WORKAROUND. To be removed after fine-grained theming is available. */
 [data-card-key]>div:has(div[data-testid="scalar-container"]) {
   align-items: flex-start;
 }
 
 [data-testid="scalar-previous-value"] > div > h4 {
-  font-weight: 300;
+  font-weight: 400;
+}
+
+[data-testid="scalar-previous-value"] > div > div > div {
+  font-weight: 400;
 }
