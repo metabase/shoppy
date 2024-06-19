@@ -42,6 +42,7 @@ const LinkRenderer = (link: SidebarLink, child?: boolean) => (
     variant="subtle"
     key={link.to}
     href={link.to}
+    classNames={{ children: "space-y-1" }}
     renderRoot={(props) => (
       <Link
         {...props}
