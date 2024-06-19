@@ -21,14 +21,19 @@ export const ProductDetailCard = ({ product }: Props) => {
         </Text>
       </Box>
 
-      <Stack className="space-y-2 p-3 border border-[#4C4A48] rounded-md w-full">
-        <Image
-          src={image}
-          maw={250}
-          className="object-cover object-center aspect-square"
-        />
+      <Stack
+        className="border border-[#4C4A48] rounded-md w-full p-5 space-y-4"
+        gap={1}
+      >
+        <Flex align="center">
+          <Image
+            src={image}
+            maw={250}
+            className="object-cover object-center aspect-square"
+          />
+        </Flex>
 
-        <Flex direction="column" className="space-y-4" p="md">
+        <Flex direction="column" className="space-y-4">
           <Flex>
             <Text fw={700} size="md" lh="xs" lts={2}>
               DETAILS
@@ -39,22 +44,30 @@ export const ProductDetailCard = ({ product }: Props) => {
 
           <Box maw={200}>
             <Flex>
-              <Text w="100%">material</Text>
+              <Text w="100%" c="#ADABA9">
+                material
+              </Text>
               <Text>cotton</Text>
             </Flex>
 
             <Flex>
-              <Text w="100%">manufacturer</Text>
+              <Text w="100%" c="#ADABA9">
+                manufacturer
+              </Text>
               <Text>hering</Text>
             </Flex>
 
             <Flex>
-              <Text w="100%">price</Text>
+              <Text w="100%" c="#ADABA9">
+                price
+              </Text>
               <Text>$23.99</Text>
             </Flex>
 
             <Flex>
-              <Text w="100%">discount</Text>
+              <Text w="100%" c="#ADABA9">
+                discount
+              </Text>
               <Text>$4.00</Text>
             </Flex>
           </Box>
