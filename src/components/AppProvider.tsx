@@ -26,13 +26,15 @@ const theme: MetabaseTheme = {
   fontFamily: "Custom",
   fontSize: "14px",
   colors: {
-    brand: "#FF8002",
+    brand: "#FF8000",
     filter: "#00D9CC",
-    "text-primary": "#FFF",
-    "text-secondary": "#FFF",
+    "text-primary": "#F8F7F7",
+    "text-secondary": "#F8F7F7",
     border: "#4C4A48",
     background: "#212121",
     charts: ["#00D9CC"],
+    positive: "#4AC40E",
+    negative: "#FF0F00",
   },
   components: {
     dashboard: {
@@ -42,8 +44,8 @@ const theme: MetabaseTheme = {
     },
     scalar: {
       value: {
-        fontSize: "25px",
-        lineHeight: "33px",
+        fontSize: "47px",
+        lineHeight: "50px",
       },
     },
   },

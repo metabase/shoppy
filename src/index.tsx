@@ -9,6 +9,7 @@ import { theme } from "./constants/theme"
 import { queryClient } from "./utils/query-client"
 
 import "./styles/index.css"
+import "./styles/font-workaround.css"
 
 const root = document.getElementById("root")!
 
