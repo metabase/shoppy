@@ -19,12 +19,12 @@ export function SidebarLinks() {
 
   return (
     <Box className="text-white space-y-2" py="lg" pl="lg">
-      {links.map((link) => LinkRenderer(link))}
+      {links.map((link) => renderLink(link))}
     </Box>
   )
 }
 
-const LinkRenderer = (link: SidebarLink, child?: boolean) => (
+const renderLink = (link: SidebarLink, child?: boolean) => (
   <NavLink
     label={link.title}
     lts={0.5}
@@ -50,6 +50,6 @@ const LinkRenderer = (link: SidebarLink, child?: boolean) => (
       />
     )}
   >
-    {link.children && link.children.map((link) => LinkRenderer(link, true))}
+    {link.children && link.children.map((link) => renderLink(link, true))}
   </NavLink>
 )
