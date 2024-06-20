@@ -1,7 +1,6 @@
 import { Box, Loader, Title } from "@mantine/core"
 import { useEffect } from "react"
 import { useMutation } from "@tanstack/react-query"
-import { Redirect } from "wouter"
 
 import { logout } from "../utils/logout"
 import { queryClient } from "../utils/query-client"
