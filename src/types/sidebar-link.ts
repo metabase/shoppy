@@ -1,5 +1,5 @@
 export interface SidebarLink {
-  to: string
+  to?: string
   title: string
   children?: SidebarLink[]
 }

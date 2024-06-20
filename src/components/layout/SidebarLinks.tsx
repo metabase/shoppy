@@ -32,7 +32,7 @@ const renderLink = (link: SidebarLink, child?: boolean) => (
     fw={600}
     fz="14px"
     variant="subtle"
-    key={link.to}
+    key={link.to ?? link.title}
     href={link.to}
     classNames={{ children: "space-y-1" }}
     renderRoot={(props) => (

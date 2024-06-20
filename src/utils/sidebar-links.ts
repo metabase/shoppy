@@ -13,7 +13,6 @@ export function getSidebarLinks(options: Options): SidebarLink[] {
 
   const SIDEBAR_LINKS: SidebarLink[] = [
     {
-      to: "#!",
       title: "Products",
       children: [
         { to: "/admin/products", title: "Overview" },
@@ -21,7 +20,6 @@ export function getSidebarLinks(options: Options): SidebarLink[] {
       ],
     },
     {
-      to: "#",
       title: "Analytics",
       children: [
         { to: "/admin/analytics", title: "Overview" },
