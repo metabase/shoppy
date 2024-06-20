@@ -19,7 +19,7 @@ export async function productListHandler(req: Request, res: Response) {
         createdAt: true,
         imageUrl: true,
       },
-      with: { category: { columns: { name: true } } },
+      with: { category: { columns: { id: true, name: true } } },
       where: (products, { eq }) => eq(products.shopId, user.shopId),
     })
 

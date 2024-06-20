@@ -10,6 +10,8 @@ import {
   METABASE_INSTANCE_URL,
 } from "../constants/env"
 
+import { MetabaseError, MetabaseLoader } from "./SdkStates"
+
 interface Props {
   children: React.ReactNode
 }
@@ -20,24 +22,36 @@ interface Props {
 const config: SDKConfig = {
   metabaseInstanceUrl: METABASE_INSTANCE_URL,
   jwtProviderUri: `${API_HOST}${JWT_PROVIDER_URI}`,
+  loaderComponent: MetabaseLoader,
+  errorComponent: MetabaseError,
 }
 
 const theme: MetabaseTheme = {
-  fontFamily: "Lato",
+  fontFamily: "Custom",
   fontSize: "14px",
   colors: {
-    brand: "#98D9D9",
-    filter: "#98D9D9",
-    "text-primary": "#FFF",
-    "text-secondary": "#FFF",
-    background: "#4C5773",
-    charts: ["#98D9D9"],
+    brand: "#FF8000",
+    filter: "#00D9CC",
+    "text-primary": "#F8F7F7",
+    "text-secondary": "#F8F7F7",
+    "text-tertiary": "#F8F7F7",
+    border: "#4C4A48",
+    background: "#212121",
+    "background-hover": "#4C4A48",
+    charts: ["#00D9CC"],
+    positive: "#4AC40E",
+    negative: "#FF0F00",
   },
   components: {
+    dashboard: {
+      card: {
+        border: "1px solid #4C4A48",
+      },
+    },
     scalar: {
       value: {
-        fontSize: "25px",
-        lineHeight: "33px",
+        fontSize: "47px",
+        lineHeight: "50px",
       },
     },
   },

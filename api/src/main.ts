@@ -8,6 +8,7 @@ import { logoutHandler } from "./routes/logout"
 import { metabaseAuthHandler } from "./routes/metabase-sso"
 import { productListHandler } from "./routes/product-list"
 import { productDetailHandler } from "./routes/product-detail"
+import { categoryListHandler } from "./routes/category-list"
 
 import { PORT } from "./constants/env"
 import { pg } from "./utils/db"
@@ -21,6 +22,7 @@ router.post("/login", loginHandler)
 router.post("/logout", logoutHandler)
 router.get("/sso/metabase", metabaseAuthHandler)
 router.get("/products", restrict, productListHandler)
+router.get("/categories", restrict, categoryListHandler)
 router.get("/product/:id", productDetailHandler)
 router.get("/user", restrict, (req: any, res: any) => {
   res.status(200).json({ user: req.session.user })

@@ -1,4 +1,4 @@
-import { Flex, Box, Text, Image } from "@mantine/core"
+import { Flex, Box, Text, Image, Stack } from "@mantine/core"
 
 import { Product } from "../../types/product"
 
@@ -10,53 +10,69 @@ export const ProductDetailCard = ({ product }: Props) => {
   const image = product.imageUrl ?? "/mock-t-shirt.webp"
 
   return (
-    <Flex
-      direction="column"
-      mih="100%"
-      className="space-y-8 text-white"
-      pt={38}
-    >
-      <Box className="space-y-2 p-3 border border-[#7173AD] rounded-md w-full">
-        <Text>{product.category.name}</Text>
+    <Flex direction="column" mih="100%" className="text-white">
+      <Box className="mb-4">
+        <Text fw={700} fz="23px" c="white" className="truncate">
+          {product.title}
+        </Text>
 
-        <Image
-          src={image}
-          maw={250}
-          className="object-cover object-center aspect-square"
-        />
+        <Text fw={700} fz="14px" c="light-blue">
+          {product.category.name}
+        </Text>
       </Box>
 
-      <Flex direction="column" className="space-y-4" p="md">
-        <Flex>
-          <Text fw={900} size="md" lh="xs" lts={2}>
-            DETAILS
-          </Text>
-
-          <Flex />
+      <Stack
+        className="border border-dark-grey rounded-md w-full p-5 space-y-4"
+        gap={1}
+      >
+        <Flex align="center">
+          <Image
+            src={image}
+            maw={250}
+            className="object-cover object-center aspect-square"
+          />
         </Flex>
 
-        <Box maw={200}>
+        <Flex direction="column" className="space-y-4">
           <Flex>
-            <Text w="100%">material</Text>
-            <Text>cotton</Text>
+            <Text fw={700} size="md" lh="xs" lts={2}>
+              DETAILS
+            </Text>
+
+            <Flex />
           </Flex>
 
-          <Flex>
-            <Text w="100%">manufacturer</Text>
-            <Text>hering</Text>
-          </Flex>
+          <Box maw={200}>
+            <Flex>
+              <Text w="100%" c="light-grey">
+                material
+              </Text>
+              <Text>cotton</Text>
+            </Flex>
 
-          <Flex>
-            <Text w="100%">price</Text>
-            <Text>$23.99</Text>
-          </Flex>
+            <Flex>
+              <Text w="100%" c="light-grey">
+                manufacturer
+              </Text>
+              <Text>hering</Text>
+            </Flex>
 
-          <Flex>
-            <Text w="100%">discount</Text>
-            <Text>$4.00</Text>
-          </Flex>
-        </Box>
-      </Flex>
+            <Flex>
+              <Text w="100%" c="light-grey">
+                price
+              </Text>
+              <Text>$23.99</Text>
+            </Flex>
+
+            <Flex>
+              <Text w="100%" c="light-grey">
+                discount
+              </Text>
+              <Text>$4.00</Text>
+            </Flex>
+          </Box>
+        </Flex>
+      </Stack>
     </Flex>
   )
 }
