@@ -1,3 +1,8 @@
+/** WORKAROUND: Allows popovers to work when rendered under Mantine modals */
+[data-tippy-root]:has(.tippy-box.popover) {
+  z-index: 201 !important;
+}
+
 .dashboard-container [data-card-key] {
   padding: 0px 10px;
 }
