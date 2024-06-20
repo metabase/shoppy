@@ -1,5 +1,5 @@
 import { Box } from "@mantine/core"
-import { StaticDashboard } from "@metabase/embedding-sdk-react"
+import { InteractiveDashboard } from "@metabase/embedding-sdk-react"
 
 interface Props {
   id: string
@@ -10,7 +10,7 @@ export function DashboardPage(props: Props) {
 
   return (
     <Box mih="100vh" className="dashboard-container smartscalar">
-      <StaticDashboard dashboardId={dashboardId} withTitle withDownloads />
+      <InteractiveDashboard dashboardId={dashboardId} withTitle withDownloads />
     </Box>
   )
 }
