@@ -13,6 +13,7 @@
     "drizzle:studio": "drizzle-kit studio"
   },
   "dependencies": {
+    "@metabase/embedding-sdk-react": "^0.1.13",
     "argon2": "^0.40.1",
     "connect-pg-simple": "^9.0.1",
     "cors": "^2.8.5",
