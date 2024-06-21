@@ -27,6 +27,7 @@ export function getSidebarLinks(options: Options): SidebarLink[] {
         { to: "/admin/analytics/17", title: "Inventory Performance" },
         { to: "/admin/analytics/custom", title: "Custom" },
       ],
+      defaultOpened: true,
     },
     { to: "/admin/orders", title: "Orders" },
     { to: "/admin/campaigns", title: "Campaigns" },
