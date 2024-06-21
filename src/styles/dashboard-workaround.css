@@ -24,6 +24,7 @@
   font-weight: 400 !important;
 }
 
-.dashboard-container [data-testid="embed-frame-header"] div:nth-child(2) {
-  margin-bottom: 15px;
+/** WORKAROUND: increase spacing between header and dashboard */
+.dashboard-container [data-testid="embed-frame-header"] + main {
+  margin-top: 10px;
 }
