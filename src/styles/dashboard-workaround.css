@@ -24,7 +24,8 @@
   font-weight: 400 !important;
 }
 
-/** WORKAROUND: increase spacing between header and dashboard */
+/** WORKAROUND: increase spacing between header, dashboard and footer */
 .dashboard-container [data-testid="embed-frame-header"] + main {
   margin-top: 10px;
+  margin-bottom: 10px;
 }
