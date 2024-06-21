@@ -18,6 +18,7 @@ export function getSidebarLinks(options: Options): SidebarLink[] {
         { to: "/admin/products", title: "Overview" },
         ...categoryLinks,
       ],
+      defaultOpened: true,
     },
     {
       title: "Analytics",
