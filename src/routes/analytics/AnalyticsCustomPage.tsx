@@ -1,4 +1,4 @@
-import { Box, Flex } from "@mantine/core"
+import { Box } from "@mantine/core"
 import { useLocation } from "wouter"
 import { CollectionBrowser } from "@metabase/embedding-sdk-react"
 

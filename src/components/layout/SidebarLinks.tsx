@@ -49,6 +49,7 @@ const renderLink = (link: SidebarLink, child?: boolean) => (
         }
       />
     )}
+    defaultOpened={link.defaultOpened}
   >
     {link.children && link.children.map((link) => renderLink(link, true))}
   </NavLink>

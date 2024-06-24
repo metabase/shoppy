@@ -3,10 +3,6 @@
   z-index: 201 !important;
 }
 
-.dashboard-container [data-card-key] {
-  padding: 0px 10px;
-}
-
 .dashboard-container [data-testid="legend-caption-title"] {
   font-size: 17px;
   line-height: 20px;
@@ -28,6 +24,8 @@
   font-weight: 400 !important;
 }
 
-.dashboard-container [data-testid="embed-frame-header"] div:nth-child(2) {
-  margin-bottom: 15px;
+/** WORKAROUND: increase spacing between header, dashboard and footer */
+.dashboard-container [data-testid="embed-frame-header"] + main {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
