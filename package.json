@@ -36,7 +36,7 @@
     "start:https": "HTTPS=true yarn start",
     "build": "react-scripts build",
     "api:build": "cd api && yarn build",
-    "build:vercel": "NODE_OPTIONS=--max_old_space_size=7680 react-scripts build",
+    "build:vercel": "NODE_OPTIONS=--max_old_space_size=5000 react-scripts build",
     "test": "NODE_OPTIONS=--max_old_space_size=8192 react-scripts test",
     "eject": "react-scripts eject",
     "format": "prettier . --write",
