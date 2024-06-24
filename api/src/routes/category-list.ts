@@ -24,10 +24,8 @@ export async function categoryListHandler(req: Request, res: Response) {
 
     res.status(200).json({ categories })
   } catch (error) {
-    if (error instanceof Error) {
-      res
-        .status(500)
-        .json({ error: "failed to query categories", reason: error.message })
-    }
+    const reason = error instanceof Error ? error.message : "unknown error"
+
+    res.status(500).json({ error: "failed to query categories", reason })
   }
 }

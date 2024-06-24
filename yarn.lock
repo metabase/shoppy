@@ -1951,7 +1951,7 @@
   integrity sha512-33RVDRop5jiWFao3HKd3Yp7A9mEq4HAJxJPTuYm1NkdqX6aTKOQK7wT8v8itVodBp+sb4cJK6ZVdD1UurK/txQ==
 
 "@metabase/embedding-sdk-react@file:../metabase/resources/embedding-sdk":
-  version "0.1.12"
+  version "0.1.13"
   dependencies:
     "@dnd-kit/core" "^6.0.8"
     "@dnd-kit/modifiers" "^6.0.1"

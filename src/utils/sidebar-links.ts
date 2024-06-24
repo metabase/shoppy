@@ -13,21 +13,21 @@ export function getSidebarLinks(options: Options): SidebarLink[] {
 
   const SIDEBAR_LINKS: SidebarLink[] = [
     {
-      to: "#!",
       title: "Products",
       children: [
         { to: "/admin/products", title: "Overview" },
         ...categoryLinks,
       ],
+      defaultOpened: true,
     },
     {
-      to: "#",
       title: "Analytics",
       children: [
         { to: "/admin/analytics", title: "Overview" },
         { to: "/admin/analytics/17", title: "Inventory Performance" },
         { to: "/admin/analytics/custom", title: "Custom" },
       ],
+      defaultOpened: true,
     },
     { to: "/admin/orders", title: "Orders" },
     { to: "/admin/campaigns", title: "Campaigns" },
