@@ -1,4 +1,4 @@
-import { Grid, Text, Container, Loader, Box } from "@mantine/core"
+import { Grid, Container, Loader } from "@mantine/core"
 import { useQuery } from "@tanstack/react-query"
 
 import { ProductDetailCard } from "./ProductDetailCard"

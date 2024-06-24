@@ -43,6 +43,9 @@ const theme: MetabaseTheme = {
     negative: "#FF0F00",
   },
   components: {
+    cartesian: {
+      padding: "4px 10px",
+    },
     dashboard: {
       card: {
         border: "1px solid #4C4A48",

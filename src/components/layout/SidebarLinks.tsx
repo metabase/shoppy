@@ -33,7 +33,7 @@ const renderLink = (link: SidebarLink, child?: boolean) => (
     fz="14px"
     variant="subtle"
     key={link.to ?? link.title}
-    href={link.to}
+    href={link.to ?? "#!"}
     classNames={{ children: "space-y-1" }}
     renderRoot={(props) => (
       <Link
@@ -49,6 +49,7 @@ const renderLink = (link: SidebarLink, child?: boolean) => (
         }
       />
     )}
+    defaultOpened={link.defaultOpened}
   >
     {link.children && link.children.map((link) => renderLink(link, true))}
   </NavLink>
