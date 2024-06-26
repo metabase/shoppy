@@ -1,4 +1,4 @@
-import { Grid, Text, Container, Loader, Box } from "@mantine/core"
+import { Grid, Container, Loader } from "@mantine/core"
 import { useQuery } from "@tanstack/react-query"
 
 import { ProductDetailCard } from "./ProductDetailCard"
@@ -23,13 +23,7 @@ export const ProductDetailPage = ({ id }: Props) => {
 
   return (
     <Container>
-      <Box pb="lg">
-        <Text c="white" lts={0.5} size="md">
-          {product.title}
-        </Text>
-      </Box>
-
-      <Grid gutter="xl">
+      <Grid gutter="xl" pt={30}>
         <Grid.Col span={4}>
           <ProductDetailCard product={product} />
         </Grid.Col>

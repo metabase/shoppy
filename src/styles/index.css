@@ -6,8 +6,8 @@
 @tailwind utilities;
 
 body {
-  font-family: "Lato", sans-serif;
-  background: #4c5773;
+  font-family: "Barlow", sans-serif;
+  background: #212121 !important;
 }
 
 #metabase-sdk-root {

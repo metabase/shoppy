@@ -1,32 +1,56 @@
-import { Box, Text } from "@mantine/core"
+import cx from "classnames"
 import { Link } from "wouter"
-
-interface SidebarLink {
-  to: string
-  title: string
-}
-
-const links: SidebarLink[] = [
-  { to: "/admin/products", title: "PRODUCTS" },
-  { to: "/admin/analytics", title: "ANALYTICS" },
-  { to: "/admin/orders", title: "ORDERS" },
-  { to: "/admin/campaigns", title: "CAMPAIGNS" },
-  { to: "/logout", title: "LOGOUT" },
-]
+import { useMemo } from "react"
+import { Box, NavLink } from "@mantine/core"
+import { useQuery } from "@tanstack/react-query"
+import { getCategoryList } from "../../utils/query-category"
+import { getSidebarLinks } from "../../utils/sidebar-links"
+import { SidebarLink } from "../../types/sidebar-link"
 
 export function SidebarLinks() {
+  const categoryQuery = useQuery({
+    queryKey: ["categories"],
+    queryFn: getCategoryList,
+  })
+
+  const links = useMemo(() => {
+    return getSidebarLinks({ categories: categoryQuery.data ?? [] })
+  }, [categoryQuery.data])
+
   return (
-    <Box className="text-gray-400 space-y-2" py="lg" pl="lg">
-      {links.map((link) => (
-        <Box key={link.to}>
-          <Link
-            href={link.to}
-            className={(active) => (active ? "text-[#98D9D9]" : "")}
-          >
-            <Text lts={0.5}>{link.title}</Text>
-          </Link>
-        </Box>
-      ))}
+    <Box className="text-white space-y-2" py="lg" pl="lg">
+      {links.map((link) => renderLink(link))}
     </Box>
   )
 }
+
+const renderLink = (link: SidebarLink, child?: boolean) => (
+  <NavLink
+    label={link.title}
+    lts={0.5}
+    p={3}
+    fw={600}
+    fz="14px"
+    variant="subtle"
+    key={link.to ?? link.title}
+    href={link.to ?? "#!"}
+    classNames={{ children: "space-y-1" }}
+    renderRoot={(props) => (
+      <Link
+        {...props}
+        className={(active) =>
+          cx(
+            "hover:bg-transparent",
+            props.className,
+            child && "space-y-2",
+            child && !active && "text-light-grey",
+            active ? "text-primary" : "hover:text-gray-300",
+          )
+        }
+      />
+    )}
+    defaultOpened={link.defaultOpened}
+  >
+    {link.children && link.children.map((link) => renderLink(link, true))}
+  </NavLink>
+)

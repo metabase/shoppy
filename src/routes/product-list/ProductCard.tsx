@@ -1,6 +1,8 @@
-import { Stack, Box, Checkbox, Text, Image, Flex } from "@mantine/core"
-import { StaticQuestion } from "@metabase/embedding-sdk-react"
 import { Link } from "wouter"
+import { IconDots } from "@tabler/icons-react"
+import { StaticQuestion } from "@metabase/embedding-sdk-react"
+import { Stack, Box, Checkbox, Text, Image, Flex, Divider } from "@mantine/core"
+
 import { Product } from "../../types/product"
 
 interface Props {
@@ -12,41 +14,66 @@ export const ProductCard = ({ product }: Props) => {
 
   return (
     <Link href={`/products/${product.id}`}>
-      <Stack className="text-white border border-[#7173AD] rounded-md" px="xs">
-        <Flex className="space-x-2 pt-2">
-          <Checkbox
-            size="xs"
-            variant="outline"
-            color="violet"
-            classNames={{ input: "bg-transparent cursor-pointer" }}
-          />
-
-          <Text size="xs" truncate="end">
-            {product.category.name}
-          </Text>
-        </Flex>
-
+      <Stack className="text-white border border-dark-grey" p="12px">
         <Box>
-          <Text size="sm" truncate="end">
-            {product.title}
-          </Text>
+          <Flex w="100%" justify="space-between" align="center">
+            <Flex className="space-x-2">
+              <Checkbox
+                size="xs"
+                variant="outline"
+                color="violet"
+                classNames={{
+                  input: "bg-transparent cursor-pointer rounded-none",
+                }}
+              />
+
+              <Text size="14px" truncate="end" fw={600} w="12vw">
+                {product.title}
+              </Text>
+            </Flex>
+
+            <Flex className="hidden lg:flex">
+              <IconDots stroke={2} fill="lighter-grey" />
+            </Flex>
+          </Flex>
+
+          <Box>
+            <Text size="sm" truncate="end" fw={400} c="light-grey">
+              {product.category.name}
+            </Text>
+          </Box>
         </Box>
 
-        <Stack gap={5}>
-          <Box>
+        <Stack gap={0}>
+          <Flex>
             <Image
               src={image}
               className="w-full object-cover object-center aspect-square"
             />
-          </Box>
+          </Flex>
 
-          <Box className="text-white product-card-question-container" mih={70}>
+          <Divider color="dark-grey" mt="15px" />
+
+          <Flex
+            align="center"
+            justify="center"
+            className="text-white smartscalar"
+            mih={70}
+          >
             <StaticQuestion
               questionId={94}
               showVisualizationSelector={false}
-              height={70}
+              height={80}
             />
-          </Box>
+          </Flex>
+
+          <Divider color="dark-grey" mb="10px" />
+
+          <Flex w="100%" justify="center" align="center">
+            <Text fw="500" c="primary" fz="14px">
+              See more
+            </Text>
+          </Flex>
         </Stack>
       </Stack>
     </Link>

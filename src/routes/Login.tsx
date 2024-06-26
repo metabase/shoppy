@@ -8,6 +8,9 @@ import { queryClient } from "../utils/query-client"
 
 export const DEFAULT_ADMIN_ROUTE = "/admin/products"
 
+const inputClasses =
+  "bg-dark-background rounded-none text-white mt-1 border-light-grey"
+
 export function Login() {
   const form = useForm<LoginValues>({
     mode: "uncontrolled",
@@ -33,7 +36,7 @@ export function Login() {
   }
 
   return (
-    <Box className="text-white font-sans" bg="#4c5773">
+    <Box className="text-white font-sans" bg="dark-background">
       <Flex
         maw={340}
         mx="auto"
@@ -44,14 +47,14 @@ export function Login() {
         className="space-y-4"
       >
         {loginMutation.isError && (
-          <Box className="border border-red-500 p-3 rounded-lg w-full">
+          <Box className="border border-red-500 p-3 w-full">
             <Text size="xs" c="red">
               {loginMutation.error?.message}
             </Text>
           </Box>
         )}
 
-        <Box className="border border-gray-500 p-3 rounded-lg w-full">
+        <Box className="border border-dark-grey p-3 w-full">
           <Form
             form={form}
             onSubmit={loginMutation.mutate}
@@ -61,6 +64,7 @@ export function Login() {
               withAsterisk
               label="Email"
               placeholder="rene@example.com"
+              classNames={{ input: inputClasses }}
               {...form.getInputProps("email")}
             />
 
@@ -68,15 +72,18 @@ export function Login() {
               label="Password"
               placeholder="password"
               type="password"
+              classNames={{ input: inputClasses }}
               {...form.getInputProps("password")}
             />
 
             <Group justify="flex-end" mt="md">
               <Button
                 type="submit"
-                color="#98D9D9"
+                color="primary"
                 variant="outline"
                 loading={loginMutation.isPending}
+                className="rounded-none"
+                fw={200}
               >
                 Login
               </Button>

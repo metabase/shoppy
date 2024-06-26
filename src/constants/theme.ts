@@ -1,11 +1,19 @@
 import { colorsTuple, createTheme } from "@mantine/core"
 
 export const theme = createTheme({
-  fontFamily: "Lato, sans-serif",
-  headings: { fontFamily: "Lato, sans-serif" },
+  fontFamily: "Barlow, sans-serif",
+  headings: { fontFamily: "Barlow, sans-serif" },
+  primaryColor: "primary",
   colors: {
-    blue: colorsTuple("#98D9D9"),
-    "text-dark": colorsTuple("white"),
-    "text-light": colorsTuple("#373F53"),
+    primary: colorsTuple("#FF8000"),
+    "accent-lighter": colorsTuple("#FFEDDB"),
+    "accent-light": colorsTuple("#FFD3A7"),
+    "lighter-grey": colorsTuple("#F0F0F0"),
+    "light-grey": colorsTuple("#ADABA9"),
+    "light-blue": colorsTuple("#CBE2F7"),
+    "dark-grey": colorsTuple("#4C4A48"),
+    "dark-orange": colorsTuple("#572B00"),
+    "dark-background": colorsTuple("#212121"),
+    white: colorsTuple("#ffffff"),
   },
 })
