@@ -1,5 +1,8 @@
 import { Box, Title, Stack } from "@mantine/core"
-import { InteractiveQuestion } from "@metabase/embedding-sdk-react"
+import {
+  InteractiveDashboard,
+  InteractiveQuestion,
+} from "@metabase/embedding-sdk-react"
 
 import "./kitchen-sink.css"
 
@@ -10,8 +13,10 @@ export const KitchenSink = () => (
     </Title>
 
     <Box>
-      <InteractiveQuestion questionId={95} height={300} />
-      {/* <InteractiveQuestion questionId={95} height={300} /> */}
+      <InteractiveQuestion questionId={95} height={500} />
+      <InteractiveQuestion questionId={95} height={500} />
+      <InteractiveDashboard dashboardId={17} height={500} />
+      <InteractiveDashboard dashboardId={17} height={500} />
     </Box>
   </Stack>
 )
