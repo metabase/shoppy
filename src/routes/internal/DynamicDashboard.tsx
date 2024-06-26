@@ -4,7 +4,11 @@ import { InteractiveDashboard } from "@metabase/embedding-sdk-react"
 import "./kitchen-sink.css"
 
 export const DynamicDashboardPage = () => (
-  <Box w="100%" h="800px" data-testid="interactive-dashboard-root">
-    <InteractiveDashboard dashboardId={12} withTitle={true} />
+  <Box w="100%" h="500px" data-testid="interactive-dashboard-root">
+    <InteractiveDashboard
+      dashboardId={12}
+      withTitle={true}
+      questionHeight="500px"
+    />
   </Box>
 )
