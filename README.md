@@ -16,11 +16,11 @@ This demo uses the data from the hosted Metabase Cloud instance and provides a h
 
   - `yarn`
 
-- Run the React frontend. This starts the demo application on HTTPS, which is required to connect to the hosted JWT server.
+- Run the React frontend.
 
-  - `yarn dev:https`
+  - `yarn dev`
 
-- Visit `https://localhost:3004` in your browser. You will get a warning about the HTTPS certificate being invalid, but you can ignore it and proceed to the demo. You can login with the credentials provided in the login page.
+- Visit `http://localhost:3004` in your browser.
 
 ## How to develop the SDK locally?
 
@@ -32,9 +32,9 @@ This demo uses the data from the hosted Metabase Cloud instance and provides a h
 
 - Open a new terminal and run `yarn build-release:cljs && yarn build-embedding-sdk:watch` in the metabase repository. This watches for changes and builds the embedding SDK in development mode.
 
-- Re-run the following command every time you make changes to the embedding SDK's source. This re-links the built SDK to the demo application. HTTPS is required to connect to the hosted JWT server.
+- Re-run the following command every time you make changes to the embedding SDK's source. This re-links the built SDK to the demo application.
 
-  - `yarn dev:link && yarn dev:https`
+  - `yarn dev:link && yarn dev`
 
 ### How to run the demo against a local JWT auth server?
 
