@@ -42,7 +42,7 @@ export const ProductDetailInsights = () => {
         </Title>
 
         <Box onClick={modal.open}>
-          <StaticQuestion questionId={95} height={250} />
+          <InteractiveQuestion questionId={95} height={250} />
         </Box>
       </Card>
 
@@ -51,9 +51,9 @@ export const ProductDetailInsights = () => {
         bg="none"
         className="text-white smartscalar border border-dark-grey"
       >
-        <StaticQuestion
+        <InteractiveQuestion
           questionId={91}
-          showVisualizationSelector={false}
+          // showVisualizationSelector={false}
           height={70}
         />
       </Card>
@@ -67,9 +67,9 @@ export const ProductDetailInsights = () => {
           Sales goal
         </Title>
 
-        <StaticQuestion
+        <InteractiveQuestion
           questionId={154}
-          showVisualizationSelector={false}
+          // showVisualizationSelector={false}
           height={150}
         />
       </Card>

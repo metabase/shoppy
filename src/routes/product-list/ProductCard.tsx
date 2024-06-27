@@ -1,6 +1,9 @@
 import { Link } from "wouter"
 import { IconDots } from "@tabler/icons-react"
-import { StaticQuestion } from "@metabase/embedding-sdk-react"
+import {
+  StaticQuestion,
+  InteractiveQuestion,
+} from "@metabase/embedding-sdk-react"
 import { Stack, Box, Checkbox, Text, Image, Flex, Divider } from "@mantine/core"
 
 import { Product } from "../../types/product"
@@ -60,7 +63,7 @@ export const ProductCard = ({ product }: Props) => {
             className="text-white smartscalar"
             mih={70}
           >
-            <StaticQuestion
+            <InteractiveQuestion
               questionId={94}
               showVisualizationSelector={false}
               height={80}
