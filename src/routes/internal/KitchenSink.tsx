@@ -16,7 +16,7 @@ export const KitchenSink = () => (
       <InteractiveQuestion questionId={95} height={500} />
       <InteractiveQuestion questionId={95} height={500} />
       <InteractiveDashboard dashboardId={17} height={500} />
-      <InteractiveDashboard dashboardId={17} height={500} />
+      <InteractiveDashboard dashboardId={18} height={500} />
     </Box>
   </Stack>
 )
