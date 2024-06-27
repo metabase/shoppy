@@ -16,6 +16,8 @@ import { AppProvider } from "../components/AppProvider"
 import { AuthCheck } from "../components/AuthCheck"
 import { Shell } from "../components/layout/Shell"
 import { AnalyticsCustomPage } from "./analytics/AnalyticsCustomPage"
+import { DynamicDashboardPage } from "./internal/DynamicDashboard"
+import { InteractiveQuestionPage } from "./internal/InteractiveQuestionPage"
 
 export const Routes = () => (
   <Switch>
@@ -74,6 +76,8 @@ export const Routes = () => (
           </Route>
 
           <Route path="/dev" component={KitchenSink} />
+          <Route path="/dash" component={DynamicDashboardPage} />
+          <Route path="/question" component={InteractiveQuestionPage} />
           <Route path="/logout" component={Logout} />
         </Shell>
       </AppProvider>
