@@ -37,12 +37,13 @@
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "dev": "NODE_OPTIONS=--max_old_space_size=8192 BROWSER=none vite",
     "dev:https": "HTTPS=true yarn dev",
+    "dev:link": "rimraf node_modules/@metabase && yarn add file:../metabase/resources/embedding-sdk && yarn purge-cache",
+    "purge-cache": "rimraf node_modules/.vite/deps*/@metabase_embedding-sdk-react*",
     "build": "vite build",
     "preview": "vite preview",
     "api:build": "cd api && yarn build",
     "build:vercel": "NODE_OPTIONS=--max_old_space_size=5000 vite build",
-    "format": "prettier . --write",
-    "dev:link": "rimraf node_modules/@metabase && yarn add file:../metabase/resources/embedding-sdk && rimraf ./node_modules/.vite"
+    "format": "prettier . --write"
   },
   "eslintConfig": {
     "extends": [
