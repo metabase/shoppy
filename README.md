@@ -18,7 +18,7 @@ This demo uses the data from the hosted Metabase Cloud instance and provides a h
 
 - Run the React frontend. This starts the demo application on HTTPS, which is required to connect to the hosted JWT server.
 
-  - `yarn start:https`
+  - `yarn dev:https`
 
 - Visit `https://localhost:3004` in your browser. You will get a warning about the HTTPS certificate being invalid, but you can ignore it and proceed to the demo. You can login with the credentials provided in the login page.
 
@@ -34,7 +34,7 @@ This demo uses the data from the hosted Metabase Cloud instance and provides a h
 
 - Re-run the following command every time you make changes to the embedding SDK's source. This re-links the built SDK to the demo application. HTTPS is required to connect to the hosted JWT server.
 
-  - `yarn dev:link && yarn start:https`
+  - `yarn dev:link && yarn dev:https`
 
 ### How to run the demo against a local JWT auth server?
 
@@ -48,4 +48,4 @@ If you cannot use the hosted JWT server, you can run the JWT server locally.
 
 - Run the React frontend.
 
-  - `yarn dev:link && yarn start`
+  - `yarn dev:link && yarn dev`

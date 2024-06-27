@@ -2,6 +2,7 @@
   "name": "embedding-sdk-shoppy",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "dependencies": {
     "@mantine/core": "^7.8.0",
     "@mantine/form": "^7.8.0",
@@ -34,14 +35,12 @@
   "scripts": {
     "install-deps": "yarn --force",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "start": "rimraf ./node_modules/.cache && NODE_OPTIONS=--max_old_space_size=8192 BROWSER=none vite",
-    "start:https": "HTTPS=true yarn start",
+    "dev": "rimraf ./node_modules/.cache && NODE_OPTIONS=--max_old_space_size=8192 BROWSER=none vite",
+    "dev:https": "HTTPS=true yarn dev",
     "build": "vite build",
     "preview": "vite preview",
     "api:build": "cd api && yarn build",
-    "build:vercel": "NODE_OPTIONS=--max_old_space_size=5000 react-scripts build",
-    "test": "NODE_OPTIONS=--max_old_space_size=8192 react-scripts test",
-    "eject": "react-scripts eject",
+    "build:vercel": "NODE_OPTIONS=--max_old_space_size=5000 vite build",
     "format": "prettier . --write",
     "dev:link": "rm -rf node_modules/@metabase && yarn add file:../metabase/resources/embedding-sdk"
   },
@@ -65,6 +64,7 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@vitejs/plugin-basic-ssl": "^1.1.0",
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.38",
     "prettier": "3.2.5",
