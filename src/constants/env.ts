@@ -7,22 +7,19 @@
 export const API_HOST = getAPIHost()
 
 export const JWT_PROVIDER_URI =
-  process.env.REACT_APP_JWT_PROVIDER_URI ?? "/sso/metabase"
+  import.meta.env.VITE_APP_JWT_PROVIDER_URI ?? "/sso/metabase"
 
 /**
  * URL of the metabase instance.
  */
 export const METABASE_INSTANCE_URL =
-  process.env.REACT_APP_METABASE_INSTANCE_URL ?? "http://localhost:3000"
+  import.meta.env.VITE_APP_METABASE_INSTANCE_URL ?? "http://localhost:3000"
 
 export function getAPIHost() {
-  const {
-    REACT_APP_API_HOST,
-    REACT_APP_VERCEL_ENV,
-  } = process.env
+  const { VITE_APP_API_HOST, VITE_APP_VERCEL_ENV } = import.meta.env
 
   // See [https://vercel.com/docs/security/deployment-protection#migrating-to-standard-protection]
-  if (REACT_APP_VERCEL_ENV) return "/api"
+  if (VITE_APP_VERCEL_ENV) return "/api"
 
-  return REACT_APP_API_HOST ?? "http://localhost:3003/api"
+  return VITE_APP_API_HOST ?? "http://localhost:3003/api"
 }
