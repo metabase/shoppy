@@ -26,10 +26,8 @@ export function Shell(props: Props) {
         padding="sm"
         bg="background"
       >
-        <AppShell.Header>
-          <Flex>
-            <ThemeChangeTopNav />
-          </Flex>
+        <AppShell.Header className="border-b-[#55595B]">
+          <ThemeChangeTopNav />
         </AppShell.Header>
 
         <AppShell.Navbar p="md" bg="transparent" withBorder={false} pt={60}>

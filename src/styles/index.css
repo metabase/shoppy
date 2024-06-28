@@ -7,7 +7,7 @@
 
 body {
   font-family: "Barlow", sans-serif;
-  background: #212121 !important;
+  background: var(--color-background) !important;
 }
 
 #metabase-sdk-root {

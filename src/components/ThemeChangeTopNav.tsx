@@ -18,6 +18,7 @@ export const ThemeChangeTopNav = () => {
       h="44px"
       w="100%"
       px="16px"
+      className="border-transparent"
     >
       <Image src="/metabase-logo-with-wordmark.svg" />
 
