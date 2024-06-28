@@ -9,7 +9,9 @@ interface Props {
 
 /**
  * WORKAROUND: remount the children when the theme changes.
- * Some colors are not changing due to the use of `color(...)` function in viz.
+ *
+ * Some colors are not changing due to the use of `color` function in viz.
+ * We can remove this once we migrate those to CSS variables in the SDK.
  *
  * Example: bar chart colors, trend chart colors.
  */

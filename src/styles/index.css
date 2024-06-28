@@ -6,7 +6,7 @@
 @tailwind utilities;
 
 body {
-  font-family: "Barlow", sans-serif;
+  font-family: var(--font-family-sans), sans-serif;
 }
 
 #metabase-sdk-root {

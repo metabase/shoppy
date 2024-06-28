@@ -13,8 +13,8 @@ const colors = {
 }
 
 const mantine: MantineThemeOverride = {
-  fontFamily: "Barlow, sans-serif",
-  headings: { fontFamily: "Barlow, sans-serif" },
+  fontFamily: "var(--font-family-sans), sans-serif",
+  headings: { fontFamily: "var(--font-family-sans), sans-serif" },
   primaryColor: "primary",
   colors: {
     primary: t(colors.primary),
