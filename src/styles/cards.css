@@ -1,0 +1,13 @@
+body[data-theme="dark"] .card {
+  @apply text-white border border-dark-grey rounded-md;
+
+  background: linear-gradient(105deg, #212426 0%, #303436 100%);
+}
+
+body[data-theme="light"] .card {
+  @apply bg-background text-[#323E35] border border-dark-grey rounded-md;
+}
+
+body[data-theme="blue"] .card {
+  @apply bg-background text-[#323E35] border border-dark-grey rounded-md;
+}

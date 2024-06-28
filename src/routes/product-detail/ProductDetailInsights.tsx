@@ -32,11 +32,7 @@ export const ProductDetailInsights = () => {
         </Text>
       </Flex>
 
-      <Card
-        maw={MAX_W}
-        bg="none"
-        className="text-white border border-dark-grey rounded-md"
-      >
+      <Card maw={MAX_W} className="card">
         <Title size="h3" pb={10} fw={200}>
           Orders over time
         </Title>
@@ -46,11 +42,7 @@ export const ProductDetailInsights = () => {
         </Box>
       </Card>
 
-      <Card
-        maw={MAX_W}
-        bg="none"
-        className="text-white smartscalar border border-dark-grey"
-      >
+      <Card maw={MAX_W} className="card smartscalar">
         <StaticQuestion
           questionId={91}
           showVisualizationSelector={false}
@@ -58,11 +50,7 @@ export const ProductDetailInsights = () => {
         />
       </Card>
 
-      <Card
-        maw={MAX_W}
-        bg="none"
-        className="text-white pd-question border border-dark-grey"
-      >
+      <Card maw={MAX_W} className="card pd-question">
         <Title size="h3" pb={10} fw={200}>
           Sales goal
         </Title>

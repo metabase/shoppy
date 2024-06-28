@@ -22,7 +22,7 @@ export const ProductDetailCard = ({ product }: Props) => {
       </Box>
 
       <Stack
-        className="border border-dark-grey rounded-md w-full p-5 space-y-4"
+        className="card border border-dark-grey rounded-md w-full p-5 space-y-4"
         gap={1}
       >
         <Flex align="center">
