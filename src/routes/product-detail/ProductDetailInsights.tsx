@@ -7,6 +7,7 @@ import {
 } from "@metabase/embedding-sdk-react"
 
 import "./product-detail.css"
+import { RemountOnThemeChange } from "../../components/RemountOnThemeChange"
 
 const MAX_W = 600
 
@@ -37,8 +38,10 @@ export const ProductDetailInsights = () => {
           Orders over time
         </Title>
 
-        <Box onClick={modal.open}>
-          <StaticQuestion questionId={95} height={250} />
+        <Box onClick={modal.open} h={250}>
+          <RemountOnThemeChange>
+            <StaticQuestion questionId={158} height={250} />
+          </RemountOnThemeChange>
         </Box>
       </Card>
 
@@ -50,18 +53,6 @@ export const ProductDetailInsights = () => {
         />
       </Card>
 
-      <Card maw={MAX_W} className="card pd-question">
-        <Title size="h3" pb={10} fw={200}>
-          Sales goal
-        </Title>
-
-        <StaticQuestion
-          questionId={154}
-          showVisualizationSelector={false}
-          height={150}
-        />
-      </Card>
-
       <Modal
         classNames={{ content: "bg-dark-grey py-3" }}
         opened={isModalOpen}
@@ -70,7 +61,7 @@ export const ProductDetailInsights = () => {
         size="xl"
       >
         <InteractiveQuestion
-          questionId={95}
+          questionId={158}
           height={500}
           withTitle
           customTitle={

@@ -15,7 +15,7 @@ import "./styles/index.css"
 import "./themes/variables.css"
 
 // CSS styles used for the demo app's theming.
-import "./styles/cards.css"
+import "./styles/components.css"
 
 // CSS style overrides used for workarounds.
 import "./styles/font-workaround.css"

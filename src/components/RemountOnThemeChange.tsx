@@ -10,6 +10,8 @@ interface Props {
 /**
  * WORKAROUND: remount the children when the theme changes.
  * Some colors are not changing due to the use of `color(...)` function in viz.
+ *
+ * Example: bar chart colors, trend chart colors.
  */
 export function RemountOnThemeChange(props: Props) {
   const firstUpdate = useRef(true)

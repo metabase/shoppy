@@ -7,9 +7,16 @@
 
 body {
   font-family: "Barlow", sans-serif;
-  background: var(--color-background) !important;
 }
 
 #metabase-sdk-root {
   background: transparent;
+}
+
+body[data-theme="light"] {
+  background-image: url("/light-backdrop.png");
+}
+
+body:not([data-theme="light"]) {
+  background: var(--color-background) !important;
 }

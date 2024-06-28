@@ -1,0 +1,46 @@
+body[data-theme="dark"] .card {
+  @apply text-white border border-dark-grey rounded-md;
+
+  background: linear-gradient(105deg, #212426 0%, #303436 100%);
+}
+
+body[data-theme="light"] .card {
+  @apply bg-background text-[#323E35] rounded-md;
+
+  box-shadow: 0px 2px 16px 0px #0000001A;
+}
+
+body[data-theme="blue"] .card {
+  @apply bg-background text-[#323E35] border border-dark-grey rounded-md;
+}
+
+body[data-theme="dark"] {
+  .action-button {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--mantine-radius-sm);
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+    background: linear-gradient(93.53deg, #E590ED 9.53%, #828ED9 39.15%, #79C1FD 65.02%, #B1DBF8 84.51%);
+  }
+
+  .action-button::after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: calc(100% - 4px);
+    height: calc(100% - 4px);
+    border-radius: var(--mantine-radius-sm);
+    background: #292B2D;
+    z-index: 2;
+  }
+
+  .action-button span {
+    position: relative;
+    z-index: 3;
+    color: var(--mantine-color-white);
+  }
+}
+

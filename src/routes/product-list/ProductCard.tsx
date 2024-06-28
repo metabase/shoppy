@@ -1,7 +1,16 @@
 import { Link } from "wouter"
 import { IconDots } from "@tabler/icons-react"
 import { StaticQuestion } from "@metabase/embedding-sdk-react"
-import { Stack, Box, Checkbox, Text, Image, Flex, Divider } from "@mantine/core"
+import {
+  Stack,
+  Box,
+  Checkbox,
+  Text,
+  Image,
+  Flex,
+  Divider,
+  Button,
+} from "@mantine/core"
 
 import { Product } from "../../types/product"
 import { RemountOnThemeChange } from "../../components/RemountOnThemeChange"
@@ -15,7 +24,7 @@ export const ProductCard = ({ product }: Props) => {
 
   return (
     <Link href={`/products/${product.id}`}>
-      <Stack className="text-white border border-dark-grey" p="12px">
+      <Stack className="card" p="12px">
         <Box>
           <Flex w="100%" justify="space-between" align="center">
             <Flex className="space-x-2">
@@ -73,9 +82,7 @@ export const ProductCard = ({ product }: Props) => {
           <Divider color="dark-grey" mb="10px" />
 
           <Flex w="100%" justify="center" align="center">
-            <Text fw="500" c="primary" fz="14px">
-              See more
-            </Text>
+            <Button className="action-button">See more</Button>
           </Flex>
         </Stack>
       </Stack>

@@ -21,10 +21,7 @@ export const ProductDetailCard = ({ product }: Props) => {
         </Text>
       </Box>
 
-      <Stack
-        className="card border border-dark-grey rounded-md w-full p-5 space-y-4"
-        gap={1}
-      >
+      <Stack className="card w-full p-5 space-y-4" gap={1}>
         <Flex align="center">
           <Image
             src={image}

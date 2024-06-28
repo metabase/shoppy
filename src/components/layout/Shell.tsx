@@ -24,7 +24,6 @@ export function Shell(props: Props) {
           collapsed: { mobile: !opened },
         }}
         padding="sm"
-        bg="background"
       >
         <AppShell.Header className="border-b-[#55595B]">
           <ThemeChangeTopNav />
