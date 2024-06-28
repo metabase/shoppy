@@ -6,7 +6,7 @@ import { IconUser, IconSettings } from "@tabler/icons-react"
 
 import { SidebarLinks } from "./SidebarLinks"
 import { ThemeChangeTopNav } from "../ThemeChangeTopNav"
-import { UnmountOnThemeRefresh } from "../ThemeRefresh"
+import { RemountOnThemeChange } from "../RemountOnThemeChange"
 
 interface Props {
   children: ReactNode
@@ -51,9 +51,7 @@ export function Shell(props: Props) {
           </Flex>
         </AppShell.Navbar>
 
-        <AppShell.Main pt={60}>
-          <UnmountOnThemeRefresh>{props.children}</UnmountOnThemeRefresh>
-        </AppShell.Main>
+        <AppShell.Main pt={60}>{props.children}</AppShell.Main>
       </AppShell>
     </Box>
   )

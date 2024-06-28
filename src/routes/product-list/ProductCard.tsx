@@ -4,6 +4,7 @@ import { StaticQuestion } from "@metabase/embedding-sdk-react"
 import { Stack, Box, Checkbox, Text, Image, Flex, Divider } from "@mantine/core"
 
 import { Product } from "../../types/product"
+import { RemountOnThemeChange } from "../../components/RemountOnThemeChange"
 
 interface Props {
   product: Product
@@ -60,11 +61,13 @@ export const ProductCard = ({ product }: Props) => {
             className="text-white smartscalar"
             mih={70}
           >
-            <StaticQuestion
-              questionId={94}
-              showVisualizationSelector={false}
-              height={80}
-            />
+            <RemountOnThemeChange>
+              <StaticQuestion
+                questionId={94}
+                showVisualizationSelector={false}
+                height={80}
+              />
+            </RemountOnThemeChange>
           </Flex>
 
           <Divider color="dark-grey" mb="10px" />
