@@ -2,17 +2,26 @@ import { colorsTuple as t, MantineThemeOverride } from "@mantine/core"
 import { MetabaseTheme } from "@metabase/embedding-sdk-react"
 import { ThemeConfig } from "../types/theme"
 
+const colors = {
+  primary: "#E09862",
+  background: "#F6F5F1",
+  green1: "#80877F",
+  green2: "#4F5951",
+  green3: "#323E35",
+  viz1: "#64786A",
+}
+
 const mantine: MantineThemeOverride = {
   fontFamily: "Barlow, sans-serif",
   headings: { fontFamily: "Barlow, sans-serif" },
   primaryColor: "primary",
   colors: {
-    primary: t("#E09862"),
-    "accent-lighter": t("#E3E7E4"),
-    "lighter-grey": t("#E3E7E4"),
-    "light-grey": t("#ADABA9"),
-    "dark-grey": t("#3B3F3F"),
-    background: t("#F6F5F1"),
+    primary: t(colors.primary),
+    "accent-lighter": t(colors.green1),
+    "lighter-grey": t(colors.green1),
+    "light-grey": t(colors.green2),
+    "dark-grey": t(colors.green3),
+    background: t(colors.background),
     white: t("#ffffff"),
   },
   activeClassName: "",
@@ -22,17 +31,25 @@ const metabase: MetabaseTheme = {
   fontFamily: "Custom",
   fontSize: "14px",
   colors: {
-    brand: "#E09862",
-    filter: "#7ABBF9",
-    "text-primary": "#3B3F3F",
-    "text-secondary": "#222222",
-    "text-tertiary": "#222222",
-    border: "#3B3F3F",
-    background: "#F6F5F1",
-    "background-hover": "#F6F5F1",
-    charts: ["#64786A", "#7ABBF9", "#ED6A5A", "#FED18C", "#82A74B", "#FF8D69"],
-    positive: "#64786A",
-    negative: "#FF0F00",
+    brand: colors.primary,
+    filter: colors.viz1,
+    summarize: "#BE54C0",
+    "text-primary": colors.green3,
+    "text-secondary": colors.green2,
+    "text-tertiary": colors.green1,
+    border: colors.green1,
+    background: colors.background,
+    "background-hover": colors.background,
+    charts: [
+      colors.viz1,
+      "#E09862",
+      "#BE54C0",
+      "#DDA51F",
+      "#B34332",
+      "#4998E3",
+    ],
+    positive: colors.viz1,
+    negative: "#B34332",
   },
   components: {
     cartesian: {
@@ -40,7 +57,7 @@ const metabase: MetabaseTheme = {
     },
     dashboard: {
       card: {
-        border: "1px solid #3B3F3F",
+        border: `1px solid ${colors.green1}`,
       },
     },
     scalar: {
