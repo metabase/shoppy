@@ -19,8 +19,8 @@ body[data-theme="light"] {
 body[data-theme="blue"] {
   --font-family-sans: Barlow;
   --color-primary: #3F4BF3;
-  --color-lighter-grey: #E3E7E4;
-  --color-light-grey: #C4C9C7;
-  --color-dark-grey: #3B3F3F;
+  --color-lighter-grey: #D1CFC5;
+  --color-light-grey: #545455;
+  --color-dark-grey: #1B1C21;
   --color-background: #FFFCEE;
 }

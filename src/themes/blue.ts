@@ -5,10 +5,12 @@ import { ThemeConfig } from "../types/theme"
 const colors = {
   primary: "#3F4BF3",
   secondary: "#3F4BF3",
-  lighterGrey: "#E3E7E4",
-  lightGrey: "#ADABA9",
-  darkGrey: "#3B3F3F",
+  lighterGrey: "#D1CFC5",
+  lightGrey: "#545455",
+  darkGrey: "#1B1C21",
   background: "#FFFCEE",
+  positive: "#00B509",
+  negative: "#D30100",
 }
 
 const mantine: MantineThemeOverride = {
@@ -41,14 +43,14 @@ const metabase: MetabaseTheme = {
     "background-hover": "#4C4A48",
     charts: [
       colors.primary,
-      colors.secondary,
-      "#ED6A5A",
-      "#FED18C",
-      "#82A74B",
-      "#FF8D69",
+      colors.negative,
+      "#ECB405",
+      "#BD37C9",
+      colors.positive,
+      "#545455",
     ],
-    positive: "#45DF4C",
-    negative: "#FF3389",
+    positive: colors.positive,
+    negative: colors.negative,
   },
   components: {
     cartesian: {
@@ -56,7 +58,7 @@ const metabase: MetabaseTheme = {
     },
     dashboard: {
       card: {
-        border: "1px solid #3B3F3F",
+        border: `1px solid ${colors.lighterGrey}`,
       },
     },
     scalar: {
