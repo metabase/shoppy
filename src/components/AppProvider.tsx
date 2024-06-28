@@ -1,8 +1,7 @@
-import {
-  MetabaseProvider,
-  type MetabaseTheme,
-  type SDKConfig,
-} from "@metabase/embedding-sdk-react"
+import { useMemo } from "react"
+import { useAtom } from "jotai"
+
+import { MetabaseProvider, type SDKConfig } from "@metabase/embedding-sdk-react"
 
 import {
   API_HOST,
@@ -11,10 +10,9 @@ import {
 } from "../constants/env"
 
 import { MetabaseError, MetabaseLoader } from "./SdkStates"
-import { useAtom } from "jotai"
+
 import { $theme } from "../store/theme"
 import { THEME_CONFIG_MAP } from "../themes"
-import { useEffect, useMemo, useReducer } from "react"
 
 interface Props {
   children: React.ReactNode
@@ -38,10 +36,7 @@ export const AppProvider = ({ children }: Props) => {
   }, [themeName])
 
   return (
-    <MetabaseProvider
-      config={config}
-      theme={{ fontFamily: "Playfair Display" }}
-    >
+    <MetabaseProvider config={config} theme={theme}>
       {children}
     </MetabaseProvider>
   )

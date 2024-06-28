@@ -9,7 +9,7 @@ import { queryClient } from "../utils/query-client"
 export const DEFAULT_ADMIN_ROUTE = "/admin/products"
 
 const inputClasses =
-  "bg-dark-background rounded-none text-white mt-1 border-light-grey"
+  "bg-background rounded-none text-white mt-1 border-light-grey"
 
 export function Login() {
   const form = useForm<LoginValues>({
@@ -36,7 +36,7 @@ export function Login() {
   }
 
   return (
-    <Box className="text-white font-sans" bg="dark-background">
+    <Box className="text-white font-sans" bg="background">
       <Flex
         maw={340}
         mx="auto"

@@ -1,0 +1,26 @@
+body[data-theme="dark"] {
+  --font-family-sans: Barlow;
+  --color-primary: #DF75E9;
+  --color-lighter-grey: #E3E7E4;
+  --color-light-grey: #C4C9C7;
+  --color-dark-grey: #3B3F3F;
+  --color-background: #222222;
+}
+
+body[data-theme="light"] {
+  --font-family-sans: Barlow;
+  --color-primary: #DF75E9;
+  --color-lighter-grey: #E3E7E4;
+  --color-light-grey: #C4C9C7;
+  --color-dark-grey: #3B3F3F;
+  --color-background: #222222;
+}
+
+body[data-theme="blue"] {
+  --font-family-sans: Barlow;
+  --color-primary: #DF75E9;
+  --color-lighter-grey: #E3E7E4;
+  --color-light-grey: #C4C9C7;
+  --color-dark-grey: #3B3F3F;
+  --color-background: #222222;
+}
