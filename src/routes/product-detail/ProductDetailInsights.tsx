@@ -7,6 +7,7 @@ import {
 } from "@metabase/embedding-sdk-react"
 
 import "./product-detail.css"
+import { RemountOnThemeChange } from "../../components/RemountOnThemeChange"
 
 const MAX_W = 600
 
@@ -32,45 +33,23 @@ export const ProductDetailInsights = () => {
         </Text>
       </Flex>
 
-      <Card
-        maw={MAX_W}
-        bg="none"
-        className="text-white border border-dark-grey rounded-md"
-      >
+      <Card maw={MAX_W} className="card">
         <Title size="h3" pb={10} fw={200}>
           Orders over time
         </Title>
 
-        <Box onClick={modal.open}>
-          <StaticQuestion questionId={95} height={250} />
+        <Box onClick={modal.open} h={250}>
+          <RemountOnThemeChange>
+            <StaticQuestion questionId={158} height={250} />
+          </RemountOnThemeChange>
         </Box>
       </Card>
 
-      <Card
-        maw={MAX_W}
-        bg="none"
-        className="text-white smartscalar border border-dark-grey"
-      >
+      <Card maw={MAX_W} className="card smartscalar">
         <StaticQuestion
           questionId={91}
           showVisualizationSelector={false}
           height={70}
-        />
-      </Card>
-
-      <Card
-        maw={MAX_W}
-        bg="none"
-        className="text-white pd-question border border-dark-grey"
-      >
-        <Title size="h3" pb={10} fw={200}>
-          Sales goal
-        </Title>
-
-        <StaticQuestion
-          questionId={154}
-          showVisualizationSelector={false}
-          height={150}
         />
       </Card>
 
@@ -82,7 +61,7 @@ export const ProductDetailInsights = () => {
         size="xl"
       >
         <InteractiveQuestion
-          questionId={95}
+          questionId={158}
           height={500}
           withTitle
           customTitle={

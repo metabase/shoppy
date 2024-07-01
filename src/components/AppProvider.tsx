@@ -1,8 +1,7 @@
-import {
-  MetabaseProvider,
-  type MetabaseTheme,
-  type SDKConfig,
-} from "@metabase/embedding-sdk-react"
+import { useMemo } from "react"
+import { useAtom } from "jotai"
+
+import { MetabaseProvider, type SDKConfig } from "@metabase/embedding-sdk-react"
 
 import {
   API_HOST,
@@ -11,6 +10,9 @@ import {
 } from "../constants/env"
 
 import { MetabaseError, MetabaseLoader } from "./SdkStates"
+
+import { $theme } from "../store/theme"
+import { THEME_CONFIG_MAP } from "../themes"
 
 interface Props {
   children: React.ReactNode
@@ -26,42 +28,16 @@ const config: SDKConfig = {
   errorComponent: MetabaseError,
 }
 
-const theme: MetabaseTheme = {
-  fontFamily: "Custom",
-  fontSize: "14px",
-  colors: {
-    brand: "#FF8000",
-    filter: "#00D9CC",
-    "text-primary": "#F8F7F7",
-    "text-secondary": "#F8F7F7",
-    "text-tertiary": "#F8F7F7",
-    border: "#4C4A48",
-    background: "#212121",
-    "background-hover": "#4C4A48",
-    charts: ["#00D9CC"],
-    positive: "#4AC40E",
-    negative: "#FF0F00",
-  },
-  components: {
-    cartesian: {
-      padding: "4px 10px",
-    },
-    dashboard: {
-      card: {
-        border: "1px solid #4C4A48",
-      },
-    },
-    scalar: {
-      value: {
-        fontSize: "47px",
-        lineHeight: "50px",
-      },
-    },
-  },
-}
+export const AppProvider = ({ children }: Props) => {
+  const [themeName] = useAtom($theme)
 
-export const AppProvider = ({ children }: Props) => (
-  <MetabaseProvider config={config} theme={theme}>
-    {children}
-  </MetabaseProvider>
-)
+  const theme = useMemo(() => {
+    return THEME_CONFIG_MAP[themeName].metabase
+  }, [themeName])
+
+  return (
+    <MetabaseProvider config={config} theme={theme}>
+      {children}
+    </MetabaseProvider>
+  )
+}

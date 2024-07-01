@@ -2,7 +2,7 @@ import { Flex, Text, Loader } from "@mantine/core"
 
 export const MetabaseLoader = () => {
   return (
-    <Flex align="center" justify="center">
+    <Flex align="center" justify="center" h="100%">
       <Loader size="sm" />
     </Flex>
   )
