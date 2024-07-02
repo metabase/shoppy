@@ -2,11 +2,11 @@ import { AppShell, Box, Flex, Text } from "@mantine/core"
 import { useDisclosure } from "@mantine/hooks"
 import { ReactNode } from "react"
 import { Link } from "wouter"
-import { IconUser, IconSettings } from "@tabler/icons-react"
 
 import { SidebarLinks } from "./SidebarLinks"
 import { ThemeSwitcher } from "../ThemeSwitcher"
 import { SiteLogo } from "../SiteLogo"
+import { Icon } from "@iconify/react"
 
 interface Props {
   children: ReactNode
@@ -41,8 +41,8 @@ export function Shell(props: Props) {
             </Box>
 
             <Flex className="gap-x-3">
-              <IconUser size={30} />
-              <IconSettings size={30} />
+              <Icon icon="tabler:user" fontSize={30} />
+              <Icon icon="tabler:settings" fontSize={30} />
             </Flex>
           </Flex>
         </AppShell.Navbar>
