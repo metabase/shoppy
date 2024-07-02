@@ -11,10 +11,12 @@ interface Props {
 export const AuthCheck = (props: Props) => {
   const query = useQuery({ queryKey: ["auth"], queryFn: getUser })
 
-  if (query.isLoading) return <FullPageLoader />
+  if (query.isLoading) {
+    return <FullPageLoader />
+  }
 
   if (!query.data?.email) {
-    return <Redirect to="/login" />
+    return <div>authenticating</div>
   }
 
   return props.children

@@ -1,5 +1,5 @@
 body[data-theme="dark"] {
-  --font-family-sans: Inter;
+  --font-family-sans: Custom;
   --color-primary: #DF75E9;
   --color-lighter-grey: #E3E7E4;
   --color-light-grey: #C4C9C7;
@@ -8,16 +8,16 @@ body[data-theme="dark"] {
 }
 
 body[data-theme="light"] {
-  --font-family-sans: Barlow;
+  --font-family-sans: Arsenal;
   --color-primary: #E09862;
   --color-lighter-grey: #E3E7E4;
   --color-light-grey: #C4C9C7;
-  --color-dark-grey: #3B3F3F;
+  --color-dark-grey: #323E35;
   --color-background: #F6F5F1;
 }
 
 body[data-theme="blue"] {
-  --font-family-sans: Barlow;
+  --font-family-sans: DM Mono;
   --color-primary: #3F4BF3;
   --color-lighter-grey: #D1CFC5;
   --color-light-grey: #545455;

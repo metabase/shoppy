@@ -1,13 +1,14 @@
 import { Link } from "wouter"
 
 import { StaticQuestion } from "@metabase/embedding-sdk-react"
-import { Stack, Text, Image, Flex, Button, Box } from "@mantine/core"
+import { Stack, Text, Image, Flex, Box } from "@mantine/core"
+import { useAtom } from "jotai"
+
+import { ProductCardFooter } from "./ProductCardFooter"
 
 import { Product } from "../../types/product"
 import { RemountOnThemeChange } from "../../components/RemountOnThemeChange"
-import { useAtom } from "jotai"
 import { $theme } from "../../store/theme"
-import { ProductCardFooter } from "./ProductCardFooter"
 
 interface Props {
   product: Product
@@ -21,22 +22,20 @@ export const ProductCard = ({ product }: Props) => {
 
   return (
     <Link href={`/products/${product.id}`}>
-      <Stack p="12px" className="card">
+      <Stack className="product-card">
         <Stack gap={10}>
           <Flex>
             <Image
               src={image}
-              className="w-full object-cover object-center aspect-square"
+              className="product-card-image w-full object-cover object-center aspect-square"
             />
           </Flex>
 
           <Stack className="smartscalar" mih={70} gap={0}>
             <Text
-              fz="18px"
               fw={300}
-              className="truncate"
+              className="truncate product-card-title"
               truncate="end"
-              w="200px"
               pl="8px"
             >
               {product.title}

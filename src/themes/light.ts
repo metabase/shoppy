@@ -35,7 +35,7 @@ const metabase: MetabaseTheme = {
     filter: colors.viz1,
     summarize: "#BE54C0",
     "text-primary": colors.green3,
-    "text-secondary": colors.green2,
+    "text-secondary": colors.green1,
     "text-tertiary": colors.green1,
     border: colors.green1,
     background: colors.background,
@@ -62,8 +62,8 @@ const metabase: MetabaseTheme = {
     },
     scalar: {
       value: {
-        fontSize: "47px",
-        lineHeight: "50px",
+        fontSize: "36px",
+        lineHeight: "36px",
       },
     },
   },

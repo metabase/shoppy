@@ -25,12 +25,13 @@ export function Shell(props: Props) {
           collapsed: { mobile: !opened },
         }}
         padding="sm"
+        classNames={{ navbar: "navbar" }}
       >
         <AppShell.Header className="border-b-[#55595B]">
           <ThemeSwitcher />
         </AppShell.Header>
 
-        <AppShell.Navbar p="md" bg="transparent" withBorder={false} pt={60}>
+        <AppShell.Navbar p="md" withBorder={false} pt={60}>
           <Flex direction="column" justify="space-between" h="100%">
             <Box>
               <Link to="/admin/products">

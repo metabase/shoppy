@@ -6,7 +6,6 @@ import {
   InteractiveQuestion,
 } from "@metabase/embedding-sdk-react"
 
-import "./product-detail.css"
 import { RemountOnThemeChange } from "../../components/RemountOnThemeChange"
 
 const MAX_W = 600

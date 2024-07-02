@@ -8,10 +8,10 @@ export function ProductCardFooter() {
 
   if (theme === "light") {
     return (
-      <Box w="100%" pt={10}>
-        <Divider />
+      <Box w="100%">
+        <Divider mx={16} className="divider" />
 
-        <Text ta="center" fw={700} pt={5} fz="14px">
+        <Text ta="center" fw={700} py={8} fz="14px">
           See more
         </Text>
       </Box>
