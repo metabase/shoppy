@@ -1,9 +1,27 @@
-import { useEffect } from "react"
+import { useAtom } from "jotai"
 
-import type { ThemeKey } from "../types/theme"
+import { $theme } from "../store/theme"
 
-export function useFontLoader(theme: ThemeKey) {
-  useEffect(() => {
-    import(`../themes/fonts/${theme}.font.css`)
-  }, [theme])
+// import("../themes/fonts/blue.font.css")
+// import("../themes/fonts/light.font.css")
+// import("../themes/fonts/dark.font.css")
+
+export function FontLoader() {
+  const [themeKey] = useAtom($theme)
+
+  return (
+    <div>
+      {themeKey === "dark" && (
+        <link type="text/css" rel="stylesheet" href="/fonts/dark.font.css" />
+      )}
+
+      {themeKey === "light" && (
+        <link type="text/css" rel="stylesheet" href="/fonts/light.font.css" />
+      )}
+
+      {themeKey === "blue" && (
+        <link type="text/css" rel="stylesheet" href="/fonts/blue.font.css" />
+      )}
+    </div>
+  )
 }

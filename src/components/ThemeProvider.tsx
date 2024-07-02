@@ -3,7 +3,6 @@ import { useAtom } from "jotai"
 import { ReactNode, useEffect, useMemo, useState } from "react"
 import { $theme } from "../store/theme"
 import { THEME_CONFIG_MAP } from "../themes"
-import { FullPageLoader } from "./Loader"
 
 type Props = { children: ReactNode }
 

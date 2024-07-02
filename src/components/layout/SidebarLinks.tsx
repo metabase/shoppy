@@ -18,7 +18,7 @@ export function SidebarLinks() {
   }, [categoryQuery.data])
 
   return (
-    <Box className="text-white space-y-2" py="lg" pl="lg">
+    <Box className="space-y-2" py="lg" pl="lg">
       {links.map((link) => renderLink(link))}
     </Box>
   )
@@ -29,7 +29,7 @@ const renderLink = (link: SidebarLink, child?: boolean) => (
     label={link.title}
     lts={0.5}
     p={3}
-    fw={600}
+    fw={300}
     fz="14px"
     variant="subtle"
     key={link.to ?? link.title}
@@ -43,8 +43,8 @@ const renderLink = (link: SidebarLink, child?: boolean) => (
             "hover:bg-transparent",
             props.className,
             child && "space-y-2",
-            child && !active && "text-light-grey",
-            active ? "text-primary" : "hover:text-gray-300",
+            child && !active && "sidebar-inactive-child",
+            active ? "sidebar-active" : "hover:text-gray-300",
           )
         }
       />

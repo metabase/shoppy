@@ -1,8 +1,8 @@
-body[data-theme="dark"] .card {
+/* body[data-theme="dark"] .card {
   @apply text-white border border-dark-grey rounded-md;
 
   background: linear-gradient(105deg, #212426 0%, #303436 100%);
-}
+} */
 
 body[data-theme="light"] .card {
   @apply bg-background text-[#323E35] rounded-md;
@@ -44,3 +44,9 @@ body[data-theme="dark"] {
   }
 }
 
+body[data-theme="dark"] .sidebar-active {
+  background: linear-gradient(93.53deg, #E590ED 9.53%, #828ED9 39.15%, #79C1FD 65.02%, #B1DBF8 84.51%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

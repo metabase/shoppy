@@ -13,7 +13,7 @@ import { MetabaseError, MetabaseLoader } from "./SdkStates"
 
 import { $theme } from "../store/theme"
 import { THEME_CONFIG_MAP } from "../themes"
-import { useFontLoader } from "../hooks/useFontLoader"
+import { FontLoader } from "../hooks/useFontLoader"
 
 interface Props {
   children: React.ReactNode
@@ -32,8 +32,6 @@ const config: SDKConfig = {
 export const AppProvider = ({ children }: Props) => {
   const [themeKey] = useAtom($theme)
 
-  useFontLoader(themeKey)
-
   const theme = useMemo(() => {
     return THEME_CONFIG_MAP[themeKey].metabase
   }, [themeKey])
@@ -41,6 +39,8 @@ export const AppProvider = ({ children }: Props) => {
   return (
     <MetabaseProvider config={config} theme={theme}>
       {children}
+
+      <FontLoader />
     </MetabaseProvider>
   )
 }
