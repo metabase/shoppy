@@ -6,7 +6,6 @@ import { IconUser, IconSettings } from "@tabler/icons-react"
 
 import { SidebarLinks } from "./SidebarLinks"
 import { ThemeSwitcher } from "../ThemeSwitcher"
-import { RemountOnThemeChange } from "../RemountOnThemeChange"
 import { SiteLogo } from "../SiteLogo"
 
 interface Props {
@@ -27,11 +26,11 @@ export function Shell(props: Props) {
         padding="sm"
         classNames={{ navbar: "navbar" }}
       >
-        <AppShell.Header className="border-b-[#55595B]">
+        <AppShell.Header className="border-b-[#55595B]" zIndex={102}>
           <ThemeSwitcher />
         </AppShell.Header>
 
-        <AppShell.Navbar p="md" withBorder={false} pt={60}>
+        <AppShell.Navbar p="md" withBorder={false} pt={70}>
           <Flex direction="column" justify="space-between" h="100%">
             <Box>
               <Link to="/admin/products">
@@ -42,8 +41,8 @@ export function Shell(props: Props) {
             </Box>
 
             <Flex direction="column" className="gap-y-3">
-              <IconUser size={30} className="stroke-dark-orange" />
-              <IconSettings size={30} className="stroke-dark-orange" />
+              <IconUser size={30} />
+              <IconSettings size={30} />
             </Flex>
           </Flex>
         </AppShell.Navbar>

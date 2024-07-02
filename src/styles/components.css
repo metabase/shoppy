@@ -19,6 +19,10 @@ body[data-theme="light"] {
   .product-card-image {
     border-radius: 16px 16px 0px 0px;
   }
+
+  .sidebar-active-child:hover {
+    color: var(--color-lighter-grey);
+  }
 }
 
 body[data-theme="blue"] {
@@ -85,7 +89,11 @@ body:not([data-theme="blue"]) {
     background: transparent;
   }
 
-  .sidebar-root {
+  .navbar:after {
+    background: url(/blue-sidebar-waves.svg);
+  }
+
+  .sidebar-link-root {
     font-weight: 600;
   }
 }

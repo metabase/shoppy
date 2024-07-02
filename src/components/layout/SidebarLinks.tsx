@@ -41,10 +41,10 @@ const renderLink = (link: SidebarLink, child?: boolean) => (
           cx(
             "hover:bg-transparent font-sans",
             props.className,
-            !child && "sidebar-root",
+            !child && "sidebar-link-root",
             child && "space-y-2",
             child && !active && "sidebar-inactive-child",
-            active ? "dark-gradient" : "hover:text-gray-300",
+            active ? "dark-gradient" : "sidebar-active-child",
           )
         }
       />

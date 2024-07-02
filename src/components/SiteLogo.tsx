@@ -1,4 +1,4 @@
-import { Text } from "@mantine/core"
+import { Text, Image } from "@mantine/core"
 import { useAtom } from "jotai"
 
 import { $theme } from "../store/theme"
@@ -6,8 +6,12 @@ import { $theme } from "../store/theme"
 export function SiteLogo() {
   const [theme] = useAtom($theme)
 
+  if (theme === "light") {
+    return <Image src="/logo-luminara.svg" />
+  }
+
   if (theme === "blue") {
-    return <img src="/logo-pug-n-play.svg" />
+    return <Image src="/logo-pug-n-play.svg" h="38px" />
   }
 
   if (theme === "dark") {
@@ -15,9 +19,9 @@ export function SiteLogo() {
       <Text
         fw={200}
         size="30px"
-        c="accent-lighter"
         lh="xs"
         className="dark-gradient"
+        c="accent-lighter"
       >
         theStitch
       </Text>

@@ -10,8 +10,8 @@ body[data-theme="dark"] {
 body[data-theme="light"] {
   --font-family-sans: Arsenal;
   --color-primary: #E09862;
-  --color-lighter-grey: #E3E7E4;
-  --color-light-grey: #C4C9C7;
+  --color-lighter-grey: #80877F;
+  --color-light-grey: #4F5951;
   --color-dark-grey: #323E35;
   --color-background: #F6F5F1;
 }
