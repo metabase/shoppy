@@ -5,7 +5,7 @@ import { Link } from "wouter"
 import { IconUser, IconSettings } from "@tabler/icons-react"
 
 import { SidebarLinks } from "./SidebarLinks"
-import { ThemeChangeTopNav } from "../ThemeChangeTopNav"
+import { ThemeSwitcher } from "../ThemeSwitcher"
 import { RemountOnThemeChange } from "../RemountOnThemeChange"
 
 interface Props {
@@ -26,7 +26,7 @@ export function Shell(props: Props) {
         padding="sm"
       >
         <AppShell.Header className="border-b-[#55595B]">
-          <ThemeChangeTopNav />
+          <ThemeSwitcher />
         </AppShell.Header>
 
         <AppShell.Navbar p="md" bg="transparent" withBorder={false} pt={60}>

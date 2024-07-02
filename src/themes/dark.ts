@@ -62,8 +62,8 @@ const metabase: MetabaseTheme = {
     },
     scalar: {
       value: {
-        fontSize: "47px",
-        lineHeight: "50px",
+        fontSize: "18px",
+        lineHeight: "22px",
       },
     },
   },

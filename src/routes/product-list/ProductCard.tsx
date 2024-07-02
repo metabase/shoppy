@@ -25,14 +25,8 @@ export const ProductCard = ({ product }: Props) => {
 
   return (
     <Link href={`/products/${product.id}`}>
-      <Stack className="card" p="12px">
+      <Stack p="12px">
         <Stack gap={10}>
-          <Box>
-            <Text fz="20px" fw={300} className="truncate" truncate="end">
-              {product.title}
-            </Text>
-          </Box>
-
           <Flex>
             <Image
               src={image}
@@ -40,20 +34,30 @@ export const ProductCard = ({ product }: Props) => {
             />
           </Flex>
 
-          <Flex
-            align="center"
-            justify="center"
-            className="text-white smartscalar"
-            mih={70}
-          >
+          <Stack className="text-white smartscalar" mih={70} gap="xs">
+            <Text
+              fz="18px"
+              fw={300}
+              className="truncate"
+              truncate="end"
+              w="200px"
+              pl="8px"
+            >
+              {product.title}
+            </Text>
+
             <RemountOnThemeChange>
               <StaticQuestion
                 questionId={94}
                 showVisualizationSelector={false}
-                height={80}
+                height={50}
               />
             </RemountOnThemeChange>
-          </Flex>
+
+            <Button w="fit-content" className="action-button" ml="8px" fw={300}>
+              See more
+            </Button>
+          </Stack>
         </Stack>
       </Stack>
     </Link>

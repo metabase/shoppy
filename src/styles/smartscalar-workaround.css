@@ -2,9 +2,12 @@
  * WORKAROUND. To be removed after fine-grained theming is available.
  **/
 .smartscalar [data-testid="scalar-value"] {
-  font-weight: 200;
   text-align: left;
+}
 
+body:not([data-theme="dark"]) .smartscalar [data-testid="scalar-value"] {
+  font-weight: 200;
+  
   /** Force alignment. */
   margin-left: -2px;
 }

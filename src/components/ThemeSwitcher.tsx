@@ -7,7 +7,7 @@ import { $theme } from "../store/theme"
 
 import { THEMES } from "../themes"
 
-export const ThemeChangeTopNav = () => {
+export const ThemeSwitcher = () => {
   const [activeTheme, setActiveTheme] = useAtom($theme)
 
   return (
