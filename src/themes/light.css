@@ -1,0 +1,35 @@
+body[data-theme="light"] {
+  .divider {
+    --divider-color: #A8ACA5;
+  }
+
+  .card, .product-card {
+    color: var(--color-dark-grey);
+    border-radius: 16px;
+    box-shadow: 0px 2px 16px 0px #0000001A;
+    background-color: var(--color-background);
+  }
+
+  .product-card-image {
+    border-radius: 16px 16px 0px 0px;
+  }
+
+  .sidebar-active-child:hover {
+    color: var(--color-lighter-grey);
+  }
+
+  .product-card-title {
+    font-weight: 700;
+    font-style: italic;
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .navbar {
+    background: transparent;
+  }
+
+  .sidebar-link-root {
+    font-weight: 600;
+  }
+}

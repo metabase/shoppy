@@ -1,0 +1,58 @@
+body[data-theme="blue"] {
+  .card {
+    @apply bg-background text-[#323E35] border border-dark-grey rounded-md;
+  }
+
+  .product-card-image {
+    border-radius: 100%;
+    max-width: 200px;
+    align-self: center;
+  }
+
+  .sidebar-active-child:hover {
+    color: var(--color-lighter-grey);
+  }
+
+  .navbar {
+    color: white;
+    background: var(--color-primary);
+  }
+
+  .navbar::after {
+    position: absolute;
+    display: inline-block;
+    content: " ";
+    background: url(/blue-sidebar-waves.svg);
+    height: 100%;
+    width: 20px;
+    right: -12px;
+  }
+
+  .sidebar-inactive-child {
+    color: #E2E4FD;
+  }
+
+  .overview-title {
+    color: var(--color-primary);
+    font-family: Fraunces;
+  }
+
+  .product-card-title {
+    font-family: Fraunces;
+    text-align: center;
+    font-size: 28px;
+    font-weight: 600;
+    align-self: center;
+    width: 200px;
+  }
+
+  .action-button {
+    font-family: var(--font-family-sans);
+    font-weight: 500;
+    align-self: center;
+    border-radius: 0px;
+    background: transparent;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+  }
+}

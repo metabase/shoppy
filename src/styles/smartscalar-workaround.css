@@ -5,37 +5,26 @@
   text-align: left;
 }
 
-body:not([data-theme="dark"]) .smartscalar [data-testid="scalar-value"] {
-  font-weight: 200;
-  
-  /** Force alignment. */
-  margin-left: -2px;
-}
-
-body[data-theme="light"] .smartscalar [data-testid="scalar-value"] {
-  font-family: "Libre Caslon Display";
-}
-
-body:not([data-theme="dark"]) .smartscalar [data-testid="scalar-value"] {
-  font-weight: 200;
-  
-  /** Force alignment. */
-  margin-left: -2px;
-}
-
 .smartscalar [data-testid="scalar-period"] {
   display: none !important;
-}
-
-body:not([data-theme="light"]) .smartscalar [data-card-key]>div:has(div[data-testid="scalar-container"]) {
-  align-items: flex-start;
 }
 
 .smartscalar [data-testid="scalar-previous-value"] > div > h4 {
   font-weight: 400;
 }
 
+body[data-theme="light"] {
+  .smartscalar [data-testid="scalar-value"] {
+    font-weight: 200;
+    font-family: "Libre Caslon Display";
+  }
+}
+
 body[data-theme="dark"] {
+  .smartscalar [data-card-key]>div:has(div[data-testid="scalar-container"]) {
+    align-items: flex-start;
+  }
+
   .smartscalar [data-testid="scalar-previous-value"] > div > h4 {
     color: #ADABA9;
   }
@@ -47,4 +36,10 @@ body[data-theme="dark"] {
 
 .smartscalar [data-testid="scalar-previous-value"] > div > div > div {
   font-weight: 400;
+}
+
+body[data-theme="blue"] {
+  .smartscalar [data-testid="scalar-value"] {
+    margin-bottom: 20px;
+  }
 }

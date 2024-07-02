@@ -36,11 +36,11 @@ const metabase: MetabaseTheme = {
     brand: colors.primary,
     filter: colors.secondary,
     "text-primary": colors.darkGrey,
-    "text-secondary": "#222222",
-    "text-tertiary": "#222222",
+    "text-secondary": colors.lightGrey,
+    "text-tertiary": colors.lightGrey,
     border: "#3B3F3F",
     background: colors.background,
-    "background-hover": "#4C4A48",
+    "background-hover": "#FCFAF1",
     charts: [
       colors.primary,
       colors.negative,
@@ -63,8 +63,8 @@ const metabase: MetabaseTheme = {
     },
     scalar: {
       value: {
-        fontSize: "47px",
-        lineHeight: "50px",
+        fontSize: "24px",
+        lineHeight: "30px",
       },
     },
   },

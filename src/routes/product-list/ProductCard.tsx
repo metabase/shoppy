@@ -22,18 +22,15 @@ export const ProductCard = ({ product }: Props) => {
 
   return (
     <Link href={`/products/${product.id}`}>
-      <Stack className="product-card">
+      <Stack className="product-card" maw="300px">
         <Stack gap={10}>
-          <Flex>
-            <Image
-              src={image}
-              className="product-card-image w-full object-cover object-center aspect-square"
-            />
-          </Flex>
+          <Image
+            src={image}
+            className="product-card-image w-full object-cover object-center aspect-square"
+          />
 
           <Stack className="smartscalar" mih={70} gap={0}>
             <Text
-              fw={300}
               className="truncate product-card-title"
               truncate="end"
               pl="8px"

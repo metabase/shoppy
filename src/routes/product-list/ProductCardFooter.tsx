@@ -19,7 +19,7 @@ export function ProductCardFooter() {
   }
 
   return (
-    <Button w="fit-content" className="action-button" ml="8px" fw={300} mt="xs">
+    <Button w="fit-content" className="action-button" ml="8px" mt="xs">
       See more
     </Button>
   )

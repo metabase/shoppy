@@ -11,11 +11,11 @@ import { queryClient } from "./utils/query-client"
 
 import "./styles/index.css"
 
-// CSS variables used for each themes.
+// CSS variables used for the demo app's themes.
 import "./themes/variables.css"
-
-// CSS styles used for the demo app's theming.
-import "./styles/components.css"
+import "./themes/dark.css"
+import "./themes/light.css"
+import "./themes/blue.css"
 
 // CSS style overrides used for workarounds.
 import "./styles/smartscalar-workaround.css"
