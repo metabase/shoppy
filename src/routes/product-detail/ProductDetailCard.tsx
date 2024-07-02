@@ -10,13 +10,13 @@ export const ProductDetailCard = ({ product }: Props) => {
   const image = product.imageUrl ?? "/mock-t-shirt.webp"
 
   return (
-    <Flex direction="column" mih="100%" className="text-white">
-      <Box className="mb-4">
-        <Text fw={700} fz="23px" c="white" className="truncate">
+    <Flex direction="column" mih="100%" className="text-light-grey">
+      <Box className="mb-4 space-y-1">
+        <Text fw={300} size="23px" className="truncate">
           {product.title}
         </Text>
 
-        <Text fw={700} fz="14px" c="light-blue">
+        <Text fw={300} fz="14px">
           {product.category.name}
         </Text>
       </Box>

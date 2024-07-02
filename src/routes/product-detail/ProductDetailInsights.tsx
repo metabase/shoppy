@@ -23,7 +23,7 @@ export const ProductDetailInsights = () => {
         mb={36}
         mt={10}
       >
-        <Text c="white" fw={700} fz="17px">
+        <Text fw={300} fz="17px">
           Insights
         </Text>
 
@@ -64,7 +64,7 @@ export const ProductDetailInsights = () => {
           height={500}
           withTitle
           customTitle={
-            <Title c="white" fw={400} size="h2">
+            <Title fw={400} size="h2">
               Orders over time
             </Title>
           }
