@@ -40,7 +40,7 @@ export function Shell(props: Props) {
               <SidebarLinks />
             </Box>
 
-            <Flex direction="column" className="gap-y-3">
+            <Flex className="gap-x-3">
               <IconUser size={30} />
               <IconSettings size={30} />
             </Flex>
