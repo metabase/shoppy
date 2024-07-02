@@ -33,9 +33,17 @@ body[data-theme="blue"] {
   .product-card-image {
     border-radius: 100%;
   }
+
+  .sidebar-active-child:hover {
+    color: var(--color-lighter-grey);
+  }
 }
 
 body[data-theme="dark"] {
+  .sidebar-active-child:hover {
+    color: var(--color-light-grey);
+  }
+
   .action-button {
     position: relative;
     overflow: hidden;
@@ -79,18 +87,30 @@ body[data-theme="light"] .product-card-title {
   text-align: center;
 }
 
-body[data-theme="blue"] .navbar {
-  color: white;
-  background: var(--color-primary);
+body[data-theme="blue"] {
+  .navbar {
+    color: white;
+    background: var(--color-primary);
+  }
+
+  .navbar::after {
+    position: absolute;
+    display: inline-block;
+    content: " ";
+    background: url(/blue-sidebar-waves.svg);
+    height: 100%;
+    width: 20px;
+    right: -12px;
+  }
+
+  .sidebar-inactive-child {
+    color: #E2E4FD;
+  }
 }
 
 body:not([data-theme="blue"]) {
   .navbar {
     background: transparent;
-  }
-
-  .navbar:after {
-    background: url(/blue-sidebar-waves.svg);
   }
 
   .sidebar-link-root {

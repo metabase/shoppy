@@ -18,7 +18,7 @@ export function SidebarLinks() {
   }, [categoryQuery.data])
 
   return (
-    <Box className="space-y-2" py="lg" pl="lg">
+    <Box className="space-y-2" py="lg">
       {links.map((link) => renderLink(link))}
     </Box>
   )

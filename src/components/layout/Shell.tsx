@@ -30,7 +30,7 @@ export function Shell(props: Props) {
           <ThemeSwitcher />
         </AppShell.Header>
 
-        <AppShell.Navbar p="md" withBorder={false} pt={70}>
+        <AppShell.Navbar p="md" withBorder={false} pt={70} pl="30px">
           <Flex direction="column" justify="space-between" h="100%">
             <Box>
               <Link to="/admin/products">

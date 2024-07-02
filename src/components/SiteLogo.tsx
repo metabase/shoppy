@@ -11,7 +11,7 @@ export function SiteLogo() {
   }
 
   if (theme === "blue") {
-    return <Image src="/logo-pug-n-play.svg" h="38px" />
+    return <Image src="/logo-pug-n-play.png" w="160px" />
   }
 
   if (theme === "dark") {
