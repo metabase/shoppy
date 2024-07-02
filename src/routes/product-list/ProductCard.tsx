@@ -1,12 +1,13 @@
 import { Link } from "wouter"
 
 import { StaticQuestion } from "@metabase/embedding-sdk-react"
-import { Stack, Text, Image, Flex, Button } from "@mantine/core"
+import { Stack, Text, Image, Flex, Button, Box } from "@mantine/core"
 
 import { Product } from "../../types/product"
 import { RemountOnThemeChange } from "../../components/RemountOnThemeChange"
 import { useAtom } from "jotai"
 import { $theme } from "../../store/theme"
+import { ProductCardFooter } from "./ProductCardFooter"
 
 interface Props {
   product: Product
@@ -41,23 +42,17 @@ export const ProductCard = ({ product }: Props) => {
               {product.title}
             </Text>
 
-            <RemountOnThemeChange>
-              <StaticQuestion
-                questionId={94}
-                showVisualizationSelector={false}
-                height={questionHeight}
-              />
-            </RemountOnThemeChange>
+            <Box py={4} mih={questionHeight}>
+              <RemountOnThemeChange>
+                <StaticQuestion
+                  questionId={94}
+                  showVisualizationSelector={false}
+                  height={questionHeight}
+                />
+              </RemountOnThemeChange>
+            </Box>
 
-            <Button
-              w="fit-content"
-              className="action-button"
-              ml="8px"
-              fw={300}
-              mt="xs"
-            >
-              See more
-            </Button>
+            <ProductCardFooter />
           </Stack>
         </Stack>
       </Stack>

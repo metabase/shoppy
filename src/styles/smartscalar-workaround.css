@@ -16,7 +16,7 @@ body:not([data-theme="dark"]) .smartscalar [data-testid="scalar-value"] {
   display: none !important;
 }
 
-.smartscalar [data-card-key]>div:has(div[data-testid="scalar-container"]) {
+body:not([data-theme="light"]) .smartscalar [data-card-key]>div:has(div[data-testid="scalar-container"]) {
   align-items: flex-start;
 }
 

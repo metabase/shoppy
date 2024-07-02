@@ -44,7 +44,7 @@ body[data-theme="dark"] {
   }
 }
 
-body[data-theme="dark"] .sidebar-active {
+body[data-theme="dark"] .dark-gradient {
   background: linear-gradient(93.53deg, #E590ED 9.53%, #828ED9 39.15%, #79C1FD 65.02%, #B1DBF8 84.51%);
   background-clip: text;
   -webkit-background-clip: text;

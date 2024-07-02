@@ -1,5 +1,6 @@
 import { Box } from "@mantine/core"
 import { InteractiveDashboard } from "@metabase/embedding-sdk-react"
+
 import { RemountOnThemeChange } from "../../components/RemountOnThemeChange"
 
 interface Props {

@@ -19,6 +19,7 @@ export const ThemeSwitcher = () => {
       w="100%"
       px="16px"
       className="border-transparent"
+      ff="Lato"
     >
       <Image src="/metabase-logo-with-wordmark.svg" />
 

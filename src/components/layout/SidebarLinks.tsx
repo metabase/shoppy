@@ -29,7 +29,6 @@ const renderLink = (link: SidebarLink, child?: boolean) => (
     label={link.title}
     lts={0.5}
     p={3}
-    fw={300}
     fz="14px"
     variant="subtle"
     key={link.to ?? link.title}
@@ -42,9 +41,10 @@ const renderLink = (link: SidebarLink, child?: boolean) => (
           cx(
             "hover:bg-transparent",
             props.className,
+            !child && "font-semibold",
             child && "space-y-2",
             child && !active && "sidebar-inactive-child",
-            active ? "sidebar-active" : "hover:text-gray-300",
+            active ? "dark-gradient" : "hover:text-gray-300",
           )
         }
       />

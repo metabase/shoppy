@@ -7,6 +7,7 @@ import { IconUser, IconSettings } from "@tabler/icons-react"
 import { SidebarLinks } from "./SidebarLinks"
 import { ThemeSwitcher } from "../ThemeSwitcher"
 import { RemountOnThemeChange } from "../RemountOnThemeChange"
+import { SiteLogo } from "../SiteLogo"
 
 interface Props {
   children: ReactNode
@@ -33,9 +34,7 @@ export function Shell(props: Props) {
           <Flex direction="column" justify="space-between" h="100%">
             <Box>
               <Link to="/admin/products">
-                <Text fw={400} size="30px" c="accent-lighter" lh="xs">
-                  Shoppy
-                </Text>
+                <SiteLogo />
               </Link>
 
               <SidebarLinks />
