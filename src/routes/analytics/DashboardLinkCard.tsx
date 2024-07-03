@@ -18,6 +18,7 @@ export const DashboardLinkCard = (props: DashboardLinkCardProps) => {
 
           <Text fz="14px">{props.description ?? "No description."}</Text>
         </Box>
+        c="light-grey"
 
         <Flex>
           <Text>
