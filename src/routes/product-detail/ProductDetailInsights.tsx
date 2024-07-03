@@ -45,11 +45,13 @@ export const ProductDetailInsights = () => {
       </Card>
 
       <Card maw={MAX_W} className="card smartscalar">
-        <StaticQuestion
-          questionId={91}
-          showVisualizationSelector={false}
-          height={70}
-        />
+        <RemountOnThemeChange>
+          <StaticQuestion
+            questionId={91}
+            showVisualizationSelector={false}
+            height={70}
+          />
+        </RemountOnThemeChange>
       </Card>
 
       <Modal

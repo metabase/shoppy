@@ -2,13 +2,26 @@ import { Flex, Image, Text, ButtonGroup, Button } from "@mantine/core"
 import { useAtom } from "jotai"
 import { Icon } from "@iconify/react"
 import cx from "classnames"
+import { useMutation } from "@tanstack/react-query"
 
 import { $theme } from "../store/theme"
 
 import { THEMES } from "../themes"
+import { loginToSite } from "../utils/switch-site"
+import { ThemeKey } from "../types/theme"
 
 export const ThemeSwitcher = () => {
   const [activeTheme, setActiveTheme] = useAtom($theme)
+
+  const loginMutation = useMutation({
+    mutationFn: loginToSite,
+    mutationKey: ["login"],
+  })
+
+  async function changeTheme(key: ThemeKey) {
+    await loginMutation.mutateAsync(key)
+    setActiveTheme(key)
+  }
 
   return (
     <Flex
@@ -43,10 +56,11 @@ export const ThemeSwitcher = () => {
                   "border-[#EAEAEA]",
                   !active && "!bg-transparent hover:!bg-[#4C4E51]",
                 )}
-                onClick={() => setActiveTheme(theme.key)}
+                onClick={() => changeTheme(theme.key)}
                 leftSection={
                   <Icon icon={theme.icon} fontSize={14} overflow="visible" />
                 }
+                loading={loginMutation.isPending}
               >
                 {theme.title}
               </Button>
