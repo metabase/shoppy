@@ -18,7 +18,7 @@ export const ProductCard = ({ product }: Props) => {
   const [theme] = useAtom($theme)
   const image = product.imageUrl ?? "/mock-t-shirt.webp"
 
-  const questionHeight = theme === "dark" ? 40 : 70
+  const questionHeight = theme === "stitch" ? 40 : 70
 
   return (
     <Link href={`/products/${product.id}`}>

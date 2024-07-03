@@ -6,7 +6,7 @@ import { $theme } from "../store/theme"
 export const MetabaseLoader = () => {
   const [theme] = useAtom($theme)
 
-  if (theme === "dark") {
+  if (theme === "stitch") {
     return (
       <Flex align="center" justify="flex-start" h="100%" ml="8px">
         <Loader size="sm" />

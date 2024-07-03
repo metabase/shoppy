@@ -70,4 +70,4 @@ const metabase: MetabaseTheme = {
   },
 }
 
-export const BlueTheme: ThemeConfig = { metabase, mantine }
+export const PugTheme: ThemeConfig = { metabase, mantine }

@@ -69,4 +69,4 @@ const metabase: MetabaseTheme = {
   },
 }
 
-export const DarkTheme: ThemeConfig = { metabase, mantine }
+export const StitchTheme: ThemeConfig = { metabase, mantine }

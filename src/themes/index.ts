@@ -1,16 +1,17 @@
-import { ThemeConfig, ThemeInfo, ThemeKey } from "../types/theme"
-import { DarkTheme } from "./dark"
-import { LightTheme } from "./light"
-import { BlueTheme } from "./blue"
+import { StitchTheme } from "./stitch"
+import { LuminaraTheme } from "./luminara"
+import { PugTheme } from "./pug"
+
+import type { ThemeConfig, ThemeInfo, ThemeKey } from "../types/theme"
 
 export const THEMES: ThemeInfo[] = [
-  { title: "Site 1", key: "dark", icon: "iconoir:shirt" },
-  { title: "Site 2", key: "light", icon: "streamline:lipstick" },
-  { title: "Site 3", key: "blue", icon: "lucide:dog" },
+  { title: "Site 1", key: "stitch", icon: "iconoir:shirt" },
+  { title: "Site 2", key: "luminara", icon: "streamline:lipstick" },
+  { title: "Site 3", key: "pug", icon: "lucide:dog" },
 ]
 
 export const THEME_CONFIG_MAP: Record<ThemeKey, ThemeConfig> = {
-  dark: DarkTheme,
-  light: LightTheme,
-  blue: BlueTheme,
+  stitch: StitchTheme,
+  luminara: LuminaraTheme,
+  pug: PugTheme,
 }

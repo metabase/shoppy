@@ -13,14 +13,14 @@
   font-weight: 400;
 }
 
-body[data-theme="light"] {
+body[data-theme="luminara"] {
   .smartscalar [data-testid="scalar-value"] {
     font-weight: 200;
     font-family: "Libre Caslon Display";
   }
 }
 
-body[data-theme="dark"] {
+body[data-theme="stitch"] {
   .smartscalar [data-card-key]>div:has(div[data-testid="scalar-container"]) {
     align-items: flex-start;
   }
@@ -38,7 +38,7 @@ body[data-theme="dark"] {
   font-weight: 400;
 }
 
-body[data-theme="blue"] {
+body[data-theme="pug"] {
   .smartscalar [data-testid="scalar-value"] {
     margin-bottom: 20px;
   }

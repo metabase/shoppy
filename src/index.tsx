@@ -13,9 +13,9 @@ import "./styles/index.css"
 
 // CSS variables used for the demo app's themes.
 import "./themes/variables.css"
-import "./themes/dark.css"
-import "./themes/light.css"
-import "./themes/blue.css"
+import "./themes/stitch"
+import "./themes/luminara.css"
+import "./themes/pug.css"
 
 // CSS style overrides used for workarounds.
 import "./styles/smartscalar-workaround.css"

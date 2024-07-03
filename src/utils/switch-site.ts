@@ -6,9 +6,9 @@ import { logout } from "./logout"
 import { queryClient } from "./query-client"
 
 const SITE_TO_USER_MAP: Record<ThemeKey, string> = {
-  dark: "rene@example.com",
-  light: "cecilia@example.com",
-  blue: "emily@example.com",
+  stitch: "rene@example.com",
+  luminara: "cecilia@example.com",
+  pug: "emily@example.com",
 }
 
 export async function loginToSite(_site: ThemeKey | null) {

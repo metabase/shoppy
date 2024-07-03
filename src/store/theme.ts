@@ -3,4 +3,4 @@ import { atomWithStorage } from "jotai/utils"
 
 import type { ThemeKey } from "../types/theme"
 
-export const $theme = atomWithStorage<ThemeKey>("theme", "dark")
+export const $theme = atomWithStorage<ThemeKey>("theme", "stitch")

@@ -1,4 +1,4 @@
-body[data-theme="dark"] {
+body[data-theme="stitch"] {
   .overview-title {
     font-weight: 300;
   }
@@ -22,6 +22,7 @@ body[data-theme="dark"] {
     border: none;
     cursor: pointer;
     background: linear-gradient(93.53deg, #E590ED 9.53%, #828ED9 39.15%, #79C1FD 65.02%, #B1DBF8 84.51%);
+    font-weight: 400;
   }
 
   .action-button::after {

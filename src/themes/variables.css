@@ -1,4 +1,4 @@
-body[data-theme="dark"] {
+body[data-theme="stitch"] {
   --font-family-sans: Custom;
   --color-primary: #DF75E9;
   --color-lighter-grey: #E3E7E4;
@@ -7,7 +7,7 @@ body[data-theme="dark"] {
   --color-background: #151C20;
 }
 
-body[data-theme="light"] {
+body[data-theme="luminara"] {
   --font-family-sans: Arsenal;
   --color-primary: #E09862;
   --color-lighter-grey: #80877F;
@@ -16,7 +16,7 @@ body[data-theme="light"] {
   --color-background: #F6F5F1;
 }
 
-body[data-theme="blue"] {
+body[data-theme="pug"] {
   --font-family-sans: DM Mono;
   --color-primary: #3F4BF3;
   --color-lighter-grey: #D1CFC5;

@@ -1,11 +1,11 @@
-body[data-theme="blue"] {
+body[data-theme="pug"] {
   .card {
     @apply bg-background text-[#323E35] border border-dark-grey rounded-md;
   }
 
   .product-card-image {
     border-radius: 100%;
-    max-width: 200px;
+    max-width: 230px;
     align-self: center;
   }
 
@@ -35,6 +35,7 @@ body[data-theme="blue"] {
   .overview-title {
     color: var(--color-primary);
     font-family: Fraunces;
+    font-weight: 600;
   }
 
   .product-card-title {

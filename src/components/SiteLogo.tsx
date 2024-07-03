@@ -6,15 +6,15 @@ import { $theme } from "../store/theme"
 export function SiteLogo() {
   const [theme] = useAtom($theme)
 
-  if (theme === "light") {
+  if (theme === "luminara") {
     return <Image src="/logo-luminara.svg" />
   }
 
-  if (theme === "blue") {
+  if (theme === "pug") {
     return <Image src="/logo-pug-n-play.png" w="160px" />
   }
 
-  if (theme === "dark") {
+  if (theme === "stitch") {
     return (
       <Text
         fw={200}

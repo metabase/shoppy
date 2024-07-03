@@ -1,7 +1,7 @@
 import { MantineThemeOverride } from "@mantine/core"
 import { MetabaseTheme } from "@metabase/embedding-sdk-react"
 
-export type ThemeKey = "dark" | "light" | "blue"
+export type ThemeKey = "stitch" | "luminara" | "pug"
 
 export type ThemeInfo = {
   title: string

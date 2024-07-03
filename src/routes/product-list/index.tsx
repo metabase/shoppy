@@ -1,4 +1,4 @@
-import { Grid, SimpleGrid, Loader, Stack, Title } from "@mantine/core"
+import { Grid, SimpleGrid, Loader, Stack, Title, Flex } from "@mantine/core"
 import { useQuery } from "@tanstack/react-query"
 
 import { ProductCard } from "./ProductCard"
@@ -26,16 +26,18 @@ export const ProductAnalyticsPage = (props: Props) => {
   if (query.isLoading) return <Loader />
 
   return (
-    <Stack>
-      <Title size="h1" className="overview-title">
-        Overview
-      </Title>
+    <Flex w="100%" justify="center">
+      <Stack w="100%" maw="1000px" className="gap-y-10">
+        <Title size="h1" className="overview-title">
+          Overview
+        </Title>
 
-      <SimpleGrid cols={3} maw="950px" spacing="xs" verticalSpacing="lg">
-        {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </SimpleGrid>
-    </Stack>
+        <SimpleGrid cols={3} spacing="xs" verticalSpacing="xl">
+          {products.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </SimpleGrid>
+      </Stack>
+    </Flex>
   )
 }

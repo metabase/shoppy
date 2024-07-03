@@ -6,7 +6,7 @@ import { $theme } from "../../store/theme"
 export function ProductCardFooter() {
   const [theme] = useAtom($theme)
 
-  if (theme === "light") {
+  if (theme === "luminara") {
     return (
       <Box w="100%">
         <Divider mx={16} className="divider" />
