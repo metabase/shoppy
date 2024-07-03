@@ -12,13 +12,7 @@ export interface DashboardLinkCardProps {
 export const DashboardLinkCard = (props: DashboardLinkCardProps) => {
   return (
     <Link to={`/analytics/${props.id}`}>
-      <Card
-        c="light-grey"
-        className="card gap-y-5 justify-between"
-        h="100%"
-        withBorder
-        p={12}
-      >
+      <Card className="card gap-y-5 justify-between" h="100%" withBorder p={12}>
         <Box>
           <Title size="h4">{props.title}</Title>
 
