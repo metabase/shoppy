@@ -29,11 +29,7 @@ export const AuthCheck = (props: Props) => {
     }
   }, [query.data])
 
-  if (query.isLoading) {
-    return <FullPageLoader />
-  }
-
-  if (loginMutation.isPending) {
+  if (query.isLoading || loginMutation.isPending) {
     return <FullPageLoader />
   }
 
