@@ -32,7 +32,7 @@ export const ProductAnalyticsPage = (props: Props) => {
           Overview
         </Title>
 
-        <SimpleGrid cols={3} spacing="xs" verticalSpacing="xl">
+        <SimpleGrid cols={{ base: 2, sm: 3 }} spacing="xs" verticalSpacing="xl">
           {products.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}

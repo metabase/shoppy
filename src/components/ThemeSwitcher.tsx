@@ -37,7 +37,7 @@ export const ThemeSwitcher = () => {
       <Image src="/metabase-logo-with-wordmark.svg" />
 
       <Flex align="center">
-        <Text fz="14px" pr="md" c="#BFC1C1">
+        <Text fz="14px" pr="md" c="#BFC1C1" className="hidden sm:block">
           Switch to different test sites
         </Text>
 
