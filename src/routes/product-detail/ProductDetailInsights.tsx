@@ -55,7 +55,7 @@ export const ProductDetailInsights = () => {
       </Card>
 
       <Modal
-        classNames={{ content: "bg-dark-grey py-3" }}
+        classNames={{ content: "bg-background py-3" }}
         opened={isModalOpen}
         onClose={modal.close}
         withCloseButton={false}
