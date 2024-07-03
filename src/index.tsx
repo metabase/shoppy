@@ -13,7 +13,9 @@ import "./styles/index.css"
 
 // CSS variables used for the demo app's themes.
 import "./themes/variables.css"
-import "./themes/stitch"
+
+// Theme overrides for each themes
+import "./themes/stitch.css"
 import "./themes/luminara.css"
 import "./themes/pug.css"
 

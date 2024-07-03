@@ -1,7 +1,14 @@
+import { THEME_CONFIG_MAP } from "../themes"
 import { ThemeKey } from "../types/theme"
 
-export function getCurrentTheme(): ThemeKey {
-  const lastTheme = JSON.parse(localStorage.getItem("theme")!)
+const THEME_NAMES = Object.keys(THEME_CONFIG_MAP)
 
-  return lastTheme ?? "stitch"
+export function getCurrentTheme(): ThemeKey {
+  const theme = JSON.parse(localStorage.getItem("theme")!)
+
+  if (!theme || !THEME_NAMES.includes(theme)) {
+    return "stitch"
+  }
+
+  return theme
 }
