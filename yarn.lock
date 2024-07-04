@@ -884,10 +884,8 @@
   resolved "https://registry.yarnpkg.com/@mantine/utils/-/utils-6.0.21.tgz#6185506e91cba3e308aaa8ea9ababc8e767995d6"
   integrity sha512-33RVDRop5jiWFao3HKd3Yp7A9mEq4HAJxJPTuYm1NkdqX6aTKOQK7wT8v8itVodBp+sb4cJK6ZVdD1UurK/txQ==
 
-"@metabase/embedding-sdk-react@^0.1.15":
+"@metabase/embedding-sdk-react@file:../metabase/resources/embedding-sdk":
   version "0.1.15"
-  resolved "https://registry.yarnpkg.com/@metabase/embedding-sdk-react/-/embedding-sdk-react-0.1.15.tgz#5888e9d088ac576ff85e9ea5b7bd1db16fae5544"
-  integrity sha512-HvAWqPdYPoEUU/OeOcir7cgCY79iE2TGIX3ZeajPkCZeli9znf6wCmjNFlTrJQ/lOqm7a42K3PiBIwQHtlnadg==
   dependencies:
     "@dnd-kit/core" "^6.0.8"
     "@dnd-kit/modifiers" "^6.0.1"
@@ -931,7 +929,7 @@
     hast-util-from-html "^2.0.1"
     hast-util-to-html "^9.0.0"
     history "3"
-    html2canvas "^1.4.1"
+    html2canvas-pro "^1.5.0"
     humanize-plus "^1.8.1"
     icepick "2.4.0"
     iframe-resizer "^4.3.2"
@@ -3399,7 +3397,15 @@ html-void-elements@^3.0.0:
   resolved "https://registry.yarnpkg.com/html-void-elements/-/html-void-elements-3.0.0.tgz#fc9dbd84af9e747249034d4d62602def6517f1d7"
   integrity sha512-bEqo66MRXsUGxWHV5IP0PUiAWwoEjba4VCzg0LjFJBpchPaTfyfCKTG6bc5F8ucKec3q5y6qOdGyYTSBEvhCrg==
 
-html2canvas@^1.0.0-rc.5, html2canvas@^1.4.1:
+html2canvas-pro@^1.5.0:
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/html2canvas-pro/-/html2canvas-pro-1.5.2.tgz#fb9841feabd477d02e54ea60b4a45ef499f8350a"
+  integrity sha512-VYZifzRbLl+ssNDbivIAQftu+qRsxF3YdNpCo1NvqHAZ/0O3aoV0j1yIyIEKcDxTtuQ0buE3pe74IhmyRk/QdQ==
+  dependencies:
+    css-line-break "^2.1.0"
+    text-segmentation "^1.0.3"
+
+html2canvas@^1.0.0-rc.5:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/html2canvas/-/html2canvas-1.4.1.tgz#7cef1888311b5011d507794a066041b14669a543"
   integrity sha512-fPU6BHNpsyIhr8yyMpTLLxAbkaK8ArIBcmZIRiBLiDhjeqvXolaEmDGmELFuX9I4xDcaKKcJl+TKZLqruBbmWA==
