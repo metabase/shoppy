@@ -13,7 +13,7 @@ import { MetabaseError, MetabaseLoader } from "./SdkStates"
 
 import { themeAtom } from "../store/theme"
 import { THEME_CONFIG_MAP } from "../themes"
-import { FontLoader } from "../hooks/useFontLoader"
+import { FontLoader } from "./FontLoader"
 
 interface Props {
   children: React.ReactNode

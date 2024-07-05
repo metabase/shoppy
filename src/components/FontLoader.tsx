@@ -6,12 +6,6 @@ export function FontLoader() {
   const [theme] = useAtom(themeAtom)
 
   return (
-    <div>
-      <link
-        type="text/css"
-        rel="stylesheet"
-        href={`/fonts/${theme}.font.css`}
-      />
-    </div>
+    <link type="text/css" rel="stylesheet" href={`/fonts/${theme}.font.css`} />
   )
 }
