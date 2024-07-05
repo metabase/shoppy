@@ -1,6 +1,6 @@
 import { atom } from "jotai"
 import { atomWithStorage } from "jotai/utils"
 
-import type { ThemeKey } from "../types/theme"
+import type { SiteKey } from "../types/site"
 
-export const themeAtom = atomWithStorage<ThemeKey>("theme", "stitch")
+export const themeAtom = atomWithStorage<SiteKey>("theme", "stitch")

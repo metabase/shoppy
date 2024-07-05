@@ -8,7 +8,7 @@ import { themeAtom } from "../store/theme"
 
 import { THEMES } from "../themes"
 import { loginToSite } from "../utils/switch-site"
-import { ThemeKey } from "../types/theme"
+import { SiteKey } from "../types/site"
 
 export const ThemeSwitcher = () => {
   const [activeTheme, setActiveTheme] = useAtom(themeAtom)
@@ -18,7 +18,7 @@ export const ThemeSwitcher = () => {
     mutationKey: ["login"],
   })
 
-  async function changeTheme(key: ThemeKey) {
+  async function changeTheme(key: SiteKey) {
     await loginMutation.mutateAsync(key)
     setActiveTheme(key)
   }

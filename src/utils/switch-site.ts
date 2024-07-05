@@ -1,17 +1,17 @@
 import { themeAtom } from "../store/theme"
-import { ThemeKey } from "../types/theme"
+import { SiteKey } from "../types/site"
 import { getCurrentTheme } from "./current-theme"
 import { login } from "./login"
 import { logout } from "./logout"
 import { queryClient } from "./query-client"
 
-const SITE_TO_USER_MAP: Record<ThemeKey, string> = {
+const SITE_TO_USER_MAP: Record<SiteKey, string> = {
   stitch: "rene@example.com",
   luminara: "cecilia@example.com",
   pug: "emily@example.com",
 }
 
-export async function loginToSite(_site: ThemeKey | null) {
+export async function loginToSite(_site: SiteKey | null) {
   const site = _site ?? getCurrentTheme()
 
   const hasSiteChanged = site !== getCurrentTheme()

@@ -1,7 +1,7 @@
 import { colorsTuple as t, MantineThemeOverride } from "@mantine/core"
 import { MetabaseTheme } from "@metabase/embedding-sdk-react"
 
-import { ThemeConfig } from "../types/theme"
+import { SiteConfig } from "../types/site"
 
 const colors = {
   primary: "#DF75E9",
@@ -69,4 +69,4 @@ const metabase: MetabaseTheme = {
   },
 }
 
-export const StitchTheme: ThemeConfig = { metabase, mantine }
+export const StitchTheme: SiteConfig = { metabase, mantine }

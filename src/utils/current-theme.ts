@@ -1,9 +1,9 @@
 import { THEME_CONFIG_MAP } from "../themes"
-import { ThemeKey } from "../types/theme"
+import { SiteKey } from "../types/site"
 
 const THEME_NAMES = Object.keys(THEME_CONFIG_MAP)
 
-export function getCurrentTheme(): ThemeKey {
+export function getCurrentTheme(): SiteKey {
   const theme = JSON.parse(localStorage.getItem("theme")!)
 
   if (!theme || !THEME_NAMES.includes(theme)) {
