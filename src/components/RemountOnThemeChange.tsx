@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react"
 import { useAtom } from "jotai"
 
-import { $theme } from "../store/theme"
+import { themeAtom } from "../store/theme"
 
 interface Props {
   children: React.ReactNode
@@ -16,7 +16,7 @@ interface Props {
 export function RemountOnThemeChange(props: Props) {
   const firstUpdate = useRef(true)
 
-  const [themeName] = useAtom($theme)
+  const [themeName] = useAtom(themeAtom)
   const [isRemounting, setRemounting] = useState(false)
 
   useEffect(() => {

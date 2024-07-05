@@ -1,4 +1,4 @@
-import { $theme } from "../store/theme"
+import { themeAtom } from "../store/theme"
 import { ThemeKey } from "../types/theme"
 import { getCurrentTheme } from "./current-theme"
 import { login } from "./login"

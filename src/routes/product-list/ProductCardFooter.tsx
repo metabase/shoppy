@@ -1,10 +1,10 @@
 import { Box, Text, Button, Divider } from "@mantine/core"
 import { useAtom } from "jotai"
 
-import { $theme } from "../../store/theme"
+import { themeAtom } from "../../store/theme"
 
 export function ProductCardFooter() {
-  const [theme] = useAtom($theme)
+  const [theme] = useAtom(themeAtom)
 
   if (theme === "luminara") {
     return (

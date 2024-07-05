@@ -1,10 +1,10 @@
 import { Flex, Text, Loader } from "@mantine/core"
 import { useAtom } from "jotai"
 
-import { $theme } from "../store/theme"
+import { themeAtom } from "../store/theme"
 
 export const MetabaseLoader = () => {
-  const [theme] = useAtom($theme)
+  const [theme] = useAtom(themeAtom)
 
   return (
     <Flex

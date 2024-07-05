@@ -11,7 +11,7 @@ import {
 
 import { MetabaseError, MetabaseLoader } from "./SdkStates"
 
-import { $theme } from "../store/theme"
+import { themeAtom } from "../store/theme"
 import { THEME_CONFIG_MAP } from "../themes"
 import { FontLoader } from "../hooks/useFontLoader"
 
@@ -30,7 +30,7 @@ const config: SDKConfig = {
 }
 
 export const AppProvider = ({ children }: Props) => {
-  const [themeKey] = useAtom($theme)
+  const [themeKey] = useAtom(themeAtom)
 
   const theme = useMemo(() => {
     return THEME_CONFIG_MAP[themeKey].metabase

@@ -8,14 +8,14 @@ import { ProductCardFooter } from "./ProductCardFooter"
 
 import { Product } from "../../types/product"
 import { RemountOnThemeChange } from "../../components/RemountOnThemeChange"
-import { $theme } from "../../store/theme"
+import { themeAtom } from "../../store/theme"
 
 interface Props {
   product: Product
 }
 
 export const ProductCard = ({ product }: Props) => {
-  const [theme] = useAtom($theme)
+  const [theme] = useAtom(themeAtom)
   const image = product.imageUrl ?? "/mock-t-shirt.webp"
 
   const questionHeight = theme === "stitch" ? 40 : 70
