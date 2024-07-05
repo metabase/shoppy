@@ -1,12 +1,10 @@
+import { useEffect } from "react"
 import { useMutation, useQuery } from "@tanstack/react-query"
-import { Redirect } from "wouter"
+
+import { FullPageLoader } from "./Loader"
 
 import { getUser } from "../utils/query-user"
-import { FullPageLoader } from "./Loader"
 import { loginToSite } from "../utils/switch-site"
-import { useEffect } from "react"
-import { ThemeKey } from "../types/theme"
-import { getCurrentTheme } from "../utils/current-theme"
 
 interface Props {
   children: React.ReactNode
