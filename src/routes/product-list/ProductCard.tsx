@@ -1,79 +1,55 @@
 import { Link } from "wouter"
-import { IconDots } from "@tabler/icons-react"
+
 import { StaticQuestion } from "@metabase/embedding-sdk-react"
-import { Stack, Box, Checkbox, Text, Image, Flex, Divider } from "@mantine/core"
+import { Stack, Text, Image, Flex, Box } from "@mantine/core"
+import { useAtom } from "jotai"
+
+import { ProductCardFooter } from "./ProductCardFooter"
 
 import { Product } from "../../types/product"
+import { RemountOnSiteChange } from "../../components/RemountOnSiteChange"
+import { siteAtom } from "../../store/site"
 
 interface Props {
   product: Product
 }
 
 export const ProductCard = ({ product }: Props) => {
+  const [site] = useAtom(siteAtom)
   const image = product.imageUrl ?? "/mock-t-shirt.webp"
+
+  const questionHeight = theme === "stitch" ? 40 : 70
 
   return (
     <Link href={`/products/${product.id}`}>
-      <Stack className="text-white border border-dark-grey" p="12px">
-        <Box>
-          <Flex w="100%" justify="space-between" align="center">
-            <Flex className="space-x-2">
-              <Checkbox
-                size="xs"
-                variant="outline"
-                color="violet"
-                classNames={{
-                  input: "bg-transparent cursor-pointer rounded-none",
-                }}
-              />
+      <Stack className="product-card" maw="300px">
+        <Stack gap={10}>
+          <Image
+            src={image}
+            className="product-card-image w-full object-cover object-center aspect-square"
+          />
 
-              <Text size="14px" truncate="end" fw={600} w="12vw">
-                {product.title}
-              </Text>
-            </Flex>
-
-            <Flex className="hidden lg:flex">
-              <IconDots stroke={2} fill="lighter-grey" />
-            </Flex>
-          </Flex>
-
-          <Box>
-            <Text size="sm" truncate="end" fw={400} c="light-grey">
-              {product.category.name}
+          <Stack className="smartscalar" mih={70} gap={0}>
+            <Text
+              className="truncate product-card-title"
+              truncate="end"
+              pl="8px"
+            >
+              {product.title}
             </Text>
-          </Box>
-        </Box>
 
-        <Stack gap={0}>
-          <Flex>
-            <Image
-              src={image}
-              className="w-full object-cover object-center aspect-square"
-            />
-          </Flex>
+            <Box py={4} mih={questionHeight}>
+              <RemountOnSiteChange>
+                <StaticQuestion
+                  questionId={94}
+                  showVisualizationSelector={false}
+                  height={questionHeight}
+                />
+              </RemountOnSiteChange>
+            </Box>
 
-          <Divider color="dark-grey" mt="15px" />
-
-          <Flex
-            align="center"
-            justify="center"
-            className="text-white smartscalar"
-            mih={70}
-          >
-            <StaticQuestion
-              questionId={94}
-              showVisualizationSelector={false}
-              height={80}
-            />
-          </Flex>
-
-          <Divider color="dark-grey" mb="10px" />
-
-          <Flex w="100%" justify="center" align="center">
-            <Text fw="500" c="primary" fz="14px">
-              See more
-            </Text>
-          </Flex>
+            <ProductCardFooter />
+          </Stack>
         </Stack>
       </Stack>
     </Link>

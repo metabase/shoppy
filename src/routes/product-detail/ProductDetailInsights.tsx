@@ -6,7 +6,7 @@ import {
   InteractiveQuestion,
 } from "@metabase/embedding-sdk-react"
 
-import "./product-detail.css"
+import { RemountOnSiteChange } from "../../components/RemountOnSiteChange"
 
 const MAX_W = 600
 
@@ -23,7 +23,7 @@ export const ProductDetailInsights = () => {
         mb={36}
         mt={10}
       >
-        <Text c="white" fw={700} fz="17px">
+        <Text fw={300} fz="17px">
           Insights
         </Text>
 
@@ -32,61 +32,41 @@ export const ProductDetailInsights = () => {
         </Text>
       </Flex>
 
-      <Card
-        maw={MAX_W}
-        bg="none"
-        className="text-white border border-dark-grey rounded-md"
-      >
+      <Card maw={MAX_W} className="card">
         <Title size="h3" pb={10} fw={200}>
           Orders over time
         </Title>
 
-        <Box onClick={modal.open}>
-          <StaticQuestion questionId={95} height={250} />
+        <Box onClick={modal.open} h={250}>
+          <RemountOnSiteChange>
+            <StaticQuestion questionId={158} height={250} />
+          </RemountOnSiteChange>
         </Box>
       </Card>
 
-      <Card
-        maw={MAX_W}
-        bg="none"
-        className="text-white smartscalar border border-dark-grey"
-      >
-        <StaticQuestion
-          questionId={91}
-          showVisualizationSelector={false}
-          height={70}
-        />
-      </Card>
-
-      <Card
-        maw={MAX_W}
-        bg="none"
-        className="text-white pd-question border border-dark-grey"
-      >
-        <Title size="h3" pb={10} fw={200}>
-          Sales goal
-        </Title>
-
-        <StaticQuestion
-          questionId={154}
-          showVisualizationSelector={false}
-          height={150}
-        />
+      <Card maw={MAX_W} className="card smartscalar">
+        <RemountOnSiteChange>
+          <StaticQuestion
+            questionId={160}
+            showVisualizationSelector={false}
+            height={70}
+          />
+        </RemountOnSiteChange>
       </Card>
 
       <Modal
-        classNames={{ content: "bg-dark-grey py-3" }}
+        classNames={{ content: "bg-background py-3" }}
         opened={isModalOpen}
         onClose={modal.close}
         withCloseButton={false}
         size="xl"
       >
         <InteractiveQuestion
-          questionId={95}
+          questionId={158}
           height={500}
           withTitle
           customTitle={
-            <Title c="white" fw={400} size="h2">
+            <Title fw={400} size="h2">
               Orders over time
             </Title>
           }

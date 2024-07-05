@@ -1,20 +1,34 @@
-import { useQuery } from "@tanstack/react-query"
-import { Redirect } from "wouter"
+import { useEffect } from "react"
+import { useMutation, useQuery } from "@tanstack/react-query"
+
+import { FullPageLoader } from "./Loader"
 
 import { getUser } from "../utils/query-user"
-import { FullPageLoader } from "./Loader"
+import { loginToSite } from "../utils/switch-site"
 
 interface Props {
   children: React.ReactNode
 }
 
 export const AuthCheck = (props: Props) => {
-  const query = useQuery({ queryKey: ["auth"], queryFn: getUser })
+  const query = useQuery({
+    queryKey: ["auth"],
+    queryFn: getUser,
+  })
 
-  if (query.isLoading) return <FullPageLoader />
+  const loginMutation = useMutation({
+    mutationFn: loginToSite,
+    mutationKey: ["login"],
+  })
 
-  if (!query.data?.email) {
-    return <Redirect to="/login" />
+  useEffect(() => {
+    if (!query.data?.email) {
+      loginMutation.mutate(null)
+    }
+  }, [query.data])
+
+  if (query.isLoading || loginMutation.isPending || !query.data?.email) {
+    return <FullPageLoader />
   }
 
   return props.children

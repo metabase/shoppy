@@ -31,7 +31,6 @@ export function getSidebarLinks(options: Options): SidebarLink[] {
     },
     { to: "/admin/orders", title: "Orders" },
     { to: "/admin/campaigns", title: "Campaigns" },
-    { to: "/logout", title: "Logout" },
   ]
 
   return SIDEBAR_LINKS

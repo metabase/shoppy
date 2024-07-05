@@ -2,30 +2,53 @@
  * WORKAROUND. To be removed after fine-grained theming is available.
  **/
 .smartscalar [data-testid="scalar-value"] {
-  font-weight: 200;
   text-align: left;
-
-  /** Force alignment. */
-  margin-left: -2px;
 }
 
 .smartscalar [data-testid="scalar-period"] {
   display: none !important;
 }
 
-.smartscalar [data-card-key]>div:has(div[data-testid="scalar-container"]) {
-  align-items: flex-start;
-}
-
 .smartscalar [data-testid="scalar-previous-value"] > div > h4 {
-  color: #ADABA9;
   font-weight: 400;
 }
 
-.smartscalar [data-testid="scalar-previous-value"] > div > h4 > span {
-  color: #ADABA9;
+body[data-theme="luminara"] {
+  .smartscalar [data-testid="scalar-value"] {
+    font-weight: 200;
+    font-family: "Libre Caslon Display";
+  }
+}
+
+body[data-theme="stitch"] {
+  .smartscalar [data-card-key]>div:has(div[data-testid="scalar-container"]) {
+    align-items: flex-start;
+  }
+
+  .smartscalar [data-testid="scalar-previous-value"] > div > h4 {
+    color: #ADABA9;
+  }
+
+  .smartscalar [data-testid="scalar-previous-value"] > div > h4 > span {
+    color: #ADABA9;
+  }
 }
 
 .smartscalar [data-testid="scalar-previous-value"] > div > div > div {
   font-weight: 400;
+}
+
+body[data-theme="pug"] {
+  .smartscalar [data-testid="scalar-value"] {
+    margin-bottom: 20px;
+  }
+
+  .smartscalar [data-testid="scalar-previous-value"],
+  .smartscalar [data-testid="scalar-previous-value"] > div > h4 {
+    font-size: 12px;
+
+    span {
+      font-size: inherit;
+    }
+  }
 }
