@@ -4,7 +4,7 @@ import { Icon } from "@iconify/react"
 import cx from "classnames"
 import { useMutation } from "@tanstack/react-query"
 
-import { siteAtom } from "../store/theme"
+import { siteAtom } from "../store/site"
 import { loginToSite } from "../utils/switch-site"
 
 import { SITES } from "../themes"

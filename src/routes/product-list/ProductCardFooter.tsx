@@ -1,7 +1,7 @@
 import { Box, Text, Button, Divider } from "@mantine/core"
 import { useAtom } from "jotai"
 
-import { siteAtom } from "../../store/theme"
+import { siteAtom } from "../../store/site"
 
 export function ProductCardFooter() {
   const [theme] = useAtom(siteAtom)

@@ -8,7 +8,7 @@ import { ProductCardFooter } from "./ProductCardFooter"
 
 import { Product } from "../../types/product"
 import { RemountOnSiteChange } from "../../components/RemountOnSiteChange"
-import { siteAtom } from "../../store/theme"
+import { siteAtom } from "../../store/site"
 
 interface Props {
   product: Product

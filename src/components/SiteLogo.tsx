@@ -1,7 +1,7 @@
 import { Text, Image } from "@mantine/core"
 import { useAtom } from "jotai"
 
-import { siteAtom } from "../store/theme"
+import { siteAtom } from "../store/site"
 
 export function SiteLogo() {
   const [theme] = useAtom(siteAtom)

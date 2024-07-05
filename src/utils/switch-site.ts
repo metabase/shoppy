@@ -1,4 +1,4 @@
-import { siteAtom } from "../store/theme"
+import { siteAtom } from "../store/site"
 import { SiteKey } from "../types/site"
 import { getCurrentSite } from "./current-site"
 import { login } from "./login"

@@ -1,7 +1,7 @@
 import { Fragment } from "react"
 import { useAtom } from "jotai"
 
-import { siteAtom } from "../store/theme"
+import { siteAtom } from "../store/site"
 
 interface Props {
   children: React.ReactNode

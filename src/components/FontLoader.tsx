@@ -1,6 +1,6 @@
 import { useAtom } from "jotai"
 
-import { siteAtom } from "../store/theme"
+import { siteAtom } from "../store/site"
 
 export function FontLoader() {
   const [theme] = useAtom(siteAtom)

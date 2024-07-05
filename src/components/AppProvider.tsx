@@ -11,7 +11,7 @@ import {
 
 import { MetabaseError, MetabaseLoader } from "./SdkStates"
 
-import { siteAtom } from "../store/theme"
+import { siteAtom } from "../store/site"
 import { SITE_CONFIG_MAP } from "../themes"
 import { FontLoader } from "./FontLoader"
 

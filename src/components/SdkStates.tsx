@@ -1,7 +1,7 @@
 import { Flex, Text, Loader } from "@mantine/core"
 import { useAtom } from "jotai"
 
-import { siteAtom } from "../store/theme"
+import { siteAtom } from "../store/site"
 
 export const MetabaseLoader = () => {
   const [theme] = useAtom(siteAtom)
