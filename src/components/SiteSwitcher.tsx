@@ -5,22 +5,23 @@ import cx from "classnames"
 import { useMutation } from "@tanstack/react-query"
 
 import { siteAtom } from "../store/theme"
+import { loginToSite } from "../utils/switch-site"
 
 import { SITES } from "../themes"
-import { loginToSite } from "../utils/switch-site"
+
 import { SiteKey } from "../types/site"
 
-export const ThemeSwitcher = () => {
-  const [activeTheme, setActiveTheme] = useAtom(siteAtom)
+export const SiteSwitcher = () => {
+  const [currentSite, setCurrentSite] = useAtom(siteAtom)
 
   const loginMutation = useMutation({
     mutationFn: loginToSite,
     mutationKey: ["login"],
   })
 
-  async function changeTheme(key: SiteKey) {
+  async function changeSite(key: SiteKey) {
     await loginMutation.mutateAsync(key)
-    setActiveTheme(key)
+    setCurrentSite(key)
   }
 
   return (
@@ -42,12 +43,12 @@ export const ThemeSwitcher = () => {
         </Text>
 
         <ButtonGroup variant="outline">
-          {SITES.map((theme) => {
-            const active = activeTheme === theme.key
+          {SITES.map((site) => {
+            const active = currentSite === site.key
 
             return (
               <Button
-                key={theme.key}
+                key={site.key}
                 variant="outline"
                 size="xs"
                 color={active ? "#2B2F32" : "#7AC1FF"}
@@ -56,13 +57,13 @@ export const ThemeSwitcher = () => {
                   "border-[#EAEAEA]",
                   !active && "!bg-transparent hover:!bg-[#4C4E51]",
                 )}
-                onClick={() => changeTheme(theme.key)}
+                onClick={() => changeSite(site.key)}
                 leftSection={
-                  <Icon icon={theme.icon} fontSize={14} overflow="visible" />
+                  <Icon icon={site.icon} fontSize={14} overflow="visible" />
                 }
                 loading={loginMutation.isPending}
               >
-                {theme.title}
+                {site.title}
               </Button>
             )
           })}

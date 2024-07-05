@@ -4,7 +4,7 @@ import { ReactNode } from "react"
 import { Link } from "wouter"
 
 import { SidebarLinks } from "./SidebarLinks"
-import { ThemeSwitcher } from "../ThemeSwitcher"
+import { SiteSwitcher } from "../SiteSwitcher"
 import { SiteLogo } from "../SiteLogo"
 import { Icon } from "@iconify/react"
 
@@ -27,7 +27,7 @@ export function Shell(props: Props) {
         classNames={{ navbar: "navbar" }}
       >
         <AppShell.Header className="border-b-[#55595B]" zIndex={102}>
-          <ThemeSwitcher />
+          <SiteSwitcher />
         </AppShell.Header>
 
         <AppShell.Navbar p="md" withBorder={false} pt={70} pl="30px">

@@ -7,7 +7,7 @@ import { useAtom } from "jotai"
 import { ProductCardFooter } from "./ProductCardFooter"
 
 import { Product } from "../../types/product"
-import { RemountOnThemeChange } from "../../components/RemountOnThemeChange"
+import { RemountOnSiteChange } from "../../components/RemountOnSiteChange"
 import { siteAtom } from "../../store/theme"
 
 interface Props {
@@ -39,13 +39,13 @@ export const ProductCard = ({ product }: Props) => {
             </Text>
 
             <Box py={4} mih={questionHeight}>
-              <RemountOnThemeChange>
+              <RemountOnSiteChange>
                 <StaticQuestion
                   questionId={94}
                   showVisualizationSelector={false}
                   height={questionHeight}
                 />
-              </RemountOnThemeChange>
+              </RemountOnSiteChange>
             </Box>
 
             <ProductCardFooter />
