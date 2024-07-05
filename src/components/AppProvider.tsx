@@ -30,11 +30,11 @@ const config: SDKConfig = {
 }
 
 export const AppProvider = ({ children }: Props) => {
-  const [siteKey] = useAtom(siteAtom)
+  const [site] = useAtom(siteAtom)
 
   const theme = useMemo(() => {
-    return SITE_CONFIG_MAP[siteKey].metabase
-  }, [siteKey])
+    return SITE_CONFIG_MAP[site].metabase
+  }, [site])
 
   return (
     <MetabaseProvider config={config} theme={theme}>

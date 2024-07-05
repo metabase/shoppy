@@ -14,7 +14,7 @@ interface Props {
  * when the theme changes.
  */
 export function RemountOnSiteChange(props: Props) {
-  const [siteName] = useAtom(siteAtom)
+  const [site] = useAtom(siteAtom)
 
-  return <Fragment key={siteName}>{props.children}</Fragment>
+  return <Fragment key={site}>{props.children}</Fragment>
 }
