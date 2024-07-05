@@ -11,8 +11,8 @@ import {
 
 import { MetabaseError, MetabaseLoader } from "./SdkStates"
 
-import { themeAtom } from "../store/theme"
-import { THEME_CONFIG_MAP } from "../themes"
+import { siteAtom } from "../store/theme"
+import { SITE_CONFIG_MAP } from "../themes"
 import { FontLoader } from "./FontLoader"
 
 interface Props {
@@ -30,10 +30,10 @@ const config: SDKConfig = {
 }
 
 export const AppProvider = ({ children }: Props) => {
-  const [siteKey] = useAtom(themeAtom)
+  const [siteKey] = useAtom(siteAtom)
 
   const theme = useMemo(() => {
-    return THEME_CONFIG_MAP[siteKey].metabase
+    return SITE_CONFIG_MAP[siteKey].metabase
   }, [siteKey])
 
   return (

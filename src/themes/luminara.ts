@@ -69,4 +69,4 @@ const metabase: MetabaseTheme = {
   },
 }
 
-export const LuminaraTheme: SiteConfig = { metabase, mantine }
+export const LuminaraSite: SiteConfig = { metabase, mantine }

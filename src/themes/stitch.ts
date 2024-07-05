@@ -69,4 +69,4 @@ const metabase: MetabaseTheme = {
   },
 }
 
-export const StitchTheme: SiteConfig = { metabase, mantine }
+export const StitchSite: SiteConfig = { metabase, mantine }

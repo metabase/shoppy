@@ -1,9 +1,9 @@
 import { useAtom } from "jotai"
 
-import { themeAtom } from "../store/theme"
+import { siteAtom } from "../store/theme"
 
 export function FontLoader() {
-  const [theme] = useAtom(themeAtom)
+  const [theme] = useAtom(siteAtom)
 
   return (
     <link type="text/css" rel="stylesheet" href={`/fonts/${theme}.font.css`} />

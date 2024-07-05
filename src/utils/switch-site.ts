@@ -1,6 +1,6 @@
-import { themeAtom } from "../store/theme"
+import { siteAtom } from "../store/theme"
 import { SiteKey } from "../types/site"
-import { getCurrentTheme } from "./current-theme"
+import { getCurrentSite } from "./current-site"
 import { login } from "./login"
 import { logout } from "./logout"
 import { queryClient } from "./query-client"
@@ -12,9 +12,9 @@ const SITE_TO_USER_MAP: Record<SiteKey, string> = {
 }
 
 export async function loginToSite(_site: SiteKey | null) {
-  const site = _site ?? getCurrentTheme()
+  const site = _site ?? getCurrentSite()
 
-  const hasSiteChanged = site !== getCurrentTheme()
+  const hasSiteChanged = site !== getCurrentSite()
 
   try {
     if (hasSiteChanged) {

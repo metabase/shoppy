@@ -4,14 +4,14 @@ import { Icon } from "@iconify/react"
 import cx from "classnames"
 import { useMutation } from "@tanstack/react-query"
 
-import { themeAtom } from "../store/theme"
+import { siteAtom } from "../store/theme"
 
-import { THEMES } from "../themes"
+import { SITES } from "../themes"
 import { loginToSite } from "../utils/switch-site"
 import { SiteKey } from "../types/site"
 
 export const ThemeSwitcher = () => {
-  const [activeTheme, setActiveTheme] = useAtom(themeAtom)
+  const [activeTheme, setActiveTheme] = useAtom(siteAtom)
 
   const loginMutation = useMutation({
     mutationFn: loginToSite,
@@ -42,7 +42,7 @@ export const ThemeSwitcher = () => {
         </Text>
 
         <ButtonGroup variant="outline">
-          {THEMES.map((theme) => {
+          {SITES.map((theme) => {
             const active = activeTheme === theme.key
 
             return (
