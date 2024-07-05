@@ -27,12 +27,8 @@ export const AuthCheck = (props: Props) => {
     }
   }, [query.data])
 
-  if (query.isLoading || loginMutation.isPending) {
+  if (query.isLoading || loginMutation.isPending || !query.data?.email) {
     return <FullPageLoader />
-  }
-
-  if (!query.data?.email) {
-    return <div>authenticating</div>
   }
 
   return props.children
