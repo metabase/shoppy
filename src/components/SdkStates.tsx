@@ -4,7 +4,7 @@ import { useAtom } from "jotai"
 import { siteAtom } from "../store/site"
 
 export const MetabaseLoader = () => {
-  const [theme] = useAtom(siteAtom)
+  const [site] = useAtom(siteAtom)
 
   return (
     <Flex

@@ -4,7 +4,7 @@ import { useAtom } from "jotai"
 import { siteAtom } from "../store/site"
 
 export function SiteLogo() {
-  const [theme] = useAtom(siteAtom)
+  const [site] = useAtom(siteAtom)
 
   if (theme === "luminara") {
     return <Image src="/logo-luminara.svg" />
