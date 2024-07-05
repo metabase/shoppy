@@ -2,7 +2,7 @@ import { MantineProvider, createTheme } from "@mantine/core"
 import { useAtom } from "jotai"
 import { ReactNode, useEffect, useMemo, useState } from "react"
 import { siteAtom } from "../store/site"
-import { SITE_CONFIG_MAP } from "../themes"
+import { SITE_CONFIG_MAP } from "../constants/sites"
 
 type Props = { children: ReactNode }
 

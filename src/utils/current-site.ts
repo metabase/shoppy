@@ -1,6 +1,6 @@
 import { store } from "../store"
 import { siteAtom } from "../store/site"
-import { SITE_CONFIG_MAP } from "../themes"
+import { SITE_CONFIG_MAP } from "../constants/sites"
 
 import { SiteKey } from "../types/site"
 

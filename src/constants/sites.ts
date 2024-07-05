@@ -1,6 +1,6 @@
-import { StitchSite } from "./stitch"
-import { LuminaraSite } from "./luminara"
-import { PugSite } from "./pug"
+import { StitchSite } from "../themes/stitch"
+import { LuminaraSite } from "../themes/luminara"
+import { PugSite } from "../themes/pug"
 
 import type { SiteConfig, SiteInfo, SiteKey } from "../types/site"
 

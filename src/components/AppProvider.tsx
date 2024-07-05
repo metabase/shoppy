@@ -12,7 +12,7 @@ import {
 import { MetabaseError, MetabaseLoader } from "./SdkStates"
 
 import { siteAtom } from "../store/site"
-import { SITE_CONFIG_MAP } from "../themes"
+import { SITE_CONFIG_MAP } from "../constants/sites"
 import { FontLoader } from "./FontLoader"
 
 interface Props {

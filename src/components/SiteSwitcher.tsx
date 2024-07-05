@@ -7,7 +7,7 @@ import { useMutation } from "@tanstack/react-query"
 import { siteAtom } from "../store/site"
 import { loginToSite } from "../utils/switch-site"
 
-import { SITES } from "../themes"
+import { SITES } from "../constants/sites"
 
 import { SiteKey } from "../types/site"
 
