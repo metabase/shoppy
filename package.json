@@ -34,7 +34,7 @@
   },
   "scripts": {
     "install-deps": "yarn --force",
-    "install-and-start": "yarn install-deps && yarn dev:https",
+    "install-and-start": "yarn purge-cache && yarn install-deps && yarn dev:https",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "dev": "vite",
     "dev:https": "HTTPS=true yarn dev",

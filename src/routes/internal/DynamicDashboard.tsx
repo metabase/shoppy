@@ -9,6 +9,10 @@ export const DynamicDashboardPage = () => (
       dashboardId={12}
       withTitle={true}
       questionHeight={500}
+      onLoad={() => console.log("InteractiveDashboard onLoad")}
+      onLoadWithCards={() =>
+        console.log("InteractiveDashboard onLoadWithCards")
+      }
     />
   </Box>
 )
