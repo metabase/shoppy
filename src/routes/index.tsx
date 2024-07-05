@@ -1,28 +1,23 @@
 import { Redirect, Route, Switch } from "wouter"
 
-import { DEFAULT_ADMIN_ROUTE, Login } from "./Login"
-import { Logout } from "./Logout"
-
 import { ProductAnalyticsPage } from "./product-list"
 import { ProductDetailPage } from "./product-detail"
 
 import { QuestionPage } from "./analytics/QuestionPage"
 import { DashboardPage } from "./analytics/DashboardPage"
 import { AnalyticsOverviewPage } from "./analytics/AnalyticsOverviewPage"
+import { AnalyticsCustomPage } from "./analytics/AnalyticsCustomPage"
 
 import { KitchenSink } from "./internal/KitchenSink"
 
 import { AppProvider } from "../components/AppProvider"
 import { AuthCheck } from "../components/AuthCheck"
 import { Shell } from "../components/layout/Shell"
-import { AnalyticsCustomPage } from "./analytics/AnalyticsCustomPage"
 
 export const Routes = () => (
   <Switch>
-    <Route path="/login" component={Login} />
-
     <AuthCheck>
-      <Route path="/" component={() => <Redirect to={DEFAULT_ADMIN_ROUTE} />} />
+      <Route path="/" component={() => <Redirect to="/admin/products" />} />
 
       <AppProvider>
         <Shell>
@@ -74,7 +69,6 @@ export const Routes = () => (
           </Route>
 
           <Route path="/dev" component={KitchenSink} />
-          <Route path="/logout" component={Logout} />
         </Shell>
       </AppProvider>
     </AuthCheck>

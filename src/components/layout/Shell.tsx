@@ -2,9 +2,11 @@ import { AppShell, Box, Flex, Text } from "@mantine/core"
 import { useDisclosure } from "@mantine/hooks"
 import { ReactNode } from "react"
 import { Link } from "wouter"
-import { IconUser, IconSettings } from "@tabler/icons-react"
 
 import { SidebarLinks } from "./SidebarLinks"
+import { SiteSwitcher } from "../SiteSwitcher"
+import { SiteLogo } from "../SiteLogo"
+import { Icon } from "@iconify/react"
 
 interface Props {
   children: ReactNode
@@ -14,35 +16,39 @@ export function Shell(props: Props) {
   const [opened] = useDisclosure()
 
   return (
-    <AppShell
-      navbar={{
-        width: 240,
-        breakpoint: "sm",
-        collapsed: { mobile: !opened },
-      }}
-      padding="sm"
-      bg="dark-background"
-    >
-      <AppShell.Navbar p="md" bg="transparent" withBorder={false}>
-        <Flex direction="column" justify="space-between" h="100%">
-          <Box>
-            <Link to="/admin/products">
-              <Text fw={400} size="30px" c="accent-lighter" lh="xs">
-                Shoppy
-              </Text>
-            </Link>
+    <Box>
+      <AppShell
+        navbar={{
+          width: 240,
+          breakpoint: "sm",
+          collapsed: { mobile: !opened },
+        }}
+        padding="sm"
+        classNames={{ navbar: "navbar" }}
+      >
+        <AppShell.Header className="border-b-[#55595B]" zIndex={102}>
+          <SiteSwitcher />
+        </AppShell.Header>
 
-            <SidebarLinks />
-          </Box>
+        <AppShell.Navbar p="md" withBorder={false} pt={70} pl="30px">
+          <Flex direction="column" justify="space-between" h="100%">
+            <Box>
+              <Link to="/admin/products">
+                <SiteLogo />
+              </Link>
 
-          <Flex direction="column" className="gap-y-3">
-            <IconUser size={30} className="stroke-dark-orange" />
-            <IconSettings size={30} className="stroke-dark-orange" />
+              <SidebarLinks />
+            </Box>
+
+            <Flex className="gap-x-3">
+              <Icon icon="tabler:user" fontSize={30} />
+              <Icon icon="tabler:settings" fontSize={30} />
+            </Flex>
           </Flex>
-        </Flex>
-      </AppShell.Navbar>
+        </AppShell.Navbar>
 
-      <AppShell.Main>{props.children}</AppShell.Main>
-    </AppShell>
+        <AppShell.Main pt={60}>{props.children}</AppShell.Main>
+      </AppShell>
+    </Box>
   )
 }
