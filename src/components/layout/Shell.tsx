@@ -1,4 +1,4 @@
-import { AppShell, Box, Flex, Text } from "@mantine/core"
+import { AppShell, Box, Flex } from "@mantine/core"
 import { useDisclosure } from "@mantine/hooks"
 import { ReactNode } from "react"
 import { Link } from "wouter"

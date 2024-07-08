@@ -1,6 +1,6 @@
 import { MantineProvider, createTheme } from "@mantine/core"
 import { useAtom } from "jotai"
-import { ReactNode, useEffect, useMemo, useState } from "react"
+import { ReactNode, useEffect, useMemo } from "react"
 import { siteAtom } from "../store/site"
 import { SITE_CONFIG_MAP } from "../constants/sites"
 
