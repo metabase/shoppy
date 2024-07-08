@@ -1,17 +1,18 @@
 import { Flex, Text, Loader } from "@mantine/core"
 import { useAtom } from "jotai"
 
-import { $theme } from "../store/theme"
+import { siteAtom } from "../store/site"
 
 export const MetabaseLoader = () => {
-  const [theme] = useAtom($theme)
+  const [site] = useAtom(siteAtom)
 
   return (
     <Flex
       h="100%"
       align="center"
-      justify={theme === "stitch" ? "flex-start" : "center"}
-      {...(theme === "stitch" && { ml: "8px" })}
+      {...(site === "stitch"
+        ? { ml: "8px", justify: "flex-start" }
+        : { justify: "center" })}
     >
       <Loader size="sm" />
     </Flex>

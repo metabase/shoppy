@@ -6,7 +6,7 @@ import {
   InteractiveQuestion,
 } from "@metabase/embedding-sdk-react"
 
-import { RemountOnThemeChange } from "../../components/RemountOnThemeChange"
+import { RemountOnSiteChange } from "../../components/RemountOnSiteChange"
 
 const MAX_W = 600
 
@@ -38,20 +38,20 @@ export const ProductDetailInsights = () => {
         </Title>
 
         <Box onClick={modal.open} h={250}>
-          <RemountOnThemeChange>
+          <RemountOnSiteChange>
             <StaticQuestion questionId={158} height={250} />
-          </RemountOnThemeChange>
+          </RemountOnSiteChange>
         </Box>
       </Card>
 
       <Card maw={MAX_W} className="card smartscalar">
-        <RemountOnThemeChange>
+        <RemountOnSiteChange>
           <StaticQuestion
             questionId={160}
             showVisualizationSelector={false}
             height={70}
           />
-        </RemountOnThemeChange>
+        </RemountOnSiteChange>
       </Card>
 
       <Modal

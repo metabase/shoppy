@@ -11,9 +11,9 @@ import {
 
 import { MetabaseError, MetabaseLoader } from "./SdkStates"
 
-import { $theme } from "../store/theme"
-import { THEME_CONFIG_MAP } from "../themes"
-import { FontLoader } from "../hooks/useFontLoader"
+import { siteAtom } from "../store/site"
+import { SITE_CONFIG_MAP } from "../constants/sites"
+import { FontLoader } from "./FontLoader"
 
 interface Props {
   children: React.ReactNode
@@ -30,11 +30,11 @@ const config: SDKConfig = {
 }
 
 export const AppProvider = ({ children }: Props) => {
-  const [themeKey] = useAtom($theme)
+  const [site] = useAtom(siteAtom)
 
   const theme = useMemo(() => {
-    return THEME_CONFIG_MAP[themeKey].metabase
-  }, [themeKey])
+    return SITE_CONFIG_MAP[site].metabase
+  }, [site])
 
   return (
     <MetabaseProvider config={config} theme={theme}>

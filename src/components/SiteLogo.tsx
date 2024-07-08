@@ -1,20 +1,20 @@
 import { Text, Image } from "@mantine/core"
 import { useAtom } from "jotai"
 
-import { $theme } from "../store/theme"
+import { siteAtom } from "../store/site"
 
 export function SiteLogo() {
-  const [theme] = useAtom($theme)
+  const [site] = useAtom(siteAtom)
 
-  if (theme === "luminara") {
+  if (site === "luminara") {
     return <Image src="/logo-luminara.svg" />
   }
 
-  if (theme === "pug") {
+  if (site === "pug") {
     return <Image src="/logo-pug-n-play.png" w="160px" />
   }
 
-  if (theme === "stitch") {
+  if (site === "stitch") {
     return (
       <Text
         fw={200}

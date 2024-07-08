@@ -1,24 +1,24 @@
 import { Link } from "wouter"
 
 import { StaticQuestion } from "@metabase/embedding-sdk-react"
-import { Stack, Text, Image, Flex, Box } from "@mantine/core"
+import { Stack, Text, Image, Box } from "@mantine/core"
 import { useAtom } from "jotai"
 
 import { ProductCardFooter } from "./ProductCardFooter"
 
 import { Product } from "../../types/product"
-import { RemountOnThemeChange } from "../../components/RemountOnThemeChange"
-import { $theme } from "../../store/theme"
+import { RemountOnSiteChange } from "../../components/RemountOnSiteChange"
+import { siteAtom } from "../../store/site"
 
 interface Props {
   product: Product
 }
 
 export const ProductCard = ({ product }: Props) => {
-  const [theme] = useAtom($theme)
+  const [site] = useAtom(siteAtom)
   const image = product.imageUrl ?? "/mock-t-shirt.webp"
 
-  const questionHeight = theme === "stitch" ? 40 : 70
+  const questionHeight = site === "stitch" ? 40 : 70
 
   return (
     <Link href={`/products/${product.id}`}>
@@ -39,13 +39,13 @@ export const ProductCard = ({ product }: Props) => {
             </Text>
 
             <Box py={4} mih={questionHeight}>
-              <RemountOnThemeChange>
+              <RemountOnSiteChange>
                 <StaticQuestion
                   questionId={94}
                   showVisualizationSelector={false}
                   height={questionHeight}
                 />
-              </RemountOnThemeChange>
+              </RemountOnSiteChange>
             </Box>
 
             <ProductCardFooter />

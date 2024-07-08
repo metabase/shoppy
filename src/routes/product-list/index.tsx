@@ -1,4 +1,4 @@
-import { Grid, SimpleGrid, Loader, Stack, Title, Flex } from "@mantine/core"
+import { SimpleGrid, Loader, Stack, Title, Flex } from "@mantine/core"
 import { useQuery } from "@tanstack/react-query"
 
 import { ProductCard } from "./ProductCard"

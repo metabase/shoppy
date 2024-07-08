@@ -1,6 +1,6 @@
 import { colorsTuple as t, MantineThemeOverride } from "@mantine/core"
 import { MetabaseTheme } from "@metabase/embedding-sdk-react"
-import { ThemeConfig } from "../types/theme"
+import { SiteConfig } from "../types/site"
 
 const colors = {
   primary: "#E09862",
@@ -69,4 +69,4 @@ const metabase: MetabaseTheme = {
   },
 }
 
-export const LuminaraTheme: ThemeConfig = { metabase, mantine }
+export const LuminaraSite: SiteConfig = { metabase, mantine }

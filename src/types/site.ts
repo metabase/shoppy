@@ -1,15 +1,15 @@
 import { MantineThemeOverride } from "@mantine/core"
 import { MetabaseTheme } from "@metabase/embedding-sdk-react"
 
-export type ThemeKey = "stitch" | "luminara" | "pug"
+export type SiteKey = "stitch" | "luminara" | "pug"
 
-export type ThemeInfo = {
+export type SiteInfo = {
   title: string
-  key: ThemeKey
+  key: SiteKey
   icon: string
 }
 
-export type ThemeConfig = {
+export type SiteConfig = {
   mantine: MantineThemeOverride
   metabase: MetabaseTheme
 }

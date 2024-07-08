@@ -1,7 +1,7 @@
 import { Box } from "@mantine/core"
 import { InteractiveDashboard } from "@metabase/embedding-sdk-react"
 
-import { RemountOnThemeChange } from "../../components/RemountOnThemeChange"
+import { RemountOnSiteChange } from "../../components/RemountOnSiteChange"
 
 interface Props {
   id: string
@@ -12,13 +12,13 @@ export function DashboardPage(props: Props) {
 
   return (
     <Box mih="100vh" className="dashboard-container smartscalar">
-      <RemountOnThemeChange>
+      <RemountOnSiteChange>
         <InteractiveDashboard
           dashboardId={dashboardId}
           withTitle
           withDownloads
         />
-      </RemountOnThemeChange>
+      </RemountOnSiteChange>
     </Box>
   )
 }

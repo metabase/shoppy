@@ -1,12 +1,12 @@
 import { Box, Text, Button, Divider } from "@mantine/core"
 import { useAtom } from "jotai"
 
-import { $theme } from "../../store/theme"
+import { siteAtom } from "../../store/site"
 
 export function ProductCardFooter() {
-  const [theme] = useAtom($theme)
+  const [site] = useAtom(siteAtom)
 
-  if (theme === "luminara") {
+  if (site === "luminara") {
     return (
       <Box w="100%">
         <Divider mx={16} className="divider" />

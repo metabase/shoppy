@@ -23,12 +23,14 @@ import "./themes/pug.css"
 import "./styles/smartscalar-workaround.css"
 import "./styles/dashboard-workaround.css"
 
+import { store } from "./store"
+
 import { ThemeProvider } from "./components/ThemeProvider"
 
 const root = document.getElementById("root")!
 
 ReactDOM.createRoot(root).render(
-  <JotaiProvider>
+  <JotaiProvider store={store}>
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
         <Routes />
