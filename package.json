@@ -49,7 +49,10 @@
     "prepare": "husky"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": "eslint --fix"
+    "*.{js,jsx,ts,tsx}": [
+      "yarn prettier --write",
+      "eslint --fix"
+    ]
   },
   "browserslist": {
     "production": [
