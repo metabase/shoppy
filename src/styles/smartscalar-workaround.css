@@ -39,7 +39,7 @@ body[data-theme="stitch"] {
 }
 
 body[data-theme="pug"] {
-  .smartscalar [data-card-key]>div:has(div[data-testid="scalar-container"]) {
+  .smartscalar:not(.product-card-trend) [data-card-key]>div:has(div[data-testid="scalar-container"]) {
     align-items: flex-start;
   }
   
