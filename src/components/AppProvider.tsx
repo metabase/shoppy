@@ -11,6 +11,7 @@ import {
 } from "../constants/env"
 
 import { MetabaseError, MetabaseLoader } from "./SdkStates"
+import { SdkEventHandlersConfig } from "@metabase/embedding-sdk-react/dist/enterprise/frontend/src/embedding-sdk/lib/events"
 
 interface Props {
   children: React.ReactNode
@@ -60,8 +61,17 @@ const theme: MetabaseTheme = {
   },
 }
 
+const eventHandlers: SdkEventHandlersConfig = {
+  onDashboardLoad: (dashboard) => {
+    console.log("global onDashboardLoad", dashboard)
+  },
+  onDashboardLoadWithCards: (dashboard) => {
+    console.log("global onDashboardLoadWithCards", dashboard)
+  },
+}
+
 export const AppProvider = ({ children }: Props) => (
-  <MetabaseProvider config={config} theme={theme}>
+  <MetabaseProvider config={config} theme={theme} eventHandlers={eventHandlers}>
     {children}
   </MetabaseProvider>
 )
