@@ -1,7 +1,7 @@
 import { Link } from "wouter"
 
 import { StaticQuestion } from "@metabase/embedding-sdk-react"
-import { Stack, Text, Image, Flex, Box } from "@mantine/core"
+import { Stack, Text, Image, Box } from "@mantine/core"
 import { useAtom } from "jotai"
 
 import { ProductCardFooter } from "./ProductCardFooter"
