@@ -50,8 +50,8 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
-      "yarn prettier --write",
-      "eslint --fix"
+      "eslint --fix",
+      "yarn prettier --write"
     ]
   },
   "browserslist": {
