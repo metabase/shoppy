@@ -60,4 +60,16 @@ body[data-theme="stitch"] {
   .sidebar-link-root {
     font-weight: 600;
   }
+
+  .product-insights-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--color-lighter-grey);
+  }
+
+  .product-detail-card-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--color-lighter-grey);
+  }
 }

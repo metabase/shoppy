@@ -1,12 +1,17 @@
 body[data-theme="pug"] {
   .card {
-    @apply bg-background text-[#323E35] border border-dark-grey rounded-md;
+    @apply bg-background text-[#323E35] rounded-md;
   }
 
   .product-card-image {
     border-radius: 100%;
     max-width: 300px;
     align-self: center;
+  }
+
+  .product-detail-image {
+    border-radius: 100%;
+    max-width: 300px;
   }
 
   .sidebar-active-child:hover {
@@ -39,6 +44,10 @@ body[data-theme="pug"] {
     font-weight: 600;
   }
 
+  .product-detail-card-container {
+    margin-top: 20px;
+  }
+
   .product-card-title {
     font-family: Fraunces;
     text-align: center;
@@ -56,5 +65,18 @@ body[data-theme="pug"] {
     background: transparent;
     color: var(--color-primary);
     border: 2px solid var(--color-primary);
+  }
+
+  .product-detail-card-title {
+    color: var(--color-primary);
+    font-weight: 500;
+    font-family: "DM Mono", sans-serif;
+  }
+
+  .product-insights-title {
+    color: var(--color-primary);
+    font-size: 42px;
+    font-family: Fraunces;
+    font-weight: 600;
   }
 }

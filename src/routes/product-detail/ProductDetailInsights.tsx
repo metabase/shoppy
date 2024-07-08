@@ -23,17 +23,15 @@ export const ProductDetailInsights = () => {
         mb={36}
         mt={10}
       >
-        <Text fw={300} fz="17px">
-          Insights
-        </Text>
+        <Text className="product-insights-title">Insights</Text>
 
-        <Text c="primary" fw="bold" size="xs">
+        <Text c="primary" fw={300} size="sm">
           See more
         </Text>
       </Flex>
 
       <Card maw={MAX_W} className="card">
-        <Title size="h3" pb={10} fw={200}>
+        <Title size="18px" pb={10} className="product-detail-card-title">
           Orders over time
         </Title>
 
@@ -45,6 +43,10 @@ export const ProductDetailInsights = () => {
       </Card>
 
       <Card maw={MAX_W} className="card smartscalar">
+        <Title size="18px" mb={10} className="product-detail-card-title">
+          Total orders
+        </Title>
+
         <RemountOnSiteChange>
           <StaticQuestion
             questionId={160}
@@ -66,7 +68,7 @@ export const ProductDetailInsights = () => {
           height={500}
           withTitle
           customTitle={
-            <Title fw={400} size="h2">
+            <Title fw={400} size="h2" className="product-detail-card-title">
               Orders over time
             </Title>
           }

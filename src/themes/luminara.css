@@ -56,4 +56,23 @@ body[data-theme="luminara"] {
   .sidebar-link-root {
     font-weight: 600;
   }
+
+  .product-insights-title {
+    color: var(--color-dark-grey);
+    font-size: 24px;
+    font-family: Arsenal;
+    font-weight: 700;
+    font-style: italic;
+  }
+
+  .product-detail-image {
+    border-radius: 16px;
+    max-width: 300px;
+  }
+
+  .product-detail-card-title {
+    color: var(--color-dark-grey);
+    font-weight: 700;
+    font-style: italic;
+  }
 }
