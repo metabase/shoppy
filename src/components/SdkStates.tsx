@@ -10,7 +10,7 @@ export const MetabaseLoader = () => {
     <Flex
       h="100%"
       align="center"
-      {...(theme === "stitch"
+      {...(site === "stitch"
         ? { ml: "8px", justify: "flex-start" }
         : { justify: "center" })}
     >
