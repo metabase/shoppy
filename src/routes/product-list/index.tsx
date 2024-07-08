@@ -1,4 +1,4 @@
-import { SimpleGrid, Loader, Stack, Title, Flex } from "@mantine/core"
+import { SimpleGrid, Stack, Title, Flex } from "@mantine/core"
 import { useQuery } from "@tanstack/react-query"
 
 import { ProductCard } from "./ProductCard"
@@ -8,6 +8,7 @@ import { getProductList } from "../../utils/query-product"
 import { siteAtom } from "../../store/site"
 import { useAtom } from "jotai"
 import { SiteKey } from "../../types/site"
+import { FullPageLoader } from "../../components/Loader"
 
 interface Props {
   categoryId?: string
@@ -28,7 +29,7 @@ export const ProductAnalyticsPage = (props: Props) => {
     products = products.filter((product) => product.category.id === categoryId)
   }
 
-  if (query.isLoading) return <Loader />
+  if (query.isLoading) return <FullPageLoader />
 
   return (
     <Flex w="100%" justify="center">

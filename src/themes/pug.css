@@ -20,9 +20,10 @@ body[data-theme="pug"] {
 
   .navbar::after {
     position: absolute;
-    display: inline-block;
+    top: 40px;
     content: " ";
     background: url(/blue-sidebar-waves.svg);
+    background-repeat: repeat-y;
     height: 100%;
     width: 20px;
     right: -12px;
