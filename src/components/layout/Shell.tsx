@@ -40,7 +40,7 @@ export function Shell(props: Props) {
               <SidebarLinks />
             </Box>
 
-            <Flex className="gap-x-3">
+            <Flex className="sidebar-icons gap-x-3">
               <Icon icon="tabler:user" fontSize={30} />
               <Icon icon="tabler:settings" fontSize={30} />
             </Flex>

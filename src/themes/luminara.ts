@@ -48,7 +48,7 @@ const metabase: MetabaseTheme = {
       "#B34332",
       "#4998E3",
     ],
-    positive: colors.viz1,
+    positive: colors.green3,
     negative: "#B34332",
   },
   components: {

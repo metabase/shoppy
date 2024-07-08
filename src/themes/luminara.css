@@ -3,6 +3,11 @@ body[data-theme="luminara"] {
     --divider-color: #A8ACA5;
   }
 
+  .overview-title {
+    font-family: 'Libre Caslon Display';
+    font-weight: 400;
+  }
+
   .card, .product-card {
     color: var(--color-dark-grey);
     border-radius: 16px;
@@ -12,6 +17,25 @@ body[data-theme="luminara"] {
 
   .product-card-image {
     border-radius: 16px 16px 0px 0px;
+  }
+
+  .navbar {
+    border-right: 1px solid rgba(50, 62, 53, 0.4);
+  }
+
+  .sidebar-active-child {
+    position: relative;
+  }
+
+  .sidebar-active-child::before {
+    content: "";
+    background: #E09862;
+    width: 16px;
+    height: 6px;
+    position: absolute;
+    left: -20px;
+    border-radius: 50px;
+    margin-top: 1px;
   }
 
   .sidebar-active-child:hover {

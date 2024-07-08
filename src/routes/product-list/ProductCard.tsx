@@ -22,7 +22,7 @@ export const ProductCard = ({ product }: Props) => {
 
   return (
     <Link href={`/products/${product.id}`}>
-      <Stack className="product-card" maw="300px">
+      <Stack className="product-card">
         <Stack gap={10}>
           <Image
             src={image}
