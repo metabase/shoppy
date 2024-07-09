@@ -28,10 +28,8 @@ export async function loginToSite(_site: SiteKey | null) {
     password: "password",
   })
 
-  if (hasSiteChanged) {
-    await queryClient.invalidateQueries({
-      predicate: (query) =>
-        ["auth", "products", "categories"].includes(query.queryKey.toString()),
-    })
-  }
+  await queryClient.refetchQueries({
+    predicate: (query) =>
+      ["auth", "products", "categories"].includes(query.queryKey.toString()),
+  })
 }
