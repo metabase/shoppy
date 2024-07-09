@@ -46,8 +46,7 @@
     "build:vercel": "NODE_OPTIONS=--max_old_space_size=5000 vite build",
     "format": "prettier . --write",
     "lint": "eslint src",
-    "prepare": "husky",
-    "esno": "esno"
+    "prepare": "husky"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
@@ -76,7 +75,6 @@
     "autoprefixer": "^10.4.19",
     "eslint": "9.x",
     "eslint-plugin-react": "^7.34.3",
-    "esno": "^4.7.0",
     "globals": "^15.8.0",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.7",
