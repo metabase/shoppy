@@ -57,11 +57,14 @@ body[data-theme="luminara"] {
     font-weight: 600;
   }
 
-  .product-insights-title {
+  .product-insights-title, .product-detail-title {
     color: var(--color-dark-grey);
     font-size: 24px;
     font-family: Arsenal;
     font-weight: 700;
+  }
+
+  .product-detail-title {
     font-style: italic;
   }
 

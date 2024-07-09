@@ -47,6 +47,8 @@ const metabase: MetabaseTheme = {
       "#FED18C",
       "#82A74B",
       "#FF8D69",
+      "#ED6A5A",
+      "#FED18C",
     ],
     positive: "#45DF4C",
     negative: "#FF3389",

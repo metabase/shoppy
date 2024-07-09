@@ -61,23 +61,23 @@ body[data-theme="stitch"] {
     font-weight: 600;
   }
 
-  .product-insights-title {
+  .product-insights-title, .product-detail-title {
     font-size: 24px;
     font-weight: 600;
-    color: var(--color-lighter-grey);
-  }
-
-  .product-detail-card-title {
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--color-lighter-grey);
   }
 
   .product-detail-card-container {
-    margin-top: 20px;
+    margin-top: 16px;
+    color: var(--color-lighter-grey);
   }
 
   .product-insights-see-more {
     color: var(--color-primary);
+  }
+  
+  .product-detail-card-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--color-lighter-grey);
   }
 }

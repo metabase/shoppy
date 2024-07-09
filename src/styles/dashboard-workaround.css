@@ -29,7 +29,7 @@ body[data-theme="stitch"] {
     padding: 0 10px;
   }
 
-  [data-testid="scalar-container"] h1 {
+  .smartscalar:not(.product-card-trend) [data-testid="scalar-container"] h1 {
     font-size: 30px;
     font-weight: 500;
     background: linear-gradient(93.53deg, #E590ED 9.53%, #828ED9 39.15%, #79C1FD 65.02%, #B1DBF8 84.51%);
