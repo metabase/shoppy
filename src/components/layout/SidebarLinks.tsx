@@ -44,7 +44,7 @@ const renderLink = (link: SidebarLink, child?: boolean) => (
             !child && "sidebar-link-root",
             child && "space-y-2",
             child && !active && "sidebar-inactive-child",
-            active ? "sidebar-active-child dark-gradient" : "",
+            active && "sidebar-active-child dark-gradient",
           )
         }
       />

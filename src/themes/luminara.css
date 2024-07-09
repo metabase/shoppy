@@ -38,7 +38,7 @@ body[data-theme="luminara"] {
     margin-top: 1px;
   }
 
-  .sidebar-active-child:hover {
+  .sidebar-inactive-child:hover {
     color: var(--color-lighter-grey);
   }
 

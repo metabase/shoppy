@@ -14,7 +14,7 @@ body[data-theme="stitch"] {
     -webkit-text-fill-color: transparent;
   }
 
-  .sidebar-active-child:hover {
+  .sidebar-inactive-child:hover {
     color: var(--color-light-grey);
   }
 
