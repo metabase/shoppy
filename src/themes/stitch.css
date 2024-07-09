@@ -72,4 +72,8 @@ body[data-theme="stitch"] {
     font-weight: 600;
     color: var(--color-lighter-grey);
   }
+
+  .product-detail-card-container {
+    margin-top: 20px;
+  }
 }

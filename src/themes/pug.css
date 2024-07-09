@@ -44,10 +44,6 @@ body[data-theme="pug"] {
     font-weight: 600;
   }
 
-  .product-detail-card-container {
-    margin-top: 38px;
-  }
-
   .product-card-title {
     font-family: Fraunces;
     text-align: center;
@@ -67,6 +63,18 @@ body[data-theme="pug"] {
     border: 2px solid var(--color-primary);
   }
 
+  .product-detail-card-container {
+    margin-top: 10px;
+  }
+
+  .product-detail-title {
+    font-family: Fraunces;
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: 32px;
+    margin-bottom: 6px;
+  }
+
   .product-detail-card-title {
     color: var(--color-primary);
     font-weight: 500;
@@ -75,8 +83,7 @@ body[data-theme="pug"] {
 
   .product-insights-title {
     color: var(--color-primary);
-    font-size: 42px;
-    font-family: Fraunces;
+    font-size: 22px;
     font-weight: 600;
   }
 }

@@ -27,11 +27,7 @@ export const ProductCard = ({ product }: Props) => {
           <Image src={image} className="product-card-image w-full" />
 
           <Stack className="smartscalar product-card-trend" mih={70} gap={0}>
-            <Text
-              className="truncate product-card-title"
-              truncate="end"
-              pl="8px"
-            >
+            <Text className="product-card-title" truncate="end" pl="8px">
               {product.title}
             </Text>
 

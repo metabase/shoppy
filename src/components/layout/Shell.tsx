@@ -30,7 +30,7 @@ export function Shell(props: Props) {
           <SiteSwitcher />
         </AppShell.Header>
 
-        <AppShell.Navbar p="md" withBorder={false} pt={70} pl="30px">
+        <AppShell.Navbar p="md" withBorder={false} pt={78} pl="30px">
           <Flex direction="column" justify="space-between" h="100%">
             <Box>
               <Link to="/admin/products">

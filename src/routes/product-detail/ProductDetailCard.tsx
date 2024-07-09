@@ -16,7 +16,7 @@ export const ProductDetailCard = ({ product }: Props) => {
       className="text-light-grey product-detail-card-container"
     >
       <Box className="mb-4 space-y-1">
-        <Text size="23px" className="truncate product-detail-card-title">
+        <Text size="23px" className="product-detail-title" truncate="end">
           {product.title}
         </Text>
 
@@ -25,15 +25,15 @@ export const ProductDetailCard = ({ product }: Props) => {
         </Text>
       </Box>
 
-      <Stack className="product-detail-card w-full space-y-4" gap={1}>
+      <Stack className="product-detail-card w-full space-y-8" gap={1}>
         <Flex align="center">
           <Image src={image} className="product-detail-image" />
         </Flex>
 
         <Flex direction="column" className="space-y-4">
           <Flex>
-            <Text fw={700} size="md" lh="xs" lts={2}>
-              DETAILS
+            <Text fw={700} size="md">
+              Details
             </Text>
 
             <Flex />
