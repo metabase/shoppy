@@ -86,4 +86,10 @@ body[data-theme="pug"] {
     font-size: 22px;
     font-weight: 600;
   }
+  
+  .dashboard-container h2 {
+    color: var(--color-primary);
+    font-weight: 600;
+    font-family: Fraunces;
+  }
 }

@@ -49,6 +49,8 @@ const metabase: MetabaseTheme = {
       "#BD37C9",
       colors.positive,
       "#545455",
+      colors.primary,
+      colors.negative,
     ],
     positive: colors.positive,
     negative: colors.negative,
@@ -59,7 +61,7 @@ const metabase: MetabaseTheme = {
     },
     dashboard: {
       card: {
-        border: `1px solid ${colors.lighterGrey}`,
+        border: "none",
       },
     },
     scalar: {
