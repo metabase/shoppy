@@ -76,4 +76,8 @@ body[data-theme="stitch"] {
   .product-detail-card-container {
     margin-top: 20px;
   }
+
+  .product-insights-see-more {
+    color: var(--color-primary);
+  }
 }

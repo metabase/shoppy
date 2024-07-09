@@ -71,13 +71,14 @@ body[data-theme="luminara"] {
   }
 
   .product-detail-card-title {
-    color: var(--color-dark-grey);
     font-weight: 700;
     font-style: italic;
+    color: var(--color-dark-grey);
   }
 
   .product-detail-card-container {
     margin-top: 16px;
+    color: var(--color-dark-grey);
   }
 
   .dashboard-container h2 {

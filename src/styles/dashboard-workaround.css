@@ -22,3 +22,19 @@
   margin-top: 10px;
   margin-bottom: 10px;
 }
+
+body[data-theme="stitch"] {
+  /** WORKAROUND: to add as theme option */
+  [data-testid="dashcard"] {
+    padding: 0 10px;
+  }
+
+  [data-testid="scalar-container"] h1 {
+    font-size: 30px;
+    font-weight: 500;
+    background: linear-gradient(93.53deg, #E590ED 9.53%, #828ED9 39.15%, #79C1FD 65.02%, #B1DBF8 84.51%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}

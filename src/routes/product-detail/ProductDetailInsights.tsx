@@ -25,7 +25,7 @@ export const ProductDetailInsights = () => {
       >
         <Text className="product-insights-title">Insights</Text>
 
-        <Text c="primary" fw={300} size="sm">
+        <Text fw={300} size="sm" className="product-insights-see-more">
           See more
         </Text>
       </Flex>

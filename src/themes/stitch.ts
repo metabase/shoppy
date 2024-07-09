@@ -58,6 +58,7 @@ const metabase: MetabaseTheme = {
     dashboard: {
       card: {
         border: `"1px solid ${colors.darkGrey}"`,
+        backgroundColor: "#212426",
       },
     },
     scalar: {

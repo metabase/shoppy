@@ -86,6 +86,10 @@ body[data-theme="pug"] {
     font-size: 22px;
     font-weight: 600;
   }
+
+  .product-insights-see-more {
+    color: var(--color-primary);
+  }
   
   .dashboard-container h2 {
     color: var(--color-primary);
