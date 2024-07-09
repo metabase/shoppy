@@ -79,4 +79,9 @@ body[data-theme="luminara"] {
   .product-detail-card-container {
     margin-top: 16px;
   }
+
+  .dashboard-container h2 {
+    font-style: italic;
+    font-weight: 600;
+  }
 }

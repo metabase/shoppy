@@ -10,17 +10,10 @@
 }
 
 .dashboard-container svg text[font-weight="700"] {
-  fill: #ADABA9;
   font-weight: 400;
 }
 
-.dashboard-container [data-testid="legend-item"] div {
-  color: #F8F7F7;
-  font-weight: 600;
-}
-
 .dashboard-container [data-testid="chart-container"] svg text {
-  fill: #ADABA9;
   font-weight: 400 !important;
 }
 

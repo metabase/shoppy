@@ -35,8 +35,8 @@ const metabase: MetabaseTheme = {
     filter: colors.viz1,
     summarize: "#BE54C0",
     "text-primary": colors.green3,
-    "text-secondary": colors.green1,
-    "text-tertiary": colors.green1,
+    "text-secondary": colors.green3,
+    "text-tertiary": colors.green3,
     border: colors.green1,
     background: colors.background,
     "background-hover": colors.background,
@@ -47,18 +47,19 @@ const metabase: MetabaseTheme = {
       "#DDA51F",
       "#B34332",
       "#4998E3",
+      "#BE54C0",
+      "#DDA51F",
     ],
     positive: colors.green3,
     negative: "#B34332",
+    shadow: "rgba(0, 0, 0, 0.1)",
   },
   components: {
     cartesian: {
       padding: "4px 10px",
     },
     dashboard: {
-      card: {
-        border: `1px solid ${colors.green1}`,
-      },
+      backgroundColor: "transparent",
     },
     scalar: {
       value: {
