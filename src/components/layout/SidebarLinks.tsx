@@ -18,7 +18,7 @@ export function SidebarLinks() {
   }, [categoryQuery.data])
 
   return (
-    <Box className="space-y-2" py="lg">
+    <Box pt="32px" className="space-y-3">
       {links.map((link) => renderLink(link))}
     </Box>
   )
@@ -44,7 +44,7 @@ const renderLink = (link: SidebarLink, child?: boolean) => (
             !child && "sidebar-link-root",
             child && "space-y-2",
             child && !active && "sidebar-inactive-child",
-            active ? "dark-gradient" : "sidebar-active-child",
+            active && "sidebar-active-child dark-gradient",
           )
         }
       />

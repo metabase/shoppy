@@ -1,10 +1,11 @@
-import { Grid, Container, Loader } from "@mantine/core"
+import { Grid, Container } from "@mantine/core"
 import { useQuery } from "@tanstack/react-query"
 
 import { ProductDetailCard } from "./ProductDetailCard"
 import { ProductDetailInsights } from "./ProductDetailInsights"
 
 import { getProductById } from "../../utils/query-product"
+import { FullPageLoader } from "../../components/Loader"
 
 interface Props {
   id: string
@@ -18,7 +19,7 @@ export const ProductDetailPage = ({ id }: Props) => {
 
   const product = query.data
 
-  if (query.isLoading) return <Loader />
+  if (query.isLoading) return <FullPageLoader />
   if (!product) return <div>Product not found</div>
 
   return (

@@ -30,7 +30,7 @@ export function Shell(props: Props) {
           <SiteSwitcher />
         </AppShell.Header>
 
-        <AppShell.Navbar p="md" withBorder={false} pt={70} pl="30px">
+        <AppShell.Navbar p="md" withBorder={false} pt={107} pl="30px">
           <Flex direction="column" justify="space-between" h="100%">
             <Box>
               <Link to="/admin/products">
@@ -40,14 +40,14 @@ export function Shell(props: Props) {
               <SidebarLinks />
             </Box>
 
-            <Flex className="gap-x-3">
+            <Flex className="sidebar-icons gap-x-3">
               <Icon icon="tabler:user" fontSize={30} />
               <Icon icon="tabler:settings" fontSize={30} />
             </Flex>
           </Flex>
         </AppShell.Navbar>
 
-        <AppShell.Main pt={60}>{props.children}</AppShell.Main>
+        <AppShell.Main pt={90}>{props.children}</AppShell.Main>
       </AppShell>
     </Box>
   )

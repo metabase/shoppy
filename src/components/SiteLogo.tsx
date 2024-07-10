@@ -18,8 +18,8 @@ export function SiteLogo() {
     return (
       <Text
         fw={200}
-        size="30px"
-        lh="xs"
+        size="36px"
+        lh="36px"
         className="dark-gradient"
         c="accent-lighter"
       >
