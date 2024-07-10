@@ -39,8 +39,15 @@ body[data-theme="stitch"] {
 }
 
 body[data-theme="pug"] {
+  .smartscalar:not(.product-card-trend) [data-card-key]>div:has(div[data-testid="scalar-container"]) {
+    align-items: flex-start;
+  }
+  
   .smartscalar [data-testid="scalar-value"] {
     margin-bottom: 20px;
+    font-family: "Fraunces";
+    font-weight: 600;
+    font-size: 32px;
   }
 
   .smartscalar [data-testid="scalar-previous-value"],

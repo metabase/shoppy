@@ -10,9 +10,13 @@ export const ProductDetailCard = ({ product }: Props) => {
   const image = product.imageUrl ?? "/mock-t-shirt.webp"
 
   return (
-    <Flex direction="column" mih="100%" className="text-light-grey">
+    <Flex
+      direction="column"
+      mih="100%"
+      className="text-light-grey product-detail-card-container"
+    >
       <Box className="mb-4 space-y-1">
-        <Text fw={300} size="23px" className="truncate">
+        <Text size="23px" className="product-detail-title" truncate="end">
           {product.title}
         </Text>
 
@@ -21,19 +25,15 @@ export const ProductDetailCard = ({ product }: Props) => {
         </Text>
       </Box>
 
-      <Stack className="card w-full p-5 space-y-4" gap={1}>
+      <Stack className="product-detail-card w-full space-y-8" gap={1}>
         <Flex align="center">
-          <Image
-            src={image}
-            maw={250}
-            className="object-cover object-center aspect-square"
-          />
+          <Image src={image} className="product-detail-image" />
         </Flex>
 
         <Flex direction="column" className="space-y-4">
           <Flex>
-            <Text fw={700} size="md" lh="xs" lts={2}>
-              DETAILS
+            <Text fw={700} size="md">
+              Details
             </Text>
 
             <Flex />

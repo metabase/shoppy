@@ -1,7 +1,7 @@
 import { Link } from "wouter"
 
 import { StaticQuestion } from "@metabase/embedding-sdk-react"
-import { Stack, Text, Image, Flex, Box } from "@mantine/core"
+import { Stack, Text, Image, Box } from "@mantine/core"
 import { useAtom } from "jotai"
 
 import { ProductCardFooter } from "./ProductCardFooter"
@@ -22,19 +22,12 @@ export const ProductCard = ({ product }: Props) => {
 
   return (
     <Link href={`/products/${product.id}`}>
-      <Stack className="product-card" maw="300px">
+      <Stack className="product-card">
         <Stack gap={10}>
-          <Image
-            src={image}
-            className="product-card-image w-full object-cover object-center aspect-square"
-          />
+          <Image src={image} className="product-card-image w-full" />
 
-          <Stack className="smartscalar" mih={70} gap={0}>
-            <Text
-              className="truncate product-card-title"
-              truncate="end"
-              pl="8px"
-            >
+          <Stack className="smartscalar product-card-trend" mih={70} gap={0}>
+            <Text className="product-card-title" truncate="end" pl="8px">
               {product.title}
             </Text>
 
