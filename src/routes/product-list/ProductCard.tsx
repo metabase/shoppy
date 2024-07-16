@@ -34,9 +34,10 @@ export const ProductCard = ({ product }: Props) => {
             <Box py={4} mih={questionHeight}>
               <RemountOnSiteChange>
                 <StaticQuestion
-                  questionId={94}
+                  questionId={161}
                   showVisualizationSelector={false}
                   height={questionHeight}
+                  parameterValues={{ product_id: product.id }}
                 />
               </RemountOnSiteChange>
             </Box>
