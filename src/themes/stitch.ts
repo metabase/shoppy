@@ -63,11 +63,14 @@ const metabase: MetabaseTheme = {
         backgroundColor: "#212426",
       },
     },
-    scalar: {
+    number: {
       value: {
         fontSize: "18px",
         lineHeight: "22px",
       },
+    },
+    popover: {
+      zIndex: 201,
     },
   },
 }

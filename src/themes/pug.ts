@@ -64,11 +64,14 @@ const metabase: MetabaseTheme = {
         border: "none",
       },
     },
-    scalar: {
+    number: {
       value: {
         fontSize: "24px",
         lineHeight: "30px",
       },
+    },
+    popover: {
+      zIndex: 201,
     },
   },
 }

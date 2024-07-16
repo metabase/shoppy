@@ -61,11 +61,14 @@ const metabase: MetabaseTheme = {
     dashboard: {
       backgroundColor: "transparent",
     },
-    scalar: {
+    number: {
       value: {
         fontSize: "36px",
         lineHeight: "36px",
       },
+    },
+    popover: {
+      zIndex: 201,
     },
   },
 }
