@@ -55,7 +55,7 @@ const metabase: MetabaseTheme = {
   },
   components: {
     cartesian: {
-      padding: "4px 10px",
+      padding: "6px 16px",
     },
     dashboard: {
       card: {
@@ -63,7 +63,7 @@ const metabase: MetabaseTheme = {
         backgroundColor: "#212426",
       },
     },
-    scalar: {
+    number: {
       value: {
         fontSize: "18px",
         lineHeight: "22px",
