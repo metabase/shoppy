@@ -8,7 +8,28 @@ body[data-theme="luminara"] .analytics-collection-browser {
     border: none;
   }
 
-  tr {
+  thead th {
+    border: none;
+    
+    border-inline-start: none;
+    border-inline-end: none;
+  }
+
+  tr td {
+    border: none;
+    border-top: 1px solid #80877f8c;
+  }
+}
+
+body[data-theme="stitch"] .analytics-collection-browser {
+  table {
+    background: linear-gradient(112deg, #212426 0%, #292D2F 100%);
+  }
+}
+
+body[data-theme="pug"] .analytics-collection-browser {
+  /* TODO: add border styling to theme options */
+  tbody {
     border: none;
   }
 
@@ -21,6 +42,6 @@ body[data-theme="luminara"] .analytics-collection-browser {
 
   tr td {
     border: none;
-    border-top: 1px solid #80877f8c;
+    border-top: 1px solid #D1CFC5;
   }
 }
