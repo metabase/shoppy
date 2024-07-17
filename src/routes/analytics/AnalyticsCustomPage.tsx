@@ -11,7 +11,7 @@ export function AnalyticsCustomPage() {
     <Box p={20}>
       <CollectionBrowser
         collectionId={0}
-        className="custom-collection-browser"
+        className="analytics-collection-browser"
         onClick={(item) => {
           if (item.model === "dashboard") {
             navigate(`/analytics/${item.id}`)

@@ -1,3 +1,19 @@
-.custom-collection-browser > [data-testid="collection-table"] {
-  margin-top: 12px;
+body[data-theme="luminara"] .analytics-collection-browser {
+  table {
+    box-shadow: 0px 2px 16px 0px #0000001A;
+  }
+
+  /* TODO: add border styling to theme options */
+  tbody, th, tr, td {
+    border: none;
+  }
+
+  thead th {
+    border-inline-start: none;
+    border-inline-end: none;
+  }
+
+  tr td {
+    border-bottom: none;
+  }
 }
