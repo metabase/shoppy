@@ -4,16 +4,23 @@ body[data-theme="luminara"] .analytics-collection-browser {
   }
 
   /* TODO: add border styling to theme options */
-  tbody, th, tr, td {
+  tbody {
+    border: none;
+  }
+
+  tr {
     border: none;
   }
 
   thead th {
+    border: none;
+    
     border-inline-start: none;
     border-inline-end: none;
   }
 
   tr td {
-    border-bottom: none;
+    border: none;
+    border-top: 1px solid #80877f8c;
   }
 }
