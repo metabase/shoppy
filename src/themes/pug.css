@@ -71,7 +71,6 @@ body[data-theme="pug"] {
     font-family: Fraunces;
     color: var(--color-primary);
     font-weight: 600;
-    font-size: 32px;
     margin-bottom: 6px;
   }
 

@@ -62,12 +62,10 @@ body[data-theme="stitch"] {
   }
 
   .product-insights-title, .product-detail-title {
-    font-size: 24px;
     font-weight: 600;
   }
 
   .product-detail-card-container {
-    margin-top: 16px;
     color: var(--color-lighter-grey);
   }
 

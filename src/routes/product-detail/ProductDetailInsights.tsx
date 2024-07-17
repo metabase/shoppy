@@ -1,4 +1,4 @@
-import { Flex, Card, Title, Text, Box, Modal } from "@mantine/core"
+import { Card, Title, Box, Modal } from "@mantine/core"
 import { useDisclosure } from "@mantine/hooks"
 
 import {
@@ -19,21 +19,6 @@ export const ProductDetailInsights = (props: Props) => {
 
   return (
     <Box className="space-y-4">
-      <Flex
-        w="100%"
-        align="center"
-        justify="space-between"
-        maw={MAX_W}
-        mb={36}
-        mt={10}
-      >
-        <Text className="product-insights-title">Insights</Text>
-
-        <Text fw={300} size="sm" className="product-insights-see-more">
-          See more
-        </Text>
-      </Flex>
-
       <Card maw={MAX_W} className="card">
         <Title size="18px" pb={10} className="product-detail-card-title">
           Orders over time
