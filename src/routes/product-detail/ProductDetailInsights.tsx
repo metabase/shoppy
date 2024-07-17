@@ -64,7 +64,8 @@ export const ProductDetailInsights = () => {
         size="xl"
       >
         <InteractiveQuestion
-          questionId={158}
+          questionId={161}
+          parameterValues={{ product_id: 15 }}
           height={500}
           withTitle
           customTitle={
