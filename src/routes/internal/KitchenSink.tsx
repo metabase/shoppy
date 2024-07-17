@@ -1,5 +1,5 @@
 import { Box, Title, Grid, Card, Stack, Flex } from "@mantine/core"
-import { StaticQuestion } from "@metabase/embedding-sdk-react"
+import { InteractiveQuestion } from "@metabase/embedding-sdk-react"
 
 import "./kitchen-sink.css"
 
@@ -23,7 +23,7 @@ export const KitchenSink = () => (
     <Grid pb={20}>
       {questions.map((q) => (
         <Grid.Col key={q} span={4}>
-          <StaticQuestion questionId={q} showVisualizationSelector={false} />
+          <InteractiveQuestion questionId={q} />
         </Grid.Col>
       ))}
     </Grid>
@@ -38,7 +38,7 @@ export const KitchenSink = () => (
       </Title>
 
       <Flex>
-        <StaticQuestion questionId={95} showVisualizationSelector={false} />
+        <InteractiveQuestion questionId={95} />
       </Flex>
 
       <Title pb={8} size="h4">
@@ -46,7 +46,7 @@ export const KitchenSink = () => (
       </Title>
 
       <Card w="100%">
-        <StaticQuestion questionId={95} showVisualizationSelector={false} />
+        <InteractiveQuestion questionId={95} />
       </Card>
 
       <Title pb={8} size="h4">
@@ -54,7 +54,7 @@ export const KitchenSink = () => (
       </Title>
 
       <Box w="100%">
-        <StaticQuestion questionId={95} showVisualizationSelector={false} />
+        <InteractiveQuestion questionId={95} />
       </Box>
 
       <Title pb={8} size="h4">
@@ -62,7 +62,7 @@ export const KitchenSink = () => (
       </Title>
 
       <Box w="100%" bg="white">
-        <StaticQuestion questionId={76} showVisualizationSelector={false} />
+        <InteractiveQuestion questionId={76} />
       </Box>
     </Stack>
   </Stack>

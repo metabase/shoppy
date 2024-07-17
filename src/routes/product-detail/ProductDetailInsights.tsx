@@ -2,8 +2,8 @@ import { Flex, Card, Title, Text, Box, Modal } from "@mantine/core"
 import { useDisclosure } from "@mantine/hooks"
 
 import {
-  StaticQuestion,
   InteractiveQuestion,
+  StaticQuestion,
 } from "@metabase/embedding-sdk-react"
 
 import { RemountOnSiteChange } from "../../components/RemountOnSiteChange"
@@ -37,7 +37,11 @@ export const ProductDetailInsights = () => {
 
         <Box onClick={modal.open} h={250}>
           <RemountOnSiteChange>
-            <StaticQuestion questionId={158} height={250} />
+            <StaticQuestion
+              questionId={166}
+              height={250}
+              parameterValues={{ product_id: 15 }}
+            />
           </RemountOnSiteChange>
         </Box>
       </Card>
@@ -48,11 +52,7 @@ export const ProductDetailInsights = () => {
         </Title>
 
         <RemountOnSiteChange>
-          <StaticQuestion
-            questionId={160}
-            showVisualizationSelector={false}
-            height={70}
-          />
+          <InteractiveQuestion questionId={160} height={70} />
         </RemountOnSiteChange>
       </Card>
 
@@ -64,7 +64,7 @@ export const ProductDetailInsights = () => {
         size="xl"
       >
         <InteractiveQuestion
-          questionId={161}
+          questionId={160}
           parameterValues={{ product_id: 15 }}
           height={500}
           withTitle

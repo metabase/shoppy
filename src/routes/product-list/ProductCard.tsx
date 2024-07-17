@@ -1,10 +1,8 @@
 import { Link } from "wouter"
 
-import { StaticQuestion } from "@metabase/embedding-sdk-react"
+import { InteractiveQuestion } from "@metabase/embedding-sdk-react"
 import { Stack, Text, Image, Box } from "@mantine/core"
 import { useAtom } from "jotai"
-
-import { ProductCardFooter } from "./ProductCardFooter"
 
 import { Product } from "../../types/product"
 import { RemountOnSiteChange } from "../../components/RemountOnSiteChange"
@@ -33,16 +31,13 @@ export const ProductCard = ({ product }: Props) => {
 
             <Box py={4} mih={questionHeight}>
               <RemountOnSiteChange>
-                <StaticQuestion
+                <InteractiveQuestion
                   questionId={161}
-                  showVisualizationSelector={false}
                   height={questionHeight}
                   parameterValues={{ product_id: product.id }}
                 />
               </RemountOnSiteChange>
             </Box>
-
-            <ProductCardFooter />
           </Stack>
         </Stack>
       </Stack>
