@@ -1,6 +1,7 @@
 import { Flex, Box, Text, Image, Stack } from "@mantine/core"
 
 import { Product } from "../../types/product"
+import { truncate } from "../../utils/truncate"
 
 interface Props {
   product: Product
@@ -16,8 +17,8 @@ export const ProductDetailCard = ({ product }: Props) => {
       className="text-light-grey product-detail-card-container"
     >
       <Box className="mb-4 space-y-1">
-        <Text size="23px" className="product-detail-title" truncate="end">
-          {product.title}
+        <Text size="23px" className="product-detail-title">
+          {truncate(product.title, 14)}
         </Text>
 
         <Text fw={300} fz="14px">

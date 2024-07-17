@@ -30,7 +30,7 @@ export const ProductDetailPage = ({ id }: Props) => {
         </Grid.Col>
 
         <Grid.Col span={8}>
-          <ProductDetailInsights />
+          <ProductDetailInsights productId={product.id} />
         </Grid.Col>
       </Grid>
     </Container>

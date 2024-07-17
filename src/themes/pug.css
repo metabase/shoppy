@@ -96,4 +96,12 @@ body[data-theme="pug"] {
     font-weight: 600;
     font-family: Fraunces;
   }
+
+  .sidebar-active-child {
+    font-weight: 500;
+  }
+
+  .sidebar-link-root {
+    font-weight: 500;
+  }
 }

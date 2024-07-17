@@ -10,7 +10,11 @@ import { RemountOnSiteChange } from "../../components/RemountOnSiteChange"
 
 const MAX_W = 600
 
-export const ProductDetailInsights = () => {
+interface Props {
+  productId: number
+}
+
+export const ProductDetailInsights = (props: Props) => {
   const [isModalOpen, modal] = useDisclosure(false)
 
   return (
@@ -37,7 +41,11 @@ export const ProductDetailInsights = () => {
 
         <Box onClick={modal.open} h={250}>
           <RemountOnSiteChange>
-            <StaticQuestion questionId={158} height={250} />
+            <StaticQuestion
+              questionId={165}
+              height={250}
+              parameterValues={{ product_id: props.productId }}
+            />
           </RemountOnSiteChange>
         </Box>
       </Card>
@@ -49,9 +57,9 @@ export const ProductDetailInsights = () => {
 
         <RemountOnSiteChange>
           <StaticQuestion
-            questionId={160}
-            showVisualizationSelector={false}
+            questionId={161}
             height={70}
+            parameterValues={{ product_id: props.productId }}
           />
         </RemountOnSiteChange>
       </Card>
