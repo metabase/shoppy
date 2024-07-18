@@ -69,6 +69,9 @@ const metabase: MetabaseTheme = {
         lineHeight: "22px",
       },
     },
+    popover: {
+      zIndex: 201,
+    },
   },
 }
 

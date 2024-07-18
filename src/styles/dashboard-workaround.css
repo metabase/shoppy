@@ -1,8 +1,3 @@
-/** WORKAROUND: Allows popovers to work when rendered under Mantine modals */
-[data-tippy-root]:has(.tippy-box.popover) {
-  z-index: 201 !important;
-}
-
 .dashboard-container [data-testid="legend-caption-title"] {
   font-size: 17px;
   line-height: 20px;
