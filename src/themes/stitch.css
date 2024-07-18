@@ -50,7 +50,7 @@ body[data-theme="stitch"] {
   .card {
     @apply text-white border border-dark-grey rounded-lg;
 
-    background: linear-gradient(105deg, #212426 0%, #303436 100%);
+    background: linear-gradient(112deg, #202426 0%, #292D2F 100%);
   }
 
   .navbar {
@@ -61,13 +61,15 @@ body[data-theme="stitch"] {
     font-weight: 600;
   }
 
-  .product-insights-title, .product-detail-title {
-    font-size: 24px;
+  .product-insights-title {
     font-weight: 600;
   }
 
+  .product-detail-title {
+    font-weight: 400
+  }
+
   .product-detail-card-container {
-    margin-top: 16px;
     color: var(--color-lighter-grey);
   }
 

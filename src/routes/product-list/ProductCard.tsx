@@ -9,6 +9,7 @@ import { ProductCardFooter } from "./ProductCardFooter"
 import { Product } from "../../types/product"
 import { RemountOnSiteChange } from "../../components/RemountOnSiteChange"
 import { siteAtom } from "../../store/site"
+import { truncate } from "../../utils/truncate"
 
 interface Props {
   product: Product
@@ -27,8 +28,8 @@ export const ProductCard = ({ product }: Props) => {
           <Image src={image} className="product-card-image w-full" />
 
           <Stack className="smartscalar product-card-trend" mih={70} gap={0}>
-            <Text className="product-card-title" truncate="end" pl="8px">
-              {product.title}
+            <Text className="product-card-title" pl="8px">
+              {truncate(product.title, 13)}
             </Text>
 
             <Box py={4} mih={questionHeight}>

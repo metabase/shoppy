@@ -71,7 +71,6 @@ body[data-theme="pug"] {
     font-family: Fraunces;
     color: var(--color-primary);
     font-weight: 600;
-    font-size: 32px;
     margin-bottom: 6px;
   }
 
@@ -95,5 +94,13 @@ body[data-theme="pug"] {
     color: var(--color-primary);
     font-weight: 600;
     font-family: Fraunces;
+  }
+
+  .sidebar-active-child {
+    font-weight: 500;
+  }
+
+  .sidebar-link-root {
+    font-weight: 500;
   }
 }
