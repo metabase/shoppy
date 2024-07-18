@@ -39,7 +39,7 @@ export const SiteSwitcher = () => {
 
       <Flex align="center">
         <Text fz="14px" pr="md" c="#BFC1C1" className="hidden sm:block">
-          Switch to different test sites
+          Switch to different test shops
         </Text>
 
         <ButtonGroup variant="outline">

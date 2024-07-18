@@ -1,4 +1,4 @@
-import { Flex, Card, Title, Text, Box, Modal } from "@mantine/core"
+import { Card, Title, Box, Modal } from "@mantine/core"
 import { useDisclosure } from "@mantine/hooks"
 
 import {
@@ -10,26 +10,15 @@ import { RemountOnSiteChange } from "../../components/RemountOnSiteChange"
 
 const MAX_W = 600
 
-export const ProductDetailInsights = () => {
+interface Props {
+  productId: number
+}
+
+export const ProductDetailInsights = (props: Props) => {
   const [isModalOpen, modal] = useDisclosure(false)
 
   return (
     <Box className="space-y-4">
-      <Flex
-        w="100%"
-        align="center"
-        justify="space-between"
-        maw={MAX_W}
-        mb={36}
-        mt={10}
-      >
-        <Text className="product-insights-title">Insights</Text>
-
-        <Text fw={300} size="sm" className="product-insights-see-more">
-          See more
-        </Text>
-      </Flex>
-
       <Card maw={MAX_W} className="card">
         <Title size="18px" pb={10} className="product-detail-card-title">
           Orders over time
@@ -37,7 +26,11 @@ export const ProductDetailInsights = () => {
 
         <Box onClick={modal.open} h={250}>
           <RemountOnSiteChange>
-            <StaticQuestion questionId={158} height={250} />
+            <StaticQuestion
+              questionId={165}
+              height={250}
+              parameterValues={{ product_id: props.productId }}
+            />
           </RemountOnSiteChange>
         </Box>
       </Card>
@@ -49,9 +42,9 @@ export const ProductDetailInsights = () => {
 
         <RemountOnSiteChange>
           <StaticQuestion
-            questionId={160}
-            showVisualizationSelector={false}
+            questionId={161}
             height={70}
+            parameterValues={{ product_id: props.productId }}
           />
         </RemountOnSiteChange>
       </Card>

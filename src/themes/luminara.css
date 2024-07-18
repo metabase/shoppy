@@ -59,13 +59,13 @@ body[data-theme="luminara"] {
 
   .product-insights-title, .product-detail-title {
     color: var(--color-dark-grey);
-    font-size: 24px;
     font-family: Arsenal;
     font-weight: 700;
   }
 
   .product-detail-title {
-    font-style: italic;
+    font-weight: 300;
+    font-family: "Libre Caslon Display";
   }
 
   .product-detail-image {
@@ -80,7 +80,6 @@ body[data-theme="luminara"] {
   }
 
   .product-detail-card-container {
-    margin-top: 16px;
     color: var(--color-dark-grey);
   }
 

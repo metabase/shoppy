@@ -27,13 +27,16 @@ export function SidebarLinks() {
 const renderLink = (link: SidebarLink, child?: boolean) => (
   <NavLink
     label={link.title}
-    lts={0.5}
     p={3}
     fz="14px"
     variant="subtle"
     key={link.to ?? link.title}
     href={link.to ?? "#!"}
-    classNames={{ children: "space-y-1" }}
+    classNames={{
+      children: "space-y-1",
+      body: "flex-[2]",
+      section: "flex-[1]",
+    }}
     renderRoot={(props) => (
       <Link
         {...props}
