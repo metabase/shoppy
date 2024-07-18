@@ -15,16 +15,6 @@ export const ProductDetailCard = ({ product }: Props) => {
       mih="100%"
       className="text-light-grey product-detail-card-container"
     >
-      <Box className="mb-4 space-y-1">
-        <Text size="23px" className="product-detail-title" truncate="end">
-          {product.title}
-        </Text>
-
-        <Text fw={300} fz="14px">
-          {product.category.name}
-        </Text>
-      </Box>
-
       <Stack className="product-detail-card w-full space-y-8" gap={1}>
         <Flex align="center">
           <Image src={image} className="product-detail-image" />
