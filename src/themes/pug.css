@@ -29,9 +29,10 @@ body[data-theme="pug"] {
     content: " ";
     background: url(/blue-sidebar-waves.svg);
     background-repeat: repeat-y;
+    background-position: center;
     height: 100%;
-    width: 20px;
-    right: -12px;
+    width: 23px;
+    right: -11px;
   }
 
   .sidebar-inactive-child {
