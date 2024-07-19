@@ -20,6 +20,7 @@ export const ProductCard = ({ product }: Props) => {
   const image = product.imageUrl ?? "/mock-t-shirt.webp"
 
   const questionHeight = site === "stitch" ? 40 : 70
+  const truncateLength = site === "pug" ? 13 : 50
 
   return (
     <Link href={`/products/${product.id}`}>
@@ -29,7 +30,7 @@ export const ProductCard = ({ product }: Props) => {
 
           <Stack className="smartscalar product-card-trend" mih={70} gap={0}>
             <Text className="product-card-title" pl="8px">
-              {truncate(product.title, 13)}
+              {truncate(product.title, truncateLength)}
             </Text>
 
             <Box py={4} mih={questionHeight}>
