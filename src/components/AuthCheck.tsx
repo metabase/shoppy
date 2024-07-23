@@ -31,5 +31,5 @@ export const AuthCheck = (props: Props) => {
     return <FullPageLoader />
   }
 
-  return props.children
+  return <>{props.children ?? null}</>
 }

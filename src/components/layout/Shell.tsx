@@ -13,42 +13,28 @@ interface Props {
 }
 
 export function Shell(props: Props) {
-  const [opened] = useDisclosure()
-
   return (
     <Box>
-      <AppShell
-        navbar={{
-          width: 250,
-          breakpoint: "sm",
-          collapsed: { mobile: !opened },
-        }}
-        padding="sm"
-        classNames={{ navbar: "navbar" }}
-      >
-        <AppShell.Header className="border-b-[#55595B]" zIndex={102}>
-          <SiteSwitcher />
-        </AppShell.Header>
+      {/* <div>
+        <SiteSwitcher />
+      </div> */}
 
-        <AppShell.Navbar p="md" withBorder={false} pt={107} pl="30px">
-          <Flex direction="column" justify="space-between" h="100%">
-            <Box>
-              <Link to="/admin/products">
-                <SiteLogo />
-              </Link>
+      {/* <Flex direction="column" justify="space-between" h="100%" w="100%">
+        <Box w="100%">
+          <Link to="/admin/products">
+            <SiteLogo />
+          </Link>
 
-              <SidebarLinks />
-            </Box>
+          <SidebarLinks />
+        </Box>
 
-            <Flex className="sidebar-icons gap-x-3">
-              <Icon icon="tabler:user" fontSize={30} />
-              <Icon icon="tabler:settings" fontSize={30} />
-            </Flex>
-          </Flex>
-        </AppShell.Navbar>
+        <Flex className="sidebar-icons gap-x-3">
+          <Icon icon="tabler:user" fontSize={30} />
+          <Icon icon="tabler:settings" fontSize={30} />
+        </Flex>
+      </Flex> */}
 
-        <AppShell.Main pt={90}>{props.children}</AppShell.Main>
-      </AppShell>
+      {props.children}
     </Box>
   )
 }

@@ -1,4 +1,4 @@
-import { MantineProvider, createTheme } from "@mantine/core"
+import { MantineProvider } from "@mantine/core"
 import { useAtom } from "jotai"
 import { ReactNode, useEffect, useMemo } from "react"
 import { siteAtom } from "../store/site"
@@ -10,7 +10,7 @@ export const ThemeProvider = (props: Props) => {
   const [site] = useAtom(siteAtom)
 
   const theme = useMemo(() => {
-    return createTheme(SITE_CONFIG_MAP[site].mantine)
+    return SITE_CONFIG_MAP[site].mantine
   }, [site])
 
   // apply the CSS variables to the body, depending on the theme.

@@ -1,4 +1,4 @@
-import { colorsTuple as t, MantineThemeOverride } from "@mantine/core"
+import { MantineThemeOverride } from "@mantine/core"
 import { MetabaseTheme } from "@metabase/embedding-sdk-react"
 
 import { SiteConfig } from "../types/site"
@@ -11,6 +11,19 @@ const colors = {
   darkGrey: "#3B3F3F",
   background: "#151C20",
 }
+
+const t = (
+  color: string,
+): [string, string, string, string, string, string, string, string] => [
+  color,
+  color,
+  color,
+  color,
+  color,
+  color,
+  color,
+  color,
+]
 
 const mantine: MantineThemeOverride = {
   fontFamily: "var(--font-family-sans), sans-serif",
@@ -25,7 +38,6 @@ const mantine: MantineThemeOverride = {
     background: t(colors.background),
     white: t("#ffffff"),
   },
-  activeClassName: "",
 }
 
 const metabase: MetabaseTheme = {

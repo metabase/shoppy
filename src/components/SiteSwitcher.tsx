@@ -42,7 +42,7 @@ export const SiteSwitcher = () => {
           Switch to different test shops
         </Text>
 
-        <ButtonGroup variant="outline">
+        <div>
           {SITES.map((site) => {
             const active = currentSite === site.key
 
@@ -58,16 +58,13 @@ export const SiteSwitcher = () => {
                   !active && "!bg-transparent hover:!bg-[#4C4E51]",
                 )}
                 onClick={() => changeSite(site.key)}
-                leftSection={
-                  <Icon icon={site.icon} fontSize={14} overflow="visible" />
-                }
                 loading={loginMutation.isPending}
               >
                 {site.title}
               </Button>
             )
           })}
-        </ButtonGroup>
+        </div>
       </Flex>
     </Flex>
   )

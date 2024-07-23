@@ -1,9 +1,11 @@
-import ReactDOM from "react-dom/client"
+import "@metabase/embedding-sdk-react"
+
+import ReactDOM from "react-dom"
 
 import { Provider as JotaiProvider } from "jotai"
 import { QueryClientProvider } from "@tanstack/react-query"
 
-import "@mantine/core/styles.css"
+// import "@mantine/core/styles.css"
 
 import { Routes } from "./routes"
 
@@ -29,7 +31,8 @@ import { ThemeProvider } from "./components/ThemeProvider"
 
 const root = document.getElementById("root")!
 
-ReactDOM.createRoot(root).render(
+// eslint-disable-next-line react/no-deprecated
+ReactDOM.render(
   <JotaiProvider store={store}>
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
@@ -37,4 +40,5 @@ ReactDOM.createRoot(root).render(
       </ThemeProvider>
     </QueryClientProvider>
   </JotaiProvider>,
+  root,
 )
