@@ -1,0 +1,85 @@
+body[data-theme="stitch"] {
+  .overview-title {
+    font-weight: 400;
+  }
+
+  .sidebar-icons {
+    color: var(--color-primary);
+  }
+
+  .dark-gradient {
+    background: linear-gradient(93.53deg, #E590ED 9.53%, #828ED9 39.15%, #79C1FD 65.02%, #B1DBF8 84.51%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .sidebar-inactive-child:hover {
+    color: var(--color-light-grey);
+  }
+
+  .action-button {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--mantine-radius-sm);
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+    background: linear-gradient(93.53deg, #E590ED 9.53%, #828ED9 39.15%, #79C1FD 65.02%, #B1DBF8 84.51%);
+    font-weight: 400;
+  }
+
+  .action-button::after {
+    content: "";
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: calc(100% - 2px);
+    height: calc(100% - 2px);
+    border-radius: var(--mantine-radius-sm);
+    background: var(--color-background);
+    z-index: 2;
+  }
+
+  .action-button span {
+    position: relative;
+    z-index: 3;
+    color: var(--mantine-color-white);
+  }
+
+  .card {
+    @apply text-white border border-dark-grey rounded-lg;
+
+    background: linear-gradient(112deg, #202426 0%, #292D2F 100%);
+  }
+
+  .navbar {
+    background: transparent;
+  }
+
+  .sidebar-link-root {
+    font-weight: 600;
+  }
+
+  .product-insights-title {
+    font-weight: 600;
+  }
+
+  .product-detail-title {
+    font-weight: 400
+  }
+
+  .product-detail-card-container {
+    color: var(--color-lighter-grey);
+  }
+
+  .product-insights-see-more {
+    color: var(--color-primary);
+  }
+  
+  .product-detail-card-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--color-lighter-grey);
+  }
+}

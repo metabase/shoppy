@@ -1,0 +1,107 @@
+body[data-theme="pug"] {
+  .card {
+    @apply bg-background text-[#323E35] rounded-md;
+  }
+
+  .product-card-image {
+    border-radius: 100%;
+    max-width: 300px;
+    align-self: center;
+  }
+
+  .product-detail-image {
+    border-radius: 100%;
+    max-width: 300px;
+  }
+
+  .sidebar-inactive-child:hover {
+    color: var(--color-lighter-grey);
+  }
+
+  .navbar {
+    color: white;
+    background: var(--color-primary);
+  }
+
+  .navbar::after {
+    position: absolute;
+    top: 40px;
+    content: " ";
+    background: url(/blue-sidebar-waves.svg);
+    background-repeat: repeat-y;
+    background-position: center;
+    height: 100%;
+    width: 23px;
+    right: -11px;
+  }
+
+  .sidebar-inactive-child {
+    color: #E2E4FD;
+  }
+
+  .overview-title {
+    color: var(--color-primary);
+    font-family: Fraunces;
+    font-weight: 600;
+  }
+
+  .product-card-title {
+    font-family: Fraunces;
+    text-align: center;
+    font-size: 28px;
+    font-weight: 600;
+    align-self: center;
+    width: 250px;
+  }
+
+  .action-button {
+    font-family: var(--font-family-sans);
+    font-weight: 500;
+    align-self: center;
+    border-radius: 0px;
+    background: transparent;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+  }
+
+  .product-detail-card-container {
+    margin-top: 12px;
+  }
+
+  .product-detail-title {
+    font-family: Fraunces;
+    color: var(--color-primary);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .product-detail-card-title {
+    color: var(--color-primary);
+    font-weight: 500;
+    font-family: "DM Mono", sans-serif;
+  }
+
+  .product-insights-title {
+    color: var(--color-primary);
+    font-size: 22px;
+    font-weight: 600;
+  }
+
+  .product-insights-see-more {
+    color: var(--color-primary);
+  }
+  
+  .dashboard-container h2 {
+    color: var(--color-primary);
+    font-weight: 600;
+    font-family: Fraunces;
+  }
+
+  .sidebar-active-child {
+    font-weight: 500;
+  }
+
+  .sidebar-link-root {
+    font-weight: 500;
+  }
+}

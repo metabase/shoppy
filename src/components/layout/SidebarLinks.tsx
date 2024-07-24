@@ -18,7 +18,7 @@ export function SidebarLinks() {
   }, [categoryQuery.data])
 
   return (
-    <Box className="text-white space-y-2" py="lg" pl="lg">
+    <Box pt="32px" className="space-y-3">
       {links.map((link) => renderLink(link))}
     </Box>
   )
@@ -27,24 +27,27 @@ export function SidebarLinks() {
 const renderLink = (link: SidebarLink, child?: boolean) => (
   <NavLink
     label={link.title}
-    lts={0.5}
     p={3}
-    fw={600}
     fz="14px"
     variant="subtle"
     key={link.to ?? link.title}
     href={link.to ?? "#!"}
-    classNames={{ children: "space-y-1" }}
+    classNames={{
+      children: "space-y-1",
+      body: "flex-[2]",
+      section: "flex-[1]",
+    }}
     renderRoot={(props) => (
       <Link
         {...props}
         className={(active) =>
           cx(
-            "hover:bg-transparent",
+            "hover:bg-transparent font-sans",
             props.className,
+            !child && "sidebar-link-root",
             child && "space-y-2",
-            child && !active && "text-light-grey",
-            active ? "text-primary" : "hover:text-gray-300",
+            child && !active && "sidebar-inactive-child",
+            active && "sidebar-active-child dark-gradient",
           )
         }
       />

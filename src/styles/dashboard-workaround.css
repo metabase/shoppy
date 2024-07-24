@@ -1,8 +1,3 @@
-/** WORKAROUND: Allows popovers to work when rendered under Mantine modals */
-[data-tippy-root]:has(.tippy-box.popover) {
-  z-index: 201 !important;
-}
-
 .dashboard-container [data-testid="legend-caption-title"] {
   font-size: 17px;
   line-height: 20px;
@@ -10,17 +5,10 @@
 }
 
 .dashboard-container svg text[font-weight="700"] {
-  fill: #ADABA9;
   font-weight: 400;
 }
 
-.dashboard-container [data-testid="legend-item"] div {
-  color: #F8F7F7;
-  font-weight: 600;
-}
-
 .dashboard-container [data-testid="chart-container"] svg text {
-  fill: #ADABA9;
   font-weight: 400 !important;
 }
 
@@ -28,4 +16,20 @@
 .dashboard-container [data-testid="embed-frame-header"] + main {
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+body[data-theme="stitch"] {
+  /** WORKAROUND: to add as theme option */
+  [data-testid="dashcard"] {
+    padding: 0 10px;
+  }
+
+  .smartscalar:not(.product-card-trend) [data-testid="scalar-container"] h1 {
+    font-size: 30px;
+    font-weight: 500;
+    background: linear-gradient(93.53deg, #E590ED 9.53%, #828ED9 39.15%, #79C1FD 65.02%, #B1DBF8 84.51%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 }

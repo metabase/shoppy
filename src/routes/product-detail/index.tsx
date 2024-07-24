@@ -1,10 +1,13 @@
-import { Grid, Container, Loader } from "@mantine/core"
+import { Grid, Container, Box, Text, Flex } from "@mantine/core"
 import { useQuery } from "@tanstack/react-query"
 
 import { ProductDetailCard } from "./ProductDetailCard"
 import { ProductDetailInsights } from "./ProductDetailInsights"
 
+import { truncate } from "../../utils/truncate"
+
 import { getProductById } from "../../utils/query-product"
+import { FullPageLoader } from "../../components/Loader"
 
 interface Props {
   id: string
@@ -18,18 +21,32 @@ export const ProductDetailPage = ({ id }: Props) => {
 
   const product = query.data
 
-  if (query.isLoading) return <Loader />
+  if (query.isLoading) return <FullPageLoader />
   if (!product) return <div>Product not found</div>
 
   return (
     <Container>
-      <Grid gutter="xl" pt={30}>
+      <Box>
+        <Text size="48px" className="product-detail-title" pb="5px">
+          {truncate(product.title, 50)}
+        </Text>
+      </Box>
+
+      <Flex w="100%" align="center" justify="space-between" mt="30px" mb="20px">
+        <Text className="product-insights-title">Insights</Text>
+
+        <Text fw={300} size="sm" className="product-insights-see-more" mr="8px">
+          See more
+        </Text>
+      </Flex>
+
+      <Grid gutter="xl">
         <Grid.Col span={4}>
           <ProductDetailCard product={product} />
         </Grid.Col>
 
         <Grid.Col span={8}>
-          <ProductDetailInsights />
+          <ProductDetailInsights productId={product.id} />
         </Grid.Col>
       </Grid>
     </Container>

@@ -1,0 +1,90 @@
+body[data-theme="luminara"] {
+  .divider {
+    --divider-color: #A8ACA5;
+  }
+
+  .overview-title {
+    font-family: 'Libre Caslon Display';
+    font-weight: 400;
+  }
+
+  .card, .product-card {
+    color: var(--color-dark-grey);
+    border-radius: 16px;
+    box-shadow: 0px 2px 16px 0px #0000001A;
+    background-color: var(--color-background);
+  }
+
+  .product-card-image {
+    border-radius: 16px 16px 0px 0px;
+  }
+
+  .navbar {
+    border-right: 1px solid rgba(50, 62, 53, 0.4);
+  }
+
+  .sidebar-active-child {
+    position: relative;
+  }
+
+  .sidebar-active-child::before {
+    content: "";
+    background: #E09862;
+    width: 16px;
+    height: 6px;
+    position: absolute;
+    left: -20px;
+    border-radius: 50px;
+    margin-top: 1px;
+  }
+
+  .sidebar-inactive-child:hover {
+    color: var(--color-lighter-grey);
+  }
+
+  .product-card-title {
+    font-weight: 700;
+    font-style: italic;
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .navbar {
+    background: transparent;
+  }
+
+  .sidebar-link-root {
+    font-weight: 600;
+  }
+
+  .product-insights-title, .product-detail-title {
+    color: var(--color-dark-grey);
+    font-family: Arsenal;
+    font-weight: 700;
+  }
+
+  .product-detail-title {
+    font-weight: 300;
+    font-family: "Libre Caslon Display";
+  }
+
+  .product-detail-image {
+    border-radius: 16px;
+    max-width: 300px;
+  }
+
+  .product-detail-card-title {
+    font-weight: 700;
+    font-style: italic;
+    color: var(--color-dark-grey);
+  }
+
+  .product-detail-card-container {
+    color: var(--color-dark-grey);
+  }
+
+  .dashboard-container h2 {
+    font-style: italic;
+    font-weight: 600;
+  }
+}

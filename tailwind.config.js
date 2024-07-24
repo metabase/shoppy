@@ -4,16 +4,14 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Barlow", "sans-serif"],
+        sans: ["var(--font-family-sans)", "sans-serif"],
       },
       colors: {
-        primary: "#FF8000",
-        "lighter-grey": "#F8F7F7",
-        "light-grey": "#ADABA9",
-        "dark-grey": "#4C4A48",
-        "dark-orange": "#944A00",
-        "darker-orange": "#572B00",
-        "dark-background": "#212121",
+        primary: "var(--color-primary)",
+        "lighter-grey": "var(--color-lighter-grey)",
+        "light-grey": "var(--color-light-grey)",
+        "dark-grey": "var(--color-dark-grey)",
+        background: "var(--color-background)",
       },
     },
   },

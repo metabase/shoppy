@@ -1,4 +1,4 @@
-import { Flex, Card, Title, Text, Box, Modal } from "@mantine/core"
+import { Card, Title, Box, Modal } from "@mantine/core"
 import { useDisclosure } from "@mantine/hooks"
 
 import {
@@ -6,87 +6,62 @@ import {
   InteractiveQuestion,
 } from "@metabase/embedding-sdk-react"
 
-import "./product-detail.css"
+import { RemountOnSiteChange } from "../../components/RemountOnSiteChange"
 
 const MAX_W = 600
 
-export const ProductDetailInsights = () => {
+interface Props {
+  productId: number
+}
+
+export const ProductDetailInsights = (props: Props) => {
   const [isModalOpen, modal] = useDisclosure(false)
 
   return (
     <Box className="space-y-4">
-      <Flex
-        w="100%"
-        align="center"
-        justify="space-between"
-        maw={MAX_W}
-        mb={36}
-        mt={10}
-      >
-        <Text c="white" fw={700} fz="17px">
-          Insights
-        </Text>
-
-        <Text c="primary" fw="bold" size="xs">
-          See more
-        </Text>
-      </Flex>
-
-      <Card
-        maw={MAX_W}
-        bg="none"
-        className="text-white border border-dark-grey rounded-md"
-      >
-        <Title size="h3" pb={10} fw={200}>
+      <Card maw={MAX_W} className="card">
+        <Title size="18px" pb={10} className="product-detail-card-title">
           Orders over time
         </Title>
 
-        <Box onClick={modal.open}>
-          <StaticQuestion questionId={95} height={250} />
+        <Box onClick={modal.open} h={250}>
+          <RemountOnSiteChange>
+            <StaticQuestion
+              questionId={165}
+              height={250}
+              parameterValues={{ product_id: props.productId }}
+            />
+          </RemountOnSiteChange>
         </Box>
       </Card>
 
-      <Card
-        maw={MAX_W}
-        bg="none"
-        className="text-white smartscalar border border-dark-grey"
-      >
-        <StaticQuestion
-          questionId={91}
-          showVisualizationSelector={false}
-          height={70}
-        />
-      </Card>
-
-      <Card
-        maw={MAX_W}
-        bg="none"
-        className="text-white pd-question border border-dark-grey"
-      >
-        <Title size="h3" pb={10} fw={200}>
-          Sales goal
+      <Card maw={MAX_W} className="card smartscalar">
+        <Title size="18px" mb={10} className="product-detail-card-title">
+          Total orders
         </Title>
 
-        <StaticQuestion
-          questionId={154}
-          showVisualizationSelector={false}
-          height={150}
-        />
+        <RemountOnSiteChange>
+          <StaticQuestion
+            questionId={161}
+            height={70}
+            parameterValues={{ product_id: props.productId }}
+          />
+        </RemountOnSiteChange>
       </Card>
 
       <Modal
-        classNames={{ content: "bg-dark-grey py-3" }}
+        classNames={{ content: "bg-background py-3" }}
         opened={isModalOpen}
         onClose={modal.close}
         withCloseButton={false}
         size="xl"
       >
         <InteractiveQuestion
-          questionId={95}
+          questionId={158}
           height={500}
           withTitle
           customTitle={
-            <Title c="white" fw={400} size="h2">
+            <Title fw={400} size="h2" className="product-detail-card-title">
               Orders over time
             </Title>
           }
