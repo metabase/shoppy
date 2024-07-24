@@ -65,8 +65,8 @@ const eventHandlers: SdkEventHandlersConfig = {
   onDashboardLoad: (dashboard) => {
     console.log("global onDashboardLoad", dashboard)
   },
-  onDashboardLoadWithCards: (dashboard) => {
-    console.log("global onDashboardLoadWithCards", dashboard)
+  onDashboardLoadWithoutCards: (dashboard) => {
+    console.log("global onDashboardLoadWithoutCards", dashboard)
   },
 }
 

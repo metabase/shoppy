@@ -6,12 +6,14 @@ import "./kitchen-sink.css"
 export const DynamicDashboardPage = () => (
   <Box w="100%" h="500px" data-testid="interactive-dashboard-root">
     <InteractiveDashboard
-      dashboardId={12}
+      dashboardId={20}
       withTitle={true}
       questionHeight={500}
-      onLoad={() => console.log("InteractiveDashboard onLoad")}
-      onLoadWithCards={() =>
-        console.log("InteractiveDashboard onLoadWithCards")
+      onLoad={(dashboard) =>
+        console.log("InteractiveDashboard onLoad", dashboard)
+      }
+      onLoadWithoutCards={(dashboard) =>
+        console.log("InteractiveDashboard onLoadWithoutCards", dashboard)
       }
     />
   </Box>
