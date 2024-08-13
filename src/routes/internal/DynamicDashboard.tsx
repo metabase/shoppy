@@ -1,20 +1,31 @@
-import { Box, Flex, Stack } from "@mantine/core"
-import { InteractiveDashboard } from "@metabase/embedding-sdk-react"
+import { useState } from "react"
+import { Box, Button } from "@mantine/core"
+import type { Dashboard } from "@metabase/embedding-sdk-react"
+import {
+  DashboardCreateModal,
+  EditableDashboard,
+} from "@metabase/embedding-sdk-react"
 
-import "./kitchen-sink.css"
+export const DynamicDashboardPage = () => {
+  const [isShowModal, setIsShowModal] = useState(false)
+  const [dashboard, setDashboard] = useState<Dashboard | null>(null)
 
-export const DynamicDashboardPage = () => (
-  <Box w="100%" h="500px" data-testid="interactive-dashboard-root">
-    <InteractiveDashboard
-      dashboardId={20}
-      withTitle={true}
-      questionHeight={500}
-      onLoad={(dashboard) =>
-        console.log("InteractiveDashboard onLoad", dashboard)
-      }
-      onLoadWithoutCards={(dashboard) =>
-        console.log("InteractiveDashboard onLoadWithoutCards", dashboard)
-      }
-    />
-  </Box>
-)
+  if (dashboard) {
+    return <EditableDashboard dashboardId={dashboard.id} />
+  }
+
+  if (isShowModal) {
+    return (
+      <DashboardCreateModal
+        onClose={() => setIsShowModal(false)}
+        onCreate={setDashboard}
+      />
+    )
+  }
+
+  return (
+    <Box p="md">
+      <Button onClick={() => setIsShowModal(true)}>Create new dashboard</Button>
+    </Box>
+  )
+}
