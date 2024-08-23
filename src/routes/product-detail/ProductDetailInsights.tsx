@@ -58,7 +58,7 @@ export const ProductDetailInsights = (props: Props) => {
       >
         <InteractiveQuestion
           questionId={158}
-          height={500}
+          height={700}
           withTitle
           customTitle={
             <Title fw={400} size="h2" className="product-detail-card-title">
