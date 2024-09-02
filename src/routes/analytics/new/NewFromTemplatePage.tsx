@@ -16,7 +16,7 @@ export const NewFromTemplatePage = () => {
         </Title>
 
         <CollectionBrowser
-          collectionId={0}
+          collectionId={42}
           visibleEntityTypes={["question"]}
           onClick={(item) => setQuestionId(item.id)}
         />
