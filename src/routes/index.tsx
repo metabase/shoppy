@@ -13,6 +13,8 @@ import { KitchenSink } from "./internal/KitchenSink"
 import { AppProvider } from "../components/AppProvider"
 import { AuthCheck } from "../components/AuthCheck"
 import { Shell } from "../components/layout/Shell"
+import { NewFromTemplate } from "./analytics/new/NewFromTemplate"
+import { NewFromScratch } from "./analytics/new/NewFromScratch"
 
 export const Routes = () => (
   <Switch>
@@ -52,13 +54,16 @@ export const Routes = () => (
                 component={(props) => <DashboardPage id={props.params.id} />}
               />
 
+              <Route path="/analytics/new" component={() => null} />
+
               <Route
                 path="/analytics/new/from-template"
-                component={() => null}
+                component={NewFromTemplate}
               />
+
               <Route
                 path="/analytics/new/from-scratch"
-                component={() => null}
+                component={NewFromScratch}
               />
             </Switch>
 
