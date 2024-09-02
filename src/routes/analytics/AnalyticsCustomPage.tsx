@@ -1,4 +1,4 @@
-import { Box, Button, Flex } from "@mantine/core"
+import { Button, Container, Flex } from "@mantine/core"
 import { Link, useLocation } from "wouter"
 import { CollectionBrowser } from "@metabase/embedding-sdk-react"
 
@@ -10,7 +10,7 @@ export function AnalyticsCustomPage() {
   const [, navigate] = useLocation()
 
   return (
-    <Box p={20}>
+    <Container w="100%" p={20}>
       <Flex justify="flex-end" gap="xs">
         <Link href="/analytics/new/dashboard">
           <Button>New Dashboard</Button>
@@ -34,6 +34,6 @@ export function AnalyticsCustomPage() {
           }}
         />
       </RemountOnSiteChange>
-    </Box>
+    </Container>
   )
 }

@@ -14,6 +14,7 @@ export const NewDashboardPage = () => {
       <RemountOnSiteChange>
         <CreateDashboardModal
           onCreate={(dashboard) => setDashboardId(dashboard.id)}
+          initialCollectionId={43}
         />
       </RemountOnSiteChange>
     )
