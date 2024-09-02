@@ -25,19 +25,11 @@ export function SidebarLinks() {
 }
 
 const renderLink = (link: SidebarLink, child?: boolean) => {
-  const Component = link.component
-
-  if (Component) {
-    return (
-      <Box px={3}>
-        <Component key={link.title} />
-      </Box>
-    )
-  }
+  const { component: Component } = link
 
   return (
     <NavLink
-      label={link.title}
+      label={Component ? <Component /> : link.title}
       p={3}
       fz="14px"
       variant="subtle"
