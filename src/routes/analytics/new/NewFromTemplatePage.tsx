@@ -5,7 +5,7 @@ import {
 } from "@metabase/embedding-sdk-react"
 import { useState } from "react"
 
-export const NewFromTemplate = () => {
+export const NewFromTemplatePage = () => {
   const [selectedQuestionId, setQuestionId] = useState<number | null>(null)
 
   if (selectedQuestionId === null) {

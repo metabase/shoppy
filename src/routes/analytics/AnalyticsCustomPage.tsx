@@ -1,5 +1,5 @@
 import { Box, Button, Flex } from "@mantine/core"
-import { useLocation } from "wouter"
+import { Link, useLocation } from "wouter"
 import { CollectionBrowser } from "@metabase/embedding-sdk-react"
 
 import "./analytics-custom-page.css"
@@ -11,7 +11,11 @@ export function AnalyticsCustomPage() {
 
   return (
     <Box p={20}>
-      <Flex justify="flex-end">
+      <Flex justify="flex-end" gap="xs">
+        <Link href="/analytics/new/dashboard">
+          <Button>New Dashboard</Button>
+        </Link>
+
         <NewQuestionMenu position="bottom-end">
           <Button>New Question</Button>
         </NewQuestionMenu>

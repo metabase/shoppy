@@ -7,14 +7,15 @@ import { QuestionPage } from "./analytics/QuestionPage"
 import { DashboardPage } from "./analytics/DashboardPage"
 import { AnalyticsOverviewPage } from "./analytics/AnalyticsOverviewPage"
 import { AnalyticsCustomPage } from "./analytics/AnalyticsCustomPage"
+import { NewFromTemplatePage } from "./analytics/new/NewFromTemplatePage"
+import { NewFromScratchPage } from "./analytics/new/NewFromScratchPage"
+import { NewDashboardPage } from "./analytics/new/NewDashboardPage"
 
 import { KitchenSink } from "./internal/KitchenSink"
 
 import { AppProvider } from "../components/AppProvider"
 import { AuthCheck } from "../components/AuthCheck"
 import { Shell } from "../components/layout/Shell"
-import { NewFromTemplate } from "./analytics/new/NewFromTemplate"
-import { NewFromScratch } from "./analytics/new/NewFromScratch"
 
 export const Routes = () => (
   <Switch>
@@ -54,16 +55,19 @@ export const Routes = () => (
                 component={(props) => <DashboardPage id={props.params.id} />}
               />
 
-              <Route path="/analytics/new" component={() => null} />
-
               <Route
                 path="/analytics/new/from-template"
-                component={NewFromTemplate}
+                component={NewFromTemplatePage}
               />
 
               <Route
                 path="/analytics/new/from-scratch"
-                component={NewFromScratch}
+                component={NewFromScratchPage}
+              />
+
+              <Route
+                path="/analytics/new/dashboard"
+                component={NewDashboardPage}
               />
             </Switch>
 
