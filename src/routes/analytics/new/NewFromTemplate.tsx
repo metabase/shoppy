@@ -1,4 +1,4 @@
-import { Flex, Stack, Title } from "@mantine/core"
+import { Container, Title } from "@mantine/core"
 import {
   CollectionBrowser,
   ModifyQuestion,
@@ -10,23 +10,25 @@ export const NewFromTemplate = () => {
 
   if (selectedQuestionId === null) {
     return (
-      <Stack w="100%">
-        <Title fz="28px">Pick a question</Title>
+      <Container>
+        <Title fz="28px" mb="md">
+          Pick a question
+        </Title>
 
         <CollectionBrowser
           collectionId={0}
           visibleEntityTypes={["question"]}
           onClick={(item) => setQuestionId(item.id)}
         />
-      </Stack>
+      </Container>
     )
   }
 
   if (selectedQuestionId !== null) {
     return (
-      <Flex w="100%">
+      <Container w="100%">
         <ModifyQuestion questionId={selectedQuestionId} />
-      </Flex>
+      </Container>
     )
   }
 

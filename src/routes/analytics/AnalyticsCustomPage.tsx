@@ -13,7 +13,7 @@ export function AnalyticsCustomPage() {
     <Box p={20}>
       <Flex justify="flex-end">
         <NewQuestionMenu position="bottom-end">
-          <Button>New</Button>
+          <Button>New Question</Button>
         </NewQuestionMenu>
       </Flex>
 
