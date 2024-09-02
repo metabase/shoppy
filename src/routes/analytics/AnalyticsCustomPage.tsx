@@ -23,7 +23,7 @@ export function AnalyticsCustomPage() {
 
       <RemountOnSiteChange>
         <CollectionBrowser
-          collectionId={0}
+          collectionId={7}
           className="analytics-collection-browser"
           onClick={(item) => {
             if (item.model === "dashboard") {
