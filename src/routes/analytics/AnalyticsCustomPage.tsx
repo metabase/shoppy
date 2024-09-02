@@ -1,10 +1,10 @@
-import { Box, Flex } from "@mantine/core"
+import { Box, Button, Flex } from "@mantine/core"
 import { useLocation } from "wouter"
 import { CollectionBrowser } from "@metabase/embedding-sdk-react"
 
 import "./analytics-custom-page.css"
 import { RemountOnSiteChange } from "../../components/RemountOnSiteChange"
-import { NewQuestionButton } from "../../components/NewQuestionButton"
+import { NewQuestionMenu } from "../../components/NewQuestionMenu"
 
 export function AnalyticsCustomPage() {
   const [, navigate] = useLocation()
@@ -12,7 +12,9 @@ export function AnalyticsCustomPage() {
   return (
     <Box p={20}>
       <Flex justify="flex-end">
-        <NewQuestionButton />
+        <NewQuestionMenu position="bottom-end">
+          <Button>New</Button>
+        </NewQuestionMenu>
       </Flex>
 
       <RemountOnSiteChange>

@@ -3,4 +3,5 @@ export interface SidebarLink {
   title: string
   children?: SidebarLink[]
   defaultOpened?: boolean
+  component?: React.FC
 }

@@ -1,3 +1,5 @@
+import { SidebarNewQuestion } from "../components/SidebarNewQuestion"
+
 import { Category } from "../types/category"
 import { SidebarLink } from "../types/sidebar-link"
 
@@ -26,6 +28,7 @@ export function getSidebarLinks(options: Options): SidebarLink[] {
         { to: "/admin/analytics", title: "Overview" },
         { to: "/admin/analytics/17", title: "Inventory" },
         { to: "/admin/analytics/custom", title: "Custom" },
+        { to: "#!", title: "New", component: SidebarNewQuestion },
       ],
       defaultOpened: true,
     },

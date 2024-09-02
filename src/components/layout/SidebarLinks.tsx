@@ -24,36 +24,48 @@ export function SidebarLinks() {
   )
 }
 
-const renderLink = (link: SidebarLink, child?: boolean) => (
-  <NavLink
-    label={link.title}
-    p={3}
-    fz="14px"
-    variant="subtle"
-    key={link.to ?? link.title}
-    href={link.to ?? "#!"}
-    classNames={{
-      children: "space-y-1",
-      body: "flex-[2]",
-      section: "flex-[1]",
-    }}
-    renderRoot={(props) => (
-      <Link
-        {...props}
-        className={(active) =>
-          cx(
-            "hover:bg-transparent font-sans",
-            props.className,
-            !child && "sidebar-link-root",
-            child && "space-y-2",
-            child && !active && "sidebar-inactive-child",
-            active && "sidebar-active-child dark-gradient",
-          )
-        }
-      />
-    )}
-    defaultOpened={link.defaultOpened}
-  >
-    {link.children && link.children.map((link) => renderLink(link, true))}
-  </NavLink>
-)
+const renderLink = (link: SidebarLink, child?: boolean) => {
+  const Component = link.component
+
+  if (Component) {
+    return (
+      <Box px={3}>
+        <Component key={link.title} />
+      </Box>
+    )
+  }
+
+  return (
+    <NavLink
+      label={link.title}
+      p={3}
+      fz="14px"
+      variant="subtle"
+      key={link.to ?? link.title}
+      href={link.to ?? "#!"}
+      classNames={{
+        children: "space-y-1",
+        body: "flex-[2]",
+        section: "flex-[1]",
+      }}
+      renderRoot={(props) => (
+        <Link
+          {...props}
+          className={(active) =>
+            cx(
+              "hover:bg-transparent font-sans",
+              props.className,
+              !child && "sidebar-link-root",
+              child && "space-y-2",
+              child && !active && "sidebar-inactive-child",
+              active && "sidebar-active-child dark-gradient",
+            )
+          }
+        />
+      )}
+      defaultOpened={link.defaultOpened}
+    >
+      {link.children && link.children.map((link) => renderLink(link, true))}
+    </NavLink>
+  )
+}
