@@ -1,3 +1,5 @@
+import { Divider } from "@mantine/core"
+
 import { SidebarNewQuestion } from "../components/SidebarNewQuestion"
 
 import { Category } from "../types/category"
@@ -28,7 +30,15 @@ export function getSidebarLinks(options: Options): SidebarLink[] {
         { to: "/admin/analytics", title: "Overview" },
         { to: "/admin/analytics/17", title: "Inventory" },
         { to: "/admin/analytics/custom", title: "Custom" },
-        { to: "#!", title: "New Question", component: SidebarNewQuestion },
+
+        {
+          key: "separator",
+          component: () => (
+            <Divider color="var(--color-lighter-grey)" w="140px" my="8px" />
+          ),
+        },
+
+        { key: "new-question", component: SidebarNewQuestion },
         { to: "/admin/analytics/new/dashboard", title: "New Dashboard" },
       ],
       defaultOpened: true,
