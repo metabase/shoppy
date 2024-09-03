@@ -1,15 +1,17 @@
-import { Button, Container, Flex } from "@mantine/core"
 import { useAtom } from "jotai"
 import { Link, useLocation } from "wouter"
+import { Button, Container, Flex } from "@mantine/core"
 import { CollectionBrowser } from "@metabase/embedding-sdk-react"
 
-import { RemountOnSiteChange } from "../../components/RemountOnSiteChange"
 import { NewQuestionMenu } from "../../components/NewQuestionMenu"
-import { SANDBOXED_CUSTOM_ANALYTICS_COLLECTIONS } from "../../constants/collections"
+import { RemountOnSiteChange } from "../../components/RemountOnSiteChange"
+
+import { siteAtom } from "../../store/site"
 import { createDashboardIdAtom } from "../../store/create"
 
+import { SANDBOXED_CUSTOM_ANALYTICS_COLLECTIONS } from "../../constants/collections"
+
 import "./analytics-custom-page.css"
-import { siteAtom } from "../../store/site"
 
 export function AnalyticsCustomPage() {
   const [, navigate] = useLocation()

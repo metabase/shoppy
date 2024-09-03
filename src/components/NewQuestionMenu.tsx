@@ -1,20 +1,18 @@
-import { type FloatingPosition, Menu } from "@mantine/core"
+import { type ReactNode } from "react"
 import { useAtom } from "jotai"
 import { Link } from "wouter"
-import {
-  resetQuestionAtom,
-  selectedQuestionTemplateIdAtom,
-} from "../store/create"
+import { Menu, type FloatingPosition } from "@mantine/core"
+
+import { resetQuestionAtom } from "../store/create"
 
 type Props = {
-  children: React.ReactNode
-  position?: FloatingPosition
   prefix?: string
+  position?: FloatingPosition
+  children: ReactNode
 }
 
 export const NewQuestionMenu = ({ children, prefix = "", position }: Props) => {
   const [, resetQuestion] = useAtom(resetQuestionAtom)
-  const [, setTemplateQuestionId] = useAtom(selectedQuestionTemplateIdAtom)
 
   return (
     <Menu shadow="md" width={200} position={position}>
@@ -23,13 +21,13 @@ export const NewQuestionMenu = ({ children, prefix = "", position }: Props) => {
       <Menu.Dropdown>
         <Link
           href={prefix + "/analytics/new/from-scratch"}
-          onClick={() => resetQuestion()}
+          onClick={resetQuestion}
         >
           <Menu.Item>From Scratch</Menu.Item>
         </Link>
         <Link
           href={prefix + "/analytics/new/from-template"}
-          onClick={() => setTemplateQuestionId(null)}
+          onClick={resetQuestion}
         >
           <Menu.Item>From Templates</Menu.Item>
         </Link>
