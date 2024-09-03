@@ -20,17 +20,17 @@ export function AnalyticsCustomPage() {
 
   return (
     <Container w="100%" p={20}>
-      <Flex justify="flex-end" gap="xs">
+      <Flex justify="flex-end" gap="xs" pb="xs">
+        <NewQuestionMenu position="bottom-end">
+          <Button>New Question</Button>
+        </NewQuestionMenu>
+
         <Link
           href="/analytics/new/dashboard"
           onClick={() => setDashboardId(null)}
         >
           <Button>New Dashboard</Button>
         </Link>
-
-        <NewQuestionMenu position="bottom-end">
-          <Button>New Question</Button>
-        </NewQuestionMenu>
       </Flex>
 
       <RemountOnSiteChange>
