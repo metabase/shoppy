@@ -8,6 +8,8 @@ import { truncate } from "../../utils/truncate"
 
 import { getProductById } from "../../utils/query-product"
 import { FullPageLoader } from "../../components/Loader"
+import { useSiteChanged } from "../../utils/use-site-changed"
+import { navigate } from "wouter/use-browser-location"
 
 interface Props {
   id: string
@@ -20,6 +22,9 @@ export const ProductDetailPage = ({ id }: Props) => {
   })
 
   const product = query.data
+
+  // When the site changed, navigate to the product listing page.
+  useSiteChanged(() => navigate("/admin/products"))
 
   if (query.isLoading) return <FullPageLoader />
   if (!product) return <div>Product not found</div>
