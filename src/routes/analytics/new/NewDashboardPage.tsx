@@ -1,20 +1,22 @@
+import { useAtom } from "jotai"
 import { Flex } from "@mantine/core"
 import {
   CreateDashboardModal,
   EditableDashboard,
 } from "@metabase/embedding-sdk-react"
-import { useState } from "react"
 import { RemountOnSiteChange } from "../../../components/RemountOnSiteChange"
+import { dashboardIdAtom } from "../../../store/create"
+import { DASHBOARD_COLLECTION_ID } from "../../../constants/collections"
 
 export const NewDashboardPage = () => {
-  const [dashboardId, setDashboardId] = useState<number | null>(null)
+  const [dashboardId, setDashboardId] = useAtom(dashboardIdAtom)
 
   if (dashboardId === null) {
     return (
       <RemountOnSiteChange>
         <CreateDashboardModal
           onCreate={(dashboard) => setDashboardId(dashboard.id)}
-          initialCollectionId={43}
+          initialCollectionId={DASHBOARD_COLLECTION_ID}
         />
       </RemountOnSiteChange>
     )

@@ -3,12 +3,14 @@ import {
   CollectionBrowser,
   ModifyQuestion,
 } from "@metabase/embedding-sdk-react"
-import { useState } from "react"
+import { useAtom } from "jotai"
+import { templateQuestionIdAtom } from "../../../store/create"
+import { QUESTION_TEMPLATE_COLLECTION_ID } from "../../../constants/collections"
 
 export const NewFromTemplatePage = () => {
-  const [selectedQuestionId, setQuestionId] = useState<number | null>(null)
+  const [templateQuestionId, setQuestionId] = useAtom(templateQuestionIdAtom)
 
-  if (selectedQuestionId === null) {
+  if (templateQuestionId === null) {
     return (
       <Container>
         <Title fz="28px" mb="md">
@@ -16,7 +18,7 @@ export const NewFromTemplatePage = () => {
         </Title>
 
         <CollectionBrowser
-          collectionId={42}
+          collectionId={QUESTION_TEMPLATE_COLLECTION_ID}
           visibleEntityTypes={["question"]}
           onClick={(item) => setQuestionId(item.id)}
         />
@@ -24,10 +26,10 @@ export const NewFromTemplatePage = () => {
     )
   }
 
-  if (selectedQuestionId !== null) {
+  if (templateQuestionId !== null) {
     return (
       <Container w="100%">
-        <ModifyQuestion questionId={selectedQuestionId} />
+        <ModifyQuestion questionId={templateQuestionId} />
       </Container>
     )
   }

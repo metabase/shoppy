@@ -5,6 +5,7 @@ import { CollectionBrowser } from "@metabase/embedding-sdk-react"
 import "./analytics-custom-page.css"
 import { RemountOnSiteChange } from "../../components/RemountOnSiteChange"
 import { NewQuestionMenu } from "../../components/NewQuestionMenu"
+import { CUSTOM_ANALYTICS_COLLECTION_ID } from "../../constants/collections"
 
 export function AnalyticsCustomPage() {
   const [, navigate] = useLocation()
@@ -23,7 +24,7 @@ export function AnalyticsCustomPage() {
 
       <RemountOnSiteChange>
         <CollectionBrowser
-          collectionId={7}
+          collectionId={CUSTOM_ANALYTICS_COLLECTION_ID}
           className="analytics-collection-browser"
           onClick={(item) => {
             if (item.model === "dashboard") {
