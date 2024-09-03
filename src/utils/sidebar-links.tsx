@@ -1,51 +1,65 @@
+import { useAtom } from "jotai"
 import { Divider } from "@mantine/core"
+import { useQuery } from "@tanstack/react-query"
+
+import { getCategoryList } from "./query-category"
 
 import { SidebarNewQuestion } from "../components/SidebarNewQuestion"
 
-import { Category } from "../types/category"
 import { SidebarLink } from "../types/sidebar-link"
+import { createDashboardIdAtom } from "../store/create"
+import { useMemo } from "react"
 
-interface Options {
-  categories: Category[]
-}
+export function useSidebarLinks(): SidebarLink[] {
+  const categoryQuery = useQuery({
+    queryKey: ["categories"],
+    queryFn: getCategoryList,
+  })
 
-export function getSidebarLinks(options: Options): SidebarLink[] {
-  const categoryLinks: SidebarLink[] = options.categories.map((category) => ({
-    title: category.name,
-    to: `/admin/categories/${category.id}`,
-  }))
+  const [, setDashboardId] = useAtom(createDashboardIdAtom)
 
-  const SIDEBAR_LINKS: SidebarLink[] = [
-    {
-      title: "Products",
-      children: [
-        { to: "/admin/products", title: "Overview" },
-        ...categoryLinks,
-      ],
-      defaultOpened: true,
-    },
-    {
-      title: "Analytics",
-      children: [
-        { to: "/admin/analytics", title: "Overview" },
-        { to: "/admin/analytics/17", title: "Inventory" },
-        { to: "/admin/analytics/custom", title: "Custom" },
+  return useMemo(() => {
+    const categories = categoryQuery.data ?? []
 
-        {
-          key: "separator",
-          component: () => (
-            <Divider color="var(--color-lighter-grey)" w="140px" my="8px" />
-          ),
-        },
+    const categoryLinks: SidebarLink[] = categories.map((category) => ({
+      title: category.name,
+      to: `/admin/categories/${category.id}`,
+    }))
 
-        { key: "new-question", component: SidebarNewQuestion },
-        { to: "/admin/analytics/new/dashboard", title: "New Dashboard" },
-      ],
-      defaultOpened: true,
-    },
-    { to: "/admin/orders", title: "Orders" },
-    { to: "/admin/campaigns", title: "Campaigns" },
-  ]
+    return [
+      {
+        title: "Products",
+        children: [
+          { to: "/admin/products", title: "Overview" },
+          ...categoryLinks,
+        ],
+        defaultOpened: true,
+      },
+      {
+        title: "Analytics",
+        children: [
+          { to: "/admin/analytics", title: "Overview" },
+          { to: "/admin/analytics/17", title: "Inventory" },
+          { to: "/admin/analytics/custom", title: "Custom" },
 
-  return SIDEBAR_LINKS
+          {
+            key: "separator",
+            component: () => (
+              <Divider color="var(--color-lighter-grey)" w="140px" my="8px" />
+            ),
+          },
+
+          { key: "new-question", component: SidebarNewQuestion },
+          {
+            to: "/admin/analytics/new/dashboard",
+            title: "New Dashboard",
+            onClick: () => setDashboardId(null),
+          },
+        ],
+        defaultOpened: true,
+      },
+      { to: "/admin/orders", title: "Orders" },
+      { to: "/admin/campaigns", title: "Campaigns" },
+    ]
+  }, [categoryQuery, setDashboardId])
 }

@@ -1,21 +1,12 @@
 import cx from "classnames"
 import { Link } from "wouter"
-import { useMemo } from "react"
 import { Box, NavLink } from "@mantine/core"
-import { useQuery } from "@tanstack/react-query"
-import { getCategoryList } from "../../utils/query-category"
-import { getSidebarLinks } from "../../utils/sidebar-links"
+
 import { SidebarLink } from "../../types/sidebar-link"
+import { useSidebarLinks } from "../../utils/sidebar-links"
 
 export function SidebarLinks() {
-  const categoryQuery = useQuery({
-    queryKey: ["categories"],
-    queryFn: getCategoryList,
-  })
-
-  const links = useMemo(() => {
-    return getSidebarLinks({ categories: categoryQuery.data ?? [] })
-  }, [categoryQuery.data])
+  const links = useSidebarLinks()
 
   return (
     <Box pt="32px" className="space-y-3">
@@ -35,6 +26,7 @@ const renderLink = (link: SidebarLink, child?: boolean) => {
       variant="subtle"
       key={link.to ?? link.title ?? link.key}
       href={link.to ?? "#!"}
+      onClick={link.onClick}
       classNames={{
         children: "space-y-1",
         body: "flex-[2]",

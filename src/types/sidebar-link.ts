@@ -5,4 +5,5 @@ export interface SidebarLink {
   children?: SidebarLink[]
   defaultOpened?: boolean
   component?: React.FC
+  onClick?: () => void
 }

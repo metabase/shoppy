@@ -5,11 +5,11 @@ import {
   EditableDashboard,
 } from "@metabase/embedding-sdk-react"
 import { RemountOnSiteChange } from "../../../components/RemountOnSiteChange"
-import { dashboardIdAtom } from "../../../store/create"
+import { createDashboardIdAtom } from "../../../store/create"
 import { DASHBOARD_COLLECTION_ID } from "../../../constants/collections"
 
 export const NewDashboardPage = () => {
-  const [dashboardId, setDashboardId] = useAtom(dashboardIdAtom)
+  const [dashboardId, setDashboardId] = useAtom(createDashboardIdAtom)
 
   if (dashboardId === null) {
     return (

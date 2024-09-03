@@ -4,11 +4,13 @@ import {
   ModifyQuestion,
 } from "@metabase/embedding-sdk-react"
 import { useAtom } from "jotai"
-import { templateQuestionIdAtom } from "../../../store/create"
+import { selectedQuestionTemplateIdAtom } from "../../../store/create"
 import { QUESTION_TEMPLATE_COLLECTION_ID } from "../../../constants/collections"
 
 export const NewFromTemplatePage = () => {
-  const [templateQuestionId, setQuestionId] = useAtom(templateQuestionIdAtom)
+  const [templateQuestionId, setQuestionId] = useAtom(
+    selectedQuestionTemplateIdAtom,
+  )
 
   if (templateQuestionId === null) {
     return (
