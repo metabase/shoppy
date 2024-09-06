@@ -3,7 +3,7 @@ import { eq } from "drizzle-orm"
 import { db } from "../../src/utils/db"
 import { products as productSchema } from "../../src/schema/products"
 
-const SHOPS = ["stitch", "luminara", "pug"]
+const SHOPS = ["pug", "stitch", "luminara"]
 
 /**
  * Assign images to products based on their shops category.
