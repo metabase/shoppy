@@ -4,12 +4,13 @@ import { Button, Container, Flex } from "@mantine/core"
 import { CollectionBrowser } from "@metabase/embedding-sdk-react"
 
 import { NewQuestionMenu } from "../../components/NewQuestionMenu"
-import { RemountOnSiteChange } from "../../components/RemountOnSiteChange"
 
 import { siteAtom } from "../../store/site"
 import { createDashboardIdAtom } from "../../store/create"
 
 import { SANDBOXED_CUSTOM_ANALYTICS_COLLECTIONS } from "../../constants/collections"
+
+import { useSiteChanged } from "../../utils/use-site-changed"
 
 import "./analytics-custom-page.css"
 
@@ -19,6 +20,8 @@ export function AnalyticsCustomPage() {
 
   const [site] = useAtom(siteAtom)
   const collectionId = SANDBOXED_CUSTOM_ANALYTICS_COLLECTIONS[site]
+
+  useSiteChanged(() => window.location.reload())
 
   return (
     <Container w="100%" p={20}>
@@ -35,19 +38,17 @@ export function AnalyticsCustomPage() {
         </Link>
       </Flex>
 
-      <RemountOnSiteChange>
-        <CollectionBrowser
-          collectionId={collectionId}
-          className="analytics-collection-browser"
-          onClick={(item) => {
-            if (item.model === "dashboard") {
-              navigate(`/analytics/${item.id}`)
-            } else if (item.model === "card") {
-              navigate(`/question/${item.id}`)
-            }
-          }}
-        />
-      </RemountOnSiteChange>
+      <CollectionBrowser
+        collectionId={collectionId}
+        className="analytics-collection-browser"
+        onClick={(item) => {
+          if (item.model === "dashboard") {
+            navigate(`/analytics/${item.id}`)
+          } else if (item.model === "card") {
+            navigate(`/question/${item.id}`)
+          }
+        }}
+      />
     </Container>
   )
 }
