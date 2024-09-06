@@ -1,5 +1,4 @@
 import { useAtom } from "jotai"
-import { Divider } from "@mantine/core"
 import { useQuery } from "@tanstack/react-query"
 
 import { getCategoryList } from "./query-category"
@@ -41,14 +40,7 @@ export function useSidebarLinks(): SidebarLink[] {
           { to: "/admin/analytics", title: "Overview" },
           { to: "/admin/analytics/17", title: "Inventory" },
           { to: "/admin/analytics/custom", title: "Custom" },
-
-          {
-            key: "separator",
-            component: () => (
-              <Divider color="var(--color-lighter-grey)" w="140px" my="8px" />
-            ),
-          },
-
+          { isDivider: true },
           { key: "new-question", component: SidebarNewQuestion },
           {
             to: "/admin/analytics/new/dashboard",

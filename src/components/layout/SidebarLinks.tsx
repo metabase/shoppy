@@ -1,6 +1,6 @@
 import cx from "classnames"
 import { Link } from "wouter"
-import { Box, NavLink } from "@mantine/core"
+import { Box, Divider, NavLink } from "@mantine/core"
 
 import { SidebarLink } from "../../types/sidebar-link"
 import { useSidebarLinks } from "../../utils/sidebar-links"
@@ -17,6 +17,10 @@ export function SidebarLinks() {
 
 const renderLink = (link: SidebarLink, child?: boolean) => {
   const { component: Component } = link
+
+  if (link.isDivider) {
+    return <Divider color="var(--color-lighter-grey)" w="140px" my="14px" />
+  }
 
   return (
     <NavLink
