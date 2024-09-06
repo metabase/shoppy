@@ -17,6 +17,7 @@ export async function productDetailHandler(req: Request, res: Response) {
         title: true,
         createdAt: true,
         imageUrl: true,
+        shopId: true,
       },
       with: { category: { columns: { name: true } } },
     })

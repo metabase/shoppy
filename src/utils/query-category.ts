@@ -8,6 +8,10 @@ export async function getCategoryList(): Promise<Category[]> {
     credentials: "include",
   })
 
+  if (!response.ok) {
+    return []
+  }
+
   const { categories } = (await response.json()) as { categories: Category[] }
 
   return categories

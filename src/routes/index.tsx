@@ -7,6 +7,9 @@ import { QuestionPage } from "./analytics/QuestionPage"
 import { DashboardPage } from "./analytics/DashboardPage"
 import { AnalyticsOverviewPage } from "./analytics/AnalyticsOverviewPage"
 import { AnalyticsCustomPage } from "./analytics/AnalyticsCustomPage"
+import { NewFromTemplatePage } from "./analytics/new/NewFromTemplatePage"
+import { NewFromScratchPage } from "./analytics/new/NewFromScratchPage"
+import { NewDashboardPage } from "./analytics/new/NewDashboardPage"
 
 import { KitchenSink } from "./internal/KitchenSink"
 
@@ -54,11 +57,17 @@ export const Routes = () => (
 
               <Route
                 path="/analytics/new/from-template"
-                component={() => null}
+                component={NewFromTemplatePage}
               />
+
               <Route
                 path="/analytics/new/from-scratch"
-                component={() => null}
+                component={NewFromScratchPage}
+              />
+
+              <Route
+                path="/analytics/new/dashboard"
+                component={NewDashboardPage}
               />
             </Switch>
 

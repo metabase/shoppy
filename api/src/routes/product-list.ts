@@ -18,6 +18,7 @@ export async function productListHandler(req: Request, res: Response) {
         title: true,
         createdAt: true,
         imageUrl: true,
+        shopId: true,
       },
       with: { category: { columns: { id: true, name: true } } },
       where: (products, { eq }) => eq(products.shopId, user.shopId),
