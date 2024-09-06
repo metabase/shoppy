@@ -8,33 +8,19 @@ export const overviewLinkCards: DashboardLinkCardProps[] = [
     date: "3mo",
   },
   {
-    id: 14,
-    title: "Google Search Results",
+    id: 12,
+    title: "Orders",
     description:
-      "Search performance data from google search console. The data is delayed by 2-3 day.",
+      "An overview of the orders made by customers. The data is delayed by 2-3 day.",
     author: "Connor D",
     date: "3mo",
   },
   {
-    id: 18,
-    title: "Invoices",
+    id: 8,
+    title: "Products",
     description:
-      "Audit trail for changes to certain tables, such. as subscription.",
+      "An overview of the products sold by the shop. The data is delayed by 2-3 day.",
     author: "Connor D",
     date: "2mo",
-  },
-  {
-    id: 19,
-    title: "Page Views With Conversion Details",
-    description:
-      "Primary page view model. Use this to understand traffic patterns around...",
-    author: "Connor D",
-    date: "3mo",
-  },
-  {
-    id: 20,
-    title: "Weekly active users - WoW growth rate",
-    author: "Connor D",
-    date: "3mo",
   },
 ]

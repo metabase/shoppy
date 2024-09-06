@@ -11,7 +11,7 @@ export function DashboardPage(props: Props) {
   const dashboardId = parseInt(props.id, 10)
 
   // When the site changed, reload to apply the site's sandboxed data.
-  useSiteChanged(window.location.reload)
+  useSiteChanged(() => window.location.reload())
 
   return (
     <Box mih="100vh" className="dashboard-container smartscalar">
