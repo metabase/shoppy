@@ -5,9 +5,9 @@ import { logout } from "./logout"
 import { queryClient } from "./query-client"
 
 const SITE_TO_USER_MAP: Record<SiteKey, string> = {
-  stitch: "rene@example.com",
-  luminara: "cecilia@example.com",
-  pug: "emily@example.com",
+  stitch: "cecilia@example.com",
+  luminara: "emily@example.com",
+  pug: "rene@example.com",
 }
 
 export async function loginToSite(_site: SiteKey | null) {
@@ -28,8 +28,13 @@ export async function loginToSite(_site: SiteKey | null) {
     password: "password",
   })
 
+  // Wait for the session to be updated.
+  await delay(100)
+
   await queryClient.refetchQueries({
     predicate: (query) =>
       ["auth", "products", "categories"].includes(query.queryKey.toString()),
   })
 }
+
+const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))

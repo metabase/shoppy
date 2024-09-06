@@ -7,6 +7,7 @@ export type SiteInfo = {
   title: string
   key: SiteKey
   icon: string
+  shopId: number
 }
 
 export type SiteConfig = {

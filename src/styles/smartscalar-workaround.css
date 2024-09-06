@@ -23,6 +23,14 @@ body[data-theme="luminara"] {
 body[data-theme="stitch"] {
   .smartscalar [data-card-key]>div:has(div[data-testid="scalar-container"]) {
     align-items: flex-start;
+
+    div[data-testid="scalar-title"] {
+      justify-content: flex-start;
+
+      h3 {
+        text-align: left;
+      }
+    }
   }
 
   .smartscalar [data-testid="scalar-previous-value"] > div > h4 {
@@ -41,6 +49,14 @@ body[data-theme="stitch"] {
 body[data-theme="pug"] {
   .smartscalar:not(.product-card-trend) [data-card-key]>div:has(div[data-testid="scalar-container"]) {
     align-items: flex-start;
+
+    div[data-testid="scalar-title"] {
+      justify-content: flex-start;
+      
+      h3 {
+        text-align: left;
+      }
+    }
   }
   
   .smartscalar [data-testid="scalar-value"] {

@@ -3,4 +3,5 @@ export interface Product {
   title: string
   imageUrl: string | null
   category: { id: number; name: string }
+  shopId: number
 }

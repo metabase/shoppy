@@ -1,7 +1,7 @@
 import { Box } from "@mantine/core"
 import { InteractiveDashboard } from "@metabase/embedding-sdk-react"
 
-import { RemountOnSiteChange } from "../../components/RemountOnSiteChange"
+import { useSiteChanged } from "../../utils/use-site-changed"
 
 interface Props {
   id: string
@@ -10,15 +10,12 @@ interface Props {
 export function DashboardPage(props: Props) {
   const dashboardId = parseInt(props.id, 10)
 
+  // When the site changed, reload to apply the site's sandboxed data.
+  useSiteChanged(() => window.location.reload())
+
   return (
     <Box mih="100vh" className="dashboard-container smartscalar">
-      <RemountOnSiteChange>
-        <InteractiveDashboard
-          dashboardId={dashboardId}
-          withTitle
-          withDownloads
-        />
-      </RemountOnSiteChange>
+      <InteractiveDashboard dashboardId={dashboardId} withTitle withDownloads />
     </Box>
   )
 }
