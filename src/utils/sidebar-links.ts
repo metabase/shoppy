@@ -40,7 +40,7 @@ export function useSidebarLinks(): SidebarLink[] {
           { to: "/admin/analytics", title: "Overview" },
           { to: "/admin/analytics/17", title: "Inventory" },
           { to: "/admin/analytics/custom", title: "Custom" },
-          { isDivider: true },
+          { key: "analytics-divider", isDivider: true },
           { key: "new-question", component: SidebarNewQuestion },
           {
             to: "/admin/analytics/new/dashboard",

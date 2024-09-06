@@ -19,7 +19,14 @@ const renderLink = (link: SidebarLink, child?: boolean) => {
   const { component: Component } = link
 
   if (link.isDivider) {
-    return <Divider color="var(--color-lighter-grey)" w="140px" my="14px" />
+    return (
+      <Divider
+        color="var(--color-lighter-grey)"
+        w="140px"
+        my="14px"
+        key={link.key}
+      />
+    )
   }
 
   return (
