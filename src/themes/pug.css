@@ -1,6 +1,8 @@
 body[data-theme="pug"] {
+  color: var(--color-dark-grey);
+
   .card {
-    @apply bg-background text-[#323E35] rounded-md;
+    @apply bg-background rounded-md;
   }
 
   .product-card-image {
