@@ -1,7 +1,7 @@
 import { Request, Response } from "express"
 
 import { db } from "../utils/db"
-import { findUserByEmail } from "../auth/authenticate"
+import { findUserByEmail } from "../auth/find-user"
 
 export async function categoryListHandler(req: Request, res: Response) {
   // user is guaranteed to be defined by the restrict middleware

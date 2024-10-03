@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express"
 
-import { findUserByEmail } from "../auth/authenticate"
+import { findUserByEmail } from "../auth/find-user"
 import { NO_USER_MESSAGE } from "../constants/errors"
 
 export function restrict(req: Request, res: Response, next: NextFunction) {

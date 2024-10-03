@@ -8,7 +8,7 @@ import {
   SSO_NOT_CONFIGURED_MESSAGE,
 } from "../constants/errors"
 
-import { findUserByEmail } from "../auth/authenticate"
+import { findUserByEmail } from "../auth/find-user"
 
 export async function metabaseAuthHandler(req: Request, res: Response) {
   const user = await findUserByEmail(req.cookies.user)

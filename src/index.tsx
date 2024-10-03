@@ -28,6 +28,12 @@ import { store } from "./store"
 
 import { ThemeProvider } from "./components/ThemeProvider"
 
+import { switchSite } from "./utils/switch-site"
+import { getCurrentSite } from "./utils/current-site"
+
+// Set the "user" cookie for the current user.
+switchSite(getCurrentSite())
+
 const root = document.getElementById("root")!
 
 ReactDOM.createRoot(root).render(

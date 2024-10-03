@@ -1,11 +1,11 @@
 import { Request, Response } from "express"
 
 import { db } from "../utils/db"
-import { findUserByEmail } from "../auth/authenticate"
+import { findUserByEmail } from "../auth/find-user"
 
 export async function productListHandler(req: Request, res: Response) {
   // user is guaranteed to be defined by the restrict middleware
-  const user = findUserByEmail(req.session.user!.email)
+  const user = findUserByEmail(req.cookies.user)
 
   if (!user?.shopId) {
     return res.status(400).json({ error: "user has no assigned shop" })

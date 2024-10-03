@@ -11,9 +11,7 @@ const SITE_TO_EMAIL_MAP: Record<SiteKey, string> = {
   pug: "rene@example.com",
 }
 
-export async function switchSite(_site: SiteKey | null) {
-  const site = _site ?? getCurrentSite()
-
+export async function switchSite(site: SiteKey) {
   setCookie("user", SITE_TO_EMAIL_MAP[site])
 
   const hasSiteChanged = site !== getCurrentSite()
