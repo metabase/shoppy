@@ -42,7 +42,7 @@ export const SiteSwitcher = () => {
           Switch to different test shops
         </Text>
 
-        <ButtonGroup variant="outline">
+        <ButtonGroup variant="outline" className="hidden sm:block">
           {SITES.map((site) => {
             const active = currentSite === site.key
 
