@@ -1,4 +1,6 @@
 body[data-theme="stitch"] {
+  color: var(--color-lighter-grey);
+
   .overview-title {
     font-weight: 400;
   }

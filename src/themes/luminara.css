@@ -1,4 +1,6 @@
 body[data-theme="luminara"] {
+  color: var(--color-dark-grey);
+
   .divider {
     --divider-color: #A8ACA5;
   }
