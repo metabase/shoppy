@@ -49,12 +49,8 @@ export const ProductDetailPage = ({ id }: Props) => {
         </Text>
       </Box>
 
-      <Flex w="100%" align="center" justify="space-between" mt="30px" mb="20px">
+      <Flex w="100%" align="center" mt="30px" mb="20px">
         <Text className="product-insights-title">Insights</Text>
-
-        <Text fw={300} size="sm" className="product-insights-see-more" mr="8px">
-          See more
-        </Text>
       </Flex>
 
       <Grid gutter="xl">
