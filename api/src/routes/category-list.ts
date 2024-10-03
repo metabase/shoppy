@@ -5,7 +5,7 @@ import { findUserByEmail } from "../auth/authenticate"
 
 export async function categoryListHandler(req: Request, res: Response) {
   // user is guaranteed to be defined by the restrict middleware
-  const user = findUserByEmail(req.session.user!.email)
+  const user = findUserByEmail(req.cookies.user)
 
   if (!user?.shopId) {
     return res.status(400).json({ error: "user has no assigned shop" })

@@ -5,7 +5,7 @@ import cx from "classnames"
 import { useMutation } from "@tanstack/react-query"
 
 import { siteAtom } from "../store/site"
-import { loginToSite } from "../utils/switch-site"
+import { switchSite } from "../utils/switch-site"
 
 import { SITES } from "../constants/sites"
 
@@ -15,7 +15,7 @@ export const SiteSwitcher = () => {
   const [currentSite, setCurrentSite] = useAtom(siteAtom)
 
   const loginMutation = useMutation({
-    mutationFn: loginToSite,
+    mutationFn: switchSite,
     mutationKey: ["login"],
   })
 

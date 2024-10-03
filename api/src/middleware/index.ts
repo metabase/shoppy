@@ -1,10 +1,8 @@
 import cors from "cors"
 import express, { Express } from "express"
-import session from "express-session"
-import pgSessionStore from "connect-pg-simple"
+import cookieParser from "cookie-parser"
 
-import { FRONTEND_URL, SESSION_SECRET, VERCEL_ENV } from "../constants/env"
-import { pg } from "../utils/db"
+import { FRONTEND_URL, VERCEL_ENV } from "../constants/env"
 
 // Allow these origins to access the mock API server.
 const isWhitelistedOrigin = (origin?: string) =>
@@ -17,8 +15,6 @@ const isWhitelistedOrigin = (origin?: string) =>
 export function setupMiddleware(app: Express) {
   const isHosted = !!VERCEL_ENV
 
-  const SessionStore = pgSessionStore(session)
-
   const corsMiddleware = cors({
     origin: (origin, callback) => {
       if (isWhitelistedOrigin(origin)) {
@@ -30,27 +26,12 @@ export function setupMiddleware(app: Express) {
     credentials: true,
   })
 
-  if (!SESSION_SECRET) {
-    throw new Error("SESSION_SECRET is not set in the environment!")
-  }
-
-  const sessionMiddleware = session({
-    name: "shoppy.session",
-    secret: SESSION_SECRET,
-    resave: false,
-    saveUninitialized: true,
-    cookie: isHosted ? { secure: true, sameSite: "none" } : { secure: "auto" },
-
-    // Use PostgreSQL as a simple session store.
-    store: new SessionStore({ pool: pg, tableName: "session" }),
-  })
-
   app.use(express.json())
   app.use(express.text())
   app.use(express.urlencoded({ extended: false }))
+  app.use(cookieParser())
 
   app.use(corsMiddleware)
-  app.use(sessionMiddleware)
 
   if (isHosted) {
     app.set("trust proxy", 1)
