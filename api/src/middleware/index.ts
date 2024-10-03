@@ -24,6 +24,7 @@ export function setupMiddleware(app: Express) {
       if (
         !origin ||
         origin.includes("vercel.app") ||
+        origin.includes("metabase.com") ||
         origins.includes(origin)
       ) {
         return callback(null, true)
