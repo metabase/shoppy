@@ -13,7 +13,8 @@ interface Props {
 }
 
 export function Shell(props: Props) {
-  const [isMobileNavOpen, { toggle: toggleMobileNav }] = useDisclosure()
+  const [isMobileNavOpen, { toggle: toggleMobileNav, close: closeMobileNav }] =
+    useDisclosure()
 
   return (
     <Box>
@@ -80,7 +81,7 @@ export function Shell(props: Props) {
                 <SiteLogo />
               </Link>
 
-              <SidebarLinks />
+              <SidebarLinks onLinkClick={closeMobileNav} />
             </Box>
 
             <Flex className="sidebar-icons gap-x-3 py-4">

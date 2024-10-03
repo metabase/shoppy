@@ -1,0 +1,9 @@
+@media screen and (max-width: 768px) {
+  /*
+    WORKAROUND: remove the visualization padding when on mobile, as it causes the chart to be small.
+    TODO: add responsiveness support in SDK's theming.
+  */
+  div[data-testid="visualization-root"] > div[data-card-key] > div {
+    padding: 0 !important;
+  }
+}
