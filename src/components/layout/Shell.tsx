@@ -68,7 +68,7 @@ export function Shell(props: Props) {
           withBorder={false}
           pt={107}
           pl="30px"
-          zIndex={2}
+          zIndex={3}
         >
           <Flex
             direction="column"
