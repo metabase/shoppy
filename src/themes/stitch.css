@@ -57,6 +57,10 @@ body[data-theme="stitch"] {
 
   .navbar {
     background: transparent;
+
+    @media screen and (max-width: 768px) {
+      background: var(--color-background);
+    }
   }
 
   .sidebar-link-root {
