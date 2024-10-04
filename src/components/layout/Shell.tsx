@@ -71,13 +71,7 @@ export function Shell(props: Props) {
           )}
         </AppShell.Header>
 
-        <AppShell.Navbar
-          p="md"
-          withBorder={false}
-          pt={107}
-          pl="30px"
-          zIndex={3}
-        >
+        <AppShell.Navbar p="md" withBorder={false} pt={107} pl="30px">
           <Flex
             direction="column"
             justify="space-between"
