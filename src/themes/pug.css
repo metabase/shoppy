@@ -25,19 +25,22 @@ body[data-theme="pug"] {
 
   .navbar {
     color: white;
+    height: 100%;
     background: var(--color-primary);
   }
 
-  .navbar::after {
-    position: absolute;
-    top: 40px;
-    content: " ";
-    background: url(/blue-sidebar-waves.svg);
-    background-repeat: repeat-y;
-    background-position: center;
-    height: 100%;
-    width: 23px;
-    right: -11px;
+  @media screen and (min-width: 768px) {
+    .navbar::after {
+      position: absolute;
+      top: 40px;
+      content: " ";
+      background: url(/blue-sidebar-waves.svg);
+      background-repeat: repeat-y;
+      background-position: center;
+      height: 100%;
+      width: 23px;
+      right: -11px;
+    }
   }
 
   .sidebar-inactive-child {
