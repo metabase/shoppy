@@ -7,8 +7,7 @@ import { FRONTEND_URL, SESSION_SECRET, VERCEL_ENV } from "../constants/env"
 import { pg } from "../utils/db"
 
 // Allow these origins to access the mock API server.
-const isWhitelistedOrigin = (origin?: string) =>
-  !origin ||
+const isWhitelistedOrigin = (origin: string) =>
   origin.includes("localhost") ||
   origin.includes("vercel.app") ||
   origin.includes("metabase.com") ||
@@ -21,11 +20,8 @@ export function setupMiddleware(app: Express) {
 
   const corsMiddleware = cors({
     origin: (origin, callback) => {
-      if (isWhitelistedOrigin(origin)) {
-        return callback(null, true)
-      }
-
-      callback(new Error("cross-origin request not allowed"))
+      // Return the CORS header if the origin is defined in header and whitelisted.
+      callback(null, origin && isWhitelistedOrigin(origin))
     },
     credentials: true,
   })
