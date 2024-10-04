@@ -23,6 +23,10 @@ body[data-theme="luminara"] {
 
   .navbar {
     border-right: 1px solid rgba(50, 62, 53, 0.4);
+    
+    @media screen and (min-width: 768px) {
+      background: transparent;
+    }
   }
 
   .sidebar-active-child {
@@ -49,10 +53,6 @@ body[data-theme="luminara"] {
     font-style: italic;
     font-size: 16px;
     text-align: center;
-  }
-
-  .navbar {
-    background: transparent;
   }
 
   .sidebar-link-root {
@@ -90,3 +90,4 @@ body[data-theme="luminara"] {
     font-weight: 600;
   }
 }
+
