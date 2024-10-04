@@ -13,7 +13,10 @@ body[data-theme="pug"] {
 
   .product-detail-image {
     border-radius: 100%;
-    max-width: 300px;
+    
+    @media screen and (min-width: 576px) {
+      max-width: 300px;
+    }
   }
 
   .sidebar-inactive-child:hover {
