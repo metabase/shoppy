@@ -29,3 +29,10 @@ body:not([data-theme="luminara"]) {
     font-size: 48px;
   }
 }
+
+/** hide elements on mobile using Mantine's breakpoint */
+.hide-on-mobile {
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
