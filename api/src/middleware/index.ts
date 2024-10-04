@@ -21,6 +21,7 @@ export function setupMiddleware(app: Express) {
         return callback(null, true)
       }
 
+
       callback(new Error("cross-origin request not allowed"))
     },
     credentials: true,
