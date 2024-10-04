@@ -7,7 +7,7 @@ export function SiteLogo() {
   const [site] = useAtom(siteAtom)
 
   if (site === "luminara") {
-    return <Image src="/logo-luminara.svg" />
+    return <Image src="/logo-luminara.svg" maw="200px" />
   }
 
   if (site === "pug") {

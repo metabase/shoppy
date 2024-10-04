@@ -54,11 +54,11 @@ export const ProductDetailPage = ({ id }: Props) => {
       </Flex>
 
       <Grid gutter="xl">
-        <Grid.Col span={4}>
+        <Grid.Col span={{ md: 4 }}>
           <ProductDetailCard product={product} />
         </Grid.Col>
 
-        <Grid.Col span={8}>
+        <Grid.Col span={{ xs: 12, md: 8 }}>
           <ProductDetailInsights productId={product.id} />
         </Grid.Col>
       </Grid>

@@ -16,7 +16,7 @@ export function AnalyticsOverviewPage() {
           Fluffy Pearls dashboards
         </Title>
 
-        <SimpleGrid cols={{ base: 2, sm: 3, lg: 4 }}>
+        <SimpleGrid cols={{ base: 1, xs: 2, sm: 3, lg: 4 }}>
           {overviewLinkCards.map((card) => (
             <DashboardLinkCard key={card.id} {...card} />
           ))}

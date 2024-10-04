@@ -5,18 +5,26 @@ import { Box, Divider, NavLink } from "@mantine/core"
 import { SidebarLink } from "../../types/sidebar-link"
 import { useSidebarLinks } from "../../utils/sidebar-links"
 
-export function SidebarLinks() {
+interface SidebarLinkProps {
+  onLinkClick?: () => void
+}
+
+export function SidebarLinks({ onLinkClick }: SidebarLinkProps) {
   const links = useSidebarLinks()
 
   return (
     <Box pt="32px" className="space-y-3">
-      {links.map((link) => renderLink(link))}
+      {links.map((link) => renderLink(link, { onLinkClick }))}
     </Box>
   )
 }
 
-const renderLink = (link: SidebarLink, child?: boolean) => {
+const renderLink = (
+  link: SidebarLink,
+  context: { isChild?: boolean; onLinkClick?: () => void },
+) => {
   const { component: Component } = link
+  const { isChild, onLinkClick } = context ?? {}
 
   if (link.isDivider) {
     return (
@@ -37,7 +45,12 @@ const renderLink = (link: SidebarLink, child?: boolean) => {
       variant="subtle"
       key={link.to ?? link.title ?? link.key}
       href={link.to ?? "#!"}
-      onClick={link.onClick}
+      onClick={() => {
+        link.onClick?.()
+
+        // Closes the mobile menu when a link is clicked.
+        onLinkClick?.()
+      }}
       classNames={{
         children: "space-y-1",
         body: "flex-[2]",
@@ -50,9 +63,9 @@ const renderLink = (link: SidebarLink, child?: boolean) => {
             cx(
               "hover:bg-transparent font-sans",
               props.className,
-              !child && "sidebar-link-root",
-              child && "space-y-2",
-              child && !active && "sidebar-inactive-child",
+              !isChild && "sidebar-link-root",
+              isChild && "space-y-2",
+              isChild && !active && "sidebar-inactive-child",
               active && "sidebar-active-child dark-gradient",
             )
           }
@@ -60,7 +73,10 @@ const renderLink = (link: SidebarLink, child?: boolean) => {
       )}
       defaultOpened={link.defaultOpened}
     >
-      {link.children && link.children.map((link) => renderLink(link, true))}
+      {link.children &&
+        link.children.map((link) =>
+          renderLink(link, { isChild: true, onLinkClick }),
+        )}
     </NavLink>
   )
 }
