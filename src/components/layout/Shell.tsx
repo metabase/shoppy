@@ -74,7 +74,7 @@ export function Shell(props: Props) {
             direction="column"
             justify="space-between"
             h="100%"
-            className="max-w-[320px] sm:px-8 md:px-0 py-4 md:py-0"
+            className="sm:px-8 md:px-0 py-4 md:py-0"
           >
             <Box>
               <Link to="/admin/products">

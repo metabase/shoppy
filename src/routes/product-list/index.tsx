@@ -34,9 +34,7 @@ export const ProductAnalyticsPage = (props: Props) => {
   return (
     <Flex w="100%" justify="center">
       <Stack w="100%" maw="1000px" className="gap-y-10">
-        <Title size="48px" className="overview-title">
-          Overview
-        </Title>
+        <Title className="overview-title">Overview</Title>
 
         <SimpleGrid
           cols={{ base: 1, xs: 2, sm: 3 }}

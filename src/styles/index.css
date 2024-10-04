@@ -20,3 +20,12 @@ body[data-theme="luminara"] {
 body:not([data-theme="luminara"]) {
   background: var(--color-background) !important;
 }
+
+.overview-title,
+.product-detail-title {
+  font-size: 36px;
+
+  @media (min-width: 768px) {
+    font-size: 48px;
+  }
+}

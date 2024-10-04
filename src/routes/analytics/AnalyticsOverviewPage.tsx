@@ -7,9 +7,7 @@ import { overviewLinkCards } from "./link-cards"
 export function AnalyticsOverviewPage() {
   return (
     <Stack mih="100vh" className="gap-y-6 mt-8 mx-auto px-[50px]" maw="1100px">
-      <Title size="48px" className="overview-title">
-        Overview
-      </Title>
+      <Title className="overview-title">Overview</Title>
 
       <Stack>
         <Title c="accent-light" size="17px">
