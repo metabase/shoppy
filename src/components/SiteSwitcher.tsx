@@ -14,13 +14,13 @@ import { SiteKey } from "../types/site"
 export const SiteSwitcher = () => {
   const [currentSite, setCurrentSite] = useAtom(siteAtom)
 
-  const loginMutation = useMutation({
+  const switchSiteMutation = useMutation({
     mutationFn: switchSite,
     mutationKey: ["login"],
   })
 
   async function changeSite(key: SiteKey) {
-    await loginMutation.mutateAsync(key)
+    await switchSiteMutation.mutateAsync(key)
     setCurrentSite(key)
   }
 
@@ -49,7 +49,7 @@ export const SiteSwitcher = () => {
               leftSection={
                 <Icon icon={site.icon} fontSize={14} overflow="visible" />
               }
-              loading={loginMutation.isPending}
+              loading={switchSiteMutation.isPending}
             >
               {site.title}
             </Button>

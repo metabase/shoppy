@@ -26,13 +26,10 @@ import "./styles/viz-workaround.css"
 
 import { store } from "./store"
 
+import { setInitialSiteCookie } from "./utils/switch-site"
 import { ThemeProvider } from "./components/ThemeProvider"
 
-import { switchSite } from "./utils/switch-site"
-import { getCurrentSite } from "./utils/current-site"
-
-// Set the "user" cookie for the current user.
-switchSite(getCurrentSite())
+setInitialSiteCookie()
 
 const root = document.getElementById("root")!
 
