@@ -5,14 +5,6 @@ import cookieParser from "cookie-parser"
 import { FRONTEND_URL, VERCEL_ENV } from "../constants/env"
 
 // Allow these origins to access the mock API server.
-const isWhitelistedOrigin = (origin?: string) =>
-  !origin ||
-  origin.includes("localhost") ||
-  origin.includes("vercel.app") ||
-  origin.includes("metabase.com") ||
-  origin.includes(FRONTEND_URL)
-
-// Allow these origins to access the mock API server.
 const isWhitelistedOrigin = (origin: string) =>
   origin.includes("localhost") ||
   origin.includes("vercel.app") ||
