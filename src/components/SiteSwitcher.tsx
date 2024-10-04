@@ -26,16 +26,22 @@ export const SiteSwitcher = () => {
 
   return (
     <Flex align="center" justify="space-between" w="100%" ff="Lato">
-      <Text fz="14px" pr="md" c="#BFC1C1" className="hidden sm:block">
+      <Text
+        fz="14px"
+        pr="md"
+        c="#BFC1C1"
+        display={{ base: "none", sm: "block" }}
+      >
         Switch to different test shops
       </Text>
 
-      <ButtonGroup variant="outline">
+      <ButtonGroup variant="outline" w={{ base: "100%", sm: "auto" }}>
         {SITES.map((site) => {
           const active = currentSite === site.key
 
           return (
             <Button
+              w={{ base: "100%", sm: "auto" }}
               key={site.key}
               variant="outline"
               size="xs"

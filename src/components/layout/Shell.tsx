@@ -29,11 +29,14 @@ export function Shell(props: Props) {
           navbar: "navbar overflow-scroll sm:overflow-visible",
         }}
       >
-        <AppShell.Header className="border-b-[#55595B]" zIndex={102}>
+        <AppShell.Header
+          zIndex={102}
+          bg="#2B2F32"
+          className="border-b-[#2B2F32]"
+        >
           <Flex
             justify="space-between"
             align="center"
-            bg="#2B2F32"
             h="44px"
             w="100%"
             px="16px"
@@ -42,22 +45,27 @@ export function Shell(props: Props) {
           >
             <Image src="/metabase-logo-with-wordmark.svg" />
 
-            <Box className="md:hidden">
+            <Flex display={{ base: "flex", sm: "none" }}>
               <Burger
                 opened={isMobileNavOpen}
                 onClick={toggleMobileNav}
                 aria-label="Toggle navigation"
                 color="#eee"
               />
-            </Box>
+            </Flex>
 
-            <Box className="hidden md:block">
+            <Flex display={{ base: "none", sm: "flex" }}>
               <SiteSwitcher />
-            </Box>
+            </Flex>
           </Flex>
 
           {isMobileNavOpen && (
-            <Flex className="md:hidden" bg="#2B2F32" px="16px" pb="8px">
+            <Flex
+              display={{ base: "flex", sm: "none" }}
+              bg="#2B2F32"
+              px="16px"
+              py="8px"
+            >
               <SiteSwitcher />
             </Flex>
           )}
