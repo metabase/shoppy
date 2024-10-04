@@ -21,10 +21,10 @@ export function SidebarLinks({ onLinkClick }: SidebarLinkProps) {
 
 const renderLink = (
   link: SidebarLink,
-  context: { child?: boolean; onLinkClick?: () => void },
+  context: { isChild?: boolean; onLinkClick?: () => void },
 ) => {
   const { component: Component } = link
-  const { child, onLinkClick } = context ?? {}
+  const { isChild, onLinkClick } = context ?? {}
 
   if (link.isDivider) {
     return (
@@ -63,9 +63,9 @@ const renderLink = (
             cx(
               "hover:bg-transparent font-sans",
               props.className,
-              !child && "sidebar-link-root",
-              child && "space-y-2",
-              child && !active && "sidebar-inactive-child",
+              !isChild && "sidebar-link-root",
+              isChild && "space-y-2",
+              isChild && !active && "sidebar-inactive-child",
               active && "sidebar-active-child dark-gradient",
             )
           }
@@ -75,7 +75,7 @@ const renderLink = (
     >
       {link.children &&
         link.children.map((link) =>
-          renderLink(link, { child: true, onLinkClick }),
+          renderLink(link, { isChild: true, onLinkClick }),
         )}
     </NavLink>
   )
