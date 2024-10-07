@@ -72,10 +72,6 @@ body[data-theme="luminara"] {
 
   .product-detail-image {
     border-radius: 16px;
-
-    @media screen and (min-width: 576px) {
-      max-width: 300px;
-    }
   }
 
   .product-detail-card-title {
