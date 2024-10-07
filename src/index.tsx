@@ -26,10 +26,10 @@ import "./styles/viz-workaround.css"
 
 import { store } from "./store"
 
-import { setInitialSiteCookie } from "./utils/switch-site"
+import { syncInitialSiteCookie } from "./utils/switch-site"
 import { ThemeProvider } from "./components/ThemeProvider"
 
-setInitialSiteCookie()
+syncInitialSiteCookie()
 
 const root = document.getElementById("root")!
 
