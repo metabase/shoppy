@@ -37,7 +37,7 @@ export const ProductAnalyticsPage = (props: Props) => {
         <Title className="overview-title">Overview</Title>
 
         <SimpleGrid
-          cols={{ base: 1, xs: 2, sm: 3 }}
+          cols={{ base: 1, xs: 2, md: 3 }}
           spacing="xl"
           verticalSpacing={VERTICAL_SPACING[site]}
         >
