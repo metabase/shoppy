@@ -41,14 +41,13 @@ export function Shell(props: Props) {
           >
             <Image src="/metabase-logo-with-wordmark.svg" />
 
-            <Flex display={{ base: "flex", sm: "none" }}>
-              <Burger
-                opened={isMobileNavOpen}
-                onClick={toggleMobileNav}
-                aria-label="Toggle navigation"
-                color="#eee"
-              />
-            </Flex>
+            <Burger
+              display={{ sm: "none" }}
+              opened={isMobileNavOpen}
+              onClick={toggleMobileNav}
+              aria-label="Toggle navigation"
+              color="#eee"
+            />
 
             <Flex display={{ base: "none", sm: "flex" }}>
               <SiteSwitcher />
