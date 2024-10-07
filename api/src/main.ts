@@ -3,8 +3,6 @@ import express, { Router } from "express"
 import { setupMiddleware } from "./middleware"
 import { restrict } from "./middleware/restrict"
 
-import { loginHandler } from "./routes/login"
-import { logoutHandler } from "./routes/logout"
 import { metabaseAuthHandler } from "./routes/metabase-sso"
 import { productListHandler } from "./routes/product-list"
 import { productDetailHandler } from "./routes/product-detail"
@@ -18,15 +16,10 @@ setupMiddleware(app)
 
 const router = Router()
 router.get("/", (_, res) => res.send({ status: "ok" }))
-router.post("/login", loginHandler)
-router.post("/logout", logoutHandler)
-router.get("/sso/metabase", metabaseAuthHandler)
+router.get("/sso/metabase", restrict, metabaseAuthHandler)
 router.get("/products", restrict, productListHandler)
 router.get("/categories", restrict, categoryListHandler)
 router.get("/product/:id", productDetailHandler)
-router.get("/user", restrict, (req: any, res: any) => {
-  res.status(200).json({ user: req.session.user })
-})
 
 app.get("/", (_, res) => res.send({ status: "ok" }))
 app.use("/api", router)

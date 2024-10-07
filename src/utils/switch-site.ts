@@ -1,40 +1,37 @@
-import { SiteKey } from "../types/site"
-import { getCurrentSite } from "./current-site"
-import { login } from "./login"
-import { logout } from "./logout"
+import Cookies from "js-cookie"
+
 import { queryClient } from "./query-client"
 
-const SITE_TO_USER_MAP: Record<SiteKey, string> = {
+import { SiteKey } from "../types/site"
+import { DEFAULT_SITE, siteAtom } from "../store/site"
+
+import { store } from "../store"
+
+export const COOKIE_USER_KEY = "user"
+
+const SITE_TO_EMAIL_MAP: Record<SiteKey, string> = {
   stitch: "cecilia@example.com",
   luminara: "emily@example.com",
   pug: "rene@example.com",
 }
 
-export async function loginToSite(_site: SiteKey | null) {
-  const site = _site ?? getCurrentSite()
+export const setSiteCookie = (site: SiteKey) =>
+  Cookies.set(COOKIE_USER_KEY, SITE_TO_EMAIL_MAP[site])
 
-  const hasSiteChanged = site !== getCurrentSite()
-
-  try {
-    if (hasSiteChanged) {
-      await logout()
-    }
-  } catch {
-    // logout may fail if the user is not logged in.
-  }
-
-  await login({
-    email: SITE_TO_USER_MAP[site],
-    password: "password",
-  })
-
-  // Wait for the session to be updated.
-  await delay(100)
-
-  await queryClient.refetchQueries({
-    predicate: (query) =>
-      ["auth", "products", "categories"].includes(query.queryKey.toString()),
-  })
+/** Set the initial site if the demo is visited for the first time. */
+export function setInitialSiteCookie() {
+  if (!Cookies.get(COOKIE_USER_KEY)) setSiteCookie(DEFAULT_SITE)
 }
 
-const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
+export async function switchSite(site: SiteKey) {
+  setSiteCookie(site)
+
+  const hasSiteChanged = site !== store.get(siteAtom)
+
+  if (hasSiteChanged) {
+    await queryClient.refetchQueries({
+      predicate: (query) =>
+        ["products", "categories"].includes(query.queryKey.toString()),
+    })
+  }
+}

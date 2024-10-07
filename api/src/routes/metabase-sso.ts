@@ -3,23 +3,18 @@ import { Request, Response } from "express"
 
 import { signUserToken } from "../auth/sign"
 import { METABASE_INSTANCE_URL } from "../constants/env"
-import { SSO_NOT_CONFIGURED_MESSAGE } from "../constants/errors"
+import {
+  NO_USER_MESSAGE,
+  SSO_NOT_CONFIGURED_MESSAGE,
+} from "../constants/errors"
+
+import { findUserByEmail } from "../auth/find-user"
 
 export async function metabaseAuthHandler(req: Request, res: Response) {
-  const { user } = req.session
-
-  if (!req.sessionID) {
-    return res.status(401).json({
-      status: "error",
-      message: "unauthenticated - please login first",
-    })
-  }
+  const user = await findUserByEmail(req.cookies.user)
 
   if (!user) {
-    return res.status(401).json({
-      status: "error",
-      message: "invalid login session - missing user data in session",
-    })
+    return res.status(401).json({ status: "error", message: NO_USER_MESSAGE })
   }
 
   const ssoUrl = new URL("/auth/sso", METABASE_INSTANCE_URL)
@@ -45,9 +40,8 @@ export async function metabaseAuthHandler(req: Request, res: Response) {
     if (error instanceof Error) {
       res.status(401).json({
         status: "error",
-        message: "authentication failed",
+        message: "sso authentication failed",
         error: error.message,
-        session: req.session,
       })
     }
   }
