@@ -29,11 +29,7 @@ export function Shell(props: Props) {
           navbar: "navbar overflow-scroll sm:overflow-visible",
         }}
       >
-        <AppShell.Header
-          zIndex={102}
-          bg="#2B2F32"
-          className="border-b-[#2B2F32]"
-        >
+        <AppShell.Header zIndex={102} bg="#2B2F32" className="border-none">
           <Flex
             justify="space-between"
             align="center"
