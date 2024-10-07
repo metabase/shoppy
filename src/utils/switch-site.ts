@@ -3,7 +3,7 @@ import Cookies from "js-cookie"
 import { queryClient } from "./query-client"
 
 import { SiteKey } from "../types/site"
-import { DEFAULT_SITE, siteAtom } from "../store/site"
+import { DEFAULT_SITE, SITE_KEY, siteAtom } from "../store/site"
 
 import { store } from "../store"
 
@@ -20,7 +20,13 @@ export const setSiteCookie = (site: SiteKey) =>
 
 /** Set the initial site if the demo is visited for the first time. */
 export function setInitialSiteCookie() {
-  if (!Cookies.get(COOKIE_USER_KEY)) setSiteCookie(DEFAULT_SITE)
+  if (!Cookies.get(COOKIE_USER_KEY)) {
+    // Use the site from localStorage as the initial site.
+    // This is a migration for people who have previously visited the demo.
+    const site = JSON.parse(localStorage.getItem(SITE_KEY)!) || DEFAULT_SITE
+
+    setSiteCookie(site as SiteKey)
+  }
 }
 
 export async function switchSite(site: SiteKey) {
