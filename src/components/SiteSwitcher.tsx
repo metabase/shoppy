@@ -36,7 +36,6 @@ export const SiteSwitcher = () => {
 
           return (
             <Button
-              w={{ base: "100%", sm: "auto" }}
               key={site.key}
               variant="outline"
               size="xs"
@@ -45,6 +44,10 @@ export const SiteSwitcher = () => {
               className={cx(
                 "border-[#EAEAEA]",
                 !active && "!bg-transparent hover:!bg-[#4C4E51]",
+
+                // Workaround to address Mantine's bug where the leftmost button's border radius is not applied,
+                // which is caused by Mantine prepending a <style> tag, breaking the :first-child selector.
+                "full-width-on-mobile",
               )}
               onClick={() => changeSite(site.key)}
               leftSection={

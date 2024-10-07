@@ -37,9 +37,18 @@ body:not([data-theme="luminara"]) {
   }
 }
 
-/** hide elements on mobile using Mantine's breakpoint */
+/** hide elements on mobile */
 .hide-on-mobile {
-  @media (max-width: 768px) {
+  @media screen and (max-width: 768px) {
     display: none;
+  }
+}
+
+/** uses full width only on mobile */
+.full-width-on-mobile {
+  width: 100%;
+
+  @media screen and (min-width: 768px) {
+    width: auto;
   }
 }
