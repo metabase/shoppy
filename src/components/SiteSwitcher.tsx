@@ -26,12 +26,7 @@ export const SiteSwitcher = () => {
 
   return (
     <Flex align="center" justify="space-between" w="100%" ff="Lato">
-      <Text
-        fz="14px"
-        pr="md"
-        c="#BFC1C1"
-        display={{ base: "none", sm: "block" }}
-      >
+      <Text fz="14px" pr="md" c="#BFC1C1" className="hide-on-mobile">
         Switch to different test shops
       </Text>
 
