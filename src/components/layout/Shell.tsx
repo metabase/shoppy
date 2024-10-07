@@ -49,9 +49,9 @@ export function Shell(props: Props) {
               color="#eee"
             />
 
-            <Flex display={{ base: "none", sm: "flex" }}>
+            <Box display={{ base: "none", sm: "flex" }}>
               <SiteSwitcher />
-            </Flex>
+            </Box>
           </Flex>
 
           {isMobileNavOpen && (
