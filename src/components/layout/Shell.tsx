@@ -61,7 +61,14 @@ export function Shell(props: Props) {
           )}
         </AppShell.Header>
 
-        <AppShell.Navbar p="md" withBorder={false} pt={107} pl="30px">
+        <AppShell.Navbar
+          p="md"
+          withBorder={false}
+          pt={107}
+          pl="30px"
+          // Required for the "New Dashboard" modal to be on top of the mobile navbar.
+          zIndex={2}
+        >
           <Flex
             direction="column"
             justify="space-between"
