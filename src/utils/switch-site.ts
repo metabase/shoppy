@@ -18,15 +18,13 @@ const SITE_TO_EMAIL_MAP: Record<SiteKey, string> = {
 export const setSiteCookie = (site: SiteKey) =>
   Cookies.set(COOKIE_USER_KEY, SITE_TO_EMAIL_MAP[site])
 
-/** Set the initial site if the demo is visited for the first time. */
-export function setInitialSiteCookie() {
-  if (!Cookies.get(COOKIE_USER_KEY)) {
-    // Use the site from localStorage as the initial site.
-    // This is a migration for people who have previously visited the demo.
-    const site = JSON.parse(localStorage.getItem(SITE_KEY)!) || DEFAULT_SITE
+/** Sync the user cookie for the API with the site in localStorage. */
+export function syncInitialSiteCookie() {
+  // Use the site from localStorage as the initial user cookie.
+  // This is a migration for people who have previously visited the demo.
+  const site = JSON.parse(localStorage.getItem(SITE_KEY)!) || DEFAULT_SITE
 
-    setSiteCookie(site as SiteKey)
-  }
+  setSiteCookie(site as SiteKey)
 }
 
 export async function switchSite(site: SiteKey) {
