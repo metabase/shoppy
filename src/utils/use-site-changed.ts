@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react"
 
 import { siteAtom } from "../store/site"
 
-import { SiteKey } from "../types/site"
+import type { SiteKey } from "../types/site"
 
 export function useSiteChanged(onSiteChanged: () => void) {
   const [site] = useAtom(siteAtom)

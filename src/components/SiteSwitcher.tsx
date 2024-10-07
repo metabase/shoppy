@@ -5,7 +5,7 @@ import cx from "classnames"
 import { useMutation } from "@tanstack/react-query"
 
 import { siteAtom } from "../store/site"
-import { loginToSite } from "../utils/switch-site"
+import { switchSite } from "../utils/switch-site"
 
 import { SITES } from "../constants/sites"
 
@@ -14,13 +14,13 @@ import { SiteKey } from "../types/site"
 export const SiteSwitcher = () => {
   const [currentSite, setCurrentSite] = useAtom(siteAtom)
 
-  const loginMutation = useMutation({
-    mutationFn: loginToSite,
+  const switchSiteMutation = useMutation({
+    mutationFn: switchSite,
     mutationKey: ["login"],
   })
 
   async function changeSite(key: SiteKey) {
-    await loginMutation.mutateAsync(key)
+    await switchSiteMutation.mutateAsync(key)
     setCurrentSite(key)
   }
 
@@ -53,7 +53,7 @@ export const SiteSwitcher = () => {
               leftSection={
                 <Icon icon={site.icon} fontSize={14} overflow="visible" />
               }
-              loading={loginMutation.isPending}
+              loading={switchSiteMutation.isPending}
             >
               {site.title}
             </Button>
