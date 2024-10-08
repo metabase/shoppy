@@ -1,5 +1,6 @@
 import { SimpleGrid, Stack, Title, Flex } from "@mantine/core"
 import { useQuery } from "@tanstack/react-query"
+import { navigate } from "wouter/use-browser-location"
 
 import { ProductCard } from "./ProductCard"
 
@@ -10,7 +11,6 @@ import { useAtom } from "jotai"
 import { SiteKey } from "../../types/site"
 import { FullPageLoader } from "../../components/Loader"
 import { useSiteChanged } from "../../utils/use-site-changed"
-import { navigate } from "wouter/use-browser-location"
 
 interface Props {
   categoryId?: string
