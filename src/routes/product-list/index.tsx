@@ -19,8 +19,8 @@ export const ProductAnalyticsPage = (props: Props) => {
   const categoryId = props.categoryId && parseInt(props.categoryId, 10)
 
   const query = useQuery({
-    queryKey: ["products"],
-    queryFn: () => getProductList(),
+    queryKey: ["products", site],
+    queryFn: () => getProductList(site),
   })
 
   let products = query.data ?? []

@@ -1,8 +1,10 @@
 import { API_HOST } from "../constants/env"
-import { Product } from "../types/product"
 
-export async function getProductList(): Promise<Product[]> {
-  const response = await fetch(`${API_HOST}/products`, {
+import type { Product } from "../types/product"
+import type { SiteKey } from "../types/site"
+
+export async function getProductList(site: SiteKey): Promise<Product[]> {
+  const response = await fetch(`${API_HOST}/products?site=${site}`, {
     method: "GET",
     credentials: "include",
   })

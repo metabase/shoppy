@@ -22,6 +22,9 @@ export async function categoryListHandler(req: Request, res: Response) {
       where: (category, { eq }) => eq(category.shopId, user.shopId),
     })
 
+    // cache for 1 week
+    res.set("Cache-Control", "public, max-age=604800")
+
     res.status(200).json({ categories })
   } catch (error) {
     const reason = error instanceof Error ? error.message : "unknown error"

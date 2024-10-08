@@ -24,6 +24,9 @@ export async function productListHandler(req: Request, res: Response) {
       where: (products, { eq }) => eq(products.shopId, user.shopId),
     })
 
+    // cache for 1 week
+    res.set("Cache-Control", "public, max-age=604800")
+
     res.status(200).json({ products })
   } catch (error) {
     if (error instanceof Error) {
