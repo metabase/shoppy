@@ -2,6 +2,7 @@ import { Request, Response } from "express"
 
 import { db } from "../utils/db"
 import { findUserByEmail } from "../auth/find-user"
+import { cacheStaticResponse } from "../utils/cache"
 
 export async function categoryListHandler(req: Request, res: Response) {
   // user is guaranteed to be defined by the restrict middleware
@@ -22,8 +23,7 @@ export async function categoryListHandler(req: Request, res: Response) {
       where: (category, { eq }) => eq(category.shopId, user.shopId),
     })
 
-    // cache for 1 week
-    res.set("Cache-Control", "public, max-age=604800")
+    cacheStaticResponse(res)
 
     res.status(200).json({ categories })
   } catch (error) {
