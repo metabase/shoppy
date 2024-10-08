@@ -39,7 +39,9 @@ export function Shell(props: Props) {
             className="border-transparent"
             ff="Lato"
           >
-            <Image src="/metabase-logo-with-wordmark.svg" />
+            <Link to="/">
+              <Image src="/metabase-logo-with-wordmark.svg" />
+            </Link>
 
             <Burger
               display={{ sm: "none" }}
