@@ -1,5 +1,6 @@
-import { Flex, Text, Loader } from "@mantine/core"
+import { type ReactNode } from "react"
 import { useAtom } from "jotai"
+import { Flex, Text, Loader } from "@mantine/core"
 
 import { siteAtom } from "../store/site"
 
@@ -19,7 +20,7 @@ export const MetabaseLoader = () => {
   )
 }
 
-export const MetabaseError = ({ message }: { message: string }) => {
+export const MetabaseError = ({ message }: { message: ReactNode }) => {
   return (
     <Flex>
       <Text>{message}</Text>

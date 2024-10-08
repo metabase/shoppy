@@ -9,6 +9,8 @@ import { siteAtom } from "../../store/site"
 import { useAtom } from "jotai"
 import { SiteKey } from "../../types/site"
 import { FullPageLoader } from "../../components/Loader"
+import { useSiteChanged } from "../../utils/use-site-changed"
+import { navigate } from "wouter/use-browser-location"
 
 interface Props {
   categoryId?: string
@@ -28,6 +30,10 @@ export const ProductAnalyticsPage = (props: Props) => {
   if (categoryId) {
     products = products.filter((product) => product.category.id === categoryId)
   }
+
+  // If the site changes, redirect back to the product listing page.
+  // This ensures we don't show product from last site's categories.
+  useSiteChanged(() => navigate("/admin/products"))
 
   if (query.isLoading) return <FullPageLoader />
 

@@ -7,11 +7,16 @@ import {
   NO_USER_MESSAGE,
   SSO_NOT_CONFIGURED_MESSAGE,
 } from "../constants/errors"
-
-import { findUserByEmail } from "../auth/find-user"
+import { getUserBySite } from "../utils/sites"
 
 export async function metabaseAuthHandler(req: Request, res: Response) {
-  const user = await findUserByEmail(req.cookies.user)
+  const { site } = req.query
+
+  if (typeof site !== "string") {
+    return res.status(400).json({ error: "site is not specified" })
+  }
+
+  const user = await getUserBySite(site)
 
   if (!user) {
     return res.status(401).json({ status: "error", message: NO_USER_MESSAGE })

@@ -19,21 +19,25 @@ interface Props {
   children: React.ReactNode
 }
 
-/**
- * Configuration for the Metabase provider.
- */
-const config: SDKConfig = {
-  metabaseInstanceUrl: METABASE_INSTANCE_URL,
-  jwtProviderUri: `${API_HOST}${JWT_PROVIDER_URI}`,
-  loaderComponent: MetabaseLoader,
-  errorComponent: MetabaseError,
-}
-
 export const AppProvider = ({ children }: Props) => {
   const [site] = useAtom(siteAtom)
 
   const theme = useMemo(() => {
     return SITE_CONFIG_MAP[site].metabase
+  }, [site])
+
+  // Configuration for the Metabase provider.
+  const config: SDKConfig = useMemo(() => {
+    return {
+      metabaseInstanceUrl: METABASE_INSTANCE_URL,
+      jwtProviderUri: `${API_HOST}${JWT_PROVIDER_URI}`,
+      loaderComponent: MetabaseLoader,
+      errorComponent: MetabaseError,
+
+      // Append the current site as a query parameter to the JWT provider URL.
+      fetchRequestToken: (url: string) =>
+        fetch(`${url}?site=${site}`).then((res) => res.json()),
+    }
   }, [site])
 
   return (
