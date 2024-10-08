@@ -2,28 +2,13 @@ import { Flex, Text, ButtonGroup, Button } from "@mantine/core"
 import { useAtom } from "jotai"
 import { Icon } from "@iconify/react"
 import cx from "classnames"
-import { useMutation } from "@tanstack/react-query"
 
 import { siteAtom } from "../store/site"
-import { refetchSiteContent } from "../utils/refetch-site-content"
 
 import { SITES } from "../constants/sites"
 
-import { SiteKey } from "../types/site"
-
 export const SiteSwitcher = () => {
   const [currentSite, setCurrentSite] = useAtom(siteAtom)
-
-  const refetchSiteContentMutation = useMutation({
-    mutationFn: refetchSiteContent,
-    mutationKey: ["refetchSiteContent"],
-  })
-
-  async function changeSite(key: SiteKey) {
-    setCurrentSite(key)
-
-    await refetchSiteContentMutation.mutateAsync(key)
-  }
 
   return (
     <Flex align="center" justify="space-between" w="100%" ff="Lato">
@@ -50,11 +35,10 @@ export const SiteSwitcher = () => {
                 // which is caused by Mantine prepending a <style> tag, breaking the :first-child selector.
                 "full-width-on-mobile",
               )}
-              onClick={() => changeSite(site.key)}
+              onClick={() => setCurrentSite(site.key)}
               leftSection={
                 <Icon icon={site.icon} fontSize={14} overflow="visible" />
               }
-              loading={refetchSiteContentMutation.isPending}
             >
               {site.title}
             </Button>
