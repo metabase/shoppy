@@ -1,5 +1,6 @@
 import { SimpleGrid, Stack, Title, Flex } from "@mantine/core"
 import { useQuery } from "@tanstack/react-query"
+import { navigate } from "wouter/use-browser-location"
 
 import { ProductCard } from "./ProductCard"
 
@@ -9,6 +10,7 @@ import { siteAtom } from "../../store/site"
 import { useAtom } from "jotai"
 import { SiteKey } from "../../types/site"
 import { FullPageLoader } from "../../components/Loader"
+import { useSiteChanged } from "../../utils/use-site-changed"
 
 interface Props {
   categoryId?: string
@@ -22,6 +24,10 @@ export const ProductAnalyticsPage = (props: Props) => {
     queryKey: ["products"],
     queryFn: () => getProductList(),
   })
+
+  // Navigate back to the all products list when the site changes.
+  // This prevents us from being in an invalid category.
+  useSiteChanged(() => navigate("/admin/products"))
 
   let products = query.data ?? []
 
