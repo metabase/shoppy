@@ -31,7 +31,8 @@ body:not([data-theme="luminara"]) {
 }
 
 /** constrain product image width on non-mobile screens */
-.product-detail-image {
+.product-detail-image,
+.product-card-image-container {
   @media screen and (min-width: 576px) {
     max-width: 300px;
   }
