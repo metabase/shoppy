@@ -40,12 +40,12 @@ body[data-theme="stitch"] {
     height: calc(100% - 2px);
     border-radius: var(--mantine-radius-sm);
     background: var(--color-background);
-    z-index: 2;
+    z-index: 1;
   }
 
   .action-button span {
     position: relative;
-    z-index: 3;
+    z-index: 2;
     color: var(--mantine-color-white);
   }
 

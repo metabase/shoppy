@@ -17,7 +17,7 @@ export const ProductDetailCard = ({ product }: Props) => {
     >
       <Stack className="product-detail-card w-full space-y-8" gap={1}>
         <Flex align="center">
-          <Image src={image} className="product-detail-image" />
+          <Image src={image} className="product-detail-image" flex={1} />
         </Flex>
 
         <Flex direction="column" className="space-y-4">

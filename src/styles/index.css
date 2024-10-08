@@ -20,3 +20,35 @@ body[data-theme="luminara"] {
 body:not([data-theme="luminara"]) {
   background: var(--color-background) !important;
 }
+
+.overview-title,
+.product-detail-title {
+  font-size: 36px;
+
+  @media (min-width: 768px) {
+    font-size: 48px;
+  }
+}
+
+/** constrain product image width on non-mobile screens */
+.product-detail-image {
+  @media screen and (min-width: 576px) {
+    max-width: 300px;
+  }
+}
+
+/** hide elements on mobile */
+.hide-on-mobile {
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+}
+
+/** uses full width only on mobile */
+.full-width-on-mobile {
+  width: 100%;
+
+  @media screen and (min-width: 768px) {
+    width: auto;
+  }
+}

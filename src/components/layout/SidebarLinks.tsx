@@ -33,6 +33,7 @@ const renderLink = (
         w="140px"
         my="14px"
         key={link.key}
+        className="hide-on-mobile"
       />
     )
   }
@@ -67,6 +68,7 @@ const renderLink = (
               isChild && "space-y-2",
               isChild && !active && "sidebar-inactive-child",
               active && "sidebar-active-child dark-gradient",
+              link.hideOnMobile && "hide-on-mobile",
             )
           }
         />
