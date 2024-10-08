@@ -44,7 +44,7 @@ export const ProductDetailPage = ({ id }: Props) => {
   return (
     <Container>
       <Box>
-        <Text size="48px" className="product-detail-title" pb="5px">
+        <Text className="product-detail-title" pb="5px">
           {truncate(product.title, 50)}
         </Text>
       </Box>

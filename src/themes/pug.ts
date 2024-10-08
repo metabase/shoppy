@@ -61,7 +61,7 @@ const metabase: MetabaseTheme = {
     },
     dashboard: {
       card: {
-        border: "none",
+        border: "1px solid var(--mantine-color-gray-3)",
       },
     },
     number: {

@@ -29,35 +29,35 @@ export function Shell(props: Props) {
           navbar: "navbar overflow-scroll sm:overflow-visible",
         }}
       >
-        <AppShell.Header className="border-b-[#55595B]" zIndex={102}>
+        <AppShell.Header zIndex={102} bg="#2B2F32" className="border-none">
           <Flex
             justify="space-between"
             align="center"
-            bg="#2B2F32"
             h="44px"
             w="100%"
             px="16px"
             className="border-transparent"
             ff="Lato"
           >
-            <Image src="/metabase-logo-with-wordmark.svg" />
+            <Link to="/">
+              <Image src="/metabase-logo-with-wordmark.svg" />
+            </Link>
 
-            <Box className="md:hidden">
-              <Burger
-                opened={isMobileNavOpen}
-                onClick={toggleMobileNav}
-                aria-label="Toggle navigation"
-                color="#eee"
-              />
-            </Box>
+            <Burger
+              display={{ sm: "none" }}
+              opened={isMobileNavOpen}
+              onClick={toggleMobileNav}
+              aria-label="Toggle navigation"
+              color="#eee"
+            />
 
-            <Box className="hidden md:block">
+            <Box className="hide-on-mobile">
               <SiteSwitcher />
             </Box>
           </Flex>
 
           {isMobileNavOpen && (
-            <Flex className="md:hidden" bg="#2B2F32" px="16px" pb="8px">
+            <Flex display={{ sm: "none" }} bg="#2B2F32" px="16px" py="8px">
               <SiteSwitcher />
             </Flex>
           )}
@@ -68,13 +68,14 @@ export function Shell(props: Props) {
           withBorder={false}
           pt={107}
           pl="30px"
-          zIndex={3}
+          // Required for the "New Dashboard" modal to be on top of the mobile navbar.
+          zIndex={2}
         >
           <Flex
             direction="column"
             justify="space-between"
             h="100%"
-            className="max-w-[320px] sm:px-8 md:px-0 py-4 md:py-0"
+            className="py-4 md:py-0"
           >
             <Box>
               <Link to="/admin/products">

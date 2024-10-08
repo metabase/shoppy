@@ -49,6 +49,11 @@ body[data-theme="stitch"] {
 body[data-theme="pug"] {
   .smartscalar:not(.product-card-trend) [data-card-key]>div:has(div[data-testid="scalar-container"]) {
     align-items: flex-start;
+    padding-left: 16px !important;
+
+    @media screen and (max-width: 576px) {
+      padding-left: 24px !important;
+    }
 
     div[data-testid="scalar-title"] {
       justify-content: flex-start;

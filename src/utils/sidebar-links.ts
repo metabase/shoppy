@@ -40,18 +40,21 @@ export function useSidebarLinks(): SidebarLink[] {
           { to: "/admin/analytics", title: "Overview" },
           { to: "/admin/analytics/17", title: "Inventory" },
           { to: "/admin/analytics/custom", title: "Custom" },
-          { key: "analytics-divider", isDivider: true },
-          { key: "new-question", component: SidebarNewQuestion },
+          { key: "analytics-divider", isDivider: true, hideOnMobile: true },
+          {
+            key: "new-question",
+            component: SidebarNewQuestion,
+            hideOnMobile: true,
+          },
           {
             to: "/admin/analytics/new/dashboard",
             title: "New Dashboard",
             onClick: () => setDashboardId(null),
+            hideOnMobile: true,
           },
         ],
         defaultOpened: true,
       },
-      { to: "/admin/orders", title: "Orders" },
-      { to: "/admin/campaigns", title: "Campaigns" },
     ]
   }, [categoryQuery, setDashboardId])
 }

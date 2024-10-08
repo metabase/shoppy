@@ -1,4 +1,4 @@
-import { SimpleGrid, Stack, Title } from "@mantine/core"
+import { Container, SimpleGrid, Stack, Title } from "@mantine/core"
 
 import { DashboardLinkCard } from "./DashboardLinkCard"
 
@@ -6,8 +6,8 @@ import { overviewLinkCards } from "./link-cards"
 
 export function AnalyticsOverviewPage() {
   return (
-    <Stack mih="100vh" className="gap-y-6 mt-8 mx-auto px-[50px]" maw="1100px">
-      <Title size="48px" className="overview-title">
+    <Container>
+      <Title className="overview-title" pb="30px">
         Overview
       </Title>
 
@@ -22,6 +22,6 @@ export function AnalyticsOverviewPage() {
           ))}
         </SimpleGrid>
       </Stack>
-    </Stack>
+    </Container>
   )
 }
