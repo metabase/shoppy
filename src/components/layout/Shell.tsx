@@ -82,7 +82,13 @@ export function Shell(props: Props) {
                 <SiteLogo />
               </Link>
 
-              <SidebarLinks onLinkClick={closeMobileNav} />
+              <SidebarLinks
+                onLinkClick={(link) => {
+                  if (!link.children) {
+                    closeMobileNav()
+                  }
+                }}
+              />
             </Box>
 
             <Flex className="sidebar-icons gap-x-3 py-4">

@@ -2,11 +2,11 @@ import cx from "classnames"
 import { Link } from "wouter"
 import { Box, Divider, NavLink } from "@mantine/core"
 
-import { SidebarLink } from "../../types/sidebar-link"
+import type { SidebarLink } from "../../types/sidebar-link"
 import { useSidebarLinks } from "../../utils/sidebar-links"
 
 interface SidebarLinkProps {
-  onLinkClick?: () => void
+  onLinkClick?: (link: SidebarLink) => void
 }
 
 export function SidebarLinks({ onLinkClick }: SidebarLinkProps) {
@@ -21,7 +21,7 @@ export function SidebarLinks({ onLinkClick }: SidebarLinkProps) {
 
 const renderLink = (
   link: SidebarLink,
-  context: { isChild?: boolean; onLinkClick?: () => void },
+  context: { isChild?: boolean; onLinkClick?: (link: SidebarLink) => void },
 ) => {
   const { component: Component } = link
   const { isChild, onLinkClick } = context ?? {}
@@ -48,9 +48,7 @@ const renderLink = (
       href={link.to ?? "#!"}
       onClick={() => {
         link.onClick?.()
-
-        // Closes the mobile menu when a link is clicked.
-        onLinkClick?.()
+        onLinkClick?.(link)
       }}
       classNames={{
         children: "space-y-1",
