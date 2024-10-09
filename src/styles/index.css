@@ -31,11 +31,14 @@ body:not([data-theme="luminara"]) {
 }
 
 /** constrain product image width on non-mobile screens */
-.product-detail-image,
-.product-card-image-container {
+.product-detail-image {
   @media screen and (min-width: 576px) {
     max-width: 300px;
   }
+}
+
+.product-card-image-container {
+  aspect-ratio: 1 / 1;
 }
 
 /** hide elements on mobile */
