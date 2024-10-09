@@ -7,7 +7,6 @@ body[data-theme="pug"] {
 
   .product-card-image {
     border-radius: 100%;
-    max-width: 300px;
     align-self: center;
   }
 

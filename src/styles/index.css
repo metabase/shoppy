@@ -37,6 +37,10 @@ body:not([data-theme="luminara"]) {
   }
 }
 
+.product-card-image-container {
+  aspect-ratio: 1 / 1;
+}
+
 /** hide elements on mobile */
 .hide-on-mobile {
   @media screen and (max-width: 768px) {

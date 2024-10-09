@@ -1,4 +1,5 @@
-import { useAtom } from "jotai"
+import { useMemo } from "react"
+import { useAtom, useAtomValue } from "jotai"
 import { useQuery } from "@tanstack/react-query"
 
 import { getCategoryList } from "./query-category"
@@ -7,12 +8,14 @@ import { SidebarNewQuestion } from "../components/SidebarNewQuestion"
 
 import { SidebarLink } from "../types/sidebar-link"
 import { createDashboardIdAtom } from "../store/create"
-import { useMemo } from "react"
+import { siteAtom } from "../store/site"
 
 export function useSidebarLinks(): SidebarLink[] {
+  const site = useAtomValue(siteAtom)
+
   const categoryQuery = useQuery({
-    queryKey: ["categories"],
-    queryFn: getCategoryList,
+    queryKey: ["categories", site],
+    queryFn: () => getCategoryList(site),
   })
 
   const [, setDashboardId] = useAtom(createDashboardIdAtom)
