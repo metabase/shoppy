@@ -25,7 +25,7 @@ export function AnalyticsCustomPage() {
 
   return (
     <Container w="100%" p={20}>
-      <Flex justify="flex-end" gap="xs" pb="xs">
+      <Flex justify="flex-end" gap="xs" pb="xs" className="hide-on-mobile">
         <NewQuestionMenu position="bottom-end">
           <Button>New Question</Button>
         </NewQuestionMenu>
