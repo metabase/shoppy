@@ -21,19 +21,19 @@ export const ProductAnalyticsPage = (props: Props) => {
   const categoryId = props.categoryId && parseInt(props.categoryId, 10)
 
   const query = useQuery({
-    queryKey: ["products"],
-    queryFn: () => getProductList(),
+    queryKey: ["products", site],
+    queryFn: () => getProductList(site),
   })
-
-  // Navigate back to the all products list when the site changes.
-  // This prevents us from being in an invalid category.
-  useSiteChanged(() => navigate("/admin/products"))
 
   let products = query.data ?? []
 
   if (categoryId) {
     products = products.filter((product) => product.category.id === categoryId)
   }
+
+  // If the site changes, redirect back to the product listing page.
+  // This ensures we don't show product from last site's categories.
+  useSiteChanged(() => navigate("/admin/products"))
 
   if (query.isLoading) return <FullPageLoader />
 

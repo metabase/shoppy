@@ -1,6 +1,5 @@
 import cors from "cors"
 import express, { Express } from "express"
-import cookieParser from "cookie-parser"
 
 import { FRONTEND_URL, VERCEL_ENV } from "../constants/env"
 
@@ -25,8 +24,6 @@ export function setupMiddleware(app: Express) {
   app.use(express.json())
   app.use(express.text())
   app.use(express.urlencoded({ extended: false }))
-  app.use(cookieParser())
-
   app.use(corsMiddleware)
 
   if (isHosted) {

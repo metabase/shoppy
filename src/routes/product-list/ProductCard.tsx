@@ -26,7 +26,14 @@ export const ProductCard = ({ product }: Props) => {
     <Link href={`/products/${product.id}`}>
       <Stack className="product-card">
         <Stack gap={10}>
-          <Image src={image} className="product-card-image w-full" />
+          <Box w="100%" className="product-card-image-container">
+            <Image
+              src={image}
+              className="product-card-image object-cover"
+              w="100%"
+              h="100%"
+            />
+          </Box>
 
           <Stack className="smartscalar product-card-trend" mih={70} gap={0}>
             <Text className="product-card-title" pl="8px">

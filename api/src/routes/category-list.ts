@@ -1,14 +1,19 @@
 import { Request, Response } from "express"
 
 import { db } from "../utils/db"
-import { findUserByEmail } from "../auth/find-user"
+import { getShopIdBySite } from "../utils/sites"
 
 export async function categoryListHandler(req: Request, res: Response) {
-  // user is guaranteed to be defined by the restrict middleware
-  const user = findUserByEmail(req.cookies.user)
+  const { site } = req.query
 
-  if (!user?.shopId) {
-    return res.status(400).json({ error: "user has no assigned shop" })
+  if (typeof site !== "string") {
+    return res.status(400).json({ error: "site is not specified" })
+  }
+
+  const shopId = getShopIdBySite(site)
+
+  if (shopId === undefined) {
+    return res.status(400).json({ error: "shop not found" })
   }
 
   try {
@@ -19,7 +24,7 @@ export async function categoryListHandler(req: Request, res: Response) {
         description: true,
         createdAt: true,
       },
-      where: (category, { eq }) => eq(category.shopId, user.shopId),
+      where: (category, { eq }) => eq(category.shopId, shopId),
     })
 
     res.status(200).json({ categories })

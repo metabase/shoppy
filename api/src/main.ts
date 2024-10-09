@@ -1,7 +1,7 @@
 import express, { Router } from "express"
 
 import { setupMiddleware } from "./middleware"
-import { restrict } from "./middleware/restrict"
+import { withCacheHeader } from "./middleware/cache"
 
 import { metabaseAuthHandler } from "./routes/metabase-sso"
 import { productListHandler } from "./routes/product-list"
@@ -16,10 +16,10 @@ setupMiddleware(app)
 
 const router = Router()
 router.get("/", (_, res) => res.send({ status: "ok" }))
-router.get("/sso/metabase", restrict, metabaseAuthHandler)
-router.get("/products", restrict, productListHandler)
-router.get("/categories", restrict, categoryListHandler)
-router.get("/product/:id", productDetailHandler)
+router.get("/sso/metabase", metabaseAuthHandler)
+router.get("/products", withCacheHeader, productListHandler)
+router.get("/categories", withCacheHeader, categoryListHandler)
+router.get("/product/:id", withCacheHeader, productDetailHandler)
 
 app.get("/", (_, res) => res.send({ status: "ok" }))
 app.use("/api", router)
