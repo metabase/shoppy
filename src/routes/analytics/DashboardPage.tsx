@@ -15,7 +15,11 @@ export function DashboardPage(props: Props) {
 
   return (
     <Box mih="100vh" className="dashboard-container smartscalar">
-      <InteractiveDashboard dashboardId={dashboardId} withTitle withDownloads />
+      <InteractiveDashboard
+        dashboardId={dashboardId}
+        withTitle
+        withDownloads={false}
+      />
     </Box>
   )
 }
