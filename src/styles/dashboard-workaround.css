@@ -24,6 +24,7 @@ body[data-theme="stitch"] {
     padding: 0 10px;
   }
 
+  /** WORKAROUND: only apply the css overrides when we are not exporting to pdf */
   .smartscalar:not(.product-card-trend) #Dashboard-Parameters-And-Cards-Container:not(.saving-dom-image) [data-testid="scalar-container"] h1 {
     font-size: 30px;
     font-weight: 500;
