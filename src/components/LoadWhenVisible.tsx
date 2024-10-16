@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 
 import { useInView } from "react-intersection-observer"
 
-export const RenderWhenVisible = ({
+export const LoadWhenVisible = ({
   children,
 }: {
   children: React.ReactNode
