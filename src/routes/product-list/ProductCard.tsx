@@ -10,6 +10,7 @@ import { Product } from "../../types/product"
 import { RemountOnSiteChange } from "../../components/RemountOnSiteChange"
 import { siteAtom } from "../../store/site"
 import { truncate } from "../../utils/truncate"
+import { RenderWhenVisible } from "../../components/RenderWhenVisible"
 
 interface Props {
   product: Product
@@ -41,14 +42,16 @@ export const ProductCard = ({ product }: Props) => {
             </Text>
 
             <Box py={4} mih={questionHeight}>
-              <RemountOnSiteChange>
-                <StaticQuestion
-                  questionId={161}
-                  showVisualizationSelector={false}
-                  height={questionHeight}
-                  parameterValues={{ product_id: product.id }}
-                />
-              </RemountOnSiteChange>
+              <RenderWhenVisible>
+                <RemountOnSiteChange>
+                  <StaticQuestion
+                    questionId={161}
+                    showVisualizationSelector={false}
+                    height={questionHeight}
+                    parameterValues={{ product_id: product.id }}
+                  />
+                </RemountOnSiteChange>
+              </RenderWhenVisible>
             </Box>
 
             <ProductCardFooter />
