@@ -25,15 +25,17 @@ body[data-theme="stitch"] {
   }
 
   /** WORKAROUND: only apply the css overrides when we are not exporting to pdf and png */
-  .smartscalar:not(.product-card-trend)
-    #Dashboard-Parameters-And-Cards-Container:not(.saving-dom-image)
-    [data-dashcard-key]:not(.saving-dom-image)
+  .smartscalar:not(.dashboard-container):not(.product-card-trend),
+  .smartscalar.dashboard-container:not(.product-card-trend)
+  #Dashboard-Parameters-And-Cards-Container:not(.saving-dom-image)
+  [data-dashcard-key]:not(.saving-dom-image) {
     [data-testid="scalar-container"] h1 {
-    font-size: 30px;
-    font-weight: 500;
-    background: linear-gradient(93.53deg, #E590ED 9.53%, #828ED9 39.15%, #79C1FD 65.02%, #B1DBF8 84.51%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+      font-size: 30px;
+      font-weight: 500;
+      background: linear-gradient(93.53deg, #E590ED 9.53%, #828ED9 39.15%, #79C1FD 65.02%, #B1DBF8 84.51%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
   }
 }
