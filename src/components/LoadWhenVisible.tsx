@@ -7,13 +7,15 @@ export const LoadWhenVisible = ({
 }: {
   children: React.ReactNode
 }) => {
-  const [loaded, setLoaded] = useState(false)
+  const [shouldRender, setShouldRender] = useState(false)
 
   const { ref, inView } = useInView()
 
   useEffect(() => {
-    if (inView) setLoaded(true)
+    if (inView) {
+      setShouldRender(true)
+    }
   }, [inView])
 
-  return <div ref={ref}>{loaded && children}</div>
+  return <div ref={ref}>{shouldRender && children}</div>
 }

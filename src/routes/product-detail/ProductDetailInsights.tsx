@@ -7,7 +7,6 @@ import {
 } from "@metabase/embedding-sdk-react"
 
 import { RemountOnSiteChange } from "../../components/RemountOnSiteChange"
-import { LoadWhenVisible } from "../../components/LoadWhenVisible"
 
 const MAX_W = 600
 
@@ -57,18 +56,16 @@ export const ProductDetailInsights = (props: Props) => {
         withCloseButton={false}
         size="xl"
       >
-        <LoadWhenVisible>
-          <InteractiveQuestion
-            questionId={158}
-            height={700}
-            withTitle
-            customTitle={
-              <Title fw={400} size="h2" className="product-detail-card-title">
-                Orders over time
-              </Title>
-            }
-          />
-        </LoadWhenVisible>
+        <InteractiveQuestion
+          questionId={158}
+          height={700}
+          withTitle
+          customTitle={
+            <Title fw={400} size="h2" className="product-detail-card-title">
+              Orders over time
+            </Title>
+          }
+        />
       </Modal>
     </Box>
   )
