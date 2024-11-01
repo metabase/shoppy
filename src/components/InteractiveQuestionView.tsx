@@ -32,7 +32,13 @@ export const InteractiveQuestionView = (props: Props) => {
 
   return (
     <Box>
-      <Flex w="100%" justify="space-between" pb={14}>
+      <Flex
+        w="100%"
+        justify="space-between"
+        pb={14}
+        direction={{ base: "column", sm: "row" }}
+        rowGap="sm"
+      >
         <Group gap="xs">
           <InteractiveQuestion.BackButton />
 
