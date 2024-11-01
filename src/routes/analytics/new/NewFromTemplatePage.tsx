@@ -33,7 +33,7 @@ export const NewFromTemplatePage = () => {
     return (
       <Container w="100%">
         <InteractiveQuestion questionId={templateQuestionId} isSaveEnabled>
-          <InteractiveQuestionView />
+          <InteractiveQuestionView isSaveEnabled />
         </InteractiveQuestion>
       </Container>
     )

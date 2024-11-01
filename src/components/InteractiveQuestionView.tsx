@@ -8,7 +8,13 @@ import { useState } from "react"
 // TODO: add the "breakout" view once we've separated the breakout from summarization in the SDK
 type QuestionView = "viz" | "filter" | "summary" | "editor"
 
-export const InteractiveQuestionView = () => {
+interface Props {
+  isSaveEnabled?: boolean
+}
+
+export const InteractiveQuestionView = (props: Props) => {
+  const { isSaveEnabled = false } = props
+
   const [view, setView] = useState<QuestionView>("viz")
 
   const changeView = (nextView: QuestionView) => {
@@ -45,6 +51,15 @@ export const InteractiveQuestionView = () => {
           >
             Change the summary
           </ThemedButton>
+
+          {isSaveEnabled && (
+            <ThemedButton
+              size="compact-sm"
+              onClick={() => changeView("summary")}
+            >
+              Save
+            </ThemedButton>
+          )}
 
           <ThemedButton size="compact-sm" onClick={() => changeView("editor")}>
             <CustomIcon icon="notebook" />
