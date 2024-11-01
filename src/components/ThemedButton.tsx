@@ -1,9 +1,11 @@
-import { Button, ButtonProps } from "@mantine/core"
+import { Button, ButtonProps, PolymorphicComponentProps } from "@mantine/core"
 import cx from "classnames"
 import { ForwardedRef, forwardRef } from "react"
 
+type ThemedButtonProps = PolymorphicComponentProps<"button", ButtonProps>
+
 export const ThemedButton = forwardRef(function ThemedButton(
-  props: ButtonProps,
+  props: ThemedButtonProps,
   ref: ForwardedRef<HTMLButtonElement>,
 ) {
   return (
