@@ -89,7 +89,7 @@ body[data-theme="luminara"] {
     font-weight: 600;
   }
 
-  .themed-button.sidebar-action-button {
+  .themed-button {
     background: var(--color-light-grey);
   }
 }

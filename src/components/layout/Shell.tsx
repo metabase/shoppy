@@ -11,6 +11,9 @@ import { SiteLogo } from "../SiteLogo"
 
 import { ThemedButton } from "../ThemedButton"
 import { NewQuestionMenu } from "../NewQuestionMenu"
+import { siteIsReloadingAtom } from "../../store/site"
+import { useAtom } from "jotai"
+import { FullPageLoader } from "../Loader"
 
 interface Props {
   children: ReactNode
@@ -19,6 +22,16 @@ interface Props {
 export function Shell(props: Props) {
   const [isMobileNavOpen, { toggle: toggleMobileNav, close: closeMobileNav }] =
     useDisclosure()
+
+  const [isSiteReloading] = useAtom(siteIsReloadingAtom)
+
+  if (isSiteReloading) {
+    return (
+      <Box>
+        <FullPageLoader />
+      </Box>
+    )
+  }
 
   return (
     <Box>
