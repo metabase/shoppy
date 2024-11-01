@@ -1,7 +1,7 @@
 import { Container, Title } from "@mantine/core"
 import {
   CollectionBrowser,
-  ModifyQuestion,
+  InteractiveQuestion,
 } from "@metabase/embedding-sdk-react"
 import { useAtom } from "jotai"
 import { selectedQuestionTemplateIdAtom } from "../../../store/create"
@@ -31,7 +31,7 @@ export const NewFromTemplatePage = () => {
   if (templateQuestionId !== null) {
     return (
       <Container w="100%">
-        <ModifyQuestion questionId={templateQuestionId} />
+        <InteractiveQuestion questionId={templateQuestionId} isSaveEnabled />
       </Container>
     )
   }
