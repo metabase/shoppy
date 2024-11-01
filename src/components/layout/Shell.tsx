@@ -2,12 +2,15 @@ import { AppShell, Box, Flex, Image, Burger, Stack } from "@mantine/core"
 import { useDisclosure } from "@mantine/hooks"
 import { ReactNode } from "react"
 import { Link } from "wouter"
+import { Icon } from "@iconify/react"
 
 import { SidebarLinks } from "./SidebarLinks"
+
 import { SiteSwitcher } from "../SiteSwitcher"
 import { SiteLogo } from "../SiteLogo"
-import { Icon } from "@iconify/react"
+
 import { ThemedButton } from "../ThemedButton"
+import { NewQuestionMenu } from "../NewQuestionMenu"
 
 interface Props {
   children: ReactNode
@@ -92,8 +95,11 @@ export function Shell(props: Props) {
               />
 
               <Stack className="hide-on-mobile" pt={18}>
-                <ThemedButton>New custom exploration</ThemedButton>
-                <ThemedButton>New dashboard</ThemedButton>
+                <NewQuestionMenu position="bottom-start" prefix="/admin">
+                  <ThemedButton>New custom exploration</ThemedButton>
+                </NewQuestionMenu>
+
+                <ThemedButton w="fit-content">New dashboard</ThemedButton>
               </Stack>
             </Box>
 

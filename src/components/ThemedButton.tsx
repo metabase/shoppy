@@ -1,6 +1,16 @@
 import { Button, ButtonProps } from "@mantine/core"
 import cx from "classnames"
+import { ForwardedRef, forwardRef } from "react"
 
-export function ThemedButton(props: ButtonProps) {
-  return <Button className={cx("themed-button", props.className)} {...props} />
-}
+export const ThemedButton = forwardRef(function ThemedButton(
+  props: ButtonProps,
+  ref: ForwardedRef<HTMLButtonElement>,
+) {
+  return (
+    <Button
+      {...props}
+      ref={ref}
+      className={cx("themed-button", props.className)}
+    />
+  )
+})

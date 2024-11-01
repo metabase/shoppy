@@ -30,7 +30,6 @@ body[data-theme="stitch"] {
     position: relative;
     overflow: hidden;
     border-radius: var(--mantine-radius-sm);
-    padding: 0.5rem 1rem;
     border: none;
     cursor: pointer;
     background: linear-gradient(
