@@ -2,6 +2,7 @@ import { Box } from "@mantine/core"
 import { InteractiveQuestion } from "@metabase/embedding-sdk-react"
 
 import { RemountOnSiteChange } from "../../components/RemountOnSiteChange"
+import { InteractiveQuestionView } from "../../components/InteractiveQuestionView"
 
 interface Props {
   id: string
@@ -13,7 +14,9 @@ export function QuestionPage(props: Props) {
   return (
     <Box mih="100vh" className="smartscalar">
       <RemountOnSiteChange>
-        <InteractiveQuestion questionId={questionId} />
+        <InteractiveQuestion questionId={questionId}>
+          <InteractiveQuestionView />
+        </InteractiveQuestion>
       </RemountOnSiteChange>
     </Box>
   )

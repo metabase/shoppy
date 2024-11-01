@@ -6,6 +6,7 @@ import {
 import { useAtom } from "jotai"
 import { selectedQuestionTemplateIdAtom } from "../../../store/create"
 import { QUESTION_TEMPLATE_COLLECTION_ID } from "../../../constants/collections"
+import { InteractiveQuestionView } from "../../../components/InteractiveQuestionView"
 
 export const NewFromTemplatePage = () => {
   const [templateQuestionId, setQuestionId] = useAtom(
@@ -31,7 +32,9 @@ export const NewFromTemplatePage = () => {
   if (templateQuestionId !== null) {
     return (
       <Container w="100%">
-        <InteractiveQuestion questionId={templateQuestionId} isSaveEnabled />
+        <InteractiveQuestion questionId={templateQuestionId} isSaveEnabled>
+          <InteractiveQuestionView />
+        </InteractiveQuestion>
       </Container>
     )
   }
