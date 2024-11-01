@@ -1,9 +1,10 @@
-import { Box, Flex, Group } from "@mantine/core"
+import { Box, Flex, Group, Modal } from "@mantine/core"
 import { InteractiveQuestion } from "@metabase/embedding-sdk-react"
 
 import { ThemedButton } from "./ThemedButton"
 import { CustomIcon } from "./CustomIcon"
 import { useState } from "react"
+import { useDisclosure } from "@mantine/hooks"
 
 // TODO: add the "breakout" view once we've separated the breakout from summarization in the SDK
 type QuestionView = "viz" | "filter" | "summary" | "editor"
@@ -16,6 +17,9 @@ export const InteractiveQuestionView = (props: Props) => {
   const { isSaveEnabled = false } = props
 
   const [view, setView] = useState<QuestionView>("viz")
+
+  const [isSaveModalOpen, { open: openSaveModal, close: closeSaveModal }] =
+    useDisclosure()
 
   const changeView = (nextView: QuestionView) => {
     if (view !== "viz" && view === nextView) {
@@ -53,10 +57,7 @@ export const InteractiveQuestionView = (props: Props) => {
           </ThemedButton>
 
           {isSaveEnabled && (
-            <ThemedButton
-              size="compact-sm"
-              onClick={() => changeView("summary")}
-            >
+            <ThemedButton size="compact-sm" onClick={openSaveModal}>
               Save
             </ThemedButton>
           )}
@@ -79,6 +80,19 @@ export const InteractiveQuestionView = (props: Props) => {
       {view === "summary" && <InteractiveQuestion.Summarize />}
 
       {view === "editor" && <InteractiveQuestion.Editor />}
+
+      {isSaveModalOpen && (
+        <Modal
+          opened={isSaveModalOpen}
+          onClose={closeSaveModal}
+          classNames={{ content: "bg-background" }}
+          withCloseButton={false}
+        >
+          <Box bg="background">
+            <InteractiveQuestion.SaveQuestionForm onClose={closeSaveModal} />
+          </Box>
+        </Modal>
+      )}
     </Box>
   )
 }
