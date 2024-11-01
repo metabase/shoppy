@@ -39,7 +39,7 @@ body[data-theme="pug"] {
   }
 
   .sidebar-inactive-child {
-    color: #e2e4fd;
+    color: var(--color-bright-grey);
   }
 
   .overview-title {
@@ -65,6 +65,15 @@ body[data-theme="pug"] {
     background: transparent;
     color: var(--color-primary);
     border: 2px solid var(--color-primary);
+  }
+
+  .themed-button.sidebar-action-button {
+    color: var(--color-bright-grey);
+    align-self: flex-start;
+    padding: 0px 8px;
+    border: 1px solid var(--color-bright-grey);
+    font-weight: 400;
+    font-size: 13px;
   }
 
   .product-detail-card-container {

@@ -96,10 +96,14 @@ export function Shell(props: Props) {
 
               <Stack className="hide-on-mobile" pt={18}>
                 <NewQuestionMenu position="bottom-start" prefix="/admin">
-                  <ThemedButton>New custom exploration</ThemedButton>
+                  <ThemedButton className="sidebar-action-button" size="sm">
+                    New custom exploration
+                  </ThemedButton>
                 </NewQuestionMenu>
 
-                <ThemedButton w="fit-content">New dashboard</ThemedButton>
+                <ThemedButton className="sidebar-action-button">
+                  New dashboard
+                </ThemedButton>
               </Stack>
             </Box>
 

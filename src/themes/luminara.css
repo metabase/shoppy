@@ -88,5 +88,9 @@ body[data-theme="luminara"] {
     font-style: italic;
     font-weight: 600;
   }
+
+  .themed-button.sidebar-action-button {
+    background: var(--color-light-grey);
+  }
 }
 
