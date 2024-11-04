@@ -21,7 +21,7 @@ export const CustomIcon = ({
 }: CustomIconProps) => (
   <svg
     viewBox="0 0 16 16"
-    fill={fill ?? "var(--color-primary)"}
+    fill={fill ?? "var(--icon-primary)"}
     width={size}
     height={size}
     {...props}
