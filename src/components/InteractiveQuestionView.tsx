@@ -3,7 +3,7 @@ import { InteractiveQuestion } from "@metabase/embedding-sdk-react"
 
 import { ThemedButton } from "./ThemedButton"
 import { CustomIcon } from "./CustomIcon"
-import { useState } from "react"
+import { useReducer } from "react"
 import { useDisclosure } from "@mantine/hooks"
 
 // TODO: add the "breakout" view once we've separated the breakout from summarization in the SDK
@@ -16,19 +16,14 @@ interface Props {
 export const InteractiveQuestionView = (props: Props) => {
   const { isSaveEnabled = false } = props
 
-  const [view, setView] = useState<QuestionView>("viz")
+  const [view, changeView] = useReducer(
+    (view: QuestionView, nextView: QuestionView) =>
+      view !== "viz" && view === nextView ? "viz" : nextView,
+    "viz",
+  )
 
   const [isSaveModalOpen, { open: openSaveModal, close: closeSaveModal }] =
     useDisclosure()
-
-  const changeView = (nextView: QuestionView) => {
-    if (view !== "viz" && view === nextView) {
-      setView("viz")
-      return
-    }
-
-    setView(nextView)
-  }
 
   return (
     <Box>
@@ -81,11 +76,17 @@ export const InteractiveQuestionView = (props: Props) => {
         </Box>
       )}
 
-      {view === "filter" && <InteractiveQuestion.Filter />}
+      {view === "filter" && (
+        <InteractiveQuestion.Filter onClose={() => changeView("viz")} />
+      )}
 
-      {view === "summary" && <InteractiveQuestion.Summarize />}
+      {view === "summary" && (
+        <InteractiveQuestion.Summarize onClose={() => changeView("viz")} />
+      )}
 
-      {view === "editor" && <InteractiveQuestion.Editor />}
+      {view === "editor" && (
+        <InteractiveQuestion.Editor onApply={() => changeView("viz")} />
+      )}
 
       {isSaveModalOpen && (
         <Modal
