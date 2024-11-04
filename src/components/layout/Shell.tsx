@@ -114,9 +114,11 @@ export function Shell(props: Props) {
                   </ThemedButton>
                 </NewQuestionMenu>
 
-                <ThemedButton className="sidebar-action-button">
-                  New dashboard
-                </ThemedButton>
+                <Link to="/admin/analytics/new/dashboard">
+                  <ThemedButton className="sidebar-action-button">
+                    New dashboard
+                  </ThemedButton>
+                </Link>
               </Stack>
             </Box>
 
