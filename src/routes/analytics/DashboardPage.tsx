@@ -17,7 +17,6 @@ export function DashboardPage(props: Props) {
     <Box mih="100vh" className="dashboard-container smartscalar">
       <InteractiveDashboard
         dashboardId={dashboardId}
-        withCardTitle
         withTitle
         withDownloads={false}
       />
