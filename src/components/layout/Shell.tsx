@@ -26,11 +26,7 @@ export function Shell(props: Props) {
   const [isSiteReloading] = useAtom(siteIsReloadingAtom)
 
   if (isSiteReloading) {
-    return (
-      <Box>
-        <FullPageLoader />
-      </Box>
-    )
+    return <FullPageLoader />
   }
 
   return (
