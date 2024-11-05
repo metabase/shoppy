@@ -13,12 +13,17 @@ interface Props {
   isSaveEnabled?: boolean
 }
 
-export const InteractiveQuestionView = (props: Props) => {
-  const { isSaveEnabled = false } = props
-
+export const InteractiveQuestionView = ({ isSaveEnabled = false }: Props) => {
   const [view, changeView] = useReducer(
-    (view: QuestionView, nextView: QuestionView) =>
-      view !== "viz" && view === nextView ? "viz" : nextView,
+    (view: QuestionView, nextView: QuestionView) => {
+      // if we are clicking on the same view button,
+      // switch back to the visualization view.
+      if (view === nextView && view !== "viz") {
+        return "viz"
+      }
+
+      return nextView
+    },
     "viz",
   )
 
