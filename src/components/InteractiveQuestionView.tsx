@@ -40,8 +40,6 @@ export const InteractiveQuestionView = ({ isSaveEnabled = false }: Props) => {
         rowGap="sm"
       >
         <Group gap="xs">
-          <InteractiveQuestion.BackButton />
-
           <InteractiveQuestion.Title />
         </Group>
 
