@@ -4,8 +4,6 @@ import { useQuery } from "@tanstack/react-query"
 
 import { getCategoryList } from "./query-category"
 
-import { SidebarNewQuestion } from "../components/SidebarNewQuestion"
-
 import { SidebarLink } from "../types/sidebar-link"
 import { createDashboardIdAtom } from "../store/create"
 import { siteAtom } from "../store/site"
@@ -32,7 +30,7 @@ export function useSidebarLinks(): SidebarLink[] {
       {
         title: "Products",
         children: [
-          { to: "/admin/products", title: "Overview" },
+          { to: "/admin/products", title: "All products" },
           ...categoryLinks,
         ],
         defaultOpened: true,
@@ -40,21 +38,9 @@ export function useSidebarLinks(): SidebarLink[] {
       {
         title: "Analytics",
         children: [
-          { to: "/admin/analytics", title: "Overview" },
-          { to: "/admin/analytics/17", title: "Inventory" },
-          { to: "/admin/analytics/custom", title: "Custom" },
-          { key: "analytics-divider", isDivider: true, hideOnMobile: true },
-          {
-            key: "new-question",
-            component: SidebarNewQuestion,
-            hideOnMobile: true,
-          },
-          {
-            to: "/admin/analytics/new/dashboard",
-            title: "New Dashboard",
-            onClick: () => setDashboardId(null),
-            hideOnMobile: true,
-          },
+          { to: "/admin/analytics", title: "Dashboards" },
+          { to: "/admin/analytics/17", title: "Inventory performance" },
+          { to: "/admin/analytics/custom", title: "Saved explorations" },
         ],
         defaultOpened: true,
       },

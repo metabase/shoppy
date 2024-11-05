@@ -1,6 +1,7 @@
 import { atomWithStorage, createJSONStorage } from "jotai/utils"
 
 import type { SiteKey } from "../types/site"
+import { atom } from "jotai"
 
 export const SITE_KEY = "site"
 export const DEFAULT_SITE: SiteKey = "stitch"
@@ -13,3 +14,5 @@ export const siteAtom = atomWithStorage<SiteKey>(
     getOnInit: true,
   },
 )
+
+export const siteIsReloadingAtom = atom(false)

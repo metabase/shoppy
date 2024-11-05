@@ -39,7 +39,7 @@ body[data-theme="pug"] {
   }
 
   .sidebar-inactive-child {
-    color: #E2E4FD;
+    color: var(--color-bright-grey);
   }
 
   .overview-title {
@@ -57,7 +57,7 @@ body[data-theme="pug"] {
     width: 250px;
   }
 
-  .action-button {
+  .themed-button {
     font-family: var(--font-family-sans);
     font-weight: 500;
     align-self: center;
@@ -65,6 +65,15 @@ body[data-theme="pug"] {
     background: transparent;
     color: var(--color-primary);
     border: 2px solid var(--color-primary);
+  }
+
+  .themed-button.sidebar-action-button {
+    color: var(--color-bright-grey);
+    align-self: flex-start;
+    padding: 0px 8px;
+    border: 1px solid var(--color-bright-grey);
+    font-weight: 400;
+    font-size: 13px;
   }
 
   .product-detail-card-container {
@@ -93,7 +102,7 @@ body[data-theme="pug"] {
   .product-insights-see-more {
     color: var(--color-primary);
   }
-  
+
   .dashboard-container h2 {
     color: var(--color-primary);
     font-weight: 600;

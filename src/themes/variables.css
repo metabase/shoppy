@@ -5,6 +5,7 @@ body[data-theme="stitch"] {
   --color-light-grey: #C4C9C7;
   --color-dark-grey: #3B3F3F;
   --color-background: #151C20;
+  --icon-primary: var(--color-primary);
 }
 
 body[data-theme="luminara"] {
@@ -14,6 +15,7 @@ body[data-theme="luminara"] {
   --color-light-grey: #4F5951;
   --color-dark-grey: #323E35;
   --color-background: #F6F5F1;
+  --icon-primary: var(--color-background);
 }
 
 body[data-theme="pug"] {
@@ -23,4 +25,6 @@ body[data-theme="pug"] {
   --color-light-grey: #545455;
   --color-dark-grey: #1B1C21;
   --color-background: #FFFCEE;
+  --color-bright-grey: #E2E4FD;
+  --icon-primary: var(--color-primary);
 }
