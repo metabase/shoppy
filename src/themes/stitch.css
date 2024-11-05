@@ -10,7 +10,13 @@ body[data-theme="stitch"] {
   }
 
   .dark-gradient {
-    background: linear-gradient(93.53deg, #E590ED 9.53%, #828ED9 39.15%, #79C1FD 65.02%, #B1DBF8 84.51%);
+    background: linear-gradient(
+      93.53deg,
+      #e590ed 9.53%,
+      #828ed9 39.15%,
+      #79c1fd 65.02%,
+      #b1dbf8 84.51%
+    );
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -20,18 +26,23 @@ body[data-theme="stitch"] {
     color: var(--color-light-grey);
   }
 
-  .action-button {
+  .themed-button {
     position: relative;
     overflow: hidden;
     border-radius: var(--mantine-radius-sm);
-    padding: 0.5rem 1rem;
     border: none;
     cursor: pointer;
-    background: linear-gradient(93.53deg, #E590ED 9.53%, #828ED9 39.15%, #79C1FD 65.02%, #B1DBF8 84.51%);
+    background: linear-gradient(
+      93.53deg,
+      #e590ed 9.53%,
+      #828ed9 39.15%,
+      #79c1fd 65.02%,
+      #b1dbf8 84.51%
+    );
     font-weight: 400;
   }
 
-  .action-button::after {
+  .themed-button::after {
     content: "";
     position: absolute;
     top: 1px;
@@ -43,7 +54,7 @@ body[data-theme="stitch"] {
     z-index: 1;
   }
 
-  .action-button span {
+  .themed-button span {
     position: relative;
     z-index: 2;
     color: var(--mantine-color-white);
@@ -52,7 +63,7 @@ body[data-theme="stitch"] {
   .card {
     @apply text-white border border-dark-grey rounded-lg;
 
-    background: linear-gradient(112deg, #202426 0%, #292D2F 100%);
+    background: linear-gradient(112deg, #202426 0%, #292d2f 100%);
   }
 
   .navbar {
@@ -72,7 +83,7 @@ body[data-theme="stitch"] {
   }
 
   .product-detail-title {
-    font-weight: 400
+    font-weight: 400;
   }
 
   .product-detail-card-container {
@@ -82,7 +93,7 @@ body[data-theme="stitch"] {
   .product-insights-see-more {
     color: var(--color-primary);
   }
-  
+
   .product-detail-card-title {
     font-size: 18px;
     font-weight: 600;

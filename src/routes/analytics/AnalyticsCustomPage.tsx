@@ -1,6 +1,6 @@
 import { useAtom } from "jotai"
 import { Link, useLocation } from "wouter"
-import { Button, Container, Flex } from "@mantine/core"
+import { Container, Flex } from "@mantine/core"
 import { CollectionBrowser } from "@metabase/embedding-sdk-react"
 
 import { NewQuestionMenu } from "../../components/NewQuestionMenu"
@@ -10,9 +10,10 @@ import { createDashboardIdAtom } from "../../store/create"
 
 import { SANDBOXED_CUSTOM_ANALYTICS_COLLECTIONS } from "../../constants/collections"
 
-import { useSiteChanged } from "../../utils/use-site-changed"
+import { useReloadOnSiteChange } from "../../utils/use-site-changed"
 
 import "./analytics-custom-page.css"
+import { ThemedButton } from "../../components/ThemedButton"
 
 export function AnalyticsCustomPage() {
   const [, navigate] = useLocation()
@@ -21,20 +22,20 @@ export function AnalyticsCustomPage() {
   const [site] = useAtom(siteAtom)
   const collectionId = SANDBOXED_CUSTOM_ANALYTICS_COLLECTIONS[site]
 
-  useSiteChanged(() => window.location.reload())
+  useReloadOnSiteChange()
 
   return (
     <Container w="100%" p={20}>
       <Flex justify="flex-end" gap="xs" pb="xs" className="hide-on-mobile">
         <NewQuestionMenu position="bottom-end">
-          <Button>New Question</Button>
+          <ThemedButton>New Question</ThemedButton>
         </NewQuestionMenu>
 
         <Link
           href="/analytics/new/dashboard"
           onClick={() => setDashboardId(null)}
         >
-          <Button>New Dashboard</Button>
+          <ThemedButton>New Dashboard</ThemedButton>
         </Link>
       </Flex>
 

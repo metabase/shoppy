@@ -56,3 +56,8 @@ body:not([data-theme="luminara"]) {
     width: auto;
   }
 }
+
+.sidebar-action-button {
+  width: fit-content;
+  height: 30px;
+}

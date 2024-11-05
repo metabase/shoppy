@@ -1,12 +1,19 @@
-import { AppShell, Box, Flex, Image, Burger } from "@mantine/core"
+import { AppShell, Box, Flex, Image, Burger, Stack } from "@mantine/core"
 import { useDisclosure } from "@mantine/hooks"
 import { ReactNode } from "react"
 import { Link } from "wouter"
+import { Icon } from "@iconify/react"
 
 import { SidebarLinks } from "./SidebarLinks"
+
 import { SiteSwitcher } from "../SiteSwitcher"
 import { SiteLogo } from "../SiteLogo"
-import { Icon } from "@iconify/react"
+
+import { ThemedButton } from "../ThemedButton"
+import { NewQuestionMenu } from "../NewQuestionMenu"
+import { siteIsReloadingAtom } from "../../store/site"
+import { useAtom } from "jotai"
+import { FullPageLoader } from "../Loader"
 
 interface Props {
   children: ReactNode
@@ -15,6 +22,12 @@ interface Props {
 export function Shell(props: Props) {
   const [isMobileNavOpen, { toggle: toggleMobileNav, close: closeMobileNav }] =
     useDisclosure()
+
+  const [isSiteReloading] = useAtom(siteIsReloadingAtom)
+
+  if (isSiteReloading) {
+    return <FullPageLoader />
+  }
 
   return (
     <Box>
@@ -89,6 +102,20 @@ export function Shell(props: Props) {
                   }
                 }}
               />
+
+              <Stack className="hide-on-mobile" pt={18}>
+                <NewQuestionMenu position="bottom-start" prefix="/admin">
+                  <ThemedButton className="sidebar-action-button" size="sm">
+                    New custom exploration
+                  </ThemedButton>
+                </NewQuestionMenu>
+
+                <Link to="/admin/analytics/new/dashboard">
+                  <ThemedButton className="sidebar-action-button">
+                    New dashboard
+                  </ThemedButton>
+                </Link>
+              </Stack>
             </Box>
 
             <Flex className="sidebar-icons gap-x-3 py-4">

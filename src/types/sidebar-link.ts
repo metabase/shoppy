@@ -6,6 +6,5 @@ export interface SidebarLink {
   defaultOpened?: boolean
   component?: React.FC
   onClick?: () => void
-  isDivider?: boolean
   hideOnMobile?: boolean
 }
