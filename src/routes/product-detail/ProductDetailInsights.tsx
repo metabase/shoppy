@@ -25,7 +25,7 @@ export const ProductDetailInsights = (props: Props) => {
           Orders over time
         </Title>
 
-        <Box onClick={modal.open} h={250} className="question-viz-container">
+        <Box onClick={modal.open} h={250}>
           <RemountOnSiteChange>
             <StaticQuestion
               questionId={165}

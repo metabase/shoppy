@@ -39,7 +39,7 @@ export const InteractiveQuestionView = ({ isSaveEnabled = false }: Props) => {
         direction={{ base: "column", sm: "row" }}
         rowGap="sm"
       >
-        <Group gap="xs" className="question-title-container">
+        <Group gap="xs">
           <InteractiveQuestion.Title />
         </Group>
 
@@ -74,11 +74,9 @@ export const InteractiveQuestionView = ({ isSaveEnabled = false }: Props) => {
 
       {view === "viz" && (
         <Box>
-          <Box className="question-filter-bar-container">
-            <InteractiveQuestion.FilterBar />
-          </Box>
+          <InteractiveQuestion.FilterBar />
 
-          <Box h="500px" className="question-viz-container">
+          <Box h="500px">
             <InteractiveQuestion.QuestionVisualization />
           </Box>
         </Box>
