@@ -1108,10 +1108,10 @@
   resolved "https://registry.yarnpkg.com/@mantine/utils/-/utils-6.0.21.tgz#6185506e91cba3e308aaa8ea9ababc8e767995d6"
   integrity sha512-33RVDRop5jiWFao3HKd3Yp7A9mEq4HAJxJPTuYm1NkdqX6aTKOQK7wT8v8itVodBp+sb4cJK6ZVdD1UurK/txQ==
 
-"@metabase/embedding-sdk-react@^1.51.2":
-  version "1.51.2"
-  resolved "https://registry.yarnpkg.com/@metabase/embedding-sdk-react/-/embedding-sdk-react-1.51.2.tgz#6f24d7a5064f64ec8610635d667ba2850cf9c117"
-  integrity sha512-Hj1f1VpGSjVdFK0yIelxu2MTnbZeBACEDO4gvsPCegkPsLPSlx55RpAJGep8QOqsmw7UZVr8t4aKJn8XFiCbmg==
+"@metabase/embedding-sdk-react@^1.51.3":
+  version "1.51.3"
+  resolved "https://registry.yarnpkg.com/@metabase/embedding-sdk-react/-/embedding-sdk-react-1.51.3.tgz#7afbac284749f758642fec304f78497208c60d7a"
+  integrity sha512-OmcuyS9qi+b7ao1Sy2qkWaiSN1VqQo+uIEpwhxrPt6lEDhtg4m+1DXIjS/cz1amNUhtjwzTRcRGAW1Np4a10Ew==
   dependencies:
     "@dnd-kit/core" "^6.0.8"
     "@dnd-kit/modifiers" "^6.0.1"
@@ -1164,7 +1164,7 @@
     html2canvas-pro "^1.5.0"
     humanize-plus "^1.8.1"
     icepick "2.4.0"
-    iframe-resizer "^4.3.2"
+    iframe-resizer "~4.3.2"
     immer "^9.0.17"
     inflection "^1.7.1"
     inquirer-toggle "^1.0.1"
@@ -4794,7 +4794,7 @@ ieee754@^1.2.1:
   resolved "https://registry.yarnpkg.com/ieee754/-/ieee754-1.2.1.tgz#8eb7a10a63fff25d15a57b001586d177d1b0d352"
   integrity sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==
 
-iframe-resizer@^4.3.2:
+iframe-resizer@~4.3.2:
   version "4.3.11"
   resolved "https://registry.yarnpkg.com/iframe-resizer/-/iframe-resizer-4.3.11.tgz#6d13c23b19c528f3a43e301b4a0ea847cd034d90"
   integrity sha512-5QtnsmfH11GDsuC7Gxd/eNzojudX3346Gb0E+Ku8ln8AtfSq+cWCZtnhCrthrtE7f1CI2/kwHkZ9G4sFYzHP7A==
