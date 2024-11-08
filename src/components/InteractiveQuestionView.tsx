@@ -39,7 +39,7 @@ export const InteractiveQuestionView = ({ isSaveEnabled = false }: Props) => {
         direction={{ base: "column", sm: "row" }}
         rowGap="sm"
       >
-        <Group gap="xs">
+        <Group gap="xs" className="question-title-container">
           <InteractiveQuestion.Title />
         </Group>
 
@@ -73,7 +73,7 @@ export const InteractiveQuestionView = ({ isSaveEnabled = false }: Props) => {
       </Flex>
 
       {view === "viz" && (
-        <Box h="500px">
+        <Box h="500px" className="question-container">
           <InteractiveQuestion.FilterBar />
           <InteractiveQuestion.QuestionVisualization />
         </Box>

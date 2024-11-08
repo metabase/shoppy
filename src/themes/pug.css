@@ -116,4 +116,15 @@ body[data-theme="pug"] {
   .sidebar-link-root {
     font-weight: 500;
   }
+
+  .question-title-container h2 {
+    font-weight: 500;
+  }
+
+  .question-container {
+    text,
+    [data-testid="filter-pill"] {
+      font-weight: 500 !important;
+    }
+  }
 }
