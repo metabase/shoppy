@@ -29,7 +29,7 @@ const mantine: MantineThemeOverride = {
 }
 
 const metabase: MetabaseTheme = {
-  fontFamily: "Custom",
+  fontFamily: "Inter",
   fontSize: "14px",
   colors: {
     brand: colors.primary,

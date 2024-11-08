@@ -31,7 +31,7 @@ const mantine: MantineThemeOverride = {
 }
 
 const metabase: MetabaseTheme = {
-  fontFamily: "Custom",
+  fontFamily: "DM Mono",
   fontSize: "14px",
   colors: {
     brand: colors.primary,
