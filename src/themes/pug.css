@@ -123,7 +123,7 @@ body[data-theme="pug"] {
 
   /** WORKAROUND: change the font weight of viz label / filter pill */
   .question-viz-container svg text,
-  .question-filter-bar-container [data-testid="filter-pill"] {
+  .question-filter-bar-container [aria-haspopup="dialog"] {
     font-weight: 500 !important;
   }
 }
