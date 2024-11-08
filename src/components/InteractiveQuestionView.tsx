@@ -73,9 +73,14 @@ export const InteractiveQuestionView = ({ isSaveEnabled = false }: Props) => {
       </Flex>
 
       {view === "viz" && (
-        <Box h="500px" className="question-container">
-          <InteractiveQuestion.FilterBar />
-          <InteractiveQuestion.QuestionVisualization />
+        <Box>
+          <Box className="question-filter-bar-container">
+            <InteractiveQuestion.FilterBar />
+          </Box>
+
+          <Box h="500px" className="question-viz-container">
+            <InteractiveQuestion.QuestionVisualization />
+          </Box>
         </Box>
       )}
 
