@@ -4,19 +4,19 @@ import {
   InteractiveQuestion,
 } from "@metabase/embedding-sdk-react"
 import { useAtom } from "jotai"
-import { selectedQuestionTemplateIdAtom } from "../../../store/create"
+import { templateOrSavedQuestionIdAtom } from "../../../store/create"
 import { QUESTION_TEMPLATE_COLLECTION_ID } from "../../../constants/collections"
 import { InteractiveQuestionView } from "../../../components/InteractiveQuestionView"
-import { useCreateQuestion } from "../../../utils/use-create-question"
+import { useCreateQuestionHelpers } from "../../../utils/use-create-question-helpers"
 
 export const NewFromTemplatePage = () => {
-  const { collectionId, closeSaveModal } = useCreateQuestion()
+  const { collectionId, closeSaveModal } = useCreateQuestionHelpers()
 
-  const [templateOrQuestionId, setQuestionId] = useAtom(
-    selectedQuestionTemplateIdAtom,
+  const [templateOrSavedQuestionId, setQuestionId] = useAtom(
+    templateOrSavedQuestionIdAtom,
   )
 
-  if (templateOrQuestionId === undefined) {
+  if (templateOrSavedQuestionId === undefined) {
     return (
       <Container>
         <Title fz="28px" mb="md">
@@ -32,15 +32,15 @@ export const NewFromTemplatePage = () => {
     )
   }
 
-  if (templateOrQuestionId !== undefined) {
+  if (templateOrSavedQuestionId !== undefined) {
     return (
       <Container w="100%">
         <InteractiveQuestion
-          questionId={templateOrQuestionId}
+          questionId={templateOrSavedQuestionId}
           onSave={(question) => {
             closeSaveModal()
 
-            // After saving the question, go to the created question id.
+            // After saving the question, go to the newly created question.
             setQuestionId(question.id())
           }}
           saveToCollectionId={collectionId}

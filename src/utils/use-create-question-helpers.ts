@@ -3,7 +3,7 @@ import { siteAtom } from "../store/site"
 import { SANDBOXED_USER_GENERATED_COLLECTIONS } from "../constants/collections"
 import { isSaveModalOpenAtom } from "../store/save"
 
-export function useCreateQuestion() {
+export function useCreateQuestionHelpers() {
   const [site] = useAtom(siteAtom)
   const [, setSaveModalOpen] = useAtom(isSaveModalOpenAtom)
 

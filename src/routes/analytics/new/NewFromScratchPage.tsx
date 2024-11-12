@@ -3,12 +3,12 @@ import { Container } from "@mantine/core"
 import { InteractiveQuestion } from "@metabase/embedding-sdk-react"
 
 import { createQuestionIdAtom } from "../../../store/create"
-import { useCreateQuestion } from "../../../utils/use-create-question"
+import { useCreateQuestionHelpers } from "../../../utils/use-create-question-helpers"
 
 import { CreateQuestionView } from "../../../components/CreateQuestionView"
 
 export const NewFromScratchPage = () => {
-  const { collectionId, closeSaveModal } = useCreateQuestion()
+  const { collectionId, closeSaveModal } = useCreateQuestionHelpers()
 
   const [questionId, setQuestionId] = useAtom(createQuestionIdAtom)
 
