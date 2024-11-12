@@ -3,18 +3,22 @@ import {
   CollectionBrowser,
   InteractiveQuestion,
 } from "@metabase/embedding-sdk-react"
-import { useAtom } from "jotai"
-import { templateOrSavedQuestionIdAtom } from "../../../store/create"
+
 import { QUESTION_TEMPLATE_COLLECTION_ID } from "../../../constants/collections"
 import { InteractiveQuestionView } from "../../../components/InteractiveQuestionView"
 import { useCreateQuestionHelpers } from "../../../utils/use-create-question-helpers"
 
 export const NewFromTemplatePage = () => {
-  const { collectionId, closeSaveModal } = useCreateQuestionHelpers()
+  const {
+    collectionId,
+    setQuestionId,
+    onSaveQuestion,
 
-  const [templateOrSavedQuestionId, setQuestionId] = useAtom(
-    templateOrSavedQuestionIdAtom,
-  )
+    // Initially, this is the question id of the selected template question.
+    // After the user made some changes and saved the question as a new question,
+    // this then becomes the id of the newly created question.
+    createdQuestionId: templateOrSavedQuestionId,
+  } = useCreateQuestionHelpers()
 
   if (templateOrSavedQuestionId === undefined) {
     return (
@@ -36,14 +40,9 @@ export const NewFromTemplatePage = () => {
     return (
       <Container w="100%">
         <InteractiveQuestion
-          questionId={templateOrSavedQuestionId}
-          onSave={(question) => {
-            closeSaveModal()
-
-            // After saving the question, go to the newly created question.
-            setQuestionId(question.id())
-          }}
+          onSave={onSaveQuestion}
           saveToCollectionId={collectionId}
+          questionId={templateOrSavedQuestionId}
           isSaveEnabled
         >
           <InteractiveQuestionView isSaveEnabled />

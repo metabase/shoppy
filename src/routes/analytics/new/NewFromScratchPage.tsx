@@ -1,25 +1,19 @@
-import { useAtom } from "jotai"
 import { Container } from "@mantine/core"
 import { InteractiveQuestion } from "@metabase/embedding-sdk-react"
 
-import { createQuestionIdAtom } from "../../../store/create"
 import { useCreateQuestionHelpers } from "../../../utils/use-create-question-helpers"
 
 import { CreateQuestionView } from "../../../components/CreateQuestionView"
 
 export const NewFromScratchPage = () => {
-  const { collectionId, closeSaveModal } = useCreateQuestionHelpers()
-
-  const [questionId, setQuestionId] = useAtom(createQuestionIdAtom)
+  const { createdQuestionId, collectionId, onSaveQuestion } =
+    useCreateQuestionHelpers()
 
   return (
     <Container w="100%">
       <InteractiveQuestion
-        questionId={questionId}
-        onSave={(question) => {
-          closeSaveModal()
-          setQuestionId(question.id())
-        }}
+        onSave={onSaveQuestion}
+        questionId={createdQuestionId}
         saveToCollectionId={collectionId}
         isSaveEnabled
       >
