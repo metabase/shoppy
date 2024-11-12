@@ -1,21 +1,21 @@
 import { useAtom } from "jotai"
-import { useDisclosure } from "@mantine/hooks"
+import { useState } from "react"
 import { Box, Flex, Group, Modal } from "@mantine/core"
 import { InteractiveQuestion } from "@metabase/embedding-sdk-react"
 
 import { ThemedButton } from "./ThemedButton"
+
 import { isSaveModalOpenAtom } from "../store/save"
-import { useState } from "react"
 
 export const CreateQuestionView = () => {
-  const [isVisualization, { toggle }] = useDisclosure(false)
+  const [isVisualization, setIsVisualization] = useState(false)
   const [isSaveModalOpen, setSaveModalOpen] = useAtom(isSaveModalOpenAtom)
 
   const [isVisualizationButtonShown, setVisualizationButtonShown] =
     useState(false)
 
   const onApplyEditorChanges = () => {
-    toggle()
+    setIsVisualization(true)
 
     // Do not show the "show visualization/editor" button until the user has visualized the question.
     // This prevents users from seeing the "Question not found" indicator.
@@ -39,7 +39,10 @@ export const CreateQuestionView = () => {
 
         <Group gap="xs">
           {isVisualizationButtonShown && (
-            <ThemedButton size="compact-sm" onClick={toggle}>
+            <ThemedButton
+              size="compact-sm"
+              onClick={() => setIsVisualization(!isVisualization)}
+            >
               Show {isVisualization ? "editor" : "visualization"}
             </ThemedButton>
           )}
