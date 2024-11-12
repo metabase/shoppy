@@ -7,13 +7,16 @@ import { useAtom } from "jotai"
 import { selectedQuestionTemplateIdAtom } from "../../../store/create"
 import { QUESTION_TEMPLATE_COLLECTION_ID } from "../../../constants/collections"
 import { InteractiveQuestionView } from "../../../components/InteractiveQuestionView"
+import { useCreateQuestion } from "../../../utils/use-create-question"
 
 export const NewFromTemplatePage = () => {
-  const [templateQuestionId, setQuestionId] = useAtom(
+  const { collectionId, closeSaveModal } = useCreateQuestion()
+
+  const [templateOrQuestionId, setQuestionId] = useAtom(
     selectedQuestionTemplateIdAtom,
   )
 
-  if (templateQuestionId === null) {
+  if (templateOrQuestionId === undefined) {
     return (
       <Container>
         <Title fz="28px" mb="md">
@@ -29,10 +32,20 @@ export const NewFromTemplatePage = () => {
     )
   }
 
-  if (templateQuestionId !== null) {
+  if (templateOrQuestionId !== undefined) {
     return (
       <Container w="100%">
-        <InteractiveQuestion questionId={templateQuestionId} isSaveEnabled>
+        <InteractiveQuestion
+          questionId={templateOrQuestionId}
+          onSave={(question) => {
+            closeSaveModal()
+
+            // After saving the question, go to the created question id.
+            setQuestionId(question.id())
+          }}
+          saveToCollectionId={collectionId}
+          isSaveEnabled
+        >
           <InteractiveQuestionView isSaveEnabled />
         </InteractiveQuestion>
       </Container>

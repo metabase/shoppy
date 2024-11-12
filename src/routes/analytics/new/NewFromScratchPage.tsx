@@ -1,21 +1,29 @@
-import { Container, Title } from "@mantine/core"
-import { CreateQuestion } from "@metabase/embedding-sdk-react"
+import { Container } from "@mantine/core"
+import { InteractiveQuestion } from "@metabase/embedding-sdk-react"
 import { useAtom } from "jotai"
-import { createQuestionKeyAtom } from "../../../store/create"
-import { InteractiveQuestionView } from "../../../components/InteractiveQuestionView"
+import { createQuestionIdAtom } from "../../../store/create"
+import { CreateQuestionView } from "../../../components/CreateQuestionView"
+
+import { useCreateQuestion } from "../../../utils/use-create-question"
 
 export const NewFromScratchPage = () => {
-  const [questionKey] = useAtom(createQuestionKeyAtom)
+  const { collectionId, closeSaveModal } = useCreateQuestion()
+
+  const [questionId, setQuestionId] = useAtom(createQuestionIdAtom)
 
   return (
     <Container w="100%">
-      <Title fz="28px" mb="md">
-        Create a question
-      </Title>
-
-      <CreateQuestion key={questionKey}>
-        <InteractiveQuestionView />
-      </CreateQuestion>
+      <InteractiveQuestion
+        questionId={questionId}
+        onSave={(question) => {
+          closeSaveModal()
+          setQuestionId(question.id())
+        }}
+        saveToCollectionId={collectionId}
+        isSaveEnabled
+      >
+        <CreateQuestionView />
+      </InteractiveQuestion>
     </Container>
   )
 }
