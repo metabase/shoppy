@@ -5,10 +5,24 @@ import { InteractiveQuestion } from "@metabase/embedding-sdk-react"
 
 import { ThemedButton } from "./ThemedButton"
 import { isSaveModalOpenAtom } from "../store/save"
+import { useState } from "react"
 
 export const CreateQuestionView = () => {
   const [isVisualization, { toggle }] = useDisclosure(false)
   const [isSaveModalOpen, setSaveModalOpen] = useAtom(isSaveModalOpenAtom)
+
+  const [isVisualizationButtonShown, setVisualizationButtonShown] =
+    useState(false)
+
+  const onApplyEditorChanges = () => {
+    toggle()
+
+    // Do not show the "show visualization/editor" button until the user has visualized the question.
+    // This prevents users from seeing the "Question not found" indicator.
+    if (!isVisualization) {
+      setVisualizationButtonShown(true)
+    }
+  }
 
   return (
     <Box>
@@ -24,9 +38,11 @@ export const CreateQuestionView = () => {
         </Group>
 
         <Group gap="xs">
-          <ThemedButton size="compact-sm" onClick={toggle}>
-            Show {isVisualization ? "editor" : "visualization"}
-          </ThemedButton>
+          {isVisualizationButtonShown && (
+            <ThemedButton size="compact-sm" onClick={toggle}>
+              Show {isVisualization ? "editor" : "visualization"}
+            </ThemedButton>
+          )}
 
           <ThemedButton
             size="compact-sm"
@@ -46,7 +62,9 @@ export const CreateQuestionView = () => {
         </Box>
       )}
 
-      {!isVisualization && <InteractiveQuestion.Editor onApply={toggle} />}
+      {!isVisualization && (
+        <InteractiveQuestion.Editor onApply={onApplyEditorChanges} />
+      )}
 
       {isSaveModalOpen && (
         <Modal
