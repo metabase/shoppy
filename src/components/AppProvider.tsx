@@ -5,7 +5,7 @@ import { MetabaseProvider, type SDKConfig } from "@metabase/embedding-sdk-react"
 
 import {
   API_HOST,
-  JWT_PROVIDER_URI,
+  AUTH_PROVIDER_URI,
   METABASE_INSTANCE_URL,
 } from "../constants/env"
 
@@ -30,11 +30,11 @@ export const AppProvider = ({ children }: Props) => {
   const config: SDKConfig = useMemo(() => {
     return {
       metabaseInstanceUrl: METABASE_INSTANCE_URL,
-      jwtProviderUri: `${API_HOST}${JWT_PROVIDER_URI}`,
+      authProviderUri: `${API_HOST}${AUTH_PROVIDER_URI}`,
       loaderComponent: MetabaseLoader,
       errorComponent: MetabaseError,
 
-      // Append the current site as a query parameter to the JWT provider URL.
+      // Append the current site as a query parameter to the auth provider URL.
       fetchRequestToken: (url: string) =>
         fetch(`${url}?site=${site}`).then((res) => res.json()),
     }
