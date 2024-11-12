@@ -1,9 +1,9 @@
+import { useAtom } from "jotai"
+import { useDisclosure } from "@mantine/hooks"
 import { Box, Flex, Group, Modal } from "@mantine/core"
 import { InteractiveQuestion } from "@metabase/embedding-sdk-react"
 
 import { ThemedButton } from "./ThemedButton"
-import { useDisclosure } from "@mantine/hooks"
-import { useAtom } from "jotai"
 import { isSaveModalOpenAtom } from "../store/save"
 
 export const CreateQuestionView = () => {

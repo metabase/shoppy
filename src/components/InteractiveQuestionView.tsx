@@ -1,10 +1,11 @@
 import { useReducer } from "react"
+import { useAtom } from "jotai"
 import { Box, Flex, Group, Modal } from "@mantine/core"
 import { InteractiveQuestion } from "@metabase/embedding-sdk-react"
 
 import { CustomIcon } from "./CustomIcon"
 import { ThemedButton } from "./ThemedButton"
-import { useAtom } from "jotai"
+
 import { isSaveModalOpenAtom } from "../store/save"
 
 // TODO: add the "breakout" view once we've separated the breakout from summarization in the SDK

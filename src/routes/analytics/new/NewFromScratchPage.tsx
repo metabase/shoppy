@@ -1,10 +1,11 @@
+import { useAtom } from "jotai"
 import { Container } from "@mantine/core"
 import { InteractiveQuestion } from "@metabase/embedding-sdk-react"
-import { useAtom } from "jotai"
-import { createQuestionIdAtom } from "../../../store/create"
-import { CreateQuestionView } from "../../../components/CreateQuestionView"
 
+import { createQuestionIdAtom } from "../../../store/create"
 import { useCreateQuestion } from "../../../utils/use-create-question"
+
+import { CreateQuestionView } from "../../../components/CreateQuestionView"
 
 export const NewFromScratchPage = () => {
   const { collectionId, closeSaveModal } = useCreateQuestion()
