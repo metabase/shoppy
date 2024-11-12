@@ -60,7 +60,6 @@ export const CreateQuestionView = () => {
 
       {isVisualization && (
         <Box h="500px">
-          <InteractiveQuestion.FilterBar />
           <InteractiveQuestion.QuestionVisualization />
         </Box>
       )}
