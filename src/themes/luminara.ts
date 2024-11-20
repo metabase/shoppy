@@ -40,6 +40,7 @@ const metabase: MetabaseTheme = {
     border: colors.green1,
     background: colors.background,
     "background-hover": colors.background,
+    "background-disabled": colors.green2,
     charts: [
       colors.viz1,
       "#E09862",

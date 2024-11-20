@@ -40,6 +40,7 @@ const metabase: MetabaseTheme = {
     border: colors.darkGrey,
     background: colors.background,
     "background-hover": colors.background,
+    "background-disabled": colors.darkGrey,
     charts: [
       colors.primary,
       colors.filter,
