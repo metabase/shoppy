@@ -18,11 +18,6 @@ export function useCreateQuestionHelpers() {
     setQuestionId,
     createdQuestionId,
 
-    onSaveQuestion: (question: { id: () => number }) => {
-      setSaveModalOpen(false)
-
-      // After saving the question, go to the newly created question.
-      setQuestionId(question.id())
-    },
+    onSaveQuestion: () => setSaveModalOpen(false),
   }
 }
