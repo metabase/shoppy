@@ -32,6 +32,8 @@ const metabase: MetabaseTheme = {
   fontSize: "14px",
   colors: {
     brand: colors.primary,
+    "brand-hover": "#fff",
+    "brand-hover-light": "#fff",
     filter: colors.viz1,
     summarize: "#BE54C0",
     "text-primary": colors.green3,
@@ -39,6 +41,7 @@ const metabase: MetabaseTheme = {
     "text-tertiary": colors.green3,
     border: colors.green1,
     background: colors.background,
+    "background-secondary": colors.background,
     "background-hover": colors.background,
     "background-disabled": colors.green2,
     charts: [
