@@ -1,10 +1,12 @@
+import { useReducer } from "react"
+import { useAtom } from "jotai"
 import { Box, Flex, Group, Modal } from "@mantine/core"
 import { InteractiveQuestion } from "@metabase/embedding-sdk-react"
 
-import { ThemedButton } from "./ThemedButton"
 import { CustomIcon } from "./CustomIcon"
-import { useReducer } from "react"
-import { useDisclosure } from "@mantine/hooks"
+import { ThemedButton } from "./ThemedButton"
+
+import { isSaveModalOpenAtom } from "../store/save"
 
 // TODO: add the "breakout" view once we've separated the breakout from summarization in the SDK
 type QuestionView = "viz" | "filter" | "summary" | "editor"
@@ -14,6 +16,8 @@ interface Props {
 }
 
 export const InteractiveQuestionView = ({ isSaveEnabled = false }: Props) => {
+  const [isSaveModalOpen, setSaveModalOpen] = useAtom(isSaveModalOpenAtom)
+
   const [view, changeView] = useReducer(
     (view: QuestionView, nextView: QuestionView) => {
       // if we are clicking on the same view button,
@@ -26,9 +30,6 @@ export const InteractiveQuestionView = ({ isSaveEnabled = false }: Props) => {
     },
     "viz",
   )
-
-  const [isSaveModalOpen, { open: openSaveModal, close: closeSaveModal }] =
-    useDisclosure()
 
   return (
     <Box>
@@ -61,7 +62,10 @@ export const InteractiveQuestionView = ({ isSaveEnabled = false }: Props) => {
           </ThemedButton>
 
           {isSaveEnabled && (
-            <ThemedButton size="compact-sm" onClick={openSaveModal}>
+            <ThemedButton
+              size="compact-sm"
+              onClick={() => setSaveModalOpen(true)}
+            >
               Save
             </ThemedButton>
           )}
@@ -94,12 +98,14 @@ export const InteractiveQuestionView = ({ isSaveEnabled = false }: Props) => {
       {isSaveModalOpen && (
         <Modal
           opened={isSaveModalOpen}
-          onClose={closeSaveModal}
+          onClose={() => setSaveModalOpen(false)}
           classNames={{ content: "bg-background" }}
           withCloseButton={false}
         >
           <Box bg="background">
-            <InteractiveQuestion.SaveQuestionForm onClose={closeSaveModal} />
+            <InteractiveQuestion.SaveQuestionForm
+              onClose={() => setSaveModalOpen(false)}
+            />
           </Box>
         </Modal>
       )}
