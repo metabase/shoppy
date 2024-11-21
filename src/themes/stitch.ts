@@ -33,13 +33,17 @@ const metabase: MetabaseTheme = {
   fontSize: "14px",
   colors: {
     brand: colors.primary,
+    "brand-hover": colors.darkGrey,
+    "brand-hover-light": colors.darkGrey,
     filter: colors.filter,
     "text-primary": colors.lighterGrey,
     "text-secondary": colors.lighterGrey,
     "text-tertiary": colors.lighterGrey,
     border: colors.darkGrey,
     background: colors.background,
+    "background-secondary": colors.darkGrey,
     "background-hover": colors.background,
+    "background-disabled": colors.darkGrey,
     charts: [
       colors.primary,
       colors.filter,
