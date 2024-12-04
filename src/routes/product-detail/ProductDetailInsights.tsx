@@ -1,4 +1,4 @@
-import { Card, Title, Box, Modal } from "@mantine/core"
+import { Card, Title, Box, Modal, Flex } from "@mantine/core"
 import { useDisclosure } from "@mantine/hooks"
 
 import {
@@ -57,18 +57,19 @@ export const ProductDetailInsights = (props: Props) => {
         withCloseButton={false}
         size="xl"
       >
-        <InteractiveQuestion
-          questionId={158}
-          height={700}
-          withTitle
-          customTitle={
-            <Title fw={400} size="h2" className="product-detail-card-title">
-              Orders over time
-            </Title>
-          }
-        >
-          <InteractiveQuestionView />
-        </InteractiveQuestion>
+        <Flex mih={700}>
+          <InteractiveQuestion
+            questionId={158}
+            withTitle
+            customTitle={
+              <Title fw={400} size="h2" className="product-detail-card-title">
+                Orders over time
+              </Title>
+            }
+          >
+            <InteractiveQuestionView />
+          </InteractiveQuestion>
+        </Flex>
       </Modal>
     </Box>
   )
