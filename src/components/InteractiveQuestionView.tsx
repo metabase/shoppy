@@ -77,7 +77,7 @@ export const InteractiveQuestionView = ({ isSaveEnabled = false }: Props) => {
       </Flex>
 
       {view === "viz" && (
-        <Box h={500}>
+        <Box h="500px">
           <InteractiveQuestion.FilterBar />
           <InteractiveQuestion.QuestionVisualization />
         </Box>
