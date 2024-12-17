@@ -14,6 +14,7 @@ import { NewQuestionMenu } from "../NewQuestionMenu"
 import { siteIsReloadingAtom } from "../../store/site"
 import { useAtom } from "jotai"
 import { FullPageLoader } from "../Loader"
+import { SiteFooter } from "../SiteFooter"
 
 interface Props {
   children: ReactNode
@@ -52,9 +53,13 @@ export function Shell(props: Props) {
             className="border-transparent"
             ff="Lato"
           >
-            <Link to="/">
+            <a
+              href="https://www.metabase.com/?utm_source=referral&utm_medium=banner&utm_campaign=shoppy-demo"
+              target="_blank"
+              rel="noreferrer"
+            >
               <Image src="/metabase-logo-with-wordmark.svg" />
-            </Link>
+            </a>
 
             <Burger
               display={{ sm: "none" }}
@@ -125,7 +130,11 @@ export function Shell(props: Props) {
           </Flex>
         </AppShell.Navbar>
 
-        <AppShell.Main pt={90}>{props.children}</AppShell.Main>
+        <AppShell.Main pt={90}>
+          {props.children}
+
+          <SiteFooter />
+        </AppShell.Main>
       </AppShell>
     </Box>
   )
