@@ -27,7 +27,12 @@ export const SiteFooter = () => {
         </Group>
       </Anchor>
 
-      <Divider orientation="vertical" color="light-grey" opacity={0.4} />
+      <Divider
+        orientation="vertical"
+        color="light-grey"
+        opacity={0.4}
+        display={{ base: "none", xs: "block" }}
+      />
 
       <Group justify="center" align="center">
         <Anchor
