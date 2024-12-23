@@ -22,4 +22,11 @@ export const users: User[] = [
     group: "Luminara Beauty",
     shopId: 3,
   },
+  {
+    firstName: "Jennifer",
+    lastName: "Martinez",
+    email: "jennifer@example.com",
+    group: "Acme Co",
+    shopId: 4,
+  },
 ]
