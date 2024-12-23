@@ -15,6 +15,7 @@ import "./styles/index.css"
 import "./themes/variables.css"
 
 // Theme overrides for each themes
+import "./themes/acme.css"
 import "./themes/stitch.css"
 import "./themes/luminara.css"
 import "./themes/pug.css"

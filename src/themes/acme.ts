@@ -8,7 +8,7 @@ const colors = {
   lighterGrey: "#D1CFC5",
   lightGrey: "#545455",
   darkGrey: "#1B1C21",
-  background: "#fcfdfd",
+  background: "#FCFDFD",
   positive: "rgba(0, 143, 93, 1)",
   negative: "rgba(234, 56, 41, 1)",
 }
@@ -40,7 +40,7 @@ const metabase: MetabaseTheme = {
     "text-tertiary": colors.lightGrey,
     border: "#3B3F3F",
     background: colors.background,
-    "background-hover": "#fcfdfd",
+    "background-hover": "#fCFDFD",
     "background-disabled": colors.lighterGrey,
     charts: [
       colors.primary,
@@ -74,7 +74,7 @@ const metabase: MetabaseTheme = {
     },
     dashboard: {
       card: {
-        border: "1px solid #fcfdfd",
+        backgroundColor: "#FFFFFF",
       },
     },
     number: {
