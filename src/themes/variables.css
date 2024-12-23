@@ -31,3 +31,15 @@ body[data-theme="pug"] {
   --color-footer-icon: #323e35;
   --icon-primary: var(--color-primary);
 }
+
+body[data-theme="acme"] {
+  --font-family-sans: Figtree;
+  --color-primary: rgba(106, 87, 201, 1);
+  --color-lighter-grey: #d1cfc5;
+  --color-light-grey: #545455;
+  --color-dark-grey: #1b1c21;
+  --color-background: #fcfdfd;
+  --color-bright-grey: #fcfdfd;
+  --color-footer-icon: #323e35;
+  --icon-primary: var(--color-primary);
+}
