@@ -46,9 +46,9 @@ export const ProductCard = ({ product }: Props) => {
                 <RemountOnSiteChange>
                   <StaticQuestion
                     questionId={161}
-                    showVisualizationSelector={false}
+                    withChartTypeSelector={false}
                     height={questionHeight}
-                    parameterValues={{ product_id: product.id }}
+                    initialSqlParameters={{ product_id: product.id }}
                   />
                 </RemountOnSiteChange>
               </LoadWhenVisible>
