@@ -1,4 +1,4 @@
-import { Flex, Text, ButtonGroup, Button } from "@mantine/core"
+import { Flex, Text, ButtonGroup, Button, Box } from "@mantine/core"
 import { useAtom } from "jotai"
 import { Icon } from "@iconify/react"
 import cx from "classnames"
@@ -17,7 +17,7 @@ export const SiteSwitcher = () => {
       </Text>
 
       <ButtonGroup variant="outline" w={{ base: "100%", sm: "auto" }}>
-        {SITES.map((site) => {
+        {SITES.map((site, siteIndex) => {
           const active = currentSite === site.key
 
           return (
@@ -40,7 +40,12 @@ export const SiteSwitcher = () => {
                 <Icon icon={site.icon} fontSize={14} overflow="visible" />
               }
             >
-              {site.title}
+              {/* hide the word "Shop" on mobile */}
+              <Box display={{ base: "none", xs: "block" }}>
+                Shop {siteIndex + 1}
+              </Box>
+
+              <Box display={{ base: "block", xs: "none" }}>{siteIndex + 1}</Box>
             </Button>
           )
         })}
