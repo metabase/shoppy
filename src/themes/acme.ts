@@ -8,7 +8,7 @@ const colors = {
   lighterGrey: "#D1CFC5",
   lightGrey: "#545455",
   darkGrey: "#1B1C21",
-  background: "#FFFCEE",
+  background: "#fcfdfd",
   positive: "rgba(0, 143, 93, 1)",
   negative: "rgba(234, 56, 41, 1)",
 }
@@ -30,7 +30,7 @@ const mantine: MantineThemeOverride = {
 }
 
 const metabase: MetabaseTheme = {
-  fontFamily: "DM Mono",
+  fontFamily: "Figtree",
   fontSize: "14px",
   colors: {
     brand: colors.primary,
@@ -40,7 +40,7 @@ const metabase: MetabaseTheme = {
     "text-tertiary": colors.lightGrey,
     border: "#3B3F3F",
     background: colors.background,
-    "background-hover": "#FCFAF1",
+    "background-hover": "#fcfdfd",
     "background-disabled": colors.lighterGrey,
     charts: [
       colors.primary,
@@ -56,12 +56,25 @@ const metabase: MetabaseTheme = {
     negative: colors.negative,
   },
   components: {
+    tooltip: {
+      /** Tooltip text color. */
+      textColor: colors.darkGrey,
+
+      /** Secondary text color shown in the tooltip, e.g. for tooltip headers and percentage changes. */
+      secondaryTextColor: colors.darkGrey,
+
+      /** Tooltip background color. */
+      backgroundColor: colors.background,
+
+      /** Tooltip background color for focused rows. */
+      focusedBackgroundColor: colors.lighterGrey,
+    },
     cartesian: {
       padding: "6px 16px",
     },
     dashboard: {
       card: {
-        border: "1px solid var(--mantine-color-gray-3)",
+        border: "1px solid #fcfdfd",
       },
     },
     number: {
