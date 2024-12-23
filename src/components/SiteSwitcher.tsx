@@ -40,9 +40,9 @@ export const SiteSwitcher = () => {
                 <Icon icon={site.icon} fontSize={14} overflow="visible" />
               }
             >
-              {/* hide the word "Shop" on mobile */}
+              {/* hide the word "Site" on mobile */}
               <Box display={{ base: "none", xs: "block" }}>
-                Shop {siteIndex + 1}
+                Site {siteIndex + 1}
               </Box>
 
               <Box display={{ base: "block", xs: "none" }}>{siteIndex + 1}</Box>
