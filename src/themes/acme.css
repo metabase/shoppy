@@ -87,7 +87,6 @@ body[data-theme="acme"] {
   }
 
   .navbar {
-    position: relative;
     padding-top: 70px !important;
   }
 
