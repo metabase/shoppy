@@ -76,4 +76,8 @@ body[data-theme="acme"] {
   .product-insights-title {
     display: none;
   }
+
+  .themed-button {
+    background: var(--color-primary);
+  }
 }

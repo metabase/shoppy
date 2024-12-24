@@ -41,5 +41,5 @@ body[data-theme="acme"] {
   --color-background: #fcfdfd;
   --color-bright-grey: #fcfdfd;
   --color-footer-icon: #323e35;
-  --icon-primary: var(--color-primary);
+  --icon-primary: #fcfdfd;
 }
