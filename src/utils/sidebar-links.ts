@@ -39,7 +39,6 @@ export function useSidebarLinks(): SidebarLink[] {
           ...categoryLinks,
         ],
         defaultOpened: true,
-        icon: "iconoir:view-grid",
       },
       {
         title: "Analytics",
@@ -61,7 +60,6 @@ export function useSidebarLinks(): SidebarLink[] {
           },
         ],
         defaultOpened: true,
-        icon: "iconoir:graph-up",
       },
     ]
   }, [categoryQuery, setDashboardId])

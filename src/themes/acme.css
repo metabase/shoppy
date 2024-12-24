@@ -31,6 +31,10 @@ body[data-theme="acme"] {
 
   .sidebar-link-parent {
     font-weight: 700;
+    
+    .sidebar-child {
+      font-size: 16px;
+    }
   }
 
   .sidebar-inactive-child {
@@ -39,6 +43,10 @@ body[data-theme="acme"] {
 
   .sidebar-child {
     padding: 0px 4px;
+  }
+
+  .sidebar-link-children-container {
+    padding-inline-start: 0px;
   }
 
   .sidebar-active-child {

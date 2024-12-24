@@ -50,7 +50,7 @@ const renderLink = (
       }}
       classNames={{
         chevron: "sidebar-link-chevron",
-        children: "space-y-1",
+        children: "sidebar-link-children-container space-y-1",
         body: "flex-[2]",
         section: "flex-[1]",
       }}
