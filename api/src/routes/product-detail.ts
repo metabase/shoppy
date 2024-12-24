@@ -14,6 +14,7 @@ export async function productDetailHandler(req: Request, res: Response) {
       where: (products, { eq }) => eq(products.id, parseInt(productId, 10)),
       columns: {
         id: true,
+        description: true,
         title: true,
         createdAt: true,
         imageUrl: true,

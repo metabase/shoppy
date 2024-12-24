@@ -1,9 +1,11 @@
 import cx from "classnames"
 import { Link } from "wouter"
-import { Box, NavLink } from "@mantine/core"
+import { Box, Flex, NavLink } from "@mantine/core"
+import { Icon } from "@iconify/react"
 
 import type { SidebarLink } from "../../types/sidebar-link"
 import { useSidebarLinks } from "../../utils/sidebar-links"
+import { ReactNode } from "react"
 
 interface SidebarLinkProps {
   onLinkClick?: (link: SidebarLink) => void
@@ -25,9 +27,29 @@ const renderLink = (
 ) => {
   const { isChild, onLinkClick } = context ?? {}
 
+  function renderIcon(): ReactNode {
+    if (typeof link.icon === "string") {
+      return <Icon icon={link.icon} />
+    }
+
+    if (!link.icon) {
+      return null
+    }
+
+    const NavbarIcon = link.icon
+
+    return <NavbarIcon />
+  }
+
   return (
     <NavLink
-      label={link.title}
+      label={
+        <Flex align="center" columnGap="6px" className="sidebar-link-label">
+          <Box className="sidebar-link-icon">{renderIcon()}</Box>
+
+          <Box>{link.title}</Box>
+        </Flex>
+      }
       p={3}
       fz="14px"
       variant="subtle"
@@ -38,7 +60,8 @@ const renderLink = (
         onLinkClick?.(link)
       }}
       classNames={{
-        children: "space-y-1",
+        chevron: "sidebar-link-chevron",
+        children: "sidebar-link-children-container space-y-1",
         body: "flex-[2]",
         section: "flex-[1]",
       }}
@@ -49,8 +72,8 @@ const renderLink = (
             cx(
               "hover:bg-transparent font-sans",
               props.className,
-              !isChild && "sidebar-link-root",
-              isChild && "space-y-2",
+              !isChild && "sidebar-link-parent",
+              isChild && "sidebar-child-container space-y-2",
               isChild && !active && "sidebar-inactive-child",
               active && "sidebar-active-child dark-gradient",
               link.hideOnMobile && "hide-on-mobile",

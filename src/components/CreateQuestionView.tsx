@@ -77,7 +77,7 @@ export const CreateQuestionView = () => {
         >
           <Box bg="background">
             <InteractiveQuestion.SaveQuestionForm
-              onClose={() => setSaveModalOpen(false)}
+              onCancel={() => setSaveModalOpen(false)}
             />
           </Box>
         </Modal>

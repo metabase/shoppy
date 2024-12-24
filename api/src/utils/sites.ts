@@ -4,6 +4,7 @@ export const SITE_TO_SHOP_IDS: Record<string, number> = {
   pug: 1,
   stitch: 2,
   luminara: 3,
+  acme: 4,
 }
 
 export const getShopIdBySite = (site: string): number | undefined =>

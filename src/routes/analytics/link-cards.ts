@@ -4,6 +4,8 @@ export const overviewLinkCards: DashboardLinkCardProps[] = [
   {
     id: 17,
     title: "Inventory Performance",
+    description:
+      "Internal analytics dashboard visualizing key performance and inventory metrics for a demo training platform.",
     author: "Galata Zaray",
     date: "3mo",
   },

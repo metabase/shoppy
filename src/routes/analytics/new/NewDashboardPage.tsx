@@ -23,7 +23,7 @@ export const NewDashboardPage = () => {
     return (
       <RemountOnSiteChange>
         <CreateDashboardModal
-          onCreate={(dashboard) => setDashboardId(dashboard.id)}
+          onCreate={(dashboard: { id: number }) => setDashboardId(dashboard.id)}
           initialCollectionId={collectionId}
           onClose={() => navigate("/admin/analytics/custom")}
         />

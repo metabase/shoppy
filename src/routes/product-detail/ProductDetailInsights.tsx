@@ -20,7 +20,7 @@ export const ProductDetailInsights = (props: Props) => {
 
   return (
     <Box className="space-y-4">
-      <Card maw={MAX_W} className="card">
+      <Card maw={MAX_W} className="card product-insights-card">
         <Title size="18px" pb={10} className="product-detail-card-title">
           Orders over time
         </Title>
@@ -30,13 +30,13 @@ export const ProductDetailInsights = (props: Props) => {
             <StaticQuestion
               questionId={165}
               height={250}
-              parameterValues={{ product_id: props.productId }}
+              initialSqlParameters={{ product_id: props.productId }}
             />
           </RemountOnSiteChange>
         </Box>
       </Card>
 
-      <Card maw={MAX_W} className="card smartscalar">
+      <Card maw={MAX_W} className="card smartscalar product-insights-card">
         <Title size="18px" mb={10} className="product-detail-card-title">
           Total orders
         </Title>
@@ -45,7 +45,7 @@ export const ProductDetailInsights = (props: Props) => {
           <StaticQuestion
             questionId={161}
             height={70}
-            parameterValues={{ product_id: props.productId }}
+            initialSqlParameters={{ product_id: props.productId }}
           />
         </RemountOnSiteChange>
       </Card>
@@ -60,8 +60,7 @@ export const ProductDetailInsights = (props: Props) => {
         <Flex mih={700}>
           <InteractiveQuestion
             questionId={158}
-            withTitle
-            customTitle={
+            title={
               <Title fw={400} size="h2" className="product-detail-card-title">
                 Orders over time
               </Title>
