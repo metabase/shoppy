@@ -20,7 +20,7 @@ export const ProductDetailInsights = (props: Props) => {
 
   return (
     <Box className="space-y-4">
-      <Card maw={MAX_W} className="card">
+      <Card maw={MAX_W} className="card product-insights-card">
         <Title size="18px" pb={10} className="product-detail-card-title">
           Orders over time
         </Title>
@@ -36,7 +36,7 @@ export const ProductDetailInsights = (props: Props) => {
         </Box>
       </Card>
 
-      <Card maw={MAX_W} className="card smartscalar">
+      <Card maw={MAX_W} className="card smartscalar product-insights-card">
         <Title size="18px" mb={10} className="product-detail-card-title">
           Total orders
         </Title>
