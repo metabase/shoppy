@@ -91,7 +91,11 @@ body[data-theme="acme"] {
   }
 
   .navbar {
-    padding-top: 70px !important;
+    padding-top: 100px !important;
+
+    @media screen and (min-width: 768px) {
+      padding-top: 70px !important;
+    }
   }
 
   .product-detail-title,
