@@ -7,6 +7,7 @@ import { getCategoryList } from "./query-category"
 import { SidebarLink } from "../types/sidebar-link"
 import { createDashboardIdAtom } from "../store/create"
 import { siteAtom } from "../store/site"
+import { CustomIcon } from "../components/CustomIcon"
 
 const CATEGORY_ICONS: Record<string, string> = {
   "Leadership Training": "iconoir:leaderboard-star",
@@ -55,17 +56,23 @@ export function useSidebarLinks(): SidebarLink[] {
           {
             to: "/admin/analytics",
             title: "Dashboards",
-            icon: "iconoir:database",
+            icon: () => <img src="/icon-dashboard.svg" />,
           },
           {
             to: "/admin/analytics/17",
             title: "Inventory performance",
-            icon: "iconoir:database",
+            icon: () => <img src="/icon-bar.svg" />,
           },
           {
             to: "/admin/analytics/custom",
             title: "Saved explorations",
-            icon: "iconoir:database",
+            icon: () => (
+              <CustomIcon
+                icon="insight"
+                fill="rgba(106, 87, 201, 0.75)"
+                size={14}
+              />
+            ),
           },
         ],
         defaultOpened: true,

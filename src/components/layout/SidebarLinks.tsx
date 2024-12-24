@@ -5,6 +5,7 @@ import { Icon } from "@iconify/react"
 
 import type { SidebarLink } from "../../types/sidebar-link"
 import { useSidebarLinks } from "../../utils/sidebar-links"
+import { ReactNode } from "react"
 
 interface SidebarLinkProps {
   onLinkClick?: (link: SidebarLink) => void
@@ -26,15 +27,25 @@ const renderLink = (
 ) => {
   const { isChild, onLinkClick } = context ?? {}
 
+  function renderIcon(): ReactNode {
+    if (typeof link.icon === "string") {
+      return <Icon icon={link.icon} />
+    }
+
+    if (!link.icon) {
+      return null
+    }
+
+    const NavbarIcon = link.icon
+
+    return <NavbarIcon />
+  }
+
   return (
     <NavLink
       label={
         <Flex align="center" columnGap="6px" className="sidebar-child-label">
-          {link.icon && (
-            <Box className="sidebar-link-icon">
-              <Icon icon={link.icon} />
-            </Box>
-          )}
+          <Box className="sidebar-link-icon">{renderIcon()}</Box>
 
           <Box>{link.title}</Box>
         </Flex>

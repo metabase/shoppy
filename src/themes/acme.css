@@ -28,6 +28,10 @@ body[data-theme="acme"] {
     background: rgba(106, 87, 201, 0.06);
     border-radius: 4px;
 
+    img {
+      max-width: 16px;
+    }
+
     svg path {
       stroke-width: 2px;
     }
