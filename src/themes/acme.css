@@ -85,4 +85,21 @@ body[data-theme="acme"] {
     font-size: 36px;
     font-weight: 700;
   }
+
+  .navbar {
+    position: relative;
+    padding-top: 70px !important;
+  }
+
+  .product-detail-title,
+  .overview-title {
+    font-size: 32px;
+    font-weight: 700;
+  }
+
+  .logo-divider {
+    position: absolute;
+    left: 0;
+    width: 100%;
+  }
 }

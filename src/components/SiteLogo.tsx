@@ -1,4 +1,4 @@
-import { Text, Image, Flex } from "@mantine/core"
+import { Text, Image, Flex, Divider, Box } from "@mantine/core"
 import { useAtom } from "jotai"
 
 import { siteAtom } from "../store/site"
@@ -8,13 +8,17 @@ export function SiteLogo() {
 
   if (site === "acme") {
     return (
-      <Flex justify="flex-start" align="center">
-        <Image src="/logo-acme.svg" maw="40px" mr="8px" />
+      <Box>
+        <Flex justify="flex-start" align="center" pb="20px">
+          <Image src="/logo-acme.svg" maw="40px" mr="8px" />
 
-        <Text fz="28px" lh="28px" fw={700}>
-          Acme Co.
-        </Text>
-      </Flex>
+          <Text fz="28px" lh="28px" fw={700}>
+            Acme Co.
+          </Text>
+        </Flex>
+
+        <Divider orientation="horizontal" className="logo-divider" />
+      </Box>
     )
   }
 
