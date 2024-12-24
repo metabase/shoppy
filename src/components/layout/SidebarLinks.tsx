@@ -29,7 +29,7 @@ const renderLink = (
   return (
     <NavLink
       label={
-        <Flex align="center" columnGap="6px" className="sidebar-child">
+        <Flex align="center" columnGap="6px" className="sidebar-child-label">
           {link.icon && (
             <Box className="sidebar-link-icon">
               <Icon icon={link.icon} />

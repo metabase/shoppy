@@ -32,7 +32,7 @@ body[data-theme="acme"] {
   .sidebar-link-parent {
     font-weight: 700;
     
-    .sidebar-child {
+    .sidebar-child-label {
       font-size: 16px;
     }
   }
@@ -41,7 +41,7 @@ body[data-theme="acme"] {
     color: rgba(0, 0, 0, 0.7);
   }
 
-  .sidebar-child {
+  .sidebar-child-label {
     padding: 0px 4px;
   }
 
@@ -51,10 +51,24 @@ body[data-theme="acme"] {
 
   .sidebar-active-child {
     background: rgba(106, 87, 201, 0.1);
+    transition: background 0.4s ease;
     border-radius: 4px;
 
     .sidebar-link-icon {
       background: none;
+      transition: background 0.4s ease;
     }
+  }
+
+  /** Crop the image height to reduce whitespace */
+  .product-card-image-container {
+    aspect-ratio: 1 / 1;
+    max-height: 220px;
+    margin-bottom: 10px;
+  }
+
+  /** WORKAROUND: align trend charts to the left in product cards */
+  .product-card [data-testid="visualization-root"] > [data-card-key] > div {
+    align-items: flex-start;
   }
 }

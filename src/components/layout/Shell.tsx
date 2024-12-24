@@ -130,7 +130,7 @@ export function Shell(props: Props) {
           </Flex>
         </AppShell.Navbar>
 
-        <AppShell.Main pt={90}>
+        <AppShell.Main pt="90px">
           {props.children}
 
           <SiteFooter />
