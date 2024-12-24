@@ -71,4 +71,9 @@ body[data-theme="acme"] {
   .product-card [data-testid="visualization-root"] > [data-card-key] > div {
     align-items: flex-start;
   }
+
+  /** Hide the "Insights" title in product detail page */
+  .product-insights-title {
+    display: none;
+  }
 }
