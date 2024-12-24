@@ -44,7 +44,7 @@ const renderLink = (
   return (
     <NavLink
       label={
-        <Flex align="center" columnGap="6px" className="sidebar-child-label">
+        <Flex align="center" columnGap="6px" className="sidebar-link-label">
           <Box className="sidebar-link-icon">{renderIcon()}</Box>
 
           <Box>{link.title}</Box>
@@ -73,7 +73,7 @@ const renderLink = (
               "hover:bg-transparent font-sans",
               props.className,
               !isChild && "sidebar-link-parent",
-              isChild && "space-y-2",
+              isChild && "sidebar-child-container space-y-2",
               isChild && !active && "sidebar-inactive-child",
               active && "sidebar-active-child dark-gradient",
               link.hideOnMobile && "hide-on-mobile",

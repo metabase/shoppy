@@ -40,7 +40,7 @@ body[data-theme="acme"] {
   .sidebar-link-parent {
     font-weight: 700;
     
-    .sidebar-child-label {
+    .sidebar-link-label {
       font-size: 16px;
     }
   }
@@ -49,7 +49,7 @@ body[data-theme="acme"] {
     color: rgba(0, 0, 0, 0.7);
   }
 
-  .sidebar-child-label {
+  .sidebar-child-container .sidebar-link-label {
     padding: 0px 4px;
   }
 
