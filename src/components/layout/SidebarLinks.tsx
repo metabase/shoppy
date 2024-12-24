@@ -1,6 +1,7 @@
 import cx from "classnames"
 import { Link } from "wouter"
-import { Box, NavLink } from "@mantine/core"
+import { Box, Flex, NavLink } from "@mantine/core"
+import { Icon } from "@iconify/react"
 
 import type { SidebarLink } from "../../types/sidebar-link"
 import { useSidebarLinks } from "../../utils/sidebar-links"
@@ -27,7 +28,17 @@ const renderLink = (
 
   return (
     <NavLink
-      label={link.title}
+      label={
+        <Flex align="center" columnGap="6px" className="sidebar-child">
+          {link.icon && (
+            <Box className="sidebar-link-icon">
+              <Icon icon={link.icon} />
+            </Box>
+          )}
+
+          <Box>{link.title}</Box>
+        </Flex>
+      }
       p={3}
       fz="14px"
       variant="subtle"
@@ -38,6 +49,7 @@ const renderLink = (
         onLinkClick?.(link)
       }}
       classNames={{
+        chevron: "sidebar-link-chevron",
         children: "space-y-1",
         body: "flex-[2]",
         section: "flex-[1]",
@@ -49,7 +61,7 @@ const renderLink = (
             cx(
               "hover:bg-transparent font-sans",
               props.className,
-              !isChild && "sidebar-link-root",
+              !isChild && "sidebar-link-parent",
               isChild && "space-y-2",
               isChild && !active && "sidebar-inactive-child",
               active && "sidebar-active-child dark-gradient",

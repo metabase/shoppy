@@ -16,4 +16,37 @@ body[data-theme="acme"] {
   .product-insights-card {
     box-shadow: 0px 6px 10px 0px rgba(0, 0, 0, 0.08);
   }
+
+  .sidebar-link-chevron {
+    display: none !important;
+  }
+
+  .sidebar-link-icon {
+    padding: 2px;
+    font-size: 16px;
+    color: rgba(121, 121, 121, 1);
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+  }
+
+  .sidebar-link-parent {
+    font-weight: 700;
+  }
+
+  .sidebar-inactive-child {
+    color: rgba(0, 0, 0, 0.7);
+  }
+
+  .sidebar-child {
+    padding: 0px 4px;
+  }
+
+  .sidebar-active-child {
+    background: rgba(106, 87, 201, 0.1);
+    border-radius: 4px;
+
+    .sidebar-link-icon {
+      background: none;
+    }
+  }
 }

@@ -113,7 +113,7 @@ body[data-theme="pug"] {
     font-weight: 500;
   }
 
-  .sidebar-link-root {
+  .sidebar-link-parent {
     font-weight: 500;
   }
 }

@@ -24,25 +24,44 @@ export function useSidebarLinks(): SidebarLink[] {
     const categoryLinks: SidebarLink[] = categories.map((category) => ({
       title: category.name,
       to: `/admin/categories/${category.id}`,
+      icon: "iconoir:folder",
     }))
 
     return [
       {
         title: "Products",
         children: [
-          { to: "/admin/products", title: "All products" },
+          {
+            to: "/admin/products",
+            title: "All products",
+            icon: "iconoir:leaderboard-star",
+          },
           ...categoryLinks,
         ],
         defaultOpened: true,
+        icon: "iconoir:view-grid",
       },
       {
         title: "Analytics",
         children: [
-          { to: "/admin/analytics", title: "Dashboards" },
-          { to: "/admin/analytics/17", title: "Inventory performance" },
-          { to: "/admin/analytics/custom", title: "Saved explorations" },
+          {
+            to: "/admin/analytics",
+            title: "Dashboards",
+            icon: "iconoir:database",
+          },
+          {
+            to: "/admin/analytics/17",
+            title: "Inventory performance",
+            icon: "iconoir:database",
+          },
+          {
+            to: "/admin/analytics/custom",
+            title: "Saved explorations",
+            icon: "iconoir:database",
+          },
         ],
         defaultOpened: true,
+        icon: "iconoir:graph-up",
       },
     ]
   }, [categoryQuery, setDashboardId])

@@ -7,4 +7,5 @@ export interface SidebarLink {
   component?: React.FC
   onClick?: () => void
   hideOnMobile?: boolean
+  icon?: string
 }
