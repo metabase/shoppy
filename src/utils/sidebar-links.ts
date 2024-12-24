@@ -8,6 +8,15 @@ import { SidebarLink } from "../types/sidebar-link"
 import { createDashboardIdAtom } from "../store/create"
 import { siteAtom } from "../store/site"
 
+const CATEGORY_ICONS: Record<string, string> = {
+  "Leadership Training": "iconoir:leaderboard-star",
+  "Technical Skills": "iconoir:code",
+  "Soft Skills": "iconoir:people-tag",
+  Compliance: "tabler:scale",
+  "Health & Wellness": "iconoir:health-shield",
+  Marketing: "iconoir:megaphone",
+}
+
 export function useSidebarLinks(): SidebarLink[] {
   const site = useAtomValue(siteAtom)
 
@@ -24,7 +33,7 @@ export function useSidebarLinks(): SidebarLink[] {
     const categoryLinks: SidebarLink[] = categories.map((category) => ({
       title: category.name,
       to: `/admin/categories/${category.id}`,
-      icon: "iconoir:folder",
+      icon: CATEGORY_ICONS[category.name],
     }))
 
     return [
@@ -34,7 +43,7 @@ export function useSidebarLinks(): SidebarLink[] {
           {
             to: "/admin/products",
             title: "All products",
-            icon: "iconoir:leaderboard-star",
+            icon: "iconoir:report-columns",
           },
           ...categoryLinks,
         ],
