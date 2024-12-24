@@ -80,4 +80,9 @@ body[data-theme="acme"] {
   .themed-button {
     background: var(--color-primary);
   }
+
+  .dashboard-container [data-testid="scalar-container"] h1 {
+    font-size: 36px;
+    font-weight: 700;
+  }
 }
