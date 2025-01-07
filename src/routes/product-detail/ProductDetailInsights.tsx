@@ -61,7 +61,7 @@ export const ProductDetailInsights = (props: Props) => {
         withCloseButton={false}
         size="xl"
       >
-        <Flex mih={700}>
+        <Flex mih={700} className="orders-over-time-container">
           <InteractiveQuestion
             questionId={158}
             title={
