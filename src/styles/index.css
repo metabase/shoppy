@@ -65,3 +65,7 @@ body:not([data-theme="acme"]) .sidebar-link-icon {
   width: fit-content;
   height: 30px;
 }
+
+.sidebar-links-container {
+  @apply space-y-3;
+}

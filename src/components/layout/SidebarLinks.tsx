@@ -15,7 +15,7 @@ export function SidebarLinks({ onLinkClick }: SidebarLinkProps) {
   const links = useSidebarLinks()
 
   return (
-    <Box pt="20px" className="space-y-1">
+    <Box pt="20px" className="sidebar-links-container">
       {links.map((link) => renderLink(link, { onLinkClick }))}
     </Box>
   )
