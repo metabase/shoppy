@@ -11,6 +11,7 @@ import { useAtom } from "jotai"
 import { SiteKey } from "../../types/site"
 import { FullPageLoader } from "../../components/Loader"
 import { useSiteChanged } from "../../utils/use-site-changed"
+import { getCategoryList } from "../../utils/query-category"
 
 interface Props {
   categoryId?: string
@@ -25,11 +26,19 @@ export const ProductAnalyticsPage = (props: Props) => {
     queryFn: () => getProductList(site),
   })
 
+  const categoryQuery = useQuery({
+    queryKey: ["categories", site],
+    queryFn: () => getCategoryList(site),
+  })
+
   let products = query.data ?? []
 
   if (categoryId) {
     products = products.filter((product) => product.category.id === categoryId)
   }
+
+  const currentCategoryName =
+    categoryId && categoryQuery.data?.find((c) => c.id === categoryId)?.name
 
   // If the site changes, redirect back to the product listing page.
   // This ensures we don't show product from last site's categories.
@@ -40,7 +49,9 @@ export const ProductAnalyticsPage = (props: Props) => {
   return (
     <Container>
       <Stack w="100%" maw="1000px" className="gap-y-10">
-        <Title className="overview-title">All products</Title>
+        <Title className="overview-title">
+          {currentCategoryName ?? "All products"}
+        </Title>
 
         <SimpleGrid
           cols={{ base: 1, xs: 2, md: 3 }}
