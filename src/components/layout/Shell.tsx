@@ -1,4 +1,12 @@
-import { AppShell, Box, Flex, Image, Burger, Stack } from "@mantine/core"
+import {
+  AppShell,
+  Box,
+  Flex,
+  Image,
+  Burger,
+  Stack,
+  Divider,
+} from "@mantine/core"
 import { useDisclosure } from "@mantine/hooks"
 import { ReactNode } from "react"
 import { Link } from "wouter"
@@ -108,7 +116,12 @@ export function Shell(props: Props) {
                 }}
               />
 
-              <Stack className="hide-on-mobile" pt={18}>
+              <Divider
+                orientation="horizontal"
+                className="acme-sidebar-divider show-only-on-acme my-4"
+              />
+
+              <Stack className="hide-on-mobile sidebar-create-section" pt={18}>
                 <NewQuestionMenu position="bottom-start" prefix="/admin">
                   <ThemedButton className="sidebar-action-button" size="sm">
                     New custom exploration

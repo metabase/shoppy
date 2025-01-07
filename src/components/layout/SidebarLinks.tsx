@@ -15,7 +15,7 @@ export function SidebarLinks({ onLinkClick }: SidebarLinkProps) {
   const links = useSidebarLinks()
 
   return (
-    <Box pt="32px" className="space-y-3">
+    <Box pt="20px" className="space-y-1">
       {links.map((link) => renderLink(link, { onLinkClick }))}
     </Box>
   )
@@ -39,6 +39,10 @@ const renderLink = (
     const NavbarIcon = link.icon
 
     return <NavbarIcon />
+  }
+
+  if (link.component) {
+    return <link.component />
   }
 
   return (

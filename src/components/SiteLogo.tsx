@@ -17,7 +17,7 @@ export function SiteLogo() {
           </Text>
         </Flex>
 
-        <Divider orientation="horizontal" className="logo-divider" />
+        <Divider orientation="horizontal" className="acme-sidebar-divider" />
       </Box>
     )
   }

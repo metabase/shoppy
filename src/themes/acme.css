@@ -39,9 +39,10 @@ body[data-theme="acme"] {
 
   .sidebar-link-parent {
     font-weight: 700;
-    
+
     .sidebar-link-label {
       font-size: 16px;
+      column-gap: 0px !important;
     }
   }
 
@@ -108,9 +109,17 @@ body[data-theme="acme"] {
     font-weight: 700;
   }
 
-  .logo-divider {
+  .acme-sidebar-divider {
     position: absolute;
     left: 0;
     width: 100%;
   }
+
+  .sidebar-create-section {
+    margin-top: 20px;
+  }
+}
+
+body:not([data-theme="acme"]) .show-only-on-acme {
+  display: none;
 }
