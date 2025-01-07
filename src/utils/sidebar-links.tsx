@@ -53,7 +53,7 @@ export function useSidebarLinks(): SidebarLink[] {
       },
       {
         component: () => (
-          <Box className="show-only-on-acme py-2">
+          <Box className="show-only-on-acme py-3">
             <Divider
               orientation="horizontal"
               className="acme-sidebar-divider"
