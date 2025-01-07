@@ -1,7 +1,8 @@
-import { Box } from "@mantine/core"
+import { Box, Container } from "@mantine/core"
 import { InteractiveDashboard } from "@metabase/embedding-sdk-react"
 
 import { useReloadOnSiteChange } from "../../utils/use-site-changed"
+import { InteractiveQuestionView } from "../../components/InteractiveQuestionView"
 
 interface Props {
   id: string
@@ -19,6 +20,11 @@ export function DashboardPage(props: Props) {
         dashboardId={dashboardId}
         withTitle
         withDownloads={false}
+        renderDrillThroughQuestion={() => (
+          <Container size="1000px" w="100%">
+            <InteractiveQuestionView isSaveEnabled={false} />
+          </Container>
+        )}
       />
     </Box>
   )
