@@ -39,3 +39,31 @@ body[data-theme="stitch"] {
     }
   }
 }
+
+body[data-theme="acme"] .dashboard-container {
+  [data-testid="legend-caption"] {
+    padding-bottom: 2px;
+  }
+  
+  [data-testid="legend-caption-title"] {
+    color: var(--color-dark-grey);
+    font-weight: 700;
+  }
+
+  [data-testid="scalar-container"] h1  {
+    font-size: 36px;
+    line-height: 40px;
+    font-weight: 700;
+    color: var(--color-dark-grey);
+  }
+
+  /* WORKAROUND: hide the bottom border of the header */
+  header > div:last-of-type {
+    display: none;
+  }
+
+  /* WORKAROUND: hide the top border of the footer */
+  footer {
+    border: none;
+  }
+}

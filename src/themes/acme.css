@@ -94,24 +94,6 @@ body[data-theme="acme"] {
     background: var(--color-primary);
   }
 
-  .dashboard-container {
-    [data-testid="legend-caption"] {
-      padding-bottom: 2px;
-    }
-
-    [data-testid="legend-caption-title"] {
-      color: var(--color-dark-grey);
-      font-weight: 700;
-    }
-
-    [data-testid="scalar-container"] h1  {
-      font-size: 36px;
-      line-height: 40px;
-      font-weight: 700;
-      color: var(--color-dark-grey);
-    }
-  }
-
   .navbar {
     padding-top: 100px !important;
 
