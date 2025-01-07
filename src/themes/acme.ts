@@ -6,7 +6,7 @@ import { SiteConfig } from "../types/site"
 const colors = {
   primary: "rgba(106, 87, 201, 1)",
   lighterGrey: "#D1CFC5",
-  lightGrey: "#545455",
+  lightGrey: "rgba(0, 0, 0, 0.7)",
   darkGrey: "#1B1C21",
   background: "#FCFDFD",
   positive: "rgba(0, 143, 93, 1)",
@@ -35,7 +35,7 @@ const metabase: MetabaseTheme = {
   colors: {
     brand: colors.primary,
     filter: colors.primary,
-    "text-primary": colors.darkGrey,
+    "text-primary": colors.lightGrey,
     "text-secondary": colors.lightGrey,
     "text-tertiary": colors.lightGrey,
     border: "#3B3F3F",

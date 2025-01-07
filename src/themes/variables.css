@@ -37,7 +37,7 @@ body[data-theme="acme"] {
   --color-primary: rgba(106, 87, 201, 1);
   --color-lighter-grey: #d1cfc5;
   --color-light-grey: #545455;
-  --color-dark-grey: #1b1c21;
+  --color-dark-grey: rgba(0, 0, 0, 0.9);
   --color-background: #fcfdfd;
   --color-bright-grey: #fcfdfd;
   --color-footer-icon: rgba(0, 0, 0, 0.7);

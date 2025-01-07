@@ -63,6 +63,10 @@ body[data-theme="acme"] {
     transition: background 0.4s ease;
     border-radius: 4px;
 
+    .sidebar-link-title {
+      color: var(--color-dark-grey);
+    }
+
     .sidebar-link-icon {
       background: none;
       transition: background 0.4s ease;
@@ -123,11 +127,27 @@ body[data-theme="acme"] {
     @apply space-y-1;
   }
 
+  .sidebar-link-title {
+    color: var(--color-light-grey);
+  }
+
   .sidebar-icons svg {
     padding: 4px;
     border-radius: 4px;
     color: rgba(106, 87, 201, 0.75);
     background: rgba(106, 87, 201, 0.06);
+  }
+
+  .orders-over-time-container svg text {
+    font-weight: 400 !important;
+  }
+
+  .product-card-title {
+    color: var(--color-light-grey);
+  }
+
+  .dashboard-container [data-testid="scalar-container"] h1 {
+    color: var(--color-dark-grey);
   }
 }
 

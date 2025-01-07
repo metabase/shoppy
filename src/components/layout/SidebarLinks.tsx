@@ -51,7 +51,7 @@ const renderLink = (
         <Flex align="center" columnGap="6px" className="sidebar-link-label">
           <Box className="sidebar-link-icon">{renderIcon()}</Box>
 
-          <Box>{link.title}</Box>
+          <Box className="sidebar-link-title">{link.title}</Box>
         </Flex>
       }
       p={3}
