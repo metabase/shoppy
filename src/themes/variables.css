@@ -40,6 +40,6 @@ body[data-theme="acme"] {
   --color-dark-grey: #1b1c21;
   --color-background: #fcfdfd;
   --color-bright-grey: #fcfdfd;
-  --color-footer-icon: #323e35;
+  --color-footer-icon: rgba(0, 0, 0, 0.7);
   --icon-primary: #fcfdfd;
 }
