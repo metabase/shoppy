@@ -23,7 +23,6 @@ import "./themes/pug.css"
 // CSS style overrides used for workarounds.
 import "./styles/smartscalar-workaround.css"
 import "./styles/dashboard-workaround.css"
-import "./styles/viz-workaround.css"
 
 import { store } from "./store"
 
