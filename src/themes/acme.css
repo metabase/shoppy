@@ -122,6 +122,13 @@ body[data-theme="acme"] {
   .sidebar-links-container {
     @apply space-y-1;
   }
+
+  .sidebar-icons svg {
+    padding: 4px;
+    border-radius: 4px;
+    color: rgba(106, 87, 201, 0.75);
+    background: rgba(106, 87, 201, 0.06);
+  }
 }
 
 body:not([data-theme="acme"]) .show-only-on-acme {
