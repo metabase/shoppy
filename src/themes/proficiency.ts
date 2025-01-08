@@ -89,4 +89,4 @@ const metabase: MetabaseTheme = {
   },
 }
 
-export const AcmeSite: SiteConfig = { metabase, mantine }
+export const ProficiencySite: SiteConfig = { metabase, mantine }

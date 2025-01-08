@@ -1,4 +1,4 @@
-body[data-theme="acme"] {
+body[data-theme="proficiency"] {
   .navbar {
     box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.08);
   }
@@ -108,7 +108,7 @@ body[data-theme="acme"] {
     font-weight: 700;
   }
 
-  .acme-sidebar-divider {
+  .proficiency-sidebar-divider {
     position: absolute;
     left: 0;
     width: 100%;
@@ -142,6 +142,6 @@ body[data-theme="acme"] {
   }
 }
 
-body:not([data-theme="acme"]) .show-only-on-acme {
+body:not([data-theme="proficiency"]) .show-only-on-proficiency {
   display: none;
 }

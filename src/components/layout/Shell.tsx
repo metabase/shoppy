@@ -118,7 +118,7 @@ export function Shell(props: Props) {
 
               <Divider
                 orientation="horizontal"
-                className="acme-sidebar-divider show-only-on-acme my-4"
+                className="proficiency-sidebar-divider show-only-on-proficiency my-4"
               />
 
               <Stack className="hide-on-mobile sidebar-create-section" pt={18}>

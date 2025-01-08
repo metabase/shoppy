@@ -1,7 +1,7 @@
 import { MantineThemeOverride } from "@mantine/core"
 import { MetabaseTheme } from "@metabase/embedding-sdk-react"
 
-export type SiteKey = "acme" | "stitch" | "luminara" | "pug"
+export type SiteKey = "proficiency" | "stitch" | "luminara" | "pug"
 
 export type SiteInfo = {
   key: SiteKey

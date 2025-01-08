@@ -4,7 +4,7 @@ import type { SiteKey } from "../types/site"
 import { atom } from "jotai"
 
 export const SITE_KEY = "site"
-export const DEFAULT_SITE: SiteKey = "acme"
+export const DEFAULT_SITE: SiteKey = "proficiency"
 
 export const siteAtom = atomWithStorage<SiteKey>(
   SITE_KEY,

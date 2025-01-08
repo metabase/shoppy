@@ -6,18 +6,21 @@ import { siteAtom } from "../store/site"
 export function SiteLogo() {
   const [site] = useAtom(siteAtom)
 
-  if (site === "acme") {
+  if (site === "proficiency") {
     return (
       <Box>
         <Flex justify="flex-start" align="center" pb="20px">
-          <Image src="/logo-acme.svg" maw="40px" mr="8px" />
+          <Image src="/logo-proficiency.svg" maw="40px" mr="8px" />
 
           <Text fz="21px" lh="21px" fw={700}>
             ProficiencyLabs
           </Text>
         </Flex>
 
-        <Divider orientation="horizontal" className="acme-sidebar-divider" />
+        <Divider
+          orientation="horizontal"
+          className="proficiency-sidebar-divider"
+        />
       </Box>
     )
   }

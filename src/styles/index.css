@@ -21,7 +21,7 @@ body:not([data-theme="luminara"]) {
   background: var(--color-background) !important;
 }
 
-body:not([data-theme="acme"]) .sidebar-link-icon {
+body:not([data-theme="proficiency"]) .sidebar-link-icon {
   display: none;
 }
 

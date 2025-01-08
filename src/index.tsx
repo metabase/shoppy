@@ -15,7 +15,7 @@ import "./styles/index.css"
 import "./themes/variables.css"
 
 // Theme overrides for each themes
-import "./themes/acme.css"
+import "./themes/proficiency.css"
 import "./themes/stitch.css"
 import "./themes/luminara.css"
 import "./themes/pug.css"
@@ -27,9 +27,9 @@ import "./styles/dashboard-workaround.css"
 import { store } from "./store"
 
 import { ThemeProvider } from "./components/ThemeProvider"
-import { migrateDefaultSiteToAcme } from "./utils/migrate-default-site"
+import { migrateDefaultSiteToProficiencyLabs } from "./utils/migrate-default-site"
 
-migrateDefaultSiteToAcme()
+migrateDefaultSiteToProficiencyLabs()
 
 const root = document.getElementById("root")!
 

@@ -26,7 +26,7 @@ export const users: User[] = [
     firstName: "Jennifer",
     lastName: "Martinez",
     email: "jennifer@example.com",
-    group: "Acme Co",
+    group: "ProficiencyLabs",
     shopId: 4,
   },
 ]

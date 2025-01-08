@@ -32,7 +32,7 @@ body[data-theme="pug"] {
   --icon-primary: var(--color-primary);
 }
 
-body[data-theme="acme"] {
+body[data-theme="proficiency"] {
   --font-family-sans: Figtree;
   --color-primary: rgba(106, 87, 201, 1);
   --color-lighter-grey: #d1cfc5;

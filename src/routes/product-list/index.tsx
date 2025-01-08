@@ -71,5 +71,5 @@ const VERTICAL_SPACING: Record<SiteKey, number> = {
   stitch: 64,
   luminara: 28,
   pug: 80,
-  acme: 64,
+  proficiency: 64,
 }

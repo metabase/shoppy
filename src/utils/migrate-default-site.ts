@@ -1,13 +1,14 @@
 import { SITE_KEY } from "../store/site"
 
-const MIGRATE_TO_ACME_KEY = "migrated-default-site-to-acme"
+const MIGRATE_TO_PROFICIENCY_LABS_KEY =
+  "migrated-default-site-to-proficiency-labs"
 
 /**
  * If the user has visited the previous version of the demo before,
- * we want to show them "acme" so they get to see the new theme.
+ * we want to delete the site key so they get to see the new ProficiencyLabs theme.
  */
-export function migrateDefaultSiteToAcme() {
-  const hasMigrated = localStorage.getItem(MIGRATE_TO_ACME_KEY)
+export function migrateDefaultSiteToProficiencyLabs() {
+  const hasMigrated = localStorage.getItem(MIGRATE_TO_PROFICIENCY_LABS_KEY)
 
   // Only do this once.
   if (hasMigrated) {
@@ -15,5 +16,5 @@ export function migrateDefaultSiteToAcme() {
   }
 
   localStorage.removeItem(SITE_KEY)
-  localStorage.setItem(MIGRATE_TO_ACME_KEY, "true")
+  localStorage.setItem(MIGRATE_TO_PROFICIENCY_LABS_KEY, "true")
 }
