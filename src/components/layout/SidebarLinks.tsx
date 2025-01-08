@@ -6,6 +6,9 @@ import { Icon } from "@iconify/react"
 import type { SidebarLink } from "../../types/sidebar-link"
 import { useSidebarLinks } from "../../utils/sidebar-links"
 import { ReactNode } from "react"
+import { useAtomValue } from "jotai"
+import { siteAtom } from "../../store/site"
+import { SiteKey } from "../../types/site"
 
 interface SidebarLinkProps {
   onLinkClick?: (link: SidebarLink) => void
@@ -13,19 +16,24 @@ interface SidebarLinkProps {
 
 export function SidebarLinks({ onLinkClick }: SidebarLinkProps) {
   const links = useSidebarLinks()
+  const site = useAtomValue(siteAtom)
 
   return (
     <Box pt="20px" className="sidebar-links-container">
-      {links.map((link) => renderLink(link, { onLinkClick }))}
+      {links.map((link) => renderLink(link, { onLinkClick, site }))}
     </Box>
   )
 }
 
 const renderLink = (
   link: SidebarLink,
-  context: { isChild?: boolean; onLinkClick?: (link: SidebarLink) => void },
+  context: {
+    isChild?: boolean
+    onLinkClick?: (link: SidebarLink) => void
+    site?: SiteKey
+  },
 ) => {
-  const { isChild, onLinkClick } = context ?? {}
+  const { isChild, onLinkClick, site } = context ?? {}
 
   function renderIcon(): ReactNode {
     if (typeof link.icon === "string") {
@@ -45,8 +53,12 @@ const renderLink = (
     return <link.component />
   }
 
+  // Do not allow toggling site navigation sections on ProficiencyLabs
+  const isNavToggleEnabled = site !== "proficiency"
+
   return (
     <NavLink
+      opened={isNavToggleEnabled ? undefined : true}
       label={
         <Flex align="center" columnGap="6px" className="sidebar-link-label">
           <Box className="sidebar-link-icon">{renderIcon()}</Box>
