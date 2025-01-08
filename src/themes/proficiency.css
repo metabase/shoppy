@@ -140,9 +140,41 @@ body[data-theme="proficiency"] {
     color: var(--color-light-grey);
   }
 
-  /** WORKAROUND: add border to SDK's tooltip popover */
+
   .tippy-box.popover[role="tooltip"] {
+    /** WORKAROUND: add border to SDK's tooltip popover */
     border: 1px solid rgba(0, 0, 0, 0.12);
+
+    /** WORKAROUND: bold all caps for the tooltip header */
+    [data-testid="tooltip-header"] {
+     font-weight: 700;
+     text-transform: uppercase;
+    }
+    
+    [data-testid="row-name"] {
+      font-weight: 400;
+    }
+
+
+
+    .tippy-arrow {
+      color: var(--color-background);
+    }
+  }
+
+  /** WORKAROUND: tooltip font weight and capitalization */
+  .echarts-tooltip-container [data-testid="echarts-tooltip"] {
+   /** bold all caps for the tooltip header */
+   [data-testid="echarts-tooltip-header"]  {
+     font-weight: 700;
+     text-transform: uppercase;
+   }
+
+    /** bold weight for tooltip numbers */
+    tr td:nth-child(3),
+    tr td:nth-child(4) {
+      font-weight: 700;
+    }
   }
 }
 
