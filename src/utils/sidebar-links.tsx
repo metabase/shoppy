@@ -67,12 +67,24 @@ export function useSidebarLinks(): SidebarLink[] {
           {
             to: "/admin/analytics",
             title: "Dashboards",
-            icon: () => <img src="/icon-dashboard.svg" />,
+            icon: () => (
+              <CustomIcon
+                icon="dashboard"
+                fill="rgba(106, 87, 201, 0.75)"
+                size={14}
+              />
+            ),
           },
           {
             to: "/admin/analytics/17",
             title: "Inventory performance",
-            icon: () => <img src="/icon-bar.svg" />,
+            icon: () => (
+              <CustomIcon
+                icon="bar"
+                fill="rgba(106, 87, 201, 0.75)"
+                size={14}
+              />
+            ),
           },
           {
             to: "/admin/analytics/custom",
