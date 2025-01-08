@@ -140,6 +140,11 @@ body[data-theme="proficiency"] {
   .product-card-title {
     color: var(--color-light-grey);
   }
+
+  /** WORKAROUND: add border to SDK's tooltip popover */
+  .tippy-box.popover[role="tooltip"] {
+    border: 1px solid rgba(0, 0, 0, 0.12);
+  }
 }
 
 body:not([data-theme="proficiency"]) .show-only-on-proficiency {
