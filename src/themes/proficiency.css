@@ -140,7 +140,6 @@ body[data-theme="proficiency"] {
     color: var(--color-light-grey);
   }
 
-
   .tippy-box.popover[role="tooltip"] {
     /** WORKAROUND: add border to SDK's tooltip popover */
     border: 1px solid rgba(0, 0, 0, 0.12);
@@ -154,8 +153,6 @@ body[data-theme="proficiency"] {
     [data-testid="row-name"] {
       font-weight: 400;
     }
-
-
 
     .tippy-arrow {
       color: var(--color-background);
