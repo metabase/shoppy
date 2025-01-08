@@ -94,10 +94,9 @@ export function Shell(props: Props) {
         </AppShell.Header>
 
         <AppShell.Navbar
-          p="md"
           withBorder={false}
-          pt={107}
-          pl="30px"
+          pt="107px"
+          px="24px"
           // Required for the "New Dashboard" modal to be on top of the mobile navbar.
           zIndex={2}
         >
