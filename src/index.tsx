@@ -27,6 +27,9 @@ import "./styles/dashboard-workaround.css"
 import { store } from "./store"
 
 import { ThemeProvider } from "./components/ThemeProvider"
+import { migrateDefaultSiteToAcme } from "./utils/migrate-default-site"
+
+migrateDefaultSiteToAcme()
 
 const root = document.getElementById("root")!
 
