@@ -38,7 +38,7 @@ const metabase: MetabaseTheme = {
     "text-primary": colors.lightGrey,
     "text-secondary": colors.lightGrey,
     "text-tertiary": colors.lightGrey,
-    border: "#3B3F3F",
+    border: "rgba(0, 0, 0, 0.12)",
     background: colors.background,
     "background-hover": "#fCFDFD",
     "background-disabled": colors.lighterGrey,
@@ -75,6 +75,7 @@ const metabase: MetabaseTheme = {
     dashboard: {
       card: {
         backgroundColor: "#FFFFFF",
+        border: "1px solid rgba(0, 0, 0, 0.12)",
       },
     },
     number: {
