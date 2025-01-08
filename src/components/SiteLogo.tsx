@@ -12,8 +12,8 @@ export function SiteLogo() {
         <Flex justify="flex-start" align="center" pb="20px">
           <Image src="/logo-acme.svg" maw="40px" mr="8px" />
 
-          <Text fz="28px" lh="28px" fw={700}>
-            Acme Co.
+          <Text fz="21px" lh="21px" fw={700}>
+            ProficiencyLabs
           </Text>
         </Flex>
 
