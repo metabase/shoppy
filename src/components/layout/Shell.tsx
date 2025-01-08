@@ -144,7 +144,7 @@ export function Shell(props: Props) {
         </AppShell.Navbar>
 
         <AppShell.Main pt="90px">
-          {props.children}
+          <Box mih="78vh">{props.children}</Box>
 
           <SiteFooter />
         </AppShell.Main>
