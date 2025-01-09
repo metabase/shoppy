@@ -11,7 +11,7 @@ export const SiteSwitcher = () => {
   const [currentSite, setCurrentSite] = useAtom(siteAtom)
 
   return (
-    <Flex align="center" justify="space-between" w="100%" ff="Lato">
+    <Flex align="center" justify="space-between" w="100%" ff="Lato, sans-serif">
       <Text fz="14px" pr="md" c="#BFC1C1" className="hide-on-mobile">
         Switch to different test sites:
       </Text>

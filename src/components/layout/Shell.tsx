@@ -59,7 +59,7 @@ export function Shell(props: Props) {
             w="100%"
             px="16px"
             className="border-transparent"
-            ff="Lato"
+            ff="Lato, sans-serif"
           >
             <a
               href="https://www.metabase.com/?utm_source=referral&utm_medium=banner&utm_campaign=shoppy-demo"
