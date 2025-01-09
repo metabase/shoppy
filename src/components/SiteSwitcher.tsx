@@ -1,4 +1,4 @@
-import { Flex, Text, ButtonGroup, Button } from "@mantine/core"
+import { Flex, Text, ButtonGroup, Button, Box } from "@mantine/core"
 import { useAtom } from "jotai"
 import { Icon } from "@iconify/react"
 import cx from "classnames"
@@ -11,13 +11,13 @@ export const SiteSwitcher = () => {
   const [currentSite, setCurrentSite] = useAtom(siteAtom)
 
   return (
-    <Flex align="center" justify="space-between" w="100%" ff="Lato">
+    <Flex align="center" justify="space-between" w="100%" ff="Lato, sans-serif">
       <Text fz="14px" pr="md" c="#BFC1C1" className="hide-on-mobile">
-        Switch to different test shops
+        Switch to different test sites:
       </Text>
 
       <ButtonGroup variant="outline" w={{ base: "100%", sm: "auto" }}>
-        {SITES.map((site) => {
+        {SITES.map((site, siteIndex) => {
           const active = currentSite === site.key
 
           return (
@@ -40,7 +40,12 @@ export const SiteSwitcher = () => {
                 <Icon icon={site.icon} fontSize={14} overflow="visible" />
               }
             >
-              {site.title}
+              {/* hide the word "Site" on mobile */}
+              <Box display={{ base: "none", xs: "block" }}>
+                Site {siteIndex + 1}
+              </Box>
+
+              <Box display={{ base: "block", xs: "none" }}>{siteIndex + 1}</Box>
             </Button>
           )
         })}

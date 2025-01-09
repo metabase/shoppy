@@ -1,4 +1,4 @@
-import { SimpleGrid, Stack, Title, Flex } from "@mantine/core"
+import { SimpleGrid, Stack, Title, Container } from "@mantine/core"
 import { useQuery } from "@tanstack/react-query"
 import { navigate } from "wouter/use-browser-location"
 
@@ -11,6 +11,7 @@ import { useAtom } from "jotai"
 import { SiteKey } from "../../types/site"
 import { FullPageLoader } from "../../components/Loader"
 import { useSiteChanged } from "../../utils/use-site-changed"
+import { getCategoryList } from "../../utils/query-category"
 
 interface Props {
   categoryId?: string
@@ -18,11 +19,18 @@ interface Props {
 
 export const ProductAnalyticsPage = (props: Props) => {
   const [site] = useAtom(siteAtom)
-  const categoryId = props.categoryId && parseInt(props.categoryId, 10)
+
+  const categoryId = props.categoryId ? parseInt(props.categoryId, 10) : null
 
   const query = useQuery({
     queryKey: ["products", site],
     queryFn: () => getProductList(site),
+  })
+
+  const categoryQuery = useQuery({
+    queryKey: ["categories", site],
+    queryFn: () => getCategoryList(site),
+    enabled: categoryId !== null,
   })
 
   let products = query.data ?? []
@@ -31,6 +39,9 @@ export const ProductAnalyticsPage = (props: Props) => {
     products = products.filter((product) => product.category.id === categoryId)
   }
 
+  const currentCategoryName =
+    categoryQuery.data?.find((category) => category.id === categoryId)?.name ?? "All products"
+
   // If the site changes, redirect back to the product listing page.
   // This ensures we don't show product from last site's categories.
   useSiteChanged(() => navigate("/admin/products"))
@@ -38,9 +49,9 @@ export const ProductAnalyticsPage = (props: Props) => {
   if (query.isLoading) return <FullPageLoader />
 
   return (
-    <Flex w="100%" justify="center">
+    <Container>
       <Stack w="100%" maw="1000px" className="gap-y-10">
-        <Title className="overview-title">All products</Title>
+        <Title className="overview-title">{currentCategoryName}</Title>
 
         <SimpleGrid
           cols={{ base: 1, xs: 2, md: 3 }}
@@ -52,7 +63,7 @@ export const ProductAnalyticsPage = (props: Props) => {
           ))}
         </SimpleGrid>
       </Stack>
-    </Flex>
+    </Container>
   )
 }
 
@@ -60,4 +71,5 @@ const VERTICAL_SPACING: Record<SiteKey, number> = {
   stitch: 64,
   luminara: 28,
   pug: 80,
+  proficiency: 64,
 }

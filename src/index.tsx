@@ -15,6 +15,7 @@ import "./styles/index.css"
 import "./themes/variables.css"
 
 // Theme overrides for each themes
+import "./themes/proficiency.css"
 import "./themes/stitch.css"
 import "./themes/luminara.css"
 import "./themes/pug.css"
@@ -22,11 +23,13 @@ import "./themes/pug.css"
 // CSS style overrides used for workarounds.
 import "./styles/smartscalar-workaround.css"
 import "./styles/dashboard-workaround.css"
-import "./styles/viz-workaround.css"
 
 import { store } from "./store"
 
 import { ThemeProvider } from "./components/ThemeProvider"
+import { migrateDefaultSiteToProficiencyLabs } from "./utils/migrate-default-site"
+
+migrateDefaultSiteToProficiencyLabs()
 
 const root = document.getElementById("root")!
 

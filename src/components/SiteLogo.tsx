@@ -1,10 +1,22 @@
-import { Text, Image } from "@mantine/core"
+import { Text, Image, Flex } from "@mantine/core"
 import { useAtom } from "jotai"
 
 import { siteAtom } from "../store/site"
 
 export function SiteLogo() {
   const [site] = useAtom(siteAtom)
+
+  if (site === "proficiency") {
+    return (
+      <Flex justify="flex-start" align="center" mb="20px">
+        <Image src="/logo-proficiency.svg" maw="40px" mr="8px" />
+
+        <Text fz="21px" lh="21px" fw={700}>
+          ProficiencyLabs
+        </Text>
+      </Flex>
+    )
+  }
 
   if (site === "luminara") {
     return <Image src="/logo-luminara.svg" maw="200px" />
