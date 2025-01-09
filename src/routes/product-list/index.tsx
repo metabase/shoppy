@@ -42,7 +42,7 @@ export const ProductAnalyticsPage = (props: Props) => {
   const currentCategoryName =
     categoryQuery.data?.find((c) => c.id === categoryId)?.name ?? "All products"
 
-  // If the sitechanges, redirect back to the product listing page.
+  // If the site changes, redirect back to the product listing page.
   // This ensures we don't show product from last site's categories.
   useSiteChanged(() => navigate("/admin/products"))
 

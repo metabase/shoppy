@@ -6,6 +6,9 @@
  */
 export const API_HOST = getAPIHost()
 
+// FIXME: For debugging Vercel environment, to revert before merging.
+console.log("Current API host:", API_HOST)
+
 export const AUTH_PROVIDER_URI =
   import.meta.env.VITE_APP_AUTH_PROVIDER_URI ?? "/sso/metabase"
 
