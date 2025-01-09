@@ -83,7 +83,12 @@ const renderLink = (
       classNames={{
         chevron: "sidebar-link-chevron",
         children: "sidebar-link-children-container space-y-1",
-        body: "flex-[2]",
+        body: cx(
+          "flex-[2]",
+
+          // do not show cursor pointer on non-toggleable nav headers
+          link.children && !isNavToggleEnabled && "cursor-default",
+        ),
         section: "flex-[1]",
       }}
       renderRoot={(props) => (
