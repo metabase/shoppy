@@ -10,7 +10,7 @@ import { siteAtom } from "../store/site"
 import { CustomIcon } from "../components/CustomIcon"
 import { Box, Divider } from "@mantine/core"
 
-const CATEGORY_ICONS: Record<string, string> = {
+const PROFICIENCY_CATEGORY_ICONS: Record<string, string> = {
   "Leadership Training": "iconoir:leaderboard-star",
   "Technical Skills": "iconoir:code",
   "Soft Skills": "iconoir:people-tag",
@@ -35,7 +35,7 @@ export function useSidebarLinks(): SidebarLink[] {
     const categoryLinks: SidebarLink[] = categories.map((category) => ({
       title: category.name,
       to: `/admin/categories/${category.id}`,
-      icon: CATEGORY_ICONS[category.name],
+      icons: { proficiency: PROFICIENCY_CATEGORY_ICONS[category.name] },
     }))
 
     return [
@@ -45,7 +45,7 @@ export function useSidebarLinks(): SidebarLink[] {
           {
             to: "/admin/products",
             title: "All products",
-            icon: "iconoir:report-columns",
+            icons: { proficiency: "iconoir:report-columns" },
           },
           ...categoryLinks,
         ],
@@ -60,6 +60,7 @@ export function useSidebarLinks(): SidebarLink[] {
             />
           </Box>
         ),
+        key: "proficiency-divider",
       },
       {
         title: "Analytics",
@@ -67,35 +68,42 @@ export function useSidebarLinks(): SidebarLink[] {
           {
             to: "/admin/analytics",
             title: "Dashboards",
-            icon: () => (
-              <CustomIcon
-                icon="dashboard"
-                fill="rgba(106, 87, 201, 0.75)"
-                size={14}
-              />
-            ),
+
+            icons: {
+              proficiency: () => (
+                <CustomIcon
+                  icon="dashboard"
+                  fill="rgba(106, 87, 201, 0.75)"
+                  size={14}
+                />
+              ),
+            },
           },
           {
             to: "/admin/analytics/17",
             title: "Inventory performance",
-            icon: () => (
-              <CustomIcon
-                icon="bar"
-                fill="rgba(106, 87, 201, 0.75)"
-                size={14}
-              />
-            ),
+            icons: {
+              proficiency: () => (
+                <CustomIcon
+                  icon="bar"
+                  fill="rgba(106, 87, 201, 0.75)"
+                  size={14}
+                />
+              ),
+            },
           },
           {
             to: "/admin/analytics/custom",
             title: "Saved explorations",
-            icon: () => (
-              <CustomIcon
-                icon="insight"
-                fill="rgba(106, 87, 201, 0.75)"
-                size={14}
-              />
-            ),
+            icons: {
+              proficiency: () => (
+                <CustomIcon
+                  icon="insight"
+                  fill="rgba(106, 87, 201, 0.75)"
+                  size={14}
+                />
+              ),
+            },
           },
         ],
         defaultOpened: true,

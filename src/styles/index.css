@@ -21,10 +21,6 @@ body:not([data-theme="luminara"]) {
   background: var(--color-background) !important;
 }
 
-body:not([data-theme="proficiency"]) .sidebar-link-icon {
-  display: none;
-}
-
 .overview-title,
 .product-detail-title {
   font-size: 36px;

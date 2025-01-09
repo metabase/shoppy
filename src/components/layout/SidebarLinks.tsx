@@ -36,32 +36,37 @@ const renderLink = (
   const { isChild, onLinkClick, site } = context ?? {}
 
   function renderIcon(): ReactNode {
-    if (!link.icon) {
+    const icon = site && link.icons?.[site]
+
+    if (!icon) {
       return null
     }
 
-    if (typeof link.icon === "string") {
-      return <Icon icon={link.icon} />
+    if (typeof icon === "string") {
+      return <Icon icon={icon} />
     }
 
-    const NavbarIcon = link.icon
+    const NavbarIcon = icon
 
     return <NavbarIcon />
   }
 
   if (link.component) {
-    return <link.component />
+    return <link.component key={link.key} />
   }
 
   // Do not allow toggling site navigation sections on ProficiencyLabs
   const isNavToggleEnabled = site !== "proficiency"
+  const iconElement = renderIcon()
 
   return (
     <NavLink
       opened={isNavToggleEnabled ? undefined : true}
       label={
         <Flex align="center" columnGap="6px" className="sidebar-link-label">
-          <Box className="sidebar-link-icon">{renderIcon()}</Box>
+          {iconElement && (
+            <Box className="sidebar-link-icon">{iconElement}</Box>
+          )}
 
           <Box className="sidebar-link-title">{link.title}</Box>
         </Flex>
@@ -101,7 +106,7 @@ const renderLink = (
     >
       {link.children &&
         link.children.map((link) =>
-          renderLink(link, { isChild: true, onLinkClick }),
+          renderLink(link, { isChild: true, onLinkClick, site }),
         )}
     </NavLink>
   )

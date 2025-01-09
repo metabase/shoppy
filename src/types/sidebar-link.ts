@@ -1,3 +1,5 @@
+import { SiteKey } from "./site"
+
 export interface SidebarLink {
   to?: string
   title?: string
@@ -7,5 +9,7 @@ export interface SidebarLink {
   component?: React.FC
   onClick?: () => void
   hideOnMobile?: boolean
-  icon?: string | React.FC
+
+  /** Icons are specific to a site. */
+  icons?: Partial<Record<SiteKey, string | React.FC>>
 }
