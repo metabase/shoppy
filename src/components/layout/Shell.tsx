@@ -107,6 +107,11 @@ export function Shell(props: Props) {
                 <SiteLogo />
               </Link>
 
+              <Divider
+                orientation="horizontal"
+                className="proficiency-sidebar-divider show-only-on-proficiency"
+              />
+
               <SidebarLinks
                 onLinkClick={(link) => {
                   if (!link.children) {
