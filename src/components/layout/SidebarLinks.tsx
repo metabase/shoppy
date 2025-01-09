@@ -36,12 +36,12 @@ const renderLink = (
   const { isChild, onLinkClick, site } = context ?? {}
 
   function renderIcon(): ReactNode {
-    if (typeof link.icon === "string") {
-      return <Icon icon={link.icon} />
-    }
-
     if (!link.icon) {
       return null
+    }
+
+    if (typeof link.icon === "string") {
+      return <Icon icon={link.icon} />
     }
 
     const NavbarIcon = link.icon
