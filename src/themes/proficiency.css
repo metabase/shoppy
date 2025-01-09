@@ -159,6 +159,12 @@ body[data-theme="proficiency"] {
     }
   }
 
+  /** WORKAROUND: style SDK's tooltip popover */
+  .echarts-tooltip-container > div:last-of-type:last-of-type {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08) !important;
+    border: 1px solid rgba(0, 0, 0, 0.12) !important;
+  }
+
   /** WORKAROUND: tooltip font weight and capitalization */
   .echarts-tooltip-container [data-testid="echarts-tooltip"] {
    /** bold all caps for the tooltip header */
