@@ -61,3 +61,7 @@ body:not([data-theme="luminara"]) {
   width: fit-content;
   height: 30px;
 }
+
+.sidebar-links-container {
+  @apply space-y-3;
+}

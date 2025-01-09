@@ -37,7 +37,7 @@ export const ProductCard = ({ product }: Props) => {
           </Box>
 
           <Stack className="smartscalar product-card-trend" mih={70} gap={0}>
-            <Text className="product-card-title" pl="8px">
+            <Text className="product-card-title" pl="8px" lineClamp={1}>
               {truncate(product.title, truncateLength)}
             </Text>
 
@@ -46,9 +46,9 @@ export const ProductCard = ({ product }: Props) => {
                 <RemountOnSiteChange>
                   <StaticQuestion
                     questionId={161}
-                    showVisualizationSelector={false}
+                    withChartTypeSelector={false}
                     height={questionHeight}
-                    parameterValues={{ product_id: product.id }}
+                    initialSqlParameters={{ product_id: product.id }}
                   />
                 </RemountOnSiteChange>
               </LoadWhenVisible>

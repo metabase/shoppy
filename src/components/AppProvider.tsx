@@ -1,7 +1,10 @@
 import { useMemo } from "react"
 import { useAtom } from "jotai"
 
-import { MetabaseProvider, type SDKConfig } from "@metabase/embedding-sdk-react"
+import {
+  MetabaseProvider,
+  type MetabaseAuthConfig,
+} from "@metabase/embedding-sdk-react"
 
 import {
   API_HOST,
@@ -27,12 +30,10 @@ export const AppProvider = ({ children }: Props) => {
   }, [site])
 
   // Configuration for the Metabase provider.
-  const config: SDKConfig = useMemo(() => {
+  const authConfig: MetabaseAuthConfig = useMemo(() => {
     return {
       metabaseInstanceUrl: METABASE_INSTANCE_URL,
       authProviderUri: `${API_HOST}${AUTH_PROVIDER_URI}`,
-      loaderComponent: MetabaseLoader,
-      errorComponent: MetabaseError,
 
       // Append the current site as a query parameter to the auth provider URL.
       fetchRequestToken: (url: string) =>
@@ -41,7 +42,12 @@ export const AppProvider = ({ children }: Props) => {
   }, [site])
 
   return (
-    <MetabaseProvider config={config} theme={theme}>
+    <MetabaseProvider
+      authConfig={authConfig}
+      theme={theme}
+      loaderComponent={MetabaseLoader}
+      errorComponent={MetabaseError}
+    >
       {children}
 
       <FontLoader />

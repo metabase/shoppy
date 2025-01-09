@@ -71,6 +71,19 @@ const metabase: MetabaseTheme = {
         lineHeight: "36px",
       },
     },
+    tooltip: {
+      /** Tooltip text color. */
+      textColor: colors.green3,
+
+      /** Secondary text color shown in the tooltip, e.g. for tooltip headers and percentage changes. */
+      secondaryTextColor: colors.green3,
+
+      /** Tooltip background color. */
+      backgroundColor: colors.background,
+
+      /** Tooltip background color for focused rows. */
+      focusedBackgroundColor: colors.viz1,
+    },
     popover: {
       zIndex: 201,
     },

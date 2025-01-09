@@ -48,7 +48,7 @@ export const SiteFooter = () => {
         </Anchor>
 
         <Anchor
-          href="https://www.metabase.com/docs/latest/embedding/start?utm_source=referral&utm_medium=banner&utm_campaign=shoppy-demo"
+          href="https://www.metabase.com/docs/latest/embedding/sdk/introduction?utm_source=referral&utm_medium=banner&utm_campaign=shoppy-demo"
           target="_blank"
           rel="noreferrer"
         >

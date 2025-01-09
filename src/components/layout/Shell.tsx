@@ -1,4 +1,12 @@
-import { AppShell, Box, Flex, Image, Burger, Stack } from "@mantine/core"
+import {
+  AppShell,
+  Box,
+  Flex,
+  Image,
+  Burger,
+  Stack,
+  Divider,
+} from "@mantine/core"
 import { useDisclosure } from "@mantine/hooks"
 import { ReactNode } from "react"
 import { Link } from "wouter"
@@ -51,7 +59,7 @@ export function Shell(props: Props) {
             w="100%"
             px="16px"
             className="border-transparent"
-            ff="Lato"
+            ff="Lato, sans-serif"
           >
             <a
               href="https://www.metabase.com/?utm_source=referral&utm_medium=banner&utm_campaign=shoppy-demo"
@@ -82,10 +90,9 @@ export function Shell(props: Props) {
         </AppShell.Header>
 
         <AppShell.Navbar
-          p="md"
           withBorder={false}
-          pt={107}
-          pl="30px"
+          pt="107px"
+          px="24px"
           // Required for the "New Dashboard" modal to be on top of the mobile navbar.
           zIndex={2}
         >
@@ -100,6 +107,11 @@ export function Shell(props: Props) {
                 <SiteLogo />
               </Link>
 
+              <Divider
+                orientation="horizontal"
+                className="proficiency-sidebar-divider show-only-on-proficiency"
+              />
+
               <SidebarLinks
                 onLinkClick={(link) => {
                   if (!link.children) {
@@ -108,7 +120,12 @@ export function Shell(props: Props) {
                 }}
               />
 
-              <Stack className="hide-on-mobile" pt={18}>
+              <Divider
+                orientation="horizontal"
+                className="proficiency-sidebar-divider show-only-on-proficiency my-4"
+              />
+
+              <Stack className="hide-on-mobile sidebar-create-section" pt={18}>
                 <NewQuestionMenu position="bottom-start" prefix="/admin">
                   <ThemedButton className="sidebar-action-button" size="sm">
                     New custom exploration
@@ -130,8 +147,8 @@ export function Shell(props: Props) {
           </Flex>
         </AppShell.Navbar>
 
-        <AppShell.Main pt={90}>
-          {props.children}
+        <AppShell.Main pt="90px">
+          <Box mih="78vh">{props.children}</Box>
 
           <SiteFooter />
         </AppShell.Main>
