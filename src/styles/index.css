@@ -69,8 +69,3 @@ body:not([data-theme="proficiency"]) .sidebar-link-icon {
 .sidebar-links-container {
   @apply space-y-3;
 }
-
-/** Mantine scroll lock causes the header to shift right by 15px on mobile when opening a modal. This class prevents that. */
-.preserve-header-position.preserve-header-position {
-  right: 0 !important;
-}
