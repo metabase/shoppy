@@ -41,7 +41,7 @@ export const ProductCard = ({ product }: Props) => {
               {truncate(product.title, truncateLength)}
             </Text>
 
-            <Box py={4} mih={questionHeight}>
+            <Box py={4} h={questionHeight}>
               <LoadWhenVisible>
                 <RemountOnSiteChange>
                   <StaticQuestion
