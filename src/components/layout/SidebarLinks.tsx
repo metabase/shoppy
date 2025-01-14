@@ -82,7 +82,7 @@ const renderLink = (
       }}
       classNames={{
         chevron: "sidebar-link-chevron",
-        children: "sidebar-link-children-container space-y-1",
+        children: "sidebar-link-children-container",
         collapse: "sidebar-link-collapse",
         body: cx(
           "flex-[2]",
