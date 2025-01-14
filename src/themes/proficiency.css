@@ -186,18 +186,19 @@ body[data-theme="proficiency"] {
   }
 
   .proficiency-gradient {
-    @apply fixed top-10 right-0 z-[-10] pointer-events-none;
+    position: fixed;
+    top: 40px;
+    right: 0px;
+    z-index: -1;
+    pointer-events: none;
+    width: 70%;
 
-    svg {
-      width: 850px;
-      height: 265px;
+    @media screen and (max-width: 768px) {
+      width: 80%;
     }
 
-    @media screen and (max-width: 640px) {
-      svg {
-        width: 367px;
-        height: 115px;
-      }
+    @media screen and (max-width: 600px) {
+      width: 100%;
     }
   }
 }
