@@ -15,7 +15,7 @@ export function DashboardPage(props: Props) {
   useReloadOnSiteChange()
 
   return (
-    <Box mih="100vh" className="dashboard-container smartscalar" pt="40px">
+    <Box mih="100vh" className="dashboard-container smartscalar" pt="30px">
       <InteractiveDashboard
         dashboardId={dashboardId}
         withTitle
