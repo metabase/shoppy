@@ -45,33 +45,8 @@ export const InteractiveQuestionView = ({ isSaveEnabled = false }: Props) => {
         </Group>
 
         <Group gap="xs">
-          <Popover position="bottom-end">
-            <Popover.Target>
-              <ThemedButton
-                size="compact-sm"
-                leftSection={<CustomIcon icon="filter" />}
-              >
-                Change the filter
-              </ThemedButton>
-            </Popover.Target>
-            <Popover.Dropdown>
-              <InteractiveQuestion.Filter withColumnItemIcon />
-            </Popover.Dropdown>
-          </Popover>
-
-          <Popover position="bottom-end">
-            <Popover.Target>
-              <ThemedButton
-                size="compact-sm"
-                leftSection={<CustomIcon icon="sum" />}
-              >
-                Change the summary
-              </ThemedButton>
-            </Popover.Target>
-            <Popover.Dropdown>
-              <InteractiveQuestion.Summarize />
-            </Popover.Dropdown>
-          </Popover>
+          <InteractiveQuestion.FilterDropdown />
+          <InteractiveQuestion.SummarizeDropdown />
 
           {isSaveEnabled && (
             <ThemedButton
