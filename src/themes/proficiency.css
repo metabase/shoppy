@@ -57,6 +57,10 @@ body[data-theme="proficiency"] {
     padding-inline-start: 0px;
   }
 
+  .sidebar-child-container .sidebar-link-title {
+    color: var(--color-light-grey);
+  }
+  
   .sidebar-active-child {
     background: rgba(106, 87, 201, 0.1);
     transition: background 0.4s ease;
@@ -119,10 +123,6 @@ body[data-theme="proficiency"] {
 
   .sidebar-links-container {
     @apply space-y-1;
-  }
-
-  .sidebar-link-title {
-    color: var(--color-dark-grey);
   }
 
   .sidebar-icons svg {
