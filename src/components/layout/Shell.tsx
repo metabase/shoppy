@@ -147,7 +147,7 @@ export function Shell(props: Props) {
           </Flex>
         </AppShell.Navbar>
 
-        <AppShell.Main pt="90px">
+        <AppShell.Main>
           <Box mih="78vh">{props.children}</Box>
 
           <SiteFooter />

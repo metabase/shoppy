@@ -65,3 +65,8 @@ body:not([data-theme="luminara"]) {
 .sidebar-links-container {
   @apply space-y-3;
 }
+
+/** removes the hidden collapse element as it adds unwanted spacing when space-y-1 is applied */
+.sidebar-link-children-container .sidebar-link-collapse {
+  display: none;
+}
