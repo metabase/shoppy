@@ -1,6 +1,6 @@
 import { useReducer } from "react"
 import { useAtom } from "jotai"
-import { Box, Flex, Group, Modal } from "@mantine/core"
+import { Box, Flex, Group, Modal, Popover } from "@mantine/core"
 import { InteractiveQuestion } from "@metabase/embedding-sdk-react"
 
 import { CustomIcon } from "./CustomIcon"
@@ -45,21 +45,33 @@ export const InteractiveQuestionView = ({ isSaveEnabled = false }: Props) => {
         </Group>
 
         <Group gap="xs">
-          <ThemedButton
-            size="compact-sm"
-            leftSection={<CustomIcon icon="filter" />}
-            onClick={() => changeView("filter")}
-          >
-            Add a filter
-          </ThemedButton>
+          <Popover position="bottom-end">
+            <Popover.Target>
+              <ThemedButton
+                size="compact-sm"
+                leftSection={<CustomIcon icon="filter" />}
+              >
+                Change the filter
+              </ThemedButton>
+            </Popover.Target>
+            <Popover.Dropdown>
+              <InteractiveQuestion.Filter withColumnItemIcon />
+            </Popover.Dropdown>
+          </Popover>
 
-          <ThemedButton
-            size="compact-sm"
-            leftSection={<CustomIcon icon="sum" />}
-            onClick={() => changeView("summary")}
-          >
-            Change the summary
-          </ThemedButton>
+          <Popover position="bottom-end">
+            <Popover.Target>
+              <ThemedButton
+                size="compact-sm"
+                leftSection={<CustomIcon icon="sum" />}
+              >
+                Change the summary
+              </ThemedButton>
+            </Popover.Target>
+            <Popover.Dropdown>
+              <InteractiveQuestion.Summarize />
+            </Popover.Dropdown>
+          </Popover>
 
           {isSaveEnabled && (
             <ThemedButton
@@ -78,17 +90,8 @@ export const InteractiveQuestionView = ({ isSaveEnabled = false }: Props) => {
 
       {view === "viz" && (
         <Box h="500px">
-          <InteractiveQuestion.FilterBar />
           <InteractiveQuestion.QuestionVisualization />
         </Box>
-      )}
-
-      {view === "filter" && (
-        <InteractiveQuestion.Filter onClose={() => changeView("viz")} />
-      )}
-
-      {view === "summary" && (
-        <InteractiveQuestion.Summarize onClose={() => changeView("viz")} />
       )}
 
       {view === "editor" && (
