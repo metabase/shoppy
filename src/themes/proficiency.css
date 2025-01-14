@@ -186,7 +186,7 @@ body[data-theme="proficiency"] {
   }
 
   .proficiency-gradient {
-    position: fixed;
+    position: absolute;
     top: 40px;
     right: 0px;
     z-index: -1;
@@ -199,6 +199,13 @@ body[data-theme="proficiency"] {
 
     @media screen and (max-width: 600px) {
       width: 100%;
+    }
+  }
+
+  .question-container, .dashboard-container {
+    /* WORKAROUND: hide the table background, while keeping popover backgrounds white */
+    [role="gridcell"], [role="columnheader"], [data-testid="TableInteractive-root"], [aria-label="grid"] {
+      background: transparent;
     }
   }
 }
