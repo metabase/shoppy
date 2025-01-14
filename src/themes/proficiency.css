@@ -122,7 +122,7 @@ body[data-theme="proficiency"] {
   }
 
   .sidebar-link-title {
-    color: var(--color-light-grey);
+    color: var(--color-dark-grey);
   }
 
   .sidebar-icons svg {
