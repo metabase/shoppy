@@ -23,6 +23,7 @@ import { siteIsReloadingAtom } from "../../store/site"
 import { useAtom } from "jotai"
 import { FullPageLoader } from "../Loader"
 import { SiteFooter } from "../SiteFooter"
+import { ProficiencyGradient } from "../ProficiencyGradient"
 
 interface Props {
   children: ReactNode
@@ -148,6 +149,8 @@ export function Shell(props: Props) {
         </AppShell.Navbar>
 
         <AppShell.Main>
+          <ProficiencyGradient />
+
           <Box mih="78vh">{props.children}</Box>
 
           <SiteFooter />

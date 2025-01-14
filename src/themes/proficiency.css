@@ -184,6 +184,22 @@ body[data-theme="proficiency"] {
     width: 100%;
     height: 36px;
   }
+
+  .proficiency-gradient {
+    @apply fixed top-10 right-0 z-[-10] pointer-events-none;
+
+    svg {
+      width: 850px;
+      height: 265px;
+    }
+
+    @media screen and (max-width: 640px) {
+      svg {
+        width: 367px;
+        height: 115px;
+      }
+    }
+  }
 }
 
 body:not([data-theme="proficiency"]) .show-only-on-proficiency {
