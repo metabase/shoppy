@@ -179,6 +179,11 @@ body[data-theme="proficiency"] {
       font-weight: 700;
     }
   }
+
+  .sidebar-action-button {
+    width: 100%;
+    height: 36px;
+  }
 }
 
 body:not([data-theme="proficiency"]) .show-only-on-proficiency {
