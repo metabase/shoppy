@@ -6,8 +6,6 @@ export const ProficiencyGradient = () => {
   return (
     <Box className="proficiency-gradient show-only-on-proficiency">
       <svg
-        // width="1103"
-        // height="345"
         viewBox="0 0 1103 345"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
