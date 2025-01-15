@@ -65,3 +65,4 @@ body:not([data-theme="luminara"]) {
 .sidebar-links-container {
   @apply space-y-3;
 }
+

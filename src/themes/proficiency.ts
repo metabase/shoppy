@@ -73,6 +73,7 @@ const metabase: MetabaseTheme = {
       padding: "6px 16px",
     },
     dashboard: {
+      backgroundColor: "transparent",
       card: {
         backgroundColor: "#FFFFFF",
         border: "1px solid rgba(0, 0, 0, 0.12)",
