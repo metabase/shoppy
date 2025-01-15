@@ -66,4 +66,10 @@ body[data-theme="proficiency"] .dashboard-container {
   footer {
     border: none;
   }
+
+  h2 {
+    color: var(--color-dark-grey);
+    font-size: 32px;
+    font-weight: 700;
+  }
 }

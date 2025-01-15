@@ -57,6 +57,10 @@ body[data-theme="proficiency"] {
     padding-inline-start: 0px;
   }
 
+  .sidebar-child-container .sidebar-link-title {
+    color: var(--color-light-grey);
+  }
+  
   .sidebar-active-child {
     background: rgba(106, 87, 201, 0.1);
     transition: background 0.4s ease;
@@ -121,10 +125,6 @@ body[data-theme="proficiency"] {
     @apply space-y-1;
   }
 
-  .sidebar-link-title {
-    color: var(--color-light-grey);
-  }
-
   .sidebar-icons svg {
     padding: 4px;
     border-radius: 4px;
@@ -177,6 +177,35 @@ body[data-theme="proficiency"] {
     tr td:nth-child(3),
     tr td:nth-child(4) {
       font-weight: 700;
+    }
+  }
+
+  .sidebar-action-button {
+    width: 100%;
+    height: 36px;
+  }
+
+  .proficiency-gradient {
+    position: absolute;
+    top: 40px;
+    right: 0px;
+    z-index: -1;
+    pointer-events: none;
+    width: 70%;
+
+    @media screen and (max-width: 768px) {
+      width: 80%;
+    }
+
+    @media screen and (max-width: 600px) {
+      width: 100%;
+    }
+  }
+
+  .question-container, .dashboard-container {
+    /* WORKAROUND: hide the table background, while keeping popover backgrounds white */
+    [role="gridcell"], [role="columnheader"], [data-testid="TableInteractive-root"], [aria-label="grid"] {
+      background: transparent;
     }
   }
 }

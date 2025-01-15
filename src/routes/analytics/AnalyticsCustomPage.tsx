@@ -25,7 +25,7 @@ export function AnalyticsCustomPage() {
   useReloadOnSiteChange()
 
   return (
-    <Container w="100%" p={20}>
+    <Container w="100%" p={20} pt="80px">
       <Flex justify="flex-end" gap="xs" pb="xs" className="hide-on-mobile">
         <NewQuestionMenu position="bottom-end">
           <ThemedButton>New Question</ThemedButton>
