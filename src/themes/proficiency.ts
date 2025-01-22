@@ -37,11 +37,11 @@ const metabase: MetabaseTheme = {
     filter: colors.primary,
     "text-primary": colors.lightGrey,
     "text-secondary": colors.lightGrey,
-    "text-tertiary": colors.lightGrey,
+    "text-tertiary": "rgba(0, 0, 0, 0.5)",
     border: "rgba(0, 0, 0, 0.12)",
     background: colors.background,
     "background-hover": "#fCFDFD",
-    "background-disabled": colors.lighterGrey,
+    "background-disabled": "rgba(0, 0, 0, 0.1)",
     charts: [
       colors.primary,
       "rgba(37, 90, 157, 1)",
