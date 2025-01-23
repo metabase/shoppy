@@ -9,7 +9,7 @@ const colors = {
   lighterGrey: "#E3E7E4",
   lightGrey: "#ADABA9",
   darkGrey: "#3B3F3F",
-  background: "#151C20",
+  background: "#161A1D",
 }
 
 const mantine: MantineThemeOverride = {

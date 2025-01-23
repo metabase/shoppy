@@ -43,7 +43,7 @@ const metabase: MetabaseTheme = {
     background: colors.background,
     "background-secondary": colors.background,
     "background-hover": colors.background,
-    "background-disabled": colors.green2,
+    "background-disabled": "#d6d6d6",
     charts: [
       colors.viz1,
       "#E09862",

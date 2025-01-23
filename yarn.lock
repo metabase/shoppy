@@ -1108,10 +1108,10 @@
   resolved "https://registry.yarnpkg.com/@mantine/utils/-/utils-6.0.21.tgz#6185506e91cba3e308aaa8ea9ababc8e767995d6"
   integrity sha512-33RVDRop5jiWFao3HKd3Yp7A9mEq4HAJxJPTuYm1NkdqX6aTKOQK7wT8v8itVodBp+sb4cJK6ZVdD1UurK/txQ==
 
-"@metabase/embedding-sdk-react@^0.52.6":
-  version "0.52.6"
-  resolved "https://registry.yarnpkg.com/@metabase/embedding-sdk-react/-/embedding-sdk-react-0.52.6.tgz#6fbf6ce0674306f1ac4643fe464a6c10ab627e3a"
-  integrity sha512-wRtfaB4tDqP55WDz6seH7PCeC1vOxZw7q6elerYKphSv9VRlZlB1f3ae/IHqfvT8XOuFGf9GOUoD7z/85grsiA==
+"@metabase/embedding-sdk-react@^0.52.7":
+  version "0.52.7"
+  resolved "https://registry.yarnpkg.com/@metabase/embedding-sdk-react/-/embedding-sdk-react-0.52.7.tgz#260895eeb95d7e42797b4097b261349cc523998b"
+  integrity sha512-OyZVk/6SBlN9/kivlWFTgDm0LrM61xMoJsm9ELerT/GoGKtxCMhE7qaWJjDPyDrKUucAMgTRoVhghsHqpbidnw==
   dependencies:
     "@dnd-kit/core" "^6.0.8"
     "@dnd-kit/modifiers" "^6.0.1"

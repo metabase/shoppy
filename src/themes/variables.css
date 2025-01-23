@@ -4,7 +4,7 @@ body[data-theme="stitch"] {
   --color-lighter-grey: #e3e7e4;
   --color-light-grey: #c4c9c7;
   --color-dark-grey: #3b3f3f;
-  --color-background: #151c20;
+  --color-background: #161a1d;
   --color-footer-icon: var(--color-light-grey);
   --icon-primary: var(--color-primary);
 }
