@@ -57,6 +57,19 @@ const metabase: MetabaseTheme = {
     negative: colors.negative,
   },
   components: {
+    tooltip: {
+      /** Tooltip text color. */
+      textColor: colors.darkGrey,
+
+      /** Secondary text color shown in the tooltip, e.g. for tooltip headers and percentage changes. */
+      secondaryTextColor: colors.darkGrey,
+
+      /** Tooltip background color. */
+      backgroundColor: colors.background,
+
+      /** Tooltip background color for focused rows. */
+      focusedBackgroundColor: colors.lighterGrey,
+    },
     cartesian: {
       padding: "6px 16px",
     },

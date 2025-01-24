@@ -21,7 +21,12 @@ export function DashboardPage(props: Props) {
         withTitle
         withDownloads={false}
         renderDrillThroughQuestion={() => (
-          <Container size="1000px" w="100%" pt="40px">
+          <Container
+            size="1000px"
+            w="100%"
+            pt="40px"
+            className="drill-question-container"
+          >
             <InteractiveQuestionView isSaveEnabled={false} />
           </Container>
         )}
