@@ -92,5 +92,12 @@ body[data-theme="luminara"] {
   .themed-button {
     background: var(--color-light-grey);
   }
+
+  .question-container, .dashboard-container {
+    /* WORKAROUND: table border radius */
+    [data-testid="TableInteractive-root"] {
+      border-radius: 6px;
+    }
+  }
 }
 

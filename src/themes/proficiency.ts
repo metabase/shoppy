@@ -88,6 +88,11 @@ const metabase: MetabaseTheme = {
     popover: {
       zIndex: 201,
     },
+    question: {
+      toolbar: {
+        backgroundColor: "transparent",
+      },
+    },
   },
 }
 
