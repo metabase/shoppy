@@ -13,7 +13,7 @@ export const SiteFooter = () => {
       : "/metabase-logo-without-wordmark-light.svg"
 
   return (
-    <Group justify="center" align="center" pt="50px" pb="lg">
+    <Group justify="center" align="center" py="lg">
       <Anchor
         href="https://www.metabase.com/?utm_source=referral&utm_medium=banner&utm_campaign=shoppy-demo"
         target="_blank"

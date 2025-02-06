@@ -22,7 +22,7 @@ export const NewFromTemplatePage = () => {
 
   if (templateOrSavedQuestionId === undefined) {
     return (
-      <Container pt="80px">
+      <Container>
         <Title fz="28px" mb="md">
           Pick a question
         </Title>
@@ -38,7 +38,7 @@ export const NewFromTemplatePage = () => {
 
   if (templateOrSavedQuestionId !== undefined) {
     return (
-      <Container w="100%" pt="80px">
+      <Container w="100%">
         <InteractiveQuestion
           onSave={onSaveQuestion}
           saveToCollectionId={collectionId}
