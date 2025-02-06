@@ -40,122 +40,128 @@ export function Shell(props: Props) {
   }
 
   return (
-    <Box>
-      <AppShell
-        navbar={{
-          width: 250,
-          breakpoint: "sm",
-          collapsed: { mobile: !isMobileNavOpen },
-        }}
-        padding="sm"
-        classNames={{
-          navbar: "navbar overflow-scroll sm:overflow-visible",
-        }}
-      >
-        <AppShell.Header zIndex={102} bg="#2B2F32" className="border-none">
-          <Flex
-            justify="space-between"
-            align="center"
-            h="44px"
-            w="100%"
-            px="16px"
-            className="border-transparent"
-            ff="Lato, sans-serif"
+    <AppShell
+      header={{
+        height: {
+          sm: 44,
+          base: 107,
+        },
+      }}
+      navbar={{
+        width: 250,
+        breakpoint: "sm",
+        collapsed: { mobile: !isMobileNavOpen },
+      }}
+      padding="sm"
+      classNames={{
+        navbar: "navbar overflow-scroll sm:overflow-visible",
+      }}
+    >
+      <AppShell.Header zIndex={102} bg="#2B2F32" className="border-none">
+        <Flex
+          justify="space-between"
+          align="center"
+          h="44px"
+          w="100%"
+          px="16px"
+          className="border-transparent"
+          ff="Lato, sans-serif"
+        >
+          <a
+            href="https://www.metabase.com/?utm_source=referral&utm_medium=banner&utm_campaign=shoppy-demo"
+            target="_blank"
+            rel="noreferrer"
           >
-            <a
-              href="https://www.metabase.com/?utm_source=referral&utm_medium=banner&utm_campaign=shoppy-demo"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Image src="/metabase-logo-with-wordmark.svg" />
-            </a>
+            <Image src="/metabase-logo-with-wordmark.svg" />
+          </a>
 
-            <Burger
-              display={{ sm: "none" }}
-              opened={isMobileNavOpen}
-              onClick={toggleMobileNav}
-              aria-label="Toggle navigation"
-              color="#eee"
+          <Burger
+            display={{ sm: "none" }}
+            opened={isMobileNavOpen}
+            onClick={toggleMobileNav}
+            aria-label="Toggle navigation"
+            color="#eee"
+          />
+
+          <Box className="hide-on-mobile">
+            <SiteSwitcher />
+          </Box>
+        </Flex>
+
+        {isMobileNavOpen && (
+          <Flex display={{ sm: "none" }} bg="#2B2F32" px="16px" py="8px">
+            <SiteSwitcher />
+          </Flex>
+        )}
+      </AppShell.Header>
+
+      <AppShell.Navbar
+        withBorder={false}
+        pt="xl"
+        px="24px"
+        // Required for the "New Dashboard" modal to be on top of the mobile navbar.
+        zIndex={2}
+      >
+        <Flex
+          direction="column"
+          justify="space-between"
+          h="100%"
+          className="py-4 md:py-0"
+        >
+          <Box>
+            <Link to="/admin/products">
+              <SiteLogo />
+            </Link>
+
+            <Divider
+              orientation="horizontal"
+              className="proficiency-sidebar-divider show-only-on-proficiency"
             />
 
-            <Box className="hide-on-mobile">
-              <SiteSwitcher />
-            </Box>
-          </Flex>
+            <SidebarLinks
+              onLinkClick={(link) => {
+                if (!link.children) {
+                  closeMobileNav()
+                }
+              }}
+            />
 
-          {isMobileNavOpen && (
-            <Flex display={{ sm: "none" }} bg="#2B2F32" px="16px" py="8px">
-              <SiteSwitcher />
-            </Flex>
-          )}
-        </AppShell.Header>
+            <Divider
+              orientation="horizontal"
+              className="proficiency-sidebar-divider show-only-on-proficiency my-4"
+            />
 
-        <AppShell.Navbar
-          withBorder={false}
-          pt="107px"
-          px="24px"
-          // Required for the "New Dashboard" modal to be on top of the mobile navbar.
-          zIndex={2}
-        >
-          <Flex
-            direction="column"
-            justify="space-between"
-            h="100%"
-            className="py-4 md:py-0"
-          >
-            <Box>
-              <Link to="/admin/products">
-                <SiteLogo />
+            <Stack className="hide-on-mobile sidebar-create-section" pt={18}>
+              <NewQuestionMenu position="bottom-start" prefix="/admin">
+                <ThemedButton className="sidebar-action-button" size="sm">
+                  New custom exploration
+                </ThemedButton>
+              </NewQuestionMenu>
+
+              <Link to="/admin/analytics/new/dashboard">
+                <ThemedButton className="sidebar-action-button">
+                  New dashboard
+                </ThemedButton>
               </Link>
+            </Stack>
+          </Box>
 
-              <Divider
-                orientation="horizontal"
-                className="proficiency-sidebar-divider show-only-on-proficiency"
-              />
-
-              <SidebarLinks
-                onLinkClick={(link) => {
-                  if (!link.children) {
-                    closeMobileNav()
-                  }
-                }}
-              />
-
-              <Divider
-                orientation="horizontal"
-                className="proficiency-sidebar-divider show-only-on-proficiency my-4"
-              />
-
-              <Stack className="hide-on-mobile sidebar-create-section" pt={18}>
-                <NewQuestionMenu position="bottom-start" prefix="/admin">
-                  <ThemedButton className="sidebar-action-button" size="sm">
-                    New custom exploration
-                  </ThemedButton>
-                </NewQuestionMenu>
-
-                <Link to="/admin/analytics/new/dashboard">
-                  <ThemedButton className="sidebar-action-button">
-                    New dashboard
-                  </ThemedButton>
-                </Link>
-              </Stack>
-            </Box>
-
-            <Flex className="sidebar-icons gap-x-3 py-4">
-              <Icon icon="tabler:user" fontSize={30} />
-              <Icon icon="tabler:settings" fontSize={30} />
-            </Flex>
+          <Flex className="sidebar-icons gap-x-3 py-4">
+            <Icon icon="tabler:user" fontSize={30} />
+            <Icon icon="tabler:settings" fontSize={30} />
           </Flex>
-        </AppShell.Navbar>
+        </Flex>
+      </AppShell.Navbar>
 
-        <AppShell.Main>
-          <ProficiencyGradient />
+      <AppShell.Main h="100dvh">
+        <ProficiencyGradient />
 
-          <Box mih="78vh">{props.children}</Box>
+        <Stack h="100%" py="xl">
+          <Box className="flex-1">{props.children}</Box>
+        </Stack>
 
-          <SiteFooter />
-        </AppShell.Main>
-      </AppShell>
-    </Box>
+        <SiteFooter />
+      </AppShell.Main>
+    </AppShell>
   )
 }

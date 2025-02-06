@@ -50,7 +50,7 @@ export const ProductAnalyticsPage = (props: Props) => {
   if (query.isLoading) return <FullPageLoader />
 
   return (
-    <Container pt="80px">
+    <Container>
       <Stack w="100%" maw="1000px" className="gap-y-10">
         <Title className="overview-title">{currentCategoryName}</Title>
 

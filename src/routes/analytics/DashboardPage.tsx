@@ -15,7 +15,7 @@ export function DashboardPage(props: Props) {
   useReloadOnSiteChange()
 
   return (
-    <Box mih="100vh" className="dashboard-container smartscalar" pt="30px">
+    <Box mih="100vh" className="dashboard-container smartscalar">
       <InteractiveDashboard
         dashboardId={dashboardId}
         withTitle
@@ -24,7 +24,6 @@ export function DashboardPage(props: Props) {
           <Container
             size="1000px"
             w="100%"
-            pt="40px"
             className="drill-question-container"
           >
             <InteractiveQuestionView isSaveEnabled={false} />

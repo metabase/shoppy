@@ -42,7 +42,7 @@ export const ProductDetailPage = ({ id }: Props) => {
   if (!product) return <div>Product not found</div>
 
   return (
-    <Container pt="80px">
+    <Container>
       <Box>
         <Text className="product-detail-title" pb="5px">
           {truncate(product.title, 50)}
