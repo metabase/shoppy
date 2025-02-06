@@ -44,7 +44,7 @@ export function Shell(props: Props) {
       header={{
         height: {
           sm: 44,
-          base: 107,
+          base: isMobileNavOpen ? 107 : 44,
         },
       }}
       navbar={{
