@@ -6,7 +6,7 @@ import { overviewLinkCards } from "./link-cards"
 
 export function AnalyticsOverviewPage() {
   return (
-    <Container pt="80px">
+    <Container>
       <Title className="overview-title" pb="30px">
         Overview
       </Title>
