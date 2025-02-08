@@ -5,7 +5,6 @@ import {
 } from "@metabase/embedding-sdk-react"
 
 import { QUESTION_TEMPLATE_COLLECTION_ID } from "../../../constants/collections"
-import { InteractiveQuestionView } from "../../../components/InteractiveQuestionView"
 import { useCreateQuestionHelpers } from "../../../utils/use-create-question-helpers"
 
 export const NewFromTemplatePage = () => {
@@ -44,9 +43,7 @@ export const NewFromTemplatePage = () => {
           saveToCollectionId={collectionId}
           questionId={templateOrSavedQuestionId}
           isSaveEnabled
-        >
-          <InteractiveQuestionView isSaveEnabled />
-        </InteractiveQuestion>
+        />
       </Container>
     )
   }

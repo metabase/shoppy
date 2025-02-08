@@ -1108,10 +1108,10 @@
   resolved "https://registry.yarnpkg.com/@mantine/utils/-/utils-6.0.21.tgz#6185506e91cba3e308aaa8ea9ababc8e767995d6"
   integrity sha512-33RVDRop5jiWFao3HKd3Yp7A9mEq4HAJxJPTuYm1NkdqX6aTKOQK7wT8v8itVodBp+sb4cJK6ZVdD1UurK/txQ==
 
-"@metabase/embedding-sdk-react@^0.52.7":
-  version "0.52.7"
-  resolved "https://registry.yarnpkg.com/@metabase/embedding-sdk-react/-/embedding-sdk-react-0.52.7.tgz#260895eeb95d7e42797b4097b261349cc523998b"
-  integrity sha512-OyZVk/6SBlN9/kivlWFTgDm0LrM61xMoJsm9ELerT/GoGKtxCMhE7qaWJjDPyDrKUucAMgTRoVhghsHqpbidnw==
+"@metabase/embedding-sdk-react@^0.53.3":
+  version "0.53.3"
+  resolved "https://registry.yarnpkg.com/@metabase/embedding-sdk-react/-/embedding-sdk-react-0.53.3.tgz#55f13af1c43855e9cb8a2c6a960e393de2d43bfd"
+  integrity sha512-H0VtJYdvAdyG+jcbMP4ruQnR4whqYxd6xI5bItxDfctztl0N9hx8iXLihVYs4Wtrjs6dJqN9Ze84JgEufE/Z5Q==
   dependencies:
     "@dnd-kit/core" "^6.0.8"
     "@dnd-kit/modifiers" "^6.0.1"
@@ -1125,7 +1125,7 @@
     "@mantine/dates" "^6.0.13"
     "@mantine/hooks" "^6.0.13"
     "@react-oauth/google" "^0.11.1"
-    "@reduxjs/toolkit" "^2.3.0"
+    "@reduxjs/toolkit" "^2.5.0"
     "@snowplow/browser-tracker" "^3.1.6"
     "@tanstack/react-virtual" "^3.1.2"
     "@tippyjs/react" "^4.2.6"
@@ -1394,10 +1394,10 @@
   resolved "https://registry.yarnpkg.com/@react-oauth/google/-/google-0.11.1.tgz#f937c8d02bd37e3a6be7713b8212e9b9b9b3f914"
   integrity sha512-tywZisXbsdaRBVbEu0VX6dRbOSL2I6DgY97woq5NMOOOz+xtDsm418vqq+Vx10KMtra3kdHMRMf0hXLWrk2RMg==
 
-"@reduxjs/toolkit@^2.3.0":
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/@reduxjs/toolkit/-/toolkit-2.5.0.tgz#4679b09b4da211cb9a821803aabf86a13c96fbfa"
-  integrity sha512-awNe2oTodsZ6LmRqmkFhtb/KH03hUhxOamEQy411m3Njj3BbFvoBovxo4Q1cBWnV1ErprVj9MlF0UPXkng0eyg==
+"@reduxjs/toolkit@^2.5.0":
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/@reduxjs/toolkit/-/toolkit-2.5.1.tgz#29ff1d6dd1cb35e57836e7ca37090063d39703ef"
+  integrity sha512-UHhy3p0oUpdhnSxyDjaRDYaw8Xra75UiLbCiRozVPHjfDwNYkh0TsVm/1OmTW8Md+iDAJmYPWUKMvsMc2GtpNg==
   dependencies:
     immer "^10.0.3"
     redux "^5.0.1"

@@ -7,7 +7,6 @@ import {
 } from "@metabase/embedding-sdk-react"
 
 import { RemountOnSiteChange } from "../../components/RemountOnSiteChange"
-import { InteractiveQuestionView } from "../../components/InteractiveQuestionView"
 
 const MAX_W = 600
 
@@ -69,9 +68,7 @@ export const ProductDetailInsights = (props: Props) => {
                 Orders over time
               </Title>
             }
-          >
-            <InteractiveQuestionView />
-          </InteractiveQuestion>
+          />
         </Flex>
       </Modal>
     </Box>
