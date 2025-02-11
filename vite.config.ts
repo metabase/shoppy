@@ -6,6 +6,7 @@ import webfontDownload from "vite-plugin-webfont-dl"
 import { ViteImageOptimizer } from "vite-plugin-image-optimizer"
 
 const isHTTPS = process.env.HTTPS
+const port = process.env.PORT ? parseInt(process.env.PORT) : undefined
 
 export default defineConfig({
   plugins: [
@@ -18,5 +19,8 @@ export default defineConfig({
   server: {
     open: false,
     port: 3004,
+  },
+  preview: {
+    ...(port && { port }),
   },
 })
