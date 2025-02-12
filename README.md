@@ -2,7 +2,7 @@
 
 Shoppy is a demo application that showcases the capabilities of Metabase's React Embedding SDK. It is a simple e-commerce dashboard that allows shop owers to view and analyze sales data.
 
-The demo is available at [https://metabase-shoppy.vercel.app](https://metabase-shoppy.vercel.app).
+The demo is available at [https://embedded-analytics-sdk-demo.metabase.com](https://embedded-analytics-sdk-demo.metabase.com).
 
 ## How to run the demo on your machine
 
