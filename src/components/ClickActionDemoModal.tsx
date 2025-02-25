@@ -21,7 +21,7 @@ export const ClickActionDemoModal = () => {
     if (productQuery.isLoading) {
       return (
         <Center h={200}>
-          <Loader size="lg" variant="dots" />
+          <Loader size="lg" />
         </Center>
       )
     }
