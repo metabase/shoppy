@@ -7,6 +7,7 @@ import {
 } from "@metabase/embedding-sdk-react"
 
 import { RemountOnSiteChange } from "../../components/RemountOnSiteChange"
+import { withProductClickAction } from "../../utils/metabase-plugins"
 
 const MAX_W = 600
 
@@ -68,6 +69,11 @@ export const ProductDetailInsights = (props: Props) => {
                 Orders over time
               </Title>
             }
+            plugins={{
+              mapQuestionClickActions: withProductClickAction({
+                onBeforeOpenModal: modal.close,
+              }),
+            }}
           />
         </Flex>
       </Modal>
