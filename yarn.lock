@@ -1108,10 +1108,10 @@
   resolved "https://registry.yarnpkg.com/@mantine/utils/-/utils-6.0.21.tgz#6185506e91cba3e308aaa8ea9ababc8e767995d6"
   integrity sha512-33RVDRop5jiWFao3HKd3Yp7A9mEq4HAJxJPTuYm1NkdqX6aTKOQK7wT8v8itVodBp+sb4cJK6ZVdD1UurK/txQ==
 
-"@metabase/embedding-sdk-react@^0.53.4":
-  version "0.53.4"
-  resolved "https://registry.yarnpkg.com/@metabase/embedding-sdk-react/-/embedding-sdk-react-0.53.4.tgz#4aaab4d5bd1b2a86f2b3997d99f6e9011d998aee"
-  integrity sha512-kTLI3itMHuPuk9S7f5Y8GR9KXihpLnSDBxM9pb6o8veHSRsTHJLPN72uc2ozNxcH2Yzmzw+UIl17CZfRKwQ2CA==
+"@metabase/embedding-sdk-react@^0.53.8":
+  version "0.53.8"
+  resolved "https://registry.yarnpkg.com/@metabase/embedding-sdk-react/-/embedding-sdk-react-0.53.8.tgz#eb9d2b18b3430467408ff8fefcd2c7d75333836b"
+  integrity sha512-tS2+qINba59qpCuxfROhkFBLJDrjDAbfWk+4hCOjBBopps25rjLeZ84eeV3+kbjLJOMh5dIdSN0xza+oYErIrA==
   dependencies:
     "@dnd-kit/core" "^6.0.8"
     "@dnd-kit/modifiers" "^6.0.1"
@@ -1129,7 +1129,6 @@
     "@snowplow/browser-tracker" "^3.1.6"
     "@tanstack/react-virtual" "^3.1.2"
     "@tippyjs/react" "^4.2.6"
-    "@types/react-router" "3.0.27"
     "@visx/scale" "^3.5.0"
     ace-builds "^1.4.14"
     bowser "^2.11.0"
@@ -1718,11 +1717,6 @@
   dependencies:
     "@types/unist" "*"
 
-"@types/history@^3":
-  version "3.2.5"
-  resolved "https://registry.yarnpkg.com/@types/history/-/history-3.2.5.tgz#be614208f1a10a20c414b4d3762d1f2b65b53ae4"
-  integrity sha512-TqWYI0mlqS5qhH8MHgJJs0RcgvvZLxkn0bi2qK07liZqP7M9rl1kpJ6TCAUo5Cp4vP5DObIqHcky0MWyyQojVQ==
-
 "@types/istanbul-lib-coverage@*", "@types/istanbul-lib-coverage@^2.0.0":
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/@types/istanbul-lib-coverage/-/istanbul-lib-coverage-2.0.6.tgz#7739c232a1fee9b4d3ce8985f314c0c6d33549d7"
@@ -1834,14 +1828,6 @@
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-18.2.25.tgz#2946a30081f53e7c8d585eb138277245caedc521"
   integrity sha512-o/V48vf4MQh7juIKZU2QGDfli6p1+OOi5oXx36Hffpc9adsHeXjVp8rHuPkjd8VT8sOJ2Zp05HR7CdpGTIUFUA==
   dependencies:
-    "@types/react" "*"
-
-"@types/react-router@3.0.27":
-  version "3.0.27"
-  resolved "https://registry.yarnpkg.com/@types/react-router/-/react-router-3.0.27.tgz#db78ffc4141e5b2d5b0e29bb5565094c05d864d3"
-  integrity sha512-Sq4bfTZ8TuHFTHXyzA3tu/BTGm/d4B8CwtOK4qOyJNoJMkY87qMOazkBizMHNpszVR1+kYOCNLjPdh/wAD7ESw==
-  dependencies:
-    "@types/history" "^3"
     "@types/react" "*"
 
 "@types/react@*":
