@@ -24,6 +24,7 @@ import { useAtom } from "jotai"
 import { FullPageLoader } from "../Loader"
 import { SiteFooter } from "../SiteFooter"
 import { ProficiencyGradient } from "../ProficiencyGradient"
+import { ClickActionDemoModal } from "../ClickActionDemoModal"
 
 interface Props {
   children: ReactNode
@@ -161,6 +162,8 @@ export function Shell(props: Props) {
         </Stack>
 
         <SiteFooter />
+
+        <ClickActionDemoModal />
       </AppShell.Main>
     </AppShell>
   )
