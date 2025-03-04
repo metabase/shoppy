@@ -1,5 +1,5 @@
 import { Container } from "@mantine/core"
-import { CreateQuestion } from "@metabase/embedding-sdk-react"
+import { InteractiveQuestion } from "@metabase/embedding-sdk-react"
 
 import { useCreateQuestionHelpers } from "../../../utils/use-create-question-helpers"
 
@@ -8,9 +8,10 @@ export const NewFromScratchPage = () => {
 
   return (
     <Container w="100%">
-      <CreateQuestion
+      <InteractiveQuestion
+        questionId="new"
         onSave={onSaveQuestion}
-        saveToCollectionId={collectionId}
+        saveToCollection={collectionId}
         isSaveEnabled
       />
     </Container>
