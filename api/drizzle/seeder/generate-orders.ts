@@ -2,10 +2,9 @@ import { faker } from "@faker-js/faker"
 
 import { db } from "../../src/utils/db"
 import { orders } from "../../src/schema/orders"
+import { getRandomEntity } from "./helpers/get-random-entity"
 
-const ORDER_COUNT = 100
-
-const random = <T>(list: T[]) => list[Math.floor(Math.random() * list.length)]
+const ORDER_COUNT = 1620
 
 type OrderInput = typeof orders.$inferInsert
 
@@ -24,10 +23,10 @@ export async function generateOrders() {
   })
 
   for (let i = 0; i < ORDER_COUNT; i++) {
-    const product = random(products)
+    const product = getRandomEntity(products)
     const productId = product.id
 
-    const customer = random(customers)
+    const customer = getRandomEntity(customers)
     const customerId = customer.id
 
     if (!product) continue
@@ -43,7 +42,7 @@ export async function generateOrders() {
       })
     }
 
-    let totalPrice = Math.max(basePrice - discount, 0)
+    const totalPrice = Math.max(basePrice - discount, 0)
 
     const createdAtDate =
       Math.random() > 0.5
@@ -53,6 +52,7 @@ export async function generateOrders() {
     const createdAt = createdAtDate.toISOString().slice(0, 19).replace("T", " ")
 
     const order: OrderInput = {
+      id: i,
       createdAt,
       productId,
       quantity: faker.number.int({ min: 1, max: 10 }).toString(),
@@ -66,5 +66,3 @@ export async function generateOrders() {
     console.log(`generated order for ${createdAt.toString()}`)
   }
 }
-
-generateOrders()

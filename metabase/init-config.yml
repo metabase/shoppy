@@ -1,0 +1,31 @@
+version: 1
+config:
+  users:
+    - first_name: "Rene"
+      last_name: "Mueller"
+      password: "{{ env METABASE_ADMIN_PASSWORD }}"
+      email: "{{ env METABASE_ADMIN_EMAIL }}"
+    - first_name: "Cecilia"
+      last_name: "Stark"
+      password: "{{ env METABASE_ADMIN_PASSWORD }}"
+      email: "{{ env METABASE_ADMIN_EMAIL }}"
+    - first_name: "Emily"
+      last_name: "Johnson"
+      password: "{{ env METABASE_ADMIN_PASSWORD }}"
+      email: "{{ env METABASE_ADMIN_EMAIL }}"
+    - first_name: "Jennifer"
+      last_name: "Martinez"
+      password: "{{ env METABASE_ADMIN_PASSWORD }}"
+      email: "{{ env METABASE_ADMIN_EMAIL }}"
+  settings:
+    enable-embedding-sdk: true
+    jwt-enabled: true
+  databases:
+    - name: Customer Zero Database
+      engine: postgres
+      details:
+        host: shoppy_db
+        port: "{{ env SHOPPY_DB_PORT }}"
+        dbname: "{{ env SHOPPY_DB }}"
+        user: "{{ env SHOPPY_DB_USER }}"
+        password: "{{ env SHOPPY_DB_PASSWORD }}"
