@@ -159,9 +159,9 @@ export function Shell(props: Props) {
 
         <Stack h="100%" py="xl">
           <Box className="flex-1">{props.children}</Box>
-        </Stack>
 
-        <SiteFooter />
+          <SiteFooter />
+        </Stack>
 
         <ClickActionDemoModal />
       </AppShell.Main>
