@@ -7,7 +7,7 @@ import type { SiteKey } from "../types/site"
 
 export function useSiteChanged(onSiteChanged: () => void) {
   const [site] = useAtom(siteAtom)
-  const initialSiteRef = useRef<SiteKey>()
+  const initialSiteRef = useRef<SiteKey>(null)
 
   useEffect(() => {
     if (!initialSiteRef.current) {

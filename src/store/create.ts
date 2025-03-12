@@ -1,6 +1,6 @@
 import { atom } from "jotai"
 
-export const createDashboardIdAtom = atom<number | null>(null)
+export const createDashboardIdAtom = atom<string | number | null>(null)
 
 export const createQuestionIdAtom = atom<number | undefined>(undefined)
 
