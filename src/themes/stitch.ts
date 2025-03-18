@@ -38,7 +38,7 @@ const metabase: MetabaseTheme = {
     filter: colors.filter,
     "text-primary": colors.lighterGrey,
     "text-secondary": colors.lighterGrey,
-    "text-tertiary": colors.lighterGrey,
+    "text-tertiary": colors.lightGrey,
     border: colors.darkGrey,
     background: colors.background,
     "background-secondary": colors.darkGrey,
