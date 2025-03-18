@@ -9,13 +9,11 @@ interface Props {
 }
 
 export function QuestionPage(props: Props) {
-  const questionId = parseInt(props.id, 10)
-
   return (
     <Container mih="100vh" className="question-container smartscalar">
       <RemountOnSiteChange>
         <InteractiveQuestion
-          questionId={questionId}
+          questionId={props.id}
           plugins={{ mapQuestionClickActions: withProductClickAction() }}
         />
       </RemountOnSiteChange>

@@ -40,7 +40,7 @@ export const NewFromTemplatePage = () => {
       <Container w="100%">
         <InteractiveQuestion
           onSave={onSaveQuestion}
-          saveToCollection={collectionId}
+          targetCollection={collectionId}
           questionId={templateOrSavedQuestionId}
           isSaveEnabled
         />
