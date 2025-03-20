@@ -5,7 +5,7 @@ import { useReloadOnSiteChange } from "../../utils/use-site-changed"
 import { withProductClickAction } from "../../utils/metabase-plugins"
 
 interface Props {
-  id: string
+  entity_id: string
 }
 
 export function DashboardPage(props: Props) {
@@ -15,7 +15,7 @@ export function DashboardPage(props: Props) {
   return (
     <Box mih="100vh" className="dashboard-container smartscalar">
       <InteractiveDashboard
-        dashboardId={props.id}
+        dashboardId={props.entity_id}
         withTitle
         withDownloads={false}
         plugins={{ mapQuestionClickActions: withProductClickAction() }}

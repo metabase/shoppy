@@ -29,7 +29,7 @@ export const NewFromTemplatePage = () => {
         <CollectionBrowser
           collectionId={QUESTION_TEMPLATE_COLLECTION_ID}
           visibleEntityTypes={["question"]}
-          onClick={(item) => setQuestionId(item.id)}
+          onClick={(item) => setQuestionId(item.entity_id)}
         />
       </Container>
     )

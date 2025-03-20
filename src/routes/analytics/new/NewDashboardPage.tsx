@@ -23,7 +23,7 @@ export const NewDashboardPage = () => {
     return (
       <RemountOnSiteChange>
         <CreateDashboardModal
-          onCreate={(dashboard: { id: number }) =>
+          onCreate={(dashboard: { entity_id: string }) =>
             setDashboardId(dashboard.entity_id)
           }
           initialCollectionId={collectionId}
