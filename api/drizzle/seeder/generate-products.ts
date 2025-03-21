@@ -3,7 +3,7 @@ import { faker } from "@faker-js/faker"
 import { db } from "../../src/utils/db"
 import { products } from "../../src/schema/products"
 import { shopsData } from "./generate-shops"
-import { getRandomEntityToLink } from "./helpers/get-random-entity-to-link"
+import { getEntityToLink } from "./helpers/get-entity-to-link"
 
 const PRODUCTS_COUNT = 75
 
@@ -24,9 +24,9 @@ export async function generateProducts() {
   })
 
   for (let i = 0; i < PRODUCTS_COUNT; i++) {
-    const category = getRandomEntityToLink({
-      primaryEntityIndex: i,
-      entitiesToLink: categories,
+    const category = getEntityToLink({
+      entities: categories,
+      iterationIndex: i,
     })
     const categoryId = category.id
 
