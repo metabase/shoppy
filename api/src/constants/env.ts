@@ -15,4 +15,5 @@ export const FRONTEND_URL =
 
 export const { VERCEL_ENV } = process.env
 
+// This variable is used in a local (Docker) environment only
 export const METABASE_ADMIN_EMAIL = process.env.METABASE_ADMIN_EMAIL

@@ -26,6 +26,7 @@ services:
     environment:
       PORT: "${API_PORT}"
       CLIENT_PORT: "${CLIENT_PORT}"
+      IS_LOCAL_DB: "true"
       DB_URL: "postgres://${SHOPPY_DB_USER}:${SHOPPY_DB_PASSWORD}@shoppy_db:${SHOPPY_DB_PORT}/${SHOPPY_DB}"
       METABASE_INSTANCE_URL: "http://metabase:${MB_PORT}"
       METABASE_JWT_SHARED_SECRET: "${METABASE_JWT_SHARED_SECRET}"
