@@ -11,13 +11,8 @@ done
 
 echo "Metabase is healthy. Running import..."
 
-SESSION_ID=$(curl -s -X POST \
-  -H "Content-Type: application/json" \
-  -d "{\"username\": \"${METABASE_ADMIN_EMAIL}\", \"password\": \"${METABASE_ADMIN_PASSWORD}\"}" \
-  http://metabase:${MB_JETTY_PORT}/api/session | sed -n 's/.*"id":"\([^"]*\)".*/\1/p')
-
 curl -X POST \
-  -H "X-Metabase-Session: $SESSION_ID" \
+  -H "X-Api-Key: ${METABASE_ADMIN_API_KEY}" \
   -F file=@./app/metabase_data.tar.gz \
   http://metabase:${MB_JETTY_PORT}/api/ee/serialization/import
 
