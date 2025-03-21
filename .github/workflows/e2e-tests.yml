@@ -1,0 +1,50 @@
+name: Shoppy E2E tests
+
+on:
+  push:
+    branches:
+      - "main"
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+    branches:
+      - "main"
+
+jobs:
+  e2e-tests:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 10
+    name: e2e-tests
+    env:
+      PREMIUM_EMBEDDING_TOKEN: ${{ secrets.ENTERPRISE_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run Shoppy in Docker
+        run: |
+          cp .env.docker.example .env.docker &&
+          yarn docker:up -d &&
+          while ! nc -z localhost 4400; do sleep 1; done
+
+      - name: Install Chrome v111
+        uses: browser-actions/setup-chrome@v1
+        with:
+          # https://chromium.cypress.io/linux/stable/111.0.5563.146
+          chrome-version: 1097615
+        id: setup-chrome
+
+      - name: Ensure that Cypress executable is ready
+        run: yarn install --cwd e2e --frozen-lockfile
+
+      - name: Run e2e tests
+        id: run-e2e-tests
+        run: cd e2e && yarn cypress:run
+
+      - name: Upload Cypress Artifacts upon failure
+        uses: actions/upload-artifact@v4
+        if: ${{ steps.run-e2e-tests.outcome != 'success' }}
+        with:
+          name: cypress-recording-latest
+          path: |
+            ./e2e/cypress
+          if-no-files-found: ignore

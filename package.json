@@ -35,6 +35,8 @@
     "wouter": "^3.1.2"
   },
   "scripts": {
+    "docker:up": "docker compose --env-file .env.docker up",
+    "docker:down": "docker compose --env-file .env.docker down --rmi all --volumes",
     "install-deps": "yarn --force",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "dev": "vite",

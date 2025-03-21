@@ -6,26 +6,6 @@ import { people as peopleSchema } from "../../src/schema/people"
 import { orders as orderSchema } from "../../src/schema/orders"
 
 /**
- * Assign shop_id to products based on their product category.
- */
-export async function assignShopsToProducts() {
-  const products = await db.query.products.findMany({
-    columns: { id: true, categoryId: true },
-    with: { category: true },
-  })
-
-  for (const product of products) {
-    const { shopId } = product.category ?? {}
-
-    await db
-      .update(productSchema)
-      .set({ shopId })
-      .where(eq(productSchema.id, product.id))
-      .returning()
-  }
-}
-
-/**
  * Assign shop_id to customers based on their purchased product.
  */
 export async function assignShopsToCustomers() {
