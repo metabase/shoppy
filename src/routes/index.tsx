@@ -71,7 +71,7 @@ export const Routes = () => (
 
           <Route
             path="/question/:id"
-            component={(props) => <QuestionPage id={props.params.id} />}
+            component={(props) => <QuestionPage entity_id={props.params.id} />}
           />
         </Route>
 
