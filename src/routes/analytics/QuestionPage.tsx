@@ -5,15 +5,17 @@ import { RemountOnSiteChange } from "../../components/RemountOnSiteChange"
 import { withProductClickAction } from "../../utils/metabase-plugins"
 
 interface Props {
-  entity_id: string
+  id: string
 }
 
 export function QuestionPage(props: Props) {
+  const questionId = parseInt(props.id, 10)
+
   return (
     <Container mih="100vh" className="question-container smartscalar">
       <RemountOnSiteChange>
         <InteractiveQuestion
-          questionId={props.entity_id}
+          questionId={questionId}
           plugins={{ mapQuestionClickActions: withProductClickAction() }}
         />
       </RemountOnSiteChange>

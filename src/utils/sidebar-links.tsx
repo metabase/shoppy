@@ -80,7 +80,7 @@ export function useSidebarLinks(): SidebarLink[] {
             },
           },
           {
-            to: "/admin/analytics/i5s-lcGYLc1GyFdIy4TxH",
+            to: "/admin/analytics/17",
             title: "Inventory performance",
             icons: {
               proficiency: () => (

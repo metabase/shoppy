@@ -44,9 +44,9 @@ export function AnalyticsCustomPage() {
         className="analytics-collection-browser"
         onClick={(item) => {
           if (item.model === "dashboard") {
-            navigate(`/analytics/${item.entity_id}`)
+            navigate(`/analytics/${item.id}`)
           } else if (item.model === "card") {
-            navigate(`/question/${item.entity_id}`)
+            navigate(`/question/${item.id}`)
           }
         }}
       />

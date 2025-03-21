@@ -3,10 +3,15 @@ import { StaticQuestion } from "@metabase/embedding-sdk-react"
 
 import "./kitchen-sink.css"
 
-const questions: string[] = [
-  "MvyBus_qDW4SC8NshJ6zD",
-  "bYxRH9Yc8qCzh9PK-F-bV",
-  "wvMvO_S0FJlj010YbKOmT",
+const questions: number[] = [
+  // bar
+  95,
+
+  // line
+  96,
+
+  // area
+  97,
 ]
 
 export const KitchenSink = () => (
@@ -33,10 +38,7 @@ export const KitchenSink = () => (
       </Title>
 
       <Flex>
-        <StaticQuestion
-          questionId="MvyBus_qDW4SC8NshJ6zD"
-          withChartTypeSelector={false}
-        />
+        <StaticQuestion questionId={95} withChartTypeSelector={false} />
       </Flex>
 
       <Title pb={8} size="h4">
@@ -44,10 +46,7 @@ export const KitchenSink = () => (
       </Title>
 
       <Card w="100%">
-        <StaticQuestion
-          questionId="MvyBus_qDW4SC8NshJ6zD"
-          withChartTypeSelector={false}
-        />
+        <StaticQuestion questionId={95} withChartTypeSelector={false} />
       </Card>
 
       <Title pb={8} size="h4">
@@ -55,10 +54,7 @@ export const KitchenSink = () => (
       </Title>
 
       <Box w="100%">
-        <StaticQuestion
-          questionId="MvyBus_qDW4SC8NshJ6zD"
-          withChartTypeSelector={false}
-        />
+        <StaticQuestion questionId={95} withChartTypeSelector={false} />
       </Box>
 
       <Title pb={8} size="h4">
@@ -66,10 +62,7 @@ export const KitchenSink = () => (
       </Title>
 
       <Box w="100%" bg="white">
-        <StaticQuestion
-          questionId="t07HOjt9YiRHcWnK7XrgE"
-          withChartTypeSelector={false}
-        />
+        <StaticQuestion questionId={76} withChartTypeSelector={false} />
       </Box>
     </Stack>
   </Stack>
