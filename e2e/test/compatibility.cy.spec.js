@@ -98,7 +98,7 @@ describe("Embedding SDK: shoppy compatibility", () => {
     })
   })
 
-  it.skip("should open a new dashboard modal", () => {
+  it("should open a new dashboard modal", () => {
     cy.visit({
       url: "/admin/analytics/new/dashboard",
     })
