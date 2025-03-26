@@ -20,12 +20,6 @@ config:
   settings:
     enable-embedding-sdk: true
     jwt-enabled: true
-  api-keys:
-    - name: "Admin API Key"
-      group: "admin"
-      description: "API key for admin operations"
-      creator: "{{ env METABASE_ADMIN_EMAIL }}"
-      key: "{{ env METABASE_ADMIN_API_KEY }}"
   databases:
     - name: Customer Zero Database
       engine: postgres
