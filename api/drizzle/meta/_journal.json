@@ -15,6 +15,13 @@
       "when": 1713879337022,
       "tag": "0001_rainy_randall",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1744783390571,
+      "tag": "0002_lethal_dakota_north",
+      "breakpoints": true
     }
   ]
 }
