@@ -82,22 +82,25 @@ jobs:
           aws s3 cp s3://${{ secrets.S3_BUCKET }}/${{ vars.S3_KEY }} dump.sql
       - name: Drop existing Metabase database
         run: |
-          PGPASSWORD=${{ secrets.DB_SU_PASSWORD }} psql -h ${{ secrets.DB_HOST }} \
-            -U ${{ secrets.DB_SU_USER }} \
-            -d ${{ secrets.DB_SU_DATABASE }} \
-            -c "DROP DATABASE ${{ secrets.DB_DATABASE }} FORCE;"
+          export PGPASSWORD=${{ secrets.DB_SU_PASSWORD }} 
+          export PGUSER=${{ secrets.DB_SU_USER }}
+          export PGDATABASE=${{ secrets.DB_SU_DATABASE }}
+          export PGHOST=${{ secrets.DB_HOST }}
+          psql -c "DROP DATABASE IF EXISTS ${{ secrets.DB_DATABASE }} FORCE;"
       - name: Create Metabase database
         run: |
-          PGPASSWORD=${{ secrets.DB_SU_PASSWORD }} psql -h ${{ secrets.DB_HOST }} \
-            -U ${{ secrets.DB_SU_USER }} \
-            -d ${{ secrets.DB_DATABASE }} \
-            -c "CREATE DATABASE ${{ secrets.DB_DATABASE }} OWNER ${{ secrets.DB_USER }};"
+          export PGPASSWORD=${{ secrets.DB_SU_PASSWORD }} 
+          export PGUSER=${{ secrets.DB_SU_USER }}
+          export PGDATABASE=${{ secrets.DB_SU_DATABASE }}
+          export PGHOST=${{ secrets.DB_HOST }} 
+          psql -c "CREATE DATABASE ${{ secrets.DB_DATABASE }} OWNER ${{ secrets.DB_USER }};"
       - name: Restore PostgreSQL dump from S3
         run: |
-          PGPASSWORD=${{ secrets.DB_PASSWORD }} psql -h ${{ secrets.DB_HOST }} \
-            -U ${{ secrets.DB_USER }} \
-            -d ${{ secrets.DB_DATABASE }} \
-            -f dump.sql
+          export PGPASSWORD=${{ secrets.DB_PASSWORD }}
+          export PGUSER=${{ secrets.DB_USER }}
+          export PGDATABASE=${{ secrets.DB_DATABASE }}
+          export PGHOST=${{ secrets.DB_HOST }}
+          psql --file=dump.sql
       - name: Update Metabase version and unpause
         run: |
           kubectl patch metabase hosting-shoppy --type=merge -p '{"spec":{"image":{"version":"${{ env.version }}"},"pause":{"enabled":false}}}'
