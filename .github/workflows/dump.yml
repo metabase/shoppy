@@ -1,11 +1,7 @@
 name: Dump
 on:
   workflow_dispatch:
-
-  push:
-    branches:
-      - deploy
-
+    
 jobs:
   dump:
     runs-on: ubuntu-latest
@@ -30,4 +26,4 @@ jobs:
             -U ${{ secrets.DB_USER }} \
             -d ${{ secrets.DB_DATABASE }} \
             --file=dump.sql
-          aws s3 cp dump.sql s3://${{ vars.S3_BUCKET }}/${{ vars.S3_KEY }}
+          aws s3 cp dump.sql s3://${{ secrets.S3_BUCKET }}/${{ vars.S3_KEY }}
