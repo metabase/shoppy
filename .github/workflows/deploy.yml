@@ -1,0 +1,104 @@
+name: Deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Metabase version to deploy'
+  workflow_run:
+    workflows: ["Shoppy E2E tests"]
+    types:
+      - completed
+    branches:
+      - "release"
+
+env:
+  version: ${{ github.event.inputs.version || vars.K8S_AUDIENCE }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }} || github.event_name == 'workflow_dispatch' }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Tailscale
+        uses: tailscale/github-action@v2
+        with:
+          oauth-client-id: ${{ secrets.TAILSCALE_OAUTH_CLIENT_ID }}
+          oauth-secret: ${{ secrets.TAILSCALE_OAUTH_SECRET }}
+          tags: tag:ci
+          version: 1.50.1
+          sha256sum: d9fe6b480fb5078f0aa57dace686898dda7e2a768884271159faa74846bfb576
+      - name: Create OIDC Token
+        id: create-oidc-token
+        shell: bash
+        run: |
+          export OIDC_URL_WITH_AUDIENCE="$ACTIONS_ID_TOKEN_REQUEST_URL&audience=${{ vars.K8S_AUDIENCE }}"
+          IDTOKEN=$(curl -H "Authorization: Bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" -H "Accept: application/json; api-version=2.0" "$OIDC_URL_WITH_AUDIENCE" | jq -r .value)
+          echo "::add-mask::${IDTOKEN}"
+          echo "idToken=${IDTOKEN}" >>$GITHUB_OUTPUT
+      - name: Setup Kube Context
+        uses: azure/k8s-set-context@v2
+        with:
+          method: kubeconfig
+          kubeconfig: |
+            kind: Config
+            apiVersion: v1
+            current-context: default
+            clusters:
+            - name: default
+              cluster:
+                certificate-authority-data: ${{ secrets.K8S_CERTIFICATE_AUTHORITY_DATA }}
+                server: ${{ vars.K8S_SERVER }}
+            users:
+            - name: oidc-token
+              user:
+                token: ${{ steps.create-oidc-token.outputs.IDTOKEN }}
+            contexts:
+            - name: default
+              context:
+                cluster: default
+                namespace: ${{vars.K8S_NAMESPACE}}
+                user: oidc-token
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.IAM_ROLE }}
+          role-session-name: GitHub_to_AWS_via_FederatedOIDC
+          aws-region: us-east-1
+      - name: Setup psql client
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y postgresql-client        
+      - name: Pause Metabase (set pause.enabled=true)
+        run: |
+          kubectl patch metabase metabase --type=merge -p '{"spec":{"pause":{"enabled":true}}}'
+      - name: Download PostgreSQL dump from S3
+        run: |
+          aws s3 cp s3://${{ vars.S3_BUCKET }}/${{ vars.S3_KEY }} dump.sql
+      - name: Drop existing Metabase database
+        run: |
+          PGPASSWORD=${{ secrets.DB_SU_PASSWORD }} psql -h ${{ secrets.DB_HOST }} \
+            -U ${{ secrets.DB_SU_USER }} \
+            -d ${{ secrets.DB_SU_DATABASE }} \
+            -c "DROP DATABASE ${{ secrets.DB_DATABASE }} FORCE;"
+      - name: Create Metabase database
+        run: |
+          PGPASSWORD=${{ secrets.DB_SU_PASSWORD }} psql -h ${{ secrets.DB_HOST }} \
+            -U ${{ secrets.DB_SU_USER }} \
+            -d ${{ secrets.DB_DATABASE }} \
+            -c "CREATE DATABASE ${{ secrets.DB_DATABASE }} OWNER ${{ secrets.DB_USER }};"
+      - name: Restore PostgreSQL dump from S3
+        run: |
+          PGPASSWORD=${{ secrets.DB_PASSWORD }} psql -h ${{ secrets.DB_HOST }} \
+            -U ${{ secrets.DB_USER }} \
+            -d ${{ secrets.DB_DATABASE }} \
+            -f dump.sql
+      - name: Update Metabase version and unpause
+        run: |
+          kubectl patch metabase metabase --type=merge -p '{"spec":{"image":{"version":"${{ env.version }}"},"pause":{"enabled":false}}}'
+      - name: Verify deployment
+        run: |
+          kubectl get metabase metabase -o jsonpath='{.spec.image.version}'
+          echo "Metabase updated to version ${{ env.version }} and unpaused"
