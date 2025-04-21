@@ -1,13 +1,19 @@
 name: Dump
 on:
   workflow_dispatch:
-    
+
 jobs:
   dump:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.IAM_ROLE }}
+          role-session-name: GitHub_to_AWS_via_FederatedOIDC
+          aws-region: us-east-1
       - name: Tailscale
         uses: tailscale/github-action@v2
         with:
