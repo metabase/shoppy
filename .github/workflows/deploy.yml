@@ -86,7 +86,7 @@ jobs:
           export PGUSER=${{ secrets.DB_SU_USER }}
           export PGDATABASE=${{ secrets.DB_SU_DATABASE }}
           export PGHOST=${{ secrets.DB_HOST }}
-          psql -c "DROP DATABASE IF EXISTS ${{ secrets.DB_DATABASE }} FORCE;"
+          psql -c "DROP DATABASE IF EXISTS ${{ secrets.DB_DATABASE }};"
       - name: Create Metabase database
         run: |
           export PGPASSWORD='${{ secrets.DB_SU_PASSWORD }}'
