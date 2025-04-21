@@ -11,9 +11,6 @@ on:
       - completed
     branches:
       - "release"
-  push:
-    branches:
-      - "deploy"
 
 env:
   version: ${{ github.event.inputs.version || secrets.K8S_AUDIENCE }}
@@ -79,7 +76,7 @@ jobs:
           sudo apt-get install -y postgresql-client        
       - name: Pause Metabase (set pause.enabled=true)
         run: |
-          kubectl patch metabase metabase --type=merge -p '{"spec":{"pause":{"enabled":true}}}'
+          kubectl patch metabase hosting-shoppy --type=merge -p '{"spec":{"pause":{"enabled":true}}}'
       - name: Download PostgreSQL dump from S3
         run: |
           aws s3 cp s3://${{ secrets.S3_BUCKET }}/${{ vars.S3_KEY }} dump.sql
@@ -103,8 +100,8 @@ jobs:
             -f dump.sql
       - name: Update Metabase version and unpause
         run: |
-          kubectl patch metabase metabase --type=merge -p '{"spec":{"image":{"version":"${{ env.version }}"},"pause":{"enabled":false}}}'
+          kubectl patch metabase hosting-shoppy --type=merge -p '{"spec":{"image":{"version":"${{ env.version }}"},"pause":{"enabled":false}}}'
       - name: Verify deployment
         run: |
-          kubectl get metabase metabase -o jsonpath='{.spec.image.version}'
+          kubectl get metabase hosting-shoppy -o jsonpath='{.spec.image.version}'
           echo "Metabase updated to version ${{ env.version }} and unpaused"
