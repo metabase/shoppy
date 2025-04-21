@@ -73,30 +73,30 @@ jobs:
       - name: Setup psql client
         run: |
           sudo apt-get update
-          sudo apt-get install -y postgresql-client        
+          sudo apt-get install -y postgresql-client 
+      - name: Download PostgreSQL dump from S3
+        run: |
+          aws s3 cp s3://${{ secrets.S3_BUCKET }}/${{ vars.S3_KEY }} dump.sql       
       - name: Pause Metabase (set pause.enabled=true)
         run: |
           kubectl patch metabase hosting-shoppy --type=merge -p '{"spec":{"pause":{"enabled":true}}}'
-      - name: Download PostgreSQL dump from S3
-        run: |
-          aws s3 cp s3://${{ secrets.S3_BUCKET }}/${{ vars.S3_KEY }} dump.sql
       - name: Drop existing Metabase database
         run: |
-          export PGPASSWORD=${{ secrets.DB_SU_PASSWORD }} 
+          export PGPASSWORD='${{ secrets.DB_SU_PASSWORD }}'
           export PGUSER=${{ secrets.DB_SU_USER }}
           export PGDATABASE=${{ secrets.DB_SU_DATABASE }}
           export PGHOST=${{ secrets.DB_HOST }}
           psql -c "DROP DATABASE IF EXISTS ${{ secrets.DB_DATABASE }} FORCE;"
       - name: Create Metabase database
         run: |
-          export PGPASSWORD=${{ secrets.DB_SU_PASSWORD }} 
+          export PGPASSWORD='${{ secrets.DB_SU_PASSWORD }}'
           export PGUSER=${{ secrets.DB_SU_USER }}
           export PGDATABASE=${{ secrets.DB_SU_DATABASE }}
           export PGHOST=${{ secrets.DB_HOST }} 
           psql -c "CREATE DATABASE ${{ secrets.DB_DATABASE }} OWNER ${{ secrets.DB_USER }};"
       - name: Restore PostgreSQL dump from S3
         run: |
-          export PGPASSWORD=${{ secrets.DB_PASSWORD }}
+          export PGPASSWORD='${{ secrets.DB_PASSWORD }}'
           export PGUSER=${{ secrets.DB_USER }}
           export PGDATABASE=${{ secrets.DB_DATABASE }}
           export PGHOST=${{ secrets.DB_HOST }}
