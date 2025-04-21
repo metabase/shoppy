@@ -1,6 +1,10 @@
 name: Dump
 on:
-  workflow_dispatch
+  workflow_dispatch:
+
+  push:
+    branches:
+      - deploy
 
 jobs:
   dump:
