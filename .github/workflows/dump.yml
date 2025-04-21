@@ -1,0 +1,29 @@
+name: Dump
+on:
+  workflow_dispatch
+
+jobs:
+  dump:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Tailscale
+        uses: tailscale/github-action@v2
+        with:
+          oauth-client-id: ${{ secrets.TAILSCALE_OAUTH_CLIENT_ID }}
+          oauth-secret: ${{ secrets.TAILSCALE_OAUTH_SECRET }}
+          tags: tag:ci
+          version: 1.50.1
+          sha256sum: d9fe6b480fb5078f0aa57dace686898dda7e2a768884271159faa74846bfb576
+      - name: Setup psql client
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y postgresql-client        
+      - name: Export PostgreSQL dump to S3
+        run: |
+          PGPASSWORD=${{ secrets.DB_PASSWORD }} pg_dump -h ${{ secrets.DB_HOST }} \
+            -U ${{ secrets.DB_USER }} \
+            -d ${{ secrets.DB_DATABASE }} \
+            --file=dump.sql
+          aws s3 cp dump.sql s3://${{ vars.S3_BUCKET }}/${{ vars.S3_KEY }}
