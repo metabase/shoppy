@@ -18,7 +18,7 @@ env:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }} || github.event_name == 'workflow_dispatch' }}
+    if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name == 'workflow_dispatch' }}
     permissions:
       id-token: write
       contents: read
@@ -76,6 +76,12 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y postgresql-client 
+      - name: Reinitialize Shoppy DWH DB
+        env:
+          DB_URL: postgres://${{ secrets.SHOPPY_DB_USER }}:${{ secrets.SHOPPY_DB_PASSWORD }}@${{ secrets.SHOPPY_DB_HOST }}:${{ vars.SHOPPY_DB_PORT }}/${{ vars.SHOPPY_DB }}
+        run: |
+          cd api &&
+          yarn db:initialize
       - name: Download PostgreSQL dump from S3
         run: |
           aws s3 cp s3://${{ secrets.METABASE_APP_DB_S3_BUCKET }}/${{ vars.METABASE_APP_DB_S3_KEY }} dump.sql       
