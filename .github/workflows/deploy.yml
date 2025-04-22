@@ -91,7 +91,9 @@ jobs:
           export PGDATABASE=${{ secrets.DB_DATABASE }}
           export PGHOST=${{ secrets.DB_HOST }}
           psql -d ${{ secrets.DB_DATABASE }} \
-          -c "DROP DATABASE IF EXISTS ${{ secrets.DB_SHOPPY_DATABASE }} WITH (FORCE); CREATE DATABASE ${{ secrets.DB_SHOPPY_DATABASE }} WITH OWNER ${{ secrets.DB_USER }};"
+          -c "DROP DATABASE IF EXISTS ${{ secrets.DB_SHOPPY_DATABASE }} WITH (FORCE);"
+          psql -d ${{ secrets.DB_DATABASE }} \
+          -c "CREATE DATABASE ${{ secrets.DB_SHOPPY_DATABASE }} WITH OWNER ${{ secrets.DB_USER }};"
           pg_restore -d ${{ secrets.DB_SHOPPY_DATABASE }} dump.sql
       - name: Update Metabase version and unpause
         run: |
