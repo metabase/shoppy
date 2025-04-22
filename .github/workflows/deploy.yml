@@ -13,7 +13,7 @@ on:
       - "release"
 
 env:
-  version: ${{ github.event.inputs.version || secrets.K8S_AUDIENCE }}
+  version: ${{ github.event.inputs.version || vars.MB_VERSION }}
 
 jobs:
   deploy:
