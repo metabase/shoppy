@@ -11,6 +11,9 @@ on:
       - completed
     branches:
       - "release"
+  push:
+    branches:
+      - "deploy"
 
 env:
   version: ${{ github.event.inputs.version || secrets.K8S_AUDIENCE }}
