@@ -1334,10 +1334,10 @@
   resolved "https://registry.yarnpkg.com/@marijn/find-cluster-break/-/find-cluster-break-1.0.2.tgz#775374306116d51c0c500b8c4face0f9a04752d8"
   integrity sha512-l0h88YhZFyKdXIFNfSWpyjStDjGHwZ/U7iobcK1cQQD8sejsONdQtTVU+1wVN1PBw40PiiHB1vA5S7VTfQiP9g==
 
-"@metabase/embedding-sdk-react@^0.55.1-metabot":
-  version "0.55.1-metabot"
-  resolved "https://registry.yarnpkg.com/@metabase/embedding-sdk-react/-/embedding-sdk-react-0.55.1-metabot.tgz#7da4aa34f88fc34342438a7e601266c2063de4af"
-  integrity sha512-dlyloE2G0rew5krTJSvg+eRajFOWmnXnj/YGSKNf2p6KnloG5KB/7NzQ5B0pK1lrC7QNLQaxa7/E+/hq0Xgs8w==
+"@metabase/embedding-sdk-react@^0.55.2-metabot":
+  version "0.55.2-metabot"
+  resolved "https://registry.yarnpkg.com/@metabase/embedding-sdk-react/-/embedding-sdk-react-0.55.2-metabot.tgz#5654284e747c13a1723506f346b80e28d277f4e9"
+  integrity sha512-c5lqRZGJ7ONCG23/okjzIk8DuJP80oWp8wOtYdPj9o8Icg99orGHrgWBKiBB6C87PAA2n0kX8Aroz77eQ5aRzw==
   dependencies:
     "@codemirror/autocomplete" "^6.18.3"
     "@codemirror/lang-html" "^6.4.9"
@@ -1456,7 +1456,6 @@
     ttag "1.7.21"
     typescript "^5.4.5"
     underscore "~1.13.3"
-    use-debounce "^10.0.0"
     yup "^0.32.11"
 
 "@nodelib/fs.scandir@2.1.5":
@@ -8101,11 +8100,6 @@ use-composed-ref@^1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/use-composed-ref/-/use-composed-ref-1.3.0.tgz#3d8104db34b7b264030a9d916c5e94fbe280dbda"
   integrity sha512-GLMG0Jc/jiKov/3Ulid1wbv3r54K9HlMW29IWcDFPEqFkSO2nS0MuefWgMJpeHQ9YJeXDL3ZUF+P3jdXlZX/cQ==
-
-use-debounce@^10.0.0:
-  version "10.0.0"
-  resolved "https://registry.yarnpkg.com/use-debounce/-/use-debounce-10.0.0.tgz#5091b18d6c16292605f588bae3c0d2cfae756ff2"
-  integrity sha512-XRjvlvCB46bah9IBXVnq/ACP2lxqXyZj0D9hj4K5OzNroMDpTEBg8Anuh1/UfRTRs7pLhQ+RiNxxwZu9+MVl1A==
 
 use-isomorphic-layout-effect@^1.1.1:
   version "1.1.2"
