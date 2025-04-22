@@ -32,7 +32,7 @@ export const ProductDetailInsights = (props: Props) => {
         >
           <RemountOnSiteChange>
             <StaticQuestion
-              questionId="PgajooaC4Bo1lkVnu5jMM"
+              questionId="IbYQgw6CfKtuBvayhO8jj"
               height={250}
               initialSqlParameters={{ product_id: props.productId }}
             />
@@ -47,7 +47,7 @@ export const ProductDetailInsights = (props: Props) => {
 
         <RemountOnSiteChange>
           <StaticQuestion
-            questionId="8emcAd9TTrPoHLuaFaUh0"
+            questionId="PPPTXCo5M_LFmsMv8I8tm"
             height={70}
             initialSqlParameters={{ product_id: props.productId }}
           />
@@ -63,7 +63,7 @@ export const ProductDetailInsights = (props: Props) => {
       >
         <Flex mih={700} className="orders-over-time-container">
           <InteractiveQuestion
-            questionId="jA76uaXQKWC1xp7q2TvE2"
+            questionId="6qvxqLybT05a-KaTnw0fh"
             title={
               <Title fw={400} size="h2" className="product-detail-card-title">
                 Orders over time
