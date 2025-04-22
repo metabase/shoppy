@@ -48,9 +48,7 @@ export const Routes = () => (
 
             <Route
               path="/analytics/:id"
-              component={(props) => (
-                <DashboardPage entity_id={props.params.id} />
-              )}
+              component={(props) => <DashboardPage id={props.params.id} />}
             />
 
             <Route
@@ -71,7 +69,7 @@ export const Routes = () => (
 
           <Route
             path="/question/:id"
-            component={(props) => <QuestionPage entity_id={props.params.id} />}
+            component={(props) => <QuestionPage id={props.params.id} />}
           />
         </Route>
 

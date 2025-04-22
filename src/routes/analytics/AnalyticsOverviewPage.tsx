@@ -14,7 +14,7 @@ export function AnalyticsOverviewPage() {
       <Stack>
         <SimpleGrid cols={{ base: 1, xs: 2, sm: 3, lg: 4 }}>
           {overviewLinkCards.map((card) => (
-            <DashboardLinkCard key={card.entityId} {...card} />
+            <DashboardLinkCard key={card.id} {...card} />
           ))}
         </SimpleGrid>
       </Stack>

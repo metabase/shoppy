@@ -2,7 +2,7 @@ import { Link } from "wouter"
 import { Text, Card, Box, Title, Flex } from "@mantine/core"
 
 export interface DashboardLinkCardProps {
-  entityId: string
+  id: number
   title: string
   description?: string
   author: string
@@ -11,7 +11,7 @@ export interface DashboardLinkCardProps {
 
 export const DashboardLinkCard = (props: DashboardLinkCardProps) => {
   return (
-    <Link to={`/analytics/${props.entityId}`}>
+    <Link to={`/analytics/${props.id}`}>
       <Card className="card gap-y-5 justify-between" h="100%" withBorder p={12}>
         <Box>
           <Title size="h4">{props.title}</Title>

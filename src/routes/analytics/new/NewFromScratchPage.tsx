@@ -11,7 +11,7 @@ export const NewFromScratchPage = () => {
       <InteractiveQuestion
         questionId="new"
         onSave={onSaveQuestion}
-        targetCollection={collectionId}
+        saveToCollection={collectionId}
         isSaveEnabled
       />
     </Container>

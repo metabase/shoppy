@@ -29,7 +29,7 @@ export const NewFromTemplatePage = () => {
         <CollectionBrowser
           collectionId={QUESTION_TEMPLATE_COLLECTION_ID}
           visibleEntityTypes={["question"]}
-          onClick={(item) => setQuestionId(item.entity_id)}
+          onClick={(item) => setQuestionId(item.id)}
         />
       </Container>
     )
@@ -40,7 +40,7 @@ export const NewFromTemplatePage = () => {
       <Container w="100%">
         <InteractiveQuestion
           onSave={onSaveQuestion}
-          targetCollection={collectionId}
+          saveToCollection={collectionId}
           questionId={templateOrSavedQuestionId}
           isSaveEnabled
         />
