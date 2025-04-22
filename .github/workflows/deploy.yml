@@ -38,7 +38,9 @@ jobs:
         shell: bash
         run: |
           export OIDC_URL_WITH_AUDIENCE="$ACTIONS_ID_TOKEN_REQUEST_URL&audience=${{ secrets.K8S_AUDIENCE }}"
-          IDTOKEN=$(curl -H "Authorization: Bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" -H "Accept: application/json; api-version=2.0" "$OIDC_URL_WITH_AUDIENCE" | jq -r .value)
+          IDTOKEN=$(curl -H "Authorization: Bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+          -H "Accept: application/json; api-version=2.0" "$OIDC_URL_WITH_AUDIENCE" \
+          | jq -r .value)
           echo "::add-mask::${IDTOKEN}"
           echo "idToken=${IDTOKEN}" >>$GITHUB_OUTPUT
       - name: Setup Kube Context
@@ -79,31 +81,22 @@ jobs:
           aws s3 cp s3://${{ secrets.S3_BUCKET }}/${{ vars.S3_KEY }} dump.sql       
       - name: Pause Metabase (set pause.enabled=true)
         run: |
-          kubectl patch metabase hosting-shoppy --type=merge -p '{"spec":{"pause":{"enabled":true}}}'
-      - name: Drop existing Metabase database
-        run: |
-          export PGPASSWORD='${{ secrets.DB_SU_PASSWORD }}'
-          export PGUSER=${{ secrets.DB_SU_USER }}
-          export PGDATABASE=${{ secrets.DB_SU_DATABASE }}
-          export PGHOST=${{ secrets.DB_HOST }}
-          psql -c "DROP DATABASE IF EXISTS ${{ secrets.DB_DATABASE }};"
-      - name: Create Metabase database
-        run: |
-          export PGPASSWORD='${{ secrets.DB_SU_PASSWORD }}'
-          export PGUSER=${{ secrets.DB_SU_USER }}
-          export PGDATABASE=${{ secrets.DB_SU_DATABASE }}
-          export PGHOST=${{ secrets.DB_HOST }} 
-          psql -c "CREATE DATABASE ${{ secrets.DB_DATABASE }} OWNER ${{ secrets.DB_USER }};"
-      - name: Restore PostgreSQL dump from S3
+          kubectl patch metabase hosting-shoppy \
+          --type=merge \
+          -p '{"spec":{"pause":{"enabled":true}}}'
+      - name: Drop database and restore
         run: |
           export PGPASSWORD='${{ secrets.DB_PASSWORD }}'
           export PGUSER=${{ secrets.DB_USER }}
-          export PGDATABASE=${{ secrets.DB_DATABASE }}
           export PGHOST=${{ secrets.DB_HOST }}
-          psql --file=dump.sql
+          psql -d ${{ secrets.DB_DATABASE }} \
+          -c "DROP DATABASE IF EXISTS ${{ secrets.DB_SHOPPY_DATABASE }} WITH (FORCE);"
+          pg_restore -d ${{ secrets.DB_SHOPPY_DATABASE }} -C dump.sql
       - name: Update Metabase version and unpause
         run: |
-          kubectl patch metabase hosting-shoppy --type=merge -p '{"spec":{"image":{"version":"${{ env.version }}"},"pause":{"enabled":false}}}'
+          kubectl patch metabase hosting-shoppy \
+          --type=merge \
+          -p '{"spec":{"image":{"version":"${{ env.version }}"},"pause":{"enabled":false}}}'
       - name: Verify deployment
         run: |
           kubectl get metabase hosting-shoppy -o jsonpath='{.spec.image.version}'
