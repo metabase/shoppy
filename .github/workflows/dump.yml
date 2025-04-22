@@ -33,7 +33,7 @@ jobs:
         run: |
           export PGPASSWORD='${{ secrets.DB_PASSWORD }}'
           export PGUSER=${{ secrets.DB_USER }}
-          export PGDATABASE=${{ secrets.DB_DATABASE }}
+          export PGDATABASE=${{ secrets.DB_SHOPPY_DATABASE }}
           export PGHOST=${{ secrets.DB_HOST }}
-          pg_dump --file=dump.sql
+          pg_dump -F c -b -v -f dump.sql
           aws s3 cp dump.sql s3://${{ secrets.S3_BUCKET }}/${{ vars.S3_KEY }}
