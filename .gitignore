@@ -17,6 +17,11 @@ cypress
 dist
 build
 
+# db dumps
+*.sql
+# but allow migration files
+!api/drizzle/**/*.sql
+
 # misc
 .DS_Store
 .env.development.local

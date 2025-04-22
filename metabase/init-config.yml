@@ -1,22 +1,27 @@
 version: 1
 config:
   users:
+    - first_name: "Admin"
+      last_name: "Admin"
+      password: "{{ env METABASE_ADMIN_PASSWORD }}"
+      email: "{{ env METABASE_ADMIN_EMAIL }}"
+      is_superuser: true
     - first_name: "Rene"
       last_name: "Mueller"
       password: "{{ env METABASE_ADMIN_PASSWORD }}"
-      email: "{{ env METABASE_ADMIN_EMAIL }}"
+      email: "rene@example.com"
     - first_name: "Cecilia"
       last_name: "Stark"
       password: "{{ env METABASE_ADMIN_PASSWORD }}"
-      email: "{{ env METABASE_ADMIN_EMAIL }}"
+      email: "cecilia@example.com"
     - first_name: "Emily"
       last_name: "Johnson"
       password: "{{ env METABASE_ADMIN_PASSWORD }}"
-      email: "{{ env METABASE_ADMIN_EMAIL }}"
+      email: "emily@example.com"
     - first_name: "Jennifer"
       last_name: "Martinez"
       password: "{{ env METABASE_ADMIN_PASSWORD }}"
-      email: "{{ env METABASE_ADMIN_EMAIL }}"
+      email: "jennifer@example.com"
   settings:
     enable-embedding-sdk: true
     jwt-enabled: true

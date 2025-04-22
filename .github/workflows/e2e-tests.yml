@@ -18,9 +18,25 @@ jobs:
     name: e2e-tests
     env:
       PREMIUM_EMBEDDING_TOKEN: ${{ secrets.ENTERPRISE_TOKEN }}
+      METABASE_APP_DB_USER: ${{ secrets.APP_DB_USER }}
+      METABASE_APP_DB: ${{ secrets.APP_DB_SHOPPY_DATABASE }}
+    permissions:
+      id-token: write
+      contents: read
 
     steps:
       - uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.IAM_ROLE }}
+          role-session-name: GitHub_to_AWS_via_FederatedOIDC
+          aws-region: us-east-1
+
+      - name: Download App DB PostgreSQL dump from S3
+        run: |
+          aws s3 cp s3://${{ secrets.METABASE_APP_DB_S3_BUCKET }}/${{ vars.METABASE_APP_DB_S3_KEY }} ./local-dist/metabase_dump.sql
 
       - name: Run Shoppy in Docker
         run: |
