@@ -84,14 +84,15 @@ jobs:
           kubectl patch metabase hosting-shoppy \
           --type=merge \
           -p '{"spec":{"pause":{"enabled":true}}}'
-      - name: Drop database and restore
+      - name: Drop app database and restore
         run: |
           export PGPASSWORD='${{ secrets.DB_PASSWORD }}'
           export PGUSER=${{ secrets.DB_USER }}
+          export PGDATABASE=${{ secrets.DB_DATABASE }}
           export PGHOST=${{ secrets.DB_HOST }}
           psql -d ${{ secrets.DB_DATABASE }} \
           -c "DROP DATABASE IF EXISTS ${{ secrets.DB_SHOPPY_DATABASE }} WITH (FORCE);"
-          pg_restore -d ${{ secrets.DB_SHOPPY_DATABASE }} -C dump.sql
+          pg_restore -C dump.sql
       - name: Update Metabase version and unpause
         run: |
           kubectl patch metabase hosting-shoppy \
