@@ -9,7 +9,7 @@ export function SiteLogo() {
   if (site === "proficiency") {
     return (
       <Flex justify="flex-start" align="center" mb="20px">
-        <Image src="/logo-proficiency.svg" maw="40px" mr="8px" />
+        <Image src="/logo-proficiency.svg" w="40px" mr="8px" />
 
         <Text fz="21px" lh="21px" fw={700}>
           ProficiencyLabs

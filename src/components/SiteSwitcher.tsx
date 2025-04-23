@@ -25,10 +25,11 @@ export const SiteSwitcher = () => {
               key={site.key}
               variant="outline"
               size="xs"
-              color={active ? "#2B2F32" : "#7AC1FF"}
+              color={active ? "#2B2F32" : "#EAEAEA"}
+              c={active ? "#2B2F32" : "#7AC1FF"}
               bg={active ? "#EAEAEA" : undefined}
+              style={{ border: "1px solid #eaeaea" }}
               className={cx(
-                "border-[#EAEAEA]",
                 !active && "!bg-transparent hover:!bg-[#4C4E51]",
 
                 // Workaround to address Mantine's bug where the leftmost button's border radius is not applied,
