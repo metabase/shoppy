@@ -24,7 +24,7 @@ jobs:
       contents: read
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Tailscale
         uses: tailscale/github-action@v2
         with:
@@ -78,7 +78,7 @@ jobs:
           sudo apt-get install -y postgresql-client 
       - name: Download PostgreSQL dump from S3
         run: |
-          aws s3 cp s3://${{ secrets.S3_BUCKET }}/${{ vars.S3_KEY }} dump.sql       
+          aws s3 cp s3://${{ secrets.METABASE_APP_DB_S3_BUCKET }}/${{ vars.METABASE_APP_DB_S3_KEY }} dump.sql       
       - name: Pause Metabase (set pause.enabled=true)
         run: |
           kubectl patch metabase hosting-shoppy \
@@ -86,15 +86,21 @@ jobs:
           -p '{"spec":{"pause":{"enabled":true}}}'
       - name: Drop app database and restore
         run: |
-          export PGPASSWORD='${{ secrets.DB_PASSWORD }}'
-          export PGUSER=${{ secrets.DB_USER }}
-          export PGDATABASE=${{ secrets.DB_DATABASE }}
-          export PGHOST=${{ secrets.DB_HOST }}
-          psql -d ${{ secrets.DB_DATABASE }} \
-          -c "DROP DATABASE IF EXISTS ${{ secrets.DB_SHOPPY_DATABASE }} WITH (FORCE);"
-          psql -d ${{ secrets.DB_DATABASE }} \
-          -c "CREATE DATABASE ${{ secrets.DB_SHOPPY_DATABASE }} WITH OWNER ${{ secrets.DB_USER }};"
-          pg_restore -d ${{ secrets.DB_SHOPPY_DATABASE }} dump.sql
+          export PGPASSWORD='${{ secrets.APP_DB_PASSWORD }}'
+          export PGUSER=${{ secrets.APP_DB_USER }}
+          export PGDATABASE=${{ secrets.APP_DB_DATABASE }}
+          export PGHOST=${{ secrets.APP_DB_HOST }}
+          psql -d ${{ secrets.APP_DB_DATABASE }} \
+          -c "DROP DATABASE IF EXISTS ${{ secrets.APP_DB_SHOPPY_DATABASE }} WITH (FORCE);"
+          psql -d ${{ secrets.APP_DB_DATABASE }} \
+          -c "CREATE DATABASE ${{ secrets.APP_DB_SHOPPY_DATABASE }} WITH OWNER ${{ secrets.APP_DB_USER }};"
+          pg_restore -d ${{ secrets.APP_DB_SHOPPY_DATABASE }} dump.sql
+      - name: Reinitialize Shoppy DWH DB
+        env:
+          DB_URL: postgres://${{ secrets.SHOPPY_DB_USER }}:${{ secrets.SHOPPY_DB_PASSWORD }}@${{ secrets.SHOPPY_DB_HOST }}:${{ vars.SHOPPY_DB_PORT }}/${{ vars.SHOPPY_DB }}
+        run: |
+          cd api &&
+          yarn db:initialize
       - name: Update Metabase version and unpause
         run: |
           kubectl patch metabase hosting-shoppy \

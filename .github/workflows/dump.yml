@@ -10,7 +10,7 @@ jobs:
       contents: read
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -31,9 +31,9 @@ jobs:
           sudo apt-get install -y postgresql-client        
       - name: Export PostgreSQL dump to S3
         run: |
-          export PGPASSWORD='${{ secrets.DB_PASSWORD }}'
-          export PGUSER=${{ secrets.DB_USER }}
-          export PGDATABASE=${{ secrets.DB_SHOPPY_DATABASE }}
-          export PGHOST=${{ secrets.DB_HOST }}
+          export PGPASSWORD='${{ secrets.APP_DB_PASSWORD }}'
+          export PGUSER=${{ secrets.APP_DB_USER }}
+          export PGDATABASE=${{ secrets.APP_DB_SHOPPY_DATABASE }}
+          export PGHOST=${{ secrets.APP_DB_HOST }}
           pg_dump -F c -b -v -f dump.sql
-          aws s3 cp dump.sql s3://${{ secrets.S3_BUCKET }}/${{ vars.S3_KEY }}
+          aws s3 cp dump.sql s3://${{ secrets.METABASE_APP_DB_S3_BUCKET }}/${{ vars.METABASE_APP_DB_S3_KEY }}
