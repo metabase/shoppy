@@ -1,0 +1,90 @@
+services:
+  shoppy_db:
+    image: postgres:latest
+    environment:
+      POSTGRES_PORT: "${SHOPPY_DB_PORT}"
+      POSTGRES_DB: "${SHOPPY_DB}"
+      POSTGRES_USER: "${SHOPPY_DB_USER}"
+      POSTGRES_PASSWORD: "${SHOPPY_DB_PASSWORD}"
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    expose:
+      - "${SHOPPY_DB_PORT}"
+
+  api:
+    depends_on:
+      shoppy_db:
+        condition: service_healthy
+    build:
+      context: .
+      dockerfile: api/Dockerfile
+      args:
+        DB_URL: "postgres://${SHOPPY_DB_USER}:${SHOPPY_DB_PASSWORD}@shoppy_db:${SHOPPY_DB_PORT}/${SHOPPY_DB}"
+    environment:
+      PORT: "${API_PORT}"
+      CLIENT_PORT: "${CLIENT_PORT}"
+      IS_LOCAL_DB: "true"
+      DB_URL: "postgres://${SHOPPY_DB_USER}:${SHOPPY_DB_PASSWORD}@shoppy_db:${SHOPPY_DB_PORT}/${SHOPPY_DB}"
+      METABASE_INSTANCE_URL: "http://metabase:${MB_PORT}"
+      METABASE_JWT_SHARED_SECRET: "${METABASE_JWT_SHARED_SECRET}"
+      METABASE_ADMIN_EMAIL: "${METABASE_ADMIN_EMAIL}"
+    healthcheck:
+      test: curl --fail -X GET -I "http://localhost:${API_PORT}/" || exit 1
+      interval: 15s
+      timeout: 5s
+      retries: 10
+    ports:
+      - "${API_PORT}:${API_PORT}"
+
+  metabase:
+    depends_on:
+      shoppy_db:
+        condition: service_healthy
+      api:
+        condition: service_healthy
+    build:
+      context: .
+      dockerfile: metabase/Dockerfile
+    environment:
+      MB_CONFIG_FILE_PATH: "./app/init-config.yml"
+      MB_JETTY_PORT: "${MB_PORT}"
+      MB_EDITION: "ee"
+      MB_SITE_URL: "http://localhost:${MB_PORT}/"
+      MB_PREMIUM_EMBEDDING_TOKEN: "${PREMIUM_EMBEDDING_TOKEN}"
+      MB_JWT_SHARED_SECRET: "${METABASE_JWT_SHARED_SECRET}"
+      MB_SETUP_TOKEN: "${PREMIUM_EMBEDDING_TOKEN}"
+      METABASE_ADMIN_EMAIL: "${METABASE_ADMIN_EMAIL}"
+      METABASE_ADMIN_PASSWORD: "${METABASE_ADMIN_PASSWORD}"
+      SHOPPY_DB_PORT: "${SHOPPY_DB_PORT}"
+      SHOPPY_DB: "${SHOPPY_DB}"
+      SHOPPY_DB_USER: "${SHOPPY_DB_USER}"
+      SHOPPY_DB_PASSWORD: "${SHOPPY_DB_PASSWORD}"
+    healthcheck:
+      test: curl --fail -X GET -I "http://localhost:${MB_PORT}/api/health" || exit 1
+      interval: 15s
+      timeout: 5s
+      retries: 10
+    ports:
+      - "${MB_PORT}:${MB_PORT}"
+
+  client:
+    depends_on:
+      metabase:
+        condition: service_healthy
+      api:
+        condition: service_healthy
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      CLIENT_PORT: "${CLIENT_PORT}"
+      VITE_APP_METABASE_INSTANCE_URL: "http://localhost:${MB_PORT}"
+      VITE_APP_API_HOST: "http://localhost:${API_PORT}/api"
+      VITE_APP_AUTH_PROVIDER_URI: "/sso/metabase"
+    ports:
+      - "${CLIENT_PORT}:${CLIENT_PORT}"
+    volumes:
+      - ./src:/app/src

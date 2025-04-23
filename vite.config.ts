@@ -9,7 +9,9 @@ const isHTTPS = process.env.HTTPS
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "")
-  const port = env.PORT ? parseInt(env.PORT) : undefined
+
+  const devPort = parseInt(env.CLIENT_PORT, 10) || 3004
+  const previewPort = parseInt(env.CLIENT_PORT ?? env.PORT, 10) || undefined
 
   return {
     plugins: [
@@ -21,10 +23,10 @@ export default defineConfig(({ mode }) => {
     ],
     server: {
       open: false,
-      port: 3004,
+      port: devPort,
     },
     preview: {
-      port,
+      port: previewPort,
     },
   }
 })

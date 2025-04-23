@@ -1,16 +1,21 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
-/.pnp
+node_modules
+.pnp
 .pnp.js
 
+# local dist
+local-dist/*
+!local-dist/.gitkeep
+
 # testing
-/coverage
+coverage
+cypress
 
 # production
-/dist
-/build
+dist
+build
 
 # misc
 .DS_Store
@@ -23,6 +28,7 @@ yarn-debug.log*
 yarn-error.log*
 
 .env
+.env.docker
 api/.env
 api/node_modules
 api/dist

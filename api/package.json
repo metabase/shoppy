@@ -7,7 +7,8 @@
     "start": "node dist/main.js",
     "dev": "esno src/main.ts",
     "build": "tsc",
-    "drizzle:seed:orders": "esno drizzle/seeder/generate-orders.ts",
+    "db:initialize": "yarn drizzle:migrate && yarn drizzle:seed",
+    "drizzle:seed": "esno drizzle/seeder/generate-data.ts",
     "drizzle:migrate": "esno drizzle/migrate.ts",
     "drizzle:generate": "drizzle-kit generate:pg",
     "drizzle:studio": "drizzle-kit studio"

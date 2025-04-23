@@ -1,0 +1,14 @@
+{
+  "name": "e2e",
+  "private": true,
+  "version": "0.0.0",
+  "devDependencies": {
+    "@testing-library/cypress": "^10.0.3",
+    "cypress": "^14.0.3",
+    "env-cmd": "^10.1.0"
+  },
+  "scripts": {
+    "cypress:open": "env-cmd -f ../.env.docker cypress open --config-file ./support/cypress.config.js --e2e",
+    "cypress:run": "env-cmd -f ../.env.docker cypress run --config-file ./support/cypress.config.js"
+  }
+}
