@@ -75,7 +75,9 @@ jobs:
       - name: Setup psql client
         run: |
           sudo apt-get update
-          sudo apt-get install -y postgresql-client 
+          sudo apt-get install -y postgresql-client
+      - name: Ensure that Esno executable is ready
+        run: yarn install --cwd api --frozen-lockfile
       - name: Reinitialize Shoppy DWH DB
         env:
           DB_URL: postgres://${{ secrets.SHOPPY_DB_USER }}:${{ secrets.SHOPPY_DB_PASSWORD }}@${{ secrets.SHOPPY_DB_HOST }}:${{ vars.SHOPPY_DB_PORT }}/${{ vars.SHOPPY_DB }}
