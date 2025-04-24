@@ -126,11 +126,7 @@ describe("Embedding SDK: shoppy compatibility", () => {
 
       cy.findByText("User-Generated", { timeout: TIMEOUT }).click()
 
-      expect(
-        cy
-          .findAllByTestId("collection-entry")
-          .should("have.length.at.least", 1),
-      )
+      expect(cy.findByText("This collection is empty").should("exist"))
     })
   })
 })

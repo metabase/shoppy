@@ -12,7 +12,7 @@ type OrderInput = typeof orders.$inferInsert
  * Generates more mock orders for the database.
  */
 export async function generateOrders() {
-  console.log("generating orders...")
+  console.log("Generating orders...")
 
   const products = await db.query.products.findMany({
     columns: { id: true, price: true },
@@ -22,25 +22,24 @@ export async function generateOrders() {
     columns: { id: true, name: true },
   })
 
+  if (products.length === 0 || customers.length === 0) {
+    console.warn("⚠️ Cannot generate orders — no products or customers found")
+    return
+  }
+
+  const ordersBatch: OrderInput[] = []
+
   for (let i = 0; i < ORDER_COUNT; i++) {
     const product = getRandomEntity(products)
-    const productId = product.id
-
     const customer = getRandomEntity(customers)
-    const customerId = customer.id
 
-    if (!product) continue
+    if (!product || !customer) continue
 
     const basePrice = parseFloat(product.price)
-
-    let discount = 0
-
-    if (Math.random() > 0.7) {
-      discount = faker.number.int({
-        min: 0,
-        max: Math.floor(basePrice / 2),
-      })
-    }
+    const discount =
+      Math.random() > 0.7
+        ? faker.number.int({ min: 0, max: Math.floor(basePrice / 2) })
+        : 0
 
     const totalPrice = Math.max(basePrice - discount, 0)
 
@@ -51,18 +50,18 @@ export async function generateOrders() {
 
     const createdAt = createdAtDate.toISOString().slice(0, 19).replace("T", " ")
 
-    const order: OrderInput = {
+    ordersBatch.push({
       id: i,
       createdAt,
-      productId,
+      productId: product.id,
       quantity: faker.number.int({ min: 1, max: 10 }).toString(),
-      totalPrice: totalPrice.toString(),
+      totalPrice: totalPrice.toFixed(2),
       discountApplied: discount.toString(),
-      customerId,
-    }
-
-    await db.insert(orders).values(order)
-
-    console.log(`generated order for ${createdAt.toString()}`)
+      customerId: customer.id,
+    })
   }
+
+  await db.insert(orders).values(ordersBatch)
+
+  console.log(`✅ Inserted ${ordersBatch.length} orders`)
 }

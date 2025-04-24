@@ -1,39 +1,51 @@
-import { eq } from "drizzle-orm"
-
+import { and, eq, isNotNull, sql } from "drizzle-orm"
 import { db } from "../../src/utils/db"
-import { products as productSchema } from "../../src/schema/products"
-import { people as peopleSchema } from "../../src/schema/people"
-import { orders as orderSchema } from "../../src/schema/orders"
+import { orders } from "../../src/schema/orders"
+import { products } from "../../src/schema/products"
 
 /**
- * Assign shop_id to customers based on their purchased product.
+ * Assign shop_id to customers based on their purchased product (batch update).
  */
 export async function assignShopsToCustomers() {
-  const customers = await db.query.people.findMany({
-    columns: { id: true },
-  })
+  console.log("Assigning shopId to customers (batch update) using CASE...")
 
-  for (const customer of customers) {
-    const orders = await db.query.orders.findMany({
-      columns: { id: true, productId: true },
-      where: eq(orderSchema.customerId, customer.id),
+  const mappings = await db
+    .selectDistinct({
+      customerId: orders.customerId,
+      shopId: products.shopId,
     })
+    .from(orders)
+    .innerJoin(products, eq(orders.productId, products.id))
+    .where(and(isNotNull(orders.productId), isNotNull(products.shopId)))
 
-    for (const order of orders) {
-      if (!order.productId) continue
-
-      const product = await db.query.products.findFirst({
-        columns: { id: true, shopId: true },
-        where: eq(productSchema.id, order.productId),
-      })
-
-      if (product) {
-        await db
-          .update(peopleSchema)
-          .set({ shopId: product.shopId })
-          .where(eq(peopleSchema.id, customer.id))
-          .returning()
-      }
-    }
+  if (mappings.length === 0) {
+    console.log("No customer-shop mappings found.")
+    return
   }
+
+  const caseClauses = mappings.map(
+    ({ customerId, shopId }) =>
+      sql`
+        WHEN people.id = ${sql.param(customerId)}
+        THEN ${sql.param(shopId)}::bigint
+      `,
+  )
+
+  const customerIdParams = mappings.map(({ customerId }) =>
+    sql.param(customerId),
+  )
+
+  const updateQuery = sql`
+      UPDATE ${sql.identifier("people")} AS people
+      SET shop_id = CASE
+        ${sql.join(caseClauses, sql` `)}
+        ELSE people.shop_id
+        END
+      WHERE people.id IN (${sql.join(customerIdParams, sql`,`)})
+  `
+
+  await db.execute(updateQuery)
+  console.log(
+    `✅ Batch updated ${mappings.length} customer(s) with shopId using CASE.`,
+  )
 }
