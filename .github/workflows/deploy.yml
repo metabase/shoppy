@@ -25,6 +25,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          ref: "release"
       - name: Tailscale
         uses: tailscale/github-action@v2
         with:
