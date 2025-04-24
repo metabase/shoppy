@@ -4,10 +4,12 @@ on:
   push:
     branches:
       - "main"
+      - "release"
   pull_request:
     types: [opened, synchronize, reopened, ready_for_review]
     branches:
       - "main"
+      - "release"
 
 jobs:
   e2e-tests:

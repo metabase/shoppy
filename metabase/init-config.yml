@@ -24,7 +24,7 @@ config:
     - name: Customer Zero Database
       engine: postgres
       details:
-        host: shoppy_db
+        host: "{{ env SHOPPY_DB_HOST }}"
         port: "{{ env SHOPPY_DB_PORT }}"
         dbname: "{{ env SHOPPY_DB }}"
         user: "{{ env SHOPPY_DB_USER }}"

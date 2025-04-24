@@ -1,0 +1,112 @@
+name: Deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Metabase version to deploy'
+  workflow_run:
+    workflows: ["Shoppy E2E tests"]
+    types:
+      - completed
+    branches:
+      - "release"
+
+env:
+  version: ${{ github.event.inputs.version || vars.MB_VERSION }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name == 'workflow_dispatch' }}
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Tailscale
+        uses: tailscale/github-action@v2
+        with:
+          oauth-client-id: ${{ secrets.TAILSCALE_OAUTH_CLIENT_ID }}
+          oauth-secret: ${{ secrets.TAILSCALE_OAUTH_SECRET }}
+          tags: tag:ci
+          version: 1.50.1
+          sha256sum: d9fe6b480fb5078f0aa57dace686898dda7e2a768884271159faa74846bfb576
+      - name: Create OIDC Token
+        id: create-oidc-token
+        shell: bash
+        run: |
+          export OIDC_URL_WITH_AUDIENCE="$ACTIONS_ID_TOKEN_REQUEST_URL&audience=${{ secrets.K8S_AUDIENCE }}"
+          IDTOKEN=$(curl -H "Authorization: Bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+          -H "Accept: application/json; api-version=2.0" "$OIDC_URL_WITH_AUDIENCE" \
+          | jq -r .value)
+          echo "::add-mask::${IDTOKEN}"
+          echo "idToken=${IDTOKEN}" >>$GITHUB_OUTPUT
+      - name: Setup Kube Context
+        uses: azure/k8s-set-context@v2
+        with:
+          method: kubeconfig
+          kubeconfig: |
+            kind: Config
+            apiVersion: v1
+            current-context: default
+            clusters:
+            - name: default
+              cluster:
+                certificate-authority-data: ${{ secrets.K8S_CERTIFICATE_AUTHORITY_DATA }}
+                server: ${{ secrets.K8S_SERVER }}
+            users:
+            - name: oidc-token
+              user:
+                token: ${{ steps.create-oidc-token.outputs.IDTOKEN }}
+            contexts:
+            - name: default
+              context:
+                cluster: default
+                namespace: ${{secrets.K8S_NAMESPACE}}
+                user: oidc-token
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.IAM_ROLE }}
+          role-session-name: GitHub_to_AWS_via_FederatedOIDC
+          aws-region: us-east-1
+      - name: Setup psql client
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y postgresql-client 
+      - name: Reinitialize Shoppy DWH DB
+        env:
+          DB_URL: postgres://${{ secrets.SHOPPY_DB_USER }}:${{ secrets.SHOPPY_DB_PASSWORD }}@${{ secrets.SHOPPY_DB_HOST }}:${{ vars.SHOPPY_DB_PORT }}/${{ vars.SHOPPY_DB }}
+        run: |
+          cd api &&
+          yarn db:initialize
+      - name: Download PostgreSQL dump from S3
+        run: |
+          aws s3 cp s3://${{ secrets.METABASE_APP_DB_S3_BUCKET }}/${{ vars.METABASE_APP_DB_S3_KEY }} dump.sql       
+      - name: Pause Metabase (set pause.enabled=true)
+        run: |
+          kubectl patch metabase hosting-shoppy \
+          --type=merge \
+          -p '{"spec":{"pause":{"enabled":true}}}'
+      - name: Drop app database and restore
+        run: |
+          export PGPASSWORD='${{ secrets.APP_DB_PASSWORD }}'
+          export PGUSER=${{ secrets.APP_DB_USER }}
+          export PGDATABASE=${{ secrets.APP_DB_DATABASE }}
+          export PGHOST=${{ secrets.APP_DB_HOST }}
+          psql -d ${{ secrets.APP_DB_DATABASE }} \
+          -c "DROP DATABASE IF EXISTS ${{ secrets.APP_DB_SHOPPY_DATABASE }} WITH (FORCE);"
+          psql -d ${{ secrets.APP_DB_DATABASE }} \
+          -c "CREATE DATABASE ${{ secrets.APP_DB_SHOPPY_DATABASE }} WITH OWNER ${{ secrets.APP_DB_USER }};"
+          pg_restore -d ${{ secrets.APP_DB_SHOPPY_DATABASE }} dump.sql
+      - name: Update Metabase version and unpause
+        run: |
+          kubectl patch metabase hosting-shoppy \
+          --type=merge \
+          -p '{"spec":{"image":{"version":"${{ env.version }}"},"pause":{"enabled":false}}}'
+      - name: Verify deployment
+        run: |
+          kubectl get metabase hosting-shoppy -o jsonpath='{.spec.image.version}'
+          echo "Metabase updated to version ${{ env.version }} and unpaused"
