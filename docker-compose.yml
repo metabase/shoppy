@@ -7,15 +7,32 @@ services:
       POSTGRES_USER: "${SHOPPY_DB_USER}"
       POSTGRES_PASSWORD: "${SHOPPY_DB_PASSWORD}"
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -U shoppy" ]
+      test: [ "CMD-SHELL", "pg_isready -U ${SHOPPY_DB_USER}" ]
       interval: 10s
       timeout: 5s
       retries: 5
     expose:
       - "${SHOPPY_DB_PORT}"
 
+  shoppy_app_db:
+    image: postgres:latest
+    environment:
+      POSTGRES_PORT: "${METABASE_APP_DB_PORT}"
+      POSTGRES_DB: "${METABASE_APP_DB}"
+      POSTGRES_USER: "${METABASE_APP_DB_USER}"
+      POSTGRES_PASSWORD: "${METABASE_APP_DB_PASSWORD}"
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U ${METABASE_APP_DB_USER}" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    expose:
+      - "${METABASE_APP_DB_PORT}"
+
   api:
     depends_on:
+      shoppy_app_db:
+        condition: service_healthy
       shoppy_db:
         condition: service_healthy
     build:
@@ -41,6 +58,8 @@ services:
 
   metabase:
     depends_on:
+      shoppy_app_db:
+        condition: service_healthy
       shoppy_db:
         condition: service_healthy
       api:
@@ -56,6 +75,12 @@ services:
       MB_PREMIUM_EMBEDDING_TOKEN: "${PREMIUM_EMBEDDING_TOKEN}"
       MB_JWT_SHARED_SECRET: "${METABASE_JWT_SHARED_SECRET}"
       MB_SETUP_TOKEN: "${PREMIUM_EMBEDDING_TOKEN}"
+      MB_DB_TYPE: "postgres"
+      MB_DB_HOST: "${METABASE_APP_DB_HOST}"
+      MB_DB_PORT: "${METABASE_APP_DB_PORT}"
+      MB_DB_USER: "${METABASE_APP_DB_USER}"
+      MB_DB_PASS: "${METABASE_APP_DB_PASSWORD}"
+      MB_DB_DBNAME: "${METABASE_APP_DB}"
       METABASE_ADMIN_EMAIL: "${METABASE_ADMIN_EMAIL}"
       METABASE_ADMIN_PASSWORD: "${METABASE_ADMIN_PASSWORD}"
       SHOPPY_DB_HOST: "${SHOPPY_DB_HOST}"
