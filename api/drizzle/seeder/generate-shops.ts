@@ -36,11 +36,9 @@ export const shopsData = [
  * Generates more mock shops for the database.
  */
 export async function generateShops() {
-  console.log("generating shops...")
+  console.log("Generating shops...")
 
-  for (let i = 0; i < shopsData.length; i++) {
-    const shopData = shopsData[i]
-
+  const shopsWithTimestamps: ShopsInput[] = shopsData.map((shop) => {
     const createdAtDate =
       Math.random() > 0.5
         ? faker.date.past({ years: 4 })
@@ -48,15 +46,15 @@ export async function generateShops() {
 
     const createdAt = createdAtDate.toISOString().slice(0, 19).replace("T", " ")
 
-    const shop: ShopsInput = {
-      id: shopData.id,
-      name: shopData.name,
+    return {
+      id: shop.id,
+      name: shop.name,
       description: "",
       createdAt,
     }
+  })
 
-    await db.insert(shops).values(shop)
+  await db.insert(shops).values(shopsWithTimestamps)
 
-    console.log(`generated shop for ${createdAt.toString()}`)
-  }
+  console.log(`✅ Inserted ${shopsWithTimestamps.length} shops`)
 }
