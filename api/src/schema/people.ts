@@ -1,4 +1,5 @@
 import { pgTable, bigint, text } from "drizzle-orm/pg-core"
+import { shops } from "./shops"
 
 export const people = pgTable("people", {
   id: bigint("id", { mode: "number" }).primaryKey().notNull(),
@@ -14,5 +15,7 @@ export const people = pgTable("people", {
   zip: bigint("zip", { mode: "number" }),
   latitude: text("latitude"),
   createdAt: text("created_at"),
-  shopId: bigint("shop_id", { mode: "number" }),
+  shopId: bigint("shop_id", { mode: "number" })
+    .notNull()
+    .references(() => shops.id),
 })

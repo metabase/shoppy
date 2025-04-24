@@ -136,28 +136,27 @@ const productCategoriesData = [
  * Generates more mock product categories for the database.
  */
 export async function generateProductCategories() {
-  console.log("generating product categories...")
+  console.log("Generating product categories...")
 
-  for (let i = 0; i < productCategoriesData.length; i++) {
-    const productCategoryData = productCategoriesData[i]
+  const dataWithTimestamps: ProductsCategoriesInput[] =
+    productCategoriesData.map((entry) => {
+      const createdAtDate =
+        Math.random() > 0.5
+          ? faker.date.past({ years: 4 })
+          : faker.date.recent({ days: 90 })
 
-    const createdAtDate =
-      Math.random() > 0.5
-        ? faker.date.past({ years: 4 })
-        : faker.date.recent({ days: 90 })
+      const createdAt = createdAtDate
+        .toISOString()
+        .slice(0, 19)
+        .replace("T", " ")
 
-    const createdAt = createdAtDate.toISOString().slice(0, 19).replace("T", " ")
+      return {
+        ...entry,
+        createdAt,
+      }
+    })
 
-    const productCategory: ProductsCategoriesInput = {
-      id: productCategoryData.id,
-      shopId: productCategoryData.shopId,
-      name: productCategoryData.name,
-      description: productCategoryData.description,
-      createdAt,
-    }
+  await db.insert(productCategories).values(dataWithTimestamps)
 
-    await db.insert(productCategories).values(productCategory)
-
-    console.log(`generated product category for ${createdAt.toString()}`)
-  }
+  console.log(`✅ Inserted ${dataWithTimestamps.length} product categories`)
 }

@@ -1,16 +1,10 @@
-import {
-  bigint,
-  numeric,
-  pgTable,
-  serial,
-  timestamp,
-} from "drizzle-orm/pg-core"
+import { bigint, numeric, pgTable, timestamp } from "drizzle-orm/pg-core"
 
 import { people } from "./people"
 import { products } from "./products"
 
 export const orders = pgTable("orders", {
-  id: serial("id").primaryKey().notNull(),
+  id: bigint("id", { mode: "number" }).primaryKey().notNull(),
   createdAt: timestamp("created_at", { withTimezone: true, mode: "string" })
     .defaultNow()
     .notNull(),
