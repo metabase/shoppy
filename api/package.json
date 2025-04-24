@@ -32,6 +32,6 @@
     "@types/node-fetch": "^2",
     "@types/pg": "^8.11.10",
     "drizzle-kit": "^0.20.17",
-    "esno": "^4.7.0"
+    "esno": "^4.8.0"
   }
 }
