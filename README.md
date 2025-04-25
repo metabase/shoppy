@@ -50,11 +50,11 @@ If you cannot use the hosted JWT server, you can run the JWT server locally.
 
   - `yarn dev:link && yarn dev`
 
-### Running e2e tests
+### Running e2e tests (For Metabase developers)
 
 To run e2e tests locally, a proper App DB dump of the Shoppy's Metabase Instance must be placed to the `./local-dist/metabase_dump.sql`
 
 You can get it by:
-- Enabling the `Tailscale`
+- Enabling the `Tailscale` and logging in using your work email address.
 - Running `pg_dump "postgres://{{ username }}:{{ password }}@{{ host }}:{{ port }}/{{ database }}" > ./local-dist/metabase_dump.sql` command.
   - See the `Shoppy Coredev Appdb` record in `1password` for credentials.
