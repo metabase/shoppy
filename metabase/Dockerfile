@@ -14,7 +14,8 @@ RUN if [ -f ./app/local-dist/metabase_dump.sql ]; then \
       echo "Local metabase_dump.sql is found in ./app/local-dist, copying it..."; \
       cp ./app/local-dist/metabase_dump.sql /app/metabase_dump.sql; \
     else \
-      echo "Local metabase_dump.sql is not found in ./app/local-dist, skipping copy"; \
+      echo "Local metabase_dump.sql is not found in ./app/local-dist, exiting..."; \
+      exit 1; \
     fi
 
 RUN chmod +x /app/entrypoint.sh
