@@ -3,8 +3,9 @@ import { faker } from "@faker-js/faker"
 import { db } from "../../src/utils/db"
 import { orders } from "../../src/schema/orders"
 import { getRandomEntity } from "./helpers/get-random-entity"
+import { getNormalizedOrdersCount } from "./helpers/get-normalized-orders-count"
 
-const ORDER_COUNT = 1620
+const ORDER_COUNT = getNormalizedOrdersCount(1620)
 
 type OrderInput = typeof orders.$inferInsert
 

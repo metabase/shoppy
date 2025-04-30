@@ -116,7 +116,7 @@ describe("Embedding SDK: shoppy compatibility", () => {
     })
   })
 
-  it("should open user created collection", () => {
+  it("should contain the user-generated collection in saved explorations", () => {
     cy.visit({
       url: "/admin",
     })
