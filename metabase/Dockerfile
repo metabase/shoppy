@@ -4,7 +4,7 @@ COPY ./metabase /app/
 COPY ./local-dist /app/local-dist
 
 RUN if [ -f ./app/local-dist/metabase.jar ]; then \
-      echo "Local metabase.jar is found in ./app/local-dist, running it..."; \
+      echo "Local metabase.jar is found in ./app/local-dist, copying it..."; \
       cp ./app/local-dist/metabase.jar /app/metabase.jar; \
     else \
       echo "Local metabase.jar is not found in ./app/local-dist, skipping copy"; \
@@ -14,8 +14,7 @@ RUN if [ -f ./app/local-dist/metabase_dump.sql ]; then \
       echo "Local metabase_dump.sql is found in ./app/local-dist, copying it..."; \
       cp ./app/local-dist/metabase_dump.sql /app/metabase_dump.sql; \
     else \
-      echo "Local metabase_dump.sql is not found in ./app/local-dist, exiting..."; \
-      exit 1; \
+      echo "Local metabase_dump.sql is not found in ./app/local-dist, skipping copy..."; \
     fi
 
 RUN chmod +x /app/entrypoint.sh
