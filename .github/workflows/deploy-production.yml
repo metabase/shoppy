@@ -1,4 +1,4 @@
-name: Deploy
+name: Production Deployment
 
 on:
   workflow_dispatch:
@@ -25,6 +25,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
       - name: Tailscale
         uses: tailscale/github-action@v2
         with:
@@ -33,6 +34,7 @@ jobs:
           tags: tag:ci
           version: 1.50.1
           sha256sum: d9fe6b480fb5078f0aa57dace686898dda7e2a768884271159faa74846bfb576
+
       - name: Create OIDC Token
         id: create-oidc-token
         shell: bash
@@ -43,6 +45,7 @@ jobs:
           | jq -r .value)
           echo "::add-mask::${IDTOKEN}"
           echo "idToken=${IDTOKEN}" >>$GITHUB_OUTPUT
+
       - name: Setup Kube Context
         uses: azure/k8s-set-context@v2
         with:
@@ -66,33 +69,40 @@ jobs:
                 cluster: default
                 namespace: ${{secrets.K8S_NAMESPACE}}
                 user: oidc-token
+
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ secrets.IAM_ROLE }}
           role-session-name: GitHub_to_AWS_via_FederatedOIDC
           aws-region: us-east-1
+
       - name: Setup psql client
         run: |
           sudo apt-get update
           sudo apt-get install -y postgresql-client
+
       - name: Ensure that Esno executable is ready
         run: yarn install --cwd api --frozen-lockfile
-      - name: Reinitialize Shoppy DWH DB
+
+      - name: Reinitialize Shoppy's DWH DB
         env:
           DB_URL: postgres://${{ secrets.SHOPPY_DB_USER }}:${{ secrets.SHOPPY_DB_PASSWORD }}@${{ secrets.SHOPPY_DB_HOST }}:${{ vars.SHOPPY_DB_PORT }}/${{ vars.SHOPPY_DB }}
         run: |
           cd api &&
           yarn db:initialize
+
       - name: Download PostgreSQL dump from S3
         run: |
-          aws s3 cp s3://${{ secrets.METABASE_APP_DB_S3_BUCKET }}/${{ vars.METABASE_APP_DB_S3_KEY }} dump.sql       
-      - name: Pause Metabase (set pause.enabled=true)
+          aws s3 cp s3://${{ secrets.METABASE_APP_DB_S3_BUCKET }}/${{ vars.METABASE_APP_DB_S3_KEY }} dump.sql
+
+      - name: Pause Shoppy's Metabase Instance (set pause.enabled=true)
         run: |
           kubectl patch metabase hosting-shoppy \
           --type=merge \
           -p '{"spec":{"pause":{"enabled":true}}}'
-      - name: Drop app database and restore
+
+      - name: Drop Shoppy's Metabase Instance app database and restore
         run: |
           export PGPASSWORD='${{ secrets.APP_DB_PASSWORD }}'
           export PGUSER=${{ secrets.APP_DB_USER }}
@@ -103,12 +113,25 @@ jobs:
           psql -d ${{ secrets.APP_DB_DATABASE }} \
           -c "CREATE DATABASE ${{ secrets.APP_DB_SHOPPY_DATABASE }} WITH OWNER ${{ secrets.APP_DB_USER }};"
           pg_restore -d ${{ secrets.APP_DB_SHOPPY_DATABASE }} dump.sql
-      - name: Update Metabase version and unpause
+
+      - name: Update Shoppy's Metabase Instance version and unpause
         run: |
           kubectl patch metabase hosting-shoppy \
           --type=merge \
           -p '{"spec":{"image":{"version":"${{ env.version }}"},"pause":{"enabled":false}}}'
-      - name: Verify deployment
+
+      - name: Verify Shoppy's Metabase Instance deployment
         run: |
           kubectl get metabase hosting-shoppy -o jsonpath='{.spec.image.version}'
           echo "Metabase updated to version ${{ env.version }} and unpaused"
+
+  deploy-to-vercel:
+    needs: [ deploy ]
+    uses: ./.github/workflows/deploy-to-vercel.yml
+    with:
+      vercel-environment: 'production'
+    secrets:
+      vercel-token: ${{ secrets.VERCEL_SHOPPY_TOKEN }}
+      vercel-org-id: ${{ secrets.VERCEL_SHOPPY_ORG_ID }}
+      vercel-project-id: ${{ secrets.VERCEL_SHOPPY_PROJECT_ID }}
+      github-token: ${{ secrets.GITHUB_TOKEN }}

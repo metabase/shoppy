@@ -1,5 +1,11 @@
 {
   "version": 2,
+  "git": {
+    "deploymentEnabled": {
+      "*": false,
+      "shoppy-metabot": true
+    }
+  },
   "rewrites": [
     {
       "source": "/api/:path*",
