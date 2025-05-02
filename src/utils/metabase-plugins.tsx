@@ -3,8 +3,8 @@ import { MetabaseClickActionPluginsConfig } from "@metabase/embedding-sdk-react"
 import { productIdForClickActionModalAtom } from "../store/click-actions"
 import { store } from "../store"
 
-const ORDERS_TABLE_ID = 53
-const PRODUCTS_TABLE_ID = 45
+const ORDERS_TABLE_ID = 38
+const PRODUCTS_TABLE_ID = 37
 
 export const withProductClickAction =
   ({
