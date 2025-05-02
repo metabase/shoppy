@@ -81,6 +81,12 @@ const metabase: MetabaseTheme = {
         backgroundColor: colors.darkGrey,
       },
     },
+    table: {
+      cell: {
+        // TODO: this should not be required! needs a fix in the embedding sdk to restore cell defaults.
+        backgroundColor: "#212426",
+      },
+    },
   },
 }
 
