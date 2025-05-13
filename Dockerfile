@@ -33,7 +33,7 @@ RUN if [ "$WATCH" != "true" ]; then \
       echo "WATCH env is not set; running production yarn build..."; \
       yarn build; \
     else \
-      echo "WATCH env iss is set; running in development mode..."; \
+      echo "WATCH env is set; running in development mode..."; \
     fi
 
 ENTRYPOINT ["/app/entrypoint.sh"]
