@@ -40,7 +40,7 @@ export async function generatePeople() {
       state: faker.location.state(),
       source: faker.internet.domainName(),
       birthDate: faker.date.birthdate().toString(),
-      zip: parseInt(faker.location.zipCode()),
+      zip: faker.location.zipCode("#####"),
       latitude: faker.location.latitude().toString(),
       shopId,
       createdAt,

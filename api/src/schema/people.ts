@@ -1,4 +1,4 @@
-import { pgTable, bigint, text } from "drizzle-orm/pg-core"
+import { pgTable, date, timestamp, bigint, text } from "drizzle-orm/pg-core"
 import { shops } from "./shops"
 
 export const people = pgTable("people", {
@@ -11,10 +11,15 @@ export const people = pgTable("people", {
   longitude: text("longitude"),
   state: text("state"),
   source: text("source"),
-  birthDate: text("birth_date"),
-  zip: bigint("zip", { mode: "number" }),
+  birthDate: date("birth_date"),
+  zip: text("zip"),
   latitude: text("latitude"),
-  createdAt: text("created_at"),
+  createdAt: timestamp("created_at", {
+    withTimezone: true,
+    mode: "string",
+  })
+    .defaultNow()
+    .notNull(),
   shopId: bigint("shop_id", { mode: "number" })
     .notNull()
     .references(() => shops.id),
