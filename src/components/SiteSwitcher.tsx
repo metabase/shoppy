@@ -36,6 +36,7 @@ export const SiteSwitcher = () => {
                 // which is caused by Mantine prepending a <style> tag, breaking the :first-child selector.
                 "full-width-on-mobile",
               )}
+              data-testid={`site-switcher-button-${site.key}`}
               onClick={() => setCurrentSite(site.key)}
               leftSection={
                 <Icon icon={site.icon} fontSize={14} overflow="visible" />

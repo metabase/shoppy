@@ -5,6 +5,7 @@ import { people } from "../../src/schema/people"
 import { getRandomEntity } from "./helpers/get-random-entity"
 
 const PEOPLE_COUNT = 2500
+const BATCH_SIZE = 500
 
 type PeopleInput = typeof people.$inferInsert
 
@@ -12,11 +13,10 @@ type PeopleInput = typeof people.$inferInsert
  * Generates more mock people for the database.
  */
 export async function generatePeople() {
-  console.log("generating people...")
+  console.log("Generating people...")
 
-  const shops = await db.query.shops.findMany({
-    columns: { id: true },
-  })
+  const shops = await db.query.shops.findMany({ columns: { id: true } })
+  const allPeople: PeopleInput[] = []
 
   for (let i = 0; i < PEOPLE_COUNT; i++) {
     const shop = getRandomEntity(shops)
@@ -29,7 +29,7 @@ export async function generatePeople() {
 
     const createdAt = createdAtDate.toISOString().slice(0, 19).replace("T", " ")
 
-    const person: PeopleInput = {
+    allPeople.push({
       id: i,
       address: faker.location.streetAddress(),
       email: faker.internet.email(),
@@ -40,14 +40,18 @@ export async function generatePeople() {
       state: faker.location.state(),
       source: faker.internet.domainName(),
       birthDate: faker.date.birthdate().toString(),
-      zip: parseInt(faker.location.zipCode()),
+      zip: faker.location.zipCode("#####"),
       latitude: faker.location.latitude().toString(),
       shopId,
       createdAt,
-    }
-
-    await db.insert(people).values(person)
-
-    console.log(`generated person for ${createdAt.toString()}`)
+    })
   }
+
+  for (let i = 0; i < allPeople.length; i += BATCH_SIZE) {
+    const chunk = allPeople.slice(i, i + BATCH_SIZE)
+    await db.insert(people).values(chunk)
+    console.log(`Inserted people ${i}–${i + chunk.length - 1}`)
+  }
+
+  console.log("✅ Done generating people!")
 }

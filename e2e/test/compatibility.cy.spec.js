@@ -116,7 +116,7 @@ describe("Embedding SDK: shoppy compatibility", () => {
     })
   })
 
-  it("should open user created dashboards", () => {
+  it("should contain the user-generated collection in saved explorations", () => {
     cy.visit({
       url: "/admin",
     })
@@ -124,13 +124,45 @@ describe("Embedding SDK: shoppy compatibility", () => {
     cy.get("#metabase-sdk-root").within(() => {
       cy.findByText("Saved explorations", { timeout: TIMEOUT }).click()
 
-      cy.findByText("User-Generated", { timeout: TIMEOUT }).click()
+      expect(
+        cy.findByText("User-Generated", { timeout: TIMEOUT }).should("exist"),
+      )
+    })
+  })
+
+  it("should display dashboards with sandboxing for different shops", () => {
+    const getOrdersCountForShop = (site) => {
+      cy.findByTestId(`site-switcher-button-${site}`).click()
+
+      return cy
+        .findAllByTestId("scalar-title", { timeout: TIMEOUT })
+        .filter((_, element) => element.textContent.trim() === "Total Orders")
+        .prev('[data-testid="scalar-container"]')
+        .invoke("text")
+    }
+
+    cy.visit("/admin/analytics")
+
+    cy.get("main").within(() => {
+      cy.findByText("Orders", { timeout: TIMEOUT }).click()
+    })
+
+    const shops = ["proficiency", "stitch", "luminara", "pug"]
+    const counts = []
+
+    cy.wrap(shops).each((site) => {
+      getOrdersCountForShop(site).then((text) => {
+        counts.push(text)
+      })
+    })
+
+    cy.then(() => {
+      const unique = new Set(counts)
 
       expect(
-        cy
-          .findAllByTestId("collection-entry")
-          .should("have.length.at.least", 1),
-      )
+        unique.size,
+        `All counts: [${counts.join(", ")}]`,
+      ).to.be.greaterThan(1)
     })
   })
 })

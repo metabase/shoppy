@@ -1,0 +1,58 @@
+name: Vercel Deployment
+
+on:
+  workflow_call:
+    inputs:
+      vercel-environment:
+        required: true
+        type: string
+    secrets:
+      vercel-token:
+        required: true
+      vercel-org-id:
+        required: true
+      vercel-project-id:
+        required: true
+      github-token:
+        required: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+        shell: bash
+
+      - name: Pull Vercel Environment Information
+        run: vercel pull --yes --environment=${{ inputs.vercel-environment }} --token=${{ secrets.vercel-token }}
+        shell: bash
+        env:
+          VERCEL_ORG_ID: ${{ secrets.vercel-org-id }}
+          VERCEL_PROJECT_ID: ${{ secrets.vercel-project-id }}
+
+      - name: Build Vite Project Artifacts
+        run: |
+          vercel build --token=${{ secrets.vercel-token }} $([[ "${{ inputs.vercel-environment }}" == "production" ]] && echo "--prod")
+        shell: bash
+        env:
+          VITE_VERCEL_ENV: ${{ inputs.vercel-environment }}
+
+      - name: Deploy Project Artifacts to Vercel
+        id: vercel_deploy
+        run: |
+          DEPLOY_URL=$(vercel deploy --prebuilt --token=${{ secrets.vercel-token }} $([[ "${{ inputs.vercel-environment }}" == "production" ]] && echo "--prod"))
+          echo "deploy_url=$DEPLOY_URL" >> $GITHUB_OUTPUT
+        shell: bash
+
+      - name: Comment Vercel Preview URL
+        if: ${{ github.event_name == 'pull_request' }}
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          token: ${{ secrets.github-token }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            ✅ **Preview Deployment Ready!**
+            🔗 [View Preview Deployment](${{ steps.vercel_deploy.outputs.deploy_url }})

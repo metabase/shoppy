@@ -1,0 +1,17 @@
+name: Preview Deployment
+
+on:
+  pull_request:
+    branches-ignore:
+      - shoppy-metabot
+
+jobs:
+  deploy:
+    uses: ./.github/workflows/deploy-to-vercel.yml
+    with:
+      vercel-environment: 'preview'
+    secrets:
+      vercel-token: ${{ secrets.VERCEL_SHOPPY_TOKEN }}
+      vercel-org-id: ${{ secrets.VERCEL_SHOPPY_ORG_ID }}
+      vercel-project-id: ${{ secrets.VERCEL_SHOPPY_PROJECT_ID }}
+      github-token: ${{ secrets.GITHUB_TOKEN }}

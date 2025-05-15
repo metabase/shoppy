@@ -22,8 +22,15 @@ body[data-theme="stitch"] {
     -webkit-text-fill-color: transparent;
   }
 
-  .sidebar-inactive-child:hover {
+  .sidebar-inactive-child,
+  .sidebar-link-parent {
     color: var(--color-light-grey);
+  }
+
+  .sidebar-inactive-child:hover,
+  .sidebar-link-parent:hover {
+    color: #fff;
+    background: transparent;
   }
 
   .themed-button {
