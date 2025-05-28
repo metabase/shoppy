@@ -7,7 +7,7 @@ services:
       POSTGRES_USER: "${SHOPPY_DB_USER}"
       POSTGRES_PASSWORD: "${SHOPPY_DB_PASSWORD}"
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -U ${SHOPPY_DB_USER}" ]
+      test: ["CMD-SHELL", "pg_isready -U ${SHOPPY_DB_USER}"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -22,7 +22,7 @@ services:
       POSTGRES_USER: "${METABASE_APP_DB_USER}"
       POSTGRES_PASSWORD: "${METABASE_APP_DB_PASSWORD}"
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -U ${METABASE_APP_DB_USER}" ]
+      test: ["CMD-SHELL", "pg_isready -U ${METABASE_APP_DB_USER}"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -108,14 +108,12 @@ services:
       args:
         VITE_APP_METABASE_INSTANCE_URL: "http://localhost:${MB_PORT}"
         VITE_APP_API_HOST: "http://localhost:${API_PORT}/api"
-        VITE_APP_AUTH_PROVIDER_URI: "/sso/metabase"
-        WATCH: '${WATCH}'
+        WATCH: "${WATCH}"
     environment:
       CLIENT_PORT: "${CLIENT_PORT}"
       VITE_APP_METABASE_INSTANCE_URL: "http://localhost:${MB_PORT}"
       VITE_APP_API_HOST: "http://localhost:${API_PORT}/api"
-      VITE_APP_AUTH_PROVIDER_URI: "/sso/metabase"
-      WATCH: '${WATCH}'
+      WATCH: "${WATCH}"
     ports:
       - "${CLIENT_PORT}:${CLIENT_PORT}"
     volumes:
