@@ -33,11 +33,12 @@ export const AppProvider = ({ children }: Props) => {
   const authConfig: MetabaseAuthConfig = useMemo(() => {
     return {
       metabaseInstanceUrl: METABASE_INSTANCE_URL,
-      authProviderUri: `${API_HOST}${AUTH_PROVIDER_URI}`,
 
       // Append the current site as a query parameter to the auth provider URL.
-      fetchRequestToken: (url: string) =>
-        fetch(`${url}?site=${site}`).then((res) => res.json()),
+      fetchRequestToken: () =>
+        fetch(`${API_HOST}${AUTH_PROVIDER_URI}?site=${site}`).then((res) =>
+          res.json(),
+        ),
     }
   }, [site])
 
