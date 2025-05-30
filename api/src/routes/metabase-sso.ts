@@ -11,7 +11,7 @@ export async function metabaseAuthHandler(req: Request, res: Response) {
     return res.status(400).json({ error: "site is not specified" })
   }
 
-  const user = await getUserBySite(site)
+  const user = getUserBySite(site)
 
   if (!user) {
     return res.status(401).json({ status: "error", message: NO_USER_MESSAGE })
