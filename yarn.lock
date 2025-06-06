@@ -1288,10 +1288,10 @@
   resolved "https://registry.yarnpkg.com/@marijn/find-cluster-break/-/find-cluster-break-1.0.2.tgz#775374306116d51c0c500b8c4face0f9a04752d8"
   integrity sha512-l0h88YhZFyKdXIFNfSWpyjStDjGHwZ/U7iobcK1cQQD8sejsONdQtTVU+1wVN1PBw40PiiHB1vA5S7VTfQiP9g==
 
-"@metabase/embedding-sdk-react@^0.56.2-esbuild":
-  version "0.56.2-esbuild"
-  resolved "https://registry.yarnpkg.com/@metabase/embedding-sdk-react/-/embedding-sdk-react-0.56.2-esbuild.tgz#14e6cf3c8c4646d9d298e1e6998dca5f06c6061b"
-  integrity sha512-UDU5hjTtRe0Nbdb3O+MJkvZn2Sp+0alaqaDmJF8O/WZ0BwGhDuI8iaTv2XnlOMO0pgpxQ0G9MlTAuoMWktkrvA==
+"@metabase/embedding-sdk-react@^0.56.3-esbuild":
+  version "0.56.3-esbuild"
+  resolved "https://registry.yarnpkg.com/@metabase/embedding-sdk-react/-/embedding-sdk-react-0.56.3-esbuild.tgz#5e0b9ead323867c8cd0adb1d58e910a590c2acb3"
+  integrity sha512-hVEyUvgCFFQ058tze5YAzmJ79ZG8PFC6VA88L8RKdWHvPQUoz3kYznODzTW9iOrT8bqLEV85s1gpI4KosjkSKA==
   dependencies:
     "@codemirror/autocomplete" "^6.18.3"
     "@codemirror/commands" "^6.1.0"
