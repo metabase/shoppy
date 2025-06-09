@@ -48,6 +48,7 @@ export const AppProvider = ({ children }: Props) => {
       theme={theme}
       loaderComponent={MetabaseLoader}
       errorComponent={MetabaseError}
+      locale="ru"
     >
       {children}
 
