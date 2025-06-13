@@ -14,15 +14,15 @@ export const shopsData = [
   },
   {
     id: 2,
-    alias: "luminara",
-    name: "Luminara Beauty",
-    imagesCount: 2,
-  },
-  {
-    id: 3,
     alias: "stitch",
     name: "theStitch",
     imagesCount: 3,
+  },
+  {
+    id: 3,
+    alias: "luminara",
+    name: "Luminara Beauty",
+    imagesCount: 2,
   },
   {
     id: 4,
