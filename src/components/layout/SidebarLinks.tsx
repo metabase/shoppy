@@ -1,5 +1,4 @@
 import cx from "classnames"
-import { Link } from "wouter"
 import { Box, Flex, NavLink } from "@mantine/core"
 import { Icon } from "@iconify/react"
 
@@ -9,6 +8,7 @@ import { ReactNode } from "react"
 import { useAtomValue } from "jotai"
 import { siteAtom } from "../../store/site"
 import { SiteKey } from "../../types/site"
+import { LinkWithSearchParams } from "../LinkWithSearchParams"
 
 interface SidebarLinkProps {
   onLinkClick?: (link: SidebarLink) => void
@@ -92,7 +92,7 @@ const renderLink = (
         section: "flex-[1]",
       }}
       renderRoot={(props) => (
-        <Link
+        <LinkWithSearchParams
           {...props}
           className={(active) =>
             cx(

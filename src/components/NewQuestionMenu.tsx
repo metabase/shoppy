@@ -1,9 +1,9 @@
 import { type ReactNode } from "react"
 import { useAtom } from "jotai"
-import { Link } from "wouter"
 import { Menu, type FloatingPosition } from "@mantine/core"
 
 import { resetQuestionAtom } from "../store/create"
+import { LinkWithSearchParams } from "./LinkWithSearchParams"
 
 type Props = {
   prefix?: string
@@ -19,18 +19,18 @@ export const NewQuestionMenu = ({ children, prefix = "", position }: Props) => {
       <Menu.Target>{children}</Menu.Target>
 
       <Menu.Dropdown>
-        <Link
+        <LinkWithSearchParams
           href={prefix + "/analytics/new/from-scratch"}
           onClick={resetQuestion}
         >
           <Menu.Item>From Scratch</Menu.Item>
-        </Link>
-        <Link
+        </LinkWithSearchParams>
+        <LinkWithSearchParams
           href={prefix + "/analytics/new/from-template"}
           onClick={resetQuestion}
         >
           <Menu.Item>From Templates</Menu.Item>
-        </Link>
+        </LinkWithSearchParams>
       </Menu.Dropdown>
     </Menu>
   )

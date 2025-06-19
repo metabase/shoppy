@@ -5,14 +5,13 @@ import {
 } from "@metabase/embedding-sdk-react"
 
 import { useCreateQuestionHelpers } from "../../../utils/use-create-question-helpers"
-import { useAtom } from "jotai"
-import { shouldShowMetabotAtom } from "../../../store/metabot"
+import { useSearchParams } from "wouter"
 
 export const NewFromScratchPage = () => {
   const { collectionId, onSaveQuestion } = useCreateQuestionHelpers()
-  const [shouldShowMetabot] = useAtom(shouldShowMetabotAtom)
+  const [searchParams] = useSearchParams()
+  const shouldShowMetabot = searchParams.get("metabot") === "true"
 
-  console.log({ shouldShowMetabot })
   return (
     <Container w="100%">
       {shouldShowMetabot ? (
