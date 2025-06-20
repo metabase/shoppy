@@ -9,7 +9,6 @@ import {
 } from "@mantine/core"
 import { useDisclosure } from "@mantine/hooks"
 import { ReactNode } from "react"
-import { Link } from "wouter"
 import { Icon } from "@iconify/react"
 
 import { SidebarLinks } from "./SidebarLinks"
@@ -25,6 +24,7 @@ import { FullPageLoader } from "../Loader"
 import { SiteFooter } from "../SiteFooter"
 import { ProficiencyGradient } from "../ProficiencyGradient"
 import { ClickActionDemoModal } from "../ClickActionDemoModal"
+import { LinkWithSearchParams } from "../LinkWithSearchParams"
 
 interface Props {
   children: ReactNode
@@ -110,9 +110,9 @@ export function Shell(props: Props) {
           className="py-4 md:py-0"
         >
           <Box>
-            <Link to="/admin/products">
+            <LinkWithSearchParams href="/admin/products">
               <SiteLogo />
-            </Link>
+            </LinkWithSearchParams>
 
             <Divider
               orientation="horizontal"
@@ -139,11 +139,11 @@ export function Shell(props: Props) {
                 </ThemedButton>
               </NewQuestionMenu>
 
-              <Link to="/admin/analytics/new/dashboard">
+              <LinkWithSearchParams href="/admin/analytics/new/dashboard">
                 <ThemedButton className="sidebar-action-button">
                   New dashboard
                 </ThemedButton>
-              </Link>
+              </LinkWithSearchParams>
             </Stack>
           </Box>
 

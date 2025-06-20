@@ -1,5 +1,5 @@
-import { Link } from "wouter"
 import { Text, Card, Box, Title, Flex } from "@mantine/core"
+import { LinkWithSearchParams } from "../../components/LinkWithSearchParams"
 
 export interface DashboardLinkCardProps {
   entityId: string
@@ -11,7 +11,7 @@ export interface DashboardLinkCardProps {
 
 export const DashboardLinkCard = (props: DashboardLinkCardProps) => {
   return (
-    <Link to={`/analytics/${props.entityId}`}>
+    <LinkWithSearchParams href={`/analytics/${props.entityId}`}>
       <Card className="card gap-y-5 justify-between" h="100%" withBorder p={12}>
         <Box>
           <Title size="h4">{props.title}</Title>
@@ -27,6 +27,6 @@ export const DashboardLinkCard = (props: DashboardLinkCardProps) => {
           </Text>
         </Flex>
       </Card>
-    </Link>
+    </LinkWithSearchParams>
   )
 }

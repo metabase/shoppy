@@ -1,5 +1,5 @@
 import { useAtom } from "jotai"
-import { Link, useLocation } from "wouter"
+import { useLocation } from "wouter"
 import { Container, Flex } from "@mantine/core"
 import { CollectionBrowser } from "@metabase/embedding-sdk-react"
 
@@ -14,6 +14,7 @@ import { useReloadOnSiteChange } from "../../utils/use-site-changed"
 
 import "./analytics-custom-page.css"
 import { ThemedButton } from "../../components/ThemedButton"
+import { LinkWithSearchParams } from "../../components/LinkWithSearchParams"
 
 export function AnalyticsCustomPage() {
   const [, navigate] = useLocation()
@@ -31,12 +32,12 @@ export function AnalyticsCustomPage() {
           <ThemedButton>New Question</ThemedButton>
         </NewQuestionMenu>
 
-        <Link
+        <LinkWithSearchParams
           href="/analytics/new/dashboard"
           onClick={() => setDashboardId(null)}
         >
           <ThemedButton>New Dashboard</ThemedButton>
-        </Link>
+        </LinkWithSearchParams>
       </Flex>
 
       <CollectionBrowser

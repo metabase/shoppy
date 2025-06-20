@@ -1,19 +1,29 @@
 import { Container } from "@mantine/core"
-import { InteractiveQuestion } from "@metabase/embedding-sdk-react"
+import {
+  InteractiveQuestion,
+  MetabotQuestion,
+} from "@metabase/embedding-sdk-react"
 
 import { useCreateQuestionHelpers } from "../../../utils/use-create-question-helpers"
+import { useSearchParams } from "wouter"
 
 export const NewFromScratchPage = () => {
   const { collectionId, onSaveQuestion } = useCreateQuestionHelpers()
+  const [searchParams] = useSearchParams()
+  const shouldShowMetabot = searchParams.get("metabot") === "true"
 
   return (
     <Container w="100%">
-      <InteractiveQuestion
-        questionId="new"
-        onSave={onSaveQuestion}
-        targetCollection={collectionId}
-        isSaveEnabled
-      />
+      {shouldShowMetabot ? (
+        <MetabotQuestion />
+      ) : (
+        <InteractiveQuestion
+          questionId="new"
+          onSave={onSaveQuestion}
+          targetCollection={collectionId}
+          isSaveEnabled
+        />
+      )}
     </Container>
   )
 }

@@ -1,5 +1,3 @@
-import { Link } from "wouter"
-
 import { StaticQuestion } from "@metabase/embedding-sdk-react"
 import { Stack, Text, Image, Box } from "@mantine/core"
 import { useAtom } from "jotai"
@@ -11,6 +9,7 @@ import { RemountOnSiteChange } from "../../components/RemountOnSiteChange"
 import { siteAtom } from "../../store/site"
 import { truncate } from "../../utils/truncate"
 import { LoadWhenVisible } from "../../components/LoadWhenVisible"
+import { LinkWithSearchParams } from "../../components/LinkWithSearchParams"
 
 interface Props {
   product: Product
@@ -24,7 +23,7 @@ export const ProductCard = ({ product }: Props) => {
   const truncateLength = site === "pug" ? 13 : 50
 
   return (
-    <Link href={`/products/${product.id}`}>
+    <LinkWithSearchParams href={`/products/${product.id}`}>
       <Stack className="product-card">
         <Stack gap={10}>
           <Box w="100%" className="product-card-image-container">
@@ -58,6 +57,6 @@ export const ProductCard = ({ product }: Props) => {
           </Stack>
         </Stack>
       </Stack>
-    </Link>
+    </LinkWithSearchParams>
   )
 }
