@@ -1,9 +1,23 @@
-import { Link, useSearchParams, type LinkProps } from "wouter"
+import { Link, useSearch, type LinkProps } from "wouter"
 
-export function LinkWithSearchParams({ to, href, ...props }: LinkProps) {
-  const [searchParams] = useSearchParams()
-  const hasSearchParams = searchParams.toString().length > 0
-  const newHref = `${href ?? to}${hasSearchParams ? "?" + searchParams.toString() : ""}`
+interface ForbiddenProperties {
+  /**
+   * @deprecated Please use `href` instead.
+   */
+  to?: never
+}
+
+type RemoveFields<Type, Fields extends keyof Type> = {
+  [Property in keyof Type as Exclude<Property, Fields>]: Type[Property]
+}
+
+export function LinkWithSearchParams({
+  href,
+  ...props
+}: RemoveFields<LinkProps, "to"> & ForbiddenProperties) {
+  props
+  const search = useSearch()
+  const newHref = `${href}${search ? `?${search}` : ""}`
 
   return <Link href={newHref} {...props} />
 }

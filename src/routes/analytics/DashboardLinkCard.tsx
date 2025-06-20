@@ -11,7 +11,7 @@ export interface DashboardLinkCardProps {
 
 export const DashboardLinkCard = (props: DashboardLinkCardProps) => {
   return (
-    <LinkWithSearchParams to={`/analytics/${props.entityId}`}>
+    <LinkWithSearchParams href={`/analytics/${props.entityId}`}>
       <Card className="card gap-y-5 justify-between" h="100%" withBorder p={12}>
         <Box>
           <Title size="h4">{props.title}</Title>

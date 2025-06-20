@@ -110,7 +110,7 @@ export function Shell(props: Props) {
           className="py-4 md:py-0"
         >
           <Box>
-            <LinkWithSearchParams to="/admin/products">
+            <LinkWithSearchParams href="/admin/products">
               <SiteLogo />
             </LinkWithSearchParams>
 
@@ -139,7 +139,7 @@ export function Shell(props: Props) {
                 </ThemedButton>
               </NewQuestionMenu>
 
-              <LinkWithSearchParams to="/admin/analytics/new/dashboard">
+              <LinkWithSearchParams href="/admin/analytics/new/dashboard">
                 <ThemedButton className="sidebar-action-button">
                   New dashboard
                 </ThemedButton>
