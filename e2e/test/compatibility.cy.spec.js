@@ -177,8 +177,8 @@ describe("Embedding SDK: shoppy compatibility", () => {
       )
 
       cy.log("should not contain tables")
-      cy.queryByText("Shops", { timeout: TIMEOUT }).should("not.exist")
-      cy.queryByText("Product Categories", { timeout: TIMEOUT }).should(
+      cy.findByText("Shops", { timeout: TIMEOUT }).should("not.exist")
+      cy.findByText("Product Categories", { timeout: TIMEOUT }).should(
         "not.exist",
       )
 
