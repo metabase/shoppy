@@ -176,18 +176,25 @@ describe("Embedding SDK: shoppy compatibility", () => {
         "exist",
       )
 
-      cy.log("should not contain tables")
-      cy.findByText("Shops", { timeout: TIMEOUT }).should("not.exist")
-      cy.findByText("Product Categories", { timeout: TIMEOUT }).should(
-        "not.exist",
-      )
+      cy.get("[data-element-id='mantine-popover']", {
+        timeout: TIMEOUT,
+      }).within(() => {
+        cy.log("should not contain tables")
+        cy.findByText("Shops", { timeout: TIMEOUT }).should("not.exist")
+        cy.findByText("Product Categories", { timeout: TIMEOUT }).should(
+          "not.exist",
+        )
 
-      cy.log("should not contain duplicated entries for models and tables")
-      cy.findAllByText("Orders", { timeout: TIMEOUT }).should("have.length", 1)
-      cy.findAllByText("Products", { timeout: TIMEOUT }).should(
-        "have.length",
-        1,
-      )
+        cy.log("should not contain duplicated entries for models and tables")
+        cy.findAllByText("Orders", { timeout: TIMEOUT }).should(
+          "have.length",
+          1,
+        )
+        cy.findAllByText("Products", { timeout: TIMEOUT }).should(
+          "have.length",
+          1,
+        )
+      })
     })
   })
 })
