@@ -15,6 +15,7 @@ export function QuestionPage(props: Props) {
         <InteractiveQuestion
           questionId={props.entity_id}
           plugins={{ mapQuestionClickActions: withProductClickAction() }}
+          entityTypeFilter={["model", "question"]}
         />
       </RemountOnSiteChange>
     </Container>

@@ -42,6 +42,7 @@ export const NewFromTemplatePage = () => {
           onSave={onSaveQuestion}
           targetCollection={collectionId}
           questionId={templateOrSavedQuestionId}
+          entityTypeFilter={["model", "question"]}
           isSaveEnabled
         />
       </Container>

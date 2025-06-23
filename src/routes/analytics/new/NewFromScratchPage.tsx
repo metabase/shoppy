@@ -21,6 +21,7 @@ export const NewFromScratchPage = () => {
           questionId="new"
           onSave={onSaveQuestion}
           targetCollection={collectionId}
+          entityTypeFilter={["model", "question"]}
           isSaveEnabled
         />
       )}
