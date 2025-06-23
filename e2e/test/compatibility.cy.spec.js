@@ -165,4 +165,29 @@ describe("Embedding SDK: shoppy compatibility", () => {
       ).to.be.greaterThan(1)
     })
   })
+
+  it("should not display tables in the data picker", () => {
+    cy.visit({
+      url: "/admin/analytics/new/from-scratch",
+    })
+
+    cy.get("main").within(() => {
+      cy.findByText("Pick your starting data", { timeout: TIMEOUT }).should(
+        "exist",
+      )
+
+      cy.log("should not contain tables")
+      cy.queryByText("Shops", { timeout: TIMEOUT }).should("not.exist")
+      cy.queryByText("Product Categories", { timeout: TIMEOUT }).should(
+        "not.exist",
+      )
+
+      cy.log("should not contain duplicated entries for models and tables")
+      cy.findAllByText("Orders", { timeout: TIMEOUT }).should("have.length", 1)
+      cy.findAllByText("Products", { timeout: TIMEOUT }).should(
+        "have.length",
+        1,
+      )
+    })
+  })
 })
