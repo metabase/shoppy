@@ -6,6 +6,7 @@ import {
 
 import { useCreateQuestionHelpers } from "../../../utils/use-create-question-helpers"
 import { useSearchParams } from "wouter"
+import { DATA_PICKER_ALLOWED_ENTITY_TYPES } from "../../../constants/data-picker"
 
 export const NewFromScratchPage = () => {
   const { collectionId, onSaveQuestion } = useCreateQuestionHelpers()
@@ -21,7 +22,7 @@ export const NewFromScratchPage = () => {
           questionId="new"
           onSave={onSaveQuestion}
           targetCollection={collectionId}
-          entityTypeFilter={["model", "question"]}
+          entityTypes={DATA_PICKER_ALLOWED_ENTITY_TYPES}
           isSaveEnabled
         />
       )}

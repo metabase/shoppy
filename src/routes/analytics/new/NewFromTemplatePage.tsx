@@ -6,6 +6,7 @@ import {
 
 import { QUESTION_TEMPLATE_COLLECTION_ID } from "../../../constants/collections"
 import { useCreateQuestionHelpers } from "../../../utils/use-create-question-helpers"
+import { DATA_PICKER_ALLOWED_ENTITY_TYPES } from "../../../constants/data-picker"
 
 export const NewFromTemplatePage = () => {
   const {
@@ -42,7 +43,7 @@ export const NewFromTemplatePage = () => {
           onSave={onSaveQuestion}
           targetCollection={collectionId}
           questionId={templateOrSavedQuestionId}
-          entityTypeFilter={["model", "question"]}
+          entityTypes={DATA_PICKER_ALLOWED_ENTITY_TYPES}
           isSaveEnabled
         />
       </Container>
