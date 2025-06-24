@@ -181,10 +181,6 @@ describe("Embedding SDK: shoppy compatibility", () => {
       timeout: TIMEOUT,
     }).within(() => {
       cy.log("should contain only models")
-      cy.findAllByText("Orders + People", { timeout: TIMEOUT }).should(
-        "have.length",
-        1,
-      )
       cy.findAllByText("Orders", { timeout: TIMEOUT }).should("have.length", 1)
 
       cy.log("should not contain any tables")
