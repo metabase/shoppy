@@ -165,4 +165,31 @@ describe("Embedding SDK: shoppy compatibility", () => {
       ).to.be.greaterThan(1)
     })
   })
+
+  it("should not display tables in the data picker", () => {
+    cy.visit({
+      url: "/admin/analytics/new/from-scratch",
+    })
+
+    cy.get("main").within(() => {
+      cy.findByText("Pick your starting data", { timeout: TIMEOUT }).should(
+        "exist",
+      )
+    })
+
+    cy.get("[data-element-id=mantine-popover]", {
+      timeout: TIMEOUT,
+    }).within(() => {
+      cy.log("should contain only a single model without any duplicate tables")
+      cy.findAllByText("Orders", { timeout: TIMEOUT }).should("have.length", 1)
+      cy.findAllByText("Orders + Products", { timeout: TIMEOUT }).should(
+        "have.length",
+        1,
+      )
+      cy.findAllByText("Products", { timeout: TIMEOUT }).should(
+        "have.length",
+        1,
+      )
+    })
+  })
 })
