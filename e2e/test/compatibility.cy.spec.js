@@ -103,7 +103,7 @@ describe("Embedding SDK: shoppy compatibility", () => {
       url: "/admin/analytics/new/dashboard",
     })
 
-    cy.get("#metabase-sdk-root").within(() => {
+    cy.get("body").within(() => {
       cy.findByTestId("new-dashboard-modal", { timeout: TIMEOUT }).within(
         () => {
           expect(cy.findByText("New dashboard").should("exist"))
@@ -121,7 +121,7 @@ describe("Embedding SDK: shoppy compatibility", () => {
       url: "/admin",
     })
 
-    cy.get("#metabase-sdk-root").within(() => {
+    cy.get("body").within(() => {
       cy.findByText("Saved explorations", { timeout: TIMEOUT }).click()
 
       expect(
