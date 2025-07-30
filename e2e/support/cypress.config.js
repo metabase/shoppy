@@ -8,5 +8,8 @@ module.exports = defineConfig({
     supportFile: path.resolve(path.join(__dirname, "./cypress.js")),
     specPattern: path.resolve(path.join(__dirname, "../test/**/*.cy.spec.js")),
     defaultBrowser: "chrome",
+    setupNodeEvents(on) {
+      require("cypress-terminal-report/src/installLogsPrinter")(on)
+    },
   },
 })
