@@ -2,18 +2,12 @@ name: Production Deployment
 
 on:
   workflow_dispatch:
-    inputs:
-      version:
-        description: 'Metabase version to deploy'
   workflow_run:
     workflows: ["Shoppy E2E tests"]
     types:
       - completed
     branches:
       - "main"
-
-env:
-  version: ${{ github.event.inputs.version || vars.MB_VERSION }}
 
 jobs:
   deploy:
@@ -118,12 +112,12 @@ jobs:
         run: |
           kubectl patch metabase hosting-shoppy \
           --type=merge \
-          -p '{"spec":{"image":{"version":"${{ env.version }}"},"pause":{"enabled":false}}}'
+          -p '{"spec":{"image":{"repo": "${{ secrets.MB_IMAGE_REPO }}", "name": "${{ vars.MB_IMAGE_NAME }}", "version":"${{ vars.MB_IMAGE_VERSION }}"},"pause":{"enabled":false}}}'
 
       - name: Verify Shoppy's Metabase Instance deployment
         run: |
           kubectl get metabase hosting-shoppy -o jsonpath='{.spec.image.version}'
-          echo "Metabase updated to version ${{ env.version }} and unpaused"
+          echo "Metabase updated to version ${{ vars.MB_IMAGE_VERSION }} and unpaused"
 
   deploy-to-vercel:
     needs: [ deploy ]
