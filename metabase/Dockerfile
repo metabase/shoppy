@@ -1,4 +1,4 @@
-FROM metabase/metabase-enterprise:v1.55.x
+FROM metabase/metabase-enterprise-head:latest
 
 COPY ./metabase /app/
 COPY ./local-dist /app/local-dist
