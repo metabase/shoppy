@@ -846,10 +846,10 @@
   resolved "https://registry.yarnpkg.com/@mantine/hooks/-/hooks-7.8.0.tgz#fc32e07746689459c4b049dc581d1dbda5545686"
   integrity sha512-+70fkgjhVJeJ+nJqnburIM3UAsfvxat1Low9HMPobLbv64FIdB4Nzu5ct3qojNQ58r5sK01tg5UoFIJYslaVrg==
 
-"@metabase/embedding-sdk-react@^0.57.0-alpha.0":
-  version "0.57.0-alpha.0"
-  resolved "https://registry.yarnpkg.com/@metabase/embedding-sdk-react/-/embedding-sdk-react-0.57.0-alpha.0.tgz#081285d8231e6ddfeaf4def01ce898cb4615b1a6"
-  integrity sha512-3GlP1Q79rU1iFaPKH+SfvTTfCu3fqIi+5PEACD5TT/lvfvD3eQpRBqZG7EYAx0rZ3pZio1qCecCcIXOqjhbtPQ==
+"@metabase/embedding-sdk-react@^0.57.0-alpha.1":
+  version "0.57.0-alpha.1"
+  resolved "https://registry.yarnpkg.com/@metabase/embedding-sdk-react/-/embedding-sdk-react-0.57.0-alpha.1.tgz#c6dc870f3b2f7279842d1485a4933d927453c0bb"
+  integrity sha512-xhxzk44zzfF8ade8hNKh2ztJ2ZrMB3DFc9ogpHS7aK26UhYeJXjpiEc85ur7Wjk427vH/BJQBMi6JddIJGzbfA==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
