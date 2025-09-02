@@ -15,6 +15,7 @@ import { KitchenSink } from "./internal/KitchenSink"
 
 import { AppProvider } from "../components/AppProvider"
 import { Shell } from "../components/layout/Shell"
+import { NewAskMetabotPage } from "./analytics/new/NewAskMetabotPage"
 
 export const Routes = () => (
   <Switch>
@@ -51,6 +52,11 @@ export const Routes = () => (
               component={(props) => (
                 <DashboardPage entity_id={props.params.id} />
               )}
+            />
+
+            <Route
+              path="/analytics/new/ask-metabot"
+              component={NewAskMetabotPage}
             />
 
             <Route
