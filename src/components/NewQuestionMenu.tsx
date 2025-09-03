@@ -20,6 +20,12 @@ export const NewQuestionMenu = ({ children, prefix = "", position }: Props) => {
 
       <Menu.Dropdown>
         <LinkWithSearchParams
+          href={prefix + "/analytics/new/ask-metabot"}
+          onClick={resetQuestion}
+        >
+          <Menu.Item>Ask AI</Menu.Item>
+        </LinkWithSearchParams>
+        <LinkWithSearchParams
           href={prefix + "/analytics/new/from-scratch"}
           onClick={resetQuestion}
         >
