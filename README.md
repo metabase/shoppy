@@ -20,6 +20,8 @@ This demo uses the data from the hosted Metabase Cloud instance and provides a h
 
   - `yarn dev`
 
+- Disable CORS in your browser. You can find how to do it here [https://medium.com/@beligh.hamdi/run-chrome-browser-without-cors-872747142c61](https://medium.com/@beligh.hamdi/run-chrome-browser-without-cors-872747142c61); also you can use a browser extension.
+
 - Visit `http://localhost:3004` in your browser.
 
 ## How to develop the SDK locally?
@@ -27,6 +29,15 @@ This demo uses the data from the hosted Metabase Cloud instance and provides a h
 > [!IMPORTANT]  
 > The following sections are for Metabase employees who are working on the embedding SDK.
 > If you are not a Metabase employee, you can skip the following sections.
+
+### Using Docker
+
+- Clone `.env.docker.example` to `.env.docker` and set the proper `PREMIUM_EMBEDDING_TOKEN` value.
+- If you want to test a local Embedding SDK version, copy it to the `local-dist/embedding-sdk` folder.
+- Run Docker via `yarn docker:up` for the `production` build or `WATCH=true yarn docker:up` for the development build with the `watch` support.
+  - The command launches containers with the local MB instance, Shoppy DWH, Shoppy API and Shoppy Client.
+  - Visit `http://localhost:4400`.
+- To stop containers run `yarn docker:down`.
 
 ### Using an existing running MB instance
 
@@ -37,15 +48,6 @@ This demo uses the data from the hosted Metabase Cloud instance and provides a h
 - Re-run the following command every time you make changes to the embedding SDK's source. This re-links the built SDK to the demo application.
 
   - `yarn dev:link && yarn dev`
-
-### Using Docker
-
-- Clone `.env.docker.example` to `.env.docker` and set the proper `PREMIUM_EMBEDDING_TOKEN` value.
-- If you want to test a local Embedding SDK version, copy it to the `local-dist/embedding-sdk` folder.
-- Run Docker via `yarn docker:up` for the `production` build or `WATCH=true yarn docker:up` for the development build with the `watch` support.
-  - The command launches containers with the local MB instance, Shoppy DWH, Shoppy API and Shoppy Client.
-  - Visit `http://localhost:4400`.
-- To stop containers run `yarn docker:down`.
 
 ### How to run the demo against a local JWT auth server?
 
