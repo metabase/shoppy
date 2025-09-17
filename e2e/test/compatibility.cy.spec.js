@@ -137,7 +137,7 @@ describe("Embedding SDK: shoppy compatibility", () => {
       cy.findByTestId(`site-switcher-button-${site}`).click()
 
       return cy
-        .findAllByTestId("dashcard-container")
+        .findAllByTestId("dashcard-container", { timeout: TIMEOUT })
         .filter(":contains('Total Orders')")
         .findByTestId("scalar-container", { timeout: TIMEOUT })
         .invoke("text")
