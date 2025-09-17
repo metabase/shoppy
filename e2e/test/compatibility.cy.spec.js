@@ -132,12 +132,14 @@ describe("Embedding SDK: shoppy compatibility", () => {
 
   it("should display dashboards with sandboxing for different shops", () => {
     const getOrdersCountForShop = (site) => {
+      cy.log(`Get total orders count for ${site}`)
+
       cy.findByTestId(`site-switcher-button-${site}`).click()
 
       return cy
-        .findAllByTestId("scalar-title", { timeout: TIMEOUT })
-        .filter((_, element) => element.textContent.trim() === "Total Orders")
-        .prev('[data-testid="scalar-container"]')
+        .findAllByTestId("dashcard-container")
+        .filter(":contains('Total Orders')")
+        .findByTestId("scalar-container", { timeout: TIMEOUT })
         .invoke("text")
     }
 
