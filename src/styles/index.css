@@ -1,5 +1,13 @@
 @layer tailwind {
   @tailwind base;
+
+  /*
+    needed to not mess up PDF exports
+    tailwind's preflight is a bit too harsh
+  */
+  img {
+    display: unset;
+  }
 }
 
 @tailwind components;

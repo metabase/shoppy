@@ -57,11 +57,6 @@ body[data-theme="proficiency"] .dashboard-container {
     color: var(--color-dark-grey);
   }
 
-  /* WORKAROUND: hide the bottom border of the header */
-  header > div:last-of-type {
-    display: none;
-  }
-
   /* WORKAROUND: hide the top border of the footer */
   footer {
     border: none;

@@ -17,7 +17,7 @@ export function DashboardPage(props: Props) {
       <InteractiveDashboard
         dashboardId={props.entity_id}
         withTitle
-        withDownloads={false}
+        withDownloads
         plugins={{ mapQuestionClickActions: withProductClickAction() }}
       />
     </Box>
