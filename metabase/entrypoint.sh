@@ -4,6 +4,12 @@ set -e
 DUMP=./app/metabase_dump.sql
 
 if [ -f $DUMP ]; then
+  echo "Installing dependencies..."
+
+  apk update \
+    && apk add --no-cache postgresql-client file \
+    && rm -rf /var/cache/apk/*
+
   echo "Restoring MB App DB from dump...";
 
   # reset `MB_CONFIG_FILE_PATH` value to prevent initialization from config

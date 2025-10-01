@@ -64,11 +64,10 @@ services:
         condition: service_healthy
       api:
         condition: service_healthy
-    build:
-      context: .
-      dockerfile: metabase/Dockerfile
+    image: metabase/metabase-enterprise:v1.56.x
+    entrypoint: ["sh", "/app/entrypoint.sh"]
     environment:
-      MB_CONFIG_FILE_PATH: "./app/init-config.yml"
+      MB_CONFIG_FILE_PATH: "./app/config.yml"
       MB_JETTY_PORT: "${MB_PORT}"
       MB_EDITION: "ee"
       MB_SITE_URL: "http://localhost:${MB_PORT}/"
@@ -96,6 +95,10 @@ services:
       retries: 10
     ports:
       - "${MB_PORT}:${MB_PORT}"
+    volumes:
+      - ./metabase/entrypoint.sh:/app/entrypoint.sh
+      - ./metabase/config.yml:/app/config.yml
+      - ./metabase/metabase_data.tar.gz:/app/metabase_data.tar.gz
 
   client:
     depends_on:
@@ -115,6 +118,11 @@ services:
       VITE_APP_METABASE_INSTANCE_URL: "http://localhost:${MB_PORT}"
       VITE_APP_API_HOST: "http://localhost:${API_PORT}/api"
       WATCH: "${WATCH}"
+    healthcheck:
+      test: curl --fail -X GET -I "http://localhost:${CLIENT_PORT}/" || exit 1
+      interval: 2s
+      timeout: 2s
+      retries: 5
     ports:
       - "${CLIENT_PORT}:${CLIENT_PORT}"
     volumes:
