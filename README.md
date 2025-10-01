@@ -39,7 +39,7 @@ This demo uses the data from the hosted Metabase Cloud instance and provides a h
 - To stop containers run `yarn docker:down`.
 - To remove containers and images completely run `yarn docker:rm`.
 
-#### Local dist (For Metabase developers)
+#### Local development (For Metabase developers)
 
 For a local development the App DB dump of the Shoppy's Metabase Instance must be downloaded.
 
