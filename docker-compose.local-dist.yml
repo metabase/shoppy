@@ -1,0 +1,15 @@
+services:
+  metabase:
+    volumes:
+      - type: bind
+        source: ./local-dist/metabase.jar
+        target: /app/metabase.jar
+        read_only: true
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ./metabase/metabase_dump.sql
+        target: /app/metabase_dump.sql
+        read_only: true
+        bind:
+          create_host_path: false

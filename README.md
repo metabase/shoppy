@@ -33,11 +33,22 @@ This demo uses the data from the hosted Metabase Cloud instance and provides a h
 ### Using Docker
 
 - Clone `.env.docker.example` to `.env.docker` and set the proper `PREMIUM_EMBEDDING_TOKEN` value.
-- If you want to test a local Embedding SDK version, copy it to the `local-dist/embedding-sdk` folder.
 - Run Docker via `yarn docker:up` for the `production` build or `WATCH=true yarn docker:up` for the development build with the `watch` support.
   - The command launches containers with the local MB instance, Shoppy DWH, Shoppy API and Shoppy Client.
   - Visit `http://localhost:4400`.
 - To stop containers run `yarn docker:down`.
+- To remove containers and images completely run `yarn docker:rm`.
+
+#### Local development (For Metabase developers)
+
+For a local development the App DB dump of the Shoppy's Metabase Instance must be downloaded.
+
+See the [Getting the App DB dump](#getting-the-app-db-dump-of-the-shoppys-metabase-instance) section.
+
+- To run containers with a locally built `metabase.jar`, copy it to the `./local-dist` folder as `./local-dist/metabase.jar`.
+- To run containers with a locally built Embedding SDK package, copy it to the `./local-dist` folder as `./local-dist/embedding-sdk`.
+- Run `yarn docker:local-dist:up` to start containers and use locally built dist from the `./local-dist` folder.
+- To remove containers and images completely run `yarn docker:rm`.
 
 ### Using an existing running MB instance
 
@@ -65,9 +76,20 @@ If you cannot use the hosted JWT server, you can run the JWT server locally.
 
 ### Running e2e tests (For Metabase developers)
 
-To run e2e tests locally, a proper App DB dump of the Shoppy's Metabase Instance must be placed to the `./local-dist/metabase_dump.sql`
+To run e2e tests locally, the App DB dump of the Shoppy's Metabase Instance must be downloaded.
+
+See the [Getting the App DB dump](#getting-the-app-db-dump-of-the-shoppys-metabase-instance) section.
+
+Then run `yarn docker:e2e:up` to start all required containers.
+After containers are up, run `cd e2e && yarn cypress:open` to run Cypress.
+To stop containers run `yarn docker:rm`.
+
+
+### Getting the App DB dump of the Shoppy's Metabase Instance
+
+For a local development or for running e2e locally an App DB dump of the Shoppy's Metabase Instance must be placed to the `./metabase/metabase_dump.sql`
 
 You can get it by:
 - Enabling the `Tailscale` and logging in using your work email address.
-- Running `pg_dump "postgres://{{ username }}:{{ password }}@{{ host }}:{{ port }}/{{ database }}" > ./local-dist/metabase_dump.sql` command.
+- Running `pg_dump "postgres://{{ username }}:{{ password }}@{{ host }}:{{ port }}/{{ database }}" > ./metabase/metabase_dump.sql` command.
   - See the `Shoppy Coredev Appdb` record in `1password` for credentials.

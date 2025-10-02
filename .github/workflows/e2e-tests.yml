@@ -34,13 +34,12 @@ jobs:
 
       - name: Download App DB PostgreSQL dump from S3
         run: |
-          aws s3 cp s3://${{ secrets.METABASE_APP_DB_S3_BUCKET }}/${{ vars.METABASE_APP_DB_S3_KEY }} ./local-dist/metabase_dump.sql
+          aws s3 cp s3://${{ secrets.METABASE_APP_DB_S3_BUCKET }}/${{ vars.METABASE_APP_DB_S3_KEY }} ./metabase/metabase_dump.sql
 
       - name: Run Shoppy in Docker
         run: |
           cp .env.docker.example .env.docker &&
-          yarn docker:up -d &&
-          while ! nc -z localhost 4400; do sleep 1; done
+          yarn docker:e2e:up --wait
 
       - name: Install Chrome v111
         uses: browser-actions/setup-chrome@v1
