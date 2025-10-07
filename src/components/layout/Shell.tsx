@@ -10,6 +10,7 @@ import {
 import { useDisclosure } from "@mantine/hooks"
 import { ReactNode } from "react"
 import { Icon } from "@iconify/react"
+import { usePathname } from "wouter/use-browser-location"
 
 import { SidebarLinks } from "./SidebarLinks"
 
@@ -36,6 +37,28 @@ export function Shell(props: Props) {
 
   const [isSiteReloading] = useAtom(siteIsReloadingAtom)
 
+  const path = usePathname()
+  const isMetabotLayout = path.endsWith("/ask-metabot")
+
+  function getMainContentLayout() {
+    // For Metabot layout, hide the gradient and footer.
+    if (isMetabotLayout) {
+      return props.children
+    }
+
+    return (
+      <>
+        <ProficiencyGradient />
+
+        <Stack h="100%" py="xl">
+          <Box className="flex-1">{props.children}</Box>
+
+          <SiteFooter />
+        </Stack>
+      </>
+    )
+  }
+
   if (isSiteReloading) {
     return <FullPageLoader />
   }
@@ -56,6 +79,7 @@ export function Shell(props: Props) {
       padding="sm"
       classNames={{
         navbar: "navbar overflow-scroll sm:overflow-visible",
+        main: isMetabotLayout ? "app-shell-remove-padding" : "",
       }}
     >
       <AppShell.Header zIndex={102} bg="#2B2F32" className="border-none">
@@ -155,13 +179,7 @@ export function Shell(props: Props) {
       </AppShell.Navbar>
 
       <AppShell.Main h="100dvh">
-        <ProficiencyGradient />
-
-        <Stack h="100%" py="xl">
-          <Box className="flex-1">{props.children}</Box>
-
-          <SiteFooter />
-        </Stack>
+        {getMainContentLayout()}
 
         <ClickActionDemoModal />
       </AppShell.Main>
