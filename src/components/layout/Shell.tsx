@@ -38,7 +38,7 @@ export function Shell(props: Props) {
   const [isSiteReloading] = useAtom(siteIsReloadingAtom)
 
   const path = usePathname()
-  const isMetabotLayout = path.endsWith("/ask-metabot")
+  const isMetabotLayout = path.includes("/analytics/new/ask-metabot")
 
   function getMainContentLayout() {
     // For Metabot layout, hide the gradient and footer.
