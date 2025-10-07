@@ -74,3 +74,6 @@ body:not([data-theme="luminara"]) {
   @apply space-y-3;
 }
 
+.app-shell-remove-padding {
+  --app-shell-padding: 0px;
+}
