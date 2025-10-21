@@ -6,8 +6,7 @@
  */
 export const API_HOST = getAPIHost()
 
-export const AUTH_PROVIDER_URI =
-  import.meta.env.VITE_APP_AUTH_PROVIDER_URI ?? "/sso/metabase"
+export const AUTH_PROVIDER_URI = "/sso/metabase"
 
 /**
  * URL of the metabase instance.
