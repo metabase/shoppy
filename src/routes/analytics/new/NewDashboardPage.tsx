@@ -1,5 +1,4 @@
 import { useAtom } from "jotai"
-import { Flex } from "@mantine/core"
 import {
   CreateDashboardModal,
   EditableDashboard,
@@ -33,9 +32,5 @@ export const NewDashboardPage = () => {
     )
   }
 
-  return (
-    <Flex w="100%">
-      <EditableDashboard dashboardId={dashboardId} />
-    </Flex>
-  )
+  return <EditableDashboard dashboardId={dashboardId} />
 }
