@@ -17,7 +17,7 @@ interface Props {
 
 export const ProductCard = ({ product }: Props) => {
   const [site] = useAtom(siteAtom)
-  const image = product.imageUrl ?? "/mock-t-shirt.webp"
+  const image = product.imageUrl ?? "/assets/mock-t-shirt.webp"
 
   const questionHeight = site === "stitch" ? 40 : 70
   const truncateLength = site === "pug" ? 13 : 50

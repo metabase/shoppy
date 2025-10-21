@@ -22,7 +22,7 @@ body {
 }
 
 body[data-theme="luminara"] {
-  background-image: url("/light-backdrop.png");
+  background-image: url("/assets/light-backdrop.png");
 }
 
 body:not([data-theme="luminara"]) {

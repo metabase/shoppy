@@ -9,8 +9,8 @@ export const SiteFooter = () => {
 
   const logoUrl =
     site === "stitch"
-      ? "/metabase-logo-without-wordmark-dark.svg"
-      : "/metabase-logo-without-wordmark-light.svg"
+      ? "/assets/metabase-logo-without-wordmark-dark.svg"
+      : "/assets/metabase-logo-without-wordmark-light.svg"
 
   return (
     <Group justify="center" align="center" py="lg">
