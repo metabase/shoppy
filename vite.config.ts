@@ -24,6 +24,14 @@ export default defineConfig(({ mode }) => {
     server: {
       open: false,
       port: devPort,
+      proxy: {
+        // Ensure we have the correct backend host set for local development
+        "/mb": {
+          target: env.VITE_APP_BACKEND_HOST,
+          changeOrigin: true,
+          secure: false,
+        },
+      },
     },
     preview: {
       port: previewPort,

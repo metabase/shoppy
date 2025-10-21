@@ -6,11 +6,7 @@ import {
   type MetabaseAuthConfig,
 } from "@metabase/embedding-sdk-react"
 
-import {
-  API_HOST,
-  AUTH_PROVIDER_URI,
-  METABASE_INSTANCE_URL,
-} from "../constants/env"
+import { API_HOST, AUTH_PROVIDER_URI } from "../constants/env"
 
 import { MetabaseError, MetabaseLoader } from "./SdkStates"
 
@@ -32,7 +28,7 @@ export const AppProvider = ({ children }: Props) => {
   // Configuration for the Metabase provider.
   const authConfig: MetabaseAuthConfig = useMemo(() => {
     return {
-      metabaseInstanceUrl: METABASE_INSTANCE_URL,
+      metabaseInstanceUrl: `${window.location.origin}/mb`,
 
       // Append the current site as a query parameter to the auth provider URL.
       fetchRequestToken: () =>

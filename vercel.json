@@ -11,6 +11,11 @@
       "source": "/api/:path*",
       "destination": "/api/src/main"
     },
+    // This is a Metabase proxy to avoid CORS preflight requests
+    {
+      "source": "/mb/:path*",
+      "destination": "/api/src/main"
+    },
     {
       "source": "/(.*)",
       "destination": "/"
