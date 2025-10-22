@@ -24,3 +24,5 @@ export function getAPIHost() {
     ? `${VITE_APP_BACKEND_HOST}/api`
     : "http://localhost:3003/api"
 }
+
+export const IS_DEV = import.meta.env.DEV
