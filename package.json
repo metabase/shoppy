@@ -36,7 +36,7 @@
   },
   "scripts": {
     "docker:up": "docker compose --env-file .env.docker up",
-    "docker:e2e:up": "docker compose -f docker-compose.yml -f docker-compose.e2e.yml --env-file .env.docker up",
+    "docker:e2e:up": "docker compose -f docker-compose.yml -f docker-compose.e2e.yml --env-file .env.docker up --build",
     "docker:local-dist:up": "docker compose -f docker-compose.yml -f docker-compose.local-dist.yml --env-file .env.docker up",
     "docker:down": "docker compose --env-file .env.docker down",
     "docker:rm": "yarn docker:down --rmi all --volumes",
