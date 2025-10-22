@@ -9,6 +9,7 @@ import {
 import {
   API_HOST,
   AUTH_PROVIDER_URI,
+  IS_DEV,
   METABASE_INSTANCE_URL,
 } from "../constants/env"
 
@@ -32,7 +33,9 @@ export const AppProvider = ({ children }: Props) => {
   // Configuration for the Metabase provider.
   const authConfig: MetabaseAuthConfig = useMemo(() => {
     return {
-      metabaseInstanceUrl: METABASE_INSTANCE_URL,
+      metabaseInstanceUrl: IS_DEV
+        ? METABASE_INSTANCE_URL
+        : `${window.location.origin}/mb`,
 
       // Append the current site as a query parameter to the auth provider URL.
       fetchRequestToken: () =>

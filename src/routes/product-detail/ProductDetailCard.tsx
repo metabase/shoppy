@@ -7,7 +7,7 @@ interface Props {
 }
 
 export const ProductDetailCard = ({ product }: Props) => {
-  const image = product.imageUrl ?? "/mock-t-shirt.webp"
+  const image = product.imageUrl ?? "/assets/mock-t-shirt.webp"
 
   return (
     <Flex

@@ -97,7 +97,7 @@ export function Shell(props: Props) {
             target="_blank"
             rel="noreferrer"
           >
-            <Image src="/metabase-logo-with-wordmark.svg" />
+            <Image src="/assets/metabase-logo-with-wordmark.svg" />
           </a>
 
           <Burger

@@ -29,7 +29,7 @@ body[data-theme="pug"] {
       position: absolute;
       top: 40px;
       content: " ";
-      background: url(/blue-sidebar-waves.svg);
+      background: url(/assets/blue-sidebar-waves.svg);
       background-repeat: repeat-y;
       background-position: center;
       height: 100%;

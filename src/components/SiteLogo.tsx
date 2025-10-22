@@ -9,7 +9,7 @@ export function SiteLogo() {
   if (site === "proficiency") {
     return (
       <Flex justify="flex-start" align="center" mb="20px">
-        <Image src="/logo-proficiency.svg" w="40px" mr="8px" />
+        <Image src="/assets/logo-proficiency.svg" w="40px" mr="8px" />
 
         <Text fz="21px" lh="21px" fw={700}>
           ProficiencyLabs
@@ -19,11 +19,11 @@ export function SiteLogo() {
   }
 
   if (site === "luminara") {
-    return <Image src="/logo-luminara.svg" maw="200px" />
+    return <Image src="/assets/logo-luminara.svg" maw="200px" />
   }
 
   if (site === "pug") {
-    return <Image src="/logo-pug-n-play.png" w="160px" />
+    return <Image src="/assets/logo-pug-n-play.png" w="160px" />
   }
 
   if (site === "stitch") {

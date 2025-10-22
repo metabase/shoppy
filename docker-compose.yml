@@ -111,12 +111,13 @@ services:
       dockerfile: Dockerfile
       args:
         VITE_APP_METABASE_INSTANCE_URL: "http://localhost:${MB_PORT}"
-        VITE_APP_API_HOST: "http://localhost:${API_PORT}/api"
+        VITE_APP_BACKEND_URL: "http://localhost:${API_PORT}"
         WATCH: "${WATCH}"
     environment:
       CLIENT_PORT: "${CLIENT_PORT}"
       VITE_APP_METABASE_INSTANCE_URL: "http://localhost:${MB_PORT}"
-      VITE_APP_API_HOST: "http://localhost:${API_PORT}/api"
+      VITE_APP_BACKEND_URL: "http://localhost:${API_PORT}"
+      VITE_APP_DOCKER_OVERRIDE_BACKEND_URL: "http://api:${API_PORT}"
       WATCH: "${WATCH}"
     healthcheck:
       test: curl --fail -X GET -I "http://localhost:${CLIENT_PORT}/" || exit 1
