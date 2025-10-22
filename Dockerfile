@@ -10,15 +10,19 @@ ENV VITE_APP_METABASE_INSTANCE_URL=${VITE_APP_METABASE_INSTANCE_URL}
 ARG VITE_APP_BACKEND_HOST
 ENV VITE_APP_BACKEND_HOST=${VITE_APP_BACKEND_HOST}
 
-
 ARG WATCH=false
 ENV WATCH=${WATCH}
 
 WORKDIR /app
 
-COPY --exclude=./api --exclude=./metabase . .
+# Copy package files first (changes less frequently)
+COPY package.json yarn.lock ./
 
+# Install dependencies (cached unless package files change)
 RUN yarn --frozen-lockfile
+
+# Copy source code last (changes most frequently)
+COPY --exclude=./api --exclude=./metabase . .
 
 RUN if [ -d "./local-dist/embedding-sdk" ]; then \
   echo "Local embedding-sdk dist is found in ./local-dist/embedding-sdk, installing it..."; \
