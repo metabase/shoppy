@@ -12,7 +12,7 @@
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "public, max-age=31556952"
+          "value": "public, max-age=2592000"
         }
       ]
     },
@@ -21,7 +21,7 @@
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "public, max-age=31556952"
+          "value": "public, max-age=2592000"
         }
       ]
     },
@@ -30,7 +30,7 @@
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "public, max-age=31556952"
+          "value": "public, max-age=2592000"
         }
       ]
     }
