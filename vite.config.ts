@@ -27,7 +27,9 @@ export default defineConfig(({ mode }) => {
       proxy: {
         // Ensure we have the correct backend host set for local development
         "/mb": {
-          target: env.VITE_APP_BACKEND_HOST,
+          target:
+            env.VITE_APP_DOCKER_OVERRIDE_BACKEND_HOST ||
+            env.VITE_APP_BACKEND_HOST,
           changeOrigin: true,
           secure: false,
         },

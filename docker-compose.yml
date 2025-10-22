@@ -117,6 +117,7 @@ services:
       CLIENT_PORT: "${CLIENT_PORT}"
       VITE_APP_METABASE_INSTANCE_URL: "http://localhost:${MB_PORT}"
       VITE_APP_BACKEND_HOST: "http://localhost:${API_PORT}"
+      VITE_APP_DOCKER_OVERRIDE_BACKEND_HOST: "http://api:${API_PORT}"
       WATCH: "${WATCH}"
     healthcheck:
       test: curl --fail -X GET -I "http://localhost:${CLIENT_PORT}/" || exit 1
