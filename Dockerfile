@@ -25,17 +25,17 @@ RUN yarn --frozen-lockfile
 COPY --exclude=./api --exclude=./metabase . .
 
 RUN if [ -d "./local-dist/embedding-sdk" ]; then \
-  echo "Local embedding-sdk dist is found in ./local-dist/embedding-sdk, installing it..."; \
-  yarn add file:./local-dist/embedding-sdk; \
-  else \
-  echo "Local embedding-sdk dist is not found in ./local-dist/embedding-sdk, skipping copy"; \
-  fi
+      echo "Local embedding-sdk dist is found in ./local-dist/embedding-sdk, installing it..."; \
+      yarn add file:./local-dist/embedding-sdk; \
+    else \
+      echo "Local embedding-sdk dist is not found in ./local-dist/embedding-sdk, skipping copy"; \
+    fi
 
 RUN if [ "$WATCH" != "true" ]; then \
-  echo "WATCH env is not set; running production yarn build..."; \
-  yarn build; \
-  else \
-  echo "WATCH env is set; running in development mode..."; \
-  fi
+      echo "WATCH env is not set; running production yarn build..."; \
+      yarn build; \
+    else \
+      echo "WATCH env is set; running in development mode..."; \
+    fi
 
 ENTRYPOINT ["/app/entrypoint.sh"]
