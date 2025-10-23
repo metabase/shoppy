@@ -46,7 +46,7 @@
     },
     {
       "source": "/mb/:path*",
-      "destination": "https://shoppy.coredev.metabase.com"
+      "destination": "https://shoppy.coredev.metabase.com/:path*"
     },
     {
       "source": "/(.*)",
