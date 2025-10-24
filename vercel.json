@@ -42,7 +42,7 @@
     },
     {
       "source": "/mb/:path*",
-      "destination": "/api/src/main"
+      "destination": "https://shoppy.coredev.metabase.com/:path*"
     },
     {
       "source": "/(.*)",

@@ -29,6 +29,13 @@ router.get("/product/:id", withCacheHeader, productDetailHandler)
 
 app.get("/", (_, res) => res.send({ status: "ok" }))
 app.use("/api", router)
+
+/**
+ * Only used in Cypress, because we call <clientUrl>/mb on production build. But Vercel has it's own routing via vercel.json
+ *
+ * And we call Metabase URL directly locally, to avoid same-site requests sending "metabase.SESSION" cookie that takes
+ * precedence over "X-Metabase-Session" header.
+ */
 app.use(
   "/mb",
   createProxyMiddleware({
