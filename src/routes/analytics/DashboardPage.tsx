@@ -1,5 +1,5 @@
 import { Box } from "@mantine/core"
-import { InteractiveDashboard } from "@metabase/embedding-sdk-react"
+import { EditableDashboard } from "@metabase/embedding-sdk-react"
 
 import { useReloadOnSiteChange } from "../../utils/use-site-changed"
 import { withProductClickAction } from "../../utils/metabase-plugins"
@@ -14,7 +14,7 @@ export function DashboardPage(props: Props) {
 
   return (
     <Box mih="100vh" className="dashboard-container smartscalar">
-      <InteractiveDashboard
+      <EditableDashboard
         dashboardId={props.entity_id}
         withTitle
         withDownloads
