@@ -14,14 +14,14 @@ export function DashboardPage(props: Props) {
   useReloadOnSiteChange()
 
   return (
-    <Box mih="100vh" className="dashboard-container smartscalar">
+    <Box mih="85vh" className="dashboard-container smartscalar" h="100%">
       <EditableDashboard
         dashboardId={props.entity_id}
         withTitle
         withDownloads
         plugins={{ mapQuestionClickActions: withProductClickAction() }}
         drillThroughQuestionProps={{
-          height: "100%",
+          height: "85vh",
           entityTypes: DATA_PICKER_ALLOWED_ENTITY_TYPES,
         }}
       />
