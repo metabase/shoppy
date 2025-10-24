@@ -61,7 +61,7 @@ export const ProductDetailInsights = (props: Props) => {
         withCloseButton={false}
         size="xl"
       >
-        <Flex mih={700} className="orders-over-time-container">
+        <Flex h="700px" className="orders-over-time-container">
           <InteractiveQuestion
             questionId="jA76uaXQKWC1xp7q2TvE2"
             title={
@@ -69,6 +69,7 @@ export const ProductDetailInsights = (props: Props) => {
                 Orders over time
               </Title>
             }
+            height="100%"
             plugins={{
               mapQuestionClickActions: withProductClickAction({
                 onBeforeOpenModal: modal.close,
