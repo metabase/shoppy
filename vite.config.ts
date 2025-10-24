@@ -33,10 +33,6 @@ export default defineConfig(({ mode }) => {
           changeOrigin: true,
           secure: false,
         },
-        "/api/sso/metabase": {
-          target: "https://shoppy-sdk-auth.kelvin.workers.dev",
-          changeOrigin: true,
-        },
       },
     },
     preview: {

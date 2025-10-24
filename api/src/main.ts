@@ -1,4 +1,5 @@
 import express, { Router } from "express"
+import { createProxyMiddleware } from "http-proxy-middleware"
 
 import { setupMiddleware } from "./middleware"
 import { withCacheHeader } from "./middleware/cache"
@@ -8,7 +9,7 @@ import { productListHandler } from "./routes/product-list"
 import { productDetailHandler } from "./routes/product-detail"
 import { categoryListHandler } from "./routes/category-list"
 
-import { PORT, VERCEL_ENV } from "./constants/env"
+import { METABASE_INSTANCE_URL, PORT, VERCEL_ENV } from "./constants/env"
 import { pg } from "./utils/db"
 
 const app = express()
@@ -28,6 +29,14 @@ router.get("/product/:id", withCacheHeader, productDetailHandler)
 
 app.get("/", (_, res) => res.send({ status: "ok" }))
 app.use("/api", router)
+app.use(
+  "/mb",
+  createProxyMiddleware({
+    target: METABASE_INSTANCE_URL,
+    changeOrigin: true,
+    pathRewrite: { "^/mb": "" },
+  }),
+)
 
 app.listen(PORT, async () => {
   console.log(`[shoppy api] running at http://localhost:${PORT}`)

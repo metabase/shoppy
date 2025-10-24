@@ -37,10 +37,6 @@
   ],
   "rewrites": [
     {
-      "source": "/api/sso/metabase",
-      "destination": "https://shoppy-sdk-auth.kelvin.workers.dev"
-    },
-    {
       "source": "/api/:path*",
       "destination": "/api/src/main"
     },
