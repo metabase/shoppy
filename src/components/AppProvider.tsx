@@ -18,6 +18,7 @@ import { MetabaseError, MetabaseLoader } from "./SdkStates"
 import { siteAtom } from "../store/site"
 import { SITE_CONFIG_MAP } from "../constants/sites"
 import { FontLoader } from "./FontLoader"
+import { HealthcheckBanner } from "./layout/HealthcheckBanner"
 
 interface Props {
   children: React.ReactNode
@@ -52,6 +53,8 @@ export const AppProvider = ({ children }: Props) => {
       loaderComponent={MetabaseLoader}
       errorComponent={MetabaseError}
     >
+      <HealthcheckBanner />
+
       {children}
 
       <FontLoader />
