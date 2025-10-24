@@ -8,13 +8,14 @@ export const NewFromScratchPage = () => {
   const { collectionId, onSaveQuestion } = useCreateQuestionHelpers()
 
   return (
-    <Container w="100%">
+    <Container w="100%" h="100%">
       <InteractiveQuestion
         questionId="new"
         onSave={onSaveQuestion}
         targetCollection={collectionId}
         entityTypes={DATA_PICKER_ALLOWED_ENTITY_TYPES}
         isSaveEnabled
+        height="100%"
       />
     </Container>
   )
