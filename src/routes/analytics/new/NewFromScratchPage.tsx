@@ -3,6 +3,7 @@ import { InteractiveQuestion } from "@metabase/embedding-sdk-react"
 
 import { useCreateQuestionHelpers } from "../../../utils/use-create-question-helpers"
 import { DATA_PICKER_ALLOWED_ENTITY_TYPES } from "../../../constants/data-picker"
+import { navigate } from "wouter/use-browser-location"
 
 export const NewFromScratchPage = () => {
   const { collectionId, onSaveQuestion } = useCreateQuestionHelpers()
@@ -11,7 +12,10 @@ export const NewFromScratchPage = () => {
     <Container w="100%" h="100%">
       <InteractiveQuestion
         questionId="new"
-        onSave={onSaveQuestion}
+        onSave={(question) => {
+          onSaveQuestion()
+          navigate(`/admin/question/${question.entityId}`)
+        }}
         targetCollection={collectionId}
         entityTypes={DATA_PICKER_ALLOWED_ENTITY_TYPES}
         isSaveEnabled
