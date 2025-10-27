@@ -1,36 +1,26 @@
 import { useAtom } from "jotai"
-import {
-  CreateDashboardModal,
-  EditableDashboard,
-} from "@metabase/embedding-sdk-react"
+import { CreateDashboardModal } from "@metabase/embedding-sdk-react"
 import { navigate } from "wouter/use-browser-location"
 
 import { RemountOnSiteChange } from "../../../components/RemountOnSiteChange"
 
 import { siteAtom } from "../../../store/site"
-import { createDashboardIdAtom } from "../../../store/create"
 
 import { SANDBOXED_USER_GENERATED_COLLECTIONS } from "../../../constants/collections"
 
 export const NewDashboardPage = () => {
   const [site] = useAtom(siteAtom)
-  const [dashboardId, setDashboardId] = useAtom(createDashboardIdAtom)
-
   const collectionId = SANDBOXED_USER_GENERATED_COLLECTIONS[site]
 
-  if (dashboardId === null) {
-    return (
-      <RemountOnSiteChange>
-        <CreateDashboardModal
-          onCreate={(dashboard: { entity_id: string }) =>
-            setDashboardId(dashboard.entity_id)
-          }
-          initialCollectionId={collectionId}
-          onClose={() => navigate("/admin/analytics/custom")}
-        />
-      </RemountOnSiteChange>
-    )
-  }
-
-  return <EditableDashboard dashboardId={dashboardId} />
+  return (
+    <RemountOnSiteChange>
+      <CreateDashboardModal
+        onCreate={(dashboard: { entity_id: string }) =>
+          navigate(`/admin/analytics/${dashboard.entity_id}`)
+        }
+        initialCollectionId={collectionId}
+        onClose={() => navigate("/admin/analytics/custom")}
+      />
+    </RemountOnSiteChange>
+  )
 }

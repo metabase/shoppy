@@ -1,8 +1,9 @@
 import { Box } from "@mantine/core"
-import { InteractiveDashboard } from "@metabase/embedding-sdk-react"
+import { EditableDashboard } from "@metabase/embedding-sdk-react"
 
 import { useReloadOnSiteChange } from "../../utils/use-site-changed"
 import { withProductClickAction } from "../../utils/metabase-plugins"
+import { DATA_PICKER_ALLOWED_ENTITY_TYPES } from "../../constants/data-picker"
 
 interface Props {
   entity_id: string
@@ -13,12 +14,16 @@ export function DashboardPage(props: Props) {
   useReloadOnSiteChange()
 
   return (
-    <Box mih="100vh" className="dashboard-container smartscalar">
-      <InteractiveDashboard
+    <Box mih="85vh" className="dashboard-container smartscalar" h="100%">
+      <EditableDashboard
         dashboardId={props.entity_id}
         withTitle
         withDownloads
         plugins={{ mapQuestionClickActions: withProductClickAction() }}
+        drillThroughQuestionProps={{
+          height: "85vh",
+          entityTypes: DATA_PICKER_ALLOWED_ENTITY_TYPES,
+        }}
       />
     </Box>
   )
