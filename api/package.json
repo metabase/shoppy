@@ -19,7 +19,6 @@
     "drizzle-orm": "^0.30.9",
     "express": "^4.19.2",
     "http-proxy-middleware": "^3.0.5",
-    "jsonwebtoken": "^9.0.2",
     "node-fetch": "^2",
     "pg": "^8.11.5",
     "typescript": "^5.4.5"
