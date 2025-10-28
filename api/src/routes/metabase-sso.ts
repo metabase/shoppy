@@ -18,7 +18,7 @@ export async function metabaseAuthHandler(req: Request, res: Response) {
   }
 
   try {
-    return res.status(200).json({ jwt: signUserToken(user) })
+    return res.status(200).json({ jwt: await signUserToken(user) })
   } catch (error) {
     if (error instanceof Error) {
       res.status(401).json({

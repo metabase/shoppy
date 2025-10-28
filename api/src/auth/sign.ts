@@ -1,8 +1,7 @@
 import { User } from "../types/user"
 import { METABASE_JWT_SHARED_SECRET } from "../constants/env"
-import { createHmac } from "crypto"
 
-export const signUserToken = (user: User): string => {
+export const signUserToken = async (user: User): Promise<string> => {
   if (!METABASE_JWT_SHARED_SECRET) {
     throw new Error("METABASE_JWT_SHARED_SECRET is not set in the environment!")
   }
@@ -20,7 +19,7 @@ export const signUserToken = (user: User): string => {
   )
 }
 
-interface JWTpayload {
+interface JwtPayload {
   email: string
   first_name: string
   last_name: string
@@ -29,23 +28,45 @@ interface JWTpayload {
   exp: number
 }
 
-const signJwt = (payload: JWTpayload, secret: string): string => {
+const signJwt = async (
+  payload: JwtPayload,
+  secret: string,
+): Promise<string> => {
   const header = {
     alg: "HS256",
     typ: "JWT",
   }
 
   const base64UrlEncode = (str: string): string => {
-    return Buffer.from(str, "utf-8").toString("base64url")
+    return Buffer.from(str)
+      .toString("base64")
+      .replace(/\+/g, "-")
+      .replace(/\//g, "_")
+      .replace(/=/g, "")
   }
 
   const encodedHeader = base64UrlEncode(JSON.stringify(header))
   const encodedPayload = base64UrlEncode(JSON.stringify(payload))
   const signatureInput = `${encodedHeader}.${encodedPayload}`
 
-  const signature = createHmac("sha256", secret)
-    .update(signatureInput)
-    .digest("base64url")
+  const encoder = new TextEncoder()
+  const key = await crypto.subtle.importKey(
+    "raw",
+    encoder.encode(secret),
+    { name: "HMAC", hash: "SHA-256" },
+    false,
+    ["sign"],
+  )
 
-  return `${signatureInput}.${signature}`
+  const signature = await crypto.subtle.sign(
+    "HMAC",
+    key,
+    encoder.encode(signatureInput),
+  )
+
+  const encodedSignature = base64UrlEncode(
+    String.fromCharCode(...new Uint8Array(signature)),
+  )
+
+  return `${signatureInput}.${encodedSignature}`
 }
