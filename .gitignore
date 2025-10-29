@@ -40,3 +40,6 @@ api/dist
 
 .idea
 .vercel
+
+# agents
+.claude
