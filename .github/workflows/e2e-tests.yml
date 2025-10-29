@@ -15,7 +15,9 @@ jobs:
     timeout-minutes: 10
     name: e2e-tests
     env:
-      PREMIUM_EMBEDDING_TOKEN: ${{ secrets.MB_PRO_SELF_HOSTED_TOKEN }}
+      PREMIUM_EMBEDDING_TOKEN: ${{ secrets.STAGING_MB_ALL_FEATURES_TOKEN }}
+      MB_RUN_MODE: dev
+      METASTORE_DEV_SERVER_URL: ${{ secrets.METASTORE_DEV_SERVER_URL }}
       METABASE_APP_DB_USER: ${{ secrets.APP_DB_USER }}
       METABASE_APP_DB: ${{ secrets.APP_DB_SHOPPY_DATABASE }}
     permissions:
