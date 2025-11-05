@@ -33,6 +33,19 @@
           "value": "public, max-age=2592000"
         }
       ]
+    },
+    {
+      "source": "/mb/app/embedding-sdk.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "max-age=0, must-revalidate"
+        },
+        {
+          "key": "CDN-Cache-Control",
+          "value": "public, max-age=2592000"
+        }
+      ]
     }
   ],
   "rewrites": [
