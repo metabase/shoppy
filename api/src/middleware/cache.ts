@@ -10,8 +10,8 @@ export function withCacheHeader(
   next: NextFunction,
 ) {
   res.set({
-    "Cache-Control": "public, max-age=604800, stale-while-revalidate=604800",
-    "CDN-Cache-Control": "public, max-age=2592000",
+    "Cache-Control":
+      "public, max-age=604800, s-maxage=2592000, stale-while-revalidate=604800",
   })
 
   next()
