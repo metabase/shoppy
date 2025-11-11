@@ -10,8 +10,8 @@ export function withCacheHeader(
   next: NextFunction,
 ) {
   res.set({
-    "Cache-Control":
-      "public, max-age=604800, s-maxage=2592000, stale-while-revalidate=604800",
+    "Cache-Control": "public, max-age=604800, stale-while-revalidate=604800",
+    "Vercel-CDN-Cache-Control": "public, max-age=2592000",
   })
 
   next()
