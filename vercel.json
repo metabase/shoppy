@@ -33,25 +33,17 @@
           "value": "public, max-age=2592000"
         }
       ]
-    },
-    {
-      "source": "/mb/app/embedding-sdk.js",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "max-age=0, must-revalidate"
-        },
-        {
-          "key": "CDN-Cache-Control",
-          "value": "public, max-age=2592000"
-        }
-      ]
     }
   ],
   "rewrites": [
     {
       "source": "/api/:path*",
       "destination": "/api/src/main"
+    },
+
+    {
+      "source": "/mb/app/embedding-sdk.js",
+      "destination": "/api/src/metabase-sdk-bundle-proxy"
     },
     {
       "source": "/mb/:path*",
