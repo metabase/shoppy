@@ -5,8 +5,8 @@ export default {
     )
     const headers = new Headers(response.headers)
     headers.delete("set-cookie")
-    headers.append("Cache-Control", "max-age=0, must-revalidate")
-    headers.append("CDN-Cache-Control", "public, max-age=2592000")
+    headers.set("Cache-Control", "max-age=0, must-revalidate")
+    headers.set("CDN-Cache-Control", "public, max-age=2592000")
 
     return new Response(response.body, {
       status: response.status,
