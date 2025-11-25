@@ -9,8 +9,8 @@ export default {
     headers.delete("set-cookie")
     headers.delete("content-encoding")
     headers.delete("content-length")
-    headers.set("Cache-Control", "public, max-age=0, must-revalidate")
-    headers.set("Vercel-CDN-Cache-Control", "public, max-age=2592000")
+    headers.set("Cache-Control", "public, s-maxage=1, must-revalidate")
+    headers.set("CDN-Cache-Control", "public, max-age=2592000")
 
     return new Response(clonedResponse.body, {
       status: response.status,
