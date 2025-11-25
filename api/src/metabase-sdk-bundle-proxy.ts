@@ -10,7 +10,7 @@ export default {
     headers.set("Cache-Control", "max-age=0, must-revalidate")
     headers.set("CDN-Cache-Control", "public, max-age=2592000")
 
-    return new Response(clonedResponse.body, {
+    return new Response(await clonedResponse.arrayBuffer(), {
       status: response.status,
       statusText: response.statusText,
       headers: headers,
