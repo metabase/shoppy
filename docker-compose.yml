@@ -64,7 +64,7 @@ services:
         condition: service_healthy
       api:
         condition: service_healthy
-    image: metabase/metabase-enterprise:v1.56.x
+    image: metabase/metabase-enterprise:v1.57.x
     entrypoint: ["sh", "/app/entrypoint.sh"]
     environment:
       MB_CONFIG_FILE_PATH: "./app/config.yml"

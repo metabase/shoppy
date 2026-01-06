@@ -1,6 +1,6 @@
 services:
   metabase:
-    image: metabase/metabase-enterprise-head:latest
+    image: metabase/metabase-enterprise:v1.57.x
     volumes:
       - type: bind
         source: ./metabase/metabase_dump.sql
