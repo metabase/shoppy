@@ -4,6 +4,7 @@ import { datadogRum } from "@datadog/browser-rum"
 interface Props {
   children: ReactNode
   metricKey: string
+  enabled?: boolean
 }
 
 const RECORDED_METRICS = new Set<string>()
@@ -23,16 +24,27 @@ const hasVisualization = (node: Element): boolean => {
 /**
  * Wrapper that detects when a Metabase visualization loads and records
  */
-export const MetabaseDatadogLoadTimer = ({ children, metricKey }: Props) => {
+export const MetabaseDatadogLoadTimer = ({
+  children,
+  metricKey,
+  enabled = true,
+}: Props) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const reportedRef = useRef(false)
 
   useEffect(() => {
+    if (!enabled) {
+      return
+    }
+
     const container = containerRef.current
-    if (!container) return
+    if (!container) {
+      return
+    }
 
     if (hasVisualization(container)) {
       reportLoaded()
+
       return
     }
 
@@ -52,7 +64,10 @@ export const MetabaseDatadogLoadTimer = ({ children, metricKey }: Props) => {
   }, [])
 
   function reportLoaded() {
-    if (reportedRef.current) return
+    if (reportedRef.current) {
+      return
+    }
+
     reportedRef.current = true
     recordQuestionLoaded(metricKey)
   }
