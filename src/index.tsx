@@ -7,6 +7,7 @@ import "@mantine/core/styles.css"
 
 import { Routes } from "./routes"
 
+import { initDatadog } from "./utils/datadog"
 import { queryClient } from "./utils/query-client"
 
 import "./styles/index.css"
@@ -29,6 +30,7 @@ import { store } from "./store"
 import { ThemeProvider } from "./components/ThemeProvider"
 import { migrateDefaultSiteToProficiencyLabs } from "./utils/migrate-default-site"
 
+initDatadog()
 migrateDefaultSiteToProficiencyLabs()
 
 const root = document.getElementById("root")!

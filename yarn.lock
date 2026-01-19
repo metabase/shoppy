@@ -407,6 +407,26 @@
   resolved "https://registry.yarnpkg.com/@csstools/selector-specificity/-/selector-specificity-3.1.1.tgz#63085d2995ca0f0e55aa8b8a07d69bfd48b844fe"
   integrity sha512-a7cxGcJ2wIlMFLlh8z2ONm+715QkPHiyJcxwQlKOz/03GPw1COpfhcmC9wm4xlZfp//jWHNNMwzjtqHXVWU9KA==
 
+"@datadog/browser-core@6.25.4":
+  version "6.25.4"
+  resolved "https://registry.yarnpkg.com/@datadog/browser-core/-/browser-core-6.25.4.tgz#710c8495f342ea0171d78d4f1fa413047392aee6"
+  integrity sha512-5QLyCwSDmFQrEqIAQqR0xSIvCLDSOa8gxN9VBPsu3+Q+JzQdnpSCzKoBRcCA5zsCndMON/y2WazUWyd19LxTOA==
+
+"@datadog/browser-rum-core@6.25.4":
+  version "6.25.4"
+  resolved "https://registry.yarnpkg.com/@datadog/browser-rum-core/-/browser-rum-core-6.25.4.tgz#4d6ed3d35176c28e831fa3b06050f236ef376998"
+  integrity sha512-VfjyY2GZdFSvAJklo58zVHwqACiD8N+h4XJtkXwttk1aYJml+zqqyPHsbQoUvfiVX7hDBQ/sDGl0USQAe/oADQ==
+  dependencies:
+    "@datadog/browser-core" "6.25.4"
+
+"@datadog/browser-rum@^6.25.4":
+  version "6.25.4"
+  resolved "https://registry.yarnpkg.com/@datadog/browser-rum/-/browser-rum-6.25.4.tgz#4325474e2ca0932b939a4badda616e97afcc8ab0"
+  integrity sha512-Ll8KYGBbeiqZN86Re8ku9slwnzbbxYXE74Hy+wVmUBgGu5Y/1MO6uwsAmnA7IT79Ij95Rv2dgpVKdc/8K/943A==
+  dependencies:
+    "@datadog/browser-core" "6.25.4"
+    "@datadog/browser-rum-core" "6.25.4"
+
 "@emnapi/runtime@^1.2.0":
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/@emnapi/runtime/-/runtime-1.3.0.tgz#63ebb77b9212ef7334f19ab8842ff76039c4f953"
