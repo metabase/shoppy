@@ -15,15 +15,16 @@ export function DashboardPage(props: Props) {
   // When the site changed, reload to apply the site's sandboxed data.
   useReloadOnSiteChange()
 
-  const enableMetricCollection = overviewLinkCards.some(
+  const trackedDashboard = overviewLinkCards.find(
     (card) => card.entityId === props.entity_id,
   )
 
   return (
     <Box mih="85vh" className="dashboard-container smartscalar" h="100%">
       <MetabaseDatadogLoadTimer
-        metricKey={`analytics_dashboard_${props.entity_id}`}
-        enabled={enableMetricCollection}
+        metricKey="analytics_dashboard"
+        enabled={!!trackedDashboard}
+        context={{ dashboard_name: trackedDashboard?.title ?? props.entity_id }}
       >
         <EditableDashboard
           dashboardId={props.entity_id}

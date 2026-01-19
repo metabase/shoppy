@@ -5,14 +5,27 @@ interface Props {
   children: ReactNode
   metricKey: string
   enabled?: boolean
+  context?: Record<string, string>
 }
 
 const RECORDED_METRICS = new Set<string>()
 
-const recordQuestionLoaded = (metricKey: string) => {
-  if (RECORDED_METRICS.has(metricKey)) return
+const recordEntityLoaded = (
+  metricKey: string,
+  context?: Record<string, string>,
+) => {
+  if (RECORDED_METRICS.has(metricKey)) {
+    return
+  }
 
   RECORDED_METRICS.add(metricKey)
+
+  if (context) {
+    Object.entries(context).forEach(([key, value]) => {
+      datadogRum.setViewContextProperty(key, value)
+    })
+  }
+
   datadogRum.addTiming(`${metricKey}_first`)
 }
 
@@ -28,6 +41,7 @@ export const MetabaseDatadogLoadTimer = ({
   children,
   metricKey,
   enabled = true,
+  context,
 }: Props) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const reportedRef = useRef(false)
@@ -69,7 +83,7 @@ export const MetabaseDatadogLoadTimer = ({
     }
 
     reportedRef.current = true
-    recordQuestionLoaded(metricKey)
+    recordEntityLoaded(metricKey, context)
   }
 
   return <div ref={containerRef}>{children}</div>
