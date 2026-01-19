@@ -10,6 +10,7 @@ import { siteAtom } from "../../store/site"
 import { truncate } from "../../utils/truncate"
 import { LoadWhenVisible } from "../../components/LoadWhenVisible"
 import { LinkWithSearchParams } from "../../components/LinkWithSearchParams"
+import { MetabaseDatadogLoadTimer } from "../../components/MetabaseDatadogLoadTimer"
 
 interface Props {
   product: Product
@@ -43,12 +44,14 @@ export const ProductCard = ({ product }: Props) => {
             <Box py={4} h={questionHeight}>
               <LoadWhenVisible>
                 <RemountOnSiteChange>
-                  <StaticQuestion
-                    questionId="8emcAd9TTrPoHLuaFaUh0"
-                    withChartTypeSelector={false}
-                    height={questionHeight}
-                    initialSqlParameters={{ product_id: product.id }}
-                  />
+                  <MetabaseDatadogLoadTimer metricKey="product_list_questions">
+                    <StaticQuestion
+                      questionId="8emcAd9TTrPoHLuaFaUh0"
+                      withChartTypeSelector={false}
+                      height={questionHeight}
+                      initialSqlParameters={{ product_id: product.id }}
+                    />
+                  </MetabaseDatadogLoadTimer>
                 </RemountOnSiteChange>
               </LoadWhenVisible>
             </Box>
