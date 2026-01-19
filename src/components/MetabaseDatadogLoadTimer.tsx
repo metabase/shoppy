@@ -85,7 +85,7 @@ export const MetabaseDatadogLoadTimer = ({
     })
 
     return () => observer.disconnect()
-  }, [])
+  }, [enabled, reportLoaded])
 
   return <div ref={containerRef}>{children}</div>
 }
