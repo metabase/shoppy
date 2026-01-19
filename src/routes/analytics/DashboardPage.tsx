@@ -4,6 +4,7 @@ import { EditableDashboard } from "@metabase/embedding-sdk-react"
 import { useReloadOnSiteChange } from "../../utils/use-site-changed"
 import { withProductClickAction } from "../../utils/metabase-plugins"
 import { DATA_PICKER_ALLOWED_ENTITY_TYPES } from "../../constants/data-picker"
+import { MetabaseDatadogLoadTimer } from "../../components/MetabaseDatadogLoadTimer"
 
 interface Props {
   entity_id: string
@@ -15,16 +16,20 @@ export function DashboardPage(props: Props) {
 
   return (
     <Box mih="85vh" className="dashboard-container smartscalar" h="100%">
-      <EditableDashboard
-        dashboardId={props.entity_id}
-        withTitle
-        withDownloads
-        plugins={{ mapQuestionClickActions: withProductClickAction() }}
-        drillThroughQuestionProps={{
-          height: "85vh",
-          entityTypes: DATA_PICKER_ALLOWED_ENTITY_TYPES,
-        }}
-      />
+      <MetabaseDatadogLoadTimer
+        metricKey={`analytics_dashboard_${props.entity_id}`}
+      >
+        <EditableDashboard
+          dashboardId={props.entity_id}
+          withTitle
+          withDownloads
+          plugins={{ mapQuestionClickActions: withProductClickAction() }}
+          drillThroughQuestionProps={{
+            height: "85vh",
+            entityTypes: DATA_PICKER_ALLOWED_ENTITY_TYPES,
+          }}
+        />
+      </MetabaseDatadogLoadTimer>
     </Box>
   )
 }
