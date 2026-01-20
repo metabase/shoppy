@@ -1,4 +1,5 @@
 import { useEffect, useRef, ReactNode, useCallback } from "react"
+import { useLocation } from "wouter"
 import { datadogRum } from "@datadog/browser-rum"
 
 interface Props {
@@ -43,6 +44,7 @@ export const MetabaseDatadogLoadTimer = ({
   enabled = true,
   context,
 }: Props) => {
+  const [location] = useLocation()
   const containerRef = useRef<HTMLDivElement>(null)
   const reportedRef = useRef(false)
 
@@ -54,6 +56,11 @@ export const MetabaseDatadogLoadTimer = ({
     reportedRef.current = true
     recordEntityLoaded(metricKey, context)
   }, [metricKey, context])
+
+  useEffect(() => {
+    RECORDED_METRICS.clear()
+    reportedRef.current = false
+  }, [location])
 
   useEffect(() => {
     if (!enabled) {
