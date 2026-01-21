@@ -28,6 +28,11 @@ const recordEntityLoaded = (
   }
 
   datadogRum.addTiming(`${metricKey}_first`)
+
+  // For synthetic monitoring CI testing
+  window.dispatchEvent(
+    new CustomEvent("metabase:timing", { detail: { metricKey } }),
+  )
 }
 
 const hasVisualization = (node: Element): boolean => {
