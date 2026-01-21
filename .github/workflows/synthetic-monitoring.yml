@@ -19,3 +19,5 @@ jobs:
           browser: chrome
           config-file: support/cypress.synthetic.config.js
           config: userAgent=metabase-bot/1.0
+        env:
+          CYPRESS_BASE_URL: https://embedded-analytics-sdk-demo.metabase.com

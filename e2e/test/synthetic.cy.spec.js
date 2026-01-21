@@ -1,5 +1,4 @@
-const BASE_URL =
-  Cypress.env("BASE_URL") || "https://embedded-analytics-sdk-demo.metabase.com"
+const BASE_URL = Cypress.env("BASE_URL")
 const PATHS = ["/admin/products", "/admin/analytics/i5s-lcGYLc1GyFdIy4TxH"]
 const VISITS_PER_URL = 10
 const TIMEOUT = 60000
