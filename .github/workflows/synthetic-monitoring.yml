@@ -1,0 +1,21 @@
+name: Synthetic Monitoring
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+
+jobs:
+  synthetic-visits:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run synthetic visits
+        uses: cypress-io/github-action@v6
+        with:
+          working-directory: e2e
+          browser: chrome
+          config-file: support/cypress.synthetic.config.js
+          config: userAgent=metabase-bot/1.0
