@@ -8,14 +8,14 @@ describe("Synthetic Monitoring", () => {
     for (let i = 1; i <= VISITS_PER_URL; i++) {
       it(`Visit ${path} - ${i}`, () => {
         cy.visit(`${BASE_URL}${path}`)
-        cy.window().then(
-          (win) => {
-            return new Cypress.Promise((resolve) => {
+        cy.window().then((win) => {
+          return cy.wrap(
+            new Cypress.Promise((resolve) => {
               win.addEventListener("metabase:timing", resolve, { once: true })
-            })
-          },
-          { timeout: TIMEOUT },
-        )
+            }),
+            { timeout: TIMEOUT },
+          )
+        })
       })
     }
   })
