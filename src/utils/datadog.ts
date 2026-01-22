@@ -17,6 +17,11 @@ export function initDatadog() {
     return
   }
 
+  // Initialize Datadog only for synthetic monitoring
+  if (!(window as unknown as { Cypress?: unknown }).Cypress) {
+    return
+  }
+
   datadogRum.init({
     applicationId: DATADOG_APPLICATION_ID,
     clientToken: DATADOG_CLIENT_TOKEN,
