@@ -2,6 +2,8 @@ import { useEffect, useRef, ReactNode, useCallback } from "react"
 import { useLocation } from "wouter"
 import { datadogRum } from "@datadog/browser-rum"
 
+import { DEFAULT_DATADOG_CONTEXT } from "../constants/default-datadog-rum-context"
+
 interface Props {
   children: ReactNode
   metricKey: string
@@ -22,9 +24,11 @@ const recordEntityLoaded = (
   RECORDED_METRICS.add(metricKey)
 
   if (context) {
-    Object.entries(context).forEach(([key, value]) => {
-      datadogRum.setViewContextProperty(key, value)
-    })
+    Object.entries({ ...DEFAULT_DATADOG_CONTEXT, ...context }).forEach(
+      ([key, value]) => {
+        datadogRum.setViewContextProperty(key, value)
+      },
+    )
   }
 
   datadogRum.addTiming(`${metricKey}_first`)
