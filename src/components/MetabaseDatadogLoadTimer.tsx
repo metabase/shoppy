@@ -26,6 +26,10 @@ const recordEntityLoaded = (
   if (context) {
     Object.entries({ ...DEFAULT_DATADOG_CONTEXT, ...context }).forEach(
       ([key, value]) => {
+        if (value === null || value === undefined) {
+          return
+        }
+
         datadogRum.setViewContextProperty(key, value)
       },
     )

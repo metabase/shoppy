@@ -11,8 +11,8 @@ describe("Synthetic Monitoring", () => {
         params: {
           offline: false,
           latency: 200,
-          downloadThroughput: 200 * 1024,
-          uploadThroughput: 100 * 1024,
+          downloadThroughput: 400 * 1024,
+          uploadThroughput: 200 * 1024,
         },
       }),
     )
