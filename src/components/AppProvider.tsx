@@ -9,6 +9,7 @@ import {
 import {
   API_HOST,
   AUTH_PROVIDER_URI,
+  getAPIHost,
   IS_DEV,
   METABASE_INSTANCE_URL,
 } from "../constants/env"
@@ -36,6 +37,8 @@ export const AppProvider = ({ children }: Props) => {
       metabaseInstanceUrl: IS_DEV
         ? METABASE_INSTANCE_URL
         : `${window.location.origin}/mb`,
+
+      jwtProviderUri: `${getAPIHost()}/sso/metabase`,
 
       // Append the current site as a query parameter to the auth provider URL.
       fetchRequestToken: () =>
