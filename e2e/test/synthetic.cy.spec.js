@@ -45,12 +45,15 @@ const sendAggregatedTiming = (path) => {
 
     cy.window().then((win) => {
       if (win.DD_RUM) {
-        win.DD_RUM.addAction("aggregated_timing", {
-          path,
-          median,
-          pr_number: PR_NUMBER || undefined,
-          sample_count,
-        })
+        win.DD_RUM.setViewContextProperty("path", path)
+        win.DD_RUM.setViewContextProperty("sample_count", sample_count)
+
+        if (PR_NUMBER) {
+          win.DD_RUM.setViewContextProperty("pr_number", PR_NUMBER)
+        }
+
+        win.DD_RUM.addTiming("aggregated_timing", median)
+        cy.log(`Sent aggregated_timing to Datadog: ${median}ms for ${path}`)
       }
     })
   })
