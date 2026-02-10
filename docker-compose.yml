@@ -112,7 +112,6 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        VITE_APP_PR_NUMBER: "${PR_NUMBER}"
         VITE_APP_METABASE_INSTANCE_URL: "http://localhost:${MB_PORT}"
         VITE_APP_BACKEND_URL: "http://localhost:${API_PORT}"
         VITE_DATADOG_APPLICATION_ID: "${VITE_DATADOG_APPLICATION_ID}"
