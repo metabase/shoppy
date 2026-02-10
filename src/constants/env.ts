@@ -38,3 +38,6 @@ export const DATADOG_CLIENT_TOKEN =
 export const DATADOG_SITE = import.meta.env.VITE_DATADOG_SITE
 export const DATADOG_SERVICE = import.meta.env.VITE_DATADOG_SERVICE
 export const DATADOG_ENV = import.meta.env.VITE_DATADOG_ENV
+
+export const IS_CI_RUN_FOR_PR_SYNTHETIC_MONITORING = !!import.meta.env
+  .VITE_APP_PR_NUMBER

@@ -24,7 +24,6 @@ export function DashboardPage(props: Props) {
       <MetabaseDatadogLoadTimer
         metricKey="analytics_dashboard"
         enabled={!!trackedDashboard}
-        context={{ dashboard_name: trackedDashboard?.title ?? props.entity_id }}
       >
         <EditableDashboard
           dashboardId={props.entity_id}

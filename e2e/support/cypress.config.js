@@ -10,6 +10,7 @@ module.exports = defineConfig({
     ...(!process.env.INCLUDE_SYNTHETIC_MONITORING_TESTS && {
       excludeSpecPattern: ["**/synthetic.cy.spec.js"],
     }),
+    env: { PR_NUMBER: process.env.PR_NUMBER },
     defaultBrowser: process.env.CYPRESS_BROWSER ?? "chrome",
     userAgent: "metabase-bot/1.0",
   },

@@ -1,47 +1,15 @@
-import { useEffect, useRef, ReactNode, useCallback } from "react"
+import { useEffect, useRef, RefObject, ReactNode, useCallback } from "react"
 import { useLocation } from "wouter"
-import { datadogRum } from "@datadog/browser-rum"
-
-import { DEFAULT_DATADOG_CONTEXT } from "../constants/default-datadog-rum-context"
 
 interface Props {
   children: ReactNode
   metricKey: string
   enabled?: boolean
-  context?: Record<string, string>
 }
 
 const RECORDED_METRICS = new Set<string>()
 
-const recordEntityLoaded = (
-  metricKey: string,
-  context?: Record<string, string>,
-) => {
-  if (RECORDED_METRICS.has(metricKey)) {
-    return
-  }
-
-  RECORDED_METRICS.add(metricKey)
-
-  if (context) {
-    Object.entries({ ...DEFAULT_DATADOG_CONTEXT, ...context }).forEach(
-      ([key, value]) => {
-        if (value === null || value === undefined) {
-          return
-        }
-
-        datadogRum.setViewContextProperty(key, value)
-      },
-    )
-  }
-
-  datadogRum.addTiming(`${metricKey}_first`)
-
-  // For synthetic monitoring CI testing
-  window.dispatchEvent(
-    new CustomEvent("metabase:timing", { detail: { metricKey } }),
-  )
-}
+const ALL_CARDS_DEBOUNCE_MS = 2000
 
 const hasVisualization = (node: Element): boolean => {
   // [data-card-key] is present on a Question and on an each Dashboard card
@@ -49,31 +17,39 @@ const hasVisualization = (node: Element): boolean => {
 }
 
 /**
- * Wrapper that detects when a Metabase visualization loads and records
+ * Observes a container for [data-card-key] elements via MutationObserver.
+ * Waits for ALL cards to appear (debounced), then emits a `metabase:timing`
+ * event with the last-card timestamp.
  */
-export const MetabaseDatadogLoadTimer = ({
-  children,
-  metricKey,
-  enabled = true,
-  context,
-}: Props) => {
-  const [location] = useLocation()
-  const containerRef = useRef<HTMLDivElement>(null)
+const useCardLoadObserver = (
+  containerRef: RefObject<HTMLDivElement | null>,
+  metricKey: string,
+  enabled: boolean,
+) => {
   const reportedRef = useRef(false)
-
-  const reportLoaded = useCallback(() => {
-    if (reportedRef.current) {
-      return
-    }
-
-    reportedRef.current = true
-    recordEntityLoaded(metricKey, context)
-  }, [metricKey, context])
+  const [location] = useLocation()
 
   useEffect(() => {
     RECORDED_METRICS.clear()
     reportedRef.current = false
   }, [location])
+
+  const onAllCardsLoaded = useCallback(
+    (timing: number) => {
+      if (RECORDED_METRICS.has(metricKey)) {
+        return
+      }
+
+      RECORDED_METRICS.add(metricKey)
+
+      window.dispatchEvent(
+        new CustomEvent("metabase:timing", {
+          detail: { metricKey, timing },
+        }),
+      )
+    },
+    [metricKey],
+  )
 
   useEffect(() => {
     if (!enabled) {
@@ -86,17 +62,36 @@ export const MetabaseDatadogLoadTimer = ({
       return
     }
 
-    if (hasVisualization(container)) {
-      reportLoaded()
+    let lastCardTimestamp = performance.now()
+    let debounceTimer: ReturnType<typeof setTimeout> | null = null
 
-      return
+    const checkAndDebounce = () => {
+      if (reportedRef.current) {
+        return
+      }
+
+      if (!hasVisualization(container)) {
+        return
+      }
+
+      lastCardTimestamp = performance.now()
+
+      if (debounceTimer) {
+        clearTimeout(debounceTimer)
+      }
+
+      debounceTimer = setTimeout(() => {
+        if (!reportedRef.current) {
+          reportedRef.current = true
+          onAllCardsLoaded(lastCardTimestamp)
+        }
+      }, ALL_CARDS_DEBOUNCE_MS)
     }
 
+    checkAndDebounce()
+
     const observer = new MutationObserver(() => {
-      if (!reportedRef.current && hasVisualization(container)) {
-        reportLoaded()
-        observer.disconnect()
-      }
+      checkAndDebounce()
     })
 
     observer.observe(container, {
@@ -104,8 +99,26 @@ export const MetabaseDatadogLoadTimer = ({
       subtree: true,
     })
 
-    return () => observer.disconnect()
-  }, [enabled, reportLoaded])
+    return () => {
+      observer.disconnect()
+      if (debounceTimer) {
+        clearTimeout(debounceTimer)
+      }
+    }
+  }, [containerRef, enabled, onAllCardsLoaded])
+}
+
+/**
+ * Wrapper that detects when a Metabase visualization loads and records
+ */
+export const MetabaseDatadogLoadTimer = ({
+  children,
+  metricKey,
+  enabled = true,
+}: Props) => {
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  useCardLoadObserver(containerRef, metricKey, enabled)
 
   return <div ref={containerRef}>{children}</div>
 }
