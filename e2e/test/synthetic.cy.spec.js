@@ -56,22 +56,6 @@ const sendAggregatedTiming = (path) => {
   })
 }
 
-const writeTimingsReport = () => {
-  const paths = {}
-
-  Object.entries(timings).forEach(([path, values]) => {
-    const { median, sample_count } = aggregateTimings(values)
-
-    paths[path] = { median, sample_count, raw_values: values }
-  })
-
-  cy.writeFile("cypress/results/timings.json", {
-    pr_number: PR_NUMBER || undefined,
-    timestamp: new Date().toISOString(),
-    paths,
-  })
-}
-
 describe("Synthetic Monitoring", () => {
   beforeEach(() => {
     cy.wrap(
@@ -112,10 +96,5 @@ describe("Synthetic Monitoring", () => {
         }
       })
     }
-  })
-
-  // eslint-disable-next-line no-undef
-  after(() => {
-    writeTimingsReport()
   })
 })
