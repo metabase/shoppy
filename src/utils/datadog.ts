@@ -10,15 +10,17 @@ import {
 
 /**
  * Initialize Datadog RUM for performance monitoring.
- * Only initializes if applicationId and clientToken are configured.
+ * Only initializes during synthetic monitoring test runs.
  */
 export function initDatadog() {
   if (!DATADOG_APPLICATION_ID || !DATADOG_CLIENT_TOKEN) {
     return
   }
 
-  // Initialize Datadog only for synthetic monitoring
-  if (!(window as unknown as { Cypress?: unknown }).Cypress) {
+  if (
+    !(window as unknown as { __SYNTHETIC_MONITORING__?: boolean })
+      .__SYNTHETIC_MONITORING__
+  ) {
     return
   }
 

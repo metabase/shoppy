@@ -91,7 +91,12 @@ describe("Synthetic Monitoring", () => {
   PATHS.forEach((path) => {
     for (let i = 1; i <= VISITS_PER_URL; i++) {
       it(`Visit ${BASE_URL}${path} - ${i}`, () => {
-        cy.visit(`${BASE_URL}${path}`)
+        cy.visit(`${BASE_URL}${path}`, {
+          onBeforeLoad(win) {
+            win.__SYNTHETIC_MONITORING__ = true
+          },
+        })
+
         waitForTiming(path)
 
         if (i === VISITS_PER_URL) {
