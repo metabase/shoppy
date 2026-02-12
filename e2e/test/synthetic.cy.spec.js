@@ -6,32 +6,33 @@ const PATHS = ["/admin/products", "/admin/analytics/i5s-lcGYLc1GyFdIy4TxH"]
 const VISITS_PER_URL = 10
 const TIMEOUT = 20000
 
+const DEBOUNCE_MS = 2000
 const timings = {}
 
-const waitForTiming = (path) => {
-  const visitStart = performance.now()
+const waitForCards = (path) => {
+  cy.get("[data-card-key]", { timeout: TIMEOUT })
 
-  cy.window().then((win) => {
-    return cy.wrap(
-      new Cypress.Promise((resolve) => {
-        win.addEventListener(
-          "metabase:timing",
-          (event) => {
-            const timing = event.detail.timing ?? performance.now() - visitStart
+  const waitUntilStable = (prevCount) => {
+    cy.wait(DEBOUNCE_MS)
+    cy.get("[data-card-key]").then(($cards) => {
+      if ($cards.length !== prevCount) {
+        waitUntilStable($cards.length)
+      } else {
+        cy.window().then((win) => {
+          win.__CARD_OBSERVER__?.disconnect()
 
-            if (!timings[path]) {
-              timings[path] = []
-            }
+          if (!timings[path]) {
+            timings[path] = []
+          }
 
-            timings[path].push(timing)
+          timings[path].push(win.__CARD_LOAD_TIME__)
+        })
+      }
+    })
+  }
 
-            resolve(event)
-          },
-          { once: true },
-        )
-      }),
-      { timeout: TIMEOUT },
-    )
+  cy.get("[data-card-key]").then(($cards) => {
+    waitUntilStable($cards.length)
   })
 }
 
@@ -40,7 +41,7 @@ const sendAggregatedTiming = (path) => {
     const { median, sample_count } = aggregateTimings(timings[path])
 
     cy.log(
-      `Aggregated timing for ${path}: median=${median}ms (${sample_count} samples after IQR filter)`,
+      `Aggregated timing for ${path}: median=${median}ms (${sample_count} samples)`,
     )
 
     cy.window().then((win) => {
@@ -94,10 +95,24 @@ describe("Synthetic Monitoring", () => {
         cy.visit(`${BASE_URL}${path}`, {
           onBeforeLoad(win) {
             win.__SYNTHETIC_MONITORING__ = true
+            win.__CARD_LOAD_TIME__ = null
+
+            const observer = new MutationObserver(() => {
+              if (win.document.querySelector("[data-card-key]")) {
+                win.__CARD_LOAD_TIME__ = win.performance.now()
+              }
+            })
+
+            observer.observe(win.document, {
+              childList: true,
+              subtree: true,
+            })
+
+            win.__CARD_OBSERVER__ = observer
           },
         })
 
-        waitForTiming(path)
+        waitForCards(path)
 
         if (i === VISITS_PER_URL) {
           sendAggregatedTiming(path)
