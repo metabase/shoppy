@@ -81,7 +81,7 @@ describe("Synthetic Monitoring", () => {
         command: "Network.emulateNetworkConditions",
         params: {
           offline: false,
-          latency: 0,
+          latency: -1,
           downloadThroughput: -1,
           uploadThroughput: -1,
         },
