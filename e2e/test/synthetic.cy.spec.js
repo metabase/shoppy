@@ -90,9 +90,9 @@ describe("Synthetic Monitoring", () => {
   })
 
   PATHS.forEach((path) => {
-    for (let i = 1; i <= VISITS_PER_URL; i++) {
+    for (let i = 0; i < VISITS_PER_URL; i++) {
       it(
-        `Visit ${BASE_URL}${path} - ${i}`,
+        `Visit ${BASE_URL}${path} - ${i + 1}`,
         { defaultCommandTimeout: TIMEOUT },
         () => {
           cy.visit(`${BASE_URL}${path}`, {
@@ -115,9 +115,14 @@ describe("Synthetic Monitoring", () => {
             },
           })
 
-          waitForCards(path)
+          if (i === 0) {
+            // Skip first visit — uncached, not representative
+            cy.get("[data-card-key]", { timeout: TIMEOUT })
+          } else {
+            waitForCards(path)
+          }
 
-          if (i === VISITS_PER_URL) {
+          if (i === VISITS_PER_URL - 1) {
             sendAggregatedTiming(path)
           }
         },
