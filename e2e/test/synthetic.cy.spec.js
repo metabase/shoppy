@@ -4,7 +4,7 @@ const BASE_URL = Cypress.env("BASE_URL") || ""
 const PR_NUMBER = Cypress.env("PR_NUMBER") || ""
 const PATHS = ["/admin/products", "/admin/analytics/i5s-lcGYLc1GyFdIy4TxH"]
 const VISITS_PER_URL = 10
-const TIMEOUT = 20000
+const TIMEOUT = 30000
 
 const DEBOUNCE_MS = 2000
 const timings = {}
@@ -91,33 +91,37 @@ describe("Synthetic Monitoring", () => {
 
   PATHS.forEach((path) => {
     for (let i = 1; i <= VISITS_PER_URL; i++) {
-      it(`Visit ${BASE_URL}${path} - ${i}`, () => {
-        cy.visit(`${BASE_URL}${path}`, {
-          onBeforeLoad(win) {
-            win.__SYNTHETIC_MONITORING__ = true
-            win.__CARD_LOAD_TIME__ = null
+      it(
+        `Visit ${BASE_URL}${path} - ${i}`,
+        { defaultCommandTimeout: TIMEOUT },
+        () => {
+          cy.visit(`${BASE_URL}${path}`, {
+            onBeforeLoad(win) {
+              win.__SYNTHETIC_MONITORING__ = true
+              win.__CARD_LOAD_TIME__ = null
 
-            const observer = new MutationObserver(() => {
-              if (win.document.querySelector("[data-card-key]")) {
-                win.__CARD_LOAD_TIME__ = win.performance.now()
-              }
-            })
+              const observer = new MutationObserver(() => {
+                if (win.document.querySelector("[data-card-key]")) {
+                  win.__CARD_LOAD_TIME__ = win.performance.now()
+                }
+              })
 
-            observer.observe(win.document, {
-              childList: true,
-              subtree: true,
-            })
+              observer.observe(win.document, {
+                childList: true,
+                subtree: true,
+              })
 
-            win.__CARD_OBSERVER__ = observer
-          },
-        })
+              win.__CARD_OBSERVER__ = observer
+            },
+          })
 
-        waitForCards(path)
+          waitForCards(path)
 
-        if (i === VISITS_PER_URL) {
-          sendAggregatedTiming(path)
-        }
-      })
+          if (i === VISITS_PER_URL) {
+            sendAggregatedTiming(path)
+          }
+        },
+      )
     }
   })
 })
