@@ -29,7 +29,6 @@ export const IS_DEV = import.meta.env.DEV
 
 /**
  * Datadog RUM configuration.
- * Set these environment variables to enable performance monitoring.
  */
 export const DATADOG_APPLICATION_ID =
   import.meta.env.VITE_DATADOG_APPLICATION_ID ?? ""
