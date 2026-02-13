@@ -9,7 +9,7 @@ const TIMEOUT = 30000
 const DEBOUNCE_MS = 2000
 const timings = {}
 
-const waitForCards = (path) => {
+const waitForCards = (path, { skipMeasurement }) => {
   cy.get("[data-card-key]", { timeout: TIMEOUT })
 
   const waitUntilStable = (prevCount) => {
@@ -25,7 +25,9 @@ const waitForCards = (path) => {
             timings[path] = []
           }
 
-          timings[path].push(win.__CARD_LOAD_TIME__)
+          if (!skipMeasurement) {
+            timings[path].push(win.__CARD_LOAD_TIME__)
+          }
         })
       }
     })
@@ -115,12 +117,10 @@ describe("Synthetic Monitoring", () => {
             },
           })
 
-          if (i === 0) {
-            // Skip first visit — uncached, not representative
-            cy.get("[data-card-key]", { timeout: TIMEOUT })
-          } else {
-            waitForCards(path)
-          }
+          waitForCards(path, {
+            // Skip first visit as uncached
+            skipMeasurement: i === 0,
+          })
 
           if (i === VISITS_PER_URL - 1) {
             sendAggregatedTiming(path)
