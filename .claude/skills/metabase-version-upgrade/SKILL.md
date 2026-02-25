@@ -150,13 +150,22 @@ WebFetch:
 Return full migration sections and notable warnings.
 
 
-Run this in Bash to extract type definitions for both versions:
+Use `node -e` to create a temp directory in the OS temp folder (works on macOS, Linux, and Windows):
 
 ```bash
-SDK_TMPDIR=$(mktemp -d)
+SDK_TMPDIR=$(node -e "
+  const path = require('path');
+  const fs = require('fs');
+  const dir = path.join(require('os').tmpdir(), 'sdk-diff-' + Date.now());
+  fs.mkdirSync(dir, { recursive: true });
+  console.log(dir);
+")
+
 mkdir -p "$SDK_TMPDIR/current" "$SDK_TMPDIR/target"
+
 (cd "$SDK_TMPDIR/current" && npm pack @metabase/embedding-sdk-react@{CURRENT} --quiet 2>/dev/null && tar xzf *.tgz)
-(cd "$SDK_TMPDIR/target" && npm pack @metabase/embedding-sdk-react@{TARGET} --quiet 2>/dev/null && tar xzf *.tgz)
+(cd "$SDK_TMPDIR/target"  && npm pack @metabase/embedding-sdk-react@{TARGET}  --quiet 2>/dev/null && tar xzf *.tgz)
+
 echo "SDK_TMPDIR=$SDK_TMPDIR"
 ```
 
@@ -176,12 +185,6 @@ diff -u "$SDK_TMPDIR/current/package/dist/index.d.ts" "$SDK_TMPDIR/target/packag
 ```
 
 Save the diff output — this is the source of truth for all API changes.
-
-#### Step 2d: Clean up temp directory
-
-```bash
-rm -rf "$SDK_TMPDIR"
-```
 
 ### Alternative Path B: Fetch docs via sub-agents (replaces Steps 2a–2b; use when d.ts is missing or upgrading EmbedJS/Modular Embedding)
 
