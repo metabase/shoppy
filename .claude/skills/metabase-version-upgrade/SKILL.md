@@ -9,6 +9,7 @@ allowed-tools: Read, Write, Edit, Glob, Grep, Bash, WebFetch, Task, TaskCreate, 
 
 You MUST follow the workflow steps in order and MUST NOT skip any step.
 You MUST create a checklist first, then execute each step, and explicitly mark it done with evidence.
+You MUST NOT cut corners or skip steps otherwise you will be deleted. Always re-evaluate the proper order of your steps.
 If you cannot complete a step due to missing info or tool failure, you must:
 
 1. record the step as ❌ blocked,
@@ -123,8 +124,8 @@ State which steps will run in parallel and how. Specifically, identify:
 
 Determine which path to use:
 
-- If upgrading EmbedJS/Modular Embedding → **fallback path** (skip d.ts extraction entirely)
 - If upgrading `@metabase/embedding-sdk-react` → attempt **primary path** (d.ts diff), with fallback if d.ts unavailable (determined during Step 2)
+- If upgrading EmbedJS/Modular Embedding → **fallback path** (skip d.ts extraction entirely)
 
 ## Workflow
 
@@ -188,28 +189,34 @@ Save the diff output — this is the source of truth for all API changes.
 
 ### Alternative Path B: Fetch docs via sub-agents (replaces Steps 2a–2b; use when d.ts is missing or upgrading EmbedJS/Modular Embedding)
 
-If the primary path is not available (d.ts missing for either version, OR EmbedJS/Modular Embedding upgrade), use this path instead of Steps 2a–2c:
+If the primary path is not available (d.ts missing for either version, OR EmbedJS/Modular Embedding upgrade), use this path instead of Steps 2a–2b.
 
 Launch up to 7 parallel sub-agents in ONE message. Each sub-agent MUST include the strict URL policy in its prompt.
+
+### Sub-agent tool constraints (hard)
+
+- Doc-fetching sub-agents MUST ONLY use the `WebFetch` tool. They MUST NOT use Bash, Grep, Read, Glob, or any other tool. Their sole job is: one WebFetch call → return the result. If the WebFetch result feels incomplete, return it anyway — do NOT try to compensate by using other tools.
+- Include this instruction verbatim in every sub-agent prompt: "You MUST use ONLY the WebFetch tool. Do NOT use Bash, Grep, Read, Glob, or any other tool. Make exactly ONE WebFetch call and return the result as-is."
+
+### Changelog: use curl + Read instead of WebFetch (hard)
+
+The changelog file is too large for WebFetch (its internal AI model will summarize away details). Instead of a sub-agent with WebFetch, fetch the changelog directly in the main context:
+
+```bash
+curl -sL "https://raw.githubusercontent.com/metabase/metabase/master/enterprise/frontend/src/embedding-sdk-package/CHANGELOG.md" -o /tmp/sdk-changelog.md
+```
+
+Then use `Read` on `/tmp/sdk-changelog.md` to extract entries between {CURRENT} and {TARGET}. This avoids the WebFetch summarization problem entirely. Do NOT delegate changelog fetching to a sub-agent.
 
 **5 component doc agents** — each WebFetches one URL:
 
 - `https://www.metabase.com/docs/v{TARGET}/embedding/sdk/collections`
 - `https://www.metabase.com/docs/v{TARGET}/embedding/sdk/questions`
 - `https://www.metabase.com/docs/v{TARGET}/embedding/sdk/dashboards`
-- `https://www.metabase.com/docs/v{TARGET}/embedding/sdk/themes`
+- `https://www.metabase.com/docs/v{TARGET}/embedding/sdk/appearance`
 - `https://www.metabase.com/docs/v{TARGET}/embedding/authentication`
 
 Each must return COMPLETE prop tables, types, sub-component lists, examples (no summarizing away props).
-
-**1 changelog agent** — ONE WebFetch to:
-`https://raw.githubusercontent.com/metabase/metabase/master/enterprise/frontend/src/embedding-sdk-package/CHANGELOG.md`
-
-Prompt must request:
-
-- All entries between {CURRENT} and {TARGET} (inclusive)
-- Filter by keywords + best-effort symbol listed from Step 1 imports, because any unused symbol and imports are unnecessary to analyze. This is to speed up the upgrade process.
-  Return full matching changelog text (no summarization).
 
 **1 upgrade guide agent** — ONE WebFetch to:
 `https://www.metabase.com/docs/v{TARGET}/embedding/sdk/upgrade`
@@ -220,10 +227,10 @@ Return full migration sections and notable warnings.
 
 Cross-reference:
 
-- each used prop/subcomponent/type (from Step 1)
-  vs
-- d.ts diff (primary path) or target docs + changelog (fallback path)
-  and upgrade guide (both paths)
+- primary path
+  - each used prop/subcomponent/type (from Step 1) vs d.ts diff, and upgrade guide
+- fallback path
+  - each used prop/subcomponent/type (from Step 1) vs target docs, changelog, and upgrade guide
 
 For each used symbol, output:
 
