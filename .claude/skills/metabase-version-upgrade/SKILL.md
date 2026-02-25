@@ -68,7 +68,7 @@ STRICTLY FORBIDDEN:
 - NEVER fetch GitHub PR/issue URLs or use `gh`
 - NEVER follow changelog links to GitHub
 - NEVER fetch npm pages
-- NEVER fetch any domain other than `raw.githubusercontent.com` and `www.metabase.com`
+- For component docs, ALWAYS use `raw.githubusercontent.com` (NOT `www.metabase.com`)
 - NEVER guess other docs URLs
 
 ### Allowed URL patterns (ONLY these)
@@ -77,15 +77,19 @@ STRICTLY FORBIDDEN:
    `https://raw.githubusercontent.com/metabase/metabase/master/enterprise/frontend/src/embedding-sdk-package/CHANGELOG.md`
 
 2. Version-specific upgrade guide:
-   `https://www.metabase.com/docs/v{VERSION}/embedding/sdk/upgrade`
+   `https://raw.githubusercontent.com/metabase/docs.metabase.github.io/master/_docs/v{VERSION}/embedding/sdk/upgrade.md`
 
-3. Version-specific SDK component docs:
+3. Version-specific SDK component docs (raw GitHub markdown — use curl, NOT WebFetch):
 
-- `https://www.metabase.com/docs/v{VERSION}/embedding/sdk/collections`
-- `https://www.metabase.com/docs/v{VERSION}/embedding/sdk/questions`
-- `https://www.metabase.com/docs/v{VERSION}/embedding/sdk/dashboards`
-- `https://www.metabase.com/docs/v{VERSION}/embedding/sdk/appearance`
-- `https://www.metabase.com/docs/v{VERSION}/embedding/authentication` # NOTE: no /sdk/ here
+- `https://raw.githubusercontent.com/metabase/docs.metabase.github.io/master/_docs/v{VERSION}/embedding/sdk/collections.md`
+- `https://raw.githubusercontent.com/metabase/docs.metabase.github.io/master/_docs/v{VERSION}/embedding/sdk/questions.md`
+- `https://raw.githubusercontent.com/metabase/docs.metabase.github.io/master/_docs/v{VERSION}/embedding/sdk/dashboards.md`
+- `https://raw.githubusercontent.com/metabase/docs.metabase.github.io/master/_docs/v{VERSION}/embedding/sdk/appearance.md`
+- `https://raw.githubusercontent.com/metabase/docs.metabase.github.io/master/_docs/v{VERSION}/embedding/sdk/authentication.md`
+
+4. Props/Options snippet files auto-discovered from doc pages (use curl):
+
+- `https://raw.githubusercontent.com/metabase/docs.metabase.github.io/master/_docs/v{VERSION}/embedding/sdk/api/snippets/{SnippetName}.md`
 
 Do NOT fetch base landing pages.
 
@@ -191,12 +195,11 @@ Save the diff output — this is the source of truth for all API changes.
 
 If the primary path is not available (d.ts missing for either version, OR EmbedJS/Modular Embedding upgrade), use this path instead of Steps 2a–2b.
 
-Launch up to 7 parallel sub-agents in ONE message. Each sub-agent MUST include the strict URL policy in its prompt.
+<!-- Launch up to 7 parallel sub-agents in ONE message. Each sub-agent MUST include the strict URL policy in its prompt. -->
 
 ### Sub-agent tool constraints (hard)
 
-- Doc-fetching sub-agents MUST ONLY use the `WebFetch` tool. They MUST NOT use Bash, Grep, Read, Glob, or any other tool. Their sole job is: one WebFetch call → return the result. If the WebFetch result feels incomplete, return it anyway — do NOT try to compensate by using other tools.
-- Include this instruction verbatim in every sub-agent prompt: "You MUST use ONLY the WebFetch tool. Do NOT use Bash, Grep, Read, Glob, or any other tool. Make exactly ONE WebFetch call and return the result as-is."
+- Upgrade guide and component docs MUST NOT use sub-agents — use curl directly in the main context (see below). And curl all URLs in parallel, do not wait for one to finish before starting the next curl.
 
 ### Changelog: use curl + Read instead of WebFetch (hard)
 
@@ -208,15 +211,40 @@ curl -sL "https://raw.githubusercontent.com/metabase/metabase/master/enterprise/
 
 Then use `Read` on `/tmp/sdk-changelog.md` to extract entries between {CURRENT} and {TARGET}. This avoids the WebFetch summarization problem entirely. Do NOT delegate changelog fetching to a sub-agent.
 
-**5 component doc agents** — each WebFetches one URL:
+**Upgrade guide**
 
-- `https://www.metabase.com/docs/v{TARGET}/embedding/sdk/collections`
-- `https://www.metabase.com/docs/v{TARGET}/embedding/sdk/questions`
-- `https://www.metabase.com/docs/v{TARGET}/embedding/sdk/dashboards`
-- `https://www.metabase.com/docs/v{TARGET}/embedding/sdk/appearance`
-- `https://www.metabase.com/docs/v{TARGET}/embedding/authentication`
+Just use a normal curl command to fetch the upgrade guide.
 
-Each must return COMPLETE prop tables, types, sub-component lists, examples (no summarizing away props).
+**Component docs via curl + snippet expansion** (do NOT use sub-agents or WebFetch for this — use curl directly in the main context, same pattern as the changelog):
+
+Reason: WebFetch summarizes raw markdown and drops `{% include_file %}` directives. Use curl to preserve the full content.
+
+```bash
+DOC_BASE="https://raw.githubusercontent.com/metabase/docs.metabase.github.io/master/_docs/v{TARGET}/embedding/sdk"
+
+# Step 1: Fetch all 5 doc pages in parallel
+curl -sL "${DOC_BASE}/collections.md"    -o /tmp/sdk-doc-collections.md &
+curl -sL "${DOC_BASE}/questions.md"      -o /tmp/sdk-doc-questions.md &
+curl -sL "${DOC_BASE}/dashboards.md"     -o /tmp/sdk-doc-dashboards.md &
+curl -sL "${DOC_BASE}/appearance.md"     -o /tmp/sdk-doc-appearance.md &
+curl -sL "${DOC_BASE}/authentication.md" -o /tmp/sdk-doc-authentication.md &
+wait
+
+# Step 2: Extract all Props/Options snippet names from include_file directives
+grep -h 'include_file.*api/snippets/.*\.md.*snippet="properties"' /tmp/sdk-doc-*.md \
+  | sed 's/.*api\/snippets\/\([^"]*\)\.md.*/\1/' | sort -u > /tmp/sdk-snippet-names.txt
+
+# Step 3: Fetch each Props/Options snippet in parallel
+SNIP_BASE="${DOC_BASE}/api/snippets"
+while IFS= read -r name; do
+  curl -sL "${SNIP_BASE}/${name}.md" -o "/tmp/sdk-snippet-${name}.md" &
+done < /tmp/sdk-snippet-names.txt
+wait
+```
+
+Then use Read on all `/tmp/sdk-doc-*.md` and `/tmp/sdk-snippet-*.md` files.
+
+Each doc page has sections headed `#### Props` or `#### Options`. For each such section, the `{% include_file "{{ dirname }}/api/snippets/{Name}.md" snippet="properties" %}` line indicates which snippet was fetched. The snippet file contains the full prop table between `<!-- [<snippet properties>] -->` and `<!-- [<endsnippet properties>] -->` markers — include this verbatim (no summarizing away props).
 
 **1 upgrade guide agent** — ONE WebFetch to:
 `https://www.metabase.com/docs/v{TARGET}/embedding/sdk/upgrade`
