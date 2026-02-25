@@ -168,7 +168,12 @@ echo "SDK_TMPDIR=$SDK_TMPDIR"
 
 Replace `{CURRENT}` and `{TARGET}` with the actual version numbers.
 
-Then check if `$SDK_TMPDIR/current/package/dist/index.d.ts` and `$SDK_TMPDIR/target/package/dist/index.d.ts` both exist.
+After both complete, check d.ts layout for each version:
+
+```bash
+[ -f "$SDK_TMPDIR/current/package/dist/index.d.ts" ] && ls -la "$SDK_TMPDIR/current/package/dist/index.d.ts"
+[ -f "$SDK_TMPDIR/target/package/dist/index.d.ts" ] && ls -la "$SDK_TMPDIR/target/package/dist/index.d.ts"
+```
 
 - **If BOTH exist** → primary path confirmed. Start curling the upgrade path and continue to Step 2b.
 - **If EITHER is missing** → switch to **Alternative Path B** (below). Output: "d.ts not available for version X.Y.Z, switching to fallback (docs fetch)."
