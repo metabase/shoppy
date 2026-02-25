@@ -83,7 +83,7 @@ STRICTLY FORBIDDEN:
 - `https://www.metabase.com/docs/v{VERSION}/embedding/sdk/collections`
 - `https://www.metabase.com/docs/v{VERSION}/embedding/sdk/questions`
 - `https://www.metabase.com/docs/v{VERSION}/embedding/sdk/dashboards`
-- `https://www.metabase.com/docs/v{VERSION}/embedding/sdk/themes`
+- `https://www.metabase.com/docs/v{VERSION}/embedding/sdk/appearance`
 - `https://www.metabase.com/docs/v{VERSION}/embedding/authentication` # NOTE: no /sdk/ here
 
 Do NOT fetch base landing pages.
