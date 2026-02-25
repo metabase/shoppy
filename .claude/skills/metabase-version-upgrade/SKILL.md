@@ -259,7 +259,7 @@ For each used symbol, output:
 
 **Metabase 58 and above**:
 
-- If the full URL to the Metabase SSO auth endpoint (including host and port) can be determined from existing constants or environment variables, set the `jwtProviderUri` property on MetabaseProvider's `authConfig` using those values.
+- If the full URL to the application SSO endpoint for Metabase (including host and port) can be determined from existing constants or environment variables, set the `jwtProviderUri` property on MetabaseProvider's `authConfig` using those values.
 
 ### Step 4: Apply changes
 
