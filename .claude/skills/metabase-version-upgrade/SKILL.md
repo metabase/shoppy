@@ -44,7 +44,7 @@ Each step section MUST end with a status line:
 
 - Step 1 evidence: list every matched file path, every import from `@metabase/embedding-sdk-react`, every used component/hook/type, every prop used per component, and every dot-subcomponent used (e.g., `InteractiveQuestion.FilterBar`).
 - Step 2 evidence (primary path): show the diff output between d.ts files. (fallback path): list each fetched URL + include raw extracted sections that contain prop tables / type definitions / migration sections. Do NOT summarize away details.
-- Step 3 evidence: n/a.
+- Step 3 evidence: for each used prop, show the resolved type from the target d.ts AND the current usage from the project side-by-side. Example format: `fetchRequestToken: project uses (url: string) => Promise<any>, target type is () => Promise<{jwt: string}> → BREAKING (arity change)`.
 - Step 4 evidence: show the exact diffs applied (or file edits described precisely).
 - Step 5 evidence: show the exact command run (e.g., `npm run typecheck` or `tsc --noEmit`) and summarize errors if any remain.
 
@@ -248,9 +248,21 @@ Cross-reference:
 - fallback path
   - each used prop/subcomponent/type (from Step 1) vs target docs, changelog
 
+#### Deep type resolution (hard — do NOT skip)
+
+For EVERY prop identified in Step 1, you MUST resolve its type in the target d.ts **all the way down to the concrete signature**. Do NOT stop at type alias names.
+
+Specifically:
+1. For each prop used in the project, grep the target d.ts for that prop name and note its type.
+2. If the type is a **type alias** (e.g., `MetabaseFetchRequestTokenFn`, `SdkDashboardId`, `SdkCollectionId`), grep the target d.ts for that alias's definition and expand it to its concrete type (e.g., `() => Promise<{jwt: string}>`, `number | string`).
+3. Compare the **fully resolved concrete type** against the project's current usage (argument counts, argument types, return types, value types).
+4. A prop can have the same name but a completely different type signature — this is a breaking change. Renaming is not the only kind of breaking change.
+
+Example of what this catches: `fetchRequestToken` kept its name but changed from `(url: string) => Promise<any>` to `() => Promise<{jwt: string}>` — different arity, different return type.
+
 For each used symbol, output:
 
-- breaking change (with evidence: diff line or doc section)
+- breaking change (with evidence: diff line or doc section, AND the fully resolved type)
 - exact migration
 - deprecated APIs
 - new relevant features
