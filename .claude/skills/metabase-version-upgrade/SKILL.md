@@ -43,7 +43,7 @@ Each step section MUST end with a status line:
 ### Evidence requirements (hard)
 
 - Step 1 evidence: list every matched file path, every import from `@metabase/embedding-sdk-react`, every used component/hook/type, every prop used per component, and every dot-subcomponent used (e.g., `InteractiveQuestion.FilterBar`).
-- Step 2 evidence (primary path): show the diff output between d.ts files, plus upgrade guide content. (fallback path): list each fetched URL + include raw extracted sections that contain prop tables / type definitions / migration sections. Do NOT summarize away details.
+- Step 2 evidence (primary path): show the diff output between d.ts files. (fallback path): list each fetched URL + include raw extracted sections that contain prop tables / type definitions / migration sections. Do NOT summarize away details.
 - Step 3 evidence: n/a.
 - Step 4 evidence: show the exact diffs applied (or file edits described precisely).
 - Step 5 evidence: show the exact command run (e.g., `npm run typecheck` or `tsc --noEmit`) and summarize errors if any remain.
@@ -76,10 +76,7 @@ STRICTLY FORBIDDEN:
 1. SDK package changelog:
    `https://raw.githubusercontent.com/metabase/metabase/master/enterprise/frontend/src/embedding-sdk-package/CHANGELOG.md`
 
-2. Version-specific upgrade guide:
-   `https://raw.githubusercontent.com/metabase/docs.metabase.github.io/master/_docs/v{VERSION}/embedding/sdk/upgrade.md`
-
-3. Version-specific SDK component docs (raw GitHub markdown — use curl, NOT WebFetch):
+2. Version-specific SDK component docs (raw GitHub markdown — use curl, NOT WebFetch):
 
 - `https://raw.githubusercontent.com/metabase/docs.metabase.github.io/master/_docs/v{VERSION}/embedding/sdk/collections.md`
 - `https://raw.githubusercontent.com/metabase/docs.metabase.github.io/master/_docs/v{VERSION}/embedding/sdk/questions.md`
@@ -87,7 +84,7 @@ STRICTLY FORBIDDEN:
 - `https://raw.githubusercontent.com/metabase/docs.metabase.github.io/master/_docs/v{VERSION}/embedding/sdk/appearance.md`
 - `https://raw.githubusercontent.com/metabase/docs.metabase.github.io/master/_docs/v{VERSION}/embedding/sdk/authentication.md`
 
-4. Props/Options snippet files auto-discovered from doc pages (use curl):
+3. Props/Options snippet files auto-discovered from doc pages (use curl):
 
 - `https://raw.githubusercontent.com/metabase/docs.metabase.github.io/master/_docs/v{VERSION}/embedding/sdk/api/snippets/{SnippetName}.md`
 
@@ -112,7 +109,7 @@ If package not present OR user is upgrading EmbedJS/Modular Embedding:
 Create a TODO list with these items, each as a checkbox:
 
 - [ ] Step 1: Scan project usage
-- [ ] Step 2: Extract d.ts diff + fetch upgrade guide (or fallback to docs)
+- [ ] Step 2: Extract d.ts diff or fallback to docs
 - [ ] Step 3: Compile breaking changes + migrations
 - [ ] Step 4: Apply code changes
 - [ ] Step 5: Run typecheck and fix until clean
@@ -121,6 +118,7 @@ Create a TODO list with these items, each as a checkbox:
 ### Parallel Plan (required)
 
 State which steps will run in parallel and how. Specifically, identify:
+
 - which steps will be issued as background sub-agents (`run_in_background: true`)
 - which steps will run as local Bash/Grep/Read tool calls in the same message
 
@@ -143,17 +141,11 @@ Determine which path to use:
   - every dot-subcomponent used
 - Output a structured "Usage Inventory".
 
-### Step 2: Extract d.ts diff + upgrade guide (primary path)
+### Step 2: Extract d.ts diff (primary path)
 
 **This step runs concurrently with Step 1.**
 
-#### Step 2a: Extract d.ts files via npm pack and fetch upgrade guide in parallel
-
-WebFetch:
-`https://www.metabase.com/docs/v{TARGET}/embedding/sdk/upgrade`
-
-Return full migration sections and notable warnings.
-
+#### Step 2a: Extract d.ts files via npm pack
 
 Use `node -e` to create a temp directory in the OS temp folder (works on macOS, Linux, and Windows):
 
@@ -178,7 +170,7 @@ Replace `{CURRENT}` and `{TARGET}` with the actual version numbers.
 
 Then check if `$SDK_TMPDIR/current/package/dist/index.d.ts` and `$SDK_TMPDIR/target/package/dist/index.d.ts` both exist.
 
-- **If BOTH exist** → primary path confirmed. Continue to Step 2b.
+- **If BOTH exist** → primary path confirmed. Start curling the upgrade path and continue to Step 2b.
 - **If EITHER is missing** → switch to **Alternative Path B** (below). Output: "d.ts not available for version X.Y.Z, switching to fallback (docs fetch)."
 
 #### Step 2b: Diff the d.ts files
@@ -195,11 +187,9 @@ Save the diff output — this is the source of truth for all API changes.
 
 If the primary path is not available (d.ts missing for either version, OR EmbedJS/Modular Embedding upgrade), use this path instead of Steps 2a–2b.
 
-<!-- Launch up to 7 parallel sub-agents in ONE message. Each sub-agent MUST include the strict URL policy in its prompt. -->
-
 ### Sub-agent tool constraints (hard)
 
-- Upgrade guide and component docs MUST NOT use sub-agents — use curl directly in the main context (see below). And curl all URLs in parallel, do not wait for one to finish before starting the next curl.
+- Component docs MUST NOT use sub-agents — use curl directly in the main context (see below). And curl all URLs in parallel, do not wait for one to finish before starting the next curl.
 
 ### Changelog: use curl + Read instead of WebFetch (hard)
 
@@ -210,10 +200,6 @@ curl -sL "https://raw.githubusercontent.com/metabase/metabase/master/enterprise/
 ```
 
 Then use `Read` on `/tmp/sdk-changelog.md` to extract entries between {CURRENT} and {TARGET}. This avoids the WebFetch summarization problem entirely. Do NOT delegate changelog fetching to a sub-agent.
-
-**Upgrade guide**
-
-Just use a normal curl command to fetch the upgrade guide.
 
 **Component docs via curl + snippet expansion** (do NOT use sub-agents or WebFetch for this — use curl directly in the main context, same pattern as the changelog):
 
@@ -246,9 +232,6 @@ Then use Read on all `/tmp/sdk-doc-*.md` and `/tmp/sdk-snippet-*.md` files.
 
 Each doc page has sections headed `#### Props` or `#### Options`. For each such section, the `{% include_file "{{ dirname }}/api/snippets/{Name}.md" snippet="properties" %}` line indicates which snippet was fetched. The snippet file contains the full prop table between `<!-- [<snippet properties>] -->` and `<!-- [<endsnippet properties>] -->` markers — include this verbatim (no summarizing away props).
 
-**1 upgrade guide agent** — ONE WebFetch to:
-`https://www.metabase.com/docs/v{TARGET}/embedding/sdk/upgrade`
-
 Return full migration sections and notable warnings.
 
 ### Step 3: Summarize changes (ONLY after Steps 1–2 ✅)
@@ -256,9 +239,9 @@ Return full migration sections and notable warnings.
 Cross-reference:
 
 - primary path
-  - each used prop/subcomponent/type (from Step 1) vs d.ts diff, and upgrade guide
+  - each used prop/subcomponent/type (from Step 1) vs d.ts diff
 - fallback path
-  - each used prop/subcomponent/type (from Step 1) vs target docs, changelog, and upgrade guide
+  - each used prop/subcomponent/type (from Step 1) vs target docs, changelog
 
 For each used symbol, output:
 
@@ -266,6 +249,12 @@ For each used symbol, output:
 - exact migration
 - deprecated APIs
 - new relevant features
+
+#### Special handling of certain Metabase embedding versions
+
+**Metabase 58 and above**:
+
+- If the full URL to the Metabase SSO auth endpoint (including host and port) can be determined from existing constants or environment variables, set the `jwtProviderUri` property on MetabaseProvider's `authConfig` using those values.
 
 ### Step 4: Apply changes
 
@@ -282,7 +271,7 @@ For each used symbol, output:
   - Grep `node_modules/@metabase/embedding-sdk-react/dist/index.d.ts` for failing symbols
   - Apply fixes
   - Re-run
-  Repeat until zero SDK-related errors. If errors remain after 5 fix attempts, mark Step 5 ❌ blocked and report which errors could not be resolved.
+    Repeat until zero SDK-related errors. If errors remain after 5 fix attempts, mark Step 5 ❌ blocked and report which errors could not be resolved.
 
 ### Step 6: Output summary
 
@@ -292,7 +281,6 @@ Organize into:
 2. Deprecations
 3. Notes (notable architecture changes, instance version requirement)
 4. Path used (primary d.ts diff / fallback docs)
-
 
 ## Retry policy
 
