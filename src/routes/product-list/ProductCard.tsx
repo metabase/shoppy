@@ -8,7 +8,6 @@ import { Product } from "../../types/product"
 import { RemountOnSiteChange } from "../../components/RemountOnSiteChange"
 import { siteAtom } from "../../store/site"
 import { truncate } from "../../utils/truncate"
-import { LoadWhenVisible } from "../../components/LoadWhenVisible"
 import { LinkWithSearchParams } from "../../components/LinkWithSearchParams"
 
 interface Props {
@@ -41,16 +40,14 @@ export const ProductCard = ({ product }: Props) => {
             </Text>
 
             <Box py={4} h={questionHeight}>
-              <LoadWhenVisible>
-                <RemountOnSiteChange>
-                  <StaticQuestion
-                    questionId="8emcAd9TTrPoHLuaFaUh0"
-                    withChartTypeSelector={false}
-                    height={questionHeight}
-                    initialSqlParameters={{ product_id: product.id }}
-                  />
-                </RemountOnSiteChange>
-              </LoadWhenVisible>
+              <RemountOnSiteChange>
+                <StaticQuestion
+                  questionId="8emcAd9TTrPoHLuaFaUh0"
+                  withChartTypeSelector={false}
+                  height={questionHeight}
+                  initialSqlParameters={{ product_id: product.id }}
+                />
+              </RemountOnSiteChange>
             </Box>
 
             <ProductCardFooter />
