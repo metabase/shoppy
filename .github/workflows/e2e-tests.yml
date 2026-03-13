@@ -43,6 +43,14 @@ jobs:
           cp .env.docker.example .env.docker &&
           yarn docker:e2e:up --wait
 
+      - name: Dump container logs on failure
+        if: failure()
+        run: |
+          echo "=== shoppy-metabase-1 logs ===" && docker logs shoppy-metabase-1 2>&1 || true
+          echo "=== shoppy-api-1 logs ===" && docker logs shoppy-api-1 2>&1 || true
+          echo "=== shoppy-client-1 logs ===" && docker logs shoppy-client-1 2>&1 || true
+          echo "=== Container statuses ===" && docker ps -a 2>&1 || true
+
       - name: Install Chrome v111
         uses: browser-actions/setup-chrome@v1
         with:

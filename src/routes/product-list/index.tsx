@@ -59,7 +59,7 @@ export const ProductAnalyticsPage = (props: Props) => {
           spacing="xl"
           verticalSpacing={VERTICAL_SPACING[site]}
         >
-          {products.map((product) => (
+          {products.slice(0, 7).map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </SimpleGrid>
