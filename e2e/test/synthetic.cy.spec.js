@@ -7,9 +7,10 @@ const VISITS_PER_URL = 10
 const TIMEOUT = 30000
 
 const DEBOUNCE_MS = 2000
-const timings = {}
+const warmTimings = {}
+const coldTimings = {}
 
-const waitForCards = (path, { skipMeasurement }) => {
+const waitForCards = (path, { skipMeasurement, timings }) => {
   cy.get("[data-card-key]", { timeout: TIMEOUT })
 
   const waitUntilStable = (prevCount) => {
@@ -38,18 +39,19 @@ const waitForCards = (path, { skipMeasurement }) => {
   })
 }
 
-const sendAggregatedTiming = (path) => {
+const sendAggregatedTiming = (path, { cacheMode, timings }) => {
   cy.then(() => {
     const { median, sample_count } = aggregateTimings(timings[path])
 
     cy.log(
-      `Aggregated timing for ${path}: median=${median}ms (${sample_count} samples)`,
+      `Aggregated timing for ${path} (${cacheMode} cache): median=${median}ms (${sample_count} samples)`,
     )
 
     cy.window().then((win) => {
       if (win.DD_RUM) {
         win.DD_RUM.setViewContextProperty("path", path)
         win.DD_RUM.setViewContextProperty("sample_count", sample_count)
+        win.DD_RUM.setViewContextProperty("cache_mode", cacheMode)
 
         if (PR_NUMBER) {
           win.DD_RUM.setViewContextProperty("pr_number", PR_NUMBER)
@@ -91,42 +93,68 @@ describe("Synthetic Monitoring", () => {
     )
   })
 
-  PATHS.forEach((path) => {
-    for (let i = 0; i < VISITS_PER_URL; i++) {
-      it(
-        `Visit ${BASE_URL}${path} - ${i + 1}`,
-        { defaultCommandTimeout: TIMEOUT },
-        () => {
-          cy.visit(`${BASE_URL}${path}`, {
-            onBeforeLoad(win) {
-              win.__SYNTHETIC_MONITORING__ = true
-              win.__CARD_LOAD_TIME__ = null
+  const visitPage = (path) => {
+    cy.visit(`${BASE_URL}${path}`, {
+      onBeforeLoad(win) {
+        win.__SYNTHETIC_MONITORING__ = true
+        win.__CARD_LOAD_TIME__ = null
 
-              const observer = new MutationObserver(() => {
-                if (win.document.querySelector("[data-card-key]")) {
-                  win.__CARD_LOAD_TIME__ = win.performance.now()
-                }
-              })
-
-              observer.observe(win.document, {
-                childList: true,
-                subtree: true,
-              })
-
-              win.__CARD_OBSERVER__ = observer
-            },
-          })
-
-          waitForCards(path, {
-            // Skip first visit as uncached
-            skipMeasurement: i === 0,
-          })
-
-          if (i === VISITS_PER_URL - 1) {
-            sendAggregatedTiming(path)
+        const observer = new MutationObserver(() => {
+          if (win.document.querySelector("[data-card-key]")) {
+            win.__CARD_LOAD_TIME__ = win.performance.now()
           }
-        },
-      )
-    }
+        })
+
+        observer.observe(win.document, {
+          childList: true,
+          subtree: true,
+        })
+
+        win.__CARD_OBSERVER__ = observer
+      },
+    })
+  }
+
+  const clearBrowserCache = () => {
+    cy.wrap(
+      Cypress.automation("remote:debugger:protocol", {
+        command: "Network.clearBrowserCache",
+        params: {},
+      }),
+    )
+  }
+
+  const CACHE_MODES = [
+    { name: "cold", timings: coldTimings, clearCache: true, skipFirst: false },
+    { name: "warm", timings: warmTimings, clearCache: false, skipFirst: true },
+  ]
+
+  CACHE_MODES.forEach(({ name, timings, clearCache, skipFirst }) => {
+    describe(`${name} cache`, () => {
+      PATHS.forEach((path) => {
+        for (let i = 0; i < VISITS_PER_URL; i++) {
+          it(
+            `[${name}] Visit ${BASE_URL}${path} - ${i + 1}`,
+            { defaultCommandTimeout: TIMEOUT },
+            () => {
+              if (clearCache) {
+                clearBrowserCache()
+              }
+
+              visitPage(path)
+
+              waitForCards(path, {
+                skipMeasurement: skipFirst && i === 0,
+                timings,
+              })
+
+              if (i === VISITS_PER_URL - 1) {
+                sendAggregatedTiming(path, { cacheMode: name, timings })
+              }
+            },
+          )
+        }
+      })
+    })
   })
 })
