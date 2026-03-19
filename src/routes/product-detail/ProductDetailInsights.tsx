@@ -1,8 +1,5 @@
 import { Card, Title, Box } from "@mantine/core"
 
-import { StaticQuestion } from "@metabase/embedding-sdk-react"
-
-import { RemountOnSiteChange } from "../../components/RemountOnSiteChange"
 import { useGuestToken } from "../../hooks/useGuestToken"
 
 const MAX_W = 600
@@ -32,9 +29,13 @@ export const ProductDetailInsights = (props: Props) => {
         </Title>
 
         <Box h={250} className="orders-over-time-container">
-          <RemountOnSiteChange>
-            <StaticQuestion token={ordersOverTimeToken} height={250} />
-          </RemountOnSiteChange>
+          {ordersOverTimeToken && (
+            <metabase-question
+              token={ordersOverTimeToken}
+              style={{ display: "block", height: "100%" }}
+              with-title="false"
+            />
+          )}
         </Box>
       </Card>
 
@@ -43,9 +44,15 @@ export const ProductDetailInsights = (props: Props) => {
           Total orders
         </Title>
 
-        <RemountOnSiteChange>
-          <StaticQuestion token={totalOrdersToken} height={70} />
-        </RemountOnSiteChange>
+        <Box h={70}>
+          {totalOrdersToken && (
+            <metabase-question
+              token={totalOrdersToken}
+              style={{ display: "block", height: "100%" }}
+              with-title="false"
+            />
+          )}
+        </Box>
       </Card>
     </Box>
   )

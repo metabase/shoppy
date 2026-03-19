@@ -14,6 +14,8 @@ export const METABASE_GUEST_SECRET = process.env.METABASE_GUEST_SECRET
 export const FRONTEND_URL =
   process.env.FRONTEND_URL ?? `http://localhost:${process.env.CLIENT_PORT}`
 
+export const SESSION_SECRET = process.env.SESSION_SECRET ?? "shoppy-dev-secret"
+
 export const { VERCEL_ENV } = process.env
 
 // This variable is used in a local (Docker) environment only

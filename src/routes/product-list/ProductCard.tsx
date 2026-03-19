@@ -1,11 +1,9 @@
-import { StaticQuestion } from "@metabase/embedding-sdk-react"
 import { Stack, Text, Image, Box } from "@mantine/core"
 import { useAtom } from "jotai"
 
 import { ProductCardFooter } from "./ProductCardFooter"
 
 import { Product } from "../../types/product"
-import { RemountOnSiteChange } from "../../components/RemountOnSiteChange"
 import { siteAtom } from "../../store/site"
 import { truncate } from "../../utils/truncate"
 import { LinkWithSearchParams } from "../../components/LinkWithSearchParams"
@@ -47,13 +45,12 @@ export const ProductCard = ({ product }: Props) => {
             </Text>
 
             <Box py={4} h={questionHeight}>
-              <RemountOnSiteChange>
-                <StaticQuestion
+              {token && (
+                <metabase-question
                   token={token}
-                  withChartTypeSelector={false}
-                  height={questionHeight}
+                  style={{ display: "block", height: "100%" }}
                 />
-              </RemountOnSiteChange>
+              )}
             </Box>
 
             <ProductCardFooter />

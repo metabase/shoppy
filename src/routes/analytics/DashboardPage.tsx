@@ -1,5 +1,4 @@
 import { Box } from "@mantine/core"
-import { StaticDashboard } from "@metabase/embedding-sdk-react"
 
 import { useGuestToken } from "../../hooks/useGuestToken"
 
@@ -12,7 +11,15 @@ export function DashboardPage(props: Props) {
 
   return (
     <Box mih="85vh" className="dashboard-container smartscalar" h="100%">
-      <StaticDashboard token={token} withTitle withDownloads />
+      {token && (
+        <metabase-dashboard
+          token={token}
+          with-title="true"
+          with-downloads="true"
+          style={{ display: "block", minHeight: "85vh" }}
+          custom-context="product_type=gadget"
+        />
+      )}
     </Box>
   )
 }

@@ -1,7 +1,8 @@
 import cors from "cors"
 import express, { Router } from "express"
+import session from "express-session"
 
-import { FRONTEND_URL } from "../constants/env"
+import { FRONTEND_URL, SESSION_SECRET, VERCEL_ENV } from "../constants/env"
 
 // Allow these origins to access the mock API server.
 const isWhitelistedOrigin = (origin: string) =>
@@ -23,4 +24,17 @@ export function setupMiddleware(router: Router) {
   router.use(express.text())
   router.use(express.urlencoded({ extended: false }))
   router.use(corsMiddleware)
+  router.use(
+    session({
+      secret: SESSION_SECRET,
+      resave: false,
+      saveUninitialized: false,
+      cookie: {
+        httpOnly: true,
+        secure: !!VERCEL_ENV,
+        sameSite: VERCEL_ENV ? "none" : "lax",
+        maxAge: 24 * 60 * 60 * 1000, // 24 hours
+      },
+    }),
+  )
 }

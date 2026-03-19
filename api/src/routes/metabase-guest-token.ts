@@ -26,7 +26,18 @@ export async function guestTokenHandler(req: Request, res: Response) {
   }
 
   try {
-    const token = signGuestToken(type, isNaN(id) ? id : Number(id), params)
+    const token = signGuestToken({
+      resourceType: type,
+      resourceId: isNaN(id) ? id : Number(id),
+      params,
+    })
+    if (!token) {
+      return res
+        .status(403)
+        .json({
+          error: "Unauthorized to generate guest token for this resource",
+        })
+    }
     return res.status(200).json({ token })
   } catch (error) {
     if (error instanceof Error) {

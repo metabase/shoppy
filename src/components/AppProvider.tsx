@@ -1,17 +1,10 @@
-import { useMemo } from "react"
-import { useAtom } from "jotai"
+import { useEffect } from "react"
+import { useAtomValue } from "jotai"
 
-import {
-  MetabaseProvider,
-  type MetabaseAuthConfig,
-} from "@metabase/embedding-sdk-react"
-
-import { IS_DEV, METABASE_INSTANCE_URL } from "../constants/env"
-
-import { MetabaseError, MetabaseLoader } from "./SdkStates"
-
+import { API_HOST, IS_DEV, METABASE_INSTANCE_URL } from "../constants/env"
 import { siteAtom } from "../store/site"
-import { SITE_CONFIG_MAP } from "../constants/sites"
+import { signIn } from "../hooks/useSignIn"
+
 import { FontLoader } from "./FontLoader"
 
 interface Props {
@@ -19,33 +12,38 @@ interface Props {
 }
 
 export const AppProvider = ({ children }: Props) => {
-  const [site] = useAtom(siteAtom)
+  const site = useAtomValue(siteAtom)
+  const instanceUrl = IS_DEV
+    ? METABASE_INSTANCE_URL
+    : `${window.location.origin}/mb`
 
-  const theme = useMemo(() => {
-    return SITE_CONFIG_MAP[site].metabase
+  useEffect(() => {
+    signIn(site)
   }, [site])
 
-  // Configuration for the Metabase provider.
-  const authConfig: MetabaseAuthConfig = useMemo(() => {
-    return {
-      metabaseInstanceUrl: IS_DEV
-        ? METABASE_INSTANCE_URL
-        : `${window.location.origin}/mb`,
-
+  useEffect(() => {
+    window.metabaseConfig = {
       isGuest: true,
+      instanceUrl,
+      guestEmbedProviderUri: `${API_HOST}/refresh-guest-token`,
     }
-  }, [])
+
+    const script = document.createElement("script")
+    // script.src = `${instanceUrl}/app/embed.js`
+    // my local server with new refresh token change
+    script.src = `http://localhost:3000/app/embed.js`
+    script.defer = true
+    document.head.appendChild(script)
+
+    return () => {
+      document.head.removeChild(script)
+    }
+  }, [instanceUrl])
 
   return (
-    <MetabaseProvider
-      authConfig={authConfig}
-      theme={theme}
-      loaderComponent={MetabaseLoader}
-      errorComponent={MetabaseError}
-    >
+    <>
       {children}
-
       <FontLoader />
-    </MetabaseProvider>
+    </>
   )
 }

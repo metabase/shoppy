@@ -1,7 +1,5 @@
 import { Container } from "@mantine/core"
-import { StaticQuestion } from "@metabase/embedding-sdk-react"
 
-import { RemountOnSiteChange } from "../../components/RemountOnSiteChange"
 import { useGuestToken } from "../../hooks/useGuestToken"
 
 interface Props {
@@ -13,9 +11,12 @@ export function QuestionPage(props: Props) {
 
   return (
     <Container mih="100vh" className="question-container smartscalar">
-      <RemountOnSiteChange>
-        <StaticQuestion token={token} />
-      </RemountOnSiteChange>
+      {token && (
+        <metabase-question
+          token={token}
+          style={{ display: "block", minHeight: "100vh" }}
+        />
+      )}
     </Container>
   )
 }

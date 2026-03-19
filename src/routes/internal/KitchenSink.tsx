@@ -1,5 +1,4 @@
 import { Box, Title, Grid, Card, Stack, Flex } from "@mantine/core"
-import { StaticQuestion } from "@metabase/embedding-sdk-react"
 
 import { useGuestToken } from "../../hooks/useGuestToken"
 import "./kitchen-sink.css"
@@ -10,15 +9,10 @@ const questions: string[] = [
   "mOLR5JJIUcX1y3YSltWoH",
 ]
 
-function GuestStaticQuestion({
-  questionId,
-  ...props
-}: {
-  questionId: string
-  withChartTypeSelector?: boolean
-}) {
+function GuestQuestion({ questionId }: { questionId: string }) {
   const token = useGuestToken({ type: "question", id: questionId })
-  return <StaticQuestion token={token} {...props} />
+  if (!token) return null
+  return <metabase-question token={token} style={{ display: "block" }} />
 }
 
 export const KitchenSink = () => (
@@ -30,7 +24,7 @@ export const KitchenSink = () => (
     <Grid pb={20}>
       {questions.map((q) => (
         <Grid.Col key={q} span={4}>
-          <GuestStaticQuestion questionId={q} withChartTypeSelector={false} />
+          <GuestQuestion questionId={q} />
         </Grid.Col>
       ))}
     </Grid>
@@ -45,10 +39,7 @@ export const KitchenSink = () => (
       </Title>
 
       <Flex>
-        <GuestStaticQuestion
-          questionId="DLILVZlY8HgJ8_27isdU0"
-          withChartTypeSelector={false}
-        />
+        <GuestQuestion questionId="DLILVZlY8HgJ8_27isdU0" />
       </Flex>
 
       <Title pb={8} size="h4">
@@ -56,10 +47,7 @@ export const KitchenSink = () => (
       </Title>
 
       <Card w="100%">
-        <GuestStaticQuestion
-          questionId="DLILVZlY8HgJ8_27isdU0"
-          withChartTypeSelector={false}
-        />
+        <GuestQuestion questionId="DLILVZlY8HgJ8_27isdU0" />
       </Card>
 
       <Title pb={8} size="h4">
@@ -67,10 +55,7 @@ export const KitchenSink = () => (
       </Title>
 
       <Box w="100%">
-        <GuestStaticQuestion
-          questionId="DLILVZlY8HgJ8_27isdU0"
-          withChartTypeSelector={false}
-        />
+        <GuestQuestion questionId="DLILVZlY8HgJ8_27isdU0" />
       </Box>
 
       <Title pb={8} size="h4">
@@ -78,10 +63,7 @@ export const KitchenSink = () => (
       </Title>
 
       <Box w="100%" bg="white">
-        <GuestStaticQuestion
-          questionId="t07HOjt9YiRHcWnK7XrgE"
-          withChartTypeSelector={false}
-        />
+        <GuestQuestion questionId="t07HOjt9YiRHcWnK7XrgE" />
       </Box>
     </Stack>
   </Stack>

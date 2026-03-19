@@ -2,7 +2,7 @@ import { DashboardLinkCardProps } from "./DashboardLinkCard"
 
 export const overviewLinkCards: DashboardLinkCardProps[] = [
   {
-    entityId: "ELqevm0QzjDGPmu3Gi9jC",
+    entityId: "zYhjTE3AwU1NwFqueiKI1",
     title: "Inventory Performance",
     description:
       "Internal analytics dashboard visualizing key performance and inventory metrics for a demo training platform.",
