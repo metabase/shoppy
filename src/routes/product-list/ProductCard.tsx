@@ -42,7 +42,7 @@ export const ProductCard = ({ product }: Props) => {
             <Box py={4} h={questionHeight}>
               <RemountOnSiteChange>
                 <StaticQuestion
-                  questionId="8emcAd9TTrPoHLuaFaUh0"
+                  questionId="zsF-eNRxoLlpfxQwkbP4b"
                   withChartTypeSelector={false}
                   height={questionHeight}
                   initialSqlParameters={{ product_id: product.id }}

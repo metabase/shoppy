@@ -2,7 +2,7 @@ import { aggregateTimings } from "../support/helpers/synthetic-monitoring"
 
 const BASE_URL = Cypress.env("BASE_URL") || ""
 const PR_NUMBER = Cypress.env("PR_NUMBER") || ""
-const PATHS = ["/admin/products", "/admin/analytics/i5s-lcGYLc1GyFdIy4TxH"]
+const PATHS = ["/admin/products", "/admin/analytics/ELqevm0QzjDGPmu3Gi9jC"]
 const VISITS_PER_URL = 10
 const TIMEOUT = 30000
 

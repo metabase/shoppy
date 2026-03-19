@@ -4,9 +4,9 @@ import { StaticQuestion } from "@metabase/embedding-sdk-react"
 import "./kitchen-sink.css"
 
 const questions: string[] = [
-  "MvyBus_qDW4SC8NshJ6zD",
-  "bYxRH9Yc8qCzh9PK-F-bV",
-  "wvMvO_S0FJlj010YbKOmT",
+  "DLILVZlY8HgJ8_27isdU0",
+  "LjSC3sBU784om6-rnIpRm",
+  "mOLR5JJIUcX1y3YSltWoH",
 ]
 
 export const KitchenSink = () => (
@@ -34,7 +34,7 @@ export const KitchenSink = () => (
 
       <Flex>
         <StaticQuestion
-          questionId="MvyBus_qDW4SC8NshJ6zD"
+          questionId="DLILVZlY8HgJ8_27isdU0"
           withChartTypeSelector={false}
         />
       </Flex>
@@ -45,7 +45,7 @@ export const KitchenSink = () => (
 
       <Card w="100%">
         <StaticQuestion
-          questionId="MvyBus_qDW4SC8NshJ6zD"
+          questionId="DLILVZlY8HgJ8_27isdU0"
           withChartTypeSelector={false}
         />
       </Card>
@@ -56,7 +56,7 @@ export const KitchenSink = () => (
 
       <Box w="100%">
         <StaticQuestion
-          questionId="MvyBus_qDW4SC8NshJ6zD"
+          questionId="DLILVZlY8HgJ8_27isdU0"
           withChartTypeSelector={false}
         />
       </Box>
