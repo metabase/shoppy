@@ -5,6 +5,7 @@ import { setupMiddleware } from "./middleware"
 import { withCacheHeader } from "./middleware/cache"
 
 import { metabaseAuthHandler } from "./routes/metabase-sso"
+import { guestTokenHandler } from "./routes/metabase-guest-token"
 import { productListHandler } from "./routes/product-list"
 import { productDetailHandler } from "./routes/product-detail"
 import { categoryListHandler } from "./routes/category-list"
@@ -23,6 +24,7 @@ setupMiddleware(router)
 
 router.get("/", (_, res) => res.send({ status: "ok" }))
 router.get("/sso/metabase", metabaseAuthHandler)
+router.get("/guest-token", guestTokenHandler)
 router.get("/products", withCacheHeader, productListHandler)
 router.get("/categories", withCacheHeader, categoryListHandler)
 router.get("/product/:id", withCacheHeader, productDetailHandler)

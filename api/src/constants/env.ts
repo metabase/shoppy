@@ -9,6 +9,7 @@ export const METABASE_INSTANCE_URL =
   process.env.METABASE_INSTANCE_URL ?? "http://localhost:3000"
 
 export const METABASE_JWT_SHARED_SECRET = process.env.METABASE_JWT_SHARED_SECRET
+export const METABASE_GUEST_SECRET = process.env.METABASE_GUEST_SECRET
 
 export const FRONTEND_URL =
   process.env.FRONTEND_URL ?? `http://localhost:${process.env.CLIENT_PORT}`

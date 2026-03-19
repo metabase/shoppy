@@ -1,13 +1,9 @@
-import { Card, Title, Box, Modal, Flex } from "@mantine/core"
-import { useDisclosure } from "@mantine/hooks"
+import { Card, Title, Box } from "@mantine/core"
 
-import {
-  StaticQuestion,
-  InteractiveQuestion,
-} from "@metabase/embedding-sdk-react"
+import { StaticQuestion } from "@metabase/embedding-sdk-react"
 
 import { RemountOnSiteChange } from "../../components/RemountOnSiteChange"
-import { withProductClickAction } from "../../utils/metabase-plugins"
+import { useGuestToken } from "../../hooks/useGuestToken"
 
 const MAX_W = 600
 
@@ -16,7 +12,17 @@ interface Props {
 }
 
 export const ProductDetailInsights = (props: Props) => {
-  const [isModalOpen, modal] = useDisclosure(false)
+  const ordersOverTimeToken = useGuestToken({
+    type: "question",
+    id: 410, //"T7IZWpCbXleEI-66bXyCd",
+    params: { product_id: props.productId },
+  })
+
+  const totalOrdersToken = useGuestToken({
+    type: "question",
+    id: 409, //"zsF-eNRxoLlpfxQwkbP4b",
+    params: { product_id: props.productId },
+  })
 
   return (
     <Box className="space-y-4">
@@ -25,17 +31,9 @@ export const ProductDetailInsights = (props: Props) => {
           Orders over time
         </Title>
 
-        <Box
-          onClick={modal.open}
-          h={250}
-          className="orders-over-time-container"
-        >
+        <Box h={250} className="orders-over-time-container">
           <RemountOnSiteChange>
-            <StaticQuestion
-              questionId="T7IZWpCbXleEI-66bXyCd"
-              height={250}
-              initialSqlParameters={{ product_id: props.productId }}
-            />
+            <StaticQuestion token={ordersOverTimeToken} height={250} />
           </RemountOnSiteChange>
         </Box>
       </Card>
@@ -46,38 +44,9 @@ export const ProductDetailInsights = (props: Props) => {
         </Title>
 
         <RemountOnSiteChange>
-          <StaticQuestion
-            questionId="zsF-eNRxoLlpfxQwkbP4b"
-            height={70}
-            initialSqlParameters={{ product_id: props.productId }}
-          />
+          <StaticQuestion token={totalOrdersToken} height={70} />
         </RemountOnSiteChange>
       </Card>
-
-      <Modal
-        classNames={{ content: "bg-background py-3" }}
-        opened={isModalOpen}
-        onClose={modal.close}
-        withCloseButton={false}
-        size="xl"
-      >
-        <Flex h="700px" className="orders-over-time-container">
-          <InteractiveQuestion
-            questionId="qgEnYXfc4LQKM2OMwj57u"
-            title={
-              <Title fw={400} size="h2" className="product-detail-card-title">
-                Orders over time
-              </Title>
-            }
-            height="100%"
-            plugins={{
-              mapQuestionClickActions: withProductClickAction({
-                onBeforeOpenModal: modal.close,
-              }),
-            }}
-          />
-        </Flex>
-      </Modal>
     </Box>
   )
 }

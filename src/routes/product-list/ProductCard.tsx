@@ -9,6 +9,7 @@ import { RemountOnSiteChange } from "../../components/RemountOnSiteChange"
 import { siteAtom } from "../../store/site"
 import { truncate } from "../../utils/truncate"
 import { LinkWithSearchParams } from "../../components/LinkWithSearchParams"
+import { useGuestToken } from "../../hooks/useGuestToken"
 
 interface Props {
   product: Product
@@ -20,6 +21,12 @@ export const ProductCard = ({ product }: Props) => {
 
   const questionHeight = site === "stitch" ? 40 : 70
   const truncateLength = site === "pug" ? 13 : 50
+
+  const token = useGuestToken({
+    type: "question",
+    id: 409, //"zsF-eNRxoLlpfxQwkbP4b",
+    params: { product_id: product.id },
+  })
 
   return (
     <LinkWithSearchParams href={`/products/${product.id}`}>
@@ -42,10 +49,9 @@ export const ProductCard = ({ product }: Props) => {
             <Box py={4} h={questionHeight}>
               <RemountOnSiteChange>
                 <StaticQuestion
-                  questionId="zsF-eNRxoLlpfxQwkbP4b"
+                  token={token}
                   withChartTypeSelector={false}
                   height={questionHeight}
-                  initialSqlParameters={{ product_id: product.id }}
                 />
               </RemountOnSiteChange>
             </Box>

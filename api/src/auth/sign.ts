@@ -1,7 +1,10 @@
 import jwt from "jsonwebtoken"
 
 import { User } from "../types/user"
-import { METABASE_JWT_SHARED_SECRET } from "../constants/env"
+import {
+  METABASE_JWT_SHARED_SECRET,
+  METABASE_GUEST_SECRET,
+} from "../constants/env"
 
 export const signUserToken = (user: User): string => {
   if (!METABASE_JWT_SHARED_SECRET) {
@@ -18,5 +21,26 @@ export const signUserToken = (user: User): string => {
       exp: Math.round(Date.now() / 1000) + 60 * 0.25, // 1.1 minute expiration
     },
     METABASE_JWT_SHARED_SECRET,
+  )
+}
+
+export const signGuestToken = (
+  resourceType: "question" | "dashboard",
+  resourceId: string | number,
+  params: Record<string, unknown> = {},
+): string => {
+  if (!METABASE_GUEST_SECRET) {
+    throw new Error("METABASE_GUEST_SECRET is not set in the environment!")
+  }
+
+  const resource = { [resourceType]: resourceId }
+  console.log({ resource })
+  return jwt.sign(
+    {
+      resource,
+      params,
+      exp: Math.round(Date.now() / 1000) + 10 * 60, // 10 minute expiration
+    },
+    METABASE_GUEST_SECRET,
   )
 }

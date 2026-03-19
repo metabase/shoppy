@@ -1,6 +1,7 @@
 import { Box, Title, Grid, Card, Stack, Flex } from "@mantine/core"
 import { StaticQuestion } from "@metabase/embedding-sdk-react"
 
+import { useGuestToken } from "../../hooks/useGuestToken"
 import "./kitchen-sink.css"
 
 const questions: string[] = [
@@ -8,6 +9,17 @@ const questions: string[] = [
   "LjSC3sBU784om6-rnIpRm",
   "mOLR5JJIUcX1y3YSltWoH",
 ]
+
+function GuestStaticQuestion({
+  questionId,
+  ...props
+}: {
+  questionId: string
+  withChartTypeSelector?: boolean
+}) {
+  const token = useGuestToken({ type: "question", id: questionId })
+  return <StaticQuestion token={token} {...props} />
+}
 
 export const KitchenSink = () => (
   <Stack>
@@ -18,7 +30,7 @@ export const KitchenSink = () => (
     <Grid pb={20}>
       {questions.map((q) => (
         <Grid.Col key={q} span={4}>
-          <StaticQuestion questionId={q} withChartTypeSelector={false} />
+          <GuestStaticQuestion questionId={q} withChartTypeSelector={false} />
         </Grid.Col>
       ))}
     </Grid>
@@ -33,7 +45,7 @@ export const KitchenSink = () => (
       </Title>
 
       <Flex>
-        <StaticQuestion
+        <GuestStaticQuestion
           questionId="DLILVZlY8HgJ8_27isdU0"
           withChartTypeSelector={false}
         />
@@ -44,7 +56,7 @@ export const KitchenSink = () => (
       </Title>
 
       <Card w="100%">
-        <StaticQuestion
+        <GuestStaticQuestion
           questionId="DLILVZlY8HgJ8_27isdU0"
           withChartTypeSelector={false}
         />
@@ -55,7 +67,7 @@ export const KitchenSink = () => (
       </Title>
 
       <Box w="100%">
-        <StaticQuestion
+        <GuestStaticQuestion
           questionId="DLILVZlY8HgJ8_27isdU0"
           withChartTypeSelector={false}
         />
@@ -66,7 +78,7 @@ export const KitchenSink = () => (
       </Title>
 
       <Box w="100%" bg="white">
-        <StaticQuestion
+        <GuestStaticQuestion
           questionId="t07HOjt9YiRHcWnK7XrgE"
           withChartTypeSelector={false}
         />
