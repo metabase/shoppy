@@ -37,6 +37,9 @@ export const ProductAnalyticsPage = (props: Props) => {
 
   if (categoryId) {
     products = products.filter((product) => product.category.id === categoryId)
+    products = products.slice(0, 3)
+  } else {
+    products = products.slice(0, 6)
   }
 
   const currentCategoryName =
@@ -59,7 +62,7 @@ export const ProductAnalyticsPage = (props: Props) => {
           spacing="xl"
           verticalSpacing={VERTICAL_SPACING[site]}
         >
-          {products.slice(0, 7).map((product) => (
+          {products.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </SimpleGrid>

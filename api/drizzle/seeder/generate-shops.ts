@@ -10,25 +10,21 @@ export const shopsData = [
     id: 1,
     alias: "pug",
     name: "Pug & Play",
-    imagesCount: 3,
   },
   {
     id: 2,
     alias: "stitch",
     name: "theStitch",
-    imagesCount: 3,
   },
   {
     id: 3,
     alias: "luminara",
     name: "Luminara Beauty",
-    imagesCount: 2,
   },
   {
     id: 4,
     alias: "proficiency",
     name: "Acme Co",
-    imagesCount: 14,
   },
 ]
 

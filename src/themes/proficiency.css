@@ -12,6 +12,17 @@ body[data-theme="proficiency"] {
     mix-blend-mode: darken;
   }
 
+  .product-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .product-card .themed-button {
+    display: none;
+  }
+
   .product-insights-card {
     box-shadow: 0px 6px 10px 0px rgba(0, 0, 0, 0.08);
   }
@@ -76,11 +87,19 @@ body[data-theme="proficiency"] {
     }
   }
 
-  /** Crop the image height to reduce whitespace */
   .product-card-image-container {
-    aspect-ratio: 1 / 1;
-    max-height: 220px;
-    margin-bottom: 10px;
+    height: 180px;
+    aspect-ratio: unset;
+    margin-bottom: 0;
+    padding: 12px 12px 0;
+  }
+
+  .product-card-image {
+    object-fit: contain;
+  }
+
+  .product-card-trend {
+    padding: 0 12px 12px;
   }
 
   /** WORKAROUND: align trend charts to the left in product cards */
