@@ -18,7 +18,7 @@ export const ProductCard = ({ product }: Props) => {
   const [site] = useAtom(siteAtom)
   const image = product.imageUrl ?? "/assets/mock-t-shirt.webp"
 
-  const questionHeight = site === "stitch" ? 40 : 70
+  const questionHeight = site === "stitch" ? 45 : 70
   const truncateLength = site === "pug" ? 13 : 50
 
   return (
@@ -35,7 +35,11 @@ export const ProductCard = ({ product }: Props) => {
           </Box>
 
           <Stack className="smartscalar product-card-trend" mih={70} gap={0}>
-            <Text className="product-card-title" pl={site === "proficiency" ? 0 : "8px"} lineClamp={1}>
+            <Text
+              className="product-card-title"
+              pl={site === "proficiency" ? 0 : "8px"}
+              lineClamp={1}
+            >
               {truncate(product.title, truncateLength)}
             </Text>
 
