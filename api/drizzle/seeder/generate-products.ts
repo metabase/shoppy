@@ -2,137 +2,460 @@ import { faker } from "@faker-js/faker"
 
 import { db } from "../../src/utils/db"
 import { products } from "../../src/schema/products"
-import { shopsData } from "./generate-shops"
 
-const PRODUCTS_COUNT = 75
-
-interface CourseData {
+interface CuratedProduct {
   title: string
-  categoryId: number
   description: string
+  categoryId: number
+  imageUrl: string
 }
 
-const COURSES: CourseData[] = [
+// Pug & Play (shopId 1) - Pet store
+// Categories: Food and Treats (1), Care and Grooming (2), Toys (3), Beds and Furniture (4)
+const PUG_PRODUCTS: CuratedProduct[] = [
+  // Food and Treats (categoryId: 1)
+  {
+    title: "Organic Puppy Kibble",
+    description:
+      "Premium grain-free kibble made with real chicken and vegetables for growing puppies.",
+    categoryId: 1,
+    imageUrl: "/images/pug/1.png",
+  },
+  {
+    title: "Salmon & Sweet Potato Bites",
+    description:
+      "Wholesome freeze-dried treats packed with omega-3 fatty acids for a shiny coat.",
+    categoryId: 1,
+    imageUrl: "/images/pug/2.png",
+  },
+  {
+    title: "Peanut Butter Training Treats",
+    description:
+      "Small, soft training treats made with natural peanut butter and oats.",
+    categoryId: 1,
+    imageUrl: "/images/pug/3.png",
+  },
+  // Care and Grooming (categoryId: 2)
+  {
+    title: "Gentle Oatmeal Shampoo",
+    description:
+      "Soothing oatmeal-based shampoo for sensitive skin, leaving coats soft and clean.",
+    categoryId: 2,
+    imageUrl: "/images/pug/1.png",
+  },
+  {
+    title: "De-Shedding Brush",
+    description:
+      "Professional-grade deshedding tool that reduces loose fur by up to 90%.",
+    categoryId: 2,
+    imageUrl: "/images/pug/2.png",
+  },
+  {
+    title: "Paw Balm Moisturizer",
+    description:
+      "All-natural balm that protects and heals cracked or dry paw pads.",
+    categoryId: 2,
+    imageUrl: "/images/pug/3.png",
+  },
+  // Toys (categoryId: 3)
+  {
+    title: "Indestructible Chew Bone",
+    description:
+      "Ultra-durable nylon bone designed for the most aggressive chewers.",
+    categoryId: 3,
+    imageUrl: "/images/pug/1.png",
+  },
+  {
+    title: "Squeaky Tennis Ball Set",
+    description:
+      "Pack of three high-bounce tennis balls with built-in squeakers for fetch fun.",
+    categoryId: 3,
+    imageUrl: "/images/pug/2.png",
+  },
+  {
+    title: "Rope Tug Toy",
+    description:
+      "Hand-braided cotton rope toy perfect for interactive tug-of-war play.",
+    categoryId: 3,
+    imageUrl: "/images/pug/3.png",
+  },
+  // Beds and Furniture (categoryId: 4)
+  {
+    title: "Orthopedic Memory Foam Bed",
+    description:
+      "Veterinarian-recommended memory foam bed that supports joints and relieves pressure.",
+    categoryId: 4,
+    imageUrl: "/images/pug/1.png",
+  },
+  {
+    title: "Cozy Cave Hooded Blanket",
+    description:
+      "Plush hooded blanket that creates a warm, den-like retreat for anxious pups.",
+    categoryId: 4,
+    imageUrl: "/images/pug/2.png",
+  },
+  {
+    title: "Elevated Cooling Cot",
+    description:
+      "Breathable mesh cot that keeps pets cool and comfortable in warm weather.",
+    categoryId: 4,
+    imageUrl: "/images/pug/3.png",
+  },
+]
+
+// theStitch (shopId 2) - T-shirt store
+// Categories: Punderful Prints (5), Pixel <3 (6), Adventure (7), Dystopian Dreams (8)
+const STITCH_PRODUCTS: CuratedProduct[] = [
+  // Punderful Prints (categoryId: 5)
+  {
+    title: "I'm A Fungi",
+    description:
+      "A cheerful mushroom character that proves you're a fun guy at any party.",
+    categoryId: 5,
+    imageUrl: "/images/stitch/1.png",
+  },
+  {
+    title: "Taco 'Bout Awesome",
+    description:
+      "Because sometimes you just need a taco to do the talking for you.",
+    categoryId: 5,
+    imageUrl: "/images/stitch/2.png",
+  },
+  {
+    title: "Nacho Average Tee",
+    description:
+      "Stand out from the crowd with this cheesy but lovable nacho design.",
+    categoryId: 5,
+    imageUrl: "/images/stitch/3.png",
+  },
+  // Pixel <3 (categoryId: 6)
+  {
+    title: "8-Bit Sunset",
+    description:
+      "A retro pixel-art sunset that brings nostalgic vibes to any outfit.",
+    categoryId: 6,
+    imageUrl: "/images/stitch/1.png",
+  },
+  {
+    title: "Retro Game Over",
+    description:
+      "Classic arcade-style Game Over screen for true retro gaming fans.",
+    categoryId: 6,
+    imageUrl: "/images/stitch/2.png",
+  },
+  {
+    title: "Pixel Heart",
+    description:
+      "The iconic pixelated heart — a timeless symbol of 8-bit love.",
+    categoryId: 6,
+    imageUrl: "/images/stitch/3.png",
+  },
+  // Adventure (categoryId: 7)
+  {
+    title: "Mountain Summit",
+    description:
+      "Reach new heights with this minimalist mountain peak illustration.",
+    categoryId: 7,
+    imageUrl: "/images/stitch/1.png",
+  },
+  {
+    title: "Lost In The Wild",
+    description:
+      "Embrace the call of the wilderness with this hand-drawn forest design.",
+    categoryId: 7,
+    imageUrl: "/images/stitch/2.png",
+  },
+  {
+    title: "Desert Wanderer",
+    description:
+      "Endless dunes and open skies for those who wander but are not lost.",
+    categoryId: 7,
+    imageUrl: "/images/stitch/3.png",
+  },
+  // Dystopian Dreams (categoryId: 8)
+  {
+    title: "Neon Cityscape 2084",
+    description:
+      "A cyberpunk skyline glowing with neon lights and towering megastructures.",
+    categoryId: 8,
+    imageUrl: "/images/stitch/1.png",
+  },
+  {
+    title: "Digital Resistance",
+    description:
+      "Glitched typography and circuit patterns for the digital underground.",
+    categoryId: 8,
+    imageUrl: "/images/stitch/2.png",
+  },
+  {
+    title: "Glitch In The Matrix",
+    description: "Reality is broken — and this design proves it with style.",
+    categoryId: 8,
+    imageUrl: "/images/stitch/3.png",
+  },
+]
+
+// Luminara Beauty (shopId 3) - Beauty products
+// Categories: Skincare (9), Hair Care (10), Makeup (11), Bath and Body (12), Sun Care (13)
+const LUMINARA_PRODUCTS: CuratedProduct[] = [
+  // Skincare (categoryId: 9)
+  {
+    title: "Hydrating Rose Serum",
+    description:
+      "Lightweight serum infused with rosehip oil to deeply hydrate and brighten skin.",
+    categoryId: 9,
+    imageUrl: "/images/luminara/1.png",
+  },
+  {
+    title: "Vitamin C Brightening Cream",
+    description:
+      "Antioxidant-rich moisturizer that evens skin tone and boosts radiance.",
+    categoryId: 9,
+    imageUrl: "/images/luminara/2.png",
+  },
+  {
+    title: "Gentle Foaming Cleanser",
+    description:
+      "Soap-free cleanser that removes impurities without stripping natural moisture.",
+    categoryId: 9,
+    imageUrl: "/images/luminara/1.png",
+  },
+  // Hair Care (categoryId: 10)
+  {
+    title: "Argan Oil Repair Shampoo",
+    description:
+      "Nourishing shampoo that restores damaged hair with pure Moroccan argan oil.",
+    categoryId: 10,
+    imageUrl: "/images/luminara/2.png",
+  },
+  {
+    title: "Deep Conditioning Hair Mask",
+    description:
+      "Intensive weekly treatment that transforms dry, brittle hair into silk.",
+    categoryId: 10,
+    imageUrl: "/images/luminara/1.png",
+  },
+  {
+    title: "Keratin Smoothing Treatment",
+    description:
+      "Professional-grade keratin formula that eliminates frizz for up to 8 weeks.",
+    categoryId: 10,
+    imageUrl: "/images/luminara/2.png",
+  },
+  // Makeup (categoryId: 11)
+  {
+    title: "Velvet Matte Lipstick",
+    description:
+      "Long-lasting matte lipstick with a velvety finish in rich, bold shades.",
+    categoryId: 11,
+    imageUrl: "/images/luminara/1.png",
+  },
+  {
+    title: "Luminous Foundation",
+    description:
+      "Buildable coverage foundation that gives skin a natural, dewy glow.",
+    categoryId: 11,
+    imageUrl: "/images/luminara/2.png",
+  },
+  {
+    title: "Smoky Eye Palette",
+    description:
+      "Twelve curated eyeshadow shades from subtle shimmer to dramatic smoky hues.",
+    categoryId: 11,
+    imageUrl: "/images/luminara/1.png",
+  },
+  // Bath and Body (categoryId: 12)
+  {
+    title: "Lavender Epsom Salt Soak",
+    description:
+      "Relaxing bath soak with pure lavender essential oil and mineral-rich salts.",
+    categoryId: 12,
+    imageUrl: "/images/luminara/2.png",
+  },
+  {
+    title: "Coconut Milk Body Lotion",
+    description:
+      "Rich body lotion with coconut milk and shea butter for all-day moisture.",
+    categoryId: 12,
+    imageUrl: "/images/luminara/1.png",
+  },
+  {
+    title: "Eucalyptus Shower Gel",
+    description:
+      "Invigorating shower gel with eucalyptus and mint for an energizing cleanse.",
+    categoryId: 12,
+    imageUrl: "/images/luminara/2.png",
+  },
+  // Sun Care (categoryId: 13)
+  {
+    title: "SPF 50 Daily Moisturizer",
+    description:
+      "Lightweight daily moisturizer with broad-spectrum SPF 50 protection.",
+    categoryId: 13,
+    imageUrl: "/images/luminara/1.png",
+  },
+  {
+    title: "After-Sun Aloe Gel",
+    description:
+      "Cooling aloe vera gel that soothes and repairs sun-exposed skin.",
+    categoryId: 13,
+    imageUrl: "/images/luminara/2.png",
+  },
+  {
+    title: "Tinted Mineral Sunscreen",
+    description:
+      "Mineral sunscreen with a subtle tint that blends seamlessly into any skin tone.",
+    categoryId: 13,
+    imageUrl: "/images/luminara/1.png",
+  },
+]
+
+// Proficiency Labs (shopId 4) - Training courses
+// Categories: Leadership Training (14), Technical Skills (15), Soft Skills (16),
+//             Compliance (17), Health & Wellness (18), Marketing (19)
+const PROFICIENCY_PRODUCTS: CuratedProduct[] = [
   // Leadership Training (categoryId: 14)
-  { title: "Leading through change", categoryId: 14, description: "Master the skills to navigate and drive organizational change effectively with confidence and clarity." },
-  { title: "Organizational leadership", categoryId: 14, description: "Develop comprehensive leadership capabilities for managing complex organizational structures and dynamics." },
-  { title: "Executive presence and influence", categoryId: 14, description: "Build executive presence and learn to influence decisions at the highest levels of your organization." },
-  { title: "Building high-performing teams", categoryId: 14, description: "Create and maintain teams that consistently exceed performance targets and organizational goals." },
-  { title: "Remote team management", categoryId: 14, description: "Master the unique challenges of leading distributed teams in a hybrid or fully remote environment." },
-  { title: "Strategic thinking for managers", categoryId: 14, description: "Develop strategic thinking capabilities to align departmental goals with organizational vision." },
-  { title: "Becoming an effective mentor", categoryId: 14, description: "Learn proven mentoring techniques to develop talent and grow future leaders in your organization." },
-  { title: "Decision-making under pressure", categoryId: 14, description: "Make sound decisions quickly when stakes are high and information is limited or uncertain." },
-  { title: "Change management strategies", categoryId: 14, description: "Implement structured change management approaches that minimize resistance and maximize adoption." },
-  { title: "Employee engagement strategies", categoryId: 14, description: "Drive meaningful employee engagement through authentic leadership and organizational connection." },
-  { title: "Human resources management", categoryId: 14, description: "Understand HR principles and practices for effective talent management and employee relations." },
-  { title: "Recruitment and talent acquisition", categoryId: 14, description: "Build effective recruitment strategies to attract, identify, and hire top talent for your organization." },
-  { title: "Performance management systems", categoryId: 14, description: "Design and implement performance management systems that drive accountability and development." },
-
+  {
+    title: "Leading Through Change",
+    description: "Navigate organizational transformation",
+    categoryId: 14,
+    imageUrl: "/images/proficiency/motivation-1-22.png",
+  },
+  {
+    title: "Building High-Performing Teams",
+    description: "Maximize team performance",
+    categoryId: 14,
+    imageUrl: "/images/proficiency/team-meeting-1-20.png",
+  },
+  {
+    title: "Strategic Thinking for Managers",
+    description: "Align teams with organizational vision",
+    categoryId: 14,
+    imageUrl: "/images/proficiency/presentation-1-69.png",
+  },
   // Technical Skills (categoryId: 15)
-  { title: "Intro to Metabase embedded analytics", categoryId: 15, description: "Get started with embedding Metabase analytics into your applications for end-user insights." },
-  { title: "Data insights with Metabase", categoryId: 15, description: "Learn to extract meaningful insights from your data using Metabase's powerful analytics tools." },
-  { title: "Metabase embedded analytics SDK", categoryId: 15, description: "Deep dive into the Metabase SDK for building custom analytics experiences in your applications." },
-  { title: "Cloud computing basics", categoryId: 15, description: "Understand cloud computing fundamentals, services, and best practices for modern infrastructure." },
-  { title: "Advanced data visualization techniques", categoryId: 15, description: "Create compelling visual representations of complex data to drive business insights and decisions." },
-  { title: "Machine learning fundamentals", categoryId: 15, description: "Explore machine learning concepts, algorithms, and practical applications in business contexts." },
-  { title: "Business intelligence dashboards", categoryId: 15, description: "Build interactive dashboards that provide real-time visibility into key business metrics and KPIs." },
-  { title: "API development and integration", categoryId: 15, description: "Design and build robust APIs and integrate them seamlessly into your technology ecosystem." },
-  { title: "Database design and optimization", categoryId: 15, description: "Master database design principles and optimization techniques for improved performance and scalability." },
-  { title: "DevOps fundamentals", categoryId: 15, description: "Learn DevOps practices and tools to streamline development, deployment, and operations workflows." },
-  { title: "Microservices architecture", categoryId: 15, description: "Design and implement microservices architectures for building scalable and maintainable systems." },
-  { title: "Container orchestration with Kubernetes", categoryId: 15, description: "Master Kubernetes for managing containerized applications at scale with resilience and flexibility." },
-  { title: "Building scalable systems", categoryId: 15, description: "Design system architectures that handle growth and scale to meet increasing business demands." },
-  { title: "Performance optimization strategies", categoryId: 15, description: "Identify bottlenecks and implement optimization strategies to maximize system performance." },
-
+  {
+    title: "Data Insights with Metabase",
+    description: "Extract meaningful insights from data",
+    categoryId: 15,
+    imageUrl: "/images/proficiency/data-analysis-1-60.png",
+  },
+  {
+    title: "Advanced Data Visualization",
+    description: "Create compelling visual analytics",
+    categoryId: 15,
+    imageUrl: "/images/proficiency/report-analysis-4-77.png",
+  },
+  {
+    title: "Cloud Computing Basics",
+    description: "Modern infrastructure fundamentals",
+    categoryId: 15,
+    imageUrl: "/images/proficiency/coding-2-31.png",
+  },
   // Soft Skills (categoryId: 16)
-  { title: "Emotional intelligence basics", categoryId: 16, description: "Develop emotional awareness and intelligence to enhance interpersonal relationships and leadership." },
-  { title: "Communication fundamentals", categoryId: 16, description: "Master effective communication techniques that build understanding and strengthen professional relationships." },
-  { title: "Customer service excellence", categoryId: 16, description: "Deliver exceptional customer service experiences that build loyalty and drive business growth." },
-  { title: "Negotiation skills masterclass", categoryId: 16, description: "Learn advanced negotiation techniques to achieve win-win outcomes in business and personal situations." },
-  { title: "Public speaking confidence", categoryId: 16, description: "Build confidence and overcome anxiety to deliver powerful presentations and public speaking events." },
-  { title: "Time management and productivity", categoryId: 16, description: "Master time management strategies to maximize productivity and achieve better work-life balance." },
-  { title: "Conflict resolution in teams", categoryId: 16, description: "Develop conflict resolution skills to address disagreements constructively and strengthen team cohesion." },
-  { title: "Cross-functional collaboration", categoryId: 16, description: "Improve collaboration across departments and teams to achieve organizational objectives effectively." },
-  { title: "Presentation skills for impact", categoryId: 16, description: "Craft and deliver presentations that engage audiences and drive action on key business initiatives." },
-  { title: "Active listening and empathy", categoryId: 16, description: "Practice active listening and empathetic communication to deepen understanding and trust." },
-  { title: "Professional networking essentials", categoryId: 16, description: "Build meaningful professional networks and relationships that create career and business opportunities." },
-  { title: "Assertiveness training", categoryId: 16, description: "Develop assertive communication skills to express ideas and needs while respecting others." },
-
+  {
+    title: "Executive Communication",
+    description: "Influence and persuade effectively",
+    categoryId: 16,
+    imageUrl: "/images/proficiency/facetime-3-68.png",
+  },
+  {
+    title: "Negotiation Strategies",
+    description: "Win-win outcomes every time",
+    categoryId: 16,
+    imageUrl: "/images/proficiency/conference-52.png",
+  },
+  {
+    title: "Public Speaking Confidence",
+    description: "Deliver powerful presentations",
+    categoryId: 16,
+    imageUrl: "/images/proficiency/presentation-3-28.png",
+  },
   // Compliance (categoryId: 17)
-  { title: "Regulatory compliance essentials", categoryId: 17, description: "Understand key regulatory requirements and build compliance frameworks for your industry." },
-  { title: "Data privacy and GDPR", categoryId: 17, description: "Master data privacy regulations including GDPR to protect customer data and avoid penalties." },
-  { title: "Audit and internal controls", categoryId: 17, description: "Implement effective audit and internal control procedures to ensure organizational integrity." },
-  { title: "Risk management in projects", categoryId: 17, description: "Identify, assess, and mitigate risks in projects to improve success rates and stakeholder outcomes." },
-  { title: "Cybersecurity awareness training", categoryId: 17, description: "Build organizational cybersecurity awareness to protect against threats and data breaches." },
-  { title: "Contract negotiation for business", categoryId: 17, description: "Learn contract negotiation and review processes to protect your organization's interests." },
-  { title: "Vendor management and procurement", categoryId: 17, description: "Develop vendor relationships and procurement strategies that optimize costs and quality." },
-  { title: "Anti-corruption and ethics", categoryId: 17, description: "Establish ethical standards and anti-corruption policies that build organizational integrity." },
-  { title: "Industry regulations overview", categoryId: 17, description: "Gain comprehensive understanding of regulatory requirements specific to your industry." },
-  { title: "Quality assurance best practices", categoryId: 17, description: "Implement quality assurance processes that ensure consistent excellence and customer satisfaction." },
-
+  {
+    title: "Data Privacy and GDPR",
+    description: "Protect customer data, avoid penalties",
+    categoryId: 17,
+    imageUrl: "/images/proficiency/authentication-1-5.png",
+  },
+  {
+    title: "Cybersecurity Awareness",
+    description: "Defend against threats and breaches",
+    categoryId: 17,
+    imageUrl: "/images/proficiency/cybersecurity-1-98.png",
+  },
+  {
+    title: "Regulatory Compliance Essentials",
+    description: "Build compliance frameworks",
+    categoryId: 17,
+    imageUrl: "/images/proficiency/quality-check-57.png",
+  },
   // Health & Wellness (categoryId: 18)
-  { title: "Stress management", categoryId: 18, description: "Learn stress management techniques to improve resilience and maintain wellbeing at work." },
-  { title: "Workplace ergonomics", categoryId: 18, description: "Optimize your workspace and habits to prevent injury and improve long-term health and comfort." },
-  { title: "Mental health awareness", categoryId: 18, description: "Understand mental health factors and develop strategies to support emotional wellbeing." },
-  { title: "Work-life balance strategies", categoryId: 18, description: "Create sustainable work-life balance practices that enhance both professional and personal fulfillment." },
-  { title: "Fitness and nutrition at work", categoryId: 18, description: "Incorporate fitness and healthy nutrition habits into your work routine for better health outcomes." },
-  { title: "Meditation and mindfulness", categoryId: 18, description: "Practice meditation and mindfulness to reduce stress and improve focus and clarity." },
-  { title: "Sleep optimization for performance", categoryId: 18, description: "Optimize sleep quality and habits to enhance cognitive function and professional performance." },
-  { title: "Burnout prevention strategies", categoryId: 18, description: "Recognize and prevent burnout through sustainable practices and organizational support." },
-
+  {
+    title: "Stress Management",
+    description: "Build resilience at work",
+    categoryId: 18,
+    imageUrl: "/images/proficiency/dream-1-2.png",
+  },
+  {
+    title: "Burnout Prevention Strategies",
+    description: "Sustainable practices for the long run",
+    categoryId: 18,
+    imageUrl: "/images/proficiency/coworking-31.png",
+  },
+  {
+    title: "Meditation and Mindfulness",
+    description: "Reduce stress, improve focus",
+    categoryId: 18,
+    imageUrl: "/images/proficiency/meditation-15.png",
+  },
   // Marketing (categoryId: 19)
-  { title: "Brand building strategies", categoryId: 19, description: "Develop comprehensive brand strategies that build recognition and drive customer loyalty." },
-  { title: "Digital marketing essentials", categoryId: 19, description: "Master digital marketing channels and strategies to reach and engage your target audience effectively." },
-  { title: "Content strategy and creation", categoryId: 19, description: "Develop content strategies and create compelling content that drives engagement and conversions." },
-  { title: "Social media marketing for business", categoryId: 19, description: "Leverage social media platforms to build community, engage customers, and drive business results." },
-  { title: "Search engine optimization", categoryId: 19, description: "Improve online visibility through search engine optimization techniques and best practices." },
-  { title: "Email marketing campaigns", categoryId: 19, description: "Design and execute effective email marketing campaigns that nurture leads and drive revenue." },
-  { title: "Analytics and measurement", categoryId: 19, description: "Measure marketing performance and ROI using analytics tools and data-driven insights." },
-  { title: "Customer retention strategies", categoryId: 19, description: "Implement strategies to increase customer lifetime value and reduce churn rates." },
-  { title: "Loyalty program design", categoryId: 19, description: "Create loyalty programs that reward customers and encourage repeat business and advocacy." },
-  { title: "Voice of the customer", categoryId: 19, description: "Gather and act on customer feedback to improve products, services, and customer experience." },
-  { title: "Market analysis and competitive intelligence", categoryId: 19, description: "Conduct market analysis and competitive intelligence to inform strategic marketing decisions." },
-  { title: "Product strategy and roadmapping", categoryId: 19, description: "Develop product strategies and roadmaps that align with market needs and business objectives." },
-  { title: "Pricing strategy fundamentals", categoryId: 19, description: "Master pricing strategy and tactics to optimize revenue while maintaining competitive advantage." },
-  { title: "Brand management essentials", categoryId: 19, description: "Manage and strengthen your brand across touchpoints to build long-term brand equity." },
+  {
+    title: "Digital Marketing Essentials",
+    description: "Reach and engage your audience",
+    categoryId: 19,
+    imageUrl: "/images/proficiency/marketing-campaign-78.png",
+  },
+  {
+    title: "Content Strategy and Creation",
+    description: "Drive engagement and conversions",
+    categoryId: 19,
+    imageUrl: "/images/proficiency/content-creation-92.png",
+  },
+  {
+    title: "Brand Building Strategies",
+    description: "Build recognition and loyalty",
+    categoryId: 19,
+    imageUrl: "/images/proficiency/marketing-50.png",
+  },
+]
+
+const ALL_PRODUCTS: CuratedProduct[] = [
+  ...PUG_PRODUCTS,
+  ...STITCH_PRODUCTS,
+  ...LUMINARA_PRODUCTS,
+  ...PROFICIENCY_PRODUCTS,
 ]
 
 type ProductsInput = typeof products.$inferInsert
 
 /**
- * Generates more mock products for the database.
+ * Seeds curated products for all 4 shops.
+ * Each category gets exactly 3 products.
  */
 export async function generateProducts() {
   console.log("Generating products...")
-
-  const shops = await db.query.shops.findMany({
-    columns: { id: true, name: true },
-  })
 
   const categories = await db.query.productCategories.findMany({
     columns: { id: true, shopId: true },
   })
 
-  const productsBatch: ProductsInput[] = []
-
-  for (let i = 0; i < PRODUCTS_COUNT; i++) {
-    const course = COURSES[i % COURSES.length]
-    const category = categories.find((cat) => cat.id === course.categoryId)
-
-    if (!category) continue
-
-    const shopId = category.shopId
-    const shop = shops.find((shop) => shop.id === shopId)
-    if (!shop) continue
-
-    const shopData = shopsData[shopId - 1]
-    let imageUrl: string
-    if ("images" in shopData && Array.isArray(shopData.images)) {
-      const imageName = shopData.images[Math.floor(Math.random() * shopData.images.length)]
-      imageUrl = `/images/${shopData.alias}/${imageName}`
-    } else {
-      const imageId = Math.floor(Math.random() * shopData.imagesCount) + 1
-      imageUrl = `/images/${shopData.alias}/${imageId}.png`
+  const productsBatch: ProductsInput[] = ALL_PRODUCTS.map((product, i) => {
+    const category = categories.find((cat) => cat.id === product.categoryId)
+    if (!category) {
+      throw new Error(
+        `Category ${product.categoryId} not found for product "${product.title}"`,
+      )
     }
 
     const createdAtDate =
@@ -142,18 +465,18 @@ export async function generateProducts() {
 
     const createdAt = createdAtDate.toISOString().slice(0, 19).replace("T", " ")
 
-    productsBatch.push({
+    return {
       id: i,
-      title: course.title,
-      description: course.description,
+      title: product.title,
+      description: product.description,
       price: faker.commerce.price(),
-      categoryId: category.id,
+      categoryId: product.categoryId,
       discount: faker.number.int({ min: 0, max: 30 }).toString(),
-      imageUrl,
-      shopId,
+      imageUrl: product.imageUrl,
+      shopId: category.shopId,
       createdAt,
-    })
-  }
+    }
+  })
 
   if (productsBatch.length > 0) {
     await db.insert(products).values(productsBatch)

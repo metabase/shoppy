@@ -2,7 +2,6 @@ import { Request, Response } from "express"
 
 import { db } from "../utils/db"
 import { getShopIdBySite } from "../utils/sites"
-import { HARDCODED_PROFICIENCY_PRODUCTS } from "../utils/hardcoded-proficiency-products"
 
 export async function productListHandler(req: Request, res: Response) {
   const { site } = req.query
@@ -18,25 +17,17 @@ export async function productListHandler(req: Request, res: Response) {
   }
 
   try {
-    let products
-
-    // Use hardcoded products for proficiency (shopId: 4)
-    if (shopId === 4) {
-      products = HARDCODED_PROFICIENCY_PRODUCTS
-    } else {
-      // Query from database for other shops
-      products = await db.query.products.findMany({
-        columns: {
-          id: true,
-          title: true,
-          createdAt: true,
-          imageUrl: true,
-          shopId: true,
-        },
-        with: { category: { columns: { id: true, name: true } } },
-        where: (products, { eq }) => eq(products.shopId, shopId),
-      })
-    }
+    const products = await db.query.products.findMany({
+      columns: {
+        id: true,
+        title: true,
+        createdAt: true,
+        imageUrl: true,
+        shopId: true,
+      },
+      with: { category: { columns: { id: true, name: true } } },
+      where: (products, { eq }) => eq(products.shopId, shopId),
+    })
 
     res.status(200).json({ products })
   } catch (error) {
