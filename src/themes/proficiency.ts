@@ -30,7 +30,7 @@ const mantine: MantineThemeOverride = {
 }
 
 const metabase: MetabaseTheme = {
-  fontFamily: "Figtree",
+  fontFamily: "Source Sans 3",
   fontSize: "14px",
   colors: {
     brand: colors.primary,

@@ -33,7 +33,8 @@ body[data-theme="pug"] {
 }
 
 body[data-theme="proficiency"] {
-  --font-family-sans: Figtree;
+  --font-family-sans: "Source Sans 3";
+  --font-family-serif: "Source Serif 4";
   --color-primary: rgba(106, 87, 201, 1);
   --color-lighter-grey: #d1cfc5;
   --color-light-grey: #545455;

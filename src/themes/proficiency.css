@@ -1,6 +1,6 @@
 body[data-theme="proficiency"] {
   .navbar {
-    box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.08);
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
   }
 
   [data-dashcard-key] {
@@ -120,19 +120,14 @@ body[data-theme="proficiency"] {
   .overview-title {
     font-size: 32px;
     font-weight: 700;
+    font-family: var(--font-family-serif), serif;
   }
 
   .proficiency-sidebar-divider {
-    position: absolute;
-    left: 0;
-    width: 100%;
+    display: none;
   }
 
-  .sidebar-create-section {
-    margin-top: 20px;
-  }
-
-  .sidebar-links-container {
+.sidebar-links-container {
     @apply space-y-1;
   }
 

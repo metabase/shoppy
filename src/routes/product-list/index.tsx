@@ -59,7 +59,7 @@ export const ProductAnalyticsPage = (props: Props) => {
 
         <SimpleGrid
           cols={{ base: 1, xs: 2, md: 3 }}
-          spacing="xl"
+          spacing={COLUMN_SPACING[site]}
           verticalSpacing={VERTICAL_SPACING[site]}
         >
           {products.map((product) => (
@@ -75,5 +75,12 @@ const VERTICAL_SPACING: Record<SiteKey, number> = {
   stitch: 64,
   luminara: 28,
   pug: 80,
-  proficiency: 64,
+  proficiency: 24,
+}
+
+const COLUMN_SPACING: Record<SiteKey, number | string> = {
+  stitch: "xl",
+  luminara: "xl",
+  pug: "xl",
+  proficiency: 24,
 }

@@ -69,11 +69,15 @@ body[data-theme="pug"] {
 
   .themed-button.sidebar-action-button {
     color: var(--color-bright-grey);
-    align-self: flex-start;
+    align-self: stretch;
     padding: 0px 8px;
     border: 1px solid var(--color-bright-grey);
     font-weight: 400;
     font-size: 13px;
+  }
+
+  .sidebar-create-section {
+    margin-bottom: 40px;
   }
 
   .product-detail-card-container {
