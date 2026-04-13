@@ -72,7 +72,7 @@ const renderLink = (
         </Flex>
       }
       p={3}
-      fz="14px"
+      fz="16px"
       variant="subtle"
       key={link.to ?? link.title ?? link.key}
       href={link.to ?? "#!"}

@@ -26,15 +26,18 @@ body[data-theme="pug"] {
 
   @media screen and (min-width: 768px) {
     .navbar::after {
-      position: absolute;
-      top: 40px;
+      position: fixed;
+      top: 44px;
+      left: 296px;
+      right: auto;
       content: " ";
       background: url(/assets/blue-sidebar-waves.svg);
       background-repeat: repeat-y;
-      background-position: center;
-      height: 100%;
+      background-position: center top;
+      height: calc(100vh - 44px);
       width: 23px;
-      right: -15px;
+      pointer-events: none;
+      z-index: 3;
     }
   }
 
@@ -73,7 +76,16 @@ body[data-theme="pug"] {
     padding: 0px 8px;
     border: 1px solid var(--color-bright-grey);
     font-weight: 400;
-    font-size: 13px;
+  }
+
+  .themed-button.sidebar-action-button:not(.sidebar-action-button-secondary) {
+    background: #ECB405;
+    color: var(--color-primary);
+    border: none;
+  }
+
+  .themed-button.sidebar-action-button:not(.sidebar-action-button-secondary):hover {
+    background: #d9a504;
   }
 
   .sidebar-create-section {

@@ -34,8 +34,8 @@ body[data-theme="proficiency"] {
   .sidebar-link-icon {
     padding: 2px;
     font-size: 16px;
-    color: rgba(106, 87, 201, 0.75);
-    background: rgba(106, 87, 201, 0.06);
+    color: rgba(44, 150, 138, 0.75);
+    background: rgba(44, 150, 138, 0.06);
     border-radius: 4px;
 
     img {
@@ -83,6 +83,7 @@ body[data-theme="proficiency"] {
 
     .sidebar-link-icon {
       background: none;
+      color: rgba(106, 87, 201, 0.75);
       transition: background 0.4s ease;
     }
   }
@@ -134,8 +135,8 @@ body[data-theme="proficiency"] {
   .sidebar-icons svg {
     padding: 4px;
     border-radius: 4px;
-    color: rgba(106, 87, 201, 0.75);
-    background: rgba(106, 87, 201, 0.06);
+    color: rgba(44, 150, 138, 0.75);
+    background: rgba(44, 150, 138, 0.06);
   }
 
   .orders-over-time-container svg text {
@@ -186,9 +187,14 @@ body[data-theme="proficiency"] {
     }
   }
 
-  .sidebar-action-button {
-    width: 100%;
-    height: 36px;
+  .themed-button.sidebar-action-button-secondary {
+    background: rgba(44, 150, 138, 0.15);
+    color: var(--color-primary);
+    border: none;
+  }
+
+  .themed-button.sidebar-action-button-secondary:hover {
+    background: rgba(44, 150, 138, 0.22);
   }
 
   .proficiency-gradient {

@@ -93,6 +93,12 @@ body[data-theme="luminara"] {
     background: var(--color-light-grey);
   }
 
+  .themed-button.sidebar-action-button-secondary {
+    background: transparent;
+    color: var(--color-dark-grey);
+    border: 1px solid var(--color-dark-grey);
+  }
+
   .question-container, .dashboard-container {
     /* WORKAROUND: table border radius */
     [data-testid="TableInteractive-root"] {

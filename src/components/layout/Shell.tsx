@@ -71,7 +71,7 @@ export function Shell(props: Props) {
         },
       }}
       navbar={{
-        width: 250,
+        width: 304,
         breakpoint: "sm",
         collapsed: { mobile: !isMobileNavOpen },
       }}
@@ -166,7 +166,7 @@ export function Shell(props: Props) {
             </NewQuestionMenu>
 
             <ThemedButton
-              className="sidebar-action-button"
+              className="sidebar-action-button sidebar-action-button-secondary"
               size="sm"
               component="a"
               href={`/admin/analytics/new/dashboard${search ? `?${search}` : ""}`}

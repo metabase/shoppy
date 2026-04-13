@@ -67,6 +67,14 @@ body[data-theme="stitch"] {
     color: var(--mantine-color-white);
   }
 
+  .themed-button.sidebar-action-button:not(.sidebar-action-button-secondary)::after {
+    display: none;
+  }
+
+  .themed-button.sidebar-action-button:not(.sidebar-action-button-secondary) span {
+    color: #000;
+  }
+
   .card {
     @apply text-white border border-dark-grey rounded-lg;
 
