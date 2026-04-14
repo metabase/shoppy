@@ -1,4 +1,4 @@
-import { SimpleGrid, Stack, Title, Container } from "@mantine/core"
+import { Stack, Title, Container } from "@mantine/core"
 import { useQuery } from "@tanstack/react-query"
 import { navigate } from "wouter/use-browser-location"
 
@@ -53,19 +53,15 @@ export const ProductAnalyticsPage = (props: Props) => {
   if (query.isLoading) return <FullPageLoader />
 
   return (
-    <Container>
-      <Stack w="100%" maw="1000px" className="gap-y-10">
+    <Container size={1008} px={0}>
+      <Stack w="1008px" className="gap-y-10">
         <Title className="overview-title">{currentCategoryName}</Title>
 
-        <SimpleGrid
-          cols={{ base: 1, xs: 2, md: 3 }}
-          spacing={COLUMN_SPACING[site]}
-          verticalSpacing={VERTICAL_SPACING[site]}
-        >
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 320px)", gap: `${VERTICAL_SPACING[site]}px 24px` }}>
           {products.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
-        </SimpleGrid>
+        </div>
       </Stack>
     </Container>
   )
@@ -75,12 +71,5 @@ const VERTICAL_SPACING: Record<SiteKey, number> = {
   stitch: 64,
   luminara: 28,
   pug: 80,
-  proficiency: 24,
-}
-
-const COLUMN_SPACING: Record<SiteKey, number | string> = {
-  stitch: "xl",
-  luminara: "xl",
-  pug: "xl",
   proficiency: 24,
 }

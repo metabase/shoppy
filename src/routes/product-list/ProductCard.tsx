@@ -37,13 +37,13 @@ export const ProductCard = ({ product }: Props) => {
           <Stack className="smartscalar product-card-trend" mih={70} gap={0}>
             <Text
               className="product-card-title"
-              pl={site === "proficiency" ? 0 : "8px"}
+              pl="8px"
               lineClamp={1}
             >
               {truncate(product.title, truncateLength)}
             </Text>
 
-            <Box py={4} h={questionHeight}>
+            <Box pb={4} h={questionHeight}>
               <RemountOnSiteChange>
                 <StaticQuestion
                   questionId="8emcAd9TTrPoHLuaFaUh0"

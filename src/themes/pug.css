@@ -5,6 +5,10 @@ body[data-theme="pug"] {
     @apply bg-background rounded-md;
   }
 
+  .product-card-image-container {
+    background-color: #F4FAFA;
+  }
+
   .product-card-image {
     border-radius: 100%;
     align-self: center;

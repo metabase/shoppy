@@ -45,6 +45,10 @@ body:not([data-theme="luminara"]) {
   }
 }
 
+.product-card {
+  overflow: hidden;
+}
+
 .product-card-image-container {
   aspect-ratio: 1 / 1;
 }

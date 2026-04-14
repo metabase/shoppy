@@ -89,14 +89,20 @@ body[data-theme="proficiency"] {
   }
 
   .product-card-image-container {
-    height: 180px;
+    height: 226px;
     aspect-ratio: unset;
     margin-bottom: 0;
-    padding: 12px 12px 0;
+    padding: 0;
+    background-color: #F4FAFA;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .product-card-image {
     object-fit: contain;
+    width: 206px !important;
+    height: 206px !important;
   }
 
   .product-card-trend {
@@ -145,6 +151,8 @@ body[data-theme="proficiency"] {
 
   .product-card-title {
     color: var(--color-light-grey);
+    padding-top: 8px;
+    margin-bottom: -8px;
   }
 
   .tippy-box.popover[role="tooltip"] {
