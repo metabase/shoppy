@@ -24,7 +24,8 @@ body[data-theme="proficiency"] {
   }
 
   .product-insights-card {
-    box-shadow: 0px 6px 10px 0px rgba(0, 0, 0, 0.08);
+    box-shadow: none;
+    border: 1px solid rgba(0, 0, 0, 0.12);
   }
 
   .sidebar-link-chevron {
