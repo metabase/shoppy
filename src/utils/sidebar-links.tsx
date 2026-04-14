@@ -73,7 +73,6 @@ export function useSidebarLinks(): SidebarLink[] {
               proficiency: () => (
                 <CustomIcon
                   icon="dashboard"
-                  fill="rgba(44, 150, 138, 0.75)"
                   size={14}
                 />
               ),
@@ -86,7 +85,6 @@ export function useSidebarLinks(): SidebarLink[] {
               proficiency: () => (
                 <CustomIcon
                   icon="bar"
-                  fill="rgba(44, 150, 138, 0.75)"
                   size={14}
                 />
               ),
@@ -99,7 +97,6 @@ export function useSidebarLinks(): SidebarLink[] {
               proficiency: () => (
                 <CustomIcon
                   icon="insight"
-                  fill="rgba(44, 150, 138, 0.75)"
                   size={14}
                 />
               ),

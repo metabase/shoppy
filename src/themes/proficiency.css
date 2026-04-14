@@ -43,6 +43,10 @@ body[data-theme="proficiency"] {
       max-width: 16px;
     }
 
+    svg {
+      fill: currentColor;
+    }
+
     svg path {
       stroke-width: 2px;
     }
@@ -160,6 +164,7 @@ body[data-theme="proficiency"] {
   .product-card-title {
     color: rgba(0, 0, 0, 1);
     padding-top: 8px;
+    padding-left: 8px;
     margin-bottom: -8px;
   }
 

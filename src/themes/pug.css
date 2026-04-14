@@ -39,10 +39,14 @@ body[data-theme="pug"] {
 
   .sidebar-link-parent:hover {
     color: inherit;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
   }
 
   .sidebar-inactive-child:hover {
     color: var(--color-primary);
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
   }
 
   .navbar {
@@ -186,6 +190,11 @@ body[data-theme="pug"] {
 
   .sidebar-active-child {
     font-weight: 500;
+  }
+
+  .sidebar-active-child:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
   }
 
   .sidebar-link-parent {
