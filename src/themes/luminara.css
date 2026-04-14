@@ -42,10 +42,8 @@ body[data-theme="luminara"] {
   }
 
   .sidebar-active-child {
-    color: var(--color-primary);
+    color: var(--color-dark-grey);
     font-weight: 700;
-    border-left: 2px solid var(--color-primary);
-    padding-left: 8px;
   }
 
   .sidebar-inactive-child:hover {
@@ -61,6 +59,12 @@ body[data-theme="luminara"] {
 
   .sidebar-link-parent {
     font-weight: 600;
+  }
+
+  .sidebar-link-parent .sidebar-link-title {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
   }
 
   .product-insights-title, .product-detail-title {

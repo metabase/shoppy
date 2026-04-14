@@ -91,209 +91,202 @@ const PUG_PRODUCTS: CuratedProduct[] = [
 ]
 
 // theStitch (shopId 2) - T-shirt store
-// Categories: Punderful Prints (5), Pixel <3 (6), Adventure (7), Dystopian Dreams (8)
+// Categories: White (5), Black (6), All-Over Print (7)
 const STITCH_PRODUCTS: CuratedProduct[] = [
-  // Punderful Prints (categoryId: 5)
+  // White (categoryId: 5)
   {
-    title: "I'm A Fungi",
-    description:
-      "A cheerful mushroom character that proves you're a fun guy at any party.",
+    title: "Digital White",
+    description: "Pure static meets clean canvas. A glitchy digital print on crisp white that looks like your screen just had a moment.",
     categoryId: 5,
-    imageUrl: "/images/stitch/1.png",
+    imageUrl: "/images/stitch/digital-white.jpg",
   },
   {
-    title: "Taco 'Bout Awesome",
-    description:
-      "Because sometimes you just need a taco to do the talking for you.",
+    title: "White Vaporwave",
+    description: "Pastel grids and corrupted gradients on white. Nostalgia for a future that never existed.",
     categoryId: 5,
-    imageUrl: "/images/stitch/2.png",
+    imageUrl: "/images/stitch/white-vaporwave.jpg",
   },
+  // Black (categoryId: 6)
   {
-    title: "Nacho Average Tee",
-    description:
-      "Stand out from the crowd with this cheesy but lovable nacho design.",
-    categoryId: 5,
-    imageUrl: "/images/stitch/3.png",
-  },
-  // Pixel <3 (categoryId: 6)
-  {
-    title: "8-Bit Sunset",
-    description:
-      "A retro pixel-art sunset that brings nostalgic vibes to any outfit.",
+    title: "Cyberpunk Black",
+    description: "Neon circuits and corrupted code on black. For those who live in the cracks of the digital world.",
     categoryId: 6,
-    imageUrl: "/images/stitch/1.png",
+    imageUrl: "/images/stitch/cyberpunk-black.jpg",
   },
   {
-    title: "Retro Game Over",
-    description:
-      "Classic arcade-style Game Over screen for true retro gaming fans.",
+    title: "Glitch Black",
+    description: "Reality is buffering. A raw glitch aesthetic on black that makes it look like the matrix is breaking down.",
     categoryId: 6,
-    imageUrl: "/images/stitch/2.png",
+    imageUrl: "/images/stitch/glitch-black.jpg",
   },
   {
-    title: "Pixel Heart",
-    description:
-      "The iconic pixelated heart — a timeless symbol of 8-bit love.",
+    title: "Pink Abstract Black",
+    description: "Hot pink digital noise on black. Soft signals in a hard system.",
     categoryId: 6,
-    imageUrl: "/images/stitch/3.png",
+    imageUrl: "/images/stitch/pink-abstract-black.jpg",
   },
-  // Adventure (categoryId: 7)
   {
-    title: "Mountain Summit",
-    description:
-      "Reach new heights with this minimalist mountain peak illustration.",
+    title: "Stripes Black",
+    description: "Distorted digital stripes on black. Classic pattern, corrupted signal.",
+    categoryId: 6,
+    imageUrl: "/images/stitch/stripes-black.jpg",
+  },
+  // All-Over Print (categoryId: 7)
+  {
+    title: "City All-Over Print",
+    description: "A glitched cityscape wrapping your whole body. Every pixel of this skyline has been through something.",
     categoryId: 7,
-    imageUrl: "/images/stitch/1.png",
+    imageUrl: "/images/stitch/city-all-over-print.jpg",
   },
   {
-    title: "Lost In The Wild",
-    description:
-      "Embrace the call of the wilderness with this hand-drawn forest design.",
+    title: "Digital All-Over Print",
+    description: "Full-coverage digital chaos. No seam is safe from the glitch.",
     categoryId: 7,
-    imageUrl: "/images/stitch/2.png",
+    imageUrl: "/images/stitch/digital-all-over-print.jpg",
   },
   {
-    title: "Desert Wanderer",
-    description:
-      "Endless dunes and open skies for those who wander but are not lost.",
-    categoryId: 7,
-    imageUrl: "/images/stitch/3.png",
-  },
-  // Dystopian Dreams (categoryId: 8)
-  {
-    title: "Neon Cityscape 2084",
-    description:
-      "A cyberpunk skyline glowing with neon lights and towering megastructures.",
-    categoryId: 8,
-    imageUrl: "/images/stitch/1.png",
+    title: "White Vaporwave",
+    description: "Pastel grids and corrupted gradients on white. Nostalgia for a future that never existed.",
+    categoryId: 6,
+    imageUrl: "/images/stitch/white-vaporwave.jpg",
   },
   {
-    title: "Digital Resistance",
-    description:
-      "Glitched typography and circuit patterns for the digital underground.",
-    categoryId: 8,
-    imageUrl: "/images/stitch/2.png",
+    title: "Pink Abstract Black",
+    description: "Hot pink digital noise on black. Soft signals in a hard system.",
+    categoryId: 6,
+    imageUrl: "/images/stitch/pink-abstract-black.jpg",
   },
   {
-    title: "Glitch In The Matrix",
-    description: "Reality is broken — and this design proves it with style.",
-    categoryId: 8,
-    imageUrl: "/images/stitch/3.png",
+    title: "Stripes Black",
+    description: "Distorted digital stripes on black. Classic pattern, corrupted signal.",
+    categoryId: 6,
+    imageUrl: "/images/stitch/stripes-black.jpg",
+  },
+  {
+    title: "Digital All-Over Print",
+    description: "Full-coverage digital chaos. No seam is safe from the glitch.",
+    categoryId: 6,
+    imageUrl: "/images/stitch/digital-all-over-print.jpg",
   },
 ]
 
 // Luminara Beauty (shopId 3) - Beauty products
-// Categories: Skincare (9), Hair Care (10), Makeup (11), Bath and Body (12), Sun Care (13)
+// Categories: Creams (9), Serums (10), Make-up (11)
+// First 6 (new products page): Anti-Wrinkle Cream, Day Cream, Day and Night Serums, Retinol Serum, Lip Maximizer, Salicylic Acid Serum
 const LUMINARA_PRODUCTS: CuratedProduct[] = [
-  // Skincare (categoryId: 9)
   {
-    title: "Hydrating Rose Serum",
-    description:
-      "Lightweight serum infused with rosehip oil to deeply hydrate and brighten skin.",
+    title: "Anti-Wrinkle Cream",
+    description: "Visibly reduces fine lines and wrinkles with a blend of peptides and hyaluronic acid. Skin feels firmer from day one.",
     categoryId: 9,
-    imageUrl: "/images/luminara/1.png",
+    imageUrl: "/images/luminara/anti-wrinkle-cream.jpg",
   },
   {
-    title: "Vitamin C Brightening Cream",
-    description:
-      "Antioxidant-rich moisturizer that evens skin tone and boosts radiance.",
+    title: "Day Cream",
+    description: "Lightweight daily moisturiser with SPF protection. Hydrates and shields through every hour of the day.",
     categoryId: 9,
-    imageUrl: "/images/luminara/2.png",
+    imageUrl: "/images/luminara/day-cream.jpg",
   },
   {
-    title: "Gentle Foaming Cleanser",
-    description:
-      "Soap-free cleanser that removes impurities without stripping natural moisture.",
+    title: "Day and Night Serums",
+    description: "A complete duo — brightening serum for the day, restorative serum for the night. Round-the-clock skin care.",
+    categoryId: 10,
+    imageUrl: "/images/luminara/day-and-nigh-serums.jpg",
+  },
+  {
+    title: "Retinol Serum",
+    description: "Clinical-strength retinol that accelerates cell turnover and reduces the appearance of dark spots and lines.",
+    categoryId: 10,
+    imageUrl: "/images/luminara/retinol-serum.jpg",
+  },
+  {
+    title: "Lip Maximizer",
+    description: "Volumising lip gloss with a cooling effect. Fuller-looking lips, instantly.",
+    categoryId: 11,
+    imageUrl: "/images/luminara/lip-maximizer.jpg",
+  },
+  {
+    title: "Salicylic Acid Serum",
+    description: "Deep-pore exfoliant that clears breakouts and refines texture. Dermatologist-tested for sensitive skin.",
+    categoryId: 10,
+    imageUrl: "/images/luminara/salicylic-acid-serum.jpg",
+  },
+  {
+    title: "Night Cream",
+    description: "Rich overnight formula that repairs and replenishes while you sleep. Wake up to visibly softer, plumper skin.",
     categoryId: 9,
-    imageUrl: "/images/luminara/1.png",
+    imageUrl: "/images/luminara/night-cream.jpg",
   },
-  // Hair Care (categoryId: 10)
   {
-    title: "Argan Oil Repair Shampoo",
-    description:
-      "Nourishing shampoo that restores damaged hair with pure Moroccan argan oil.",
+    title: "Refreshing Gel",
+    description: "A cooling, water-based gel that instantly hydrates and soothes. Ideal for oily or combination skin.",
+    categoryId: 9,
+    imageUrl: "/images/luminara/refreshing-gel.jpg",
+  },
+  {
+    title: "Vitamin C Serum",
+    description: "High-potency vitamin C that brightens dull skin and fades hyperpigmentation. Antioxidant protection in every drop.",
     categoryId: 10,
-    imageUrl: "/images/luminara/2.png",
+    imageUrl: "/images/luminara/vitamin-c-serum.jpg",
   },
   {
-    title: "Deep Conditioning Hair Mask",
-    description:
-      "Intensive weekly treatment that transforms dry, brittle hair into silk.",
+    title: "Powder Foundation",
+    description: "Buildable matte coverage in a silky powder formula. Blurs imperfections and controls shine all day.",
+    categoryId: 11,
+    imageUrl: "/images/luminara/powder-foundation.jpg",
+  },
+  {
+    title: "Night Cream",
+    description: "Rich overnight formula that repairs and replenishes while you sleep. Wake up to visibly softer, plumper skin.",
+    categoryId: 9,
+    imageUrl: "/images/luminara/night-cream.jpg",
+  },
+  {
+    title: "Refreshing Gel",
+    description: "A cooling, water-based gel that instantly hydrates and soothes. Ideal for oily or combination skin.",
+    categoryId: 9,
+    imageUrl: "/images/luminara/refreshing-gel.jpg",
+  },
+  {
+    title: "Vitamin C Serum",
+    description: "High-potency vitamin C that brightens dull skin and fades hyperpigmentation. Antioxidant protection in every drop.",
     categoryId: 10,
-    imageUrl: "/images/luminara/1.png",
+    imageUrl: "/images/luminara/vitamin-c-serum.jpg",
   },
   {
-    title: "Keratin Smoothing Treatment",
-    description:
-      "Professional-grade keratin formula that eliminates frizz for up to 8 weeks.",
+    title: "Powder Foundation",
+    description: "Buildable matte coverage in a silky powder formula. Blurs imperfections and controls shine all day.",
+    categoryId: 11,
+    imageUrl: "/images/luminara/powder-foundation.jpg",
+  },
+  {
+    title: "Anti-Wrinkle Cream",
+    description: "Visibly reduces fine lines and wrinkles with a blend of peptides and hyaluronic acid. Skin feels firmer from day one.",
+    categoryId: 9,
+    imageUrl: "/images/luminara/anti-wrinkle-cream.jpg",
+  },
+  {
+    title: "Day Cream",
+    description: "Lightweight daily moisturiser with SPF protection. Hydrates and shields through every hour of the day.",
+    categoryId: 9,
+    imageUrl: "/images/luminara/day-cream.jpg",
+  },
+  {
+    title: "Day and Night Serums",
+    description: "A complete duo — brightening serum for the day, restorative serum for the night. Round-the-clock skin care.",
     categoryId: 10,
-    imageUrl: "/images/luminara/2.png",
-  },
-  // Makeup (categoryId: 11)
-  {
-    title: "Velvet Matte Lipstick",
-    description:
-      "Long-lasting matte lipstick with a velvety finish in rich, bold shades.",
-    categoryId: 11,
-    imageUrl: "/images/luminara/1.png",
+    imageUrl: "/images/luminara/day-and-nigh-serums.jpg",
   },
   {
-    title: "Luminous Foundation",
-    description:
-      "Buildable coverage foundation that gives skin a natural, dewy glow.",
-    categoryId: 11,
-    imageUrl: "/images/luminara/2.png",
+    title: "Retinol Serum",
+    description: "Clinical-strength retinol that accelerates cell turnover and reduces the appearance of dark spots and lines.",
+    categoryId: 10,
+    imageUrl: "/images/luminara/retinol-serum.jpg",
   },
   {
-    title: "Smoky Eye Palette",
-    description:
-      "Twelve curated eyeshadow shades from subtle shimmer to dramatic smoky hues.",
-    categoryId: 11,
-    imageUrl: "/images/luminara/1.png",
-  },
-  // Bath and Body (categoryId: 12)
-  {
-    title: "Lavender Epsom Salt Soak",
-    description:
-      "Relaxing bath soak with pure lavender essential oil and mineral-rich salts.",
-    categoryId: 12,
-    imageUrl: "/images/luminara/2.png",
-  },
-  {
-    title: "Coconut Milk Body Lotion",
-    description:
-      "Rich body lotion with coconut milk and shea butter for all-day moisture.",
-    categoryId: 12,
-    imageUrl: "/images/luminara/1.png",
-  },
-  {
-    title: "Eucalyptus Shower Gel",
-    description:
-      "Invigorating shower gel with eucalyptus and mint for an energizing cleanse.",
-    categoryId: 12,
-    imageUrl: "/images/luminara/2.png",
-  },
-  // Sun Care (categoryId: 13)
-  {
-    title: "SPF 50 Daily Moisturizer",
-    description:
-      "Lightweight daily moisturizer with broad-spectrum SPF 50 protection.",
-    categoryId: 13,
-    imageUrl: "/images/luminara/1.png",
-  },
-  {
-    title: "After-Sun Aloe Gel",
-    description:
-      "Cooling aloe vera gel that soothes and repairs sun-exposed skin.",
-    categoryId: 13,
-    imageUrl: "/images/luminara/2.png",
-  },
-  {
-    title: "Tinted Mineral Sunscreen",
-    description:
-      "Mineral sunscreen with a subtle tint that blends seamlessly into any skin tone.",
-    categoryId: 13,
-    imageUrl: "/images/luminara/1.png",
+    title: "Lip Maximizer",
+    description: "Volumising lip gloss with a cooling effect. Fuller-looking lips, instantly.",
+    categoryId: 10,
+    imageUrl: "/images/luminara/lip-maximizer.jpg",
   },
 ]
 

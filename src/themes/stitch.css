@@ -35,10 +35,15 @@ body[data-theme="stitch"] {
     color: var(--color-light-grey);
   }
 
-  .sidebar-inactive-child:hover,
-  .sidebar-link-parent:hover {
+  .sidebar-inactive-child:hover {
     color: #fff;
     background: transparent;
+  }
+
+  .sidebar-link-parent:hover {
+    color: var(--color-light-grey);
+    background: transparent;
+    cursor: default;
   }
 
   .themed-button {
@@ -105,6 +110,10 @@ body[data-theme="stitch"] {
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 0.08em;
+  }
+
+  .product-card-title {
+    padding-left: 8px;
   }
 
   .product-insights-title {

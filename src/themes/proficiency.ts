@@ -38,7 +38,7 @@ const metabase: MetabaseTheme = {
     "text-primary": colors.lightGrey,
     "text-secondary": colors.lightGrey,
     "text-tertiary": "rgba(0, 0, 0, 0.4)",
-    border: "rgba(0, 0, 0, 0.12)",
+    border: "transparent",
     background: colors.background,
     "background-hover": "#F1F0FA",
     "background-disabled": "rgba(0, 0, 0, 0.1)",

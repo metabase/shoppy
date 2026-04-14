@@ -27,62 +27,38 @@ const productCategoriesData = [
   {
     id: 5,
     shopId: 2,
-    name: "Punderful Prints",
-    description: "T-shirts with puns, wordplay, and clever linguistic designs",
+    name: "White",
+    description: "Clean white tees with glitchy digital prints",
   },
   {
     id: 6,
     shopId: 2,
-    name: "Pixel <3",
-    description:
-      "T-shirts inspired by retro pixel art, video games, and 8-bit nostalgia",
+    name: "Black",
+    description: "Black tees with bold glitchy digital designs",
   },
   {
     id: 7,
     shopId: 2,
-    name: "Adventure",
-    description: "T-shirts inspired by adventure and exploration",
-  },
-  {
-    id: 8,
-    shopId: 2,
-    name: "Dystopian Dreams",
-    description:
-      "T-shirts that delve into the speculative and often unsettling visions of possible futures",
+    name: "All-Over Print",
+    description: "Full coverage glitchy digital all-over print tees",
   },
   {
     id: 9,
     shopId: 3,
-    name: "Skincare",
-    description: "Cleansers, moisturizers, serums, and sunscreen",
+    name: "Creams",
+    description: "Face creams and gels for every skin need",
   },
   {
     id: 10,
     shopId: 3,
-    name: "Hair Care",
-    description:
-      "Shampoos, conditioners, styling products, and hair treatments",
+    name: "Serums",
+    description: "Targeted serums for radiant, healthy skin",
   },
   {
     id: 11,
     shopId: 3,
-    name: "Makeup",
-    description:
-      "Cosmetics including foundation, lipstick, eyeshadow, mascara, and other makeup products",
-  },
-  {
-    id: 12,
-    shopId: 3,
-    name: "Bath and Body",
-    description:
-      "Bath salts, shower gels, body lotions, and spa-related products",
-  },
-  {
-    id: 13,
-    shopId: 3,
-    name: "Sun Care",
-    description:
-      "Sunscreen, after-sun care, and other products for sun protection",
+    name: "Make-up",
+    description: "Makeup and cosmetics for every look",
   },
   {
     id: 14,
