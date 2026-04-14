@@ -19,7 +19,7 @@ export const ProductCard = ({ product }: Props) => {
   const image = product.imageUrl ?? "/assets/mock-t-shirt.webp"
 
   const questionHeight = site === "stitch" ? 45 : 70
-  const truncateLength = site === "pug" ? 13 : 50
+  const truncateLength = site === "pug" ? 100 : 50
 
   return (
     <LinkWithSearchParams href={`/products/${product.id}`}>
@@ -37,7 +37,6 @@ export const ProductCard = ({ product }: Props) => {
           <Stack className="smartscalar product-card-trend" mih={70} gap={0}>
             <Text
               className="product-card-title"
-              pl="8px"
               lineClamp={1}
             >
               {truncate(product.title, truncateLength)}

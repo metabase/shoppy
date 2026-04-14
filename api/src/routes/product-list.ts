@@ -1,6 +1,8 @@
+import { asc } from "drizzle-orm"
 import { Request, Response } from "express"
 
 import { db } from "../utils/db"
+import { products as productsTable } from "../schema/products"
 import { getShopIdBySite } from "../utils/sites"
 
 export async function productListHandler(req: Request, res: Response) {
@@ -27,6 +29,7 @@ export async function productListHandler(req: Request, res: Response) {
       },
       with: { category: { columns: { id: true, name: true } } },
       where: (products, { eq }) => eq(products.shopId, shopId),
+      orderBy: [asc(productsTable.id)],
     })
 
     res.status(200).json({ products })

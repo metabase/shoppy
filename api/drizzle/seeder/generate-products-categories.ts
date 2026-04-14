@@ -9,30 +9,20 @@ const productCategoriesData = [
   {
     id: 1,
     shopId: 1,
-    name: "Food and Treats",
-    description:
-      "Pet foods, treats, and specialty diets for different types of pets",
+    name: "Hats",
+    description: "Hats and berets for the most dapper of pugs",
   },
   {
     id: 2,
     shopId: 1,
-    name: "Care and Grooming",
-    description:
-      "Products such as shampoos, brushes, nail clippers, and grooming tools for maintaining the health and appearance of pets",
+    name: "Hoodies",
+    description: "Cozy hoodies to keep your pug snug and stylish",
   },
   {
     id: 3,
     shopId: 1,
-    name: "Toys",
-    description:
-      "A variety of toys designed for dogs, cats, birds, and other pets to keep them entertained and stimulated",
-  },
-  {
-    id: 4,
-    shopId: 1,
-    name: "Beds and Furniture",
-    description:
-      "Comfortable and stylish beds, sofas, and furniture for pets to rest and relax",
+    name: "Shirts",
+    description: "Shirts, jackets, sweaters and more for fashion-forward pugs",
   },
   {
     id: 5,

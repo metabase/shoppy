@@ -10,96 +10,83 @@ interface CuratedProduct {
   imageUrl: string
 }
 
-// Pug & Play (shopId 1) - Pet store
-// Categories: Food and Treats (1), Care and Grooming (2), Toys (3), Beds and Furniture (4)
+// Pug & Play (shopId 1) - Pug fashion store
+// Categories: Hats (1), Hoodies (2), Shirts (3), Accessories (4)
 const PUG_PRODUCTS: CuratedProduct[] = [
-  // Food and Treats (categoryId: 1)
+  // Hats (categoryId: 1)
   {
-    title: "Organic Puppy Kibble",
-    description:
-      "Premium grain-free kibble made with real chicken and vegetables for growing puppies.",
+    title: "Good Boy Berret",
+    description: "A classic beret for the pug who takes their good boy status seriously.",
     categoryId: 1,
-    imageUrl: "/images/pug/1.png",
+    imageUrl: "/images/pug/good-boy-berret.jpg",
   },
   {
-    title: "Salmon & Sweet Potato Bites",
-    description:
-      "Wholesome freeze-dried treats packed with omega-3 fatty acids for a shiny coat.",
+    title: "Le Pug Berret",
+    description: "Très chic. For the pug with a flair for the dramatic and a nose for fashion.",
     categoryId: 1,
-    imageUrl: "/images/pug/2.png",
+    imageUrl: "/images/pug/le-pug-berret.jpg",
   },
   {
-    title: "Peanut Butter Training Treats",
-    description:
-      "Small, soft training treats made with natural peanut butter and oats.",
+    title: "Yellow Hat",
+    description: "Bright, bold, and impossible to ignore — just like your pug.",
     categoryId: 1,
-    imageUrl: "/images/pug/3.png",
+    imageUrl: "/images/pug/yellow-hat.jpg",
   },
-  // Care and Grooming (categoryId: 2)
+  // Hoodies (categoryId: 2)
   {
-    title: "Gentle Oatmeal Shampoo",
-    description:
-      "Soothing oatmeal-based shampoo for sensitive skin, leaving coats soft and clean.",
+    title: "Yellow Raincoat",
+    description: "No rain can dampen this pug's style. Puddle-ready and paw-fectly waterproof.",
     categoryId: 2,
-    imageUrl: "/images/pug/1.png",
+    imageUrl: "/images/pug/yellow-raincoat.jpg",
   },
   {
-    title: "De-Shedding Brush",
-    description:
-      "Professional-grade deshedding tool that reduces loose fur by up to 90%.",
+    title: "Gray Hoodie",
+    description: "A cozy everyday hoodie for the pug who likes to keep it low-key.",
     categoryId: 2,
-    imageUrl: "/images/pug/2.png",
+    imageUrl: "/images/pug/gray-hoodie.jpg",
   },
+  // Shirts (categoryId: 3)
   {
-    title: "Paw Balm Moisturizer",
-    description:
-      "All-natural balm that protects and heals cracked or dry paw pads.",
-    categoryId: 2,
-    imageUrl: "/images/pug/3.png",
-  },
-  // Toys (categoryId: 3)
-  {
-    title: "Indestructible Chew Bone",
-    description:
-      "Ultra-durable nylon bone designed for the most aggressive chewers.",
+    title: "Melange Sweater",
+    description: "A refined knit for refined tastes. Your pug deserves nothing less.",
     categoryId: 3,
-    imageUrl: "/images/pug/1.png",
+    imageUrl: "/images/pug/melange-sweater.jpg",
   },
   {
-    title: "Squeaky Tennis Ball Set",
-    description:
-      "Pack of three high-bounce tennis balls with built-in squeakers for fetch fun.",
+    title: "Banana Pajamas",
+    description: "For the pug who believes every hour is nap hour. Soft, comfy, and a-peel-ing.",
     categoryId: 3,
-    imageUrl: "/images/pug/2.png",
+    imageUrl: "/images/pug/banana-pajamas.jpg",
   },
   {
-    title: "Rope Tug Toy",
-    description:
-      "Hand-braided cotton rope toy perfect for interactive tug-of-war play.",
+    title: "Denim Jacket",
+    description: "Cool enough for any walk, tough enough for any adventure. Pug-approved.",
     categoryId: 3,
-    imageUrl: "/images/pug/3.png",
-  },
-  // Beds and Furniture (categoryId: 4)
-  {
-    title: "Orthopedic Memory Foam Bed",
-    description:
-      "Veterinarian-recommended memory foam bed that supports joints and relieves pressure.",
-    categoryId: 4,
-    imageUrl: "/images/pug/1.png",
+    imageUrl: "/images/pug/denim-jacket.jpg",
   },
   {
-    title: "Cozy Cave Hooded Blanket",
-    description:
-      "Plush hooded blanket that creates a warm, den-like retreat for anxious pups.",
-    categoryId: 4,
-    imageUrl: "/images/pug/2.png",
+    title: "Yellow Hoodie",
+    description: "Stay snug and stand out. This hoodie is basically sunshine in pug form.",
+    categoryId: 3,
+    imageUrl: "/images/pug/yellow-hoodie.jpg",
   },
   {
-    title: "Elevated Cooling Cot",
-    description:
-      "Breathable mesh cot that keeps pets cool and comfortable in warm weather.",
-    categoryId: 4,
-    imageUrl: "/images/pug/3.png",
+    title: "Pink Shirt",
+    description: "Pretty in pink — because your pug is always best dressed at the dog park.",
+    categoryId: 3,
+    imageUrl: "/images/pug/pink-shirt.jpg",
+  },
+  {
+    title: "Striped Shirt",
+    description: "Classic stripes for a timeless look. Effortlessly chic, tail-waggingly good.",
+    categoryId: 3,
+    imageUrl: "/images/pug/striped-shirt.jpg",
+  },
+  {
+    title: "Rebel Berret",
+    description: "Who says pugs play by the rules? This beret is for the rebel without a leash.",
+    categoryId: 1,
+    imageUrl: "/images/pug/rebel-berret.jpg",
   },
 ]
 
