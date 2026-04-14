@@ -83,6 +83,11 @@ body:not([data-theme="luminara"]) {
   }
 }
 
+body:not([data-theme="proficiency"]) .mantine-NavLink-collapse {
+  margin-top: 0 !important;
+}
+
+
 .app-shell-remove-padding {
   --app-shell-padding: 0px;
 }

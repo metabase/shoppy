@@ -20,7 +20,7 @@ export function SidebarLinks({ onLinkClick }: SidebarLinkProps) {
 
   return (
     <Box pt="20px" className="sidebar-links-container">
-      {links.map((link) => renderLink(link, { onLinkClick, site }))}
+      {links.map((link, index) => renderLink(link, { onLinkClick, site, index }))}
     </Box>
   )
 }
@@ -31,9 +31,10 @@ const renderLink = (
     isChild?: boolean
     onLinkClick?: (link: SidebarLink) => void
     site?: SiteKey
+    index?: number
   },
 ) => {
-  const { isChild, onLinkClick, site } = context ?? {}
+  const { isChild, onLinkClick, site, index } = context ?? {}
 
   function renderIcon(): ReactNode {
     const icon = site && link.icons?.[site]
@@ -55,8 +56,12 @@ const renderLink = (
     return <link.component key={link.key} />
   }
 
-  // Do not allow toggling site navigation sections on ProficiencyLabs
-  const isNavToggleEnabled = site !== "proficiency"
+  // Do not allow toggling site navigation sections on ProficiencyLabs, Luminara, Pug, or Stitch
+  const isNavToggleEnabled =
+    site !== "proficiency" &&
+    site !== "luminara" &&
+    site !== "pug" &&
+    site !== "stitch"
   const iconElement = renderIcon()
 
   return (
@@ -71,7 +76,8 @@ const renderLink = (
           <Box className="sidebar-link-title">{link.title}</Box>
         </Flex>
       }
-      p={3}
+      p={4}
+      mt={!isChild && index && index > 0 && site !== "proficiency" ? "40px" : undefined}
       fz="16px"
       variant="subtle"
       key={link.to ?? link.title ?? link.key}

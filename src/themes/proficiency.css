@@ -142,7 +142,7 @@ body[data-theme="proficiency"] {
     display: none;
   }
 
-.sidebar-links-container {
+  .sidebar-links-container {
     @apply space-y-1;
   }
 

@@ -29,8 +29,20 @@ body[data-theme="pug"] {
     object-fit: cover;
   }
 
+  .sidebar-link-chevron {
+    display: none !important;
+  }
+
+  .sidebar-link-children-container {
+    padding-inline-start: 0px;
+  }
+
+  .sidebar-link-parent:hover {
+    color: inherit;
+  }
+
   .sidebar-inactive-child:hover {
-    color: var(--color-lighter-grey);
+    color: var(--color-primary);
   }
 
   .navbar {
@@ -124,6 +136,10 @@ body[data-theme="pug"] {
     margin-top: 12px;
   }
 
+  .product-insights-card {
+    border: 1px solid #dee2e6;
+  }
+
   .product-detail-title {
     font-family: Fraunces;
     color: var(--color-primary);
@@ -151,6 +167,21 @@ body[data-theme="pug"] {
     color: var(--color-primary);
     font-weight: 600;
     font-family: Fraunces;
+  }
+
+  .sidebar-link-parent .sidebar-link-title {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .sidebar-inactive-child .sidebar-link-title {
+    color: white;
+  }
+
+  .sidebar-active-child .sidebar-link-title {
+    color: #ECB405;
   }
 
   .sidebar-active-child {

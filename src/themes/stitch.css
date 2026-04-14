@@ -22,6 +22,14 @@ body[data-theme="stitch"] {
     -webkit-text-fill-color: transparent;
   }
 
+  .sidebar-link-chevron {
+    display: none !important;
+  }
+
+  .sidebar-link-children-container {
+    padding-inline-start: 0px;
+  }
+
   .sidebar-inactive-child,
   .sidebar-link-parent {
     color: var(--color-light-grey);
@@ -91,6 +99,12 @@ body[data-theme="stitch"] {
 
   .sidebar-link-parent {
     font-weight: 600;
+  }
+
+  .sidebar-link-parent .sidebar-link-title {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
   }
 
   .product-insights-title {

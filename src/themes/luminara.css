@@ -29,23 +29,27 @@ body[data-theme="luminara"] {
     }
   }
 
-  .sidebar-active-child {
-    position: relative;
+  .sidebar-link-chevron {
+    display: none !important;
   }
 
-  .sidebar-active-child::before {
-    content: "";
-    background: #E09862;
-    width: 16px;
-    height: 6px;
-    position: absolute;
-    left: -20px;
-    border-radius: 50px;
-    margin-top: 1px;
+  .sidebar-link-children-container {
+    padding-inline-start: 0px;
+  }
+
+  .sidebar-link-parent:hover {
+    color: inherit;
+  }
+
+  .sidebar-active-child {
+    color: var(--color-primary);
+    font-weight: 700;
+    border-left: 2px solid var(--color-primary);
+    padding-left: 8px;
   }
 
   .sidebar-inactive-child:hover {
-    color: var(--color-lighter-grey);
+    color: var(--color-dark-grey);
   }
 
   .product-card-title {

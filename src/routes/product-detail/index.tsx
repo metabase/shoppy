@@ -49,11 +49,7 @@ export const ProductDetailPage = ({ id }: Props) => {
         </Text>
       </Box>
 
-      <Flex w="100%" align="center" mt="30px" mb="20px">
-        <Text className="product-insights-title">Insights</Text>
-      </Flex>
-
-      <Grid gutter="xl">
+      <Grid gutter="xl" mt="30px">
         <Grid.Col span={{ md: 4 }}>
           <ProductDetailCard product={product} />
         </Grid.Col>
