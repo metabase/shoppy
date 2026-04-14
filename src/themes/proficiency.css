@@ -105,6 +105,13 @@ body[data-theme="proficiency"] {
     height: 206px !important;
   }
 
+  .product-detail-image-container {
+    background-color: #F4FAFA;
+    border-radius: 8px;
+    justify-content: center;
+    padding: 20px;
+  }
+
   .product-card-trend {
     padding: 0 12px 12px;
   }
