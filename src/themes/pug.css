@@ -28,16 +28,17 @@ body[data-theme="pug"] {
     .navbar::after {
       position: fixed;
       top: 44px;
-      left: 296px;
-      right: auto;
+      left: 295px;
       content: " ";
-      background: url(/assets/blue-sidebar-waves.svg);
-      background-repeat: repeat-y;
-      background-position: center top;
       height: calc(100vh - 44px);
-      width: 23px;
+      width: 18px;
       pointer-events: none;
       z-index: 3;
+      background-image:
+        radial-gradient(ellipse 9px 12px at 9px 12px, var(--color-primary) 99%, transparent 100%),
+        radial-gradient(ellipse 9px 12px at 9px 36px, var(--color-background) 99%, transparent 100%);
+      background-size: 18px 48px;
+      background-repeat: repeat-y;
     }
   }
 
