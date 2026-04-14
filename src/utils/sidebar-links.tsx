@@ -40,11 +40,11 @@ export function useSidebarLinks(): SidebarLink[] {
 
     return [
       {
-        title: "Products",
+        title: site === "proficiency" ? "Courses" : "Products",
         children: [
           {
             to: "/admin/products",
-            title: "All products",
+            title: site === "proficiency" ? "New courses" : "New products",
             icons: { proficiency: "iconoir:report-columns" },
           },
           ...categoryLinks,

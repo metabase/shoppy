@@ -1,4 +1,4 @@
-import { Stack, Title, Container } from "@mantine/core"
+import { Stack, Title, Container, Text } from "@mantine/core"
 import { useQuery } from "@tanstack/react-query"
 import { navigate } from "wouter/use-browser-location"
 
@@ -44,7 +44,11 @@ export const ProductAnalyticsPage = (props: Props) => {
 
   const currentCategoryName =
     categoryQuery.data?.find((category) => category.id === categoryId)?.name ??
-    "All products"
+    (site === "proficiency" ? "New courses" : "New products")
+
+  const sublineItem = site === "proficiency" ? "course" : "product"
+  const sublineFont = site === "stitch" ? "Inter" : "var(--font-family-sans)"
+  const sublineColor = site === "proficiency" ? "rgba(0, 0, 0, 0.7)" : undefined
 
   // If the site changes, redirect back to the product listing page.
   // This ensures we don't show product from last site's categories.
@@ -55,7 +59,10 @@ export const ProductAnalyticsPage = (props: Props) => {
   return (
     <Container size={1008} px={0}>
       <Stack w="1008px" className="gap-y-10">
-        <Title className="overview-title">{currentCategoryName}</Title>
+        <Stack gap={8}>
+          <Title className="overview-title">{currentCategoryName}</Title>
+          <Text size="16px" style={{ fontFamily: sublineFont, color: sublineColor }}>Total sales of each {sublineItem} this month</Text>
+        </Stack>
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 320px)", gap: `${VERTICAL_SPACING[site]}px 24px` }}>
           {products.map((product) => (

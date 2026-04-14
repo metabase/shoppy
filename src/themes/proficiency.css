@@ -150,7 +150,7 @@ body[data-theme="proficiency"] {
   }
 
   .product-card-title {
-    color: var(--color-light-grey);
+    color: rgba(0, 0, 0, 1);
     padding-top: 8px;
     margin-bottom: -8px;
   }
