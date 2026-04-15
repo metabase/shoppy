@@ -46,6 +46,12 @@ body[data-theme="stitch"] {
   font-weight: 400;
 }
 
+/** Disable tooltips on smartscalar in product cards */
+.product-card-trend [data-testid="scalar-previous-value"],
+.product-card-trend [data-testid="scalar-container"] {
+  pointer-events: none;
+}
+
 body[data-theme="pug"] {
   .smartscalar:not(.product-card-trend) [data-card-key]>div:has(div[data-testid="scalar-container"]) {
     align-items: flex-start;
