@@ -151,10 +151,6 @@ body[data-theme="proficiency"] {
     font-family: var(--font-family-serif), serif;
   }
 
-  .proficiency-sidebar-divider {
-    display: none;
-  }
-
   .sidebar-links-container {
     @apply space-y-1;
   }

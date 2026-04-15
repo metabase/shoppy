@@ -1,4 +1,4 @@
-import { Stack, Title, Container, Text } from "@mantine/core"
+import { SimpleGrid, Stack, Title, Container, Text } from "@mantine/core"
 import { useQuery } from "@tanstack/react-query"
 import { navigate } from "wouter/use-browser-location"
 
@@ -59,17 +59,21 @@ export const ProductAnalyticsPage = (props: Props) => {
 
   return (
     <Container size={1008} px={0}>
-      <Stack w="1008px" className="gap-y-10">
+      <Stack className="gap-y-10">
         <Stack gap={8}>
           <Title className="overview-title">{currentCategoryName}</Title>
           <Text size="16px" style={{ fontFamily: sublineFont, color: sublineColor }}>Total sales of each {sublineItem} this month</Text>
         </Stack>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 320px)", gap: `${VERTICAL_SPACING[site]}px 24px` }}>
+        <SimpleGrid
+          cols={{ base: 1, xs: 2, md: 3 }}
+          spacing="24px"
+          verticalSpacing={VERTICAL_SPACING[site]}
+        >
           {products.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
-        </div>
+        </SimpleGrid>
       </Stack>
     </Container>
   )

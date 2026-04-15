@@ -8,7 +8,6 @@ import { SidebarLink } from "../types/sidebar-link"
 import { createDashboardIdAtom } from "../store/create"
 import { siteAtom } from "../store/site"
 import { CustomIcon } from "../components/CustomIcon"
-import { Box, Divider } from "@mantine/core"
 
 const PROFICIENCY_CATEGORY_ICONS: Record<string, string> = {
   "Leadership Training": "iconoir:leaderboard-star",
@@ -50,17 +49,6 @@ export function useSidebarLinks(): SidebarLink[] {
           ...categoryLinks,
         ],
         defaultOpened: true,
-      },
-      {
-        component: () => (
-          <Box className="show-only-on-proficiency py-3">
-            <Divider
-              orientation="horizontal"
-              className="proficiency-sidebar-divider"
-            />
-          </Box>
-        ),
-        key: "proficiency-divider",
       },
       {
         title: "Analytics",

@@ -5,7 +5,6 @@ import {
   Image,
   Burger,
   Stack,
-  Divider,
 } from "@mantine/core"
 import { useDisclosure } from "@mantine/hooks"
 import { ReactNode } from "react"
@@ -23,7 +22,6 @@ import { siteIsReloadingAtom } from "../../store/site"
 import { useAtom } from "jotai"
 import { FullPageLoader } from "../Loader"
 import { SiteFooter } from "../SiteFooter"
-import { ProficiencyGradient } from "../ProficiencyGradient"
 import { ClickActionDemoModal } from "../ClickActionDemoModal"
 import { LinkWithSearchParams } from "../LinkWithSearchParams"
 
@@ -42,19 +40,16 @@ export function Shell(props: Props) {
   const isMetabotLayout = path.includes("/analytics/new/ask-metabot")
 
   function getMainContentLayout() {
-    // For Metabot layout, hide the gradient and footer.
     if (isMetabotLayout) {
       return props.children
     }
 
     return (
-      <>
-        <Stack h="100%" py="xl">
-          <Box className="flex-1">{props.children}</Box>
+      <Stack h="100%" py="xl">
+        <Box className="flex-1">{props.children}</Box>
 
-          <SiteFooter />
-        </Stack>
-      </>
+        <SiteFooter />
+      </Stack>
     )
   }
 
@@ -139,11 +134,6 @@ export function Shell(props: Props) {
               <SiteLogo />
             </LinkWithSearchParams>
 
-            <Divider
-              orientation="horizontal"
-              className="proficiency-sidebar-divider show-only-on-proficiency"
-            />
-
             <SidebarLinks
               onLinkClick={(link) => {
                 if (!link.children) {
@@ -154,11 +144,6 @@ export function Shell(props: Props) {
           </Box>
 
           <Stack className="hide-on-mobile sidebar-create-section" mt="24px" style={{ flexShrink: 0 }}>
-            <Divider
-              orientation="horizontal"
-              className="proficiency-sidebar-divider show-only-on-proficiency mb-4"
-            />
-
             <NewQuestionMenu position="top-start" prefix="/admin">
               <ThemedButton className="sidebar-action-button" size="sm">
                 New custom exploration

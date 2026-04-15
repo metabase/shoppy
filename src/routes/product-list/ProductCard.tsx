@@ -1,6 +1,7 @@
 import { StaticQuestion } from "@metabase/embedding-sdk-react"
 import { Stack, Text, Image, Box } from "@mantine/core"
 import { useAtom } from "jotai"
+import cx from "classnames"
 
 import { ProductCardFooter } from "./ProductCardFooter"
 
@@ -25,7 +26,12 @@ export const ProductCard = ({ product }: Props) => {
     <LinkWithSearchParams href={`/products/${product.id}`}>
       <Stack className="product-card">
         <Stack gap={10}>
-          <Box w="100%" className={`product-card-image-container ${site === "stitch" ? "product-card-image-container--hoverable" : ""}`}>
+          <Box
+            w="100%"
+            className={cx("product-card-image-container", {
+              "product-card-image-container--hoverable": site === "stitch",
+            })}
+          >
             <Image
               src={image}
               className="product-card-image object-cover"

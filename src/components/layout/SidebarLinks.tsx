@@ -56,17 +56,11 @@ const renderLink = (
     return <link.component key={link.key} />
   }
 
-  // Do not allow toggling site navigation sections on ProficiencyLabs, Luminara, Pug, or Stitch
-  const isNavToggleEnabled =
-    site !== "proficiency" &&
-    site !== "luminara" &&
-    site !== "pug" &&
-    site !== "stitch"
   const iconElement = renderIcon()
 
   return (
     <NavLink
-      opened={isNavToggleEnabled ? undefined : true}
+      opened={true}
       label={
         <Flex align="center" columnGap="6px" className="sidebar-link-label">
           {iconElement && (
@@ -77,7 +71,7 @@ const renderLink = (
         </Flex>
       }
       p={4}
-      mt={!isChild && index && index > 0 && site !== "proficiency" ? "40px" : undefined}
+      mt={!isChild && (index ?? 0) > 0 && site !== "proficiency" ? "40px" : undefined}
       fz="16px"
       variant="subtle"
       key={link.to ?? link.title ?? link.key}
@@ -89,12 +83,7 @@ const renderLink = (
       classNames={{
         chevron: "sidebar-link-chevron",
         children: "sidebar-link-children-container",
-        body: cx(
-          "flex-[2]",
-
-          // do not show cursor pointer on non-toggleable nav headers
-          link.children && !isNavToggleEnabled && "cursor-default",
-        ),
+        body: cx("flex-[2]", link.children && "cursor-default"),
         section: "flex-[1]",
       }}
       renderRoot={(props) => (

@@ -27,7 +27,7 @@ export const SiteSwitcher = () => {
             variant={active ? "filled" : "subtle"}
             size="xs"
             radius="xl"
-            color={active ? "#EAEAEA" : "#EAEAEA"}
+            color="#EAEAEA"
             c={active ? "#2B2F32" : "#BFC1C1"}
             bg={active ? "#EAEAEA" : "rgba(255,255,255,0.15)"}
             style={{ border: "none" }}
