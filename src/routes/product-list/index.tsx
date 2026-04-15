@@ -37,7 +37,8 @@ export const ProductAnalyticsPage = (props: Props) => {
 
   if (categoryId) {
     products = products.filter((product) => product.category.id === categoryId)
-    products = products.slice(0, 3)
+    const isStitchLimitedCategory = site === "stitch" && [5, 7].includes(categoryId)
+    products = products.slice(0, isStitchLimitedCategory ? 2 : 3)
   } else {
     products = products.slice(0, 6)
   }

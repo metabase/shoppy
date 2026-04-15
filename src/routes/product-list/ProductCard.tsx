@@ -25,13 +25,18 @@ export const ProductCard = ({ product }: Props) => {
     <LinkWithSearchParams href={`/products/${product.id}`}>
       <Stack className="product-card">
         <Stack gap={10}>
-          <Box w="100%" className="product-card-image-container">
+          <Box w="100%" className={`product-card-image-container ${site === "stitch" ? "product-card-image-container--hoverable" : ""}`}>
             <Image
               src={image}
               className="product-card-image object-cover"
               w="100%"
               h="100%"
             />
+            {site === "stitch" && (
+              <Box className="product-card-image-overlay">
+                <Text className="product-card-image-overlay-text">See more</Text>
+              </Box>
+            )}
           </Box>
 
           <Stack className="smartscalar product-card-trend" mih={70} gap={0}>

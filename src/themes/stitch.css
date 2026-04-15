@@ -88,6 +88,10 @@ body[data-theme="stitch"] {
     color: #000;
   }
 
+  .themed-button.sidebar-action-button:not(.sidebar-action-button-secondary):hover {
+    filter: brightness(0.94);
+  }
+
   .card {
     @apply text-white border border-dark-grey rounded-lg;
 
@@ -136,5 +140,36 @@ body[data-theme="stitch"] {
     font-size: 18px;
     font-weight: 600;
     color: var(--color-lighter-grey);
+  }
+
+  .product-card-image-container--hoverable {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .product-card-image-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(30, 100, 200, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.5s ease;
+  }
+
+  .product-card-image-overlay-text {
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  .product-card:hover .product-card-image-overlay {
+    background: rgba(30, 100, 200, 0.45);
+  }
+
+  .product-card:hover .product-card-image-overlay-text {
+    opacity: 1;
   }
 }

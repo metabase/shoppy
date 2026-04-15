@@ -6,6 +6,10 @@ import { siteAtom } from "../../store/site"
 export function ProductCardFooter() {
   const [site] = useAtom(siteAtom)
 
+  if (site === "stitch") {
+    return null
+  }
+
   if (site === "luminara") {
     return (
       <Box w="100%">

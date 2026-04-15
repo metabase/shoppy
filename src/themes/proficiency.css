@@ -17,6 +17,11 @@ body[data-theme="proficiency"] {
     border: 1px solid #e5e7eb;
     border-radius: 8px;
     overflow: hidden;
+    transition: border-color 0.2s ease;
+  }
+
+  .product-card:hover {
+    border-color: var(--color-primary);
   }
 
   .product-card .themed-button {
@@ -133,6 +138,10 @@ body[data-theme="proficiency"] {
 
   .themed-button {
     background: var(--color-primary);
+  }
+
+  .themed-button.sidebar-action-button:not(.sidebar-action-button-secondary):hover {
+    filter: brightness(0.94);
   }
 
   .product-detail-title,
