@@ -1,10 +1,8 @@
 body[data-theme="proficiency"] {
+  --mb-color-cartesian-grid-line: rgba(0, 0, 0, 0.05);
+
   .navbar {
     border-right: 1px solid rgba(0, 0, 0, 0.1);
-  }
-
-  [data-dashcard-key] {
-    box-shadow: 0px 6px 10px 0px rgba(0, 0, 0, 0.08);
   }
 
   .product-card-image,
@@ -83,7 +81,7 @@ body[data-theme="proficiency"] {
   }
 
   .sidebar-active-child {
-    background: rgba(106, 87, 201, 0.1);
+    background: rgba(44, 150, 138, 0.1);
     transition: background 0.4s ease;
     border-radius: 4px;
 
@@ -93,7 +91,7 @@ body[data-theme="proficiency"] {
 
     .sidebar-link-icon {
       background: none;
-      color: rgba(106, 87, 201, 0.75);
+      color: rgba(44, 150, 138, 0.75);
       transition: background 0.4s ease;
     }
   }

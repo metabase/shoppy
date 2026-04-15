@@ -1,4 +1,6 @@
 body[data-theme="pug"] {
+  --mb-color-cartesian-grid-line: rgba(0, 0, 0, 0.05);
+
   color: var(--color-dark-grey);
 
   .card {

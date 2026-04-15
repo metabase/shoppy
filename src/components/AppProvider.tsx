@@ -50,6 +50,7 @@ export const AppProvider = ({ children }: Props) => {
 
   return (
     <MetabaseProvider
+      key={site}
       authConfig={authConfig}
       theme={theme}
       loaderComponent={MetabaseLoader}
