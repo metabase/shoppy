@@ -71,7 +71,7 @@ const renderLink = (
         </Flex>
       }
       p={4}
-      mt={!isChild && (index ?? 0) > 0 && site !== "proficiency" ? "40px" : undefined}
+      mt={!isChild && (index ?? 0) > 0 ? (site === "proficiency" ? "48px" : "40px") : undefined}
       fz="16px"
       variant="subtle"
       key={link.to ?? link.title ?? link.key}

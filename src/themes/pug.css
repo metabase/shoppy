@@ -41,8 +41,8 @@ body[data-theme="pug"] {
 
   .sidebar-link-parent:hover {
     color: inherit;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
+    background: transparent;
+    cursor: default;
   }
 
   .sidebar-inactive-child:hover {

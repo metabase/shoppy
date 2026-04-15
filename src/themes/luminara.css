@@ -46,6 +46,8 @@ body[data-theme="luminara"] {
 
   .sidebar-link-parent:hover {
     color: inherit;
+    background: transparent;
+    cursor: default;
   }
 
   .sidebar-active-child {

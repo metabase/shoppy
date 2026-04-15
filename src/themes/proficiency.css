@@ -55,6 +55,11 @@ body[data-theme="proficiency"] {
     }
   }
 
+  .sidebar-link-parent:hover {
+    background: transparent;
+    cursor: default;
+  }
+
   .sidebar-link-parent {
     font-weight: 700;
 
