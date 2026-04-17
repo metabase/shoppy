@@ -129,11 +129,6 @@ body[data-theme="proficiency"] {
     padding: 0 12px 12px;
   }
 
-  /** WORKAROUND: align trend charts to the left in product cards */
-  .product-card [data-testid="visualization-root"] > [data-card-key] > div {
-    align-items: flex-start;
-  }
-
   /** Hide the "Insights" title in product detail page */
   .product-insights-title {
     display: none;
@@ -174,6 +169,7 @@ body[data-theme="proficiency"] {
     padding-top: 8px;
     padding-left: 8px;
     margin-bottom: -8px;
+    text-align: center;
   }
 
   .tippy-box.popover[role="tooltip"] {
