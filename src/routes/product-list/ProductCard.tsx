@@ -1,6 +1,7 @@
 import { StaticQuestion } from "@metabase/embedding-sdk-react"
 import { Stack, Text, Image, Box } from "@mantine/core"
 import { useAtom } from "jotai"
+import cx from "classnames"
 
 import { ProductCardFooter } from "./ProductCardFooter"
 
@@ -18,28 +19,40 @@ export const ProductCard = ({ product }: Props) => {
   const [site] = useAtom(siteAtom)
   const image = product.imageUrl ?? "/assets/mock-t-shirt.webp"
 
-  const questionHeight = site === "stitch" ? 40 : 70
-  const truncateLength = site === "pug" ? 13 : 50
+  const questionHeight = site === "stitch" ? 45 : 80
+  const truncateLength = site === "pug" ? 100 : 50
 
   return (
     <LinkWithSearchParams href={`/products/${product.id}`}>
       <Stack className="product-card">
         <Stack gap={10}>
-          <Box w="100%" className="product-card-image-container">
+          <Box
+            w="100%"
+            className={cx("product-card-image-container", {
+              "product-card-image-container--hoverable": site === "stitch",
+            })}
+          >
             <Image
               src={image}
               className="product-card-image object-cover"
               w="100%"
               h="100%"
             />
+            {site === "stitch" && (
+              <Box className="product-card-image-overlay">
+                <Text className="product-card-image-overlay-text">
+                  See more
+                </Text>
+              </Box>
+            )}
           </Box>
 
           <Stack className="smartscalar product-card-trend" mih={70} gap={0}>
-            <Text className="product-card-title" pl="8px" lineClamp={1}>
+            <Text className="product-card-title" lineClamp={1}>
               {truncate(product.title, truncateLength)}
             </Text>
 
-            <Box py={4} h={questionHeight}>
+            <Box pb={4} h={questionHeight}>
               <RemountOnSiteChange>
                 <StaticQuestion
                   questionId="8emcAd9TTrPoHLuaFaUh0"

@@ -8,7 +8,7 @@ export function AnalyticsOverviewPage() {
   return (
     <Container>
       <Title className="overview-title" pb="30px">
-        Overview
+        Dashboards
       </Title>
 
       <Stack>

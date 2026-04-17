@@ -1,4 +1,6 @@
 body[data-theme="luminara"] {
+  --mb-color-cartesian-grid-line: rgba(0, 0, 0, 0.05);
+
   color: var(--color-dark-grey);
 
   .divider {
@@ -15,6 +17,11 @@ body[data-theme="luminara"] {
     border-radius: 16px;
     box-shadow: 0px 2px 16px 0px #0000001A;
     background-color: var(--color-background);
+    transition: box-shadow 0.2s ease;
+  }
+
+  .product-card:hover {
+    box-shadow: 0px 8px 32px 0px #00000033;
   }
 
   .product-card-image {
@@ -29,23 +36,27 @@ body[data-theme="luminara"] {
     }
   }
 
-  .sidebar-active-child {
-    position: relative;
+  .sidebar-link-chevron {
+    display: none !important;
   }
 
-  .sidebar-active-child::before {
-    content: "";
-    background: #E09862;
-    width: 16px;
-    height: 6px;
-    position: absolute;
-    left: -20px;
-    border-radius: 50px;
-    margin-top: 1px;
+  .sidebar-link-children-container {
+    padding-inline-start: 0px;
+  }
+
+  .sidebar-link-parent:hover {
+    color: inherit;
+    background: transparent;
+    cursor: default;
+  }
+
+  .sidebar-active-child {
+    color: var(--color-dark-grey);
+    font-weight: 700;
   }
 
   .sidebar-inactive-child:hover {
-    color: var(--color-lighter-grey);
+    color: var(--color-dark-grey);
   }
 
   .product-card-title {
@@ -57,6 +68,12 @@ body[data-theme="luminara"] {
 
   .sidebar-link-parent {
     font-weight: 600;
+  }
+
+  .sidebar-link-parent .sidebar-link-title {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
   }
 
   .product-insights-title, .product-detail-title {
@@ -91,6 +108,16 @@ body[data-theme="luminara"] {
 
   .themed-button {
     background: var(--color-light-grey);
+  }
+
+  .themed-button.sidebar-action-button-secondary {
+    background: transparent;
+    color: var(--color-dark-grey);
+    border: 1px solid var(--color-dark-grey);
+  }
+
+  .themed-button.sidebar-action-button:not(.sidebar-action-button-secondary):hover {
+    filter: brightness(0.94);
   }
 
   .question-container, .dashboard-container {

@@ -4,7 +4,7 @@ import { MetabaseTheme } from "@metabase/embedding-sdk-react"
 import { SiteConfig } from "../types/site"
 
 const colors = {
-  primary: "rgba(106, 87, 201, 1)",
+  primary: "rgba(44, 150, 138, 1)",
   lighterGrey: "#D1CFC5",
   lightGrey: "rgba(0, 0, 0, 0.7)",
   darkGrey: "#1B1C21",
@@ -30,7 +30,7 @@ const mantine: MantineThemeOverride = {
 }
 
 const metabase: MetabaseTheme = {
-  fontFamily: "Figtree",
+  fontFamily: "Source Sans 3",
   fontSize: "14px",
   colors: {
     brand: colors.primary,
@@ -38,19 +38,19 @@ const metabase: MetabaseTheme = {
     "text-primary": colors.lightGrey,
     "text-secondary": colors.lightGrey,
     "text-tertiary": "rgba(0, 0, 0, 0.4)",
-    border: "rgba(0, 0, 0, 0.12)",
+    border: "transparent",
     background: colors.background,
-    "background-hover": "#F1F0FA",
+    "background-hover": "#EDF7F6",
     "background-disabled": "rgba(0, 0, 0, 0.1)",
     charts: [
-      colors.primary,
-      "rgba(37, 90, 157, 1)",
-      "rgba(182, 89, 166, 1)",
-      colors.primary,
-      "rgba(238, 92, 127, 1)",
-      "rgba(240, 115, 76, 1)",
-      "rgba(243, 161, 26, 1)",
-      "rgba(182, 89, 166, 1)",
+      "#2C968A",
+      "#205B83",
+      "#2D76A8",
+      "#6DB87D",
+      "#92CF75",
+      "#BFE46D",
+      "#F0F135",
+      "#FABE61",
     ],
     positive: colors.positive,
     negative: colors.negative,

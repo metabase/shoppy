@@ -52,7 +52,11 @@ describe("Embedding SDK: shoppy compatibility", () => {
         })
         .click()
 
-      expect(cy.findByText("Details", { timeout: TIMEOUT }).should("exist"))
+      expect(
+        cy
+          .findByText("Course description", { timeout: TIMEOUT })
+          .should("exist"),
+      )
 
       cy.findByText("Orders over time", { timeout: TIMEOUT })
         .parent()

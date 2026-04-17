@@ -1,4 +1,4 @@
-import { SimpleGrid, Stack, Title, Container } from "@mantine/core"
+import { SimpleGrid, Stack, Title, Container, Text } from "@mantine/core"
 import { useQuery } from "@tanstack/react-query"
 import { navigate } from "wouter/use-browser-location"
 
@@ -37,11 +37,19 @@ export const ProductAnalyticsPage = (props: Props) => {
 
   if (categoryId) {
     products = products.filter((product) => product.category.id === categoryId)
+    const isStitchLimitedCategory = site === "stitch" && [5, 7].includes(categoryId)
+    products = products.slice(0, isStitchLimitedCategory ? 2 : 3)
+  } else {
+    products = products.slice(0, 6)
   }
 
   const currentCategoryName =
     categoryQuery.data?.find((category) => category.id === categoryId)?.name ??
-    "All products"
+    (site === "proficiency" ? "New courses" : "New products")
+
+  const sublineItem = site === "proficiency" ? "course" : "product"
+  const sublineFont = site === "stitch" ? "Inter" : "var(--font-family-sans)"
+  const sublineColor = site === "proficiency" ? "rgba(0, 0, 0, 0.7)" : undefined
 
   // If the site changes, redirect back to the product listing page.
   // This ensures we don't show product from last site's categories.
@@ -50,16 +58,19 @@ export const ProductAnalyticsPage = (props: Props) => {
   if (query.isLoading) return <FullPageLoader />
 
   return (
-    <Container>
-      <Stack w="100%" maw="1000px" className="gap-y-10">
-        <Title className="overview-title">{currentCategoryName}</Title>
+    <Container size={1008} px={0}>
+      <Stack className="gap-y-10">
+        <Stack gap={8}>
+          <Title className="overview-title">{currentCategoryName}</Title>
+          <Text size="16px" style={{ fontFamily: sublineFont, color: sublineColor }}>Total sales of each {sublineItem} this month</Text>
+        </Stack>
 
         <SimpleGrid
           cols={{ base: 1, xs: 2, md: 3 }}
-          spacing="xl"
+          spacing="24px"
           verticalSpacing={VERTICAL_SPACING[site]}
         >
-          {products.slice(0, 7).map((product) => (
+          {products.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </SimpleGrid>
@@ -72,5 +83,5 @@ const VERTICAL_SPACING: Record<SiteKey, number> = {
   stitch: 64,
   luminara: 28,
   pug: 80,
-  proficiency: 64,
+  proficiency: 24,
 }

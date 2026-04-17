@@ -27,6 +27,9 @@ export function getAPIHost() {
 
 export const IS_DEV = import.meta.env.DEV
 
+/** Bump this number when deploying data/image changes to bust browser API cache */
+export const API_VERSION = 2
+
 /**
  * Datadog RUM configuration.
  */
