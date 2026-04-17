@@ -2,7 +2,7 @@
 set -e
 
 # Only run migrations and seeding if the database is empty
-PRODUCT_COUNT=$(psql "$DB_URL" -t -c "SELECT COUNT(*) FROM products;" 2>/dev/null | tr -d ' ' || echo "0")
+PRODUCT_COUNT=$(psql "$DB_URL" -tA -c "SELECT COUNT(*) FROM products;" 2>/dev/null || echo "0")
 
 if [ "$PRODUCT_COUNT" = "0" ]; then
   echo "Database is empty, running migrations and seeding..."
