@@ -5,12 +5,11 @@ import {
   Image,
   Burger,
   Stack,
-  Divider,
 } from "@mantine/core"
 import { useDisclosure } from "@mantine/hooks"
 import { ReactNode } from "react"
-import { Icon } from "@iconify/react"
 import { usePathname } from "wouter/use-browser-location"
+import { useSearch } from "wouter"
 
 import { SidebarLinks } from "./SidebarLinks"
 
@@ -23,7 +22,6 @@ import { siteIsReloadingAtom } from "../../store/site"
 import { useAtom } from "jotai"
 import { FullPageLoader } from "../Loader"
 import { SiteFooter } from "../SiteFooter"
-import { ProficiencyGradient } from "../ProficiencyGradient"
 import { ClickActionDemoModal } from "../ClickActionDemoModal"
 import { LinkWithSearchParams } from "../LinkWithSearchParams"
 
@@ -38,24 +36,20 @@ export function Shell(props: Props) {
   const [isSiteReloading] = useAtom(siteIsReloadingAtom)
 
   const path = usePathname()
+  const search = useSearch()
   const isMetabotLayout = path.includes("/analytics/new/ask-metabot")
 
   function getMainContentLayout() {
-    // For Metabot layout, hide the gradient and footer.
     if (isMetabotLayout) {
       return props.children
     }
 
     return (
-      <>
-        <ProficiencyGradient />
+      <Stack h="100%" py="xl">
+        <Box className="flex-1">{props.children}</Box>
 
-        <Stack h="100%" py="xl">
-          <Box className="flex-1">{props.children}</Box>
-
-          <SiteFooter />
-        </Stack>
-      </>
+        <SiteFooter />
+      </Stack>
     )
   }
 
@@ -72,7 +66,7 @@ export function Shell(props: Props) {
         },
       }}
       navbar={{
-        width: 250,
+        width: 304,
         breakpoint: "sm",
         collapsed: { mobile: !isMobileNavOpen },
       }}
@@ -123,6 +117,7 @@ export function Shell(props: Props) {
       <AppShell.Navbar
         withBorder={false}
         pt="xl"
+        pb="24px"
         px="24px"
         // Required for the "New Dashboard" modal to be on top of the mobile navbar.
         zIndex={2}
@@ -132,16 +127,12 @@ export function Shell(props: Props) {
           justify="space-between"
           h="100%"
           className="py-4 md:py-0"
+          style={{ minHeight: 0 }}
         >
-          <Box>
+          <Box style={{ flex: 1, minHeight: 0, overflowY: "auto" }}>
             <LinkWithSearchParams href="/admin/products">
               <SiteLogo />
             </LinkWithSearchParams>
-
-            <Divider
-              orientation="horizontal"
-              className="proficiency-sidebar-divider show-only-on-proficiency"
-            />
 
             <SidebarLinks
               onLinkClick={(link) => {
@@ -150,31 +141,24 @@ export function Shell(props: Props) {
                 }
               }}
             />
-
-            <Divider
-              orientation="horizontal"
-              className="proficiency-sidebar-divider show-only-on-proficiency my-4"
-            />
-
-            <Stack className="hide-on-mobile sidebar-create-section" pt={18}>
-              <NewQuestionMenu position="bottom-start" prefix="/admin">
-                <ThemedButton className="sidebar-action-button" size="sm">
-                  New custom exploration
-                </ThemedButton>
-              </NewQuestionMenu>
-
-              <LinkWithSearchParams href="/admin/analytics/new/dashboard">
-                <ThemedButton className="sidebar-action-button">
-                  New dashboard
-                </ThemedButton>
-              </LinkWithSearchParams>
-            </Stack>
           </Box>
 
-          <Flex className="sidebar-icons gap-x-3 py-4">
-            <Icon icon="tabler:user" fontSize={30} />
-            <Icon icon="tabler:settings" fontSize={30} />
-          </Flex>
+          <Stack className="hide-on-mobile sidebar-create-section" mt="24px" style={{ flexShrink: 0 }}>
+            <NewQuestionMenu position="top-start" prefix="/admin">
+              <ThemedButton className="sidebar-action-button" size="sm">
+                New custom exploration
+              </ThemedButton>
+            </NewQuestionMenu>
+
+            <ThemedButton
+              className="sidebar-action-button sidebar-action-button-secondary"
+              size="sm"
+              component="a"
+              href={`/admin/analytics/new/dashboard${search ? `?${search}` : ""}`}
+            >
+              New dashboard
+            </ThemedButton>
+          </Stack>
         </Flex>
       </AppShell.Navbar>
 

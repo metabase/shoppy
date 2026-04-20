@@ -45,6 +45,10 @@ body:not([data-theme="luminara"]) {
   }
 }
 
+.product-card {
+  overflow: hidden;
+}
+
 .product-card-image-container {
   aspect-ratio: 1 / 1;
 }
@@ -66,13 +70,23 @@ body:not([data-theme="luminara"]) {
 }
 
 .sidebar-action-button {
-  width: fit-content;
-  height: 30px;
+  width: 100%;
+  height: 36px;
+  font-size: 16px;
 }
 
 .sidebar-links-container {
   @apply space-y-3;
+
+  .sidebar-link-title {
+    font-size: 16px;
+  }
 }
+
+body:not([data-theme="proficiency"]) .mantine-NavLink-collapse {
+  margin-top: 0 !important;
+}
+
 
 .app-shell-remove-padding {
   --app-shell-padding: 0px;

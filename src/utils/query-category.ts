@@ -1,13 +1,16 @@
 import type { Category } from "../types/category"
 
-import { API_HOST } from "../constants/env"
+import { API_HOST, API_VERSION } from "../constants/env"
 import { SiteKey } from "../types/site"
 
 export async function getCategoryList(site: SiteKey): Promise<Category[]> {
-  const response = await fetch(`${API_HOST}/categories?site=${site}`, {
-    method: "GET",
-    credentials: "include",
-  })
+  const response = await fetch(
+    `${API_HOST}/categories?site=${site}&v=${API_VERSION}`,
+    {
+      method: "GET",
+      credentials: "include",
+    },
+  )
 
   if (!response.ok) {
     return []

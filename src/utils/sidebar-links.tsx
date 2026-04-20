@@ -8,7 +8,6 @@ import { SidebarLink } from "../types/sidebar-link"
 import { createDashboardIdAtom } from "../store/create"
 import { siteAtom } from "../store/site"
 import { CustomIcon } from "../components/CustomIcon"
-import { Box, Divider } from "@mantine/core"
 
 const PROFICIENCY_CATEGORY_ICONS: Record<string, string> = {
   "Leadership Training": "iconoir:leaderboard-star",
@@ -40,27 +39,16 @@ export function useSidebarLinks(): SidebarLink[] {
 
     return [
       {
-        title: "Products",
+        title: site === "proficiency" ? "Courses" : "Products",
         children: [
           {
             to: "/admin/products",
-            title: "All products",
+            title: site === "proficiency" ? "New courses" : "New products",
             icons: { proficiency: "iconoir:report-columns" },
           },
           ...categoryLinks,
         ],
         defaultOpened: true,
-      },
-      {
-        component: () => (
-          <Box className="show-only-on-proficiency py-3">
-            <Divider
-              orientation="horizontal"
-              className="proficiency-sidebar-divider"
-            />
-          </Box>
-        ),
-        key: "proficiency-divider",
       },
       {
         title: "Analytics",
@@ -73,7 +61,6 @@ export function useSidebarLinks(): SidebarLink[] {
               proficiency: () => (
                 <CustomIcon
                   icon="dashboard"
-                  fill="rgba(106, 87, 201, 0.75)"
                   size={14}
                 />
               ),
@@ -86,7 +73,6 @@ export function useSidebarLinks(): SidebarLink[] {
               proficiency: () => (
                 <CustomIcon
                   icon="bar"
-                  fill="rgba(106, 87, 201, 0.75)"
                   size={14}
                 />
               ),
@@ -99,7 +85,6 @@ export function useSidebarLinks(): SidebarLink[] {
               proficiency: () => (
                 <CustomIcon
                   icon="insight"
-                  fill="rgba(106, 87, 201, 0.75)"
                   size={14}
                 />
               ),
