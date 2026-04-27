@@ -1,13 +1,16 @@
-import { API_HOST } from "../constants/env"
+import { API_HOST, API_VERSION } from "../constants/env"
 
 import type { Product } from "../types/product"
 import type { SiteKey } from "../types/site"
 
 export async function getProductList(site: SiteKey): Promise<Product[]> {
-  const response = await fetch(`${API_HOST}/products?site=${site}`, {
-    method: "GET",
-    credentials: "include",
-  })
+  const response = await fetch(
+    `${API_HOST}/products?site=${site}&v=${API_VERSION}`,
+    {
+      method: "GET",
+      credentials: "include",
+    },
+  )
 
   if (!response.ok) {
     return []
@@ -21,7 +24,7 @@ export async function getProductList(site: SiteKey): Promise<Product[]> {
 export async function getProductById(id: number): Promise<Product | null> {
   if (id === null) return null
 
-  const response = await fetch(`${API_HOST}/product/${id}`, {
+  const response = await fetch(`${API_HOST}/product/${id}?v=${API_VERSION}`, {
     method: "GET",
   })
 

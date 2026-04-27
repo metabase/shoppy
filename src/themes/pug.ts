@@ -39,7 +39,7 @@ const metabase: MetabaseTheme = {
     "text-primary": colors.darkGrey,
     "text-secondary": colors.lightGrey,
     "text-tertiary": colors.lightGrey,
-    border: "#3B3F3F",
+    border: "transparent",
     background: colors.background,
     "background-hover": "#FCFAF1",
     "background-disabled": colors.lighterGrey,
@@ -75,7 +75,7 @@ const metabase: MetabaseTheme = {
     },
     dashboard: {
       card: {
-        border: "1px solid var(--mantine-color-gray-3)",
+        border: "1px solid #dee2e6",
       },
     },
     number: {

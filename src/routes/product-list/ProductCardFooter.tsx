@@ -6,12 +6,16 @@ import { siteAtom } from "../../store/site"
 export function ProductCardFooter() {
   const [site] = useAtom(siteAtom)
 
+  if (site === "stitch") {
+    return null
+  }
+
   if (site === "luminara") {
     return (
       <Box w="100%">
         <Divider mx={16} className="divider" />
 
-        <Text ta="center" fw={700} py={8} fz="14px">
+        <Text ta="center" fw={700} py={8} fz="14px" className="product-card-footer">
           See more
         </Text>
       </Box>
@@ -19,7 +23,7 @@ export function ProductCardFooter() {
   }
 
   return (
-    <Button w="fit-content" className="themed-button" ml="8px" mt="md">
+    <Button w="fit-content" className="themed-button product-card-footer" ml="8px" mt="md">
       See more
     </Button>
   )

@@ -20,7 +20,7 @@ export function SidebarLinks({ onLinkClick }: SidebarLinkProps) {
 
   return (
     <Box pt="20px" className="sidebar-links-container">
-      {links.map((link) => renderLink(link, { onLinkClick, site }))}
+      {links.map((link, index) => renderLink(link, { onLinkClick, site, index }))}
     </Box>
   )
 }
@@ -31,9 +31,10 @@ const renderLink = (
     isChild?: boolean
     onLinkClick?: (link: SidebarLink) => void
     site?: SiteKey
+    index?: number
   },
 ) => {
-  const { isChild, onLinkClick, site } = context ?? {}
+  const { isChild, onLinkClick, site, index } = context ?? {}
 
   function renderIcon(): ReactNode {
     const icon = site && link.icons?.[site]
@@ -55,13 +56,11 @@ const renderLink = (
     return <link.component key={link.key} />
   }
 
-  // Do not allow toggling site navigation sections on ProficiencyLabs
-  const isNavToggleEnabled = site !== "proficiency"
   const iconElement = renderIcon()
 
   return (
     <NavLink
-      opened={isNavToggleEnabled ? undefined : true}
+      opened={true}
       label={
         <Flex align="center" columnGap="6px" className="sidebar-link-label">
           {iconElement && (
@@ -71,8 +70,9 @@ const renderLink = (
           <Box className="sidebar-link-title">{link.title}</Box>
         </Flex>
       }
-      p={3}
-      fz="14px"
+      p={4}
+      mt={!isChild && (index ?? 0) > 0 ? (site === "proficiency" ? "48px" : "40px") : undefined}
+      fz="16px"
       variant="subtle"
       key={link.to ?? link.title ?? link.key}
       href={link.to ?? "#!"}
@@ -83,12 +83,7 @@ const renderLink = (
       classNames={{
         chevron: "sidebar-link-chevron",
         children: "sidebar-link-children-container",
-        body: cx(
-          "flex-[2]",
-
-          // do not show cursor pointer on non-toggleable nav headers
-          link.children && !isNavToggleEnabled && "cursor-default",
-        ),
+        body: cx("flex-[2]", link.children && "cursor-default"),
         section: "flex-[1]",
       }}
       renderRoot={(props) => (

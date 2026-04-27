@@ -1,4 +1,6 @@
 body[data-theme="stitch"] {
+  --mb-color-cartesian-grid-line: rgba(0, 0, 0, 0.05);
+
   color: var(--color-lighter-grey);
 
   .overview-title {
@@ -22,15 +24,28 @@ body[data-theme="stitch"] {
     -webkit-text-fill-color: transparent;
   }
 
+  .sidebar-link-chevron {
+    display: none !important;
+  }
+
+  .sidebar-link-children-container {
+    padding-inline-start: 0px;
+  }
+
   .sidebar-inactive-child,
   .sidebar-link-parent {
     color: var(--color-light-grey);
   }
 
-  .sidebar-inactive-child:hover,
-  .sidebar-link-parent:hover {
+  .sidebar-inactive-child:hover {
     color: #fff;
     background: transparent;
+  }
+
+  .sidebar-link-parent:hover {
+    color: var(--color-light-grey);
+    background: transparent;
+    cursor: default;
   }
 
   .themed-button {
@@ -67,6 +82,18 @@ body[data-theme="stitch"] {
     color: var(--mantine-color-white);
   }
 
+  .themed-button.sidebar-action-button:not(.sidebar-action-button-secondary)::after {
+    display: none;
+  }
+
+  .themed-button.sidebar-action-button:not(.sidebar-action-button-secondary) span {
+    color: #000;
+  }
+
+  .themed-button.sidebar-action-button:not(.sidebar-action-button-secondary):hover {
+    filter: brightness(0.94);
+  }
+
   .card {
     @apply text-white border border-dark-grey rounded-lg;
 
@@ -83,6 +110,16 @@ body[data-theme="stitch"] {
 
   .sidebar-link-parent {
     font-weight: 600;
+  }
+
+  .sidebar-link-parent .sidebar-link-title {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .product-card-title {
+    padding-left: 8px;
   }
 
   .product-insights-title {
@@ -105,5 +142,36 @@ body[data-theme="stitch"] {
     font-size: 18px;
     font-weight: 600;
     color: var(--color-lighter-grey);
+  }
+
+  .product-card-image-container--hoverable {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .product-card-image-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(30, 100, 200, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.5s ease;
+  }
+
+  .product-card-image-overlay-text {
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  .product-card:hover .product-card-image-overlay {
+    background: rgba(30, 100, 200, 0.45);
+  }
+
+  .product-card:hover .product-card-image-overlay-text {
+    opacity: 1;
   }
 }
