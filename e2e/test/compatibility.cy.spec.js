@@ -55,7 +55,10 @@ describe("Embedding SDK: shoppy compatibility", () => {
       expect(cy.findByText("Details", { timeout: TIMEOUT }).should("exist"))
 
       // 2 questions on a product details page
-      cy.findAllByTestId("visualization-root").should("have.length", 2)
+      cy.findAllByTestId("visualization-root", { timeout: TIMEOUT }).should(
+        "have.length",
+        2,
+      )
     })
   })
 
