@@ -16,13 +16,15 @@ const PUG_PRODUCTS: CuratedProduct[] = [
   // Hats (categoryId: 1)
   {
     title: "Good Boy Berret",
-    description: "A classic beret for the pug who takes their good boy status seriously.",
+    description:
+      "A classic beret for the pug who takes their good boy status seriously.",
     categoryId: 1,
     imageUrl: "/images/pug/good-boy-berret.jpg",
   },
   {
     title: "Le Pug Berret",
-    description: "Très chic. For the pug with a flair for the dramatic and a nose for fashion.",
+    description:
+      "Très chic. For the pug with a flair for the dramatic and a nose for fashion.",
     categoryId: 1,
     imageUrl: "/images/pug/le-pug-berret.jpg",
   },
@@ -35,56 +37,65 @@ const PUG_PRODUCTS: CuratedProduct[] = [
   // Hoodies (categoryId: 2)
   {
     title: "Yellow Raincoat",
-    description: "No rain can dampen this pug's style. Puddle-ready and paw-fectly waterproof.",
+    description:
+      "No rain can dampen this pug's style. Puddle-ready and paw-fectly waterproof.",
     categoryId: 2,
     imageUrl: "/images/pug/yellow-raincoat.jpg",
   },
   {
     title: "Gray Hoodie",
-    description: "A cozy everyday hoodie for the pug who likes to keep it low-key.",
+    description:
+      "A cozy everyday hoodie for the pug who likes to keep it low-key.",
     categoryId: 2,
     imageUrl: "/images/pug/gray-hoodie.jpg",
   },
   // Shirts (categoryId: 3)
   {
     title: "Melange Sweater",
-    description: "A refined knit for refined tastes. Your pug deserves nothing less.",
+    description:
+      "A refined knit for refined tastes. Your pug deserves nothing less.",
     categoryId: 3,
     imageUrl: "/images/pug/melange-sweater.jpg",
   },
   {
     title: "Banana Pajamas",
-    description: "For the pug who believes every hour is nap hour. Soft, comfy, and a-peel-ing.",
+    description:
+      "For the pug who believes every hour is nap hour. Soft, comfy, and a-peel-ing.",
     categoryId: 3,
     imageUrl: "/images/pug/banana-pajamas.jpg",
   },
   {
     title: "Denim Jacket",
-    description: "Cool enough for any walk, tough enough for any adventure. Pug-approved.",
+    description:
+      "Cool enough for any walk, tough enough for any adventure. Pug-approved.",
     categoryId: 3,
     imageUrl: "/images/pug/denim-jacket.jpg",
   },
   {
     title: "Yellow Hoodie",
-    description: "Stay snug and stand out. This hoodie is basically sunshine in pug form.",
+    description:
+      "Stay snug and stand out. This hoodie is basically sunshine in pug form.",
     categoryId: 3,
     imageUrl: "/images/pug/yellow-hoodie.jpg",
   },
   {
     title: "Pink Shirt",
-    description: "Pretty in pink — because your pug is always best dressed at the dog park.",
+    description:
+      "Pretty in pink — because your pug is always best dressed at the dog park.",
     categoryId: 3,
     imageUrl: "/images/pug/pink-shirt.jpg",
   },
   {
     title: "Striped Shirt",
-    description: "Classic stripes for a timeless look. Effortlessly chic, tail-waggingly good.",
+    description:
+      "Classic stripes for a timeless look. Effortlessly chic, tail-waggingly good.",
     categoryId: 3,
     imageUrl: "/images/pug/striped-shirt.jpg",
   },
   {
     title: "Rebel Berret",
-    description: "Who says pugs play by the rules? This beret is for the rebel without a leash.",
+    description:
+      "Who says pugs play by the rules? This beret is for the rebel without a leash.",
     categoryId: 1,
     imageUrl: "/images/pug/rebel-berret.jpg",
   },
@@ -96,76 +107,60 @@ const STITCH_PRODUCTS: CuratedProduct[] = [
   // White (categoryId: 5)
   {
     title: "Digital White",
-    description: "Pure static meets clean canvas. A glitchy digital print on crisp white that looks like your screen just had a moment.",
+    description:
+      "Pure static meets clean canvas. A glitchy digital print on crisp white that looks like your screen just had a moment.",
     categoryId: 5,
     imageUrl: "/images/stitch/digital-white.jpg",
   },
   {
     title: "White Vaporwave",
-    description: "Pastel grids and corrupted gradients on white. Nostalgia for a future that never existed.",
+    description:
+      "Pastel grids and corrupted gradients on white. Nostalgia for a future that never existed.",
     categoryId: 5,
     imageUrl: "/images/stitch/white-vaporwave.jpg",
   },
   // Black (categoryId: 6)
   {
     title: "Cyberpunk Black",
-    description: "Neon circuits and corrupted code on black. For those who live in the cracks of the digital world.",
+    description:
+      "Neon circuits and corrupted code on black. For those who live in the cracks of the digital world.",
     categoryId: 6,
     imageUrl: "/images/stitch/cyberpunk-black.jpg",
   },
   {
     title: "Glitch Black",
-    description: "Reality is buffering. A raw glitch aesthetic on black that makes it look like the matrix is breaking down.",
+    description:
+      "Reality is buffering. A raw glitch aesthetic on black that makes it look like the matrix is breaking down.",
     categoryId: 6,
     imageUrl: "/images/stitch/glitch-black.jpg",
   },
   {
     title: "Pink Abstract Black",
-    description: "Hot pink digital noise on black. Soft signals in a hard system.",
+    description:
+      "Hot pink digital noise on black. Soft signals in a hard system.",
     categoryId: 6,
     imageUrl: "/images/stitch/pink-abstract-black.jpg",
   },
   {
     title: "Stripes Black",
-    description: "Distorted digital stripes on black. Classic pattern, corrupted signal.",
+    description:
+      "Distorted digital stripes on black. Classic pattern, corrupted signal.",
     categoryId: 6,
     imageUrl: "/images/stitch/stripes-black.jpg",
   },
   // All-Over Print (categoryId: 7)
   {
     title: "City All-Over Print",
-    description: "A glitched cityscape wrapping your whole body. Every pixel of this skyline has been through something.",
+    description:
+      "A glitched cityscape wrapping your whole body. Every pixel of this skyline has been through something.",
     categoryId: 7,
     imageUrl: "/images/stitch/city-all-over-print.jpg",
   },
   {
     title: "Digital All-Over Print",
-    description: "Full-coverage digital chaos. No seam is safe from the glitch.",
+    description:
+      "Full-coverage digital chaos. No seam is safe from the glitch.",
     categoryId: 7,
-    imageUrl: "/images/stitch/digital-all-over-print.jpg",
-  },
-  {
-    title: "White Vaporwave",
-    description: "Pastel grids and corrupted gradients on white. Nostalgia for a future that never existed.",
-    categoryId: 6,
-    imageUrl: "/images/stitch/white-vaporwave.jpg",
-  },
-  {
-    title: "Pink Abstract Black",
-    description: "Hot pink digital noise on black. Soft signals in a hard system.",
-    categoryId: 6,
-    imageUrl: "/images/stitch/pink-abstract-black.jpg",
-  },
-  {
-    title: "Stripes Black",
-    description: "Distorted digital stripes on black. Classic pattern, corrupted signal.",
-    categoryId: 6,
-    imageUrl: "/images/stitch/stripes-black.jpg",
-  },
-  {
-    title: "Digital All-Over Print",
-    description: "Full-coverage digital chaos. No seam is safe from the glitch.",
-    categoryId: 6,
     imageUrl: "/images/stitch/digital-all-over-print.jpg",
   },
 ]
@@ -176,115 +171,134 @@ const STITCH_PRODUCTS: CuratedProduct[] = [
 const LUMINARA_PRODUCTS: CuratedProduct[] = [
   {
     title: "Anti-Wrinkle Cream",
-    description: "Visibly reduces fine lines and wrinkles with a blend of peptides and hyaluronic acid. Skin feels firmer from day one.",
+    description:
+      "Visibly reduces fine lines and wrinkles with a blend of peptides and hyaluronic acid. Skin feels firmer from day one.",
     categoryId: 9,
     imageUrl: "/images/luminara/anti-wrinkle-cream.jpg",
   },
   {
     title: "Day Cream",
-    description: "Lightweight daily moisturiser with SPF protection. Hydrates and shields through every hour of the day.",
+    description:
+      "Lightweight daily moisturiser with SPF protection. Hydrates and shields through every hour of the day.",
     categoryId: 9,
     imageUrl: "/images/luminara/day-cream.jpg",
   },
   {
     title: "Day and Night Serums",
-    description: "A complete duo — brightening serum for the day, restorative serum for the night. Round-the-clock skin care.",
+    description:
+      "A complete duo — brightening serum for the day, restorative serum for the night. Round-the-clock skin care.",
     categoryId: 10,
     imageUrl: "/images/luminara/day-and-nigh-serums.jpg",
   },
   {
     title: "Retinol Serum",
-    description: "Clinical-strength retinol that accelerates cell turnover and reduces the appearance of dark spots and lines.",
+    description:
+      "Clinical-strength retinol that accelerates cell turnover and reduces the appearance of dark spots and lines.",
     categoryId: 10,
     imageUrl: "/images/luminara/retinol-serum.jpg",
   },
   {
     title: "Lip Maximizer",
-    description: "Volumising lip gloss with a cooling effect. Fuller-looking lips, instantly.",
+    description:
+      "Volumising lip gloss with a cooling effect. Fuller-looking lips, instantly.",
     categoryId: 11,
     imageUrl: "/images/luminara/lip-maximizer.jpg",
   },
   {
     title: "Salicylic Acid Serum",
-    description: "Deep-pore exfoliant that clears breakouts and refines texture. Dermatologist-tested for sensitive skin.",
+    description:
+      "Deep-pore exfoliant that clears breakouts and refines texture. Dermatologist-tested for sensitive skin.",
     categoryId: 10,
     imageUrl: "/images/luminara/salicylic-acid-serum.jpg",
   },
   {
     title: "Night Cream",
-    description: "Rich overnight formula that repairs and replenishes while you sleep. Wake up to visibly softer, plumper skin.",
+    description:
+      "Rich overnight formula that repairs and replenishes while you sleep. Wake up to visibly softer, plumper skin.",
     categoryId: 9,
     imageUrl: "/images/luminara/night-cream.jpg",
   },
   {
     title: "Refreshing Gel",
-    description: "A cooling, water-based gel that instantly hydrates and soothes. Ideal for oily or combination skin.",
+    description:
+      "A cooling, water-based gel that instantly hydrates and soothes. Ideal for oily or combination skin.",
     categoryId: 9,
     imageUrl: "/images/luminara/refreshing-gel.jpg",
   },
   {
     title: "Vitamin C Serum",
-    description: "High-potency vitamin C that brightens dull skin and fades hyperpigmentation. Antioxidant protection in every drop.",
+    description:
+      "High-potency vitamin C that brightens dull skin and fades hyperpigmentation. Antioxidant protection in every drop.",
     categoryId: 10,
     imageUrl: "/images/luminara/vitamin-c-serum.jpg",
   },
   {
     title: "Powder Foundation",
-    description: "Buildable matte coverage in a silky powder formula. Blurs imperfections and controls shine all day.",
+    description:
+      "Buildable matte coverage in a silky powder formula. Blurs imperfections and controls shine all day.",
     categoryId: 11,
     imageUrl: "/images/luminara/powder-foundation.jpg",
   },
   {
     title: "Night Cream",
-    description: "Rich overnight formula that repairs and replenishes while you sleep. Wake up to visibly softer, plumper skin.",
+    description:
+      "Rich overnight formula that repairs and replenishes while you sleep. Wake up to visibly softer, plumper skin.",
     categoryId: 9,
     imageUrl: "/images/luminara/night-cream.jpg",
   },
   {
     title: "Refreshing Gel",
-    description: "A cooling, water-based gel that instantly hydrates and soothes. Ideal for oily or combination skin.",
+    description:
+      "A cooling, water-based gel that instantly hydrates and soothes. Ideal for oily or combination skin.",
     categoryId: 9,
     imageUrl: "/images/luminara/refreshing-gel.jpg",
   },
   {
     title: "Vitamin C Serum",
-    description: "High-potency vitamin C that brightens dull skin and fades hyperpigmentation. Antioxidant protection in every drop.",
+    description:
+      "High-potency vitamin C that brightens dull skin and fades hyperpigmentation. Antioxidant protection in every drop.",
     categoryId: 10,
     imageUrl: "/images/luminara/vitamin-c-serum.jpg",
   },
   {
     title: "Powder Foundation",
-    description: "Buildable matte coverage in a silky powder formula. Blurs imperfections and controls shine all day.",
+    description:
+      "Buildable matte coverage in a silky powder formula. Blurs imperfections and controls shine all day.",
     categoryId: 11,
     imageUrl: "/images/luminara/powder-foundation.jpg",
   },
   {
     title: "Anti-Wrinkle Cream",
-    description: "Visibly reduces fine lines and wrinkles with a blend of peptides and hyaluronic acid. Skin feels firmer from day one.",
+    description:
+      "Visibly reduces fine lines and wrinkles with a blend of peptides and hyaluronic acid. Skin feels firmer from day one.",
     categoryId: 9,
     imageUrl: "/images/luminara/anti-wrinkle-cream.jpg",
   },
   {
     title: "Day Cream",
-    description: "Lightweight daily moisturiser with SPF protection. Hydrates and shields through every hour of the day.",
+    description:
+      "Lightweight daily moisturiser with SPF protection. Hydrates and shields through every hour of the day.",
     categoryId: 9,
     imageUrl: "/images/luminara/day-cream.jpg",
   },
   {
     title: "Day and Night Serums",
-    description: "A complete duo — brightening serum for the day, restorative serum for the night. Round-the-clock skin care.",
+    description:
+      "A complete duo — brightening serum for the day, restorative serum for the night. Round-the-clock skin care.",
     categoryId: 10,
     imageUrl: "/images/luminara/day-and-nigh-serums.jpg",
   },
   {
     title: "Retinol Serum",
-    description: "Clinical-strength retinol that accelerates cell turnover and reduces the appearance of dark spots and lines.",
+    description:
+      "Clinical-strength retinol that accelerates cell turnover and reduces the appearance of dark spots and lines.",
     categoryId: 10,
     imageUrl: "/images/luminara/retinol-serum.jpg",
   },
   {
     title: "Lip Maximizer",
-    description: "Volumising lip gloss with a cooling effect. Fuller-looking lips, instantly.",
+    description:
+      "Volumising lip gloss with a cooling effect. Fuller-looking lips, instantly.",
     categoryId: 10,
     imageUrl: "/images/luminara/lip-maximizer.jpg",
   },
