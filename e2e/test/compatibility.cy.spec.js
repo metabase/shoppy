@@ -14,7 +14,7 @@ describe("Embedding SDK: shoppy compatibility", () => {
       cy.findByTestId("fixed-width-dashboard-header", {
         timeout: TIMEOUT,
       }).within(() => {
-        expect(cy.findByText('A look at "Orders"').should("exist"))
+        expect(cy.findByTestId("dashboard-name-heading").should("exist"))
       })
 
       cy.findByTestId("dashboard-grid", {
@@ -58,17 +58,11 @@ describe("Embedding SDK: shoppy compatibility", () => {
           .should("exist"),
       )
 
-      cy.findByText("Orders over time", { timeout: TIMEOUT })
-        .parent()
-        .within(() => {
-          expect(cy.findAllByTestId("visualization-root").should("exist"))
-        })
-
-      cy.findByText("Total orders", { timeout: TIMEOUT })
-        .parent()
-        .within(() => {
-          expect(cy.findAllByTestId("visualization-root").should("exist"))
-        })
+      // 2 questions on a product details page
+      cy.findAllByTestId("visualization-root", { timeout: TIMEOUT }).should(
+        "have.length",
+        2,
+      )
     })
   })
 
@@ -140,11 +134,14 @@ describe("Embedding SDK: shoppy compatibility", () => {
 
       cy.findByTestId(`site-switcher-button-${site}`).click()
 
-      return cy
-        .findAllByTestId("dashcard-container", { timeout: TIMEOUT })
-        .filter(":contains('Total Orders')")
-        .findByTestId("scalar-container", { timeout: TIMEOUT })
-        .invoke("text")
+      return (
+        cy
+          .findAllByTestId("dashcard-container", { timeout: TIMEOUT })
+          // TODO: find a way to not rely on dashboard name
+          .filter(":contains('Total Orders')")
+          .findByTestId("scalar-container", { timeout: TIMEOUT })
+          .invoke("text")
+      )
     }
 
     cy.visit("/admin/analytics")
