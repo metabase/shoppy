@@ -239,69 +239,6 @@ const LUMINARA_PRODUCTS: CuratedProduct[] = [
     categoryId: 11,
     imageUrl: "/images/luminara/powder-foundation.jpg",
   },
-  {
-    title: "Night Cream",
-    description:
-      "Rich overnight formula that repairs and replenishes while you sleep. Wake up to visibly softer, plumper skin.",
-    categoryId: 9,
-    imageUrl: "/images/luminara/night-cream.jpg",
-  },
-  {
-    title: "Refreshing Gel",
-    description:
-      "A cooling, water-based gel that instantly hydrates and soothes. Ideal for oily or combination skin.",
-    categoryId: 9,
-    imageUrl: "/images/luminara/refreshing-gel.jpg",
-  },
-  {
-    title: "Vitamin C Serum",
-    description:
-      "High-potency vitamin C that brightens dull skin and fades hyperpigmentation. Antioxidant protection in every drop.",
-    categoryId: 10,
-    imageUrl: "/images/luminara/vitamin-c-serum.jpg",
-  },
-  {
-    title: "Powder Foundation",
-    description:
-      "Buildable matte coverage in a silky powder formula. Blurs imperfections and controls shine all day.",
-    categoryId: 11,
-    imageUrl: "/images/luminara/powder-foundation.jpg",
-  },
-  {
-    title: "Anti-Wrinkle Cream",
-    description:
-      "Visibly reduces fine lines and wrinkles with a blend of peptides and hyaluronic acid. Skin feels firmer from day one.",
-    categoryId: 9,
-    imageUrl: "/images/luminara/anti-wrinkle-cream.jpg",
-  },
-  {
-    title: "Day Cream",
-    description:
-      "Lightweight daily moisturiser with SPF protection. Hydrates and shields through every hour of the day.",
-    categoryId: 9,
-    imageUrl: "/images/luminara/day-cream.jpg",
-  },
-  {
-    title: "Day and Night Serums",
-    description:
-      "A complete duo — brightening serum for the day, restorative serum for the night. Round-the-clock skin care.",
-    categoryId: 10,
-    imageUrl: "/images/luminara/day-and-nigh-serums.jpg",
-  },
-  {
-    title: "Retinol Serum",
-    description:
-      "Clinical-strength retinol that accelerates cell turnover and reduces the appearance of dark spots and lines.",
-    categoryId: 10,
-    imageUrl: "/images/luminara/retinol-serum.jpg",
-  },
-  {
-    title: "Lip Maximizer",
-    description:
-      "Volumising lip gloss with a cooling effect. Fuller-looking lips, instantly.",
-    categoryId: 10,
-    imageUrl: "/images/luminara/lip-maximizer.jpg",
-  },
 ]
 
 // Proficiency Labs (shopId 4) - Training courses
