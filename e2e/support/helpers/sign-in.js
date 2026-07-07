@@ -44,11 +44,6 @@ async function getSignedJwtForAdmin() {
   return `${signingInput}.${base64url(signature)}`
 }
 
-// Sending the embedding-SDK client header makes /auth/sso return the session id directly in the
-// JSON response body (see generate-response-token in
-// enterprise/backend/src/metabase_enterprise/sso/integrations/jwt.clj), instead of redirecting
-// with a Set-Cookie header. cy.request() doesn't reliably persist cookies across origins/ports it
-// hasn't cy.visit()-ed, so the JSON path is what actually works here.
 export function signInAsAdmin() {
   return cy
     .wrap(getSignedJwtForAdmin())
