@@ -173,7 +173,8 @@ describe("Embedding SDK: shoppy compatibility", () => {
 
   // TODO (Kelvin 2026-07-07) bandage, not a fix. Metabase's appdb search-index reindex has a
   // race that can strand a fully-built index as "pending" instead of activating it. Couldn't
-  // land the real backend fix yet (EMB-2059); this forces a reindex and waits for it first.
+  // land the real backend fix yet; this forces a reindex and waits for it first. The actual
+  // backend bug (not EMB-2059, which is just this bandage) hasn't been filed as its own ticket yet.
   // Scoped to just this test, not the whole suite — it's the only one that needs it.
   describe("data picker", () => {
     before(() => {
