@@ -866,10 +866,10 @@
   resolved "https://registry.yarnpkg.com/@mantine/hooks/-/hooks-7.8.0.tgz#fc32e07746689459c4b049dc581d1dbda5545686"
   integrity sha512-+70fkgjhVJeJ+nJqnburIM3UAsfvxat1Low9HMPobLbv64FIdB4Nzu5ct3qojNQ58r5sK01tg5UoFIJYslaVrg==
 
-"@metabase/embedding-sdk-react@^0.60.0":
-  version "0.60.0"
-  resolved "https://registry.yarnpkg.com/@metabase/embedding-sdk-react/-/embedding-sdk-react-0.60.0.tgz#493bb086394a9665480919e20694dc52a5178f88"
-  integrity sha512-pi1Z7jkMylN0ogvx5MO2LXQcKsa5AUVHHivE3pdw0nnLVhMOSb66gXEQcKDfguM1NTtEZ0HOLaC7qRr/4pZchA==
+"@metabase/embedding-sdk-react@^0.63.0":
+  version "0.63.0"
+  resolved "https://registry.yarnpkg.com/@metabase/embedding-sdk-react/-/embedding-sdk-react-0.63.0.tgz#047368f2fa8090b269c0e4fa9c260858972f2191"
+  integrity sha512-2q8HXVt9BoeapNGJdiXRffnFFqAYf+HhvciYil2CjYa5+ODT9h2dKXkWPAei8cpbfYwEbBJz4Zrb2FbVSsVKjg==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -4116,6 +4116,7 @@ string-argv@~0.3.2:
   integrity sha512-aqD2Q0144Z+/RqG52NeHEkZauTAUWJO8c6yTftGJKO3Tja5tUgIfmIl6kExvhtxSDP7fXB6DvzkfMpCd/F3G+Q==
 
 "string-width-cjs@npm:string-width@^4.2.0", string-width@^4.1.0:
+  name string-width-cjs
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/string-width/-/string-width-4.2.3.tgz#269c7117d27b05ad2e536830a8ec895ef9c6d010"
   integrity sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==
