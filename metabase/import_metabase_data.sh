@@ -8,4 +8,4 @@ fi
 curl -X POST \
   -H "x-api-key: $SHOPPY_METABASE_INSTANCE_API_KEY" \
   -F file=@./metabase_data.tar.gz \
-  "https://shoppy.coredev.metabase.com/api/ee/serialization/import"
+  "https://shoppy.metabaseapp.com/api/ee/serialization/import"

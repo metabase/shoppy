@@ -7,7 +7,7 @@ fi
 
 curl -X POST \
   -H "x-api-key: $SHOPPY_METABASE_INSTANCE_API_KEY" \
-  "https://shoppy.coredev.metabase.com/api/ee/serialization/export?data_model=false&dirname=metabase_data" \
+  "https://shoppy.metabaseapp.com/api/ee/serialization/export?data_model=false&dirname=metabase_data" \
   -o metabase_data.tar.gz
 
 tar -xzf metabase_data.tar.gz

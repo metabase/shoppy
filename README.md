@@ -83,13 +83,3 @@ See the [Getting the App DB dump](#getting-the-app-db-dump-of-the-shoppys-metaba
 Then run `yarn docker:e2e:up` to start all required containers.
 After containers are up, run `cd e2e && yarn cypress:open` to run Cypress.
 To stop containers run `yarn docker:rm`.
-
-
-### Getting the App DB dump of the Shoppy's Metabase Instance
-
-For a local development or for running e2e locally an App DB dump of the Shoppy's Metabase Instance must be placed to the `metabase/metabase_dump_bk.sql`
-
-You can get it by:
-- Enabling the `Tailscale` and logging in using your work email address.
-- Running `pg_dump "postgres://{{ username }}:{{ password }}@{{ host }}:{{ port }}/{{ database }}" > ./metabase/metabase_dump.sql` command.
-  - See the `Shoppy Coredev Appdb` record in `1password` for credentials.

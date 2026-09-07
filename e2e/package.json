@@ -8,7 +8,7 @@
     "env-cmd": "^10.1.0"
   },
   "scripts": {
-    "cypress:open": "env-cmd -f ../.env.docker cypress open --config-file ./support/cypress.config.js --e2e",
-    "cypress:run": "env-cmd -f ../.env.docker cypress run --config-file ./support/cypress.config.js"
+    "cypress:open": "cypress open --config-file ./support/cypress.config.js --e2e",
+    "cypress:run": "cypress run --config-file ./support/cypress.config.js"
   }
 }

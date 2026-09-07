@@ -14,42 +14,12 @@ jobs:
     runs-on: ubuntu-22.04
     timeout-minutes: 10
     name: e2e-tests
-    env:
-      PREMIUM_EMBEDDING_TOKEN: ${{ secrets.STAGING_MB_ALL_FEATURES_TOKEN }}
-      MB_RUN_MODE: dev
-      METASTORE_DEV_SERVER_URL: ${{ secrets.METASTORE_DEV_SERVER_URL }}
-      METABASE_APP_DB_USER: ${{ secrets.APP_DB_USER }}
-      METABASE_APP_DB: ${{ secrets.APP_DB_SHOPPY_DATABASE }}
     permissions:
       id-token: write
       contents: read
 
     steps:
       - uses: actions/checkout@v4
-
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v4
-        with:
-          role-to-assume: ${{ secrets.IAM_ROLE }}
-          role-session-name: GitHub_to_AWS_via_FederatedOIDC
-          aws-region: us-east-1
-
-      - name: Download App DB PostgreSQL dump from S3
-        run: |
-          aws s3 cp s3://${{ secrets.METABASE_APP_DB_S3_BUCKET }}/${{ vars.METABASE_APP_DB_S3_KEY }} ./metabase/metabase_dump.sql
-
-      - name: Run Shoppy in Docker
-        run: |
-          cp .env.docker.example .env.docker &&
-          yarn docker:e2e:up --wait
-
-      - name: Dump container logs on failure
-        if: failure()
-        run: |
-          echo "=== shoppy-metabase-1 logs ===" && docker logs shoppy-metabase-1 2>&1 || true
-          echo "=== shoppy-api-1 logs ===" && docker logs shoppy-api-1 2>&1 || true
-          echo "=== shoppy-client-1 logs ===" && docker logs shoppy-client-1 2>&1 || true
-          echo "=== Container statuses ===" && docker ps -a 2>&1 || true
 
       - name: Install Chrome v111
         uses: browser-actions/setup-chrome@v1

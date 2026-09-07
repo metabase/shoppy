@@ -1,5 +1,3 @@
-import { METABASE_URL, signInAsAdmin } from "../support/helpers/sign-in"
-
 const TIMEOUT = 20000
 
 describe("Embedding SDK: shoppy compatibility", () => {
@@ -171,51 +169,7 @@ describe("Embedding SDK: shoppy compatibility", () => {
     })
   })
 
-  // TODO (Kelvin 2026-07-07) bandage, not a fix. Metabase's appdb search-index reindex has a
-  // race that can strand a fully-built index as "pending" instead of activating it. Couldn't
-  // land the real backend fix yet; this forces a reindex and waits for it first. The actual
-  // backend bug (QUE2-736) hasn't landed yet.
-  // Scoped to just this test, not the whole suite — it's the only one that needs it.
   describe("data picker", () => {
-    before(() => {
-      const REINDEX_POLL_INTERVAL_MS = 1000
-      const REINDEX_POLL_MAX_ATTEMPTS = 60
-
-      function waitForDatasetIndex(sessionId, attempt = 0) {
-        cy.request({
-          method: "GET",
-          url: `${METABASE_URL}/api/search?models=dataset`,
-          headers: { "X-Metabase-Session": sessionId },
-        }).then(({ body }) => {
-          if (body.total > 0) {
-            return
-          }
-          if (attempt >= REINDEX_POLL_MAX_ATTEMPTS) {
-            // Fail loudly here instead of silently proceeding into a doomed test — a confusing
-            // "can't find Orders" UI assertion failure downstream is much harder to diagnose than
-            // this being the actual problem.
-            throw new Error(
-              `waitForDatasetIndex: no datasets found after ${attempt} attempts`,
-            )
-          }
-
-          cy.wait(REINDEX_POLL_INTERVAL_MS)
-          waitForDatasetIndex(sessionId, attempt + 1)
-        })
-      }
-
-      signInAsAdmin().then((sessionId) => {
-        cy.request({
-          method: "POST",
-          url: `${METABASE_URL}/api/search/force-reindex`,
-          headers: { "X-Metabase-Session": sessionId },
-          failOnStatusCode: false,
-        })
-
-        waitForDatasetIndex(sessionId)
-      })
-    })
-
     it("should not display tables in the data picker", () => {
       cy.visit({
         url: "/admin/analytics/new/from-scratch",
