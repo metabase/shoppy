@@ -34,7 +34,7 @@ jobs:
       - name: Authorize runner IP on the warehouse security group
         run: |
           aws ec2 authorize-security-group-ingress \
-            --group-id ${{ vars.SHOPPY_DB_SECURITY_GROUP_ID }} \
+            --group-id ${{ secrets.SHOPPY_DB_SECURITY_GROUP_ID }} \
             --protocol tcp --port ${{ vars.SHOPPY_DB_PORT }} \
             --cidr ${{ steps.runner-ip.outputs.ip }}/32
 
@@ -52,7 +52,7 @@ jobs:
         if: always()
         run: |
           aws ec2 revoke-security-group-ingress \
-            --group-id ${{ vars.SHOPPY_DB_SECURITY_GROUP_ID }} \
+            --group-id ${{ secrets.SHOPPY_DB_SECURITY_GROUP_ID }} \
             --protocol tcp --port ${{ vars.SHOPPY_DB_PORT }} \
             --cidr ${{ steps.runner-ip.outputs.ip }}/32
 
