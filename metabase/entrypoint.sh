@@ -2,6 +2,15 @@
 set -e
 
 DUMP=./app/metabase_dump.sql
+LOCAL_JAR=/app/local-dist/metabase.jar
+
+if [ -f "$LOCAL_JAR" ]; then
+  echo "Local metabase.jar is found in ./local-dist/metabase.jar, using it..."
+  # `run_metabase.sh` hardcodes /app/metabase.jar, so point it at the mounted jar
+  ln -sf "$LOCAL_JAR" /app/metabase.jar
+else
+  echo "Local metabase.jar is not found in ./local-dist/metabase.jar, using the image's metabase.jar"
+fi
 
 if [ -f $DUMP ]; then
   echo "Installing dependencies..."

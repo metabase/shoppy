@@ -77,6 +77,7 @@ services:
       MB_JWT_IDENTITY_PROVIDER_URI: "http://localhost:${API_PORT}/sso/metabase"
       MB_JWT_SHARED_SECRET: "${METABASE_JWT_SHARED_SECRET}"
       MB_SETUP_TOKEN: "${PREMIUM_EMBEDDING_TOKEN}"
+      MB_WAREHOUSE_ALLOWED_NETWORKS: "allow-all"
       MB_DB_TYPE: "postgres"
       MB_DB_HOST: "${METABASE_APP_DB_HOST}"
       MB_DB_PORT: "${METABASE_APP_DB_PORT}"

@@ -45,9 +45,9 @@ For a local development the App DB dump of the Shoppy's Metabase Instance must b
 
 See the [Getting the App DB dump](#getting-the-app-db-dump-of-the-shoppys-metabase-instance) section.
 
-- To run containers with a locally built `metabase.jar`, copy it to the `./local-dist` folder as `./local-dist/metabase.jar`.
-- To run containers with a locally built Embedding SDK package, copy it to the `./local-dist` folder as `./local-dist/embedding-sdk`.
-- Run `yarn docker:local-dist:up` to start containers and use locally built dist from the `./local-dist` folder.
+- Run `yarn docker:local-dist:up` to start containers. Only the App DB dump is required; the items below are optional.
+- To run containers with a locally built `metabase.jar`, copy it to the `./local-dist` folder as `./local-dist/metabase.jar`. Without it the `metabase.jar` from the Docker image is used.
+- To run containers with a locally built Embedding SDK package, copy it to the `./local-dist` folder as `./local-dist/embedding-sdk`. Without it the `@metabase/embedding-sdk-react` version from `package.json` is used.
 - To remove containers and images completely run `yarn docker:rm`.
 
 ### Using an existing running MB instance
@@ -87,7 +87,7 @@ To stop containers run `yarn docker:rm`.
 
 ### Getting the App DB dump of the Shoppy's Metabase Instance
 
-For a local development or for running e2e locally an App DB dump of the Shoppy's Metabase Instance must be placed to the `./metabase/metabase_dump.sql`
+For a local development or for running e2e locally an App DB dump of the Shoppy's Metabase Instance must be placed to the `metabase/metabase_dump_bk.sql`
 
 You can get it by:
 - Enabling the `Tailscale` and logging in using your work email address.
