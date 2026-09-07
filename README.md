@@ -39,15 +39,6 @@ This demo uses the data from the hosted Metabase Cloud instance and provides a h
 - To stop containers run `yarn docker:down`.
 - To remove containers and images completely run `yarn docker:rm`.
 
-#### Local development (For Metabase developers)
-
-For local development, place the App DB dump of the Shoppy's Metabase Instance at `./metabase/metabase_dump.sql`. Obtain the current dump from the team; it can no longer be produced with `pg_dump` now that the instance runs on Metabase Cloud.
-
-- Run `yarn docker:local-dist:up` to start containers. Only the App DB dump is required; the items below are optional.
-- To run containers with a locally built `metabase.jar`, copy it to the `./local-dist` folder as `./local-dist/metabase.jar`. Without it the `metabase.jar` from the Docker image is used.
-- To run containers with a locally built Embedding SDK package, copy it to the `./local-dist` folder as `./local-dist/embedding-sdk`. Without it the `@metabase/embedding-sdk-react` version from `package.json` is used.
-- To remove containers and images completely run `yarn docker:rm`.
-
 ### Using an existing running MB instance
 
 - Place the metabase repository in `../metabase`

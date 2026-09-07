@@ -39,13 +39,6 @@ RUN yarn --frozen-lockfile
 # Copy source code last (changes most frequently)
 COPY --exclude=./api --exclude=./metabase . .
 
-RUN if [ -d "./local-dist/embedding-sdk" ]; then \
-      echo "Local embedding-sdk dist is found in ./local-dist/embedding-sdk, installing it..."; \
-      yarn add file:./local-dist/embedding-sdk; \
-    else \
-      echo "Local embedding-sdk dist is not found in ./local-dist/embedding-sdk, skipping copy"; \
-    fi
-
 RUN if [ "$WATCH" != "true" ]; then \
       echo "WATCH env is not set; running production yarn build..."; \
       yarn build; \

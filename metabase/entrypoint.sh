@@ -1,47 +1,6 @@
 #!/bin/bash
 set -e
 
-DUMP=./app/metabase_dump.sql
-LOCAL_JAR=/app/local-dist/metabase.jar
-
-if [ -f "$LOCAL_JAR" ]; then
-  echo "Local metabase.jar is found in ./local-dist/metabase.jar, using it..."
-  # `run_metabase.sh` hardcodes /app/metabase.jar, so point it at the mounted jar
-  ln -sf "$LOCAL_JAR" /app/metabase.jar
-else
-  echo "Local metabase.jar is not found in ./local-dist/metabase.jar, using the image's metabase.jar"
-fi
-
-if [ -f $DUMP ]; then
-  echo "Installing dependencies..."
-
-  apk update \
-    && apk add --no-cache postgresql-client file \
-    && rm -rf /var/cache/apk/*
-
-  echo "Restoring MB App DB from dump...";
-
-  # reset `MB_CONFIG_FILE_PATH` value to prevent initialization from config
-  export MB_CONFIG_FILE_PATH=''
-
-  METABASE_APP_DB_URL="postgres://${MB_DB_USER}:${MB_DB_PASS}@${MB_DB_HOST}:${MB_DB_PORT}/${MB_DB_DBNAME}"
-  METABASE_APP_DB_DUMP_TYPE=$(file --brief --mime-type "$DUMP")
-
-  case "$METABASE_APP_DB_DUMP_TYPE" in
-    application/x-tar|application/octet-stream)
-      echo "Custom　or directory‑format archive → pg_restore"
-      pg_restore -d "$METABASE_APP_DB_URL" "$DUMP" --no-owner > /dev/null
-      ;;
-    text/plain)
-      echo "Plain text SQL → psql"
-      psql "$METABASE_APP_DB_URL" -f "$DUMP" --quiet
-      ;;
-    *)
-      echo "Unknown dump format..."
-      ;;
-  esac
-fi
-
 ./app/run_metabase.sh "$@" &
 SERVER_PID=$!
 
@@ -52,18 +11,16 @@ done
 
 echo "Metabase is healthy. Running additional configuration..."
 
-if [ ! -f $DUMP ]; then
-  echo "Running import...";
+echo "Running import...";
 
-  SESSION_ID=$(curl -s -X POST \
-    -H "Content-Type: application/json" \
-    -d "{\"username\": \"${METABASE_ADMIN_EMAIL}\", \"password\": \"${METABASE_ADMIN_PASSWORD}\"}" \
-    http://metabase:${MB_JETTY_PORT}/api/session | sed -n 's/.*"id":"\([^"]*\)".*/\1/p')
+SESSION_ID=$(curl -s -X POST \
+  -H "Content-Type: application/json" \
+  -d "{\"username\": \"${METABASE_ADMIN_EMAIL}\", \"password\": \"${METABASE_ADMIN_PASSWORD}\"}" \
+  http://metabase:${MB_JETTY_PORT}/api/session | sed -n 's/.*"id":"\([^"]*\)".*/\1/p')
 
-  curl -X POST \
-    -H "X-Metabase-Session: $SESSION_ID" \
-    -F file=@./app/metabase_data.tar.gz \
-    http://metabase:${MB_JETTY_PORT}/api/ee/serialization/import
-fi
+curl -X POST \
+  -H "X-Metabase-Session: $SESSION_ID" \
+  -F file=@./app/metabase_data.tar.gz \
+  http://metabase:${MB_JETTY_PORT}/api/ee/serialization/import
 
 wait $SERVER_PID
