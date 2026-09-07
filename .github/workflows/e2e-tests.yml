@@ -12,44 +12,22 @@ on:
 jobs:
   e2e-tests:
     runs-on: ubuntu-22.04
-    timeout-minutes: 10
+    timeout-minutes: 15
     name: e2e-tests
-    env:
-      PREMIUM_EMBEDDING_TOKEN: ${{ secrets.STAGING_MB_ALL_FEATURES_TOKEN }}
-      MB_RUN_MODE: dev
-      METASTORE_DEV_SERVER_URL: ${{ secrets.METASTORE_DEV_SERVER_URL }}
-      METABASE_APP_DB_USER: ${{ secrets.APP_DB_USER }}
-      METABASE_APP_DB: ${{ secrets.APP_DB_SHOPPY_DATABASE }}
     permissions:
-      id-token: write
       contents: read
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v4
-        with:
-          role-to-assume: ${{ secrets.IAM_ROLE }}
-          role-session-name: GitHub_to_AWS_via_FederatedOIDC
-          aws-region: us-east-1
-
-      - name: Download App DB PostgreSQL dump from S3
+      - name: Prepare env
         run: |
-          aws s3 cp s3://${{ secrets.METABASE_APP_DB_S3_BUCKET }}/${{ vars.METABASE_APP_DB_S3_KEY }} ./metabase/metabase_dump.sql
+          cp .env.docker.example .env.docker
+          # The api signs SSO JWTs that production Metabase must trust, so use the production secret.
+          sed -i "s|^METABASE_JWT_SHARED_SECRET=.*|METABASE_JWT_SHARED_SECRET=\"${{ secrets.SHOPPY_PROD_JWT_SHARED_SECRET }}\"|" .env.docker
 
-      - name: Run Shoppy in Docker
-        run: |
-          cp .env.docker.example .env.docker &&
-          yarn docker:e2e:up --wait
-
-      - name: Dump container logs on failure
-        if: failure()
-        run: |
-          echo "=== shoppy-metabase-1 logs ===" && docker logs shoppy-metabase-1 2>&1 || true
-          echo "=== shoppy-api-1 logs ===" && docker logs shoppy-api-1 2>&1 || true
-          echo "=== shoppy-client-1 logs ===" && docker logs shoppy-client-1 2>&1 || true
-          echo "=== Container statuses ===" && docker ps -a 2>&1 || true
+      - name: Run Shoppy (client + api + warehouse) against production Metabase
+        run: yarn docker:e2e:up --wait
 
       - name: Install Chrome v111
         uses: browser-actions/setup-chrome@v1
@@ -64,6 +42,13 @@ jobs:
       - name: Run e2e tests
         id: run-e2e-tests
         run: cd e2e && yarn cypress:run
+
+      - name: Dump container logs on failure
+        if: failure()
+        run: |
+          echo "=== shoppy-client-1 ===" && docker logs shoppy-client-1 2>&1 || true
+          echo "=== shoppy-api-1 ===" && docker logs shoppy-api-1 2>&1 || true
+          echo "=== container statuses ===" && docker ps -a 2>&1 || true
 
       - name: Upload Cypress Artifacts upon failure
         uses: actions/upload-artifact@v4

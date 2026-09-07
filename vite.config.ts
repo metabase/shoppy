@@ -13,6 +13,17 @@ export default defineConfig(({ mode }) => {
   const devPort = parseInt(env.CLIENT_PORT, 10) || 3004
   const previewPort = parseInt(env.CLIENT_PORT ?? env.PORT, 10) || undefined
 
+  // The client calls same-origin `/mb/*`; forward it to the api, which proxies onward to
+  // METABASE_INSTANCE_URL (see api/src/main.ts). Applied to both dev and preview.
+  const mbProxy = {
+    "/mb": {
+      target:
+        env.VITE_APP_DOCKER_OVERRIDE_BACKEND_URL || env.VITE_APP_BACKEND_URL,
+      changeOrigin: true,
+      secure: false,
+    },
+  }
+
   return {
     plugins: [
       react(),
@@ -24,19 +35,11 @@ export default defineConfig(({ mode }) => {
     server: {
       open: false,
       port: devPort,
-      proxy: {
-        // Ensure we have the correct backend host set for local development
-        "/mb": {
-          target:
-            env.VITE_APP_DOCKER_OVERRIDE_BACKEND_URL ||
-            env.VITE_APP_BACKEND_URL,
-          changeOrigin: true,
-          secure: false,
-        },
-      },
+      proxy: mbProxy,
     },
     preview: {
       port: previewPort,
+      proxy: mbProxy,
     },
   }
 })
