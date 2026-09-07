@@ -4,7 +4,7 @@ const path = require("path")
 
 module.exports = defineConfig({
   e2e: {
-    baseUrl: "https://embedded-analytics-sdk-demo.metabase.com",
+    baseUrl: `http://localhost:${process.env.CLIENT_PORT}`,
     supportFile: path.resolve(path.join(__dirname, "./cypress.js")),
     specPattern: path.resolve(
       path.join(

@@ -32,9 +32,9 @@ This demo uses the data from the hosted Metabase Cloud instance and provides a h
 
 ### Using Docker
 
-- Clone `.env.docker.example` to `.env.docker` and set the proper `PREMIUM_EMBEDDING_TOKEN` value.
-- Run Docker via `yarn docker:up` for the `production` build or `WATCH=true yarn docker:up` for the development build with the `watch` support.
-  - The command launches containers with the local MB instance, Shoppy DWH, Shoppy API and Shoppy Client.
+- Clone `.env.docker.example` to `.env.docker`. Set `MB_INSTANCE_URL` to your Metabase instance and `METABASE_JWT_SHARED_SECRET` to that instance's JWT shared secret.
+- Run `yarn docker:up` for a production build, or `WATCH=true yarn docker:up` for a dev build with watch.
+  - The command launches the Shoppy DWH, API and Client, pointing at the configured Metabase instance.
   - Visit `http://localhost:4400`.
 - To stop containers run `yarn docker:down`.
 - To remove containers and images completely run `yarn docker:rm`.
@@ -65,9 +65,11 @@ If you cannot use the hosted JWT server, you can run the JWT server locally.
 
 ### Running e2e tests (For Metabase developers)
 
-The e2e tests run against the deployed production demo at [https://embedded-analytics-sdk-demo.metabase.com](https://embedded-analytics-sdk-demo.metabase.com) (set in `e2e/support/cypress.config.js`), so no local containers or App DB dump are needed.
+The e2e tests run the client, api and warehouse locally (via Docker) against the production Metabase instance, and drive the local client with Cypress.
 
-- `cd e2e && yarn install`
-- `yarn cypress:run` to run headless, or `yarn cypress:open` for the Cypress UI.
+- In `.env.docker`, set `METABASE_JWT_SHARED_SECRET` to the production instance's JWT shared secret (from 1Password) so the api's SSO tokens are trusted, and `MB_INSTANCE_URL` to that instance.
+- Start the stack: `yarn docker:e2e:up --wait`.
+- Run the tests: `cd e2e && yarn cypress:run` (headless) or `yarn cypress:open` (Cypress UI).
+- Stop the stack: `yarn docker:down`.
 
-CI runs the same suite in `.github/workflows/e2e-tests.yml`.
+CI runs the same suite in `.github/workflows/e2e-tests.yml`, injecting the production secret from the `SHOPPY_PROD_JWT_SHARED_SECRET` GitHub secret.
