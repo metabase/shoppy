@@ -41,9 +41,7 @@ This demo uses the data from the hosted Metabase Cloud instance and provides a h
 
 #### Local development (For Metabase developers)
 
-For a local development the App DB dump of the Shoppy's Metabase Instance must be downloaded.
-
-See the [Getting the App DB dump](#getting-the-app-db-dump-of-the-shoppys-metabase-instance) section.
+For local development, place the App DB dump of the Shoppy's Metabase Instance at `./metabase/metabase_dump.sql`. Obtain the current dump from the team; it can no longer be produced with `pg_dump` now that the instance runs on Metabase Cloud.
 
 - Run `yarn docker:local-dist:up` to start containers. Only the App DB dump is required; the items below are optional.
 - To run containers with a locally built `metabase.jar`, copy it to the `./local-dist` folder as `./local-dist/metabase.jar`. Without it the `metabase.jar` from the Docker image is used.
@@ -76,10 +74,9 @@ If you cannot use the hosted JWT server, you can run the JWT server locally.
 
 ### Running e2e tests (For Metabase developers)
 
-To run e2e tests locally, the App DB dump of the Shoppy's Metabase Instance must be downloaded.
+The e2e tests run against the deployed production demo at [https://embedded-analytics-sdk-demo.metabase.com](https://embedded-analytics-sdk-demo.metabase.com) (set in `e2e/support/cypress.config.js`), so no local containers or App DB dump are needed.
 
-See the [Getting the App DB dump](#getting-the-app-db-dump-of-the-shoppys-metabase-instance) section.
+- `cd e2e && yarn install`
+- `yarn cypress:run` to run headless, or `yarn cypress:open` for the Cypress UI.
 
-Then run `yarn docker:e2e:up` to start all required containers.
-After containers are up, run `cd e2e && yarn cypress:open` to run Cypress.
-To stop containers run `yarn docker:rm`.
+CI runs the same suite in `.github/workflows/e2e-tests.yml`.
