@@ -9,6 +9,7 @@
   },
   "scripts": {
     "cypress:open": "env-cmd -f ../.env.docker cypress open --config-file ./support/cypress.config.js --e2e",
-    "cypress:run": "env-cmd -f ../.env.docker cypress run --config-file ./support/cypress.config.js"
+    "cypress:run": "env-cmd -f ../.env.docker cypress run --config-file ./support/cypress.config.js",
+    "cypress:synthetic": "cypress run --config-file ./support/cypress.synthetic.config.js --browser chrome"
   }
 }

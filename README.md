@@ -32,11 +32,20 @@ This demo uses the data from the hosted Metabase Cloud instance and provides a h
 
 ### Using Docker
 
-- Clone `.env.docker.example` to `.env.docker`. Set `MB_INSTANCE_URL` to your Metabase instance and `METABASE_JWT_SHARED_SECRET` to that instance's JWT shared secret.
-- Run `yarn docker:up` for a production build, or `WATCH=true yarn docker:up` for a dev build with watch.
-  - The command launches the Shoppy DWH, API and Client, pointing at the configured Metabase instance.
+- Clone `.env.docker.example` to `.env.docker` and set the proper `PREMIUM_EMBEDDING_TOKEN` value.
+- Run Docker via `yarn docker:up` for the `production` build or `WATCH=true yarn docker:up` for the development build with the `watch` support.
+  - The command launches a local MB instance, the Shoppy DWH, Shoppy API and Shoppy Client. The local Metabase is seeded from the committed serialized data (`./metabase/metabase_data.tar.gz`), so no database dump is needed.
   - Visit `http://localhost:4400`.
 - To stop containers run `yarn docker:down`.
+- To remove containers and images completely run `yarn docker:rm`.
+
+#### Local development (For Metabase developers)
+
+To run the containers with a locally built `metabase.jar` and/or a locally built Embedding SDK:
+
+- Copy a locally built `metabase.jar` to `./local-dist/metabase.jar`. Without it, the `metabase.jar` from the Docker image is used.
+- Copy a locally built Embedding SDK package to `./local-dist/embedding-sdk`. Without it, the `@metabase/embedding-sdk-react` version from `package.json` is used.
+- Run `yarn docker:local-dist:up` to start the containers using the local dist from `./local-dist`.
 - To remove containers and images completely run `yarn docker:rm`.
 
 ### Using an existing running MB instance
@@ -65,11 +74,11 @@ If you cannot use the hosted JWT server, you can run the JWT server locally.
 
 ### Running e2e tests (For Metabase developers)
 
-The e2e tests run the client, api and warehouse locally (via Docker) against the production Metabase instance, and drive the local client with Cypress.
+The e2e tests run the local Shoppy stack (a local Metabase seeded from the committed serialized data) and drive it with Cypress.
 
-- In `.env.docker`, set `METABASE_JWT_SHARED_SECRET` to the production instance's JWT shared secret (from 1Password) so the api's SSO tokens are trusted, and `MB_INSTANCE_URL` to that instance.
-- Start the stack: `yarn docker:e2e:up --wait`.
-- Run the tests: `cd e2e && yarn cypress:run` (headless) or `yarn cypress:open` (Cypress UI).
-- Stop the stack: `yarn docker:down`.
+- Clone `.env.docker.example` to `.env.docker` and set the proper `PREMIUM_EMBEDDING_TOKEN` value.
+- Run `yarn docker:e2e:up --wait` to start all required containers.
+- Run the tests: `cd e2e && yarn cypress:run` (headless) or `cd e2e && yarn cypress:open` (Cypress UI).
+- To stop containers run `yarn docker:rm`.
 
-CI runs the same suite in `.github/workflows/e2e-tests.yml`, injecting the production secret from the `SHOPPY_PROD_JWT_SHARED_SECRET` GitHub secret.
+CI runs the same suite in `.github/workflows/e2e-tests.yml`.
