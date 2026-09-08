@@ -27,10 +27,6 @@ jobs:
           role-session-name: GitHub_to_AWS_via_FederatedOIDC
           aws-region: us-east-1
 
-      - name: Get runner public IP
-        id: runner-ip
-        run: echo "ip=$(curl -s https://checkip.amazonaws.com)" >> "$GITHUB_OUTPUT"
-
       - name: Ensure that Esno executable is ready
         run: yarn install --cwd api --frozen-lockfile
 
