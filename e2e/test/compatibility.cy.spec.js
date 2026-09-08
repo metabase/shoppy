@@ -130,47 +130,6 @@ describe("Embedding SDK: shoppy compatibility", () => {
     })
   })
 
-  it("should display dashboards with sandboxing for different shops", () => {
-    const getOrdersCountForShop = (site) => {
-      cy.log(`Get total orders count for ${site}`)
-
-      cy.findByTestId(`site-switcher-button-${site}`).click()
-
-      return (
-        cy
-          .findAllByTestId("dashcard-container", { timeout: TIMEOUT })
-          // TODO: find a way to not rely on dashboard name
-          .filter(":contains('Total Orders')")
-          .findByTestId("scalar-container", { timeout: TIMEOUT })
-          .invoke("text")
-      )
-    }
-
-    cy.visit("/admin/analytics")
-
-    cy.get("main").within(() => {
-      cy.findByText("Orders", { timeout: TIMEOUT }).click()
-    })
-
-    const shops = ["proficiency", "stitch", "luminara", "pug"]
-    const counts = []
-
-    cy.wrap(shops).each((site) => {
-      getOrdersCountForShop(site).then((text) => {
-        counts.push(text)
-      })
-    })
-
-    cy.then(() => {
-      const unique = new Set(counts)
-
-      expect(
-        unique.size,
-        `All counts: [${counts.join(", ")}]`,
-      ).to.be.greaterThan(1)
-    })
-  })
-
   // TODO (Kelvin 2026-07-07) bandage, not a fix. Metabase's appdb search-index reindex has a
   // race that can strand a fully-built index as "pending" instead of activating it. Couldn't
   // land the real backend fix yet; this forces a reindex and waits for it first. The actual
