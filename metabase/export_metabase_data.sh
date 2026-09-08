@@ -1,13 +1,18 @@
 #!/bin/bash
 
-if [ -z "$SHOPPY_METABASE_INSTANCE_API_KEY" ]; then
-  echo "Define SHOPPY_METABASE_INSTANCE_API_KEY value in your environment"
+if [ -z "$METABASE_INSTANCE_API_KEY" ]; then
+  echo "Define METABASE_INSTANCE_API_KEY value in your environment"
+  exit 1
+fi
+
+if [ -z "$METABASE_INSTANCE_URL" ]; then
+  echo "Define METABASE_INSTANCE_URL value in your environment"
   exit 1
 fi
 
 curl -X POST \
-  -H "x-api-key: $SHOPPY_METABASE_INSTANCE_API_KEY" \
-  "https://shoppy.metabaseapp.com/api/ee/serialization/export?data_model=false&dirname=metabase_data" \
+  -H "x-api-key: $METABASE_INSTANCE_API_KEY" \
+  "$METABASE_INSTANCE_URL/api/ee/serialization/export?data_model=false&dirname=metabase_data" \
   -o metabase_data.tar.gz
 
 tar -xzf metabase_data.tar.gz
