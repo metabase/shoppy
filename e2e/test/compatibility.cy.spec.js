@@ -136,7 +136,7 @@ describe("Embedding SDK: shoppy compatibility", () => {
   // backend bug (QUE2-736) hasn't landed yet.
   // Scoped to just this test, not the whole suite — it's the only one that needs it.
   describe("data picker", () => {
-    beforeAll(() => {
+    before(() => {
       const REINDEX_POLL_INTERVAL_MS = 1000
       const REINDEX_POLL_MAX_ATTEMPTS = 60
 
