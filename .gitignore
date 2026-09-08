@@ -5,6 +5,10 @@ node_modules
 .pnp
 .pnp.js
 
+# local dist
+local-dist/*
+!local-dist/.gitkeep
+
 # testing
 coverage
 cypress
@@ -12,6 +16,11 @@ cypress
 # production
 dist
 build
+
+# db dumps
+*.sql
+# but allow migration files
+!api/drizzle/**/*.sql
 
 # misc
 .DS_Store

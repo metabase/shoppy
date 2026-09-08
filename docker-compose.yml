@@ -1,5 +1,3 @@
-# Shoppy stack: client + api + warehouse. Metabase is the production instance (MB_INSTANCE_URL);
-# the client talks to it same-origin via `/mb`, which the api proxies onward (see api/src/main.ts).
 services:
   shoppy_db:
     image: postgres:latest
@@ -16,8 +14,25 @@ services:
     expose:
       - "${SHOPPY_DB_PORT}"
 
+  shoppy_app_db:
+    image: postgres:latest
+    environment:
+      POSTGRES_PORT: "${METABASE_APP_DB_PORT}"
+      POSTGRES_DB: "${METABASE_APP_DB}"
+      POSTGRES_USER: "${METABASE_APP_DB_USER}"
+      POSTGRES_PASSWORD: "${METABASE_APP_DB_PASSWORD}"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${METABASE_APP_DB_USER}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    expose:
+      - "${METABASE_APP_DB_PORT}"
+
   api:
     depends_on:
+      shoppy_app_db:
+        condition: service_healthy
       shoppy_db:
         condition: service_healthy
     build:
@@ -30,8 +45,9 @@ services:
       CLIENT_PORT: "${CLIENT_PORT}"
       IS_LOCAL_DB: "true"
       DB_URL: "postgres://${SHOPPY_DB_USER}:${SHOPPY_DB_PASSWORD}@${SHOPPY_DB_HOST}:${SHOPPY_DB_PORT}/${SHOPPY_DB}"
-      METABASE_INSTANCE_URL: "${MB_INSTANCE_URL}"
+      METABASE_INSTANCE_URL: "http://metabase:${MB_PORT}"
       METABASE_JWT_SHARED_SECRET: "${METABASE_JWT_SHARED_SECRET}"
+      METABASE_ADMIN_EMAIL: "${METABASE_ADMIN_EMAIL}"
     healthcheck:
       test: curl --fail -X GET -I "http://localhost:${API_PORT}/" || exit 1
       interval: 15s
@@ -40,15 +56,63 @@ services:
     ports:
       - "${API_PORT}:${API_PORT}"
 
+  metabase:
+    depends_on:
+      shoppy_app_db:
+        condition: service_healthy
+      shoppy_db:
+        condition: service_healthy
+      api:
+        condition: service_healthy
+    image: metabase/metabase-enterprise:v1.63.x
+    entrypoint: ["sh", "/app/entrypoint.sh"]
+    environment:
+      MB_CONFIG_FILE_PATH: "./app/config.yml"
+      MB_JETTY_PORT: "${MB_PORT}"
+      MB_EDITION: "ee"
+      MB_SITE_URL: "http://localhost:${MB_PORT}/"
+      MB_PREMIUM_EMBEDDING_TOKEN: "${PREMIUM_EMBEDDING_TOKEN}"
+      MB_RUN_MODE: "${MB_RUN_MODE}"
+      METASTORE_DEV_SERVER_URL: "${METASTORE_DEV_SERVER_URL}"
+      MB_JWT_IDENTITY_PROVIDER_URI: "http://localhost:${API_PORT}/sso/metabase"
+      MB_JWT_SHARED_SECRET: "${METABASE_JWT_SHARED_SECRET}"
+      MB_WAREHOUSE_ALLOWED_NETWORKS: "allow-all"
+      MB_DB_TYPE: "postgres"
+      MB_DB_HOST: "${METABASE_APP_DB_HOST}"
+      MB_DB_PORT: "${METABASE_APP_DB_PORT}"
+      MB_DB_USER: "${METABASE_APP_DB_USER}"
+      MB_DB_PASS: "${METABASE_APP_DB_PASSWORD}"
+      MB_DB_DBNAME: "${METABASE_APP_DB}"
+      METABASE_ADMIN_EMAIL: "${METABASE_ADMIN_EMAIL}"
+      METABASE_ADMIN_PASSWORD: "${METABASE_ADMIN_PASSWORD}"
+      SHOPPY_DB_HOST: "${SHOPPY_DB_HOST}"
+      SHOPPY_DB_PORT: "${SHOPPY_DB_PORT}"
+      SHOPPY_DB: "${SHOPPY_DB}"
+      SHOPPY_DB_USER: "${SHOPPY_DB_USER}"
+      SHOPPY_DB_PASSWORD: "${SHOPPY_DB_PASSWORD}"
+    healthcheck:
+      test: curl --fail -X GET -I "http://localhost:${MB_PORT}/api/health" || exit 1
+      interval: 15s
+      timeout: 5s
+      retries: 10
+    ports:
+      - "${MB_PORT}:${MB_PORT}"
+    volumes:
+      - ./metabase/entrypoint.sh:/app/entrypoint.sh
+      - ./metabase/config.yml:/app/config.yml
+      - ./metabase/metabase_data.tar.gz:/app/metabase_data.tar.gz
+
   client:
     depends_on:
+      metabase:
+        condition: service_healthy
       api:
         condition: service_healthy
     build:
       context: .
       dockerfile: Dockerfile
       args:
-        VITE_APP_METABASE_INSTANCE_URL: "/mb"
+        VITE_APP_METABASE_INSTANCE_URL: "http://localhost:${MB_PORT}"
         VITE_APP_BACKEND_URL: "http://localhost:${API_PORT}"
         VITE_DATADOG_APPLICATION_ID: "${DATADOG_APPLICATION_ID}"
         VITE_DATADOG_CLIENT_TOKEN: "${DATADOG_CLIENT_TOKEN}"
@@ -58,7 +122,7 @@ services:
         WATCH: "${WATCH}"
     environment:
       CLIENT_PORT: "${CLIENT_PORT}"
-      VITE_APP_METABASE_INSTANCE_URL: "/mb"
+      VITE_APP_METABASE_INSTANCE_URL: "http://localhost:${MB_PORT}"
       VITE_APP_BACKEND_URL: "http://localhost:${API_PORT}"
       VITE_APP_DOCKER_OVERRIDE_BACKEND_URL: "http://api:${API_PORT}"
       WATCH: "${WATCH}"
